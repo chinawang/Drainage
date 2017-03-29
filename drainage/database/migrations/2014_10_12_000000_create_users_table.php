@@ -18,6 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('employee_number')->nullable()->comment('员工编号');
+            $table->string('realname')->nullable()->comment('姓名');
+            $table->string('office')->nullable()->comment('职位');
+            $table->string('contact')->nullable()->comment('联系方式');
+            $table->tinyInteger('delete_process')->default(0)->comment('是否删除');
             $table->rememberToken();
             $table->timestamps();
         });
