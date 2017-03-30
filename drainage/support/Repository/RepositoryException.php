@@ -6,6 +6,8 @@
  * Time: 13:25
  */
 
+namespace Support\Repository;
+
 use RuntimeException;
 
 class RepositoryException extends RuntimeException

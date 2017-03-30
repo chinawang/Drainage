@@ -6,6 +6,8 @@
  * Time: 13:26
  */
 
+namespace Support\Validation;
+
 use Closure;
 use DateTime;
 use Countable;

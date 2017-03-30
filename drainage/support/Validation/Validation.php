@@ -6,6 +6,8 @@
  * Time: 13:26
  */
 
+namespace Support\Validation;
+
 use App\Exceptions\BadRequestException;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

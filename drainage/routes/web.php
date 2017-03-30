@@ -1,4 +1,4 @@
-<?php
+ls<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +14,7 @@
 Route::get('/laravel', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

@@ -7,6 +7,7 @@
  * Time: 13:23
  */
 
+namespace Support\Repository;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;

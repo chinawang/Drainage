@@ -6,6 +6,8 @@
  * Time: 13:24
  */
 
+namespace Support\Repository;
+
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
@@ -229,7 +231,7 @@ abstract class Repository implements RepositoryContract
     }
 
     /**
-     * 字段自增
+     * 字段升序
      *
      * @param $conditions
      * @param $column
@@ -242,7 +244,7 @@ abstract class Repository implements RepositoryContract
     }
 
     /**
-     * 字段自增
+     * 字段降续
      *
      * @param $conditions
      * @param $column
