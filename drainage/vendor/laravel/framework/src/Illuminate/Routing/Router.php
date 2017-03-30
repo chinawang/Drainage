@@ -24,7 +24,7 @@ class Router implements RegistrarContract, BindingRegistrar
 
     /**
      * The event dispatcher instance.
-     *
+     *F
      * @var \Illuminate\Contracts\Events\Dispatcher
      */
     protected $events;

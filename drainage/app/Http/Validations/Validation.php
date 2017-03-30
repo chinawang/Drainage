@@ -7,6 +7,8 @@
  * Time: 15:27
  */
 
+namespace App\Http\Validations;
+
 use Illuminate\Http\Request;
 
 /**
