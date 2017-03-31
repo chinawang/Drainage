@@ -86,5 +86,6 @@
     <!-- Scripts -->
 {{--    <script src="{{ asset('js/app.js') }}"></script>--}}
     <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>
