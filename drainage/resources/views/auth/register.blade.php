@@ -24,15 +24,72 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                        {{--<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">--}}
+                            {{--<label for="email" class="col-md-4 control-label">E-Mail Address</label>--}}
+
+                            {{--<div class="col-md-6">--}}
+                                {{--<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>--}}
+
+                                {{--@if ($errors->has('email'))--}}
+                                    {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('email') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+
+                        <div class="form-group{{ $errors->has('employee_number') ? ' has-error' : '' }}">
+                            <label for="employee_number" class="col-md-4 control-label">Employee Number</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="employee_number" type="text" class="form-control" name="employee_number" value="{{ old('employee_number') }}" required autofocus>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('employee_number'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('employee_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('realname') ? ' has-error' : '' }}">
+                            <label for="realname" class="col-md-4 control-label">Realname</label>
+
+                            <div class="col-md-6">
+                                <input id="realname" type="text" class="form-control" name="realname" value="{{ old('realname') }}" required autofocus>
+
+                                @if ($errors->has('realname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('realname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('office') ? ' has-error' : '' }}">
+                            <label for="office" class="col-md-4 control-label">Office</label>
+
+                            <div class="col-md-6">
+                                <input id="office" type="text" class="form-control" name="office" value="{{ old('office') }}" required autofocus>
+
+                                @if ($errors->has('office'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('office') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('contact') ? ' has-error' : '' }}">
+                            <label for="contact" class="col-md-4 control-label">Contact</label>
+
+                            <div class="col-md-6">
+                                <input id="contact" type="text" class="form-control" name="contact" value="{{ old('contact') }}" required autofocus>
+
+                                @if ($errors->has('contact'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('contact') }}</strong>
                                     </span>
                                 @endif
                             </div>
