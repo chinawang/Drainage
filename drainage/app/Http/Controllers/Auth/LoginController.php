@@ -47,20 +47,5 @@ class LoginController extends Controller
         return 'name';
     }
 
-    /**
-     * Log the user out of the application.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function logout(Request $request)
-    {
-        $this->guard()->logout();
 
-        $request->session()->flush();
-
-        $request->session()->regenerate();
-
-        return redirect('/login');
-    }
 }
