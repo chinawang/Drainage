@@ -17,4 +17,5 @@ Route::get('/laravel', function () {
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
