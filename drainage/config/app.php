@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'DrainageSystem of ZhengZhou',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'zh_cn',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
