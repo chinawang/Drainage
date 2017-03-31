@@ -72,6 +72,6 @@ class RegisterController extends Controller
 //            'contact' => $data['contact'],
 //        ]);
 
-        echo $data;
+        echo $data['employee_number'];
     }
 }
