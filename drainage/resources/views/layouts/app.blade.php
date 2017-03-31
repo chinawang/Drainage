@@ -14,8 +14,7 @@
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     {{--<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">--}}
     {{--<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">--}}
-    {{--<link href="http://cdn.bootcss.com/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet">--}}
-    <link href="http://cdn.bootcss.com/flat-ui/2.3.0/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
