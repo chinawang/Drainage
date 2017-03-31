@@ -37,8 +37,30 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
     public function username()
     {
         return 'name';
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('/login');
     }
 }
