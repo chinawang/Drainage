@@ -62,7 +62,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>ls
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
