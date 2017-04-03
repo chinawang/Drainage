@@ -27,4 +27,56 @@ class PermissionLogic extends Logic
     {
         $this->permissionRepository = $permissionRepository;
     }
+
+    /**
+     * @param $permissionId
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function findPermission($permissionId)
+    {
+        $permission = $this->permissionRepository->find($permissionId);
+        return $permission;
+    }
+
+    /**
+     * @param $pageSize
+     * @param $orderColumn
+     * @param $orderDirection
+     * @param null $cursorPage
+     * @return mixed
+     */
+    public function getPermissions($pageSize, $orderColumn, $orderDirection, $cursorPage = null)
+    {
+        //$conditions = ['delete_process' => 0];
+        $permissionList = $this->permissionRepository->getPaginate($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        return $permissionList;
+    }
+
+    /**
+     * @param $attributes
+     * @return bool|\Illuminate\Database\Eloquent\Model
+     */
+    public function createPermission($attributes)
+    {
+        return $this->permissionRepository->create($attributes);
+    }
+
+    /**
+     * @param $permissionId
+     * @param $input
+     * @return bool
+     */
+    public function updatePermission($permissionId,$input)
+    {
+        return $this->permissionRepository->update($permissionId,$input);
+    }
+
+    /**
+     * @param $permissionId
+     * @return bool
+     */
+    public function deletePermission($permissionId)
+    {
+        return $this->permissionRepository->delete($permissionId);
+    }
 }

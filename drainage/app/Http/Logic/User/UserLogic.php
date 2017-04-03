@@ -27,4 +27,71 @@ class UserLogic extends Logic
     {
         $this->userRepository = $userRepository;
     }
+
+    /**
+     * @param $userId
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function findUser($userId)
+    {
+        $user = $this->userRepository->findBy($userId);
+        return $user;
+    }
+
+    /**
+     * @param $pageSize
+     * @param $orderColumn
+     * @param $orderDirection
+     * @param null $cursorPage
+     * @return mixed
+     */
+    public function getUsers($pageSize, $orderColumn, $orderDirection, $cursorPage = null)
+    {
+        $conditions =['delete_process' => 0];
+        $userList = $this->userRepository->getPaginate($conditions,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+        return $userList;
+    }
+
+    /**
+     * @param $attributes
+     * @return bool|\Illuminate\Database\Eloquent\Model
+     */
+    public function createUser($attributes)
+    {
+        return $this->userRepository->create($attributes);
+    }
+
+    /**
+     * @param $userId
+     * @param $input
+     * @return bool
+     */
+    public function updateUser($userId,$input)
+    {
+        $userInfo['employee_number'] = $input['employee_number'];
+        $userInfo['realname'] = $input['realname'];
+        $userInfo['office'] = $input['office'];
+        $userInfo['contact'] = $input['contact'];
+        return $this->userRepository->update($userId,$userInfo);
+    }
+
+    /**
+     * @param $userId
+     * @param $newPassword
+     * @return bool
+     */
+    public function resetPassword($userId,$newPassword)
+    {
+        $attributes = ['password' => bcrypt($newPassword)];
+        return $this->userRepository->update($userId,$attributes);
+    }
+
+    /**
+     * @param $userId
+     * @return bool
+     */
+    public function deleteUser($userId)
+    {
+        return $this->userRepository->deleteByFlag($userId);
+    }
 }

@@ -58,4 +58,16 @@ class FailureRepository extends Repository
             ->orderBy($orderColumn, $orderDirection)
             ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
     }
+
+    /**
+     * 逻辑删除
+     *
+     * @param $ID
+     * @return mixed
+     */
+    public function deleteByFlag($ID)
+    {
+        $conditions['delete_process'] = 1;
+        return $this->model->where($this->model->getKeyName(), $ID)->update($conditions);
+    }
 }

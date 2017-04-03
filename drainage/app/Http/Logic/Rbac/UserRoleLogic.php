@@ -27,4 +27,45 @@ class UserRoleLogic extends Logic
     {
         $this->userRoleRepository = $userRoleRepository;
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function findUserRole($id)
+    {
+        $userRole = $this->userRoleRepository->find($id);
+        return $userRole;
+    }
+
+    /**
+     * @param $userId
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getUserRoles($userId)
+    {
+        $conditions['user_id'] = $userId;
+        $userRoleList = $this->userRoleRepository->getBy($conditions);
+        return $userRoleList;
+    }
+
+    /**
+     * @param $userId
+     * @param $roleIDs
+     * @return int
+     */
+    public function addUserRoles($userId,$roleIDs)
+    {
+        return $this->userRoleRepository->addRoles($userId,$roleIDs);
+    }
+
+    /**
+     * @param $userId
+     * @param $roleIDs
+     * @return int
+     */
+    public function deleteUserRoles($userId,$roleIDs)
+    {
+        return $this->userRoleRepository->deleteRoles(userId,$roleIDs);
+    }
 }
