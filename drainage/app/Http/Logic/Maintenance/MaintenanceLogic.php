@@ -83,6 +83,15 @@ class MaintenanceLogic extends Logic
     }
 
     /**
+     * @param $attributes
+     * @return bool|\Illuminate\Database\Eloquent\Model
+     */
+    public function createMaintenance($attributes)
+    {
+        return $this->maintenanceRepository->create($attributes);
+    }
+
+    /**
      * @param $maintenanceId
      * @param $input
      * @return bool

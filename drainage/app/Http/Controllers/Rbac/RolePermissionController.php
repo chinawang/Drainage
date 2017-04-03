@@ -29,4 +29,5 @@ class RolePermissionController extends Controller
         $this->rolePermissionLogic = $rolePermissionLogic;
         $this->rolePermissionValidation = $rolePermissionValidation;
     }
+
 }

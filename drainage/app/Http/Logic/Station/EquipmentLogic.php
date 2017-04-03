@@ -69,13 +69,11 @@ class EquipmentLogic extends Logic
 
     /**
      * @param $equipmentId
-     * @param $stationId
      * @param $input
      * @return bool
      */
-    public function updateEquipment($equipmentId,$stationId,$input)
+    public function updateEquipment($equipmentId,$input)
     {
-        $input['station_id'] = $stationId;
         return $this->equipmentRepository->update($equipmentId,$input);
     }
 
