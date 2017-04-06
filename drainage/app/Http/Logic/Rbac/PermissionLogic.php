@@ -53,6 +53,15 @@ class PermissionLogic extends Logic
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllPermissions()
+    {
+        $permissionList = $this->permissionRepository->all();
+        return $permissionList;
+    }
+
+    /**
      * @param $attributes
      * @return bool|\Illuminate\Database\Eloquent\Model
      */

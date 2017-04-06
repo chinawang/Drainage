@@ -53,6 +53,15 @@ class RoleLogic extends Logic
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllRoles()
+    {
+        $roleList = $this->roleRepository->all();
+        return $roleList;
+    }
+
+    /**
      * @param $attributes
      * @return bool|\Illuminate\Database\Eloquent\Model
      */
