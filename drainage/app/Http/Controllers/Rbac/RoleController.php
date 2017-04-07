@@ -35,7 +35,7 @@ class RoleController extends Controller
      */
     public function showAddRoleForm()
     {
-        return view('views.rbac.addRole');
+        return view('rbac.addRole');
     }
 
     /**
@@ -46,7 +46,7 @@ class RoleController extends Controller
     {
         $role = $this->roleLogic->findRole($roleID);
         $param = ['role' => $role];
-        return view('views.rbac.updateRole',$param);
+        return view('rbac.updateRole',$param);
     }
 
     /**
@@ -72,7 +72,7 @@ class RoleController extends Controller
         $pageSize        = array_get($input, 'page_size', 20);
         $rolePaginate = $this->roleLogic->getRoles($pageSize,$orderColumn,$orderDirection,$cursorPage);
         $param = ['roles' => $rolePaginate->toJson()];
-        return view('views.rbac.roleList',$param);
+        return view('rbac.roleList',$param);
     }
 
     /**

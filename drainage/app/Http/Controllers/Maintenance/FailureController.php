@@ -66,7 +66,7 @@ class FailureController extends Controller
         $users = $this->userLogic->getAllUsers();
 
         $param = ['equipments' => $equipments->toJson(),'stations' => $stations->toJson(),'users' => $users->toJson()];
-        return view('views.failure.addFailure',$param);
+        return view('failure.addFailure',$param);
     }
 
     /**
@@ -93,7 +93,7 @@ class FailureController extends Controller
 
         $param = ['failure' => $failure,'equipments' => $equipments->toJson(),
             'stations' => $stations->toJson(),'users' => $users->toJson()];
-        return view('views.failure.updateFailure',$param);
+        return view('failure.updateFailure',$param);
     }
 
     /**
@@ -168,7 +168,7 @@ class FailureController extends Controller
         }
 
         $param = ['failures' => $failurePaginate->toJson()];
-        return view('views.failure.list',$param);
+        return view('failure.list',$param);
     }
 
     /**
@@ -182,7 +182,7 @@ class FailureController extends Controller
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 20);
-        $failurePaginate = $this->failureLogic->getFailures($stationID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+        $failurePaginate = $this->failureLogic->getFailuresByStation($stationID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
 
         foreach($failurePaginate as $failure)
         {
@@ -198,7 +198,7 @@ class FailureController extends Controller
         }
 
         $param = ['failures' => $failurePaginate->toJson()];
-        return view('views.failure.listOfStation',$param);
+        return view('failure.listOfStation',$param);
     }
 
     /**

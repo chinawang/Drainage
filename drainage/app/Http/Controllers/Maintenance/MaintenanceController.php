@@ -73,7 +73,7 @@ class MaintenanceController extends Controller
         $users = $this->userLogic->getAllUsers();
 
         $param = ['equipments' => $equipments->toJson(),'stations' => $stations->toJson(),'users' => $users->toJson()];
-        return view('views.maintenance.addMaintenance',$param);
+        return view('maintenance.addMaintenance',$param);
     }
 
     /**
@@ -98,7 +98,7 @@ class MaintenanceController extends Controller
 
         $param = ['maintenance' => $maintenance,'equipments' => $equipments->toJson(),
             'stations' => $stations->toJson(),'users' => $users->toJson()];
-        return view('views.maintenance.updateMaintenance',$param);
+        return view('maintenance.updateMaintenance',$param);
     }
 
     /**
@@ -181,7 +181,63 @@ class MaintenanceController extends Controller
         }
 
         $param = ['maintenances' => $maintenancePaginate->toJson()];
-        return view('views.maintenance.list',$param);
+        return view('maintenance.list',$param);
+    }
+
+    /**
+     * @param $stationID
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function maintenanceListOfStation($stationID)
+    {
+        $input = $this->maintenanceValidation->maintenancePaginate();
+        $cursorPage      = array_get($input, 'cursor_page', null);
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $pageSize        = array_get($input, 'page_size', 20);
+        $maintenancePaginate = $this->maintenanceLogic->getMaintenancesByStation($stationID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        foreach($maintenancePaginate as $maintenance)
+        {
+            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+            $station = $this->stationInfo($maintenance['station_id']);
+            $repairer = $this->userInfo($maintenance['repairer_id']);
+
+            $maintenance['equipment_name'] = $equipment['name'];
+            $maintenance['station_name'] = $station['name'];
+            $maintenance['repairer_name'] = $repairer['real_name'];
+        }
+
+        $param = ['maintenances' => $maintenancePaginate->toJson()];
+        return view('maintenance.listOfStation',$param);
+    }
+
+    /**
+     * @param $failureID
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function maintenanceListOfFailure($failureID)
+    {
+        $input = $this->maintenanceValidation->maintenancePaginate();
+        $cursorPage      = array_get($input, 'cursor_page', null);
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $pageSize        = array_get($input, 'page_size', 20);
+        $maintenancePaginate = $this->maintenanceLogic->getMaintenancesByFailure($failureID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        foreach($maintenancePaginate as $maintenance)
+        {
+            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+            $station = $this->stationInfo($maintenance['station_id']);
+            $repairer = $this->userInfo($maintenance['repairer_id']);
+
+            $maintenance['equipment_name'] = $equipment['name'];
+            $maintenance['station_name'] = $station['name'];
+            $maintenance['repairer_name'] = $repairer['real_name'];
+        }
+
+        $param = ['maintenances' => $maintenancePaginate->toJson()];
+        return view('maintenance.listOfFailure',$param);
     }
 
     /**

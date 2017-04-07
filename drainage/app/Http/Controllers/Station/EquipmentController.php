@@ -58,7 +58,7 @@ class EquipmentController extends Controller
         $users = $this->userLogic->getAllUsers();
 
         $param = ['stations' => $stations->toJson(),'users' => $users->toJson()];
-        return view('views.equipment.addEquipment',$param);
+        return view('equipment.addEquipment',$param);
     }
 
     /**
@@ -82,7 +82,7 @@ class EquipmentController extends Controller
         $users = $this->userLogic->getAllUsers();
 
         $param = ['equipment' => $equipment,'stations' => $stations->toJson(),'users' => $users->toJson()];
-        return view('views.equipment.updateEquipment',$param);
+        return view('equipment.updateEquipment',$param);
     }
 
     /**
@@ -148,7 +148,7 @@ class EquipmentController extends Controller
         }
 
         $param = ['equipments' => $equipmentPaginate->toJson()];
-        return view('views.equipment.list',$param);
+        return view('equipment.list',$param);
     }
 
     /**

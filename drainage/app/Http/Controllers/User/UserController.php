@@ -63,7 +63,7 @@ class UserController extends Controller
     public function showResetPasswordForm($userID)
     {
         $param = ['userID' => $userID];
-        return view('views.user.resetPassword',$param);
+        return view('user.resetPassword',$param);
     }
 
     /**
@@ -76,7 +76,7 @@ class UserController extends Controller
     {
         $userInfo = $this->userLogic->findUser($userID);
         $param = ['user' => $userInfo];
-        return view('views.user.userProfile',$param);
+        return view('user.userProfile',$param);
     }
 
     /**
@@ -94,7 +94,7 @@ class UserController extends Controller
         $pageSize        = array_get($input, 'page_size', 20);
         $userPaginate = $this->userLogic->getUsers($pageSize,$orderColumn,$orderDirection,$cursorPage);
         $param = ['users' => $userPaginate->toJson()];
-        return view('views.user.list',$param);
+        return view('user.list',$param);
     }
 
     /**

@@ -37,7 +37,7 @@ class PermissionController extends Controller
      */
     public function showAddPermissionForm()
     {
-        return view('views.rbac.addPermission');
+        return view('rbac.addPermission');
     }
 
     /**
@@ -50,7 +50,7 @@ class PermissionController extends Controller
     {
         $permission = $this->permissionLogic->findPermission($permissionID);
         $param = ['permission' => $permission];
-        return view('views.rbac.updatePermission',$param);
+        return view('rbac.updatePermission',$param);
     }
 
     /**
@@ -80,7 +80,7 @@ class PermissionController extends Controller
         $pageSize        = array_get($input, 'page_size', 20);
         $permissionPaginate = $this->permissionLogic->getPermissions($pageSize,$orderColumn,$orderDirection,$cursorPage);
         $param = ['permissions' => $permissionPaginate->toJson()];
-        return view('views.rbac.permissionList',$param);
+        return view('rbac.permissionList',$param);
     }
 
     /**
