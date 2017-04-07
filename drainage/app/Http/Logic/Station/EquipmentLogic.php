@@ -53,6 +53,16 @@ class EquipmentLogic extends Logic
             'station_id' => $stationId
         ];
         $equipmentList = $this->equipmentRepository->getPaginate($conditions,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        return $equipmentList;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllEquipments()
+    {
+        $equipmentList = $this->equipmentRepository->all();
         return $equipmentList;
     }
 
@@ -61,9 +71,9 @@ class EquipmentLogic extends Logic
      * @param $attributes
      * @return bool|\Illuminate\Database\Eloquent\Model
      */
-    public function createEquipment($stationId,$attributes)
+    public function createEquipment($attributes)
     {
-        $attributes['station_id'] = $stationId;
+        //$attributes['station_id'] = $stationId;
         return $this->equipmentRepository->create($attributes);
     }
 

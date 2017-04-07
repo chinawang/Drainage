@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Station;
 
 use App\Http\Logic\Station\EquipmentLogic;
+use App\Http\Logic\Station\StationLogic;
+use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Station\EquipmentValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,20 +17,34 @@ class EquipmentController extends Controller
     protected $equipmentLogic;
 
     /**
+     * @var StationLogic
+     */
+    protected $stationLogic;
+
+    /**
+     * @var UserLogic
+     */
+    protected $userLogic;
+
+    /**
      * @var EquipmentValidation
      */
     protected $equipmentValidation;
-
 
     /**
      * EquipmentController constructor.
      * @param EquipmentLogic $equipmentLogic
      * @param EquipmentValidation $equipmentValidation
+     * @param StationLogic $stationLogic
+     * @param UserLogic $userLogic
      */
-    public function __construct(EquipmentLogic $equipmentLogic,EquipmentValidation $equipmentValidation)
+    public function __construct(EquipmentLogic $equipmentLogic,EquipmentValidation $equipmentValidation,
+                                StationLogic $stationLogic,UserLogic $userLogic)
     {
         $this->equipmentLogic = $equipmentLogic;
         $this->equipmentValidation = $equipmentValidation;
+        $this->stationLogic = $stationLogic;
+        $this->userLogic = $userLogic;
     }
 
     /**
@@ -38,7 +54,11 @@ class EquipmentController extends Controller
      */
     public function showAddEquipmentForm()
     {
-        return view('views.equipment.addEquipment');
+        $stations = $this->stationLogic->getAllStations();
+        $users = $this->userLogic->getAllUsers();
+
+        $param = ['stations' => $stations->toJson(),'users' => $users->toJson()];
+        return view('views.equipment.addEquipment',$param);
     }
 
     /**
@@ -49,8 +69,19 @@ class EquipmentController extends Controller
      */
     public function showUpdateEquipmentForm($equipmentID)
     {
-        $equipment = $this->equipmentLogic->findEquipment($equipmentID);
-        $param = ['equipment' => $equipment];
+        $equipment = $this->equipmentInfo($equipmentID);
+        $station = $this->stationInfo($equipment['station_id']);
+        $leader = $this->userInfo($equipment['leader_id']);
+        $custodian = $this->userInfo($equipment['custodian_id']);
+
+        $equipment['station_name'] = $station['name'];
+        $equipment['leader_name'] = $leader['real_name'];
+        $equipment['custodian_name'] = $custodian['real_name'];
+
+        $stations = $this->stationLogic->getAllStations();
+        $users = $this->userLogic->getAllUsers();
+
+        $param = ['equipment' => $equipment,'stations' => $stations->toJson(),'users' => $users->toJson()];
         return view('views.equipment.updateEquipment',$param);
     }
 
@@ -67,18 +98,55 @@ class EquipmentController extends Controller
     }
 
     /**
+     * 查询泵站信息
+     *
+     * @param $stationID
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function stationInfo($stationID)
+    {
+        $station = $this->stationLogic->findStation($stationID);
+        return $station;
+    }
+
+    /**
+     * 查询人员信息
+     *
+     * @param $userID
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function userInfo($userID)
+    {
+        $user = $this->userLogic->findUser($userID);
+        return $user;
+    }
+
+    /**
      * 分页查询设备列表
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function equipmentList()
     {
-        $input = [];
+        $input = $this->equipmentValidation->equipmentPaginate();
+
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 20);
         $equipmentPaginate = $this->equipmentLogic->getEquipments($pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        foreach($equipmentPaginate as $equipment)
+        {
+            $station = $this->stationInfo($equipment['station_id']);
+            $leader = $this->userInfo($equipment['leader_id']);
+            $custodian = $this->userInfo($equipment['custodian_id']);
+
+            $equipment['station_name'] = $station['name'];
+            $equipment['leader_name'] = $leader['real_name'];
+            $equipment['custodian_name'] = $custodian['real_name'];
+        }
+
         $param = ['equipments' => $equipmentPaginate->toJson()];
         return view('views.equipment.list',$param);
     }
@@ -90,9 +158,8 @@ class EquipmentController extends Controller
      */
     public function storeNewEquipment()
     {
-        $input = null;
-        $stationID = null;
-        return $this->equipmentLogic->createEquipment($stationID,$input);
+        $input = $this->equipmentValidation->storeNewEquipment();
+        return $this->equipmentLogic->createEquipment($input);
     }
 
     /**
@@ -103,18 +170,18 @@ class EquipmentController extends Controller
      */
     public function updateEquipment($equipmentID)
     {
-        $input = null;
+        $input = $this->equipmentValidation->updateEquipment($equipmentID);
         return $this->equipmentLogic->updateEquipment($equipmentID,$input);
     }
 
     /**
      * 删除设备
      *
-     * @param $equipmentID
      * @return mixed
      */
-    public function deleteEquipment($equipmentID)
+    public function deleteEquipment()
     {
+        $equipmentID = $this->equipmentValidation->deleteEquipment();
         return $this->equipmentLogic->deleteEquipment($equipmentID);
     }
 }

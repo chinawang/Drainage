@@ -53,6 +53,15 @@ class StationLogic extends Logic
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllStations()
+    {
+        $stationList = $this->stationRepository->all();
+        return $stationList;
+    }
+
+    /**
      * @param $attributes
      * @return bool|\Illuminate\Database\Eloquent\Model
      */

@@ -9,9 +9,13 @@
 namespace App\Http\Validations\User;
 
 
+use App\Exceptions\BadRequestException;
+use App\Exceptions\ForbiddenException;
 use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Validation;
-use Illuminate\Validation\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 
 class UserValidation extends Validation
 {
@@ -104,16 +108,39 @@ class UserValidation extends Validation
     }
 
     /**
+     * @return array
+     */
+    public function userPaginate()
+    {
+        $input = $this->filterRequest(['page', 'cursor_page', 'order_column', 'order_direction']);
+
+        $rules = [
+            'page'            => ['integer'],
+            'page_size'       => ['integer'],
+            'cursor_page'     => ['integer'],
+            'order_column'    => ['string', 'in:created_at,updated_at'],
+            'order_direction' => ['string', 'in:asc,desc'],
+        ];
+
+        $validator  = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+            throw new BadRequestException($validator->errors());
+        }
+
+        return $input;
+    }
+
+    /**
      * @param $userID
      * @return array
      */
     public function resetPassword($userID)
     {
-        $input = $this->filterRequest(['old', 'new']);
+        $input = $this->filterRequest(['newPassword']);
 
         $rules = [
-            'old' => ['required', 'string'],
-            'new' => ['required', 'string', 'min:6'],
+            'newPassword' => ['required', 'string', 'min:6'],
         ];
 
         $validator = Validator::make($input, $rules);
@@ -123,11 +150,9 @@ class UserValidation extends Validation
         }
 
         $user = $this->userLogic->findUser($userID);
-
-        if (! Hash::check($input['old'], $user->password)) {
-            throw new ForbiddenException(trans('old_password_error'));
+        if($user->id != $userID) {
+            throw new ForbiddenException();
         }
-
 
         return $input;
     }

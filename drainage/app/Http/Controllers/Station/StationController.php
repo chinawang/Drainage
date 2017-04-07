@@ -72,7 +72,8 @@ class StationController extends Controller
      */
     public function stationList()
     {
-        $input = [];
+        $input = $this->stationValidation->stationPaginate();
+
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
@@ -89,7 +90,7 @@ class StationController extends Controller
      */
     public function storeNewStation()
     {
-        $input = null;
+        $input = $this->stationValidation->storeNewStation();
         return $this->stationLogic->createStation($input);
     }
 
@@ -101,18 +102,18 @@ class StationController extends Controller
      */
     public function updateStation($stationID)
     {
-        $input = null;
+        $input = $this->stationValidation->updateStation($stationID);
         return $this->stationLogic->updateStation($stationID,$input);
     }
 
     /**
      * 删除泵站
      *
-     * @param $stationID
      * @return bool
      */
-    public function deleteStation($stationID)
+    public function deleteStation()
     {
+        $stationID = $this->stationValidation->deleteStation();
         return $this->stationLogic->deleteStation($stationID);
     }
 }

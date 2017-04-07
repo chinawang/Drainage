@@ -72,7 +72,8 @@ class PermissionController extends Controller
      */
     public function permissionList()
     {
-        $input = [];
+        $input = $this->permissionValidation->permissionPaginate();
+
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
@@ -89,7 +90,7 @@ class PermissionController extends Controller
      */
     public function storeNewPermission()
     {
-        $input = [];
+        $input = $this->permissionValidation->storeNewPermission();
         return $this->permissionLogic->createPermission($input);
     }
 
@@ -101,18 +102,18 @@ class PermissionController extends Controller
      */
     public function updatePermission($permissionID)
     {
-        $input = [];
+        $input = $this->permissionValidation->updatePermission($permissionID);
         return $this->permissionLogic->updatePermission($permissionID,$input);
     }
 
     /**
      * 删除权限
      *
-     * @param $permissionID
      * @return bool
      */
-    public function deletePermission($permissionID)
+    public function deletePermission()
     {
+        $permissionID = $this->permissionValidation->deletePermission();
         return $this->permissionLogic->deletePermission($permissionID);
     }
 }

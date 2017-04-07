@@ -53,6 +53,15 @@ class FailureLogic extends Logic
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllFailure()
+    {
+        $failureList = $this->failureRepository->all();
+        return $failureList;
+    }
+
+    /**
      * @param $stationId
      * @param $pageSize
      * @param $orderColumn

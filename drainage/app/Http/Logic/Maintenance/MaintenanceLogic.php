@@ -53,6 +53,15 @@ class MaintenanceLogic extends Logic
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllMaintenance()
+    {
+        $maintenanceList = $this->maintenanceRepository->all();
+        return $maintenanceList;
+    }
+
+    /**
      * @param $stationId
      * @param $pageSize
      * @param $orderColumn

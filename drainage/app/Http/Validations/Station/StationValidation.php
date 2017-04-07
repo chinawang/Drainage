@@ -11,17 +11,32 @@ namespace App\Http\Validations\Station;
 
 use App\Http\Logic\Station\StationLogic;
 use App\Http\Validations\Validation;
+use Illuminate\Http\Request;
+use Validator;
+use App\Exceptions\BadRequestException;
+use App\Exceptions\ForbiddenException;
 
 class StationValidation extends Validation
 {
+    /**
+     * @var StationLogic
+     */
     protected $stationLogic;
 
+    /**
+     * StationValidation constructor.
+     * @param Request $request
+     * @param StationLogic $stationLogic
+     */
     public function __construct(Request $request,StationLogic $stationLogic)
     {
         parent::__construct($request);
         $this->stationLogic = $stationLogic;
     }
 
+    /**
+     * @return array
+     */
     public function storeNewStation()
     {
         $input = $this->filterRequest([
@@ -44,6 +59,10 @@ class StationValidation extends Validation
         return $input;
     }
 
+    /**
+     * @param $stationID
+     * @return array
+     */
     public function updateStation($stationID)
     {
         $input = $this->filterRequest([
@@ -71,6 +90,9 @@ class StationValidation extends Validation
         return $input;
     }
 
+    /**
+     * @return mixed
+     */
     public function deleteStation()
     {
         $input = $this->filterRequest(['id']);
@@ -81,5 +103,29 @@ class StationValidation extends Validation
         }
 
         return $stationID;
+    }
+
+    /**
+     * @return array
+     */
+    public function stationPaginate()
+    {
+        $input = $this->filterRequest(['page', 'cursor_page', 'order_column', 'order_direction']);
+
+        $rules = [
+            'page'            => ['integer'],
+            'page_size'       => ['integer'],
+            'cursor_page'     => ['integer'],
+            'order_column'    => ['string', 'in:created_at,updated_at'],
+            'order_direction' => ['string', 'in:asc,desc'],
+        ];
+
+        $validator  = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+            throw new BadRequestException($validator->errors());
+        }
+
+        return $input;
     }
 }

@@ -119,6 +119,9 @@ class RolePermissionLogic extends Logic
          */
         $assignPermissionIDs = $this->getPermissionIDsByRoleID($roleID);
 
+        $deleteResult = true;
+        $addResult = true;
+
         /**
          * 找出删除的权限
          * 假如已有的权限集合是A，界面传递过得权限集合是B
@@ -128,7 +131,7 @@ class RolePermissionLogic extends Logic
         $deletePermissionsIDs = array_diff($assignPermissionIDs,$permissionIDs);
         if($deletePermissionsIDs)
         {
-            $this->deleteRolePermission($roleID,$deletePermissionsIDs);
+            $deleteResult = $this->deleteRolePermission($roleID,$deletePermissionsIDs);
         }
 
         /**
@@ -140,9 +143,9 @@ class RolePermissionLogic extends Logic
         $newPermissionIDs = array_diff($permissionIDs,$assignPermissionIDs);
         if($newPermissionIDs)
         {
-            $this->addRolePermission($roleID,$newPermissionIDs);
+            $addResult = $this->addRolePermission($roleID,$newPermissionIDs);
         }
 
-        return true;
+        return ($deleteResult && $addResult);
     }
 }

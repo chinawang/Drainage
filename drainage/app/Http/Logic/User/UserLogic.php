@@ -53,6 +53,15 @@ class UserLogic extends Logic
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllUsers()
+    {
+        $userList = $this->userRepository->all();
+        return $userList;
+    }
+
+    /**
      * @param $attributes
      * @return bool|\Illuminate\Database\Eloquent\Model
      */

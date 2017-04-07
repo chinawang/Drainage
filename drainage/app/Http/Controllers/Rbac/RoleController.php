@@ -64,7 +64,8 @@ class RoleController extends Controller
      */
     public function roleList()
     {
-        $input = [];
+        $input = $this->roleValidation->rolePaginate();
+
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
@@ -79,7 +80,7 @@ class RoleController extends Controller
      */
     public function storeNewRole()
     {
-        $input = [];
+        $input = $this->roleValidation->storeNewRole();
         return $this->roleLogic->createRole($input);
     }
 
@@ -89,16 +90,16 @@ class RoleController extends Controller
      */
     public function updateRole($roleID)
     {
-        $input = [];
+        $input = $this->roleValidation->updateRole($roleID);
         return $this->roleLogic->updateRole($roleID,$input);
     }
 
     /**
-     * @param $roleID
      * @return bool
      */
-    public function deleteRole($roleID)
+    public function deleteRole()
     {
+        $roleID = $this->roleValidation->deleteRole();
         return $this->roleLogic->deleteRole($roleID);
     }
 }

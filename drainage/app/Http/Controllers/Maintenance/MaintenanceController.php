@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Maintenance;
 
+use App\Http\Logic\Maintenance\FailureLogic;
 use App\Http\Logic\Maintenance\MaintenanceLogic;
+use App\Http\Logic\Station\EquipmentLogic;
+use App\Http\Logic\Station\StationLogic;
+use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Maintenance\MaintenanceValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,6 +19,26 @@ class MaintenanceController extends Controller
     protected $maintenanceLogic;
 
     /**
+     * @var FailureLogic
+     */
+    protected $failureLogic;
+
+    /**
+     * @var EquipmentLogic
+     */
+    protected $equipmentLogic;
+
+    /**
+     * @var StationLogic
+     */
+    protected $stationLogic;
+
+    /**
+     * @var UserLogic
+     */
+    protected $userLogic;
+
+    /**
      * @var MaintenanceValidation
      */
     protected $maintenanceValidation;
@@ -23,11 +47,20 @@ class MaintenanceController extends Controller
      * MaintenanceController constructor.
      * @param MaintenanceLogic $maintenanceLogic
      * @param MaintenanceValidation $maintenanceValidation
+     * @param FailureLogic $failureLogic
+     * @param EquipmentLogic $equipmentLogic
+     * @param StationLogic $stationLogic
+     * @param UserLogic $userLogic
      */
-    public function __construct(MaintenanceLogic $maintenanceLogic,MaintenanceValidation $maintenanceValidation)
+    public function __construct(MaintenanceLogic $maintenanceLogic,MaintenanceValidation $maintenanceValidation,
+                                FailureLogic $failureLogic,EquipmentLogic $equipmentLogic,StationLogic $stationLogic,UserLogic $userLogic)
     {
         $this->maintenanceLogic = $maintenanceLogic;
         $this->maintenanceValidation = $maintenanceValidation;
+        $this->failureLogic = $failureLogic;
+        $this->equipmentLogic = $equipmentLogic;
+        $this->stationLogic = $stationLogic;
+        $this->userLogic = $userLogic;
     }
 
     /**
@@ -35,7 +68,12 @@ class MaintenanceController extends Controller
      */
     public function showAddMaintenanceForm()
     {
-        return view('views.maintenance.addMaintenance');
+        $equipments = $this->equipmentLogic->getAllEquipments();
+        $stations = $this->stationLogic->getAllStations();
+        $users = $this->userLogic->getAllUsers();
+
+        $param = ['equipments' => $equipments->toJson(),'stations' => $stations->toJson(),'users' => $users->toJson()];
+        return view('views.maintenance.addMaintenance',$param);
     }
 
     /**
@@ -45,7 +83,21 @@ class MaintenanceController extends Controller
     public function showUpdateMaintenanceForm($maintenanceID)
     {
         $maintenance = $this->maintenanceLogic->findMaintenance($maintenanceID);
-        $param = ['maintenance' => $maintenance];
+
+        $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+        $station = $this->stationInfo($maintenance['station_id']);
+        $repairer = $this->userInfo($maintenance['repairer_id']);
+
+        $maintenance['equipment_name'] = $equipment['name'];
+        $maintenance['station_name'] = $station['name'];
+        $maintenance['repairer_name'] = $repairer['real_name'];
+
+        $equipments = $this->equipmentLogic->getAllEquipments();
+        $stations = $this->stationLogic->getAllStations();
+        $users = $this->userLogic->getAllUsers();
+
+        $param = ['maintenance' => $maintenance,'equipments' => $equipments->toJson(),
+            'stations' => $stations->toJson(),'users' => $users->toJson()];
         return view('views.maintenance.updateMaintenance',$param);
     }
 
@@ -60,16 +112,74 @@ class MaintenanceController extends Controller
     }
 
     /**
+     * @param $failureID
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function failureInfo($failureID)
+    {
+        $failure = $this->failureLogic->findFailure($failureID);
+        return $failure;
+    }
+
+    /**
+     * 查询设备信息
+     *
+     * @param $equipmentID
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function equipmentInfo($equipmentID)
+    {
+        $equipment = $this->equipmentLogic->findEquipment($equipmentID);
+        return $equipment;
+    }
+
+    /**
+     * 查询泵站信息
+     *
+     * @param $stationID
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function stationInfo($stationID)
+    {
+        $station = $this->stationLogic->findStation($stationID);
+        return $station;
+    }
+
+    /**
+     * 查询人员信息
+     *
+     * @param $userID
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function userInfo($userID)
+    {
+        $user = $this->userLogic->findUser($userID);
+        return $user;
+    }
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function maintenanceList()
     {
-        $input = [];
+        $input = $this->maintenanceValidation->maintenancePaginate();
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 20);
         $maintenancePaginate = $this->maintenanceLogic->getMaintenances($pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        foreach($maintenancePaginate as $maintenance)
+        {
+            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+            $station = $this->stationInfo($maintenance['station_id']);
+            $repairer = $this->userInfo($maintenance['repairer_id']);
+
+            $maintenance['equipment_name'] = $equipment['name'];
+            $maintenance['station_name'] = $station['name'];
+            $maintenance['repairer_name'] = $repairer['real_name'];
+        }
+
         $param = ['maintenances' => $maintenancePaginate->toJson()];
         return view('views.maintenance.list',$param);
     }
@@ -79,7 +189,7 @@ class MaintenanceController extends Controller
      */
     public function storeNewMaintenance()
     {
-        $input = null;
+        $input = $this->maintenanceValidation->storeNewMaintenance();
         return $this->maintenanceLogic->createMaintenance($input);
     }
 
@@ -89,16 +199,16 @@ class MaintenanceController extends Controller
      */
     public function updateMaintenance($maintenanceID)
     {
-        $input = null;
+        $input = $this->maintenanceValidation->updateMaintenance($maintenanceID);
         return $this->maintenanceLogic->updateMaintenance($maintenanceID,$input);
     }
 
     /**
-     * @param $maintenanceID
      * @return mixed
      */
-    public function deleteMaintenance($maintenanceID)
+    public function deleteMaintenance()
     {
+        $maintenanceID = $this->maintenanceValidation->deleteMaintenance();
         return $this->maintenanceLogic->deleteMaintenance($maintenanceID);
     }
 }

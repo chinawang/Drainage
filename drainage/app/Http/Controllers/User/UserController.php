@@ -86,7 +86,8 @@ class UserController extends Controller
      */
     public function userList()
     {
-        $input = [];
+        $input = $this->userValidation->userPaginate();
+
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
@@ -103,7 +104,7 @@ class UserController extends Controller
      */
     public function storeNewUser()
     {
-        $input = null;
+        $input = $this->userValidation->storeNewUser();
         return $this->userLogic->createUser($input);
     }
 
@@ -115,18 +116,18 @@ class UserController extends Controller
      */
     public function updateUser($userID)
     {
-        $input = null;
+        $input = $this->userValidation->updateUser($userID);
         return $this->userLogic->updateUser($userID,$input);
     }
 
     /**
      * 删除用户
      *
-     * @param $userID
      * @return bool
      */
-    public function deleteUser($userID)
+    public function deleteUser()
     {
+        $userID = $this->userValidation->deleteUser();
         return $this->userLogic->deleteUser($userID);
     }
 
@@ -138,7 +139,7 @@ class UserController extends Controller
      */
     public function resetUserPassword($userID)
     {
-        $newPassword = null;
+        $newPassword = $this->userValidation->resetPassword($userID);
         return $this->userLogic->resetPassword($userID,$newPassword);
     }
 }

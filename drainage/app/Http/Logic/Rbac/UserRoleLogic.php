@@ -110,6 +110,9 @@ class UserRoleLogic extends Logic
          */
         $assignRoleIDs =$this->getRoleIDsByUserID($userID);
 
+        $deleteResult = true;
+        $addResult = true;
+
         /**
          * 找出删除的角色
          * 假如已有的角色集合是A，界面传递过得角色集合是B
@@ -119,7 +122,7 @@ class UserRoleLogic extends Logic
         $deleteRoleIDs = array_diff($assignRoleIDs,$roleIDs);
         if($deleteRoleIDs)
         {
-            $this->userRoleRepository->deleteRoles($userID,$deleteRoleIDs);
+            $deleteResult = $this->userRoleRepository->deleteRoles($userID,$deleteRoleIDs);
         }
 
         /**
@@ -130,7 +133,9 @@ class UserRoleLogic extends Logic
         $newRoleIDs = array_diff($roleIDs,$assignRoleIDs);
         if($newRoleIDs)
         {
-            $this->userRoleRepository->addRoles($userID,$newRoleIDs);
+            $addResult = $this->userRoleRepository->addRoles($userID,$newRoleIDs);
         }
+
+        return ($deleteResult && $addResult);
     }
 }

@@ -46,19 +46,20 @@ class RolePermissionController extends Controller
     {
         $permissions = $this->permissionLogic->getAllPermissions();
         $assignPermissionIDs = $this->rolePermissionLogic->getPermissionIDsByRoleID($roleID);
-        $param = ['permissions' => $permissions,'assignPermissionIDs' => $assignPermissionIDs];
+        $param = ['permissions' => $permissions->toJson(),'assignPermissionIDs' => $assignPermissionIDs->toJson()];
 
         return view('views.rbac.setRolePermission',$param);
     }
 
     /**
-     * @param $roleID
      * @return bool
      */
-    public function setRolePermission($roleID)
+    public function setRolePermission()
     {
-        $input = [];
-        return $this->rolePermissionLogic->setRolePermissions($roleID,$input);
+        $input = $this->rolePermissionValidation->setRolePermission();
+        $roleID = $input['role_id'];
+        $permissionIDs = array_column($input,'id');
+        return $this->rolePermissionLogic->setRolePermissions($roleID,$permissionIDs);
     }
 
 }
