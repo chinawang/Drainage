@@ -91,7 +91,7 @@
                             <li class="back-to-home">
                                 <a href="{{ url('/') }}">
                                     首页
-                                    <img src="/img/home/home.png" alt="logo">
+                                    <img src="/img/home/home.png">
                                 </a>
                             </li>
                         @endif

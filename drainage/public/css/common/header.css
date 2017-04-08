@@ -39,6 +39,12 @@
     display: block;
 }
 
+.back-to-home img{
+    display: inline;
+    margin: 0 10px;
+    height: 100%;
+}
+
 .sayhello {
     margin: 0px 10px;
     padding-top: 19.5px;
