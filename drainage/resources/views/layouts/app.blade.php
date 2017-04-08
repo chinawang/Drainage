@@ -16,6 +16,7 @@
     {{--<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">--}}
     {{--<link href="http://cdn.bootcss.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">--}}
     <link href="{{ asset('css/bootstrap-flatly.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
