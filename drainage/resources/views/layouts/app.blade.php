@@ -39,15 +39,18 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/img/header/logo.png') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="/img/header/logo.png" alt="logo">
+                        <span>{{ config('app.name', 'Laravel') }}</span>
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li>test1</li>
+                        <li>test2</li>
+                        <li>test3</li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
