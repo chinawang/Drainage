@@ -1,6 +1,6 @@
 
 .main-menu {
-    width: 1200px;
+    width: 100%px;
     height: 600px;
     color: #2c3e50;
     margin-left: -10px;
@@ -9,7 +9,7 @@
 .main-menu > li {
     display:block;
     border: 1px solid #ecf0f1;
-    width: 300px;
+    width: 30%px;
     height: 200px;
     text-align: center;
     float: left;
