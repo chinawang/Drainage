@@ -1,19 +1,16 @@
 
 .main-menu {
     width: 100%;
-    height: 600px;
     color: #2c3e50;
-    margin-left: -10px;
+    margin: auto;
 }
 
 .main-menu > li {
     display:block;
     border: 1px solid #ecf0f1;
-    width: 30%;
-    height: 200px;
+    width: 25%;
     text-align: center;
     float: left;
-    line-height: 100%;
 }
 
 .menu-item {
@@ -27,10 +24,14 @@
     background-color: transparent;
 }
 
+.menu-item >h4 {
+    margin: 0px;
+}
+
 .menu-icon {
     display: inline-block;
-    width: 78px;
-    height: 78px;
-    margin-top: 10px;
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
 }
 
