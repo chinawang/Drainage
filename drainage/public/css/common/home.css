@@ -33,7 +33,7 @@
     box-shadow:inset 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
-.main-menu >h4 {
+.menu-item >h4 {
     margin-top: 25px;
     margin-bottom: 25px;
 }
