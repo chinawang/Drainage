@@ -25,6 +25,7 @@
 .menu-item:hover, .menu-item:focus {
     text-decoration: none;
     color: #18bc9c;
+    cursor: pointer;
     background-color: transparent;
 }
 
