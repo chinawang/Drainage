@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('subtitle')
+    <span>设备资料管理</span>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

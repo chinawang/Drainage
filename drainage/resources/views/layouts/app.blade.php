@@ -49,7 +49,7 @@
                     <div class="navbar-line"></div>
 
                     <div class="navbar-subtitle">
-                        <span>门户</span>
+                        @yield('subtitle')
                     </div>
                 </div>
 

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('subtitle')
+    <span>门户</span>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
