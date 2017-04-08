@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'DrainageSystem of ZhengZhou',
+    'name' => '郑州市泵站信息化管理系统',
 
     /*
     |--------------------------------------------------------------------------

@@ -34,9 +34,9 @@
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="icon-bar">1</span>
+                        <span class="icon-bar">2</span>
+                        <span class="icon-bar">3</span>
                     </button>
 
                     <!-- Branding Image -->
@@ -45,8 +45,10 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
 
+                    <div class="navbar-line"></div>
+
                     <div class="navbar-subtitle">
-                        <span>首页</span>
+                        <span>门户</span>
                     </div>
                 </div>
 
