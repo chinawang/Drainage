@@ -68,6 +68,7 @@ Route::post('/station/delete','Station\StationController@deleteStation');
 
 //设备列表
 Route::get('/equipment/lists', 'Station\EquipmentController@equipmentList');
+Route::get('/station/equipment/lists/{station_id}', 'Station\EquipmentController@equipmentListOfStation');
 
 //设备创建保存
 Route::get('/equipment/add','Station\EquipmentController@showAddEquipmentForm');

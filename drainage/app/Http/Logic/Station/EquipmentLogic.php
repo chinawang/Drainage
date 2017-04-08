@@ -39,6 +39,23 @@ class EquipmentLogic extends Logic
     }
 
     /**
+     * @param $pageSize
+     * @param $orderColumn
+     * @param $orderDirection
+     * @param null $cursorPage
+     * @return mixed
+     */
+    public function getEquipments($pageSize, $orderColumn, $orderDirection, $cursorPage = null)
+    {
+        $conditions = [
+            'delete_process' => 0
+        ];
+        $equipmentList = $this->equipmentRepository->getPaginate($conditions,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        return $equipmentList;
+    }
+
+    /**
      * @param $stationId
      * @param $pageSize
      * @param $orderColumn
@@ -46,7 +63,7 @@ class EquipmentLogic extends Logic
      * @param null $cursorPage
      * @return mixed
      */
-    public function getEquipments($stationId,$pageSize, $orderColumn, $orderDirection, $cursorPage = null)
+    public function getEquipmentsByStation($stationId,$pageSize, $orderColumn, $orderDirection, $cursorPage = null)
     {
         $conditions = [
             'delete_process' => 0,

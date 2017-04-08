@@ -152,6 +152,35 @@ class EquipmentController extends Controller
     }
 
     /**
+     * @param $stationID
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function equipmentListOfStation($stationID)
+    {
+        $input = $this->equipmentValidation->equipmentPaginate();
+
+        $cursorPage      = array_get($input, 'cursor_page', null);
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $pageSize        = array_get($input, 'page_size', 20);
+        $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        foreach($equipmentPaginate as $equipment)
+        {
+            $station = $this->stationInfo($equipment['station_id']);
+            $leader = $this->userInfo($equipment['leader_id']);
+            $custodian = $this->userInfo($equipment['custodian_id']);
+
+            $equipment['station_name'] = $station['name'];
+            $equipment['leader_name'] = $leader['real_name'];
+            $equipment['custodian_name'] = $custodian['real_name'];
+        }
+
+        $param = ['equipments' => $equipmentPaginate->toJson()];
+        return view('equipment.listOfStation',$param);
+    }
+
+    /**
      * 添加新设备
      *
      * @return bool|\Illuminate\Database\Eloquent\Model
