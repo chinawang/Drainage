@@ -8,14 +8,10 @@
                 <div class="panel-body custom-panel-body">
                     <ul class="main-menu">
                         <li class="station">
-                            {{--<a href="/station/lists" class="menu-item">--}}
-                                {{--<img class="menu-icon" src="/img/home/test.png">--}}
-                                {{--<h4>泵站资料管理</h4>--}}
-                            {{--</a>--}}
-                            <img class="menu-icon" src="/img/home/test.png">
-                            <h4>泵站资料管理</h4>
-                            <a href="/station/lists" class="menu-item"></a>
-
+                            <a href="/station/lists" class="menu-item">
+                                <img class="menu-icon" src="/img/home/test.png">
+                                <h4>泵站资料管理</h4>
+                            </a>
                         </li>
                         <li class="equipment">
                             <a href="/equipment/lists" class="menu-item">
