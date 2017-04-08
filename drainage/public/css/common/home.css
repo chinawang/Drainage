@@ -1,7 +1,7 @@
 
 
 .custom-panel {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
 .custom-panel-body {
@@ -22,11 +22,7 @@
 }
 
 .menu-item {
-    height: 100%;
-    width: 100%;
     color: #2c3e50;
-    margin: 0px;
-    padding: 0px;
 }
 
 .menu-item:hover, .menu-item:focus {
@@ -34,9 +30,10 @@
     color: #18bc9c;
     cursor: pointer;
     background-color: transparent;
+    box-shadow:inset 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
-.menu-item >h4 {
+.main-menu >h4 {
     margin-top: 25px;
     margin-bottom: 25px;
 }
