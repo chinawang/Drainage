@@ -17,6 +17,7 @@
     {{--<link href="http://cdn.bootcss.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">--}}
     <link href="{{ asset('css/bootstrap-flatly.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/common/home.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -62,10 +63,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">登录</a></li>
+                            <li><a href="{{ route('register') }}">注册</a></li>
                         @else
-                            <li id="sayhello"><span>你好,</span></li>
+                            <li class="back-to-home"><a href="{{ url('/') }}">返回首页</a></li>
+                            <li class="sayhello"><span>你好,</span></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->realname }} <span class="caret"></span>

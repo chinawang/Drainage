@@ -3,12 +3,83 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
                 <div class="panel-body">
-                    You are logged in!
+                    <ul class="main-menu">
+                        <li class="station">
+                            <a href="/station/lists">
+                                <div class="menu-icon" ></div>
+                                <h3>泵站资料管理</h3>
+                            </a>
+                        </li>
+                        <li class="equipment">
+                            <a href="/equipment/lists">
+                                <div class="menu-icon" ></div>
+                                <h3>设备资料管理</h3>
+                            </a>
+                        </li>
+                        <li class="failure">
+                            <a href="/failure/lists">
+                                <div class="menu-icon" ></div>
+                                <h3>设备维修管理</h3>
+                            </a>
+                        </li>
+                        <li class="map">
+                            <a href="">
+                                <div class="menu-icon" ></div>
+                                <h3>泵站地图</h3>
+                            </a>
+                        </li>
+                        <li class="status">
+                            <a href="">
+                                <div class="menu-icon" ></div>
+                                <h3>泵站工作状态</h3>
+                            </a>
+                        </li>
+                        <li class="station-warning">
+                            <a href="">
+                                <div class="menu-icon" ></div>
+                                <span>泵站报警管理</span>
+                            </a>
+                        </li>
+                        <li class="report">
+                            <a href="">
+                                <div class="menu-icon" ></div>
+                                <span>统计报表</span>
+                            </a>
+                        </li>
+                        <li class="weather">
+                            <a href="">
+                                <div class="menu-icon" ></div>
+                                <span>天气预报</span>
+                            </a>
+                        </li>
+                        <li class="user">
+                            <a href="/user/lists">
+                                <div class="menu-icon" ></div>
+                                <span>账户管理</span>
+                            </a>
+                        </li>
+                        <li class="role">
+                            <a href="/role/lists">
+                                <div class="menu-icon" ></div>
+                                <span>角色管理</span>
+                            </a>
+                        </li>
+                        <li href="permission">
+                            <a href="/permission/lists">
+                                <div class="menu-icon" ></div>
+                                <span>行为权限管理</span>
+                            </a>
+                        </li>
+                        <li class="log">
+                            <a href="">
+                                <div class="menu-icon" ></div>
+                                <span>系统日志管理</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
