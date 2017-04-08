@@ -7,10 +7,11 @@
 
 .main-menu > li {
     display:block;
-    border: 1px solid #ecf0f1;
+    borderl: 1px solid #ecf0f1;
     width: 25%;
     text-align: center;
     float: left;
+    margin-left: -1px;
 }
 
 .menu-item {
@@ -25,7 +26,8 @@
 }
 
 .menu-item >h4 {
-    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .menu-icon {
