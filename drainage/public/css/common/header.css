@@ -10,7 +10,19 @@
 }
 
 .navbar-subtitle {
-    padding: 13.5px 15px;
+    margin: 0px 10px;
+    float: left;
     border-left: 2px solid #2c3038;
+    color: #ffffff;
 }
+
+.navbar-right > span {
+    padding-top: 19.5px;
+    padding-bottom: 19.5px;
+    color: #ffffff;
+    float: left;
+    display: block;
+}
+
+
 
