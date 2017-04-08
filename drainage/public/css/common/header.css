@@ -14,11 +14,10 @@
     padding-top: 19.5px;
     padding-bottom: 19.5px;
     float: left;
-    border-left: 2px solid #2c3038;
     color: #ffffff;
 }
 
-.navbar-right > span {
+#sayhello {
     padding-top: 19.5px;
     padding-bottom: 19.5px;
     color: #ffffff;

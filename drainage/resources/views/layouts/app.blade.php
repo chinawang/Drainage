@@ -63,7 +63,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><span>你好,</span></li>
+                            <li id="sayhello"><span>你好,</span></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->realname }} <span class="caret"></span>
