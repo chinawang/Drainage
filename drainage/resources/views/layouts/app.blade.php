@@ -44,6 +44,10 @@
                         <img src="/img/header/logo.png" alt="logo">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+
+                    <div class="navbar-subtitle">
+                        <span>首页</span>
+                    </div>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -59,6 +63,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                            <li><span class="glyphicon glyphicon-user"></span>你好,</li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->realname }} <span class="caret"></span>

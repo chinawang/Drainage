@@ -9,3 +9,8 @@
     height: 100%
 }
 
+.navbar-subtitle {
+    padding: 13.5px 15px;
+    border-left: 2px solid #2c3038;
+}
+
