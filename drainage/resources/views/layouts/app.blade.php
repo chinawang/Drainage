@@ -87,13 +87,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            {{--<li class="back-to-home"><a href="{{ url('/') }}">返回首页</a></li>--}}
-                            <li class="back-to-home">
-                                <a href="{{ url('/') }}">
-                                    首页
-                                    <img src="/img/home/home.png">
-                                </a>
-                            </li>
+                            <li class="back-to-home"><a href="{{ url('/') }}">首页</a></li>
                         @endif
                     </ul>
                 </div>
