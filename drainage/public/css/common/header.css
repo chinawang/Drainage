@@ -10,8 +10,17 @@
     font-size: 20px;
 }
 
+.navbar-brand > span {
+    display: inline;
+    margin: 0 10px;
+    float: left;
+    height: 100%;
+    line-height: 100%;
+    font-size: 20px;
+}
+
 .navbar-line {
-    margin: 20px 10px;
+    margin: 0px 10px;
     float: left;
     width: 1px;
     border: 1px solid #ffffff;
