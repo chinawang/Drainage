@@ -41,16 +41,14 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="/img/header/logo.png" alt="logo">
-                        <span>{{ config('app.name', 'Laravel') }}</span>
+                        {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li>test1</li>
-                        <li>test2</li>
-                        <li>test3</li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
