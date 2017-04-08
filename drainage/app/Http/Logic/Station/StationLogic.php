@@ -12,7 +12,7 @@ namespace App\Http\Logic\Station;
 use App\Repositories\Station\StationRepository;
 use Support\Logic\Logic;
 
-class StationLogic extends Logic
+class StationLogic
 {
     /**
      * @var StationRepository
