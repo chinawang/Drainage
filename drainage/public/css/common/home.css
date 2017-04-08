@@ -19,6 +19,7 @@
     width: 25%;
     text-align: center;
     float: left;
+    margin: -1px;
 }
 
 .menu-item {
