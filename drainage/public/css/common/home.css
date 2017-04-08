@@ -5,21 +5,24 @@
     color: #2c3e50;
 }
 
-.main-menu >a:hover, .main-menu >a:focus {
-    text-decoration: none;
-    color: #18bc9c;
-    background-color: transparent;
-}
-
-
-.main-menu > a {
+.main-menu > li {
     display:block;
     border: 1px solid #ecf0f1;
     width: 300px;
     height: 200px;
     text-align: center;
-    position: relative;
     float: left;
+}
+
+.menu-item {
+    height: 100%;
+    width: 100%;
+}
+
+.menu-item:hover,.menu-item:focus {
+    text-decoration: none;
+    color: #18bc9c;
+    background-color: transparent;
 }
 
 .menu-icon {
