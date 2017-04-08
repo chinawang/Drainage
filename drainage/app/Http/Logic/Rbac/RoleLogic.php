@@ -47,8 +47,8 @@ class RoleLogic extends Logic
      */
     public function getRoles($pageSize, $orderColumn, $orderDirection, $cursorPage = null)
     {
-        //$conditions = ['delete_process' => 0];
-        $roleList = $this->roleRepository->getPaginate($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        $conditions = ['delete_process' => 0];
+        $roleList = $this->roleRepository->getPaginate($conditions,$pageSize,$orderColumn,$orderDirection,$cursorPage);
         return $roleList;
     }
 

@@ -47,8 +47,8 @@ class PermissionLogic extends Logic
      */
     public function getPermissions($pageSize, $orderColumn, $orderDirection, $cursorPage = null)
     {
-        //$conditions = ['delete_process' => 0];
-        $permissionList = $this->permissionRepository->getPaginate($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        $conditions = ['delete_process' => 0];
+        $permissionList = $this->permissionRepository->getPaginate($conditions,$pageSize,$orderColumn,$orderDirection,$cursorPage);
         return $permissionList;
     }
 

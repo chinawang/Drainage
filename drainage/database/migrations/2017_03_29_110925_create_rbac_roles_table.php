@@ -18,6 +18,7 @@ class CreateRbacRolesTable extends Migration
             $table->string('name', 100);
             $table->string('slug', 100)->unique();
             $table->string('description');
+            $table->tinyInteger('delete_process')->default(0)->comment('是否删除');
             $table->timestamps();
         });
     }
