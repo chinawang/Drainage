@@ -11,10 +11,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     {{--<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">--}}
     {{--<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">--}}
-    <link href="http://cdn.bootcss.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+    {{--<link href="http://cdn.bootcss.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">--}}
+    <link href="{{ asset('css/bootstrap-flatly.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -38,7 +39,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/img/header/logo.png') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -85,9 +86,13 @@
     </div>
 
     <!-- Scripts -->
-{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
+    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
 
-    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {{--<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>--}}
+    {{--<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
+
+    <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-3.3.7.min.js') }}"></script>
+
 </body>
 </html>
