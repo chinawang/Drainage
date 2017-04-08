@@ -11,13 +11,11 @@
 }
 
 .navbar-line {
-    margin: 0px 10px;
-    padding-top: 19.5px;
-    padding-bottom: 19.5px;
+    margin: 20px 10px;
     float: left;
     width: 1px;
     border: 1px solid #ffffff;
-    height: 50px;
+    height: 10px;
 }
 
 .navbar-subtitle {
