@@ -22,11 +22,11 @@
 
 .table td {
     text-align: center;
+    vertical-align: middle;
 }
 
 .table thead tr {
     background-color: #f9f9f9;
-    line-height: 100%;
 }
 
 .table .btn {
