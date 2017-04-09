@@ -74,17 +74,32 @@
 <div class="modal fade" id="station-delete-modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header" style="border-bottom:none">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="panel panel-default">
+                <div class="panel-heading modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="panel-body ">
+                    <div class="modal-body" style="font-size: 19px">
+                        <p>删除之后将无法恢复,确定删除吗?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary btn-sm">确认</button>
+                    </div>
+                </div>
+            </div>
+            {{--<div class="modal-header" style="border-bottom:none">--}}
+                {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--}}
                 {{--<h4 class="modal-title">提示</h4>--}}
-            </div>
-            <div class="modal-body" style="font-size: 19px">
-                <p>删除之后将无法恢复,确定删除吗?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary btn-sm">确认</button>
-            </div>
+            {{--</div>--}}
+            {{--<div class="modal-body" style="font-size: 19px">--}}
+                {{--<p>删除之后将无法恢复,确定删除吗?</p>--}}
+            {{--</div>--}}
+            {{--<div class="modal-footer">--}}
+                {{--<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>--}}
+                {{--<button type="button" class="btn btn-primary btn-sm">确认</button>--}}
+            {{--</div>--}}
         </div>
     </div>
 </div>
