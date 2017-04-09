@@ -9,7 +9,6 @@
 }
 
 .panel-heading >a {
-    display:block;
-    float: right;
+    margin-right: 10px;
 }
 
