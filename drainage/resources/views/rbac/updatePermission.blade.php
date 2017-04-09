@@ -24,7 +24,7 @@
                                 <label for="name" class="col-md-4 control-label">权限</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入权限" required autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入权限" required >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -38,7 +38,7 @@
                                 <label for="slug" class="col-md-4 control-label">别名</label>
 
                                 <div class="col-md-6">
-                                    <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}" placeholder="请输入权限别名" required autofocus>
+                                    <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}" placeholder="请输入权限别名" required >
 
                                     @if ($errors->has('slug'))
                                         <span class="help-block">

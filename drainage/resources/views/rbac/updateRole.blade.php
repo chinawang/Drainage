@@ -24,7 +24,7 @@
                                 <label for="name" class="col-md-4 control-label">角色</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入角色名称" required autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入角色名称" required >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">

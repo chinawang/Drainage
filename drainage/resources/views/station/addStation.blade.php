@@ -24,7 +24,7 @@
                                 <label for="station_number" class="col-md-4 control-label">编号</label>
 
                                 <div class="col-md-6">
-                                    <input id="station_number" type="text" class="form-control" name="station_number" value="{{ old('station_number') }}" placeholder="请输入泵站编号" required autofocus>
+                                    <input id="station_number" type="text" class="form-control" name="station_number" value="{{ old('station_number') }}" placeholder="请输入泵站编号" required >
 
                                     @if ($errors->has('station_number'))
                                         <span class="help-block">
@@ -38,7 +38,7 @@
                                 <label for="name" class="col-md-4 control-label">名称</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入泵站名称" required autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入泵站名称" required >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -52,7 +52,7 @@
                                 <label for="address" class="col-md-4 control-label">详细地址</label>
 
                                 <div class="col-md-6">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="请输入泵站详细地址" required autofocus>
+                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="请输入泵站详细地址" required >
 
                                     @if ($errors->has('address'))
                                         <span class="help-block">

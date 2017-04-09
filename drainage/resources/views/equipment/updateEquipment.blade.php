@@ -43,7 +43,7 @@
                                 <label for="equipment_number" class="col-md-4 control-label">设备编号</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="equipment_number" value="{{ old('equipment_number') }}" placeholder="请输入设备编号" required autofocus>
+                                    <input type="text" class="form-control" name="equipment_number" value="{{ old('equipment_number') }}" placeholder="请输入设备编号" required >
 
                                     @if ($errors->has('equipment_number'))
                                         <span class="help-block">
@@ -57,7 +57,7 @@
                                 <label for="name" class="col-md-4 control-label">设备名称</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入设备名称" required autofocus>
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入设备名称" required >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -71,7 +71,7 @@
                                 <label for="type" class="col-md-4 control-label">型号</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="type" value="{{ old('type') }}" placeholder="请输入设备型号" required autofocus>
+                                    <input type="text" class="form-control" name="type" value="{{ old('type') }}" placeholder="请输入设备型号" required >
 
                                     @if ($errors->has('type'))
                                         <span class="help-block">
@@ -85,7 +85,7 @@
                                 <label for="producer" class="col-md-4 control-label">制造单位</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="producer" value="{{ old('producer') }}" placeholder="请输入制造单位" required autofocus>
+                                    <input type="text" class="form-control" name="producer" value="{{ old('producer') }}" placeholder="请输入制造单位" required >
 
                                     @if ($errors->has('producer'))
                                         <span class="help-block">
@@ -99,7 +99,7 @@
                                 <label for="department" class="col-md-4 control-label">使用部门</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="department" value="{{ old('department') }}" placeholder="请输入使用部门" required autofocus>
+                                    <input type="text" class="form-control" name="department" value="{{ old('department') }}" placeholder="请输入使用部门" required >
 
                                     @if ($errors->has('department'))
                                         <span class="help-block">
@@ -151,7 +151,7 @@
                                 <label for="quantity" class="col-md-4 control-label">数量</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="quantity" value="{{ old('quantity') }}" placeholder="请输入设备数量" required autofocus>
+                                    <input type="text" class="form-control" name="quantity" value="{{ old('quantity') }}" placeholder="请输入设备数量" required >
 
                                     @if ($errors->has('quantity'))
                                         <span class="help-block">
@@ -165,7 +165,7 @@
                                 <label for="alteration" class="col-md-4 control-label">变更情况</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="alteration" value="{{ old('alteration') }}" placeholder="请输入设备变更情况" required autofocus>
+                                    <input type="text" class="form-control" name="alteration" value="{{ old('alteration') }}" placeholder="请输入设备变更情况" required >
 
                                     @if ($errors->has('alteration'))
                                         <span class="help-block">

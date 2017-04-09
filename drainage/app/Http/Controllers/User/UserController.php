@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function showAddUserForm()
     {
-        return view('views.user.addUser');
+        return view('user.addUser');
     }
 
     /**
