@@ -8,8 +8,7 @@
     padding: 0px;
 }
 
-.main-menu {
-    width: 100%;
-    padding-left: 0px;
+.panel-heading >a {
+    float: right;
 }
 
