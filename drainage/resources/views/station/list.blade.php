@@ -53,7 +53,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div>
+                        <div class="table-pagination">
                             <ul class="pagination">
                                 <li><a href="#">&laquo;</a></li>
                                 <li><a href="#">1</a></li>
