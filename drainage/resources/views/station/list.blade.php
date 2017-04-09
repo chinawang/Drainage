@@ -71,7 +71,7 @@
     </div>
 @endsection
 
-<div class="modal" id="station-delete-modal">
+<div class="modal fade" id="station-delete-modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
