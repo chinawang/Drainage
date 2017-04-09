@@ -32,8 +32,9 @@
     text-decoration: none;
     color: #18bc9c;
     cursor: pointer;
-    background-color: transparent;
-    box-shadow:inset 0px 0px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 38px rgba(0,0,0,.08) inset;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
 }
 
 .menu-item >h4 {
