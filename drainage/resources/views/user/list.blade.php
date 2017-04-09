@@ -27,7 +27,7 @@
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
-                                <th>编号</th>
+                                <th>员工编号</th>
                                 <th>姓名</th>
                                 <th>职务</th>
                                 <th>联系方式</th>
