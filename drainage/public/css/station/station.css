@@ -37,16 +37,13 @@
     float: right;
 }
 
-.pagination > li {
-    border: 1px solid #ecf0f1;
-}
-
 .pagination > li > a {
     color: #2c3e50;
     background-color: #ffffff;
+    border: 1px solid #ecf0f1;
 }
 
-.pagination > li > a:hover, .pagination > li > a:focus{
+.pagination a:hover, .pagination a:focus{
     color: #18bc9c;
 }
 
