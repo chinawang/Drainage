@@ -28,7 +28,7 @@
     height: 100%;
 }
 
-.custom-panel-body .main-menu li .menu-item:hover {
+.custom-panel-body ul li a:hover {
     text-decoration: none;
     color: #18bc9c;
     cursor: pointer;
