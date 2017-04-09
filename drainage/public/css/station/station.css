@@ -6,11 +6,11 @@
 
 .panel-heading {
     font-weight: bold;
-    margin-right: 10px;
 }
 
 .panel-heading >a {
     float: right;
-    margin-left: 80%;
+    padding: 10px 15px;
+    margin: 10px 15px;
 }
 
