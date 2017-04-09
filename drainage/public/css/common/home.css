@@ -32,20 +32,20 @@
     text-decoration: none;
     color: #18bc9c;
     cursor: pointer;
-    box-shadow: 0 0 38px rgba(0,0,0,.08) inset;
+    box-shadow: 0 0 20px rgba(0,0,0,.08) inset;
     -webkit-transition: all .15s ease;
     transition: all .15s ease;
 }
 
 .menu-item >h4 {
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
 }
 
 .menu-icon {
     display: inline-block;
-    width: 70px;
-    height: 70px;
-    margin-top: 20px;
+    width: 80px;
+    height: 80px;
+    margin-top: 40px;
 }
 
