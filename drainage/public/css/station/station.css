@@ -20,7 +20,7 @@
     text-align: center;
 }
 
-.table td {
+.table > tbody > tr > td {
     text-align: center;
     vertical-align: middle;
 }
