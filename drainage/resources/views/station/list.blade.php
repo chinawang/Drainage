@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('stylesheet')
+    <link href="{{ asset('css/station/station.css') }}" rel="stylesheet">
+@endsection
+
 @section('subtitle')
     <span>泵站资料管理</span>
 @endsection
@@ -9,7 +13,10 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">泵站列表</div>
+                    <div class="panel-heading">
+                        泵站列表
+                        <a href="#" class="btn btn-primary add-station">添加泵站</a>
+                    </div>
                     <table class="table table-striped table-hover ">
                         <thead>
                         <tr>

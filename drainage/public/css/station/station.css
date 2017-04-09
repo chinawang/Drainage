@@ -1,0 +1,15 @@
+
+
+.custom-panel {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);
+}
+
+.custom-panel-body {
+    padding: 0px;
+}
+
+.main-menu {
+    width: 100%;
+    padding-left: 0px;
+}
+

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('stylesheet')
+    <link href="{{ asset('css/common/home.css') }}" rel="stylesheet">
+@endsection
+
 @section('subtitle')
     <span>门户</span>
 @endsection
