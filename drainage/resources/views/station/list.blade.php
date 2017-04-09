@@ -15,10 +15,10 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6 ">
+                            <div class="col-md-6 col-title">
                                 泵站列表
                             </div>
-                            <div class="col-md-6 ">
+                            <div class="col-md-6 col-btn">
                                 <a href="#" class="btn btn-primary btn-sm">添加泵站</a>
                             </div>
                         </div>
