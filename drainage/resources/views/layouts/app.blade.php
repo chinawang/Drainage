@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="icon" href="/img/header/logo.png" type="image/x-icon"/>
+    <link rel="icon" href="/img/header/logo_title.png" type="image/x-icon"/>
 
     <!-- Styles -->
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
