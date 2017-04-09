@@ -79,7 +79,7 @@
                         </li>
                         <li class="log">
                             <a href="" class="menu-item">
-                                <img class="menu-icon" src="/img/home/test.png">
+                                <img class="menu-icon" src="/img/home/log.png">
                                 <h4>系统日志管理</h4>
                             </a>
                         </li>
