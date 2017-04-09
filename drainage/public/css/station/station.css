@@ -16,11 +16,6 @@
     float: right;
 }
 
-.table {
-    border-left: none;
-    border-right: none;
-}
-
 .table th {
     text-align: center;
 }
