@@ -82,8 +82,8 @@
                 <p>删除之后将无法恢复,确定删除吗?</p>
             </div>
             <div class="modal-footer" style="border-top:none">
-                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary btn-sm">确认</button>
+                {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
+                <button type="button" class="btn btn-primary">确认</button>
             </div>
         </div>
     </div>
