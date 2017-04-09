@@ -12,7 +12,11 @@
     font-weight: bold;
 }
 
-.panel-heading .col-btn >a {
+.panel-heading .col-btn a {
     float: right;
+}
+
+.table th {
+    text-align: center;
 }
 
