@@ -48,7 +48,7 @@
                                 <td>Column content</td>
                                 <td>
                                     <a href="#" class="btn btn-primary btn-xs">编辑</a>
-                                    <a href="#" class="btn btn-primary btn-xs">删除</a>
+                                    <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#station-delete-modal">删除</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -70,3 +70,21 @@
         </div>
     </div>
 @endsection
+
+<div class="modal" id="station-delete-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>删除之后将无法恢复,确定删除吗?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
