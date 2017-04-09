@@ -19,7 +19,7 @@
                                 泵站列表
                             </div>
                             <div class="col-md-6 col-btn">
-                                <a href="#" class="btn btn-primary">添加泵站</a>
+                                <a href="#" class="btn btn-primary btn-sm">添加泵站</a>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                                 <td>Column content</td>
                                 <td>Column content</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm">编辑</a>
-                                    <a href="#" class="btn btn-primary btn-sm">删除</a>
+                                    <a href="#" class="btn btn-default btn-sm">编辑</a>
+                                    <a href="#" class="btn btn-default btn-sm">删除</a>
                                 </td>
                             </tr>
                             <tr>

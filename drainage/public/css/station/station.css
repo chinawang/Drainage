@@ -26,5 +26,10 @@
 
 .table thead tr {
     background-color: #f9f9f9;
+    line-height: 100%;
+}
+
+.table .btn {
+    margin: 0px 10px;
 }
 
