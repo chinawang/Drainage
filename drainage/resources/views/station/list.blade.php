@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <table class="table table-striped table-hover table-bordered ">
+                        <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
                                 <th>编号</th>
