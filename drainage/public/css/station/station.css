@@ -8,11 +8,15 @@
     line-height: 35px;
 }
 
-.panel-heading .col-title {
+.panel-heading {
     font-weight: bold;
 }
 
 .panel-heading .col-btn a {
+    float: right;
+}
+
+.panel-heading .btn-link {
     float: right;
 }
 
@@ -52,6 +56,10 @@
     color: #ffffff;
     background-color: #18bc9c;
     border-color: transparent;
+}
+
+.btn-custom {
+    padding: 10px 40px;
 }
 
 
