@@ -14,14 +14,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6 col-title">
-                                添加泵站
-                            </div>
-                            <div class="col-md-6 col-btn">
-                                <a href="javascript:history.back(-1)" class="btn btn-link">返回</a>
-                            </div>
-                        </div>
+                        添加泵站
+                        <a href="javascript:history.back(-1)" class="btn btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="#">
