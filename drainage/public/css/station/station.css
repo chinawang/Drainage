@@ -8,8 +8,8 @@
     font-weight: bold;
 }
 
-.panel-heading >a {
-    float: left;
+.panel-heading >div {
+    float: right;
     margin-left: 80%;
 
 }
