@@ -15,7 +15,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         添加泵站
-                        <a href="javascript:history.back(-1)" class="btn btn-link">返回</a>
+                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="#">
