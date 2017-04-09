@@ -47,8 +47,8 @@
                                 <td>Column content</td>
                                 <td>Column content</td>
                                 <td>
-                                    <a href="#" class="btn btn-default btn-sm">编辑</a>
-                                    <a href="#" class="btn btn-default btn-sm">删除</a>
+                                    <a href="#" class="btn btn-primary btn-xs">编辑</a>
+                                    <a href="#" class="btn btn-primary btn-xs">删除</a>
                                 </td>
                             </tr>
                             </tbody>
