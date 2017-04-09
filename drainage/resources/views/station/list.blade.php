@@ -16,7 +16,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6 ">
-                                <span>泵站列表</span>
+                                泵站列表
                             </div>
                             <div class="col-md-6 ">
                                 <a href="#" class="btn btn-primary btn-sm">添加泵站</a>
