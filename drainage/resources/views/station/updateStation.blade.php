@@ -1,0 +1,77 @@
+@extends('layouts.app')
+
+@section('stylesheet')
+    <link href="{{ asset('css/station/station.css') }}" rel="stylesheet">
+@endsection
+
+@section('subtitle')
+    <span>泵站资料管理</span>
+@endsection
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <div class="panel panel-default custom-panel">
+                    <div class="panel-heading">
+                        编辑泵站
+                    </div>
+                    <div class="panel-body custom-panel-body">
+                        <form class="form-horizontal" role="form" method="POST" action="#">
+
+                            <div class="form-group{{ $errors->has('station_number') ? ' has-error' : '' }}">
+                                <label for="station_number" class="col-md-4 control-label">泵站编号</label>
+
+                                <div class="col-md-6">
+                                    <input id="station_number" type="text" class="form-control" name="station_number" value="{{ old('station_number') }}" placeholder="泵站编号" required autofocus>
+
+                                    @if ($errors->has('station_number'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('station_number') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="name" class="col-md-4 control-label">泵站名称</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="泵站名称" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                                <label for="address" class="col-md-4 control-label">泵站详细地址</label>
+
+                                <div class="col-md-6">
+                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="泵站详细地址" required autofocus>
+
+                                    @if ($errors->has('address'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        保存
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

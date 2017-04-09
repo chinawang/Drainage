@@ -19,7 +19,7 @@
                                 泵站列表
                             </div>
                             <div class="col-md-6 col-btn">
-                                <a href="#" class="btn btn-primary btn-sm">添加泵站</a>
+                                <a href="/station/add" class="btn btn-primary btn-sm">添加泵站</a>
                             </div>
                         </div>
                     </div>
