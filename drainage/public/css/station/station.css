@@ -4,13 +4,14 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);
 }
 
-.panel-heading {
+.panel-heading > span{
     font-weight: bold;
+    float: left;
 }
 
 .panel-heading >div {
     float: right;
-    margin-left: 80%;
+    margin: 10px 0px;
 
 }
 

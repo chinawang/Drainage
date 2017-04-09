@@ -14,7 +14,7 @@
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        泵站列表
+                        <span>泵站列表</span>
                         <div>
                             <a href="#" class="btn btn-primary btn-sm">添加泵站</a>
                         </div>
