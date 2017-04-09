@@ -4,11 +4,8 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);
 }
 
-.custom-panel-body {
-    padding: 0px;
-}
-
 .panel-heading >a {
-    margin: 0px auto;
+    float: right;
+    margin-right: 10px;
 }
 
