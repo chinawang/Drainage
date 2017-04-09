@@ -16,6 +16,10 @@
     float: right;
 }
 
+.table {
+    margin-bottom: 10px;
+}
+
 .table th {
     text-align: center;
 }
@@ -46,7 +50,7 @@
 
 .pagination > li > a:hover {
     color: #ffffff;
-    background-color: #0f7864;
+    background-color: #18bc9c;
     border-color: transparent;
 }
 
