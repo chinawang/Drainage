@@ -16,6 +16,7 @@
 .main-menu > li {
     display:block;
     border: 1px solid #ecf0f1;
+    border-collapse: collapse;
     width: 25%;
     text-align: center;
     float: left;
