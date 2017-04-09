@@ -9,10 +9,6 @@
 }
 
 .panel-heading >a {
-    margin-right: 10px;
-    display:block;
-    position:absolute;
-    right:1%;
-    top:1%;
+    margin: 0px auto;
 }
 
