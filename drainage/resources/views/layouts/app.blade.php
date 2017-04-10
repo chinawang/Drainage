@@ -117,7 +117,7 @@
         $("#datetimepicker").datetimepicker({
             format: "yyyy-mm-dd",
             autoclose: true,
-            todayBtn: true,
+            todayBtn: false,
             todayHighlight: true,
             showMeridian: true,
             keyboardNavigation:true,
