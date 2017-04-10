@@ -19,7 +19,7 @@
     {{--<link href="http://cdn.bootcss.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">--}}
     <link href="{{ asset('css/bootstrap-flatly.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
 
     @yield('stylesheet')
@@ -115,15 +115,18 @@
 
     <script type="text/javascript">
         $("#datetimepicker").datetimepicker({
-            format: "yyyy-mm-dd hh:ii:ss",
+            format: "yyyy-mm-dd",
             autoclose: true,
             todayBtn: true,
             todayHighlight: true,
             showMeridian: true,
-            pickerPosition: "bottom-left",
+            keyboardNavigation:true,
+            forceParse:true,
+            weekStart:1,
+            pickerPosition: "bottom-right",
             language: 'zh-CN',//中文，需要引用zh-CN.js包
             startView: 2,//月视图
-            minView: 0//日期时间选择器所能够提供的最精确的时间选择视图
+            minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
         });
     </script>
 
