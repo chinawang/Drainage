@@ -55,8 +55,8 @@
                                 <td>Column content</td>
                                 <td>Column content</td>
                                 <td>
-                                    <a href="#" class="btn btn-link">完成维修</a>
-                                    <a href="/maintenance/add" class="btn btn-link">编辑</a>
+                                    <a href="/maintenance/add" class="btn btn-link">完成维修</a>
+                                    <a href="#" class="btn btn-link">编辑</a>
                                     <a href="#" class="btn btn-link" data-toggle="modal" data-target="#station-delete-modal">删除</a>
                                 </td>
                             </tr>
