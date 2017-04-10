@@ -41,6 +41,10 @@
     margin: 0px 5px;
 }
 
+.table .btn-link {
+    padding: 5px 0px;
+}
+
 .pagination {
     float: right;
     margin: 10px 0px;

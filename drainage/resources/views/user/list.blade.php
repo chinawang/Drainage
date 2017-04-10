@@ -45,9 +45,9 @@
                                 <td>Column content</td>
                                 <td>Column content</td>
                                 <td>
-                                    <a href="#" class=" btn-link">设置角色</a>
-                                    <a href="#" class=" btn-link">编辑</a>
-                                    <a href="#" class=" btn-link" data-toggle="modal" data-target="#station-delete-modal">删除</a>
+                                    <a href="#" class="btn btn-link">设置角色</a>
+                                    <a href="#" class="btn btn-link">编辑</a>
+                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#station-delete-modal">删除</a>
                                 </td>
                             </tr>
                             </tbody>
