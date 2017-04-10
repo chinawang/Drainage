@@ -43,7 +43,7 @@
                                 <label for="equipment" class="col-md-4 control-label">故障设备</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control custom-select" id="select">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
