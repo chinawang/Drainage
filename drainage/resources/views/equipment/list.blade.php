@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <table class="table table-hover table-bordered " rules="cols">
+                        <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
                                 <th>编号</th>
@@ -89,7 +89,7 @@
             </div>
             <div class="modal-footer" style="border-top:none">
                 {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
-                <button type="button" class="btn btn-primary btn-custom">确认</button>
+                <button type="button" class="btn btn-primary btn-sm btn-custom">确认</button>
             </div>
         </div>
     </div>

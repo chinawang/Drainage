@@ -22,6 +22,7 @@
 
 .table {
     margin-bottom: 10px;
+    table-layout: fixed;
 }
 
 .table th {
