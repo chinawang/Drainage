@@ -123,6 +123,7 @@
             keyboardNavigation:true,
             forceParse:true,
             weekStart:1,
+            bootcssVer:3,
             pickerPosition: "bottom-right",
             language: 'zh-CN',//中文，需要引用zh-CN.js包
             startView: 2,//月视图
