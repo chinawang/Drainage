@@ -124,11 +124,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('report_at') ? ' has-error' : '' }}">
+                            <div class="form-group date form_date {{ $errors->has('report_at') ? ' has-error' : '' }}" data-date="" data-date-format="yyyy-mm-dd">
                                 <label for="report_at" class="col-md-4 control-label">报修时间</label>
 
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" name="report_at" value="{{ old('report_at') }}" placeholder="请输入报修时间" required >
+                                    <input type="text" class="form-control" name="report_at" value="{{ old('report_at') }}" placeholder="请输入报修时间" required >
 
                                     @if ($errors->has('report_at'))
                                         <span class="help-block">
