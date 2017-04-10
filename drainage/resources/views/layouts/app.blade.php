@@ -19,7 +19,7 @@
     {{--<link href="http://cdn.bootcss.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">--}}
     <link href="{{ asset('css/bootstrap-flatly.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-    {{--<link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
 
     @yield('stylesheet')
@@ -112,6 +112,9 @@
     <script src="{{ asset('js/bootstrap-3.3.7.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datetimepicker.zh-CN.js') }}"></script>
+    <script src="{{ asset('js/zh-CN.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/select2.full.min.js') }}"></script>
 
     <script type="text/javascript">
         $("#datetimepicker").datetimepicker({
