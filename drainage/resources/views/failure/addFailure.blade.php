@@ -24,7 +24,7 @@
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control js-example-basic-single" id="select">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -43,7 +43,7 @@
                                 <label for="equipment" class="col-md-4 control-label">故障设备</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control js-example-basic-single" id="select">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -90,7 +90,7 @@
                                 <label for="equipment" class="col-md-4 control-label">设备状态</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control js-example-basic-single" id="select">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -109,7 +109,7 @@
                                 <label for="reporter" class="col-md-4 control-label">报修人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control js-example-basic-single" id="select">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
