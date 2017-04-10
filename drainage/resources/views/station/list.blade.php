@@ -39,8 +39,8 @@
                                 <td>Column content</td>
                                 <td>Column content</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-xs">编辑</a>
-                                    <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#station-delete-modal">删除</a>
+                                    <a href="#" class="btn btn-link">编辑</a>
+                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#station-delete-modal">删除</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -75,7 +75,7 @@
             </div>
             <div class="modal-footer" style="border-top:none">
                 {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
-                <button type="button" class="btn btn-primary btn-sm btn-custom">确认</button>
+                <button type="button" class="btn btn-danger btn-sm">确认删除</button>
             </div>
         </div>
     </div>
