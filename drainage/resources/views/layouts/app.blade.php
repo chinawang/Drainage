@@ -135,11 +135,6 @@
             minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
         });
 
-        <!-- select2 -->
-        $(document).ready(function() {
-            $(".js-example-basic-single").select2();
-        });
-
     </script>
 
 </body>
