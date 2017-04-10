@@ -21,6 +21,7 @@
     <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/common/custom-select2.css') }}" rel="stylesheet">
 
     @yield('stylesheet')
 
