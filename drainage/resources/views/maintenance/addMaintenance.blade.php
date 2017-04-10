@@ -109,7 +109,7 @@
                                 <label for="repair_at" class="col-md-4 control-label">维修时间</label>
 
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" name="repair_at" value="{{ old('repair_at') }}" placeholder="请输入维修时间" required >
+                                    <input type="text" class="form-control" id="datetimepicker" name="repair_at" value="{{ old('repair_at') }}" placeholder="请输入维修时间" required >
 
                                     @if ($errors->has('repair_at'))
                                         <span class="help-block">
