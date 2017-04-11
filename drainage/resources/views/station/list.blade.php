@@ -53,7 +53,6 @@
                                         <button type="submit" id="btn-delete">
                                         </button>
                                     </form>
-                                    <a href="#" class="btn btn-link" id="btn-delete-station" data-toggle="modal" data-target="#station-delete-modal">删除</a>
                                 </td>
                             </tr>
                             @endforeach
