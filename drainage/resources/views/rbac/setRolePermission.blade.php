@@ -19,7 +19,7 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="#">
-
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="role" class="col-md-4 control-label">角色</label>
 

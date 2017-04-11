@@ -19,7 +19,7 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/station/update/{{ station_id }}">
-
+                            {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('station_number') ? ' has-error' : '' }}">
                                 <label for="station_number" class="col-md-4 control-label">编号</label>
 
