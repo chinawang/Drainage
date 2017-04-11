@@ -115,10 +115,22 @@
                                     dataType: "json",
                                     data: {'_token': $('input[name=_token]').val()},
                                     success: function () {
-                                        swal("操作成功!", "已成功删除数据！", "success");
+                                        swal({
+                                            title: "删除成功!",
+                                            text: "",
+                                            type: "success",
+                                            timer: 2000,
+                                            showConfirmButton: false
+                                        });
                                     },
                                     error: function () {
-                                        swal("OMG", "删除操作失败了!", "error");
+                                        swal({
+                                            title: "删除失败!",
+                                            text: "数据未删除成功,请稍后重试!",
+                                            type: "error",
+                                            timer: 2000,
+                                            showConfirmButton: false
+                                        });
                                     }
                                 })
                             }
