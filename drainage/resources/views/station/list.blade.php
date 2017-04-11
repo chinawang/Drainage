@@ -83,7 +83,7 @@
 </div>
 
 @section('javascript')
-    <script>
+    <script type="text/javascript">
         $('#btn-delete-station').on("click",function () {
             swal({
                 title: "确认删除吗?",

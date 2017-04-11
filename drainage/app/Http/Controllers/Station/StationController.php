@@ -6,6 +6,7 @@ use App\Http\Logic\Station\StationLogic;
 use App\Http\Validations\Station\StationValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class StationController extends Controller
 {
@@ -94,21 +95,21 @@ class StationController extends Controller
         $result = $this->stationLogic->createStation($input);
         if($result)
         {
-            return "<script>swal({
-                            title: \"保存成功!\",
-                            type: \"success\",
-                            showConfirmButton: true,
-                            confirmButtonText: \"好的\",
-                        })</script>";
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/station/lists');
         }
         else
         {
-            return "<script>swal({
-                            title: \"保存失败!\",
-                            type: \"error\",
-                            showConfirmButton: true,
-                            confirmButtonText: \"关闭\",
-                        })</script>";
+            session()->flash('flash_message', [
+                'title'     => '保存失败!',
+                'message'   => '',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
         }
     }
 

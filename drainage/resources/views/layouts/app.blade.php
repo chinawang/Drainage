@@ -141,5 +141,7 @@
 
     @yield('javascript')
 
+    @include('flash_message')
+
 </body>
 </html>
