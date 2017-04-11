@@ -100,7 +100,8 @@ class StationController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
-            return redirect('/station/lists');
+//            return redirect('/station/lists');
+            return redirect()->back();
         }
         else
         {
@@ -135,19 +136,14 @@ class StationController extends Controller
 //        $stationID = $this->stationValidation->deleteStation();
 //        return $this->stationLogic->deleteStation($stationID);
 
-//        session()->flash('flash_message', [
-//            'title'     => '删除成功!',
-//            'message'   => '',
-//            'level'     => 'success'
-//        ]);
-//        return redirect('/station/lists');
-
         session()->flash('flash_message', [
-            'title'     => '保存失败!',
+            'title'     => '删除成功!',
             'message'   => '',
-            'level'     => 'error'
+            'level'     => 'success'
         ]);
-        return redirect()->back();
+        return redirect('/station/lists');
+
+
 
 //        echo "test for ajax";
     }
