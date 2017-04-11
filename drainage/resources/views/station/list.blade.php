@@ -39,7 +39,7 @@
                                 <td>Column content</td>
                                 <td>Column content</td>
                                 <td>
-                                    <a href="/station/edit/{{ station_id }}" class="btn btn-link">编辑</a>
+                                    <a href="/station/edit/" class="btn btn-link">编辑</a>
                                     <a href="#" class="btn btn-link" data-toggle="modal" data-target="#station-delete-modal">删除</a>
                                 </td>
                             </tr>
