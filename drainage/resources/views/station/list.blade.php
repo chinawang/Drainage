@@ -99,7 +99,7 @@
                         $.ajax({
                             type:'post',
                             url:'/station/delete',
-                            data:'{{ csrf_field() }}'
+                            data:'_token = <?php echo csrf_token() ?>'
                         })
                     }
             );
