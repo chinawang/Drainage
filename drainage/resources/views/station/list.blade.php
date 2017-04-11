@@ -41,7 +41,7 @@
                                 <td>
                                     <a href="/station/edit/" class="btn btn-link">编辑</a>
                                     <a href="#" class="btn btn-link" id="btn-delete-station" >删除</a>
-                                    <form role="form" method="POST" action="/station/delete">
+                                    <form role="form" method="POST" style="display: none" action="/station/delete">
                                         {{ csrf_field() }}
                                         <button type="submit" id="btn-delete">
                                         </button>
