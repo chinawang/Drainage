@@ -142,7 +142,9 @@ class StationController extends Controller
 //        ]);
 //        return redirect('/station/lists');
 
-        return response()->json("test");
+        return response()->json(array(
+            'status' => 1,
+        ));
 
     }
 }
