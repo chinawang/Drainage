@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        @if (!empty($param->data))
+                        @if (!empty($param))
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
