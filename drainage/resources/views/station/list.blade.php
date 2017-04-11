@@ -121,10 +121,11 @@
                                             type: "success",
                                             timer: 2000,
                                             showConfirmButton: false
-                                        });
-
-//                                        alert(data['status']);
-                                        window.location.reload();
+                                        },
+                                        function () {
+                                            alert(data['status']);
+                                            window.location.reload();
+                                        })
                                     },
                                     error: function () {
                                         swal({
@@ -133,7 +134,7 @@
                                             type: "error",
                                             timer: 2000,
                                             showConfirmButton: false
-                                        });
+                                        })
                                     }
                                 })
                             }
