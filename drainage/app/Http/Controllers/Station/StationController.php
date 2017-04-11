@@ -96,7 +96,7 @@ class StationController extends Controller
         if($result)
         {
             session()->flash('flash_message', [
-                'title'     => '保存成功!',
+                'title'     => '保存成功!!!',
                 'message'   => '',
                 'level'     => 'success'
             ]);
@@ -136,10 +136,11 @@ class StationController extends Controller
 //        return $this->stationLogic->deleteStation($stationID);
 
         session()->flash('flash_message', [
-            'title'     => '删除成功!',
+            'title'     => '删除成功!!!',
             'message'   => '',
             'level'     => 'success'
         ]);
+
         return redirect('/station/lists');
 
 
