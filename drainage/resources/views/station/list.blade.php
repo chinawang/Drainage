@@ -37,15 +37,15 @@
                             <tbody>
                             @foreach ($stations['data'] as $station)
                             <tr>
-                                <td>{{ $station->station_number }}</td>
-                                <td>{{ $station->name }}</td>
-                                <td>{{ $station->address }}</td>
+                                <td>{{ $station['station_number'] }}</td>
+                                <td>{{ $station['name'] }}</td>
+                                <td>{{ $station['address'] }}</td>
                                 <td>
-                                    <a href="/station/edit/{{ $station->id }}" class="btn btn-link">编辑</a>
+                                    <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
                                     <a href="#" class="btn btn-link" id="btn-delete-station" >删除</a>
                                     <form role="form" method="POST" style="display: none" action="/station/delete">
                                         {{ csrf_field() }}
-                                        <input type="hidden" value="{{ $station->id }}">
+                                        <input type="hidden" value="{{ $station['id'] }}">
                                         <button type="submit" id="btn-delete">
                                         </button>
                                     </form>
