@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        @if (!empty($param))
+                        @if (!empty($stations))
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
@@ -35,7 +35,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($param->data as $station)
+                            @foreach ($stations->data as $station)
                             <tr>
                                 <td>{{ $station->station_number }}</td>
                                 <td>{{ $station->name }}</td>
