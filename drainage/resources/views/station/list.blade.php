@@ -96,11 +96,9 @@
                 closeOnConfirm: false,
             },
                     function () {
-                        swal({
-                            title: "删除成功!",
-                            type: "success",
-                            timer: 1200,
-                            showConfirmButton: false,
+                        $.ajax({
+                            type:'post',
+                            url:'/station/delete',
                         })
                     }
             );

@@ -132,7 +132,14 @@ class StationController extends Controller
      */
     public function deleteStation()
     {
-        $stationID = $this->stationValidation->deleteStation();
-        return $this->stationLogic->deleteStation($stationID);
+//        $stationID = $this->stationValidation->deleteStation();
+//        return $this->stationLogic->deleteStation($stationID);
+
+        session()->flash('flash_message', [
+            'title'     => '删除成功!',
+            'message'   => '',
+            'level'     => 'success'
+        ]);
+        return redirect('/station/lists');
     }
 }
