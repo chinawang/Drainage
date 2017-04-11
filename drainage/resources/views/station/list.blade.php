@@ -24,6 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
+                        @if (!empty($param))
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
@@ -34,21 +35,24 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach ($param as $value)
                             <tr>
-                                <td>1</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
+                                <td>{{ $value['station_number'] }}</td>
+                                <td>{{ $value['name'] }}</td>
+                                <td>{{ $value['address'] }}</td>
                                 <td>
-                                    <a href="/station/edit/" class="btn btn-link">编辑</a>
+                                    <a href="/station/edit/{{ $value['id'] }}" class="btn btn-link">编辑</a>
                                     <a href="#" class="btn btn-link" id="btn-delete-station" >删除</a>
                                     <form role="form" method="POST" style="display: none" action="/station/delete">
                                         {{ csrf_field() }}
+                                        <input type="hidden" value="{{ $value['id'] }}">
                                         <button type="submit" id="btn-delete">
                                         </button>
                                     </form>
                                     {{--<a href="#" class="btn btn-link" id="btn-delete-station" data-toggle="modal" data-target="#station-delete-modal">删除</a>--}}
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="table-pagination">
@@ -62,6 +66,11 @@
                                 <li><a href="#">&raquo;</a></li>
                             </ul>
                         </div>
+                            @else
+                        <div>
+
+                        </div>
+                            @endif
                     </div>
                 </div>
             </div>
@@ -109,37 +118,38 @@
                 $("#btn-delete").click();
             })
         });
-
-
-//                                $.ajax({
-//                                    type: "post",
-//                                    url: '/station/delete',
-//                                    traditional: true,
-//                                    dataType: "json",
-//                                    data: {'_token': $('input[name=_token]').val()},
-//                                    success: function (data) {
-//                                        swal({
-//                                            title: "删除成功!",
-//                                            text: "",
-//                                            type: "success",
-//                                            timer: 2000,
-//                                            showConfirmButton: false
-//                                        },
-//                                        function () {
-////                                            alert(data['status']);
-//                                            window.location.reload();
-//                                        })
-//                                    },
-//                                    error: function () {
-//                                        swal({
-//                                            title: "删除失败!",
-//                                            text: "数据未删除成功,请稍后重试!",
-//                                            type: "error",
-//                                            timer: 2000,
-//                                            showConfirmButton: false
-//                                        })
-//                                    }
-//                                })
-
     </script>
+
+    {{--<script type="text/javascript">--}}
+
+        {{--$.ajax({--}}
+            {{--type: "post",--}}
+            {{--url: '/station/delete',--}}
+            {{--traditional: true,--}}
+            {{--dataType: "json",--}}
+            {{--data: {'_token': $('input[name=_token]').val()},--}}
+            {{--success: function (data) {--}}
+                {{--swal({--}}
+                            {{--title: "删除成功!",--}}
+                            {{--text: "",--}}
+                            {{--type: "success",--}}
+                            {{--timer: 2000,--}}
+                            {{--showConfirmButton: false--}}
+                        {{--},--}}
+                        {{--function () {--}}
+{{--//                                            alert(data['status']);--}}
+                            {{--window.location.reload();--}}
+                        {{--})--}}
+            {{--},--}}
+            {{--error: function () {--}}
+                {{--swal({--}}
+                    {{--title: "删除失败!",--}}
+                    {{--text: "数据未删除成功,请稍后重试!",--}}
+                    {{--type: "error",--}}
+                    {{--timer: 2000,--}}
+                    {{--showConfirmButton: false--}}
+                {{--})--}}
+            {{--}--}}
+        {{--})--}}
+    {{--</script>--}}
 @endsection
