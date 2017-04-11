@@ -80,9 +80,10 @@ class StationController extends Controller
         $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 20);
         $stationPaginate = $this->stationLogic->getStations($pageSize,$orderColumn,$orderDirection,$cursorPage);
-        $param =  $stationPaginate->toJson();
-        return view('station.list',$param);
-//        return $param;
+        $stations =  $stationPaginate->toJson();
+        $param = ['stations' => $stations];
+//        return view('station.list',$param);
+        return $param;
     }
 
     /**

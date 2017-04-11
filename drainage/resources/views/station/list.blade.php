@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        {{--@if (!empty($param->data))--}}
+                        @if (!empty($param->data))
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
@@ -66,11 +66,11 @@
                                 <li><a href="#">&raquo;</a></li>
                             </ul>
                         </div>
-                            {{--@else--}}
-                            {{--<div class="well" style="text-align: center; padding: 100px;">--}}
-                                {{--暂无内容--}}
-                            {{--</div>--}}
-                            {{--@endif--}}
+                            @else
+                            <div class="well" style="text-align: center; padding: 100px;">
+                                暂无内容
+                            </div>
+                            @endif
                     </div>
                 </div>
             </div>
