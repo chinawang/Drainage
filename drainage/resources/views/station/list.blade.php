@@ -67,7 +67,7 @@
                             </ul>
                         </div>
                             @else
-                            <div class="well custom-well">
+                            <div class="well" style="text-align: center; padding: 100px;">
                                 暂无内容
                             </div>
                             @endif
