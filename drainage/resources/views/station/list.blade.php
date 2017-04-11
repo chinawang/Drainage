@@ -97,12 +97,12 @@
                 closeOnConfirm: false
             },
                     function () {
-//                        $.ajax({
-//                            type:'post',
-//                            url:'/station/delete',
-//                            data:{'_token': $('input[name=_token]').val()}
-//                        })
-                        alert('test')
+                        $.ajax({
+                            type:'post',
+                            url:'/station/delete',
+                            data:{'_token': $('input[name=_token]').val()}
+                        })
+//                        alert('test')
                     }
             );
 
