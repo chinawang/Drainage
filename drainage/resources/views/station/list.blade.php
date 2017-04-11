@@ -34,29 +34,29 @@
                                 <th>编号</th>
                                 <th>泵站名称</th>
                                 <th>泵站地址</th>
-                                <th>操作<?php echo $stations;?></th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            {{--@foreach ($stations['data'] as $station)--}}
-                            {{--<tr>--}}
-                                {{--<td>{{ $station['station_number'] }}</td>--}}
-                                {{--<td>{{ $station['name'] }}</td>--}}
-                                {{--<td>{{ $station['address'] }}</td>--}}
-                                {{--<td>--}}
-                                    {{--<a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>--}}
-                                    {{--<a href="#" class="btn btn-link" id="btn-delete-station" >删除</a>--}}
-                                    {{--<form role="form" method="POST" style="display: none" action="/station/delete">--}}
-                                        {{--{{ csrf_field() }}--}}
-                                        {{--<input type="hidden" value="{{ $station['id'] }}">--}}
-                                        {{--<button type="submit" id="btn-delete">--}}
-                                        {{--</button>--}}
-                                    {{--</form>--}}
-                                    {{--<a href="#" class="btn btn-link" id="btn-delete-station" data-toggle="modal" data-target="#station-delete-modal">删除</a>--}}
-                                {{--</td>--}}
-                            {{--</tr>--}}
-                            {{--@endforeach--}}
+                            @foreach ($stations['data'] as $station)
+                            <tr>
+                                <td>{{ $station['station_number'] }}</td>
+                                <td>{{ $station['name'] }}</td>
+                                <td>{{ $station['address'] }}</td>
+                                <td>
+                                    <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
+                                    <a href="#" class="btn btn-link" id="btn-delete-station" >删除</a>
+                                    <form role="form" method="POST" style="display: none" action="/station/delete">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" value="{{ $station['id'] }}">
+                                        <button type="submit" id="btn-delete">
+                                        </button>
+                                    </form>
+                                    <a href="#" class="btn btn-link" id="btn-delete-station" data-toggle="modal" data-target="#station-delete-modal">删除</a>
+                                </td>
+                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="table-pagination">
