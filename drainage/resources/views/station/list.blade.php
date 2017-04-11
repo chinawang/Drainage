@@ -24,7 +24,6 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        {{ csrf_field() }}
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
@@ -42,6 +41,11 @@
                                 <td>
                                     <a href="/station/edit/" class="btn btn-link">编辑</a>
                                     <a href="#" class="btn btn-link" id="btn-delete-station" >删除</a>
+                                    <form role="form" method="POST" action="/station/delete">
+                                        {{ csrf_field() }}
+                                        <button type="submit" id="btn-delete">
+                                        </button>
+                                    </form>
                                     {{--<a href="#" class="btn btn-link" id="btn-delete-station" data-toggle="modal" data-target="#station-delete-modal">删除</a>--}}
                                 </td>
                             </tr>
@@ -97,12 +101,12 @@
                 closeOnConfirm: false
             },
                     function () {
-                        $.ajax({
-                            type:'post',
-                            url:'/station/delete',
+//                        $.ajax({
+//                            type:'post',
+//                            url:'/station/delete',
 //                            data:{'_token': $('input[name=_token]').val()}
-                        })
-//                        alert('test')
+//                        })
+                        $("#btn-delete").click();
                     }
             );
 
