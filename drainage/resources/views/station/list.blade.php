@@ -99,12 +99,13 @@
                         swal({
                             title: "删除成功!",
                             type: "success",
-                            timer: 1500,
+                            timer: 1200,
                             showConfirmButton: false,
                         })
                     }
             );
 
         });
+
     </script>
 @endsection

@@ -94,7 +94,21 @@ class StationController extends Controller
         $result = $this->stationLogic->createStation($input);
         if($result)
         {
-            return "<script";
+            return "<script>swal({
+                            title: \"保存成功!\",
+                            type: \"success\",
+                            showConfirmButton: true,
+                            confirmButtonText: \"好的\",
+                        })</script>";
+        }
+        else
+        {
+            return "<script>swal({
+                            title: \"保存失败!\",
+                            type: \"error\",
+                            showConfirmButton: true,
+                            confirmButtonText: \"关闭\",
+                        })</script>";
         }
     }
 
