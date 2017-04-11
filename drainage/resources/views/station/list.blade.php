@@ -25,7 +25,10 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($stations))
-                        <table class="table table-hover table-bordered ">
+                        <table class="table table-hover table-bordered " data-pagination="true"
+                               data-show-refresh="true"
+                               data-show-toggle="true"
+                               data-showColumns="true">
                             <thead>
                             <tr>
                                 <th>编号</th>
@@ -36,7 +39,7 @@
                             </thead>
                             <tbody>
 
-                            @foreach ($stations->data as $station)
+                            @foreach ($stations as $station)
                             <tr>
                                 <td>{{ $station['station_number'] }}</td>
                                 <td>{{ $station['name'] }}</td>
