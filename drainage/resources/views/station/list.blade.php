@@ -93,12 +93,13 @@
                 cancelButtonText:"取消",
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "确认删除",
-                closeOnConfirm: false,
+                closeOnConfirm: false
             },
                     function () {
                         $.ajax({
                             type:'post',
                             url:'/station/delete',
+                            data:'test'
                         })
                     }
             );
