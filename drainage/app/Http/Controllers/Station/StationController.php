@@ -140,7 +140,8 @@ class StationController extends Controller
             'message'   => '',
             'level'     => 'success'
         ]);
-        return redirect('/station/lists');
+//        return redirect('/station/lists');
+        return true;
 
     }
 }
