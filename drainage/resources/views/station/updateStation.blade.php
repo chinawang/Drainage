@@ -18,13 +18,13 @@
                         <a href="javascript:history.back(-1)" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/station/update/{{ station_id }}">
+                        <form class="form-horizontal" role="form" method="POST" action="/station/update/{{ $station['id'] }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('station_number') ? ' has-error' : '' }}">
                                 <label for="station_number" class="col-md-4 control-label">编号</label>
 
                                 <div class="col-md-6">
-                                    <input id="station_number" type="text" class="form-control" name="station_number" value="{{ old('station_number') }}" placeholder="请输入泵站编号" required >
+                                    <input id="station_number" type="text" class="form-control" name="station_number" value="{{ $station['station_number'] }}" placeholder="请输入泵站编号" required >
 
                                     @if ($errors->has('station_number'))
                                         <span class="help-block">
@@ -38,7 +38,7 @@
                                 <label for="name" class="col-md-4 control-label">名称</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入泵站名称" required >
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $station['name'] }}" placeholder="请输入泵站名称" required >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -52,7 +52,7 @@
                                 <label for="address" class="col-md-4 control-label">详细地址</label>
 
                                 <div class="col-md-6">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="请输入泵站详细地址" required >
+                                    <input id="address" type="text" class="form-control" name="address" value="{{ $station['address'] }}" placeholder="请输入泵站详细地址" required >
 
                                     @if ($errors->has('address'))
                                         <span class="help-block">
