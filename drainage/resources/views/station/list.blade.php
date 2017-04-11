@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        @if (!empty($param))
+                        @if (!empty($param['data']))
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
@@ -35,7 +35,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($param as $value)
+                            @foreach ($param['data'] as $value)
                             <tr>
                                 <td>{{ $value['station_number'] }}</td>
                                 <td>{{ $value['name'] }}</td>
@@ -77,24 +77,6 @@
         </div>
     </div>
 @endsection
-
-<div class="modal fade" id="station-delete-modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" >
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">提示</h4>
-            </div>
-            <div class="modal-body" style="font-size: 19px">
-                <p>删除之后将无法恢复,确定删除吗?</p>
-            </div>
-            <div class="modal-footer" style="border-top:none">
-                {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
-                <button type="button" class="btn btn-danger btn-sm" >确认删除</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 @section('javascript')
     <script type="text/javascript">
