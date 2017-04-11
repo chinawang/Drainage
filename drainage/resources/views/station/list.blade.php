@@ -24,6 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
+                        {{ csrf_field() }}
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
@@ -99,7 +100,7 @@
                         $.ajax({
                             type:'post',
                             url:'/station/delete',
-                            data:'_token = <?php echo csrf_token() ?>'
+                            data:{'_token': $('input[name=_token]').val()},
                         })
                     }
             );
