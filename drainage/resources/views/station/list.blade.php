@@ -99,7 +99,7 @@
                         swal({
                             title: "删除成功!",
                             type: "success",
-                            timer: 1000,
+                            timer: 1500,
                             showConfirmButton: false,
                         })
                     }
