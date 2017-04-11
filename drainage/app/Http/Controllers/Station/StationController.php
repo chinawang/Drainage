@@ -82,8 +82,8 @@ class StationController extends Controller
         $stationPaginate = $this->stationLogic->getStations($pageSize,$orderColumn,$orderDirection,$cursorPage);
         $stations =  $stationPaginate->toJson();
         $param = ['stations' => $stations];
-//        return view('station.list',$param);
-        return $param;
+        return view('station.list',$param);
+//        return $param;
     }
 
     /**
