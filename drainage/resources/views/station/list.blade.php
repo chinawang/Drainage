@@ -33,7 +33,7 @@
                             <tr>
                                 <th>编号</th>
                                 <th>泵站名称</th>
-                                <th>泵站地址<?php echo $stations; ?></th>
+                                <th>泵站地址</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
