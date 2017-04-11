@@ -96,7 +96,7 @@ class StationController extends Controller
         if($result)
         {
             session()->flash('flash_message', [
-                'title'     => '保存成功!!!',
+                'title'     => '保存成功!',
                 'message'   => '',
                 'level'     => 'success'
             ]);
@@ -135,11 +135,19 @@ class StationController extends Controller
 //        $stationID = $this->stationValidation->deleteStation();
 //        return $this->stationLogic->deleteStation($stationID);
 
-        session()->flash('flash_message', [
-            'title'     => '删除成功!!!',
-            'message'   => '',
-            'level'     => 'success'
+//        session()->flash('flash_message', [
+//            'title'     => '删除成功!',
+//            'message'   => '',
+//            'level'     => 'success'
+//        ]);
+
+        session()->flash('flash_message_overlay', [
+            'title'     => '删除失败!',
+            'message'   => '数据未删除成功,请稍后重试!',
+            'level'     => 'error'
         ]);
+
+
 
         return redirect('/station/lists');
 
