@@ -35,7 +35,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($stations->data as $station)
+                            @foreach ($stations['data'] as $station)
                             <tr>
                                 <td>{{ $station->station_number }}</td>
                                 <td>{{ $station->name }}</td>
