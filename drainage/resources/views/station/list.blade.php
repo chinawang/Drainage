@@ -90,17 +90,17 @@
 @section('javascript')
     <script type="text/javascript">
         $('#btn-delete-station').on("click",function () {
-            swal({
-                title: "确认删除吗?",
-                text: "删除之后,将无法恢复!",
-                type: "warning",
-                showCancelButton: true,
-                cancelButtonText:"取消",
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "确认删除",
-                closeOnConfirm: false
-            },
-                    function () {
+                    swal({
+                                title: "确认删除吗?",
+                                text: "删除之后,将无法恢复!",
+                                type: "warning",
+                                showCancelButton: true,
+                                cancelButtonText: "取消",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "确认删除",
+                                closeOnConfirm: false
+                            },
+                            function () {
 //                        $.ajax({
 //                            type:'post',
 //                            url:'/station/delete',
@@ -108,18 +108,21 @@
 //                        })
 //                        $("#btn-delete").click();
 
-                        $.ajax({
-                            type:"post",
-                            url:'/station/delete',
-                            traditional: true,
-                            dataType:"json",
-                            data:{'_token': $('input[name=_token]').val()}
-                        }).success(function() {
-                            swal("操作成功!", "已成功删除数据！", "success");
-                        }).error(function() {
-                            swal("OMG", "删除操作失败了!", "error");
-                        });
-                    });
+                                $.ajax({
+                                    type: "post",
+                                    url: '/station/delete',
+                                    traditional: true,
+                                    dataType: "json",
+                                    data: {'_token': $('input[name=_token]').val()},
+                                    success: function () {
+                                        swal("操作成功!", "已成功删除数据！", "success");
+                                    },
+                                    error: function () {
+                                        swal("OMG", "删除操作失败了!", "error");
+                                    }
+                                })
+                            }
+                    )
                 }
             );
 
