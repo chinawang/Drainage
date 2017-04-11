@@ -123,7 +123,5 @@
                 }
             );
 
-        });
-
     </script>
 @endsection
