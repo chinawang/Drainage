@@ -99,9 +99,8 @@
                         swal({
                             title: "删除成功?",
                             type: "success",
-                            confirmButtonColor: "#2c3e50",
-                            confirmButtonText: "好",
-                            closeOnConfirm: true,
+                            timer: 2000,
+                            showConfirmButton: false,
                         })
                     }
             );
