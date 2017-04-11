@@ -18,7 +18,7 @@
                         <a href="javascript:history.back(-1)" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/station/update/{{ station_id }}">
 
                             <div class="form-group{{ $errors->has('station_number') ? ' has-error' : '' }}">
                                 <label for="station_number" class="col-md-4 control-label">编号</label>
