@@ -97,9 +97,9 @@
             },
                     function () {
                         swal({
-                            title: "删除成功?",
+                            title: "删除成功!",
                             type: "success",
-                            timer: 2000,
+                            timer: 1000,
                             showConfirmButton: false,
                         })
                     }
