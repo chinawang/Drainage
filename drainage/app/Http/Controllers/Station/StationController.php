@@ -104,9 +104,9 @@ class StationController extends Controller
         }
         else
         {
-            session()->flash('flash_message', [
+            session()->flash('flash_message_overlay', [
                 'title'     => '保存失败!',
-                'message'   => '',
+                'message'   => '数据未保存成功,请稍后重试!',
                 'level'     => 'error'
             ]);
             return redirect()->back();
@@ -135,16 +135,12 @@ class StationController extends Controller
 //        $stationID = $this->stationValidation->deleteStation();
 //        return $this->stationLogic->deleteStation($stationID);
 
-//        session()->flash('flash_message', [
-//            'title'     => '删除成功!',
-//            'message'   => '',
-//            'level'     => 'success'
-//        ]);
-//        return redirect('/station/lists');
+        session()->flash('flash_message', [
+            'title'     => '删除成功!',
+            'message'   => '',
+            'level'     => 'success'
+        ]);
+        return redirect('/station/lists');
 
-
-
-//        echo "test for ajax";
-        return true;
     }
 }
