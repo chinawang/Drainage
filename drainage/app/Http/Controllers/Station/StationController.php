@@ -122,7 +122,26 @@ class StationController extends Controller
     public function updateStation($stationID)
     {
         $input = $this->stationValidation->updateStation($stationID);
-        return $this->stationLogic->updateStation($stationID,$input);
+        $result = $this->stationLogic->updateStation($stationID,$input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/station/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -132,25 +151,26 @@ class StationController extends Controller
      */
     public function deleteStation()
     {
-//        $stationID = $this->stationValidation->deleteStation();
-//        return $this->stationLogic->deleteStation($stationID);
+        $stationID = $this->stationValidation->deleteStation();
+        $result = $this->stationLogic->deleteStation($stationID);
 
-//        session()->flash('flash_message', [
-//            'title'     => '删除成功!',
-//            'message'   => '',
-//            'level'     => 'success'
-//        ]);
-
-        session()->flash('flash_message_overlay', [
-            'title'     => '删除失败!',
-            'message'   => '数据未删除成功,请稍后重试!',
-            'level'     => 'error'
-        ]);
-
-
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '删除成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '删除失败!',
+                'message'   => '数据未删除成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+        }
 
         return redirect('/station/lists');
-
-
     }
 }
