@@ -47,9 +47,9 @@
                                 <td>
                                     <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
                                     <a href="#" class="btn btn-link btn-delete-station" id="btn-delete-alert-{{ $station['id'] }}" >删除</a>
-                                    <form role="form" method="POST" style="display: none" action="/station/delete">
+                                    <form role="form" method="POST" style="display: none" action="/station/delete/{{ $station['id'] }}">
                                         {{ csrf_field() }}
-                                        <input type="hidden" value="{{ $station['id'] }}">
+                                        {{--<input type="hidden" value="{{ $station['id'] }}">--}}
                                         <button type="submit" id="btn-delete-submit-{{ $station['id'] }}">
                                         </button>
                                     </form>
