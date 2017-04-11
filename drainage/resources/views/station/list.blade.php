@@ -86,13 +86,14 @@
     <script>
         $('#btn-delete-station').on("click",function () {
             swal({
-                title: "确定删除?",
+                title: "确认删除吗?",
                 text: "删除之后,将无法恢复!",
                 type: "warning",
                 showCancelButton: true,
+                cancelButtonText:"取消",
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "确认删除",
-                closeOnConfirm: true,
+                closeOnConfirm: false,
             },
                     function () {
                         swal({
