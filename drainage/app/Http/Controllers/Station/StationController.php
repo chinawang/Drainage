@@ -91,7 +91,11 @@ class StationController extends Controller
     public function storeNewStation()
     {
         $input = $this->stationValidation->storeNewStation();
-        return $this->stationLogic->createStation($input);
+        $result = $this->stationLogic->createStation($input);
+        if($result)
+        {
+            return "<script";
+        }
     }
 
     /**

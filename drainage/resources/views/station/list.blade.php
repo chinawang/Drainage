@@ -40,7 +40,8 @@
                                 <td>Column content</td>
                                 <td>
                                     <a href="/station/edit/" class="btn btn-link">编辑</a>
-                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#station-delete-modal">删除</a>
+                                    <a href="#" class="btn btn-link" id="btn-delete-station" >删除</a>
+                                    {{--<a href="#" class="btn btn-link" id="btn-delete-station" data-toggle="modal" data-target="#station-delete-modal">删除</a>--}}
                                 </td>
                             </tr>
                             </tbody>
@@ -80,3 +81,30 @@
         </div>
     </div>
 </div>
+
+@section('javascript')
+    <script>
+        $('#btn-delete-station').on(click,function () {
+            swal({
+                title: "确定删除?",
+                text: "删除之后,将无法恢复!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确认删除",
+                closeOnConfirm: true,
+            },
+                    function () {
+                        swal({
+                            title: "删除成功?",
+                            type: "success",
+                            confirmButtonColor: "#2c3e50",
+                            confirmButtonText: "好",
+                            closeOnConfirm: true,
+                        })
+                    }
+            );
+
+        });
+    </script>
+@endsection
