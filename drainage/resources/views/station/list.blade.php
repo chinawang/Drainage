@@ -84,7 +84,7 @@
 
 @section('javascript')
     <script>
-        $('#btn-delete-station').on(click,function () {
+        $('#btn-delete-station').on("click",function () {
             swal({
                 title: "确定删除?",
                 text: "删除之后,将无法恢复!",
