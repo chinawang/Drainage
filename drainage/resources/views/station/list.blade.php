@@ -67,21 +67,9 @@
                             </ul>
                         </div>
                             @else
-                            <table class="table table-hover table-bordered ">
-                                <thead>
-                                <tr>
-                                    <th>编号</th>
-                                    <th>泵站名称</th>
-                                    <th>泵站地址</th>
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td colspan="4">暂无内容</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div class="well custom-well">
+                                暂无内容
+                            </div>
                             @endif
                     </div>
                 </div>
