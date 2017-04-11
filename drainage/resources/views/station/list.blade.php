@@ -46,11 +46,11 @@
                                 <td>{{ $station['address'] }}</td>
                                 <td>
                                     <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
-                                    <a href="#" class="btn btn-link" id="btn-delete-station" >删除</a>
+                                    <a href="#" class="btn btn-link btn-delete-station" id="btn-delete-alert-{{ $station['id'] }}" >删除</a>
                                     <form role="form" method="POST" style="display: none" action="/station/delete">
                                         {{ csrf_field() }}
                                         <input type="hidden" value="{{ $station['id'] }}">
-                                        <button type="submit" id="btn-delete">
+                                        <button type="submit" id="btn-delete-submit-{{ $station['id'] }}">
                                         </button>
                                     </form>
                                 </td>
@@ -83,7 +83,7 @@
 
 @section('javascript')
     <script type="text/javascript">
-        $('#btn-delete-station').on("click",function () {
+        $('#btn-delete-alert-{{ $station['id'] }}').on("click",function () {
             swal({
                 title: "确认删除吗?",
                 text: "删除之后,将无法恢复!",
@@ -100,7 +100,7 @@
                     url:'/station/delete',
                     data:{'_token': $('input[name=_token]').val()}
                 });
-                $("#btn-delete").click();
+                $("#btn-delete-submit-{{ $station['id'] }}").click();
             })
         });
     </script>
