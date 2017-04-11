@@ -123,7 +123,8 @@
                                             showConfirmButton: false
                                         });
 
-                                        alert(data['status']);
+//                                        alert(data['status']);
+                                        window.location.reload();
                                     },
                                     error: function () {
                                         swal({
