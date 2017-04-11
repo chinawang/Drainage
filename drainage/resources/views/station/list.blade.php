@@ -114,7 +114,7 @@
                             traditional: true,
                             dataType:"json",
                             data:{'_token': $('input[name=_token]').val()}
-                        }).done(function() {
+                        }).success(function() {
                             swal("操作成功!", "已成功删除数据！", "success");
                         }).error(function() {
                             swal("OMG", "删除操作失败了!", "error");
