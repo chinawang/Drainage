@@ -114,7 +114,7 @@
                                     traditional: true,
                                     dataType: "json",
                                     data: {'_token': $('input[name=_token]').val()},
-                                    success: function () {
+                                    success: function (data) {
                                         swal({
                                             title: "删除成功!",
                                             text: "",
@@ -122,6 +122,8 @@
                                             timer: 2000,
                                             showConfirmButton: false
                                         });
+
+                                        alert(data[0]);
                                     },
                                     error: function () {
                                         swal({
