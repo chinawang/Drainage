@@ -34,11 +34,10 @@
                                 <th>编号</th>
                                 <th>泵站名称</th>
                                 <th>泵站地址</th>
-                                <th>操作</th>
+                                <th>操作<?php echo $stations['data']?></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php echo $stations['data']?>
 
                             {{--@foreach ($stations['data'] as $station)--}}
                             {{--<tr>--}}
