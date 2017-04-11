@@ -123,7 +123,7 @@
                                             showConfirmButton: false
                                         },
                                         function () {
-                                            alert(data['status']);
+//                                            alert(data['status']);
                                             window.location.reload();
                                         })
                                     },
