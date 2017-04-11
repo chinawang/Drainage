@@ -140,11 +140,11 @@ class StationController extends Controller
 //            'message'   => '',
 //            'level'     => 'success'
 //        ]);
-//        return redirect('/station/lists');
+        return redirect('/station/lists');
 
-        return response()->json(array(
-            'status' => 404,
-        ));
+//        return response()->json(array(
+//            'status' => 1,
+//        ));
 
     }
 }
