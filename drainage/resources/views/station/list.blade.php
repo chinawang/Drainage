@@ -123,7 +123,7 @@
                                             showConfirmButton: false
                                         });
 
-                                        alert(data[0]);
+                                        alert(data);
                                     },
                                     error: function () {
                                         swal({
