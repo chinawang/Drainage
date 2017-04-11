@@ -95,8 +95,8 @@ class StationValidation extends Validation
      */
     public function deleteStation()
     {
-        $input = $this->filterRequest(['id']);
-        $stationID = json_decode($input['id']);
+        $stationID = $this->filterRequest(['id']);
+//        $stationID = json_decode($input['id']);
 
         if (empty($stationID)) {
             throw new BadRequestException();
