@@ -35,7 +35,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($param->data as $station)
+                            {{--@foreach ($param->data as $station)--}}
                             <tr>
                                 <td>{{ $station->station_number }}</td>
                                 <td>{{ $station->name }}</td>
@@ -52,7 +52,7 @@
                                     {{--<a href="#" class="btn btn-link" id="btn-delete-station" data-toggle="modal" data-target="#station-delete-modal">删除</a>--}}
                                 </td>
                             </tr>
-                            @endforeach
+                            {{--@endforeach--}}
                             </tbody>
                         </table>
                         <div class="table-pagination">
