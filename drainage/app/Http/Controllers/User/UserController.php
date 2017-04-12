@@ -197,27 +197,26 @@ class UserController extends Controller
      */
     public function resetUserPassword($userID)
     {
-        $newPassword = $this->userValidation->resetPassword($userID);
-        return $newPassword;
-//        $result = $this->userLogic->resetPassword($userID,$newPassword);
+        $data = $this->userValidation->resetPassword($userID);
+        $result = $this->userLogic->resetPassword($userID,$data['newPassword']);
 
-//        if($result)
-//        {
-//            session()->flash('flash_message', [
-//                'title'     => '保存成功!',
-//                'message'   => '',
-//                'level'     => 'success'
-//            ]);
-//            return redirect('/user/lists');
-//        }
-//        else
-//        {
-//            session()->flash('flash_message_overlay', [
-//                'title'     => '保存失败!',
-//                'message'   => '数据未保存成功,请稍后重试!',
-//                'level'     => 'error'
-//            ]);
-//            return redirect()->back();
-//        }
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/user/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 }
