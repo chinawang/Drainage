@@ -73,6 +73,8 @@
     </div>
 @endsection
 
+@include('common.flash_message')
+
 @section('javascript')
 
     @foreach ($stations as $station)
@@ -129,4 +131,3 @@
     {{--</script>--}}
 @endsection
 
-@include('common.flash_message')
