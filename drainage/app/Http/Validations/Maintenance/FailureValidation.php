@@ -41,7 +41,7 @@ class FailureValidation extends Validation
     {
         $input = $this->filterRequest([
             'station_id','equipment_id','failure_type','failure_description','equipment_status',
-            'reporter_id','report_at','repair_process','repair_at','repairer_id'
+            'reporter_id','report_at'
         ]);
 
         $rules = [
@@ -73,7 +73,7 @@ class FailureValidation extends Validation
     {
         $input = $this->filterRequest([
             'station_id','equipment_id','failure_type','failure_description','equipment_status',
-            'reporter_id','report_at','repair_process','repair_at','repairer_id'
+            'reporter_id','report_at'
         ]);
 
         $rules = [
