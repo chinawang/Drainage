@@ -78,9 +78,9 @@ class FailureController extends Controller
         $failure = $this->failureInfo($failureID);
 
         $equipment = $this->equipmentInfo($failure['equipment_id']);
-        $station = $this->stationInfo($equipment['station_id']);
-        $reporter = $this->userInfo($equipment['reporter_id']);
-        $repairer = $this->userInfo($equipment['repairer_id']);
+        $station = $this->stationInfo($failure['station_id']);
+        $reporter = $this->userInfo($failure['reporter_id']);
+        $repairer = $this->userInfo($failure['repairer_id']);
 
         $failure['equipment_name'] = $equipment['name'];
         $failure['station_name'] = $station['name'];
@@ -157,9 +157,9 @@ class FailureController extends Controller
         foreach($failurePaginate as $failure)
         {
             $equipment = $this->equipmentInfo($failure['equipment_id']);
-            $station = $this->stationInfo($equipment['station_id']);
-            $reporter = $this->userInfo($equipment['reporter_id']);
-            $repairer = $this->userInfo($equipment['repairer_id']);
+            $station = $this->stationInfo($failure['station_id']);
+            $reporter = $this->userInfo($failure['reporter_id']);
+            $repairer = $this->userInfo($failure['repairer_id']);
 
             $failure['equipment_name'] = $equipment['name'];
             $failure['station_name'] = $station['name'];
@@ -188,9 +188,9 @@ class FailureController extends Controller
         foreach($failurePaginate as $failure)
         {
             $equipment = $this->equipmentInfo($failure['equipment_id']);
-            $station = $this->stationInfo($equipment['station_id']);
-            $reporter = $this->userInfo($equipment['reporter_id']);
-            $repairer = $this->userInfo($equipment['repairer_id']);
+            $station = $this->stationInfo($failure['station_id']);
+            $reporter = $this->userInfo($failure['reporter_id']);
+            $repairer = $this->userInfo($failure['repairer_id']);
 
             $failure['equipment_name'] = $equipment['name'];
             $failure['station_name'] = $station['name'];
