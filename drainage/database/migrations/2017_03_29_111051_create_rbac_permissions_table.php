@@ -16,8 +16,8 @@ class CreateRbacPermissionsTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
-            $table->string('slug', 100)->unique();
-            $table->string('description');
+            $table->string('slug', 100)->nullable();
+            $table->string('description')->nullable();
             $table->tinyInteger('delete_process')->default(0)->comment('是否删除');
             $table->timestamps();
         });
