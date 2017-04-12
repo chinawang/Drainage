@@ -69,7 +69,7 @@ class RoleValidation extends Validation
 
         $rules = [
             'name' => ['string'],
-            'slug' => ['required', 'string','unique:permissions'],
+            'slug' => ['string'],
             'description' => ['string'],
         ];
 
