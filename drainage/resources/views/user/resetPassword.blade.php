@@ -38,7 +38,7 @@
                                 <label for="password" class="col-md-4 control-label">新密码</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="请输入新密码" required>
+                                    <input id="password" type="password" class="form-control" name="newPassword" placeholder="请输入新密码" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
