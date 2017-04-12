@@ -24,8 +24,8 @@
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" prompt="请选择">
-                                        {{--<option value="" disabled selected>选择泵站</option>--}}
+                                    <select class="form-control" id="select" >
+                                        <option value="" selected="selected" style="display: none">选择泵站</option>
                                     @foreach ($stations as $station)
                                             <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
                                         @endforeach
