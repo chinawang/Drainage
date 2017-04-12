@@ -79,7 +79,7 @@ class RoleValidation extends Validation
         }
 
 
-        $role = $this->roleLogic->findPermission($roleID);
+        $role = $this->roleLogic->findRole($roleID);
         if ($role->id != $roleID) {
             throw new ForbiddenException();
         }
