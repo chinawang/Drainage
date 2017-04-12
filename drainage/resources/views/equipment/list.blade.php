@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        @if (!empty($equipments))
+                        @if (empty($equipments))
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
