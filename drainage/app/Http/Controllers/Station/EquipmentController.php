@@ -148,7 +148,7 @@ class EquipmentController extends Controller
         }
 
         $param = ['equipments' => $equipmentPaginate];
-        return $param;
+        return $equipmentPaginate;
 //        return view('equipment.list',$param);
     }
 
