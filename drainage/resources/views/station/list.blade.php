@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        @if (!empty($stations))
+                        @if (!empty($stations[0]))
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
