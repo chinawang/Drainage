@@ -198,7 +198,7 @@ class UserController extends Controller
     public function resetUserPassword($userID)
     {
         $newPassword = $this->userValidation->resetPassword($userID);
-        return $newPassword
+        return $newPassword;
 //        $result = $this->userLogic->resetPassword($userID,$newPassword);
 
 //        if($result)
