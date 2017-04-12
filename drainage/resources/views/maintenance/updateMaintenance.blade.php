@@ -24,9 +24,9 @@
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control" id="select" name="station_id">
                                         @foreach ($stations as $station)
-                                            <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
+                                            <option value="{{ $station['id'] }}" {{$maintenance['station_id'] == $station['id'] ? 'selected="selected"' : '';}}>{{ $station['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('station'))
@@ -41,9 +41,9 @@
                                 <label for="equipment" class="col-md-4 control-label">故障设备</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control" id="select" name="equipment_id">
                                         @foreach ($equipments as $equipment)
-                                            <option value="{{ $equipment['id'] }}">{{ $equipment['name'] }}</option>
+                                            <option value="{{ $equipment['id'] }}" {{$maintenance['equipment_id'] == $equipment['id'] ? 'selected="selected"' : '';}}>{{ $equipment['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('equipment'))
@@ -86,9 +86,9 @@
                                 <label for="repairer" class="col-md-4 control-label">维修人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control" id="select" name="">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
+                                            <option value="{{ $user['id'] }}" {{$maintenance['repairer_id'] == $user['id'] ? 'selected="selected"' : '';}}>{{ $user['realname'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('repairer'))
