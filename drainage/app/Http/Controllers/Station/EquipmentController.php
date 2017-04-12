@@ -142,13 +142,15 @@ class EquipmentController extends Controller
             $leader = $this->userInfo($equipment['leader_id']);
             $custodian = $this->userInfo($equipment['custodian_id']);
 
+            return $station;
+
             $equipment['station_name'] = $station['name'];
             $equipment['leader_name'] = $leader['real_name'];
             $equipment['custodian_name'] = $custodian['real_name'];
         }
 
         $param = ['equipments' => $equipmentPaginate];
-        return $param;
+//        return $param;
 //        return view('equipment.list',$param);
     }
 
