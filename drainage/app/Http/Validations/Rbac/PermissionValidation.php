@@ -44,7 +44,7 @@ class PermissionValidation extends Validation
         ]);
 
         $rules = [
-            'name' => ['string'],
+            'name' => ['required','string'],
             'slug' => ['required', 'string','unique:permissions'],
             'description' => ['string'],
         ];
