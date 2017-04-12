@@ -168,7 +168,8 @@ class FailureController extends Controller
         }
 
         $param = ['failures' => $failurePaginate];
-        return view('failure.list',$param);
+//        return view('failure.list',$param);
+        return $param;
     }
 
     /**
