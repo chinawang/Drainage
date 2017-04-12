@@ -84,8 +84,8 @@ class FailureController extends Controller
 
         $failure['equipment_name'] = $equipment['name'];
         $failure['station_name'] = $station['name'];
-        $failure['reporter_name'] = $reporter['real_name'];
-        $failure['repairer_name'] = $repairer['real_name'];
+        $failure['reporter_name'] = $reporter['realname'];
+        $failure['repairer_name'] = $repairer['realname'];
 
         $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
@@ -163,8 +163,8 @@ class FailureController extends Controller
 
             $failure['equipment_name'] = $equipment['name'];
             $failure['station_name'] = $station['name'];
-            $failure['reporter_name'] = $reporter['real_name'];
-            $failure['repairer_name'] = $repairer['real_name'];
+            $failure['reporter_name'] = $reporter['realname'];
+            $failure['repairer_name'] = $repairer['realname'];
         }
 
         $param = ['failures' => $failurePaginate];
@@ -193,8 +193,8 @@ class FailureController extends Controller
 
             $failure['equipment_name'] = $equipment['name'];
             $failure['station_name'] = $station['name'];
-            $failure['reporter_name'] = $reporter['real_name'];
-            $failure['repairer_name'] = $repairer['real_name'];
+            $failure['reporter_name'] = $reporter['realname'];
+            $failure['repairer_name'] = $repairer['realname'];
         }
 
         $param = ['failures' => $failurePaginate];

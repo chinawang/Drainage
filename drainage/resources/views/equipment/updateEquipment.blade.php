@@ -24,7 +24,7 @@
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control" id="select" name="station_id">
                                         @foreach ($stations as $station)
                                             <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
                                         @endforeach
@@ -111,7 +111,7 @@
                                 <label for="leader" class="col-md-4 control-label">负责人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control" id="select" name="leader_id">
                                         @foreach ($users as $user)
                                             <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
                                         @endforeach
@@ -128,7 +128,7 @@
                                 <label for="custodian" class="col-md-4 control-label">设备管理员</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
+                                    <select class="form-control" id="select" name="custodian_id">
                                         @foreach ($users as $user)
                                             <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
                                         @endforeach

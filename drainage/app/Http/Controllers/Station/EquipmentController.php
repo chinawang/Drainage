@@ -75,8 +75,8 @@ class EquipmentController extends Controller
         $custodian = $this->userInfo($equipment['custodian_id']);
 
         $equipment['station_name'] = $station['name'];
-        $equipment['leader_name'] = $leader['real_name'];
-        $equipment['custodian_name'] = $custodian['real_name'];
+        $equipment['leader_name'] = $leader['realname'];
+        $equipment['custodian_name'] = $custodian['realname'];
 
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
@@ -173,8 +173,8 @@ class EquipmentController extends Controller
             $custodian = $this->userInfo($equipment['custodian_id']);
 
             $equipment['station_name'] = $station['name'];
-            $equipment['leader_name'] = $leader['real_name'];
-            $equipment['custodian_name'] = $custodian['real_name'];
+            $equipment['leader_name'] = $leader['realname'];
+            $equipment['custodian_name'] = $custodian['realname'];
         }
 
         $param = ['equipments' => $equipmentPaginate];

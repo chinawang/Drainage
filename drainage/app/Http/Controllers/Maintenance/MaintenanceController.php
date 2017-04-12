@@ -90,7 +90,7 @@ class MaintenanceController extends Controller
 
         $maintenance['equipment_name'] = $equipment['name'];
         $maintenance['station_name'] = $station['name'];
-        $maintenance['repairer_name'] = $repairer['real_name'];
+        $maintenance['repairer_name'] = $repairer['realname'];
 
         $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
@@ -177,7 +177,7 @@ class MaintenanceController extends Controller
 
             $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['real_name'];
+            $maintenance['repairer_name'] = $repairer['realname'];
         }
 
         $param = ['maintenances' => $maintenancePaginate];
@@ -205,7 +205,7 @@ class MaintenanceController extends Controller
 
             $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['real_name'];
+            $maintenance['repairer_name'] = $repairer['realname'];
         }
 
         $param = ['maintenances' => $maintenancePaginate];
@@ -233,7 +233,7 @@ class MaintenanceController extends Controller
 
             $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['real_name'];
+            $maintenance['repairer_name'] = $repairer['realname'];
         }
 
         $param = ['maintenances' => $maintenancePaginate];
