@@ -128,3 +128,5 @@
         {{--})--}}
     {{--</script>--}}
 @endsection
+
+@include('common.flash_message')

@@ -64,7 +64,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary btn-custom" data-loading-text="保存中...">
+                                    <button type="submit" class="btn btn-primary btn-custom" >
                                         保存
                                     </button>
                                 </div>
