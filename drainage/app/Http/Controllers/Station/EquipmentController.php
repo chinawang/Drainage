@@ -57,7 +57,7 @@ class EquipmentController extends Controller
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['stations' => $stations->toJson(),'users' => $users->toJson()];
+        $param = ['stations' => $stations,'users' => $users];
         return view('equipment.addEquipment',$param);
     }
 
@@ -81,7 +81,7 @@ class EquipmentController extends Controller
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['equipment' => $equipment,'stations' => $stations->toJson(),'users' => $users->toJson()];
+        $param = ['equipment' => $equipment,'stations' => $stations,'users' => $users];
         return view('equipment.updateEquipment',$param);
     }
 
@@ -147,7 +147,7 @@ class EquipmentController extends Controller
             $equipment['custodian_name'] = $custodian['real_name'];
         }
 
-        $param = ['equipments' => $equipmentPaginate->toJson()];
+        $param = ['equipments' => $equipmentPaginate];
         return view('equipment.list',$param);
     }
 
@@ -176,7 +176,7 @@ class EquipmentController extends Controller
             $equipment['custodian_name'] = $custodian['real_name'];
         }
 
-        $param = ['equipments' => $equipmentPaginate->toJson()];
+        $param = ['equipments' => $equipmentPaginate];
         return view('equipment.listOfStation',$param);
     }
 
@@ -188,7 +188,26 @@ class EquipmentController extends Controller
     public function storeNewEquipment()
     {
         $input = $this->equipmentValidation->storeNewEquipment();
-        return $this->equipmentLogic->createEquipment($input);
+        $result = $this->equipmentLogic->createEquipment($input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/equipment/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -200,7 +219,26 @@ class EquipmentController extends Controller
     public function updateEquipment($equipmentID)
     {
         $input = $this->equipmentValidation->updateEquipment($equipmentID);
-        return $this->equipmentLogic->updateEquipment($equipmentID,$input);
+        $result = $this->equipmentLogic->updateEquipment($equipmentID,$input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/equipment/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -208,9 +246,28 @@ class EquipmentController extends Controller
      *
      * @return mixed
      */
-    public function deleteEquipment()
+    public function deleteEquipment($equipmentID)
     {
-        $equipmentID = $this->equipmentValidation->deleteEquipment();
-        return $this->equipmentLogic->deleteEquipment($equipmentID);
+//        $equipmentID = $this->equipmentValidation->deleteEquipment();
+        $result = $this->equipmentLogic->deleteEquipment($equipmentID);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '删除成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '删除失败!',
+                'message'   => '数据未删除成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+        }
+
+        return redirect('/equipment/lists');
     }
 }

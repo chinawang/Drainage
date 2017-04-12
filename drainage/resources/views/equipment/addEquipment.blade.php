@@ -15,26 +15,24 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         添加设备
-                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
+                        <a href="/equipment/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/equipment/store">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('station') ? ' has-error' : '' }}">
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        @foreach ($stations as $station)
+                                            <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('station'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('station') }}</strong>
-                                    </span>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -114,11 +112,9 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user['id'] }}">{{ $user['real_name'] }}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('leader'))
                                         <span class="help-block">
@@ -133,11 +129,9 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user['id'] }}">{{ $user['real_name'] }}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('custodian'))
                                         <span class="help-block">
