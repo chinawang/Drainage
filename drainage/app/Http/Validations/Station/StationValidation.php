@@ -99,8 +99,7 @@ class StationValidation extends Validation
 //        $stationID = json_decode($input['id']);
 
         if (empty($stationID)) {
-//            throw new BadRequestException();
-            echo $stationID[0];
+            throw new BadRequestException();
         }
 
         return $stationID;
