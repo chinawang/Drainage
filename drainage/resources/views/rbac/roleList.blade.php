@@ -41,6 +41,7 @@
                                         <td>{{ $role['name'] }}</td>
                                         <td>{{ $role['slug'] }}</td>
                                         <td>
+                                            <a href="/role/permission/edit/{{ $role['id'] }}" class="btn btn-link">设置权限</a>
                                             <a href="/role/edit/{{ $role['id'] }}" class="btn btn-link">编辑</a>
                                             <a href="#" class="btn btn-link btn-delete-station"
                                                id="btn-delete-alert-{{ $role['id'] }}">删除</a>

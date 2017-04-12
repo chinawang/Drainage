@@ -47,8 +47,9 @@
                                         <td>{{ $user['name'] }}</td>
                                         <td>暂无</td>
                                         <td>
+                                            <a href="/user/role/edit/{{ $user['id'] }}" class="btn btn-link">设置角色</a>
                                             <a href="/user/edit/{{ $user['id'] }}" class="btn btn-link">编辑</a>
-                                            <a href="/user/password/reset/{{ $user['id'] }}" class="btn btn-link">修改密码</a>
+                                            <a href="/user/password/reset/{{ $user['id'] }}" class="btn btn-link">重置密码</a>
                                             <a href="#" class="btn btn-link btn-delete-station"
                                                id="btn-delete-alert-{{ $user['id'] }}">删除</a>
                                             <form role="form" method="POST" style="display: none"
