@@ -59,15 +59,16 @@
                             </tbody>
                         </table>
                         <div class="table-pagination">
-                            <ul class="pagination">
-                                <li><a href="#">&laquo;</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
+                            {{--<ul class="pagination">--}}
+                                {{--<li><a href="#">&laquo;</a></li>--}}
+                                {{--<li><a href="#">1</a></li>--}}
+                                {{--<li><a href="#">2</a></li>--}}
+                                {{--<li><a href="#">3</a></li>--}}
+                                {{--<li><a href="#">4</a></li>--}}
+                                {{--<li><a href="#">5</a></li>--}}
+                                {{--<li><a href="#">&raquo;</a></li>--}}
+                            {{--</ul>--}}
+                            {!! $stations->render() !!}
                         </div>
                             @else
                             <div class="well" style="text-align: center; padding: 100px;">
