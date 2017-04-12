@@ -76,7 +76,7 @@ class UserValidation extends Validation
             'realname' => ['string'],
             'office' => ['string'],
             'contact' => ['string'],
-            'password' => ['required', 'string', 'min:6'],
+            'password' => ['string', 'min:6'],
         ];
 
         $validator = Validator::make($input,$rules);
