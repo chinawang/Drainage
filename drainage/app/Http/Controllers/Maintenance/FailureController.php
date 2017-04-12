@@ -65,7 +65,7 @@ class FailureController extends Controller
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['equipments' => $equipments->toJson(),'stations' => $stations->toJson(),'users' => $users->toJson()];
+        $param = ['equipments' => $equipments,'stations' => $stations,'users' => $users];
         return view('failure.addFailure',$param);
     }
 
@@ -91,8 +91,8 @@ class FailureController extends Controller
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['failure' => $failure,'equipments' => $equipments->toJson(),
-            'stations' => $stations->toJson(),'users' => $users->toJson()];
+        $param = ['failure' => $failure,'equipments' => $equipments,
+            'stations' => $stations,'users' => $users];
         return view('failure.updateFailure',$param);
     }
 
@@ -167,7 +167,7 @@ class FailureController extends Controller
             $failure['repairer_name'] = $repairer['real_name'];
         }
 
-        $param = ['failures' => $failurePaginate->toJson()];
+        $param = ['failures' => $failurePaginate];
         return view('failure.list',$param);
     }
 
@@ -197,7 +197,7 @@ class FailureController extends Controller
             $failure['repairer_name'] = $repairer['real_name'];
         }
 
-        $param = ['failures' => $failurePaginate->toJson()];
+        $param = ['failures' => $failurePaginate];
         return view('failure.listOfStation',$param);
     }
 
@@ -207,7 +207,26 @@ class FailureController extends Controller
     public function storeNewFailure()
     {
         $input = $this->failureValidation->storeNewFailure();
-        return $this->failureLogic->createFailure($input);
+        $result = $this->failureLogic->createFailure($input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/failure/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -217,15 +236,53 @@ class FailureController extends Controller
     public function updateFailure($failureID)
     {
         $input = $this->failureValidation->updateFailure($failureID);
-        return $this->failureLogic->updateFailure($failureID,$input);
+        $result = $this->failureLogic->updateFailure($failureID,$input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/failure/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
      * @return mixed
      */
-    public function deleteFailure()
+    public function deleteFailure($failureID)
     {
-        $failureID = $this->failureValidation->deleteFailure();
-        return $this->failureLogic->deleteFailure($failureID);
+//        $failureID = $this->failureValidation->deleteFailure();
+        $result = $this->failureLogic->deleteFailure($failureID);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '删除成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '删除失败!',
+                'message'   => '数据未删除成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+        }
+
+        return redirect('/failure/lists');
     }
 }

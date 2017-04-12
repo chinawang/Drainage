@@ -72,7 +72,7 @@ class MaintenanceController extends Controller
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['equipments' => $equipments->toJson(),'stations' => $stations->toJson(),'users' => $users->toJson()];
+        $param = ['equipments' => $equipments,'stations' => $stations,'users' => $users];
         return view('maintenance.addMaintenance',$param);
     }
 
@@ -96,8 +96,8 @@ class MaintenanceController extends Controller
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['maintenance' => $maintenance,'equipments' => $equipments->toJson(),
-            'stations' => $stations->toJson(),'users' => $users->toJson()];
+        $param = ['maintenance' => $maintenance,'equipments' => $equipments,
+            'stations' => $stations,'users' => $users];
         return view('maintenance.updateMaintenance',$param);
     }
 
@@ -180,7 +180,7 @@ class MaintenanceController extends Controller
             $maintenance['repairer_name'] = $repairer['real_name'];
         }
 
-        $param = ['maintenances' => $maintenancePaginate->toJson()];
+        $param = ['maintenances' => $maintenancePaginate];
         return view('maintenance.list',$param);
     }
 
@@ -208,7 +208,7 @@ class MaintenanceController extends Controller
             $maintenance['repairer_name'] = $repairer['real_name'];
         }
 
-        $param = ['maintenances' => $maintenancePaginate->toJson()];
+        $param = ['maintenances' => $maintenancePaginate];
         return view('maintenance.listOfStation',$param);
     }
 
@@ -236,7 +236,7 @@ class MaintenanceController extends Controller
             $maintenance['repairer_name'] = $repairer['real_name'];
         }
 
-        $param = ['maintenances' => $maintenancePaginate->toJson()];
+        $param = ['maintenances' => $maintenancePaginate];
         return view('maintenance.listOfFailure',$param);
     }
 
@@ -246,7 +246,26 @@ class MaintenanceController extends Controller
     public function storeNewMaintenance()
     {
         $input = $this->maintenanceValidation->storeNewMaintenance();
-        return $this->maintenanceLogic->createMaintenance($input);
+        $result = $this->maintenanceLogic->createMaintenance($input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/maintenance/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -256,15 +275,53 @@ class MaintenanceController extends Controller
     public function updateMaintenance($maintenanceID)
     {
         $input = $this->maintenanceValidation->updateMaintenance($maintenanceID);
-        return $this->maintenanceLogic->updateMaintenance($maintenanceID,$input);
+        $result = $this->maintenanceLogic->updateMaintenance($maintenanceID,$input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/maintenance/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
      * @return mixed
      */
-    public function deleteMaintenance()
+    public function deleteMaintenance($maintenanceID)
     {
-        $maintenanceID = $this->maintenanceValidation->deleteMaintenance();
-        return $this->maintenanceLogic->deleteMaintenance($maintenanceID);
+//        $maintenanceID = $this->maintenanceValidation->deleteMaintenance();
+        $result = $this->maintenanceLogic->deleteMaintenance($maintenanceID);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '删除成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '删除失败!',
+                'message'   => '数据未删除成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+        }
+
+        return redirect('/maintenance/lists');
     }
 }

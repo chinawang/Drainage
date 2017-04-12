@@ -15,21 +15,19 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         编辑维修记录
-                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
+                        <a href="/maintenance/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/maintenance/update/{{ $maintenance['id'] }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('station') ? ' has-error' : '' }}">
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        @foreach ($stations as $station)
+                                            <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('station'))
                                         <span class="help-block">
@@ -44,11 +42,9 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        @foreach ($equipments as $equipment)
+                                            <option value="{{ $equipment['id'] }}">{{ $equipment['name'] }}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('equipment'))
                                         <span class="help-block">
@@ -62,7 +58,7 @@
                                 <label for="failure_reason" class="col-md-4 control-label">故障原因</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="failure_reason" value="{{ old('failure_reason') }}" placeholder="请输入故障原因" required >
+                                    <input type="text" class="form-control" name="failure_reason" value="{{ $maintenance['failure_reason'】 }}" placeholder="请输入故障原因" required >
 
                                     @if ($errors->has('failure_reason'))
                                         <span class="help-block">
@@ -76,7 +72,7 @@
                                 <label for="repair_solution" class="col-md-4 control-label">解决办法</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="repair_solution" value="{{ old('repair_solution') }}" placeholder="请输入解决办法" required >
+                                    <input type="text" class="form-control" name="repair_solution" value="{{ $maintenance['repair_solution'] }}" placeholder="请输入解决办法" required >
 
                                     @if ($errors->has('repair_solution'))
                                         <span class="help-block">
@@ -91,11 +87,9 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user['id'] }}">{{ $user['real_name'] }}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('repairer'))
                                         <span class="help-block">
@@ -109,7 +103,7 @@
                                 <label for="repair_at" class="col-md-4 control-label">维修时间</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="datetimepicker" name="repair_at" value="{{ old('repair_at') }}" placeholder="请输入维修时间" required >
+                                    <input type="text" class="form-control" id="datetimepicker" name="repair_at" value="{{ $maintenance['repair_at'] }}" placeholder="请输入维修时间" required >
 
                                     @if ($errors->has('repair_at'))
                                         <span class="help-block">

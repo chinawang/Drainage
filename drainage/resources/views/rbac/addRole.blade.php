@@ -15,10 +15,10 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         添加角色
-                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
+                        <a href="/role/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/role/store">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">角色</label>

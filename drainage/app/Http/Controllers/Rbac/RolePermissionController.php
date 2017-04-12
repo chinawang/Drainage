@@ -59,7 +59,26 @@ class RolePermissionController extends Controller
         $input = $this->rolePermissionValidation->setRolePermission();
         $roleID = $input['role_id'];
         $permissionIDs = array_column($input,'id');
-        return $this->rolePermissionLogic->setRolePermissions($roleID,$permissionIDs);
+        $result = $this->rolePermissionLogic->setRolePermissions($roleID,$permissionIDs);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/role/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
 }

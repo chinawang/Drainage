@@ -77,9 +77,9 @@ class PermissionController extends Controller
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
-        $pageSize        = array_get($input, 'page_size', 20);
+        $pageSize        = array_get($input, 'page_size', 10);
         $permissionPaginate = $this->permissionLogic->getPermissions($pageSize,$orderColumn,$orderDirection,$cursorPage);
-        $param = ['permissions' => $permissionPaginate->toJson()];
+        $param = ['permissions' => $permissionPaginate];
         return view('rbac.permissionList',$param);
     }
 
@@ -91,7 +91,26 @@ class PermissionController extends Controller
     public function storeNewPermission()
     {
         $input = $this->permissionValidation->storeNewPermission();
-        return $this->permissionLogic->createPermission($input);
+        $result = $this->permissionLogic->createPermission($input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/permission/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -103,7 +122,26 @@ class PermissionController extends Controller
     public function updatePermission($permissionID)
     {
         $input = $this->permissionValidation->updatePermission($permissionID);
-        return $this->permissionLogic->updatePermission($permissionID,$input);
+        $result = $this->permissionLogic->updatePermission($permissionID,$input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/permission/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -111,9 +149,28 @@ class PermissionController extends Controller
      *
      * @return bool
      */
-    public function deletePermission()
+    public function deletePermission($permissionID)
     {
-        $permissionID = $this->permissionValidation->deletePermission();
-        return $this->permissionLogic->deletePermission($permissionID);
+//        $permissionID = $this->permissionValidation->deletePermission();
+        $result = $this->permissionLogic->deletePermission($permissionID);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '删除成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '删除失败!',
+                'message'   => '数据未删除成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+        }
+
+        return redirect('/permission/lists');
     }
 }

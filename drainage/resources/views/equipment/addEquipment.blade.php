@@ -26,7 +26,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" >
                                         <option value="" selected="selected" style="display: none">选择泵站</option>
-                                    @foreach ($stations as $station)
+                                        @foreach ($stations as $station)
                                             <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
                                         @endforeach
                                     </select>
@@ -113,6 +113,7 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
+                                        <option value="" selected="selected" style="display: none">选择负责人</option>
                                         @foreach ($users as $user)
                                             <option value="{{ $user['id'] }}">{{ $user['real_name'] }}</option>
                                         @endforeach
@@ -130,6 +131,7 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
+                                        <option value="" selected="selected" style="display: none">选择管理员</option>
                                         @foreach ($users as $user)
                                             <option value="{{ $user['id'] }}">{{ $user['real_name'] }}</option>
                                         @endforeach

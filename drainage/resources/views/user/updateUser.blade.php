@@ -15,16 +15,16 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         编辑用户
-                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
+                        <a href="/user/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/user/update/{{ $user['id'] }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('employee_number') ? ' has-error' : '' }}">
                                 <label for="employee_number" class="col-md-4 control-label">编号</label>
 
                                 <div class="col-md-6">
-                                    <input id="employee_number" type="text" class="form-control" name="employee_number" value="{{ old('employee_number') }}" placeholder="请输入员工编号" required >
+                                    <input id="employee_number" type="text" class="form-control" name="employee_number" value="{{ $user['employee_number'] }}" placeholder="请输入员工编号" required >
 
                                     @if ($errors->has('employee_number'))
                                         <span class="help-block">
@@ -38,7 +38,7 @@
                                 <label for="realname" class="col-md-4 control-label">姓名</label>
 
                                 <div class="col-md-6">
-                                    <input id="realname" type="text" class="form-control" name="realname" value="{{ old('realname') }}" placeholder="请输入真实姓名" required >
+                                    <input id="realname" type="text" class="form-control" name="realname" value="{{ $user['realname'] }}" placeholder="请输入真实姓名" required >
 
                                     @if ($errors->has('realname'))
                                         <span class="help-block">
@@ -52,7 +52,7 @@
                                 <label for="office" class="col-md-4 control-label">职务</label>
 
                                 <div class="col-md-6">
-                                    <input id="office" type="text" class="form-control" name="office" value="{{ old('office') }}" placeholder="请输入用户职务" required >
+                                    <input id="office" type="text" class="form-control" name="office" value="{{ $user['office'] }}" placeholder="请输入用户职务" required >
 
                                     @if ($errors->has('office'))
                                         <span class="help-block">
@@ -66,7 +66,7 @@
                                 <label for="contact" class="col-md-4 control-label">联系方式</label>
 
                                 <div class="col-md-6">
-                                    <input id="contact" type="text" class="form-control" name="contact" value="{{ old('contact') }}" placeholder="请输入用户联系方式" required >
+                                    <input id="contact" type="text" class="form-control" name="contact" value="{{ $user['contact'] }}" placeholder="请输入用户联系方式" required >
 
                                     @if ($errors->has('contact'))
                                         <span class="help-block">
@@ -80,25 +80,11 @@
                                 <label for="name" class="col-md-4 control-label">登录账号</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入登录账号" required >
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $user['name'] }}" placeholder="请输入登录账号" required >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">登录密码</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="请输入登录密码" required>
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                     @endif
                                 </div>

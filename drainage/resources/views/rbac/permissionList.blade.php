@@ -24,38 +24,45 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <table class="table table-hover table-bordered ">
-                            <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>行为权限</th>
-                                <th>别名</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>
-                                    <a href="#" class="btn btn-link">编辑</a>
-                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#station-delete-modal">删除</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="table-pagination">
-                            <ul class="pagination">
-                                <li><a href="#">&laquo;</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
-                        </div>
+                        @if (!empty($permissions[0]))
+                            <table class="table table-hover table-bordered ">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>行为权限</th>
+                                    <th>别名</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($permissions as $permission)
+                                    <tr>
+                                        <td>{{ $permission['id'] }}</td>
+                                        <td>{{ $permission['name'] }}</td>
+                                        <td>{{ $permission['slug'] }}</td>
+                                        <td>
+                                            <a href="/permission/edit/{{ $permission['id'] }}" class="btn btn-link">编辑</a>
+                                            <a href="#" class="btn btn-link btn-delete-station"
+                                               id="btn-delete-alert-{{ $permission['id'] }}">删除</a>
+                                            <form role="form" method="POST" style="display: none"
+                                                  action="/permission/delete/{{ $permission['id'] }}">
+                                                {{ csrf_field() }}
+                                                <button type="submit" id="btn-delete-submit-{{ $permission['id'] }}">
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            <div class="table-pagination">
+                                {!! $permissions->render() !!}
+                            </div>
+                        @else
+                            <div class="well" style="text-align: center; padding: 100px;">
+                                暂无内容
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -63,20 +70,26 @@
     </div>
 @endsection
 
-<div class="modal fade" id="station-delete-modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" >
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">提示</h4>
-            </div>
-            <div class="modal-body" style="font-size: 19px">
-                <p>删除之后将无法恢复,确定删除吗?</p>
-            </div>
-            <div class="modal-footer" style="border-top:none">
-                {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
-                <button type="button" class="btn btn-danger btn-sm ">确认删除</button>
-            </div>
-        </div>
-    </div>
-</div>
+@section('javascript')
+
+    @foreach ($permissions as $permission)
+        <script type="text/javascript">
+            $('#btn-delete-alert-{{ $permission['id'] }}').on("click", function () {
+                swal({
+                            title: "确认删除吗?",
+                            text: "删除之后,将无法恢复!",
+                            type: "warning",
+                            showCancelButton: true,
+                            cancelButtonText: "取消",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确认删除",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                            $("#btn-delete-submit-{{ $permission['id'] }}").click();
+                        })
+            });
+        </script>
+    @endforeach
+
+@endsection

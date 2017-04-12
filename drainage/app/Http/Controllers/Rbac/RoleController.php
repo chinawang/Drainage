@@ -69,9 +69,9 @@ class RoleController extends Controller
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
-        $pageSize        = array_get($input, 'page_size', 20);
+        $pageSize        = array_get($input, 'page_size', 10);
         $rolePaginate = $this->roleLogic->getRoles($pageSize,$orderColumn,$orderDirection,$cursorPage);
-        $param = ['roles' => $rolePaginate->toJson()];
+        $param = ['roles' => $rolePaginate];
         return view('rbac.roleList',$param);
     }
 
@@ -81,7 +81,26 @@ class RoleController extends Controller
     public function storeNewRole()
     {
         $input = $this->roleValidation->storeNewRole();
-        return $this->roleLogic->createRole($input);
+        $result = $this->roleLogic->createRole($input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/role/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -91,15 +110,53 @@ class RoleController extends Controller
     public function updateRole($roleID)
     {
         $input = $this->roleValidation->updateRole($roleID);
-        return $this->roleLogic->updateRole($roleID,$input);
+        $result = $this->roleLogic->updateRole($roleID,$input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/role/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
      * @return bool
      */
-    public function deleteRole()
+    public function deleteRole($roleID)
     {
-        $roleID = $this->roleValidation->deleteRole();
-        return $this->roleLogic->deleteRole($roleID);
+//        $roleID = $this->roleValidation->deleteRole();
+        $result = $this->roleLogic->deleteRole($roleID);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '删除成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '删除失败!',
+                'message'   => '数据未删除成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+        }
+
+        return redirect('/role/lists');
     }
 }

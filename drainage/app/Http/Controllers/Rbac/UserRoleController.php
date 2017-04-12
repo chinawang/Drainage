@@ -60,7 +60,26 @@ class UserRoleController extends Controller
         $userID = $input['user_id'];
         $roleIDs = array_column($input,'id');
 
-        return $this->userRoleLogic->setUserRoles($userID,$roleIDs);
+        $result = $this->userRoleLogic->setUserRoles($userID,$roleIDs);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/user/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
 }

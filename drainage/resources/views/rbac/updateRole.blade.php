@@ -14,17 +14,17 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        添加角色
-                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
+                        编辑角色
+                        <a href="/role/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/role/update/{{ $role['id'] }}">
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">角色</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入角色名称" required >
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $role['name'] }}" placeholder="请输入角色名称" required >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">

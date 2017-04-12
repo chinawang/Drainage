@@ -15,16 +15,16 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         编辑权限
-                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
+                        <a href="/permission/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/permission/update/{{ $permission['id'] }}">
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">权限</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入权限" required >
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $permission['name'] }}" placeholder="请输入权限" required >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -38,7 +38,7 @@
                                 <label for="slug" class="col-md-4 control-label">别名</label>
 
                                 <div class="col-md-6">
-                                    <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}" placeholder="请输入权限别名" required >
+                                    <input id="slug" type="text" class="form-control" name="slug" value="{{ $permission['slug'] }}" placeholder="请输入权限别名" required >
 
                                     @if ($errors->has('slug'))
                                         <span class="help-block">

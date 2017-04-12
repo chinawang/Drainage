@@ -91,9 +91,9 @@ class UserController extends Controller
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
-        $pageSize        = array_get($input, 'page_size', 20);
+        $pageSize        = array_get($input, 'page_size', 10);
         $userPaginate = $this->userLogic->getUsers($pageSize,$orderColumn,$orderDirection,$cursorPage);
-        $param = ['users' => $userPaginate->toJson()];
+        $param = ['users' => $userPaginate];
         return view('user.list',$param);
     }
 
@@ -105,7 +105,26 @@ class UserController extends Controller
     public function storeNewUser()
     {
         $input = $this->userValidation->storeNewUser();
-        return $this->userLogic->createUser($input);
+        $result = $this->userLogic->createUser($input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/user/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -117,7 +136,26 @@ class UserController extends Controller
     public function updateUser($userID)
     {
         $input = $this->userValidation->updateUser($userID);
-        return $this->userLogic->updateUser($userID,$input);
+        $result = $this->userLogic->updateUser($userID,$input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+            return redirect('/user/lists');
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -125,10 +163,29 @@ class UserController extends Controller
      *
      * @return bool
      */
-    public function deleteUser()
+    public function deleteUser($userID)
     {
-        $userID = $this->userValidation->deleteUser();
-        return $this->userLogic->deleteUser($userID);
+//        $userID = $this->userValidation->deleteUser();
+        $result = $this->userLogic->deleteUser($userID);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '删除成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '删除失败!',
+                'message'   => '数据未删除成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+        }
+
+        return redirect('/user/lists');
     }
 
     /**

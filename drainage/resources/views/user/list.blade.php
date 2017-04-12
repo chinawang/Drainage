@@ -24,45 +24,51 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <table class="table table-hover table-bordered ">
-                            <thead>
-                            <tr>
-                                <th>员工编号</th>
-                                <th>姓名</th>
-                                <th>职务</th>
-                                <th>联系方式</th>
-                                <th>登录账号</th>
-                                <th>角色</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>Column content</td>
-                                <td>
-                                    <a href="#" class="btn btn-link">设置角色</a>
-                                    <a href="#" class="btn btn-link">编辑</a>
-                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#station-delete-modal">删除</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="table-pagination">
-                            <ul class="pagination">
-                                <li><a href="#">&laquo;</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
-                        </div>
+                        @if (!empty($users[0]))
+                            <table class="table table-hover table-bordered ">
+                                <thead>
+                                <tr>
+                                    <th>员工编号</th>
+                                    <th>姓名</th>
+                                    <th>职务</th>
+                                    <th>联系方式</th>
+                                    <th>登录账号</th>
+                                    <th>角色</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user['employee_number'] }}</td>
+                                        <td>{{ $user['realname'] }}</td>
+                                        <td>{{ $user['office'] }}</td>
+                                        <td>{{ $user['contact'] }}</td>
+                                        <td>{{ $user['name'] }}</td>
+                                        <td>暂无</td>
+                                        <td>
+                                            <a href="/user/edit/{{ $user['id'] }}" class="btn btn-link">编辑</a>
+                                            <a href="#" class="btn btn-link btn-delete-station"
+                                               id="btn-delete-alert-{{ $user['id'] }}">删除</a>
+                                            <form role="form" method="POST" style="display: none"
+                                                  action="/user/delete/{{ $user['id'] }}">
+                                                {{ csrf_field() }}
+                                                <button type="submit" id="btn-delete-submit-{{ $user['id'] }}">
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            <div class="table-pagination">
+                                {!! $users->render() !!}
+                            </div>
+                        @else
+                            <div class="well" style="text-align: center; padding: 100px;">
+                                暂无内容
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -70,20 +76,26 @@
     </div>
 @endsection
 
-<div class="modal fade" id="station-delete-modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" >
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">提示</h4>
-            </div>
-            <div class="modal-body" style="font-size: 19px">
-                <p>删除之后将无法恢复,确定删除吗?</p>
-            </div>
-            <div class="modal-footer" style="border-top:none">
-                {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
-                <button type="button" class="btn btn-danger btn-sm">确认删除</button>
-            </div>
-        </div>
-    </div>
-</div>
+@section('javascript')
+
+    @foreach ($users as $user)
+        <script type="text/javascript">
+            $('#btn-delete-alert-{{ $user['id'] }}').on("click", function () {
+                swal({
+                            title: "确认删除吗?",
+                            text: "删除之后,将无法恢复!",
+                            type: "warning",
+                            showCancelButton: true,
+                            cancelButtonText: "取消",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确认删除",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                            $("#btn-delete-submit-{{ $user['id'] }}").click();
+                        })
+            });
+        </script>
+    @endforeach
+
+@endsection
