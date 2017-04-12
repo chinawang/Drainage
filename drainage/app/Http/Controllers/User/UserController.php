@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         $userInfo = $this->userLogic->findUser($userID);
         $param = ['user' => $userInfo];
-        return view('views.user.updateUser',$param);
+        return view('user.updateUser',$param);
     }
 
     /**

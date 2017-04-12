@@ -40,7 +40,7 @@ Route::get('/user/password/reset/{user_id}','User\UserController@showResetPasswo
 Route::post('/user/password/store/{user_id}','User\UserController@resetUserPassword');
 
 //删除用户
-Route::post('/user/delete','User\UserController@deleteUser');
+Route::post('/user/delete/{user_id}','User\UserController@deleteUser');
 
 
 /**
@@ -79,7 +79,7 @@ Route::get('/equipment/edit/{equipment_id}','Station\EquipmentController@showUpd
 Route::post('/equipment/update/{equipment_id}','Station\EquipmentController@updateEquipment');
 
 //删除设备
-Route::post('/equipment/delete','Station\EquipmentController@deleteEquipment');
+Route::post('/equipment/delete/{equipment_id}','Station\EquipmentController@deleteEquipment');
 
 
 /**
@@ -98,7 +98,7 @@ Route::get('/permission/edit/{permission_id}','Rbac\PermissionController@showUpd
 Route::post('/permission/update/{permission_id}','Rbac\PermissionController@updatePermission');
 
 //删除权限
-Route::post('/permission/delete','Rbac\PermissionController@deletePermission');
+Route::post('/permission/delete/{permission_id}','Rbac\PermissionController@deletePermission');
 
 
 /**
@@ -117,7 +117,7 @@ Route::get('/role/edit/{role_id}','Rbac\RoleController@showUpdateRoleForm');
 Route::post('/role/update/{role_id}','Rbac\RoleController@updateRole');
 
 //删除角色
-Route::post('/role/delete','Rbac\RoleController@deleteRole');
+Route::post('/role/delete/{role_id}','Rbac\RoleController@deleteRole');
 
 
 /**
@@ -155,7 +155,7 @@ Route::get('/failure/edit/{failure_id}','Maintenance\FailureController@showUpdat
 Route::post('/failure/update/{failure_id}','Maintenance\FailureController@updateFailure');
 
 //删除故障
-Route::post('/failure/delete','Maintenance\FailureController@deleteFailure');
+Route::post('/failure/delete/{failure_id}','Maintenance\FailureController@deleteFailure');
 
 
 /**
@@ -176,4 +176,4 @@ Route::get('/maintenance/edit/{maintenance_id}','Maintenance\MaintenanceControll
 Route::post('/maintenance/update/{maintenance_id}','Maintenance\MaintenanceController@updateMaintenance');
 
 //删除维修
-Route::post('/maintenance/delete','Maintenance\MaintenanceController@deleteMaintenance');
+Route::post('/maintenance/delete/{maintenance_id}','Maintenance\MaintenanceController@deleteMaintenance');
