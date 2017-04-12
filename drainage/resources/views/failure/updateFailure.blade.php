@@ -107,7 +107,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}">{{ $user['real_name'] }}</option>
+                                            <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('reporter'))

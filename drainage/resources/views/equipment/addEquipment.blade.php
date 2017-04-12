@@ -115,7 +115,7 @@
                                     <select class="form-control" id="select">
                                         <option value="" selected="selected" style="display: none">选择负责人</option>
                                         @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}">{{ $user['real_name'] }}</option>
+                                            <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('leader'))
@@ -133,7 +133,7 @@
                                     <select class="form-control" id="select">
                                         <option value="" selected="selected" style="display: none">选择管理员</option>
                                         @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}">{{ $user['real_name'] }}</option>
+                                            <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('custodian'))
