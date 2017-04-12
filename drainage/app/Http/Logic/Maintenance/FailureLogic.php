@@ -34,7 +34,11 @@ class FailureLogic extends Logic
      */
     public function findFailure($failureId)
     {
-        $failure = $this->failureRepository->find($failureId);
+        $conditions = [
+            'delete_process' => 0,
+            'id' => $failureId
+        ];
+        $failure = $this->failureRepository->findBy($conditions);
         return $failure;
     }
 
@@ -57,7 +61,10 @@ class FailureLogic extends Logic
      */
     public function getAllFailure()
     {
-        $failureList = $this->failureRepository->all();
+        $conditions = [
+            'delete_process' => 0
+        ];
+        $failureList = $this->failureRepository->getBy($conditions);
         return $failureList;
     }
 

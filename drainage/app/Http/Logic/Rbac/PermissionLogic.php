@@ -34,7 +34,11 @@ class PermissionLogic extends Logic
      */
     public function findPermission($permissionId)
     {
-        $permission = $this->permissionRepository->find($permissionId);
+        $conditions = [
+            'delete_process' => 0,
+            'id' => $permissionId
+        ];
+        $permission = $this->permissionRepository->findBy($conditions);
         return $permission;
     }
 
@@ -57,7 +61,10 @@ class PermissionLogic extends Logic
      */
     public function getAllPermissions()
     {
-        $permissionList = $this->permissionRepository->all();
+        $conditions = [
+            'delete_process' => 0
+        ];
+        $permissionList = $this->permissionRepository->getBy($conditions);
         return $permissionList;
     }
 

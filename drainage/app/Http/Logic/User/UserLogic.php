@@ -34,7 +34,8 @@ class UserLogic extends Logic
      */
     public function findUser($userId)
     {
-        $user = $this->userRepository->findBy($userId);
+        $conditions = ['delete_process' => 0,'id' => $userId];
+        $user = $this->userRepository->findBy($conditions);
         return $user;
     }
 
@@ -57,7 +58,8 @@ class UserLogic extends Logic
      */
     public function getAllUsers()
     {
-        $userList = $this->userRepository->all();
+        $conditions = ['delete_process' => 0];
+        $userList = $this->userRepository->getBy($conditions);
         return $userList;
     }
 

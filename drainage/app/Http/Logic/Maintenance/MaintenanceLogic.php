@@ -34,7 +34,11 @@ class MaintenanceLogic extends Logic
      */
     public function findMaintenance($maintenanceId)
     {
-        $maintenance = $this->maintenanceRepository->find($maintenanceId);
+        $conditions = [
+            'delete_process' => 0,
+            'id' => $maintenanceId
+        ];
+        $maintenance = $this->maintenanceRepository->findBy($conditions);
         return $maintenance;
     }
 
@@ -57,7 +61,10 @@ class MaintenanceLogic extends Logic
      */
     public function getAllMaintenance()
     {
-        $maintenanceList = $this->maintenanceRepository->all();
+        $conditions = [
+            'delete_process' => 0
+        ];
+        $maintenanceList = $this->maintenanceRepository->getBy($conditions);
         return $maintenanceList;
     }
 

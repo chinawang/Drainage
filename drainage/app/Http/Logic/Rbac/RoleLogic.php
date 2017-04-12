@@ -34,7 +34,11 @@ class RoleLogic extends Logic
      */
     public function findRole($roleId)
     {
-        $role = $this->roleRepository->find($roleId);
+        $conditions = [
+            'delete_process' => 0,
+            'id' => $roleId
+        ];
+        $role = $this->roleRepository->findBy($conditions);
         return $role;
     }
 
@@ -57,7 +61,10 @@ class RoleLogic extends Logic
      */
     public function getAllRoles()
     {
-        $roleList = $this->roleRepository->all();
+        $conditions = [
+            'delete_process' => 0
+        ];
+        $roleList = $this->roleRepository->getBy($conditions);
         return $roleList;
     }
 

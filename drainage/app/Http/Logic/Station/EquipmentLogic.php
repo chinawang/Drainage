@@ -34,7 +34,11 @@ class EquipmentLogic extends Logic
      */
     public function findEquipment($equipmentId)
     {
-        $equipment = $this->equipmentRepository->find($equipmentId);
+        $conditions = [
+            'delete_process' => 0,
+            'id' => $equipmentId
+        ];
+        $equipment = $this->equipmentRepository->findBy($conditions);
         return $equipment;
     }
 
@@ -79,7 +83,10 @@ class EquipmentLogic extends Logic
      */
     public function getAllEquipments()
     {
-        $equipmentList = $this->equipmentRepository->all();
+        $conditions = [
+            'delete_process' => 0
+        ];
+        $equipmentList = $this->equipmentRepository->getBy($conditions);
         return $equipmentList;
     }
 
