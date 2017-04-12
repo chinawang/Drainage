@@ -59,7 +59,7 @@ Route::get('/station/edit/{station_id}','Station\StationController@showUpdateSta
 Route::post('/station/update/{station_id}','Station\StationController@updateStation');
 
 //删除泵站
-Route::post('/station/delete/{station_id}','Station\StationController@deleteStation');
+Route::post('/station/delete','Station\StationController@deleteStation');
 
 
 /**

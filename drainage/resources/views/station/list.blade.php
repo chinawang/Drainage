@@ -47,9 +47,9 @@
                                 <td>
                                     <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
                                     <a href="#" class="btn btn-link btn-delete-station" id="btn-delete-alert-{{ $station['id'] }}" >删除</a>
-                                    <form role="form" method="POST" style="display: none" action="/station/delete/{{ $station['id'] }}">
+                                    <form role="form" method="POST" style="display: none" action="/station/delete">
                                         {{ csrf_field() }}
-                                        {{--<input type="hidden" value="{{ $station['id'] }}">--}}
+                                        <input type="hidden" value="{{ $station['id'] }}">
                                         <button type="submit" id="btn-delete-submit-{{ $station['id'] }}">
                                         </button>
                                     </form>
@@ -59,15 +59,6 @@
                             </tbody>
                         </table>
                         <div class="table-pagination">
-                            {{--<ul class="pagination">--}}
-                                {{--<li><a href="#">&laquo;</a></li>--}}
-                                {{--<li><a href="#">1</a></li>--}}
-                                {{--<li><a href="#">2</a></li>--}}
-                                {{--<li><a href="#">3</a></li>--}}
-                                {{--<li><a href="#">4</a></li>--}}
-                                {{--<li><a href="#">5</a></li>--}}
-                                {{--<li><a href="#">&raquo;</a></li>--}}
-                            {{--</ul>--}}
                             {!! $stations->render() !!}
                         </div>
                             @else

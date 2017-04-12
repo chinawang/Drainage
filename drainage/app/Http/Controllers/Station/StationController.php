@@ -149,9 +149,9 @@ class StationController extends Controller
      *
      * @return bool
      */
-    public function deleteStation($stationID)
+    public function deleteStation()
     {
-//        $stationID = $this->stationValidation->deleteStation();
+        $stationID = $this->stationValidation->deleteStation();
         $result = $this->stationLogic->deleteStation($stationID);
 
         if($result)
