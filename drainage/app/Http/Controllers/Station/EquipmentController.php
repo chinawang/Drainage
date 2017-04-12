@@ -138,7 +138,7 @@ class EquipmentController extends Controller
 
         foreach($equipmentPaginate as $equipment)
         {
-            $station = $this->stationInfo($equipment['station_id'])[0];
+            $station = $this->stationInfo($equipment['station_id']);
             $leader = $this->userInfo($equipment['leader_id']);
             $custodian = $this->userInfo($equipment['custodian_id']);
 

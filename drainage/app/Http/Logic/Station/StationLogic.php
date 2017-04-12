@@ -35,7 +35,7 @@ class StationLogic extends Logic
     public function findStation($stationId)
     {
         $conditions = ['delete_process' => 0,'id' => $stationId];
-        $station = $this->stationRepository->getBy($conditions);
+        $station = $this->stationRepository->findBy($conditions);
         return $station;
     }
 
