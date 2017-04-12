@@ -141,7 +141,7 @@
 
     @yield('javascript')
 
-    {{--@include('common.flash_message')--}}
+    @include('common.flash_message')
 
 </body>
 </html>
