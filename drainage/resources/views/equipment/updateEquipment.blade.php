@@ -27,7 +27,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="station_id">
                                         @foreach ($stations as $station)
-                                            <option value="{{ $station['id'] }}" {{$equipment['station_id'] == $station['id'] ? 'selected="selected"' : '';}}>{{ $station['name'] }}</option>
+                                            <option value="{{ $station['id'] }}" {{$equipment['station_id'] == $station['id'] ? 'selected="selected"' : ''}}>{{ $station['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('station'))
@@ -119,7 +119,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="leader_id">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}" {{$equipment['leader_id'] == $user['id'] ? 'selected="selected"' : '';}}>{{ $user['realname'] }}</option>
+                                            <option value="{{ $user['id'] }}" {{$equipment['leader_id'] == $user['id'] ? 'selected="selected"' : ''}}>{{ $user['realname'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('leader'))
@@ -136,7 +136,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="custodian_id">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}" {{$equipment['custodian_id'] == $user['id'] ? 'selected="selected"' : '';}}>{{ $user['realname'] }}</option>
+                                            <option value="{{ $user['id'] }}" {{$equipment['custodian_id'] == $user['id'] ? 'selected="selected"' : ''}}>{{ $user['realname'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('custodian'))
