@@ -74,6 +74,8 @@
 @endsection
 
 @section('javascript')
+
+    @foreach ($stations as $station)
     <script type="text/javascript">
         $('#btn-delete-alert-{{ $station['id'] }}').on("click",function () {
             swal({
@@ -96,6 +98,7 @@
             })
         });
     </script>
+    @endforeach
 
     {{--<script type="text/javascript">--}}
 
