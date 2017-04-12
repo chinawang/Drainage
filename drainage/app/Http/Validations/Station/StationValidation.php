@@ -100,7 +100,7 @@ class StationValidation extends Validation
 
         if (empty($stationID)) {
 //            throw new BadRequestException();
-            echo $stationID;
+            echo $stationID[0];
         }
 
         return $stationID;
