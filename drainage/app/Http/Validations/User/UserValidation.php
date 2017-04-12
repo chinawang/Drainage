@@ -68,7 +68,7 @@ class UserValidation extends Validation
     public function updateUser($userID)
     {
         $input = $this->filterRequest([
-            'employee_number','realname','office','contact','password'
+            'employee_number','realname','office','contact'
         ]);
 
         $rules = [
