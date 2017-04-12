@@ -20,11 +20,11 @@ class CreateFailuresTable extends Migration
             $table->string('failure_type')->nullable()->comment('故障分类');
             $table->string('failure_description')->nullable()->comment('故障现象描述');
             $table->string('equipment_status')->nullable()->comment('设备状态');
-            $table->unsignedInteger('reporter_id')->comment('报修人id');
+            $table->unsignedInteger('reporter_id')->nullable()->comment('报修人id');
             $table->dateTime('report_at')->nullable()->comment('报修时间');
             $table->tinyInteger('repair_process')->default(0)->comment('是否完成维修');
             $table->dateTime('repair_at')->nullable()->comment('维修时间');
-            $table->unsignedInteger('repairer_id')->comment('维修人id');
+            $table->unsignedInteger('repairer_id')->nullable()->comment('维修人id');
             $table->tinyInteger('delete_process')->default(0)->comment('是否删除');
             $table->timestamps();
         });
