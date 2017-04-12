@@ -69,6 +69,7 @@ class UserLogic extends Logic
      */
     public function createUser($attributes)
     {
+        $attributes['password'] = bcrypt($attributes['password']);
         return $this->userRepository->create($attributes);
     }
 
