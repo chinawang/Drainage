@@ -55,7 +55,7 @@
             "location": "WW0V9QP93VS8",
             "geolocation": "disabled",
             "position": "top-left",
-            "margin": "20px 20px",
+            "margin": "10px 10px",
             "language": "zh-chs",
             "unit": "c",
             "theme": "chameleon",
