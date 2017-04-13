@@ -18,12 +18,13 @@
                             <div class="col-md-6 col-title">
                                 维修记录列表
                             </div>
-                            <div class="col-md-5 col-btn">
+                            <div class="col-md-6 col-btn">
+                                <a href="/failure/lists" class="btn-link">返回</a>
                                 <a href="/maintenance/add/{{ $failureID }}" class="btn btn-primary btn-sm">添加维修记录</a>
                             </div>
-                            <div class="col-md-1 col-btn">
-                                <a href="/failure/lists" class="btn-link">返回</a>
-                            </div>
+                            {{--<div class="col-md-1 col-btn">--}}
+                                {{--<a href="/failure/lists" class="btn-link">返回</a>--}}
+                            {{--</div>--}}
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
