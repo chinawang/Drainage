@@ -58,7 +58,7 @@
                                 <label for="failure_reason" class="col-md-4 control-label">故障原因</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="failure_reason" value="{{ $maintenance['failure_reason'】 }}" placeholder="请输入故障原因" required >
+                                    <input type="text" class="form-control" name="failure_reason" value="{{ $maintenance['failure_reason'] }}" placeholder="请输入故障原因" required >
 
                                     @if ($errors->has('failure_reason'))
                                         <span class="help-block">
