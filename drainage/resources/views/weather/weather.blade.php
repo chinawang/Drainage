@@ -27,8 +27,7 @@
 
 @section('javascript')
 
-    <script type="text/javascript">
-        (function (T, h, i, n, k, P, a, g, e) {
+    <script>(function (T, h, i, n, k, P, a, g, e) {
             g = function () {
                 P = h.createElement(i);
                 a = h.getElementsByTagName(i)[0];
@@ -49,20 +48,19 @@
             }
         }(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))
     </script>
-    <script type="text/javascript">
+    <script>
         tpwidget("init", {
             "flavor": "bubble",
             "location": "WW0V9QP93VS8",
             "geolocation": "disabled",
             "position": "top-left",
-            "margin": "10px 10px",
+            "margin": "200px 300px",
             "language": "zh-chs",
             "unit": "c",
             "theme": "chameleon",
             "uid": "U4954D65B6",
-            "hash": "4822c3f0c454c300fe8a5d6a3beb95bb"
+            "hash": "53726de14b08605c08ed73005e8c9109"
         });
-        tpwidget("show");
-    </script>
+        tpwidget("show");</script>
 
 @endsection
