@@ -20,6 +20,7 @@
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/maintenance/update/{{ $maintenance['id'] }}">
                             {{ csrf_field() }}
+                            <input type="hidden" name="failure_id" value="{{ $maintenance['failure_id'] }}">
                             <div class="form-group{{ $errors->has('station') ? ' has-error' : '' }}">
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
@@ -86,7 +87,7 @@
                                 <label for="repairer" class="col-md-4 control-label">维修人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="">
+                                    <select class="form-control" id="select" name="repairer_id">
                                         @foreach ($users as $user)
                                             <option value="{{ $user['id'] }}" {{$maintenance['repairer_id'] == $user['id'] ? 'selected="selected"' : ''}}>{{ $user['realname'] }}</option>
                                         @endforeach
