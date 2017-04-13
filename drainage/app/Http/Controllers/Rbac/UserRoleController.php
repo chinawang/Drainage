@@ -71,7 +71,7 @@ class UserRoleController extends Controller
 
         $result = $this->userRoleLogic->setUserRoles($userID,$roleIDs);
 
-        return $result;
+        return $input;
 
         if($result)
         {
