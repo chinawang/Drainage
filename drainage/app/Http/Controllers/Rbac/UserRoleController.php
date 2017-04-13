@@ -48,7 +48,8 @@ class UserRoleController extends Controller
         $assignRoleIDs = $this->userRoleLogic->getRoleIDsByUserID($userID);
         $param = ['roles' => $roles,'assignRoleIDs' => $assignRoleIDs];
 
-        return view('rbac.setUserRole',$param);
+//        return view('rbac.setUserRole',$param);
+        return $assignRoleIDs;
     }
 
     /**

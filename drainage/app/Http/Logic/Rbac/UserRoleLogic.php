@@ -66,13 +66,8 @@ class UserRoleLogic extends Logic
     public function getRoleIDsByUserID($userID)
     {
         $userRoles = $this->getUserRoles($userID);
-        $roleIDs =[];
-        if(!empty($userRoles))
-        {
-            $roleIDs = array_column($userRoles,'role_id');
-        }
-
-        return $roleIDs;
+//        $roleIDs = array_column($userRoles,'role_id');
+        return $userRoles;
     }
 
     /**
