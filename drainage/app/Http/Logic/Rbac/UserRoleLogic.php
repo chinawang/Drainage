@@ -126,7 +126,7 @@ class UserRoleLogic extends Logic
          * array_diff();计算补集
          */
         $deleteRoleIDs = array_diff($assignRoleIDs,$roleIDs);
-        return $deleteRoleIDs;
+
         if($deleteRoleIDs)
         {
             $deleteResult = $this->userRoleRepository->deleteRoles($userID,$deleteRoleIDs);
@@ -138,6 +138,7 @@ class UserRoleLogic extends Logic
          * 角色集合B当中的某个角色不在角色集合A当中，就应该添加
          */
         $newRoleIDs = array_diff($roleIDs,$assignRoleIDs);
+        return $newRoleIDs;
         if($newRoleIDs)
         {
             $addResult = $this->userRoleRepository->addRoles($userID,$newRoleIDs);
