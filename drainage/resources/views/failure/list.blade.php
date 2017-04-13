@@ -37,8 +37,8 @@
                                     <th>报修人</th>
                                     <th>报修时间</th>
                                     <th>维修进度</th>
-                                    <th>维修人</th>
-                                    <th>维修时间</th>
+                                    <th hidden="hidden">维修人</th>
+                                    <th hidden="hidden">维修时间</th>
                                     <th>维修记录</th>
                                     <th>操作</th>
                                 </tr>
@@ -63,8 +63,8 @@
                                                 维修完成
                                             @endif
                                         </td>
-                                        <td>{{ $failure['repairer_name'] }}</td>
-                                        <td>{{ $failure['repair_at'] }}</td>
+                                        <td hidden="hidden">{{ $failure['repairer_name'] }}</td>
+                                        <td hidden="hidden">{{ $failure['repair_at'] }}</td>
                                         <td>
                                             @if($failure['repair_process'] == 0)
                                                 <a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>
