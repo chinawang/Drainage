@@ -67,11 +67,10 @@ class UserRoleController extends Controller
     {
         $input = $this->userRoleValidation->setUserRole();
 //        $userID = $input['user_id'];
-        $roleIDs = array_column($input,'id');
+        $roleIDs = $input['roles'];
 
         $result = $this->userRoleLogic->setUserRoles($userID,$roleIDs);
 
-        return $input;
 
         if($result)
         {
