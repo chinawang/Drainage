@@ -278,6 +278,8 @@ class MaintenanceController extends Controller
         $input = $this->maintenanceValidation->updateMaintenance($maintenanceID);
         $result = $this->maintenanceLogic->updateMaintenance($maintenanceID,$input);
 
+        return $input;
+
         if($result)
         {
             session()->flash('flash_message', [
