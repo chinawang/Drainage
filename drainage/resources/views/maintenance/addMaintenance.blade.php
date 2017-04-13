@@ -20,6 +20,7 @@
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/maintenance/store">
                             {{ csrf_field() }}
+                            <input type="hidden" name="failure_id" value="{{ $failure['id'] }}">
                             <div class="form-group{{ $errors->has('station') ? ' has-error' : '' }}">
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
@@ -111,6 +112,22 @@
                                     @if ($errors->has('repair_at'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('repair_at') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('	repair_process') ? ' has-error' : '' }}">
+                                <label for="equipment" class="col-md-4 control-label">维修进度</label>
+
+                                <div class="col-md-6">
+                                    <select class="form-control" id="select" name="repair_process">
+                                        <option value="1">维修中</option>
+                                        <option value="2">维修完成</option>
+                                    </select>
+                                    @if ($errors->has('	repair_process'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('	repair_process') }}</strong>
                                     </span>
                                     @endif
                                 </div>

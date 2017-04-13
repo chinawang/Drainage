@@ -113,6 +113,22 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('	repair_process') ? ' has-error' : '' }}">
+                                <label for="equipment" class="col-md-4 control-label">维修进度</label>
+
+                                <div class="col-md-6">
+                                    <select class="form-control" id="select" name="repair_process">
+                                        <option value="1" {{$maintenance['repair_process'] == 1 ? 'selected="selected"' : ''}}>维修中</option>
+                                        <option value="2" {{$maintenance['repair_process'] == 2 ? 'selected="selected"' : ''}}>维修完成</option>
+                                    </select>
+                                    @if ($errors->has('	repair_process'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('	repair_process') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary btn-custom">

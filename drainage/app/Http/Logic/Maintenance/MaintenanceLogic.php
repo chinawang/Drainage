@@ -9,6 +9,7 @@
 namespace App\Http\Logic\Maintenance;
 
 
+use App\Repositories\Maintenance\FailureRepository;
 use App\Repositories\Maintenance\MaintenanceRepository;
 use Support\Logic\Logic;
 
@@ -20,12 +21,19 @@ class MaintenanceLogic extends Logic
     protected $maintenanceRepository;
 
     /**
+     * @var FailureRepository
+     */
+    protected $failureRepository;
+
+    /**
      * MaintenanceLogic constructor.
      * @param MaintenanceRepository $maintenanceRepository
+     * @param FailureRepository $failureRepository
      */
-    public function __construct(MaintenanceRepository $maintenanceRepository)
+    public function __construct(MaintenanceRepository $maintenanceRepository,FailureRepository $failureRepository)
     {
         $this->maintenanceRepository = $maintenanceRepository;
+        $this->failureRepository = $failureRepository;
     }
 
     /**
@@ -104,7 +112,12 @@ class MaintenanceLogic extends Logic
      */
     public function createMaintenance($attributes)
     {
-        return $this->maintenanceRepository->create($attributes);
+        $failure = ['id' =>$attributes['failure_id'],'repair_process' => $attributes['repair_process'],
+            'repair_at' => $attributes['repair_at'],'repairer_id' => $attributes['repairer_id']];
+        $maintenanceResult = $this->maintenanceRepository->create($attributes);
+        $failureResult = $this->failureRepository->update($failure['id'],$failure);
+
+        return $maintenanceResult && $failureResult;
     }
 
     /**
@@ -114,7 +127,11 @@ class MaintenanceLogic extends Logic
      */
     public function updateMaintenance($maintenanceId,$input)
     {
-        return $this->maintenanceRepository->update($maintenanceId,$input);
+        $failure = ['id' =>$input['failure_id'],'repair_process' => $input['repair_process'],
+            'repair_at' => $input['repair_at'],'repairer_id' => $input['repairer_id']];
+        $maintenanceResult = $this->maintenanceRepository->update($maintenanceId,$input);
+        $failureResult = $this->failureRepository->update($failure['id'],$failure);
+        return $maintenanceResult && $failureResult;
     }
 
     /**

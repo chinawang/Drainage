@@ -168,7 +168,7 @@ Route::get('/station/maintenance/lists/{station_id}', 'Maintenance\MaintenanceCo
 Route::get('/failure/maintenance/lists/{failure_id}', 'Maintenance\MaintenanceController@maintenanceListOfFailure');
 
 //维修创建保存
-Route::get('/maintenance/add','Maintenance\MaintenanceController@showAddMaintenanceForm');
+Route::get('/maintenance/add/{failure_id}','Maintenance\MaintenanceController@showAddMaintenanceForm');
 Route::post('/maintenance/store','Maintenance\MaintenanceController@storeNewMaintenance');
 
 //维修编辑更新

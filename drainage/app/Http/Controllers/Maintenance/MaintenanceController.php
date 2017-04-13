@@ -66,13 +66,14 @@ class MaintenanceController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showAddMaintenanceForm()
+    public function showAddMaintenanceForm($failureID)
     {
+        $failure = $this->failureInfo($failureID);
         $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['equipments' => $equipments,'stations' => $stations,'users' => $users];
+        $param = ['failure' => $failure,'equipments' => $equipments,'stations' => $stations,'users' => $users];
         return view('maintenance.addMaintenance',$param);
     }
 

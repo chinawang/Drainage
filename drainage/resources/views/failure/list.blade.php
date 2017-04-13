@@ -39,6 +39,7 @@
                                     <th>维修进度</th>
                                     <th>维修人</th>
                                     <th>维修时间</th>
+                                    <th>维修记录</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -53,10 +54,26 @@
                                         <td>{{ $failure['equipment_status'] }}</td>
                                         <td>{{ $failure['reporter_name'] }}</td>
                                         <td>{{ $failure['report_at'] }}</td>
-                                        <td>{{ $failure['repair_process'] }}</td>
+                                        <td>
+                                            @if($failure['repair_process'] == 0)
+                                                未维修
+                                            @elseif($failure['repair_process'] == 1)
+                                                维修中
+                                            @elseif($failure['repair_process'] == 2)
+                                                维修完成
+                                            @endif
+                                        </td>
                                         <td>{{ $failure['repairer_name'] }}</td>
                                         <td>{{ $failure['repair_at'] }}</td>
                                         <td>
+                                            @if($failure['repair_process'] == 0)
+                                                暂无
+                                            @else
+                                                <a href="/failure/maintenance/lists/{{ $failure['id'] }}" class="btn btn-link">查看</a>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>
                                             <a href="/failure/edit/{{ $failure['id'] }}" class="btn btn-link">编辑</a>
                                             <a href="#" class="btn btn-link btn-delete-station"
                                                id="btn-delete-alert-{{ $failure['id'] }}">删除</a>
