@@ -20,6 +20,7 @@
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/user/role/store/{{ $user['id'] }}">
                             {{ csrf_field() }}
+                            <input type="hidden" name="user_id" value="{{ $user['id'] }}">
                             <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                                 <label for="user" class="col-md-4 control-label">用户</label>
 
