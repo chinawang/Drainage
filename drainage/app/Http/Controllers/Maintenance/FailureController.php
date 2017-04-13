@@ -94,7 +94,7 @@ class FailureController extends Controller
 
         $param = ['failure' => $failure,'equipments' => $equipments,
             'stations' => $stations,'users' => $users];
-        return view('failure.updateFailure',$param);
+//        return view('failure.updateFailure',$param);
         return $param;
     }
 
