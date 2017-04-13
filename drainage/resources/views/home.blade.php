@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="weather">
-                            <a href="" class="menu-item">
+                            <a href="/weather/view" class="menu-item">
                                 <img class="menu-icon" src="/img/home/weather.png">
                                 <h4>天气预报</h4>
                             </a>

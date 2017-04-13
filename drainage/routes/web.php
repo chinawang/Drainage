@@ -177,3 +177,10 @@ Route::post('/maintenance/update/{maintenance_id}','Maintenance\MaintenanceContr
 
 //删除维修
 Route::post('/maintenance/delete/{maintenance_id}','Maintenance\MaintenanceController@deleteMaintenance');
+
+/**
+ *天气相关
+ */
+
+//维修列表
+Route::get('/weather/view', 'Weather\WeatherController@showWeather');
