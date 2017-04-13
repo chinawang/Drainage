@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Rbac;
 
+use App\Http\Logic\Rbac\PermissionLogic;
 use App\Http\Logic\Rbac\RoleLogic;
+use App\Http\Logic\Rbac\RolePermissionLogic;
 use App\Http\Validations\Rbac\RoleValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,6 +17,16 @@ class RoleController extends Controller
     protected $roleLogic;
 
     /**
+     * @var RolePermissionLogic
+     */
+    protected $rolePermissionLogic;
+
+    /**
+     * @var PermissionLogic
+     */
+    protected $permissionLogic;
+
+    /**
      * @var RoleValidation
      */
     protected $roleValidation;
@@ -22,11 +34,15 @@ class RoleController extends Controller
     /**
      * RoleController constructor.
      * @param RoleLogic $roleLogic
+     * @param PermissionLogic $permissionLogic
+     * @param RolePermissionLogic $rolePermissionLogic
      * @param RoleValidation $roleValidation
      */
-    public function __construct(RoleLogic $roleLogic,RoleValidation $roleValidation)
+    public function __construct(RoleLogic $roleLogic, PermissionLogic $permissionLogic, RolePermissionLogic $rolePermissionLogic, RoleValidation $roleValidation)
     {
         $this->roleLogic = $roleLogic;
+        $this->permissionLogic = $permissionLogic;
+        $this->rolePermissionLogic = $rolePermissionLogic;
         $this->roleValidation = $roleValidation;
     }
 
@@ -46,7 +62,7 @@ class RoleController extends Controller
     {
         $role = $this->roleLogic->findRole($roleID);
         $param = ['role' => $role];
-        return view('rbac.updateRole',$param);
+        return view('rbac.updateRole', $param);
     }
 
     /**
@@ -66,13 +82,20 @@ class RoleController extends Controller
     {
         $input = $this->roleValidation->rolePaginate();
 
-        $cursorPage      = array_get($input, 'cursor_page', null);
-        $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
-        $pageSize        = array_get($input, 'page_size', 10);
-        $rolePaginate = $this->roleLogic->getRoles($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        $cursorPage = array_get($input, 'cursor_page', null);
+        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderDirection = array_get($input, 'order_direction', 'asc');
+        $pageSize = array_get($input, 'page_size', 10);
+        $rolePaginate = $this->roleLogic->getRoles($pageSize, $orderColumn, $orderDirection, $cursorPage);
+
+        foreach ($rolePaginate as $role) {
+            $assignPermissionIDs = $this->rolePermissionLogic->getPermissionIDsByRoleID($role['id']);
+            $assignPermissions = $this->permissionLogic->getPermissionsByIDs($assignPermissionIDs);
+            $user['assignPermissions'] = $assignPermissions;
+        }
+
         $param = ['roles' => $rolePaginate];
-        return view('rbac.roleList',$param);
+        return view('rbac.roleList', $param);
     }
 
     /**
@@ -83,21 +106,18 @@ class RoleController extends Controller
         $input = $this->roleValidation->storeNewRole();
         $result = $this->roleLogic->createRole($input);
 
-        if($result)
-        {
+        if ($result) {
             session()->flash('flash_message', [
-                'title'     => '保存成功!',
-                'message'   => '',
-                'level'     => 'success'
+                'title' => '保存成功!',
+                'message' => '',
+                'level' => 'success'
             ]);
             return redirect('/role/lists');
-        }
-        else
-        {
+        } else {
             session()->flash('flash_message_overlay', [
-                'title'     => '保存失败!',
-                'message'   => '数据未保存成功,请稍后重试!',
-                'level'     => 'error'
+                'title' => '保存失败!',
+                'message' => '数据未保存成功,请稍后重试!',
+                'level' => 'error'
             ]);
             return redirect()->back();
         }
@@ -110,23 +130,20 @@ class RoleController extends Controller
     public function updateRole($roleID)
     {
         $input = $this->roleValidation->updateRole($roleID);
-        $result = $this->roleLogic->updateRole($roleID,$input);
+        $result = $this->roleLogic->updateRole($roleID, $input);
 
-        if($result)
-        {
+        if ($result) {
             session()->flash('flash_message', [
-                'title'     => '保存成功!',
-                'message'   => '',
-                'level'     => 'success'
+                'title' => '保存成功!',
+                'message' => '',
+                'level' => 'success'
             ]);
             return redirect('/role/lists');
-        }
-        else
-        {
+        } else {
             session()->flash('flash_message_overlay', [
-                'title'     => '保存失败!',
-                'message'   => '数据未保存成功,请稍后重试!',
-                'level'     => 'error'
+                'title' => '保存失败!',
+                'message' => '数据未保存成功,请稍后重试!',
+                'level' => 'error'
             ]);
             return redirect()->back();
         }
@@ -140,20 +157,17 @@ class RoleController extends Controller
 //        $roleID = $this->roleValidation->deleteRole();
         $result = $this->roleLogic->deleteRole($roleID);
 
-        if($result)
-        {
+        if ($result) {
             session()->flash('flash_message', [
-                'title'     => '删除成功!',
-                'message'   => '',
-                'level'     => 'success'
+                'title' => '删除成功!',
+                'message' => '',
+                'level' => 'success'
             ]);
-        }
-        else
-        {
+        } else {
             session()->flash('flash_message_overlay', [
-                'title'     => '删除失败!',
-                'message'   => '数据未删除成功,请稍后重试!',
-                'level'     => 'error'
+                'title' => '删除失败!',
+                'message' => '数据未删除成功,请稍后重试!',
+                'level' => 'error'
             ]);
         }
 

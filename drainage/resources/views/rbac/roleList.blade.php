@@ -39,7 +39,15 @@
                                     <tr>
                                         <td>{{ $role['id'] }}</td>
                                         <td>{{ $role['name'] }}</td>
-                                        <td>{{ $role['slug'] }}</td>
+                                        <td>
+                                            @if(empty($role['assignPermissions']))
+                                                暂无
+                                            @else
+                                                @foreach($role['assignPermissions'] as $assignPermission)
+                                                    <span class="label label-default">{{ $assignPermission['name'] }}</span>
+                                                @endforeach
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="/role/permission/edit/{{ $role['id'] }}" class="btn btn-link">设置权限</a>
                                             <a href="/role/edit/{{ $role['id'] }}" class="btn btn-link">编辑</a>
