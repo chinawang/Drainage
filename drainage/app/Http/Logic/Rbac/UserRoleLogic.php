@@ -70,7 +70,7 @@ class UserRoleLogic extends Logic
         $roleIDs = null;
 
         foreach ($userRoles as $userRole){
-            $roleIDs = array_push($userRole['role_id']);
+            array_push($roleIDs,$userRole['role_id']);
         }
 
         return $roleIDs;
