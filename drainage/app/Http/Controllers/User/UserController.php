@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Logic\Rbac\RoleLogic;
+use App\Http\Logic\Rbac\UserRoleLogic;
 use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\User\UserValidation;
 use Illuminate\Http\Request;
@@ -15,6 +17,16 @@ class UserController extends Controller
     protected $userLogic;
 
     /**
+     * @var UserRoleLogic
+     */
+    protected $userRoleLogic;
+
+    /**
+     * @var RoleLogic
+     */
+    protected $roleLogic;
+
+    /**
      * @var UserValidation
      */
     protected $userValidation;
@@ -23,11 +35,15 @@ class UserController extends Controller
     /**
      * UserController constructor.
      * @param UserLogic $userLogic
+     * @param UserRoleLogic $userRoleLogic
+     * @param RoleLogic $roleLogic
      * @param UserValidation $userValidation
      */
-    public function __construct(UserLogic $userLogic,UserValidation $userValidation)
+    public function __construct(UserLogic $userLogic,UserRoleLogic $userRoleLogic,RoleLogic $roleLogic,UserValidation $userValidation)
     {
         $this->userLogic = $userLogic;
+        $this->userRoleLogic = $userRoleLogic;
+        $this->roleLogic = $roleLogic;
         $this->userValidation = $userValidation;
     }
 
@@ -94,6 +110,14 @@ class UserController extends Controller
         $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 10);
         $userPaginate = $this->userLogic->getUsers($pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        foreach ($userPaginate as $user)
+        {
+            $assignRoleIDs = $this->userRoleLogic->getRoleIDsByUserID($user['id']);
+            $assignRoles = $this->roleLogic->getRolesByIDs($assignRoleIDs);
+            $user['assignRoles'] = $assignRoles;
+        }
+
         $param = ['users' => $userPaginate];
         return view('user.list',$param);
     }
