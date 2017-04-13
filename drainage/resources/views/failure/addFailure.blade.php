@@ -88,12 +88,9 @@
                                 <label for="equipment" class="col-md-4 control-label">设备状态</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select class="form-control" id="select" name="equipment_status">
+                                        <option value="running">运行中</option>
+                                        <option value="stop">已停止运行</option>
                                     </select>
                                     @if ($errors->has('	equipment_status'))
                                         <span class="help-block">
