@@ -15,7 +15,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         添加维修记录
-                        <a href="/maintenance/lists" class="btn-link">返回</a>
+                        <a href="/failure/maintenance/lists/{{ $failure['id'] }}" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/maintenance/store">
