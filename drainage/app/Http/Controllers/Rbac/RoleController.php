@@ -91,7 +91,7 @@ class RoleController extends Controller
         foreach ($rolePaginate as $role) {
             $assignPermissionIDs = $this->rolePermissionLogic->getPermissionIDsByRoleID($role['id']);
             $assignPermissions = $this->permissionLogic->getPermissionsByIDs($assignPermissionIDs);
-            $user['assignPermissions'] = $assignPermissions;
+            $role['assignPermissions'] = $assignPermissions;
         }
 
         $param = ['roles' => $rolePaginate];
