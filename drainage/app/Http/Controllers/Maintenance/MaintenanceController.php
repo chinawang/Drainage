@@ -276,7 +276,7 @@ class MaintenanceController extends Controller
     public function updateMaintenance($maintenanceID)
     {
         $input = $this->maintenanceValidation->updateMaintenance($maintenanceID);
-        $result = $this->maintenanceLogic->updateMaintenance($maintenanceID,$input);
+//        $result = $this->maintenanceLogic->updateMaintenance($maintenanceID,$input);
 
         return $input;
 
