@@ -18,14 +18,16 @@
                         <a href="/user/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/user/role/store/{{ $user['id'] }}">
+                        <form class="form-horizontal" role="form" method="POST"
+                              action="/user/role/store/{{ $user['id'] }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="user_id" value="{{ $user['id'] }}">
                             <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                                 <label for="user" class="col-md-4 control-label">用户</label>
 
                                 <div class="col-md-6">
-                                    <input id="realname" type="text" class="form-control" name="realname" disabled="disabled" value="{{ $user['realname'] }}" required >
+                                    <input id="realname" type="text" class="form-control" name="realname"
+                                           disabled="disabled" value="{{ $user['realname'] }}" required>
 
                                     @if ($errors->has('realname'))
                                         <span class="help-block">
@@ -36,12 +38,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="permission" class="col-md-4 control-label">角色</label>
+                                <label for="role" class="col-md-4 control-label">角色</label>
 
                                 <div class="col-md-6">
                                     @foreach ($roles as $role)
                                         <label class="checkbox-inline">
-                                            <input name="roles[]" type="checkbox" id="inlineCheckbox{{$role['id']}}" value="{{$role['id']}}" {{!in_array($role['id'], $assignRoleIDs)?:' checked'}}>{{$role['name']}}
+                                            <input name="roles[]" type="checkbox" id="inlineCheckbox{{$role['id']}}"
+                                                   value="{{$role['id']}}" {{!in_array($role['id'], $assignRoleIDs)?:' checked'}}>{{$role['name']}}
                                         </label>
                                     @endforeach
                                 </div>

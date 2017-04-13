@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Rbac;
 
 use App\Http\Logic\Rbac\PermissionLogic;
+use App\Http\Logic\Rbac\RoleLogic;
 use App\Http\Logic\Rbac\RolePermissionLogic;
 use App\Http\Validations\Rbac\RolePermissionValidation;
 use Illuminate\Http\Request;
@@ -21,6 +22,11 @@ class RolePermissionController extends Controller
     protected $permissionLogic;
 
     /**
+     * @var RoleLogic
+     */
+    protected $roleLogic;
+
+    /**
      * @var RolePermissionValidation
      */
     protected $rolePermissionValidation;
@@ -29,12 +35,14 @@ class RolePermissionController extends Controller
      * RolePermissionController constructor.
      * @param RolePermissionLogic $rolePermissionLogic
      * @param PermissionLogic $permissionLogic
+     * @param RoleLogic $roleLogic
      * @param RolePermissionValidation $rolePermissionValidation
      */
-    public function __construct(RolePermissionLogic $rolePermissionLogic,PermissionLogic $permissionLogic,RolePermissionValidation $rolePermissionValidation)
+    public function __construct(RolePermissionLogic $rolePermissionLogic,PermissionLogic $permissionLogic,RoleLogic $roleLogic,RolePermissionValidation $rolePermissionValidation)
     {
         $this->rolePermissionLogic = $rolePermissionLogic;
         $this->permissionLogic = $permissionLogic;
+        $this->roleLogic = $roleLogic;
         $this->rolePermissionValidation = $rolePermissionValidation;
     }
 
@@ -46,7 +54,8 @@ class RolePermissionController extends Controller
     {
         $permissions = $this->permissionLogic->getAllPermissions();
         $assignPermissionIDs = $this->rolePermissionLogic->getPermissionIDsByRoleID($roleID);
-        $param = ['permissions' => $permissions,'assignPermissionIDs' => $assignPermissionIDs];
+        $role = $this->roleLogic->findRole($roleID);
+        $param = ['role' => $role,'permissions' => $permissions,'assignPermissionIDs' => $assignPermissionIDs];
 
         return view('rbac.setRolePermission',$param);
     }
@@ -54,11 +63,12 @@ class RolePermissionController extends Controller
     /**
      * @return bool
      */
-    public function setRolePermission()
+    public function setRolePermission($roleID)
     {
         $input = $this->rolePermissionValidation->setRolePermission();
-        $roleID = $input['role_id'];
-        $permissionIDs = array_column($input,'id');
+//        $roleID = $input['role_id'];
+        $permissionIDs = $input['permissions'];
+
         $result = $this->rolePermissionLogic->setRolePermissions($roleID,$permissionIDs);
 
         if($result)

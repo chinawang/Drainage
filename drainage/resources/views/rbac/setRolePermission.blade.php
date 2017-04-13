@@ -15,16 +15,24 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         设置角色权限
-                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
+                        <a href="/role/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/role/permission/store/{{ $role['id'] }}">
                             {{ csrf_field() }}
+                            <input type="hidden" name="role_id" value="{{ $role['id'] }}">
                             <div class="form-group">
                                 <label for="role" class="col-md-4 control-label">角色</label>
 
                                 <div class="col-md-6">
-                                    <input id="disabledInput" type="text" class="form-control" name="role" value=""  required >
+                                    <input id="name" type="text" class="form-control" name="name"
+                                           disabled="disabled" value="{{ $role['name'] }}" required>
+
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 
@@ -32,14 +40,12 @@
                                 <label for="permission" class="col-md-4 control-label">权限</label>
 
                                 <div class="col-md-6">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> 查看用户列表
+                                    @foreach ($permissions as $permission)
+                                        <label class="checkbox-inline">
+                                            <input name="permissions[]" type="checkbox" id="inlineCheckbox{{$permission['id']}}"
+                                                   value="{{$permission['id']}}" {{!in_array($permission['id'], $assignPermissionIDs)?:' checked'}}>{{$permission['name']}}
                                         </label>
-                                        <label>
-                                            <input type="checkbox"> 添加用户
-                                        </label>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
 

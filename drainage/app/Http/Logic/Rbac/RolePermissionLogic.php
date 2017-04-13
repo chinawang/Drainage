@@ -67,7 +67,12 @@ class RolePermissionLogic extends Logic
     public function getPermissionIDsByRoleID($roleID)
     {
         $rolePermissions = $this->getRolePermissions($roleID);
-        $permissionIDs = array_column($rolePermissions,'permission_id');
+//        $permissionIDs = array_column($rolePermissions,'permission_id');
+        $permissionIDs = array();
+
+        foreach ($rolePermissions as $rolePermission){
+            $permissionIDs[] = $rolePermission['permission_id'];
+        }
         return $permissionIDs;
     }
 

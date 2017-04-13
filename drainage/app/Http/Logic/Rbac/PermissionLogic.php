@@ -69,6 +69,16 @@ class PermissionLogic extends Logic
     }
 
     /**
+     * @param $permissionIDs
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getPermissionsByIDs($permissionIDs)
+    {
+        $permissionList = $this->permissionRepository->get($permissionIDs);
+        return $permissionList;
+    }
+
+    /**
      * @param $attributes
      * @return bool|\Illuminate\Database\Eloquent\Model
      */
