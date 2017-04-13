@@ -126,7 +126,7 @@ Route::post('/role/delete/{role_id}','Rbac\RoleController@deleteRole');
 
 //角色权限设置
 Route::get('/role/permission/edit/{role_id}','Rbac\RolePermissionController@showSetRolePermissionForm');
-Route::post('/role/permission/store','Rbac\RolePermissionController@setRolePermission');
+Route::post('/role/permission/store/{role_id}','Rbac\RolePermissionController@setRolePermission');
 
 
 /**
@@ -135,7 +135,7 @@ Route::post('/role/permission/store','Rbac\RolePermissionController@setRolePermi
 
 //用户角色设置
 Route::get('/user/role/edit/{user_id}','Rbac\UserRoleController@showSetUserRoleForm');
-Route::post('/user/role/store','Rbac\UserRoleController@setUserRole');
+Route::post('/user/role/store/{user_id}','Rbac\UserRoleController@setUserRole');
 
 
 /**

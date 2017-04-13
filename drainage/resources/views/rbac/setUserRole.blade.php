@@ -15,16 +15,20 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         设置用户角色
-                        <a href="javascript:history.back(-1)" class="btn-link">返回</a>
+                        <a href="/user/lists" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
+                        <form class="form-horizontal" role="form" method="POST" action="/user/role/store/{{ $user['id'] }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                                 <label for="user" class="col-md-4 control-label">用户</label>
 
                                 <div class="col-md-6">
-                                    <input id="disabledInput" type="text" class="form-control" name="user" value=""  required >
+                                    <input id="realname" type="text" class="form-control" name="realname" disabled="disabled" value="{{ $user['realname'] }}" required >
+
+                                    @if ($errors->has('realname'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('realname') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -34,14 +38,11 @@
                                 <label for="permission" class="col-md-4 control-label">角色</label>
 
                                 <div class="col-md-6">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> 管理员
+                                    @foreach ($roles as $role)
+                                        <label class="checkbox-inline">
+                                            <input name="roles[]" type="checkbox" id="inlineCheckbox{{$role['id']}}" value="{{$role['id']}}" {{!in_array($role['id'], $assignRoleIDs)?:' checked'}}>{{$role['name']}}
                                         </label>
-                                        <label>
-                                            <input type="checkbox"> 操作员
-                                        </label>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
 

@@ -46,7 +46,7 @@ class RolePermissionController extends Controller
     {
         $permissions = $this->permissionLogic->getAllPermissions();
         $assignPermissionIDs = $this->rolePermissionLogic->getPermissionIDsByRoleID($roleID);
-        $param = ['permissions' => $permissions->toJson(),'assignPermissionIDs' => $assignPermissionIDs->toJson()];
+        $param = ['permissions' => $permissions,'assignPermissionIDs' => $assignPermissionIDs];
 
         return view('rbac.setRolePermission',$param);
     }

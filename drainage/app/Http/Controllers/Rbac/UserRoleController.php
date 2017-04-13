@@ -46,7 +46,7 @@ class UserRoleController extends Controller
     {
         $roles = $this->roleLogic->getAllRoles();
         $assignRoleIDs = $this->userRoleLogic->getRoleIDsByUserID($userID);
-        $param = ['roles' => $roles->toJson(),'assignRoleIDs' => $assignRoleIDs->toJson()];
+        $param = ['roles' => $roles,'assignRoleIDs' => $assignRoleIDs];
 
         return view('rbac.setUserRole',$param);
     }
@@ -54,10 +54,10 @@ class UserRoleController extends Controller
     /**
      * @return bool
      */
-    public function setUserRole()
+    public function setUserRole($userID)
     {
         $input = $this->userRoleValidation->setUserRole();
-        $userID = $input['user_id'];
+//        $userID = $input['user_id'];
         $roleIDs = array_column($input,'id');
 
         $result = $this->userRoleLogic->setUserRoles($userID,$roleIDs);
