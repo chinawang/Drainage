@@ -52,7 +52,7 @@ class UserRoleRepository extends Repository
      */
     public function deleteRoles($userID, array $roleIDs)
     {
-        return $this->mode->where('user_id', $userID)->whereIn('role_id', $roleIDs)->delete();
+        return $this->model->where('user_id', $userID)->whereIn('role_id', $roleIDs)->delete();
     }
 
     /**
