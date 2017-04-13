@@ -67,7 +67,7 @@ class UserRoleLogic extends Logic
     {
         $userRoles = $this->getUserRoles($userID);
 //        $roleIDs = array_column($userRoles,'role_id');
-        $roleIDs = [];
+        $roleIDs = array();
 
         foreach ($userRoles as $userRole){
             $roleIDs = array_push($userRole['role_id']);
