@@ -237,7 +237,7 @@ class MaintenanceController extends Controller
             $maintenance['repairer_name'] = $repairer['realname'];
         }
 
-        $param = ['maintenances' => $maintenancePaginate];
+        $param = ['maintenances' => $maintenancePaginate,'failureID' => $failureID];
         return view('maintenance.listOfFailure',$param);
     }
 

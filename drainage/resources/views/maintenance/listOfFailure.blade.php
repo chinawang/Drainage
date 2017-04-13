@@ -19,7 +19,7 @@
                                 维修记录列表
                             </div>
                             <div class="col-md-6 col-btn">
-                                <a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-primary btn-sm">添加维修记录</a>
+                                <a href="/maintenance/add/{{ $failureID }}" class="btn btn-primary btn-sm">添加维修记录</a>
                             </div>
                         </div>
                     </div>
