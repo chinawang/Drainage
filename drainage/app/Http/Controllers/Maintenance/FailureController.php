@@ -86,6 +86,7 @@ class FailureController extends Controller
         $failure['station_name'] = $station['name'];
         $failure['reporter_name'] = $reporter['realname'];
         $failure['repairer_name'] = $repairer['realname'];
+        $failure['reporter_at'] = date_format($failure['reporter_at'],'yyyy-mm-dd hh:ii');
 
         $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
@@ -94,6 +95,7 @@ class FailureController extends Controller
         $param = ['failure' => $failure,'equipments' => $equipments,
             'stations' => $stations,'users' => $users];
         return view('failure.updateFailure',$param);
+        return $param;
     }
 
     /**
