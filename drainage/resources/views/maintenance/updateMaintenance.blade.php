@@ -26,7 +26,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="station_id">
                                         @foreach ($stations as $station)
-                                            <option value="{{ $station['id'] }}" {{$maintenance['station_id'] == $station['id'] ? 'selected="selected"' : '';}}>{{ $station['name'] }}</option>
+                                            <option value="{{ $station['id'] }}" {{$maintenance['station_id'] == $station['id'] ? 'selected="selected"' : ''}}>{{ $station['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('station'))
@@ -43,7 +43,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="equipment_id">
                                         @foreach ($equipments as $equipment)
-                                            <option value="{{ $equipment['id'] }}" {{$maintenance['equipment_id'] == $equipment['id'] ? 'selected="selected"' : '';}}>{{ $equipment['name'] }}</option>
+                                            <option value="{{ $equipment['id'] }}" {{$maintenance['equipment_id'] == $equipment['id'] ? 'selected="selected"' : ''}}>{{ $equipment['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('equipment'))
@@ -88,7 +88,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}" {{$maintenance['repairer_id'] == $user['id'] ? 'selected="selected"' : '';}}>{{ $user['realname'] }}</option>
+                                            <option value="{{ $user['id'] }}" {{$maintenance['repairer_id'] == $user['id'] ? 'selected="selected"' : ''}}>{{ $user['realname'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('repairer'))
