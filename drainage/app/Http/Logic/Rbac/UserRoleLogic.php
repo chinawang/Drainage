@@ -126,6 +126,7 @@ class UserRoleLogic extends Logic
          * array_diff();计算补集
          */
         $deleteRoleIDs = array_diff($assignRoleIDs,$roleIDs);
+        return $deleteRoleIDs;
         if($deleteRoleIDs)
         {
             $deleteResult = $this->userRoleRepository->deleteRoles($userID,$deleteRoleIDs);

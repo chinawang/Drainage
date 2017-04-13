@@ -71,6 +71,8 @@ class UserRoleController extends Controller
 
         $result = $this->userRoleLogic->setUserRoles($userID,$roleIDs);
 
+        return $result;
+
         if($result)
         {
             session()->flash('flash_message', [
