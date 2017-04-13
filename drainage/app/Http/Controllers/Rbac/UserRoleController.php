@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Rbac;
 
 use App\Http\Logic\Rbac\RoleLogic;
 use App\Http\Logic\Rbac\UserRoleLogic;
+use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Rbac\UserRoleValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,16 +27,23 @@ class UserRoleController extends Controller
     protected $userRoleValidation;
 
     /**
+     * @var UserLogic
+     */
+    protected $userLogic;
+
+    /**
      * UserRoleController constructor.
      * @param UserRoleLogic $userRoleLogic
      * @param RoleLogic $roleLogic
      * @param UserRoleValidation $userRoleValidation
+     * @param UserLogic $userLogic
      */
-    public function __construct(UserRoleLogic $userRoleLogic,RoleLogic $roleLogic,UserRoleValidation $userRoleValidation)
+    public function __construct(UserRoleLogic $userRoleLogic,RoleLogic $roleLogic,UserRoleValidation $userRoleValidation,UserLogic $userLogic)
     {
         $this->userRoleLogic = $userRoleLogic;
         $this->roleLogic = $roleLogic;
         $this->userRoleValidation = $userRoleValidation;
+        $this->userLogic = $userLogic;
     }
 
     /**
@@ -46,7 +54,8 @@ class UserRoleController extends Controller
     {
         $roles = $this->roleLogic->getAllRoles();
         $assignRoleIDs = $this->userRoleLogic->getRoleIDsByUserID($userID);
-        $param = ['roles' => $roles,'assignRoleIDs' => $assignRoleIDs];
+        $user = $this->userLogic->findUser($userID);
+        $param = ['user' => $user ,'roles' => $roles,'assignRoleIDs' => $assignRoleIDs];
 
         return view('rbac.setUserRole',$param);
     }
