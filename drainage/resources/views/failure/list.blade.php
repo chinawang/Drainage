@@ -67,13 +67,13 @@
                                         <td>{{ $failure['repair_at'] }}</td>
                                         <td>
                                             @if($failure['repair_process'] == 0)
-                                                暂无
+                                                <a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>
                                             @else
                                                 <a href="/failure/maintenance/lists/{{ $failure['id'] }}" class="btn btn-link">查看</a>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>
+                                            {{--<a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>--}}
                                             <a href="/failure/edit/{{ $failure['id'] }}" class="btn btn-link">编辑</a>
                                             <a href="#" class="btn btn-link btn-delete-station"
                                                id="btn-delete-alert-{{ $failure['id'] }}">删除</a>
