@@ -89,8 +89,8 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="equipment_status">
-                                        <option value="running">运行中</option>
-                                        <option value="stop">已停止运行</option>
+                                        <option value="运行中">运行中</option>
+                                        <option value="已停止运行">已停止运行</option>
                                     </select>
                                     @if ($errors->has('	equipment_status'))
                                         <span class="help-block">

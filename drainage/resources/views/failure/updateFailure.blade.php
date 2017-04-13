@@ -87,8 +87,8 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="equipment_status">
-                                        <option value="running" {{$failure['equipment_status'] == "running" ? 'selected="selected"' : ''}}>运行中</option>
-                                        <option value="stop" {{$failure['equipment_status'] == "stop" ? 'selected="selected"' : ''}}>已停止运行</option>
+                                        <option value="运行中" {{$failure['equipment_status'] == "running" ? 'selected="selected"' : ''}}>运行中</option>
+                                        <option value="已停止运行" {{$failure['equipment_status'] == "stop" ? 'selected="selected"' : ''}}>已停止运行</option>
                                     </select>
                                     @if ($errors->has('	equipment_status'))
                                         <span class="help-block">
