@@ -20,7 +20,9 @@
                             </div>
                             <div class="col-md-6 col-btn">
                                 <a href="/maintenance/add" class="btn btn-primary btn-sm">添加维修记录</a>
+                                <a href="/failure/lists" class="btn-link">返回</a>
                             </div>
+
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
