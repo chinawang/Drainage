@@ -936,26 +936,26 @@
 
 
 
-    <script type="text/javascript">
+    {{--<script type="text/javascript">--}}
 
-        var url = "{!! $weatherURL !!}";
+        {{--var url = "{!! $weatherURL !!}";--}}
 
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'JSONP',
-            success: function (data) {
-                var obj = document.getElementById('content-weather');
-                var weather = data.results[0]
-                var text = [];
-                text.push("Location: " + weather.location.name);
-                text.push("Weather: " + weather.now.text);
-                text.push("Temperature: " + weather.now.temperature);
+        {{--$.ajax({--}}
+            {{--url: url,--}}
+            {{--type: 'GET',--}}
+            {{--dataType: 'JSONP',--}}
+            {{--success: function (data) {--}}
+                {{--var obj = document.getElementById('content-weather');--}}
+                {{--var weather = data.results[0]--}}
+                {{--var text = [];--}}
+                {{--text.push("Location: " + weather.location.name);--}}
+                {{--text.push("Weather: " + weather.now.text);--}}
+                {{--text.push("Temperature: " + weather.now.temperature);--}}
 
-                obj.innerText = text.join("\n")
-            }
-        });
+                {{--obj.innerText = text.join("\n")--}}
+            {{--}--}}
+        {{--});--}}
 
-    </script>
+    {{--</script>--}}
 
 @endsection
