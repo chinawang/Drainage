@@ -25,9 +25,24 @@ class WeatherController extends Controller
         $dailyURL = $this->getDailyURL();
         $dailyWeather =$this->getDailyWeather($dailyURL);
 
-        $param = ['nowWeather' => $nowWeather,'dailyWeather' => $dailyWeather];
+        $nowResult = null;
+        $dailyResult = null;
 
-        return $nowWeather;
+        foreach ($nowWeather as $now)
+        {
+            $nowResult = $now;
+        }
+
+        foreach ($dailyWeather as $daily)
+        {
+            $dailyResult = $daily;
+        }
+
+
+
+        $param = ['nowWeather' => $nowResult,'dailyWeather' => $dailyResult];
+
+        return $param;
 
 
 
