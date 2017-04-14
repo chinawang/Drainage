@@ -69,17 +69,6 @@
     <script type="text/javascript">
 
         var url = "{!! $weatherURL !!}";
-//        alert(url);
-        // 直接发送请求进行调用，手动处理回调函数
-//        $.getJSON(url, function(data) {
-//            var obj = document.getElementById('content-weather');
-//            var weather = data.results[0]
-//            var text = [];
-//            text.push("Location: " + weather.location.path);
-//            text.push("Weather: " + weather.now.text);
-//            text.push("Temperature: " + weather.now.temperature);
-//            obj.innerText = text.join("\n")
-//        });
 
         $.ajax({
             url: url,
@@ -89,9 +78,19 @@
                 var obj = document.getElementById('content-weather');
                 var weather = data.results[0]
                 var text = [];
-                text.push("Location: " + weather.location.path);
+                text.push("Location: " + weather.location.name);
                 text.push("Weather: " + weather.now.text);
                 text.push("Temperature: " + weather.now.temperature);
+                text.push("feels_like: " + weather.now.feels_like);
+                text.push("pressure: " + weather.now.pressure);
+                text.push("humidity: " + weather.now.humidity);
+                text.push("visibility: " + weather.now.visibility);
+                text.push("wind_direction: " + weather.now.wind_direction);
+                text.push("wind_direction_degree: " + weather.now.wind_direction_degree);
+                text.push("wind_speed: " + weather.now.wind_speed);
+                text.push("wind_scale: " + weather.now.wind_scale);
+                text.push("wind_speed: " + weather.now.wind_speed);
+
                 obj.innerText = text.join("\n")
             }
         });
