@@ -24,6 +24,7 @@ class WeatherController extends Controller
 
 //        return $url;
         $weatherURL = parse_url($url);
+        return $weatherURL;
         $weatherData = file_get_contents($weatherURL);
         return $weatherData;
 
