@@ -64,6 +64,8 @@
         {{--tpwidget("show");--}}
     {{--</script>--}}
 
+    <script src="https://cdn.bootcss.com/jsSHA/2.2.0/sha1.js"></script>
+
     <script>
         /******** 本示例仅做开发参考使用，不建议在生产环节下暴露 key！ ********/
         var UID = "ID：U4954D65B6"; // 测试用 用户ID，请更换成您自己的用户ID
