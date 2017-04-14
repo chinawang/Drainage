@@ -65,7 +65,6 @@
     {{--</script>--}}
 
 
-    <script type="text/javascript" src="{!! $weatherURL !!}"></script>
 
     {{--<script>--}}
 
