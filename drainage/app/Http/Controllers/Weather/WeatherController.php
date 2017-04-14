@@ -19,7 +19,10 @@ class WeatherController extends Controller
      */
     public function showWeather()
     {
-        $param = $this->getWeatherURL();
+        $url = $this->getWeatherURL();
+        $param = ['weatherURL' => $url];
+
+        return $param;
 
         return view('weather.weather',$param);
     }
