@@ -117,7 +117,7 @@ class WeatherController extends Controller
         $key = 'rybl3izena2a0lug'; // 测试用 key，请更换成您自己的 Key
         $uid = 'U4954D65B6'; // 测试用 用户ID，请更换成您自己的用户ID
         // 参数
-        $api = 'http://api.thinkpage.cn/v3/weather/now.json'; // 接口地址
+        $api = 'http://api.thinkpage.cn/v3/weather/daily.json'; // 接口地址
         $location = 'zhengzhou'; // 城市名称。除拼音外，还可以使用 v3 id、汉语等形式
         // 获取当前时间戳，并构造验证参数字符串
         $keyname = "ts=".time()."&ttl=300&uid=".$uid;
