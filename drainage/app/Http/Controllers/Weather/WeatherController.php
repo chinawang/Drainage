@@ -25,9 +25,9 @@ class WeatherController extends Controller
         $dailyURL = $this->getDailyURL();
         $dailyWeather =$this->getDailyWeather($dailyURL);
 
-        $param = ['nowWeather' => json_encode($nowWeather),'dailyWeather' => json_encode($dailyWeather)];
+        $param = ['nowWeather' => $nowWeather,'dailyWeather' => $dailyWeather];
 
-        return $param;
+        return $nowWeather;
 
 
 
