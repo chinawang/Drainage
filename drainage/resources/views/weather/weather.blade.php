@@ -66,7 +66,7 @@
     </script>
     <script>
         var obj = document.getElementById('73cd93ca-5573-11e6-beb8-9e71128cae77');
-        obj.onmouseover;
+//        obj.onmouseover;
         alert(obj.innerHTML);
     </script>
 
