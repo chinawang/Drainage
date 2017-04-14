@@ -20,10 +20,10 @@ class WeatherController extends Controller
     public function showWeather()
     {
         $nowURL = $this->getNowURL();
-        $nowWeather = $this->getNowWeather($nowURL)[0];
+        $nowWeather = $this->getNowWeather($nowURL);
 
         $dailyURL = $this->getDailyURL();
-        $dailyWeather =$this->getDailyWeather($dailyURL)[0];
+        $dailyWeather =$this->getDailyWeather($dailyURL);
 
         $param = ['nowWeather' => $nowWeather,'dailyWeather' => $dailyWeather];
 
