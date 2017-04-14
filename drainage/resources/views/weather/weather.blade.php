@@ -65,7 +65,7 @@
         tpwidget("show");
     </script>
     <script>
-        var obj = document.getElementsByClassName('widgetNotAlarmed_gUZaYhN widgetBg0_Is_j7yK');
+        var obj = document.getElementsByClassName('tpwthwidt');
         obj.onmouseover;
         alert(obj.innerHTML);
     </script>
