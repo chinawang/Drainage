@@ -61,6 +61,9 @@
             "uid": "U4954D65B6",
             "hash": "53726de14b08605c08ed73005e8c9109"
         });
-        tpwidget("show");</script>
+        tpwidget("show");
+    </script>
+
+    <script src="http://ext.weather.com.cn/home/58f02dc29dfb1d0be4678dd8.js"></script>
 
 @endsection
