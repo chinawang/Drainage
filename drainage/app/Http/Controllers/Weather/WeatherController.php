@@ -23,7 +23,7 @@ class WeatherController extends Controller
         $param = ['weatherURL' => $url];
 
 //        return $url;
-        $weatherData = fopen($url);
+        $weatherData = fopen($url,"r");
         return $weatherData;
 
         return view('weather.weather',$param);
