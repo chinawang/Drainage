@@ -24,8 +24,13 @@ class WeatherController extends Controller
 
 //        return $url;
 
-//        $weatherData = file_get_contents($url);
-//        return $weatherData;
+        $handle = fopen($url,"rb");
+        $content = "";
+        while (!feof($handle)) {
+            $content .= fread($handle, 10000);
+        }
+        fclose($handle);
+        return $content;
 
         return view('weather.weather',$param);
     }
