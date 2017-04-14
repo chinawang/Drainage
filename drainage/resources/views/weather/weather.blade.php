@@ -17,7 +17,9 @@
                         天气
                     </div>
                     <div class="panel-body custom-panel-body" id="content-weather">
-
+                        <iframe src="//www.seniverse.com/weather/weather.aspx?uid=U4954D65B6&cid=CHHA000000&l=zh-CHS&p=SMART&a=0&u=C&s=1&m=0&x=1&d=5&fc=&bgc=&bc=&ti=0&in=1&li="
+                                frameborder="0" scrolling="no" width="360" height="300"
+                                allowTransparency="true"></iframe>
                     </div>
                 </div>
             </div>
@@ -63,11 +65,6 @@
             "hash": "4822c3f0c454c300fe8a5d6a3beb95bb"
         });
         tpwidget("show");
-    </script>
-    <script>
-        var obj = document.getElementById('73cd93ca-5573-11e6-beb8-9e71128cae77');
-//        obj.onmouseover;
-        alert(obj.innerHTML);
     </script>
 
 
