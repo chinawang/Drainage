@@ -22,8 +22,6 @@ class WeatherController extends Controller
         $url = $this->getWeatherURL();
         $param = ['weatherURL' => $url];
 
-        return $param;
-
         return view('weather.weather',$param);
     }
 
