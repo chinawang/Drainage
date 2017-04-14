@@ -99,6 +99,7 @@ class MaintenanceController extends Controller
 
         $param = ['maintenance' => $maintenance,'equipments' => $equipments,
             'stations' => $stations,'users' => $users];
+        return $param;
         return view('maintenance.updateMaintenance',$param);
     }
 
