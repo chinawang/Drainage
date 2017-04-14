@@ -24,7 +24,7 @@ class WeatherController extends Controller
 
 //        return $url;
 
-        $handle = fopen($url,"rb");
+        $handle = fopen("http://api.thinkpage.cn/v3/weather/now.json?location=郑州&ts=1492174508&ttl=300&uid=U4954D65B6&sig=QJdGcHQd4Rtp0wFCTot9a70TYoU%3D","rb");
         $content = "";
         while (!feof($handle)) {
             $content .= fread($handle, 10000);
