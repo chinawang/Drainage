@@ -40,7 +40,7 @@ class WeatherController extends Controller
 
 
 
-        $param = ['nowWeather' => $nowResult->results,'dailyWeather' => $dailyResult->results];
+        $param = ['nowWeather' => $nowResult->results[0],'dailyWeather' => $dailyResult->results[0]];
 
         return $param;
 
