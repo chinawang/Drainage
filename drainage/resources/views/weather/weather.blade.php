@@ -68,7 +68,7 @@
 
     <script>
 
-        var url = "{{ $weatherURL }}";
+        var url = "{{ $data }}";
         alert(url);
         // 直接发送请求进行调用，手动处理回调函数
         $.getJSON(url, function(data) {
