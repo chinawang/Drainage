@@ -24,13 +24,22 @@ class WeatherController extends Controller
 
 //        return $url;
 
-        $handle = fopen("http://api.thinkpage.cn/v3/weather/now.json?location=郑州&ts=1492174508&ttl=300&uid=U4954D65B6&sig=QJdGcHQd4Rtp0wFCTot9a70TYoU%3D","rb");
-        $content = "";
-        while (!feof($handle)) {
-            $content .= fread($handle, 10000);
+        // 1. 初始化
+        $ch = curl_init();
+        // 2. 设置选项，包括URL
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch,CURLOPT_HEADER,0);
+        // 3. 执行并获取HTML文档内容
+        $output = curl_exec($ch);
+        if($output === FALSE ){
+            echo "CURL Error:".curl_error($ch);
         }
-        fclose($handle);
-        return $content;
+        // 4. 释放curl句柄
+        curl_close($ch);
+
+
+        return $output;
 
         return view('weather.weather',$param);
     }
