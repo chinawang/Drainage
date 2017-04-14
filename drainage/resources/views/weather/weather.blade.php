@@ -66,20 +66,20 @@
 
 
 
-    {{--<script>--}}
+    <script type="text/javascript">
 
-        {{--var url = "{!! $weatherURL !!}";--}}
-{{--//        alert(url);--}}
-        {{--// 直接发送请求进行调用，手动处理回调函数--}}
-        {{--$.getJSON(url, function(data) {--}}
-            {{--var obj = document.getElementById('content-weather');--}}
-            {{--var weather = data.results[0]--}}
-            {{--var text = [];--}}
-            {{--text.push("Location: " + weather.location.path);--}}
-            {{--text.push("Weather: " + weather.now.text);--}}
-            {{--text.push("Temperature: " + weather.now.temperature);--}}
-            {{--obj.innerText = text.join("\n")--}}
-        {{--});--}}
-    {{--</script>--}}
+        var url = "{!! $weatherURL !!}";
+        alert(url);
+        // 直接发送请求进行调用，手动处理回调函数
+        $.getJSON(url, function(data) {
+            var obj = document.getElementById('content-weather');
+            var weather = data.results[0]
+            var text = [];
+            text.push("Location: " + weather.location.path);
+            text.push("Weather: " + weather.now.text);
+            text.push("Temperature: " + weather.now.temperature);
+            obj.innerText = text.join("\n")
+        });
+    </script>
 
 @endsection
