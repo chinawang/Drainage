@@ -31,29 +31,6 @@
 
 
 
-
-    <script type="text/javascript">
-
-        var url = "{!! $weatherURL !!}";
-
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'JSONP',
-            success: function (data) {
-                var obj = document.getElementById('content-weather');
-                var weather = data.results[0]
-                var text = [];
-                text.push("Location: " + weather.location.name);
-                text.push("Weather: " + weather.now.text);
-                text.push("Temperature: " + weather.now.temperature);
-
-                obj.innerText = text.join("\n")
-            }
-        });
-
-    </script>
-
     <script>(function (T, h, i, n, k, P, a, g, e) {
             g = function () {
                 P = h.createElement(i);
