@@ -29,7 +29,7 @@ class WeatherController extends Controller
         $dailyResult = json_decode($dailyWeather,true);
 
         $updatetime = $nowResult['results'][0]['last_update'];
-        return date('hh:ii',strtotime($updatetime));
+        return date('h:i',strtotime($updatetime));
         $updatetime = date_format(strtotime($updatetime),"h:i");
         return $updatetime;
 
