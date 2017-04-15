@@ -2,6 +2,11 @@
 
 @section('stylesheet')
     <link href="{{ asset('css/map/map.css') }}" rel="stylesheet">
+    <style type="text/css">
+        body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{width:100%;height:500px;}
+        p{margin-left:5px; font-size:14px;}
+    </style>
 @endsection
 
 @section('subtitle')
