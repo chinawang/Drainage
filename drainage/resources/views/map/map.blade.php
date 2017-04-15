@@ -5,7 +5,7 @@
     <style type="text/css">
         body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
         #allmap{width:100%;height:500px;}
-        p{margin-left:5px; font-size:14px;}
+
     </style>
 @endsection
 
@@ -38,7 +38,7 @@
     <script type="text/javascript">
         // 百度地图API功能
         map = new BMap.Map("allmap");
-        map.centerAndZoom(new BMap.Point(116.417854, 39.921988), 15);
+        map.centerAndZoom("北京",13);
         var data_info = [[116.417854, 39.921988, "地址：北京市东城区王府井大街88号乐天银泰百货八层"],
             [116.406605, 39.921585, "地址：北京市东城区东华门大街"],
             [116.412222, 39.912345, "地址：北京市东城区正义路甲5号"]
