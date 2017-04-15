@@ -33,13 +33,13 @@ class WeatherController extends Controller
         $nowResult['results'][0]['last_update'] = date('H:i',strtotime($updatetime));
 
         $dailyDate1 = $dailyResult['results'][0]['daily'][0]['date'];
-        $dailyResult['results'][0]['daily'][0]['date'] = date('n',strtotime($dailyDate1))."月".date('t',strtotime($dailyDate1))."日";
+        $dailyResult['results'][0]['daily'][0]['date'] = date('n',strtotime($dailyDate1))."月".date('d',strtotime($dailyDate1))."日";
 
         $dailyDate2 = $dailyResult['results'][0]['daily'][1]['date'];
-        $dailyResult['results'][0]['daily'][1]['date'] = date('n',strtotime($dailyDate2))."月".date('t',strtotime($dailyDate2))."日";
+        $dailyResult['results'][0]['daily'][1]['date'] = date('n',strtotime($dailyDate2))."月".date('d',strtotime($dailyDate2))."日";
 
         $dailyDate3 = $dailyResult['results'][0]['daily'][2]['date'];
-        $dailyResult['results'][0]['daily'][2]['date'] = date('n',strtotime($dailyDate3))."月".date('t',strtotime($dailyDate3))."日";
+        $dailyResult['results'][0]['daily'][2]['date'] = date('n',strtotime($dailyDate3))."月".date('d',strtotime($dailyDate3))."日";
 
         $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0]];
         return $param;
