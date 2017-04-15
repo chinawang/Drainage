@@ -28,7 +28,6 @@
 }
 
 .content-now {
-    float: left;
     margin: 10px 20px;
 }
 
@@ -50,11 +49,6 @@
     font-size: 18px;
 }
 
-.daily-line {
-    float: left;
-    width: 1px;
-    border-left: 1px solid #e6e6e6;
-}
 
 
 

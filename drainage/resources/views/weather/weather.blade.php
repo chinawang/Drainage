@@ -27,11 +27,17 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="weather-now">
-                                    <div class="content-now now-icon">
-                                        <img class="weather-icon-big" src="/img/weather/weather_180/0.png">
+                                    <div class="col-md-6 col-md-offset-0">
+                                        <div class="content-now now-icon">
+                                            <img class="weather-icon-big" src="/img/weather/weather_180/0.png">
+                                        </div>
                                     </div>
-                                    <div class="content-now now-temp">20℃</div>
-                                    <div class="content-now now-text">晴</div>
+                                    <div class="col-md-3 col-md-offset-0">
+                                        <div class="content-now now-temp">20℃</div>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-0">
+                                        <div class="content-now now-text">晴</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +55,6 @@
                                     <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
                             </div>
-                            <div class="daily-line"></div>
                             <div class="col-md-4 col-md-offset-0">
                                 <div class="weather-daily">
                                     <div class="content-daily daily-today">今天</div>
@@ -62,7 +67,6 @@
                                     <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
                             </div>
-                            <div class="daily-line"></div>
                             <div class="col-md-4 col-md-offset-0">
                                 <div class="weather-daily">
                                     <div class="content-daily daily-today">今天</div>
