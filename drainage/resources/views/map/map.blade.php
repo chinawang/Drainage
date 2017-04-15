@@ -27,7 +27,7 @@
 
 @section('javascript')
 
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mZk3RUNMpSwneByXW7v5KubwZiXuCgmY"></script>
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 
     <script type="text/javascript">
