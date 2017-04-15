@@ -22,7 +22,7 @@
                                 <div class="text-city">
                                     郑州
                                 </div>
-                                <div class="update-time">
+                                <div class="text-updatetime">
                                     15:30发布
                                 </div>
                             </div>
