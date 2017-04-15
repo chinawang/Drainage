@@ -11,6 +11,9 @@
 .panel-heading {
     font-weight: bold;
 }
+.text-city {
+    font-size: 28px;
+}
 
 .now-line {
     margin: 0px 20px;
@@ -24,27 +27,25 @@
 
 .content-now {
     float: left;
-    height: 200px;
-    line-height: 11;
     margin: 10px 20px;
 }
 
 .now-temp {
-    font-size: 28px;
+    font-size: 36px;
 }
 
 .now-text {
-    font-size: 20px;
+    font-size: 28px;
 }
 
 .weather-daily {
     text-align: center;
-    margin: 20px 0px;
+    margin: 30px 0px;
 }
 
 .content-daily {
-    margin: 10px 0px;
-    font-size: 20px;
+    margin: 20px 0px;
+    font-size: 18px;
 }
 
 
