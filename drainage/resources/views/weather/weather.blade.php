@@ -36,34 +36,40 @@
                         <div class="now-line"></div>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-0">
-                                <div class="content-daily daily-today">今天</div>
-                                <div class="content-daily daily-date">4月14日</div>
-                                <div class="content-daily daily-icon">
-                                    <img class="content-daily weather-icon-small" src="/img/weather/weather_60/0.png">
+                                <div class="weather-daily">
+                                    <div class="content-daily daily-today">今天</div>
+                                    <div class="content-daily daily-date">4月14日</div>
+                                    <div class="content-daily daily-icon">
+                                        <img class="weather-icon-small" src="/img/weather/weather_60/0.png">
+                                    </div>
+                                    <div class="content-daily daily-temp">15℃/20℃</div>
+                                    <div class="content-daily daily-text">晴/多云</div>
+                                    <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
-                                <div class="content-daily daily-temp">15℃/20℃</div>
-                                <div class="content-daily daily-text">晴/多云</div>
-                                <div class="content-daily daily-wind">东南风2级</div>
                             </div>
                             <div class="col-md-4 col-md-offset-0">
-                                <div class="content-daily daily-today">今天</div>
-                                <div class="content-daily daily-date">4月14日</div>
-                                <div class="content-daily daily-icon">
-                                    <img class="weather-icon-small" src="/img/weather/weather_60/0.png">
+                                <div class="weather-daily">
+                                    <div class="content-daily daily-today">今天</div>
+                                    <div class="content-daily daily-date">4月14日</div>
+                                    <div class="content-daily daily-icon">
+                                        <img class="weather-icon-small" src="/img/weather/weather_60/0.png">
+                                    </div>
+                                    <div class="content-daily daily-temp">15℃/20℃</div>
+                                    <div class="content-daily daily-text">晴/多云</div>
+                                    <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
-                                <div class="content-daily daily-temp">15℃/20℃</div>
-                                <div class="content-daily daily-text">晴/多云</div>
-                                <div class="content-daily daily-wind">东南风2级</div>
                             </div>
                             <div class="col-md-4 col-md-offset-0">
-                                <div class="content-daily daily-today">今天</div>
-                                <div class="content-daily daily-date">4月14日</div>
-                                <div class="content-daily daily-icon">
-                                    <img class="content-daily weather-icon-small" src="/img/weather/weather_60/0.png">
+                                <div class="weather-daily">
+                                    <div class="content-daily daily-today">今天</div>
+                                    <div class="content-daily daily-date">4月14日</div>
+                                    <div class="content-daily daily-icon">
+                                        <img class="content-daily weather-icon-small" src="/img/weather/weather_60/0.png">
+                                    </div>
+                                    <div class="content-daily daily-temp">15℃/20℃</div>
+                                    <div class="content-daily daily-text">晴/多云</div>
+                                    <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
-                                <div class="content-daily daily-temp">15℃/20℃</div>
-                                <div class="content-daily daily-text">晴/多云</div>
-                                <div class="content-daily daily-wind">东南风2级</div>
                             </div>
                         </div>
                     </div>

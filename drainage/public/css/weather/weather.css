@@ -17,6 +17,14 @@
     border-top: 1px solid #0f0f0f;
 }
 
+.content-now {
+    width: 30%;
+    float: left;
+}
+
+.weather-daily {
+    text-align: center;
+}
 
 
 
