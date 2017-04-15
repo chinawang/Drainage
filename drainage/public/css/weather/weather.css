@@ -20,6 +20,13 @@
     float: right;
 }
 
+.now-line {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    float: left;
+    height: 1px;
+    border-top: 1px solid #0f0f0f;
+}
 
 
 

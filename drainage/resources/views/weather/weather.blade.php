@@ -17,9 +17,55 @@
                         天气
                     </div>
                     <div class="panel-body custom-panel-body" id="content-weather">
-                        <iframe src="//www.seniverse.com/weather/weather.aspx?uid=U4954D65B6&cid=CHHA000000&l=zh-CHS&p=SMART&a=0&u=C&s=1&m=0&x=1&d=5&fc=&bgc=&bc=&ti=0&in=1&li="
-                                frameborder="0" scrolling="no" width="800" height="300"
-                                allowTransparency="true"></iframe>
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-0">
+                                <div class="text-city">
+                                    郑州
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="weather-now">
+                                    <img class="content-now weather-icon-big" src="/img/weather/weather_180/0.png">
+                                    <h4 class="content-now now-temp">20℃</h4>
+                                    <span class="content-now now-text">晴</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="now-line"></div>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-0">
+                                <div class="weather-daily">
+                                    <span class="content-daily daily-today">今天</span>
+                                    <span class="content-daily daily-date">4月14日</span>
+                                    <img class="content-daily weather-icon-small" src="/img/weather/weather_60/0.png">
+                                    <span class="content-daily daily-temp">15℃/20℃</span>
+                                    <span class="content-daily daily-text">晴/多云</span>
+                                    <span class="content-daily daily-wind">东南风2级</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-md-offset-0">
+                                <div class="weather-daily">
+                                    <span class="content-daily daily-today">今天</span>
+                                    <span class="content-daily daily-date">4月14日</span>
+                                    <img class="content-daily weather-icon-small" src="/img/weather/weather_60/0.png">
+                                    <span class="content-daily daily-temp">15℃/20℃</span>
+                                    <span class="content-daily daily-text">晴/多云</span>
+                                    <span class="content-daily daily-wind">东南风2级</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-md-offset-0">
+                                <div class="weather-daily">
+                                    <span class="content-daily daily-today">今天</span>
+                                    <span class="content-daily daily-date">4月14日</span>
+                                    <img class="content-daily weather-icon-small" src="/img/weather/weather_60/0.png">
+                                    <span class="content-daily daily-temp">15℃/20℃</span>
+                                    <span class="content-daily daily-text">晴/多云</span>
+                                    <span class="content-daily daily-wind">东南风2级</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
