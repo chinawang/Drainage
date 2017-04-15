@@ -34,7 +34,7 @@
                             </a>
                         </li>
                         <li class="map">
-                            <a href="" class="menu-item">
+                            <a href="/map/view" class="menu-item">
                                 <img class="menu-icon" src="/img/home/map.png">
                                 <h4>泵站地图</h4>
                             </a>

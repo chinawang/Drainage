@@ -182,5 +182,10 @@ Route::post('/maintenance/delete/{maintenance_id}','Maintenance\MaintenanceContr
  *天气相关
  */
 
-//维修列表
 Route::get('/weather/view', 'Weather\WeatherController@showWeather');
+
+/**
+ *地图相关
+ */
+
+Route::get('/map/view', 'Map\MapController@showMap');
