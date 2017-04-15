@@ -41,9 +41,8 @@ class WeatherController extends Controller
         $dailyDate3 = $dailyResult['results'][0]['daily'][2]['date'];
         $dailyResult['results'][0]['daily'][2]['date'] = date('n',strtotime($dailyDate3))."月".date('t',strtotime($dailyDate3))."日";
 
-
         $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0]];
-
+        return $param;
         return view('weather.weather',$param);
     }
 
