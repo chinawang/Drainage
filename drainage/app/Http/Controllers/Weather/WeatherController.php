@@ -76,67 +76,67 @@ class WeatherController extends Controller
                 $backgroundStyle = "linear-gradient(#6f7c85,#919b9f)";
                 break;
             case 10:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 10:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 11:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 12:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 13:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 14:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 15:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 16:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 17:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 18:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 19:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 20:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 21:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 22:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 23:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 24:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 25:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 34:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 35:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 36:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             case 37:
-                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                $backgroundStyle = "linear-gradient(#1a242f,#7d939b)";
                 break;
             default:
                 $backgroundStyle = "linear-gradient(#2869e9,#79bfff)";
