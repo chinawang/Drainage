@@ -15,16 +15,16 @@
 }
 
 .btn-link{
-    float: right;
     margin-left: 10px;
+    font-size: 14px;
 }
 
 .text-city {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .text-updatetime {
-    font-size: 16px;
+    font-size: 12px;
     color: hsla(0,0%,100%,.5);
 }
 
