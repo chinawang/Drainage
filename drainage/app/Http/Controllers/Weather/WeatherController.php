@@ -32,14 +32,18 @@ class WeatherController extends Controller
 
         $nowResult['results'][0]['last_update'] = date('H:i',strtotime($updatetime));
 
-        foreach ($dailyResult['results'][0]['daily'] as $daily)
-        {
-            $daily['date'] = date('n',strtotime($daily['date']))."月".date('t',strtotime($daily['date']))."日";
-        }
+        $dailyDate1 = $dailyResult['results'][0]['daily'][0]['date'];
+        $dailyResult['results'][0]['daily'][0]['date'] = date('n',strtotime($dailyDate1))."月".date('t',strtotime($dailyDate1))."日";
+
+        $dailyDate2 = $dailyResult['results'][0]['daily'][1]['date'];
+        $dailyResult['results'][0]['daily'][1]['date'] = date('n',strtotime($dailyDate2))."月".date('t',strtotime($dailyDate2))."日";
+
+        $dailyDate3 = $dailyResult['results'][0]['daily'][2]['date'];
+        $dailyResult['results'][0]['daily'][2]['date'] = date('n',strtotime($dailyDate3))."月".date('t',strtotime($dailyDate3))."日";
+
 
         $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0]];
 
-        return $param;
         return view('weather.weather',$param);
     }
 
