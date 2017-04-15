@@ -28,7 +28,7 @@
 }
 
 .content-now {
-    float: left;
+    display: inline-block;
 }
 
 .now-temp-text {
@@ -36,8 +36,8 @@
 }
 
 .now-temp {
-    font-size: 48px;
-    margin: 0px 10px;
+    font-size: 60px;
+    margin: 0px 20px;
 }
 
 .now-text {
