@@ -17,13 +17,34 @@
     border-top: 1px solid #0f0f0f;
 }
 
+.weather-now {
+    text-align: center;
+    margin: 20px 0px;
+}
+
 .content-now {
-    width: 30%;
     float: left;
+    height: 200px;
+    line-height: 11;
+    margin: 10px 20px;
+}
+
+.now-temp {
+    font-size: 28px;
+}
+
+.now-text {
+    font-size: 20px;
 }
 
 .weather-daily {
     text-align: center;
+    margin: 20px 0px;
+}
+
+.content-daily {
+    margin: 10px 0px;
+    font-size: 20px;
 }
 
 

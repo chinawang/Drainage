@@ -26,11 +26,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                <div class="content-now now-icon">
-                                    <img class="weather-icon-big" src="/img/weather/weather_180/0.png">
+                                <div class="weather-now">
+                                    <div class="content-now now-icon">
+                                        <img class="weather-icon-big" src="/img/weather/weather_180/0.png">
+                                    </div>
+                                    <div class="content-now now-temp">20℃</div>
+                                    <div class="content-now now-text">晴</div>
                                 </div>
-                                <div class="content-now now-temp">20℃</div>
-                                <div class="content-now now-text">晴</div>
                             </div>
                         </div>
                         <div class="now-line"></div>
