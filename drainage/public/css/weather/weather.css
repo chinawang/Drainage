@@ -13,13 +13,20 @@
 .panel-heading {
     font-weight: bold;
 }
+
 .text-city {
     font-size: 28px;
 }
 
+.text-city {
+    font-size: 12px;
+    color: hsla(0,0%,100%,.6);
+}
+
 .now-line {
-    margin: 0px 20px;
-    border-top: 1px solid #e6e6e6;
+    margin: 20px 0px;
+    border-top: 1px solid;
+    border-color: hsla(0,0%,100%,.3);
 }
 
 .weather-now {
@@ -41,7 +48,7 @@
 }
 
 .now-text {
-    font-size: 28px;
+    font-size: 20px;
     margin: 0px 10px;
 }
 
@@ -51,8 +58,15 @@
 }
 
 .content-daily {
-    margin: 20px 0px;
+    margin: 10px 0px;
     font-size: 18px;
+}
+
+.daily-icon {
+    margin: 20px 0px;
+}
+.daily-date {
+    color: hsla(0,0%,100%,.6);
 }
 
 

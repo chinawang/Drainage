@@ -22,6 +22,9 @@
                                 <div class="text-city">
                                     郑州
                                 </div>
+                                <div class="update-time">
+                                    15:30发布
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -46,8 +49,8 @@
                                     <div class="content-daily daily-icon">
                                         <img class="weather-icon-small" src="/img/weather/weather_60/0.png">
                                     </div>
-                                    <div class="content-daily daily-temp">15℃/20℃</div>
-                                    <div class="content-daily daily-text">晴/多云</div>
+                                    <div class="content-daily daily-temp">15℃ / 20℃</div>
+                                    <div class="content-daily daily-text">晴 / 多云</div>
                                     <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
                             </div>
@@ -58,8 +61,8 @@
                                     <div class="content-daily daily-icon">
                                         <img class="weather-icon-small" src="/img/weather/weather_60/0.png">
                                     </div>
-                                    <div class="content-daily daily-temp">15℃/20℃</div>
-                                    <div class="content-daily daily-text">晴/多云</div>
+                                    <div class="content-daily daily-temp">15℃ / 20℃</div>
+                                    <div class="content-daily daily-text">晴 / 多云</div>
                                     <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
                             </div>
@@ -70,8 +73,8 @@
                                     <div class="content-daily daily-icon">
                                         <img class="weather-icon-small" src="/img/weather/weather_60/0.png">
                                     </div>
-                                    <div class="content-daily daily-temp">15℃/20℃</div>
-                                    <div class="content-daily daily-text">晴/多云</div>
+                                    <div class="content-daily daily-temp">15℃ / 20℃</div>
+                                    <div class="content-daily daily-text">晴 / 多云</div>
                                     <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
                             </div>
