@@ -29,7 +29,7 @@ class WeatherController extends Controller
         $dailyResult = json_decode($dailyWeather,true);
 
         $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0]];
-return $param;
+
         return view('weather.weather',$param);
     }
 
