@@ -12,11 +12,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-default custom-panel">
+                <div class="panel panel-default custom-panel" style="background: {{ $backgroundStyle }}" id="content-weather">
                     {{--<div class="panel-heading">--}}
                         {{--天气--}}
                     {{--</div>--}}
-                    <div class="panel-body custom-panel-body" style="background: {{ $backgroundStyle }}" id="content-weather">
+                    <div class="panel-body custom-panel-body">
                         <div class="row">
                             <div class="col-md-2 col-md-offset-0">
                                 <div class="text-city">
