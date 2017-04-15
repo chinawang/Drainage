@@ -30,7 +30,7 @@ class WeatherController extends Controller
 
         $updatetime = $nowResult['results'][0]['last_update'];
 
-        $updatetime = date_format($updatetime,"h:i");
+        $updatetime = date_format(strtotime($updatetime),"h:i");
         return $updatetime;
 
         $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0]];
