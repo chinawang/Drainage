@@ -24,7 +24,7 @@
                                     <a href="/weather/view" class="btn-link">刷新</a>
                                 </div>
                                 <div class="text-updatetime">
-                                    15:30发布
+                                    {{ $nowWeather['last_update'] }}发布
                                 </div>
                             </div>
                         </div>
@@ -32,11 +32,11 @@
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="weather-now">
                                     <div class="content-now now-icon">
-                                        <img class="weather-icon-big" src="/img/weather/weather_180/0.png">
+                                        <img class="weather-icon-big" src="/img/weather/weather_180/{{ $nowWeather['now']['code'] }}.png">
                                     </div>
                                     <div class="content-now now-temp-text">
-                                        <span class="now-temp">20°</span>
-                                        <span class="now-text">晴</span>
+                                        <span class="now-temp">{{ $nowWeather['now']['temperature'] }}°</span>
+                                        <span class="now-text">{{ $nowWeather['now']['text'] }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -46,37 +46,37 @@
                             <div class="col-md-4 col-md-offset-0">
                                 <div class="weather-daily">
                                     <div class="content-daily daily-today">今天</div>
-                                    <div class="content-daily daily-date">4月14日</div>
+                                    <div class="content-daily daily-date">{{ $dailyWeather['daily'][0]['date'] }}</div>
                                     <div class="content-daily daily-icon">
-                                        <img class="weather-icon-small" src="/img/weather/weather_60/0.png">
+                                        <img class="weather-icon-small" src="/img/weather/weather_60/{{ $dailyWeather['daily'][0]['code_day'] }}.png">
                                     </div>
-                                    <div class="content-daily daily-temp">15° / 20°</div>
-                                    <div class="content-daily daily-text">晴 / 多云</div>
-                                    <div class="content-daily daily-wind">东南风2级</div>
+                                    <div class="content-daily daily-temp">{{ $dailyWeather['daily'][0]['low'] }}° / {{ $dailyWeather['daily'][0]['high'] }}°</div>
+                                    <div class="content-daily daily-text">{{ $dailyWeather['daily'][0]['text_day'] }} / {{ $dailyWeather['daily'][0]['text_night'] }}</div>
+                                    <div class="content-daily daily-wind">{{ $dailyWeather['daily'][0]['wind_direction'] }}风{{ $dailyWeather['daily'][0]['wind_scale'] }}级</div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-md-offset-0">
                                 <div class="weather-daily">
-                                    <div class="content-daily daily-today">今天</div>
-                                    <div class="content-daily daily-date">4月14日</div>
+                                    <div class="content-daily daily-today">明天</div>
+                                    <div class="content-daily daily-date">{{ $dailyWeather['daily'][1]['date'] }}</div>
                                     <div class="content-daily daily-icon">
-                                        <img class="weather-icon-small" src="/img/weather/weather_60/10.png">
+                                        <img class="weather-icon-small" src="/img/weather/weather_60/{{ $dailyWeather['daily'][1]['code_day'] }}.png">
                                     </div>
-                                    <div class="content-daily daily-temp">15° / 20°</div>
-                                    <div class="content-daily daily-text">晴 / 多云</div>
-                                    <div class="content-daily daily-wind">东南风2级</div>
+                                    <div class="content-daily daily-temp">{{ $dailyWeather['daily'][1]['low'] }}° / {{ $dailyWeather['daily'][1]['high'] }}°</div>
+                                    <div class="content-daily daily-text">{{ $dailyWeather['daily'][1]['text_day'] }} / {{ $dailyWeather['daily'][1]['text_night'] }}</div>
+                                    <div class="content-daily daily-wind">{{ $dailyWeather['daily'][1]['wind_direction'] }}风{{ $dailyWeather['daily'][1]['wind_scale'] }}级</div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-md-offset-0">
                                 <div class="weather-daily">
-                                    <div class="content-daily daily-today">今天</div>
-                                    <div class="content-daily daily-date">4月14日</div>
+                                    <div class="content-daily daily-today">后天</div>
+                                    <div class="content-daily daily-date">{{ $dailyWeather['daily'][2]['date'] }}</div>
                                     <div class="content-daily daily-icon">
-                                        <img class="weather-icon-small" src="/img/weather/weather_60/6.png">
+                                        <img class="weather-icon-small" src="/img/weather/weather_60/{{ $dailyWeather['daily'][2]['code_day'] }}.png">
                                     </div>
-                                    <div class="content-daily daily-temp">15° / 20°</div>
-                                    <div class="content-daily daily-text">晴 / 多云</div>
-                                    <div class="content-daily daily-wind">东南风2级</div>
+                                    <div class="content-daily daily-temp">{{ $dailyWeather['daily'][2]['low'] }}° / {{ $dailyWeather['daily'][2]['high'] }}°</div>
+                                    <div class="content-daily daily-text">{{ $dailyWeather['daily'][2]['text_day'] }} / {{ $dailyWeather['daily'][2]['text_night'] }}</div>
+                                    <div class="content-daily daily-wind">{{ $dailyWeather['daily'][2]['wind_direction'] }}风{{ $dailyWeather['daily'][2]['wind_scale'] }}级</div>
                                 </div>
                             </div>
                         </div>
