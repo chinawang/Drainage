@@ -25,18 +25,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
+                            <div class="col-md-6 col-md-offset-3">
                                 <div class="weather-now">
-                                    <div class="col-md-6 col-md-offset-0">
-                                        <div class="content-now now-icon">
-                                            <img class="weather-icon-big" src="/img/weather/weather_180/0.png">
-                                        </div>
+                                    <div class="content-now now-icon">
+                                        <img class="weather-icon-big" src="/img/weather/weather_180/0.png">
                                     </div>
-                                    <div class="col-md-3 col-md-offset-0">
-                                        <div class="content-now now-temp">20℃</div>
-                                    </div>
-                                    <div class="col-md-3 col-md-offset-0">
-                                        <div class="content-now now-text">晴</div>
+                                    <div class="content-now now-temp-text">
+                                        <span class="now-temp">20℃</span>
+                                        <span class="now-text">晴</span>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +68,7 @@
                                     <div class="content-daily daily-today">今天</div>
                                     <div class="content-daily daily-date">4月14日</div>
                                     <div class="content-daily daily-icon">
-                                        <img class="content-daily weather-icon-small" src="/img/weather/weather_60/0.png">
+                                        <img class="weather-icon-small" src="/img/weather/weather_60/0.png">
                                     </div>
                                     <div class="content-daily daily-temp">15℃/20℃</div>
                                     <div class="content-daily daily-text">晴/多云</div>

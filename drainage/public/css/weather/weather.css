@@ -28,15 +28,21 @@
 }
 
 .content-now {
-    margin: 10px 20px;
+    float: left;
+}
+
+.now-temp-text {
+    margin-left: 30px;
 }
 
 .now-temp {
-    font-size: 36px;
+    font-size: 48px;
+    margin: 0px 10px;
 }
 
 .now-text {
     font-size: 28px;
+    margin: 0px 10px;
 }
 
 .weather-daily {
