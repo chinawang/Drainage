@@ -16,7 +16,7 @@
                     {{--<div class="panel-heading">--}}
                         {{--天气--}}
                     {{--</div>--}}
-                    <div class="panel-body custom-panel-body" id="content-weather">
+                    <div class="panel-body custom-panel-body" style="background: {{ $backgroundStyle }}" id="content-weather">
                         <div class="row">
                             <div class="col-md-2 col-md-offset-0">
                                 <div class="text-city">

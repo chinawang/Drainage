@@ -41,7 +41,108 @@ class WeatherController extends Controller
         $dailyDate3 = $dailyResult['results'][0]['daily'][2]['date'];
         $dailyResult['results'][0]['daily'][2]['date'] = date('n',strtotime($dailyDate3))."月".date('d',strtotime($dailyDate3))."日";
 
-        $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0]];
+        $backgroundStyle = null;
+
+        switch ($nowResult['results'][0]['now']['code'])
+        {
+            case 0:
+                $backgroundStyle = "linear-gradient(#2869e9,#79bfff)";
+                break;
+            case 1:
+                $backgroundStyle = "linear-gradient(#2869e9,#79bfff)";
+                break;
+            case 2:
+                $backgroundStyle = "linear-gradient(#2869e9,#79bfff)";
+                break;
+            case 3:
+                $backgroundStyle = "linear-gradient(#2869e9,#79bfff)";
+                break;
+            case 4:
+                $backgroundStyle = "linear-gradient(#6f7c85,#919b9f)";
+                break;
+            case 5:
+                $backgroundStyle = "linear-gradient(#6f7c85,#919b9f)";
+                break;
+            case 6:
+                $backgroundStyle = "linear-gradient(#6f7c85,#919b9f)";
+                break;
+            case 7:
+                $backgroundStyle = "linear-gradient(#6f7c85,#919b9f)";
+                break;
+            case 8:
+                $backgroundStyle = "linear-gradient(#6f7c85,#919b9f)";
+                break;
+            case 9:
+                $backgroundStyle = "linear-gradient(#6f7c85,#919b9f)";
+                break;
+            case 10:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 10:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 11:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 12:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 13:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 14:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 15:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 16:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 17:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 18:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 19:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 20:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 21:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 22:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 23:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 24:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 25:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 34:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 35:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 36:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            case 37:
+                $backgroundStyle = "linear-gradient(#566b6e,#7d939b)";
+                break;
+            default:
+                $backgroundStyle = "linear-gradient(#2869e9,#79bfff)";
+        }
+
+        $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0],'backgroundStyle' => $backgroundStyle];
 
         return view('weather.weather',$param);
     }
