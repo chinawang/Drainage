@@ -16,7 +16,7 @@
 
 .btn-link{
     margin-left: 10px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .text-city {
@@ -24,7 +24,7 @@
 }
 
 .text-updatetime {
-    font-size: 12px;
+    font-size: 14px;
     color: hsla(0,0%,100%,.5);
 }
 

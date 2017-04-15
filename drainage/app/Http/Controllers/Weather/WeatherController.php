@@ -29,7 +29,7 @@ class WeatherController extends Controller
         $dailyResult = json_decode($dailyWeather);
 
         $param = ['nowWeather' => $nowResult->results[0],'dailyWeather' => $dailyResult->results[0]];
-
+return $param;
         return view('weather.weather',$param);
     }
 
@@ -116,7 +116,7 @@ class WeatherController extends Controller
         $start = 0;
 
         // 查询天数，1=只查一天
-        $days = 3;
+        $days = 5;
 
         // 最终构造出可由前端或服务端进行调用的 url
         $url = $api."?location=".$location."&".$signedkeyname."&start=".$start."&days=".$days;
