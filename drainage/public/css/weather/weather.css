@@ -12,20 +12,17 @@
     font-weight: bold;
 }
 
-.panel-heading .col-btn a {
-    float: right;
-}
-
-.panel-heading .btn-link{
-    float: right;
-}
-
-.now-line {
+.panel-body .now-line {
     padding-top: 10px;
     padding-bottom: 10px;
     float: left;
     height: 1px;
     border-top: 1px solid #0f0f0f;
+}
+
+.content-daily {
+    display:block;
+    float: left;
 }
 
 
