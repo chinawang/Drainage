@@ -49,6 +49,7 @@
                                     <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
                             </div>
+                            <div class="daily-line"></div>
                             <div class="col-md-4 col-md-offset-0">
                                 <div class="weather-daily">
                                     <div class="content-daily daily-today">今天</div>
@@ -61,6 +62,7 @@
                                     <div class="content-daily daily-wind">东南风2级</div>
                                 </div>
                             </div>
+                            <div class="daily-line"></div>
                             <div class="col-md-4 col-md-offset-0">
                                 <div class="weather-daily">
                                     <div class="content-daily daily-today">今天</div>
