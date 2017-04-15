@@ -35,11 +35,11 @@ class WeatherController extends Controller
         foreach ($dailyResult['results'][0]['daily'] as $daily)
         {
             $daily['date'] = date('n',strtotime($daily['date']))."月".date('t',strtotime($daily['date']))."日";
-            return $daily['date'];
         }
 
         $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0]];
 
+        return $param;
         return view('weather.weather',$param);
     }
 
