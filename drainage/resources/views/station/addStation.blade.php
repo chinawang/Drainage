@@ -111,7 +111,7 @@
 
     <!--引入高德地图JSAPI -->
     <script type="text/javascript"
-            src="http://webapi.amap.com/maps?v=1.3&key=be195b71e866e63bb1688b420135565c&plugin=AMap.Geocoder"></script>
+            src="http://webapi.amap.com/maps?v=1.3&key=eee431b39cbd7204722c3c4cd57864c8&plugin=AMap.Geocoder"></script>
     <!--引入UI组件库（1.0版本） -->
     <script src="//webapi.amap.com/ui/1.0/main.js"></script>
 
