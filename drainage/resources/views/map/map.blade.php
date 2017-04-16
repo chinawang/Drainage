@@ -124,7 +124,7 @@
                 marker.emit('mouseover', {target: marker});
 
                 marker.on('mouseover', function(e) {
-                    e.target.setIconStyle('#ff9d00');
+                    e.target.setIconStyle('blue');
                 });
 
                 marker.emit('mouseout', {target: marker});
