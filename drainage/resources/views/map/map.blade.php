@@ -19,6 +19,15 @@
             border-radius: 10px 0 0 0;
             color: #690441;
         }
+
+        .amap-ui-smp-ifwn-info-title {
+            border-bottom: 0;
+            padding: 10px 10px 0 10px;
+        }
+
+        .amap-ui-smp-ifwn-info-content {
+            padding: 10px;
+        }
     </style>
 @endsection
 
