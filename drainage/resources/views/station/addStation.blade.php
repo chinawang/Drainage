@@ -55,15 +55,17 @@
 
                                 <div class="col-md-6">
                                     <input id="address" type="text" class="form-control" name="address"
-                                           value="{{ old('address') }}" placeholder="请输入泵站详细地址" onchange="geocoder()"
+                                           value="{{ old('address') }}" placeholder="请输入泵站详细地址" oninput="geocoder()"
                                            required>
-                                    <a href="" class="btn btn-primary btn-sm" onclick="geocoder()">搜索坐标</a>
 
                                     @if ($errors->has('address'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('address') }}</strong>
                                     </span>
                                     @endif
+                                </div>
+                                <div>
+                                    <a href="" class="btn btn-primary btn-sm" onclick="geocoder()">搜索坐标</a>
                                 </div>
                             </div>
 
@@ -153,11 +155,12 @@
             });
             var address = document.getElementById('address').value;
 
-            alert(address);
+
             //地理编码,返回地理编码结果
             geocoder.getLocation(address, function (status, result) {
                 if (status === 'complete' && result.info === 'OK') {
                     geocoder_CallBack(result);
+                    alert(result.location.getLng());
                 }
             });
         }
