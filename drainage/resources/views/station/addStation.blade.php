@@ -55,7 +55,9 @@
 
                                 <div class="col-md-6">
                                     <input id="address" type="text" class="form-control" name="address"
-                                           value="{{ old('address') }}" placeholder="请输入泵站详细地址" onchange="geocoder()" required>
+                                           value="{{ old('address') }}" placeholder="请输入泵站详细地址" onchange="geocoder()"
+                                           required>
+                                    <a href="" class="btn btn-primary btn-sm" onclick="geocoder()">搜索坐标</a>
 
                                     @if ($errors->has('address'))
                                         <span class="help-block">
@@ -82,7 +84,7 @@
                                 <label for="point" class="col-md-4 control-label">选取坐标</label>
 
                                 <div class="col-md-6">
-                                    <div style="width: 100%;height: 100px" id="map-container">
+                                    <div style="width: 100%;height: 300px" id="map-container">
 
                                     </div>
                                 </div>
@@ -125,7 +127,7 @@
         AMapUI.setDomLibrary($);
 
         //加载BasicControl，loadUI的路径参数为模块名中 'ui/' 之后的部分
-        AMapUI.loadUI(['control/BasicControl','misc/PositionPicker'], function (BasicControl,PositionPicker) {
+        AMapUI.loadUI(['control/BasicControl', 'misc/PositionPicker'], function (BasicControl, PositionPicker) {
 
             //缩放控件
             map.addControl(new BasicControl.Zoom({
@@ -137,7 +139,7 @@
                 map: map
             });
 
-            positionPicker.on('success', function(positionResult) {
+            positionPicker.on('success', function (positionResult) {
                 document.getElementById('lat').value = positionResult.position.getLat();
                 document.getElementById('lang').value = positionResult.position.getLang();
             });
@@ -151,7 +153,7 @@
             });
             var address = document.getElementById('address').value;
             //地理编码,返回地理编码结果
-            geocoder.getLocation(address, function(status, result) {
+            geocoder.getLocation(address, function (status, result) {
                 if (status === 'complete' && result.info === 'OK') {
                     geocoder_CallBack(result);
                 }
@@ -160,13 +162,13 @@
         function addMarker(i, d) {
             var marker = new AMap.Marker({
                 map: map,
-                position: [ d.location.getLng(),  d.location.getLat()]
+                position: [d.location.getLng(), d.location.getLat()]
             });
             var infoWindow = new AMap.InfoWindow({
                 content: d.formattedAddress,
                 offset: {x: 0, y: -30}
             });
-            marker.on("mouseover", function(e) {
+            marker.on("mouseover", function (e) {
                 infoWindow.open(map, marker.getPosition());
             });
         }
@@ -174,11 +176,12 @@
         function geocoder_CallBack(data) {
             //地理编码结果数组
             var geocode = data.geocodes;
+            addMarker(0, geocode[0]);
             document.getElementById("lat").value = geocode[0].location.getLat();
             document.getElementById("lang").value = geocode[0].location.getLang();
         }
 
-        map.setFeatures(['road','bg','point'])//要素显示:道路、背景、标记
+        map.setFeatures(['road', 'bg', 'point'])//要素显示:道路、背景、标记
 
         map.setFitView();
 

@@ -19,7 +19,7 @@
                                 角色列表
                             </div>
                             <div class="col-md-6 col-btn">
-                                <a href="/role/add" class="btn btn-primary btn-sm">添加角色</a>
+                                <a href="/role/add" class="btn btn-primary btn-sm" >添加角色</a>
                             </div>
                         </div>
                     </div>
