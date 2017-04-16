@@ -152,6 +152,8 @@
                 radius: 1000 //范围，默认：500
             });
             var address = document.getElementById('address').value;
+
+            alert(address);
             //地理编码,返回地理编码结果
             geocoder.getLocation(address, function (status, result) {
                 if (status === 'complete' && result.info === 'OK') {
