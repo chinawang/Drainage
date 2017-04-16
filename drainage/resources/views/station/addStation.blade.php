@@ -125,16 +125,16 @@
         });
 
         //设置DomLibrary，jQuery或者Zepto
-        AMapUI.setDomLibrary($);
+//        AMapUI.setDomLibrary($);
 
         //加载BasicControl，loadUI的路径参数为模块名中 'ui/' 之后的部分
-        AMapUI.loadUI(['control/BasicControl', 'misc/PositionPicker'], function (BasicControl, PositionPicker) {
-
-            //缩放控件
-            map.addControl(new BasicControl.Zoom({
-                position: 'rt' //right top，右上角
-            }));
-
+//        AMapUI.loadUI(['control/BasicControl', 'misc/PositionPicker'], function (BasicControl, PositionPicker) {
+//
+//            //缩放控件
+//            map.addControl(new BasicControl.Zoom({
+//                position: 'rt' //right top，右上角
+//            }));
+//
 //            var positionPicker = new PositionPicker({
 //                mode: 'dragMap',
 //                map: map
@@ -144,8 +144,8 @@
 //                document.getElementById('lat').value = positionResult.position.getLat();
 //                document.getElementById('lang').value = positionResult.position.getLang();
 //            });
-
-        });
+//
+//        });
 
         function geocoder() {
             var geocoder = new AMap.Geocoder({
