@@ -64,19 +64,23 @@
                                     </span>
                                     @endif
                                 </div>
+                                <div>
+                                    <a href="javascript:geocoder();" class="btn btn-primary btn-sm" >搜索坐标</a>
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="point" class="col-md-4 control-label">坐标</label>
 
                                 <div class="col-md-3">
-                                    <input id="lat" type="text" class="form-control" name="lat" value="{{ old('lat') }}"
-                                           placeholder="经度" required disabled="disabled">
+                                    <input id="lang" type="text" class="form-control" name="lang"
+                                           value="{{ old('lang') }}" placeholder="经度" required disabled="disabled">
                                 </div>
                                 <div class="col-md-3">
-                                    <input id="lang" type="text" class="form-control" name="lang"
-                                           value="{{ old('lang') }}" placeholder="维度" required disabled="disabled">
+                                    <input id="lat" type="text" class="form-control" name="lat" value="{{ old('lat') }}"
+                                           placeholder="维度" required disabled="disabled">
                                 </div>
+
                             </div>
 
                             <div class="form-group">
@@ -97,9 +101,6 @@
                                 </div>
                             </div>
                         </form>
-                        <div>
-                            <a href="javascript:geocoder();" class="btn btn-primary btn-sm" >搜索坐标</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -156,10 +157,9 @@
             var address = document.getElementById('address').value;
 
             //地理编码,返回地理编码结果
-            geocoder.getLocation("郑州火车站", function(status, result) {
+            geocoder.getLocation(address, function(status, result) {
                 if (status === 'complete' && result.info === 'OK') {
                     geocoder_CallBack(result);
-                    alert(result.geocodes);
                 }else {
                     alert('搜索失败');
                 }
@@ -187,7 +187,7 @@
             addMarker(0, geocode[0]);
 
             document.getElementById("lat").value = geocode[0].location.getLat();
-            document.getElementById("lang").value = geocode[0].location.getLang();
+            document.getElementById("lang").value = geocode[0].location.getLng();
         }
 
         map.setFeatures(['road', 'bg', 'point'])//要素显示:道路、背景、标记
