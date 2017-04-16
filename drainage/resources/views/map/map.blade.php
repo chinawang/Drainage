@@ -50,7 +50,8 @@
             enableMessage: true//设置允许信息窗发送短息
         };
 
-        var myIcon = new BMap.Icon("/img/map/location_mini.png", new BMap.Size(24,24));
+        var myIcon = new BMap.Icon("/img/map/location_mini.png", new BMap.Size(48,48));
+        myIcon.setImageSize(24,24);
 
 
         for (var i = 0; i < data_info.length; i++) {
