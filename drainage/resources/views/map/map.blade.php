@@ -94,7 +94,7 @@
 
             for (var i = 0, len = lngLats.length; i < len; i++) {
 
-                new SimpleMarker({
+               var marker = new SimpleMarker({
                     //使用内置的iconStyle
                     iconStyle: 'darkblue',
 
@@ -119,6 +119,12 @@
                         content: '金水路泵站',
                         offset: new AMap.Pixel(27, 25)
                     }
+                });
+
+                marker.emit('mouseover', {target: marker});
+
+                marker.on('mouseover', function(e) {
+                    e.target.setIconStyle('orange');
                 });
             }
 
