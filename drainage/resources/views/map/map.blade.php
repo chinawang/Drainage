@@ -50,7 +50,7 @@
             enableMessage: true//设置允许信息窗发送短息
         };
 
-        var myIcon = new BMap.Icon("/img/map/location.png", new BMap.Size(60,60));
+        var myIcon = new BMap.Icon("/img/map/location.png", new BMap.Size(200,200));
 
         for (var i = 0; i < data_info.length; i++) {
             var marker = new BMap.Marker(new BMap.Point(data_info[i][0], data_info[i][1]),{icon:myIcon});  // 创建标注
