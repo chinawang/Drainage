@@ -65,13 +65,13 @@
             [113.637635,34.781118],[113.679864,34.698456]
         ];
 
-        //创建标记位置
-        for(var i = 0, marker; i < lnglats.length; i++){
-            marker=new AMap.Marker({
-                position:lnglats[i],
-                map:map
-            });
-        }
+//        //创建标记位置
+//        for(var i = 0, marker; i < lnglats.length; i++){
+//            marker=new AMap.Marker({
+//                position:lnglats[i],
+//                map:map
+//            });
+//        }
 
         //加载SimpleMarker
         AMapUI.loadUI(['overlay/SimpleMarker'], function(SimpleMarker) {
