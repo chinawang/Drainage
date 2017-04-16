@@ -156,7 +156,7 @@
                 marker.on('click', function (e) {
                     e.target.setIconStyle(selectedIconStyle);
                     infoWindow.setInfoTitle('<strong style="margin: 10px;">金水路泵站</strong>');
-                    infoWindow.setInfoBody('<div class="row" style="width: 2600px;margin: 10px 0;"><div class="col-md-3 col-md-offset-0"><img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;"></div><div class="col-md-9 col-md-offset-0"><div style="font-size: 14px;color:#4a4a4a">已启动泵组: 3组</div><div style="font-size: 14px;color:#4a4a4a">未启动泵组: 2组</div></div></div>');
+                    infoWindow.setInfoBody('<div class="row" style="width: 260px;margin: 10px 0;"><div class="col-md-3 col-md-offset-0"><img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;"></div><div class="col-md-9 col-md-offset-0"><div style="font-size: 14px;color:#4a4a4a">已启动泵组: 3组</div><div style="font-size: 14px;color:#4a4a4a">未启动泵组: 2组</div></div></div>');
                     infoWindow.open(map, e.target.getPosition());
                 });
             }
