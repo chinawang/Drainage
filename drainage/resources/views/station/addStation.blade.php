@@ -24,7 +24,8 @@
                                 <label for="station_number" class="col-md-4 control-label">编号</label>
 
                                 <div class="col-md-6">
-                                    <input id="station_number" type="text" class="form-control" name="station_number" value="{{ old('station_number') }}" placeholder="请输入泵站编号" required >
+                                    <input id="station_number" type="text" class="form-control" name="station_number"
+                                           value="{{ old('station_number') }}" placeholder="请输入泵站编号" required>
 
                                     @if ($errors->has('station_number'))
                                         <span class="help-block">
@@ -38,7 +39,8 @@
                                 <label for="name" class="col-md-4 control-label">名称</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="请输入泵站名称" required >
+                                    <input id="name" type="text" class="form-control" name="name"
+                                           value="{{ old('name') }}" placeholder="请输入泵站名称" required>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -52,7 +54,8 @@
                                 <label for="address" class="col-md-4 control-label">详细地址</label>
 
                                 <div class="col-md-6">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="请输入泵站详细地址" required >
+                                    <input id="address" type="text" class="form-control" name="address"
+                                           value="{{ old('address') }}" placeholder="请输入泵站详细地址" onchange="geocoder()" required>
 
                                     @if ($errors->has('address'))
                                         <span class="help-block">
@@ -63,8 +66,31 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="point" class="col-md-4 control-label">坐标</label>
+
+                                <div class="col-md-3">
+                                    <input id="lat" type="text" class="form-control" name="lat" value="{{ old('lat') }}"
+                                           placeholder="经度" required disabled="disabled">
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="lang" type="text" class="form-control" name="lang"
+                                           value="{{ old('lang') }}" placeholder="维度" required disabled="disabled">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="point" class="col-md-4 control-label">选取坐标</label>
+
+                                <div class="col-md-6">
+                                    <div style="width: 100%;height: 100px" id="map-container">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary btn-custom" >
+                                    <button type="submit" class="btn btn-primary btn-custom">
                                         保存
                                     </button>
                                 </div>
@@ -75,4 +101,87 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+
+    <!--引入高德地图JSAPI -->
+    <script type="text/javascript"
+            src="http://webapi.amap.com/maps?v=1.3&key=be195b71e866e63bb1688b420135565c&plugin=AMap.Geocoder"></script>
+    <!--引入UI组件库（1.0版本） -->
+    <script src="//webapi.amap.com/ui/1.0/main.js"></script>
+
+    <script type="text/javascript">
+
+        //创建地图
+        var map = new AMap.Map('map-container', {
+            zoom: 13,
+            center: [113.658578, 34.746427],
+            mapStyle: 'normal',
+            resizeEnable: true
+        });
+
+        //设置DomLibrary，jQuery或者Zepto
+        AMapUI.setDomLibrary($);
+
+        //加载BasicControl，loadUI的路径参数为模块名中 'ui/' 之后的部分
+        AMapUI.loadUI(['control/BasicControl','misc/PositionPicker'], function (BasicControl,PositionPicker) {
+
+            //缩放控件
+            map.addControl(new BasicControl.Zoom({
+                position: 'rt' //right top，右上角
+            }));
+
+            var positionPicker = new PositionPicker({
+                mode: 'dragMap',
+                map: map
+            });
+
+            positionPicker.on('success', function(positionResult) {
+                document.getElementById('lat').value = positionResult.position.getLat();
+                document.getElementById('lang').value = positionResult.position.getLang();
+            });
+
+        });
+
+        function geocoder() {
+            var geocoder = new AMap.Geocoder({
+                city: "郑州", //城市，默认：“全国”
+                radius: 1000 //范围，默认：500
+            });
+            var address = document.getElementById('address').value;
+            //地理编码,返回地理编码结果
+            geocoder.getLocation(address, function(status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+                    geocoder_CallBack(result);
+                }
+            });
+        }
+        function addMarker(i, d) {
+            var marker = new AMap.Marker({
+                map: map,
+                position: [ d.location.getLng(),  d.location.getLat()]
+            });
+            var infoWindow = new AMap.InfoWindow({
+                content: d.formattedAddress,
+                offset: {x: 0, y: -30}
+            });
+            marker.on("mouseover", function(e) {
+                infoWindow.open(map, marker.getPosition());
+            });
+        }
+        //地理编码返回结果展示
+        function geocoder_CallBack(data) {
+            //地理编码结果数组
+            var geocode = data.geocodes;
+            document.getElementById("lat").value = geocode[0].location.getLat();
+            document.getElementById("lang").value = geocode[0].location.getLang();
+        }
+
+        map.setFeatures(['road','bg','point'])//要素显示:道路、背景、标记
+
+        map.setFitView();
+
+    </script>
+
 @endsection
