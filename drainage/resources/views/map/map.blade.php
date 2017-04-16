@@ -97,6 +97,12 @@
 
             var infoWindow = new SimpleInfoWindow({offset: new AMap.Pixel(0, -40)});
 
+            var info = [];
+            info.push("<div><div><img style=\"float:left;\" src=\" http://webapi.amap.com/images/autonavi.png \"/></div> ");
+            info.push("<div style=\"padding:0px 0px 0px 4px;\"><b>高德软件</b>");
+            info.push("电话 : 010-84107000   邮编 : 100102");
+            info.push("地址 :北京市朝阳区望京阜荣街10号首开广场4层</div></div>");
+
             for (var i = 0, len = lngLats.length; i < len; i++) {
 
                 var marker = new SimpleMarker({
@@ -143,8 +149,8 @@
                 marker.on('click', function (e) {
                     e.target.setIconStyle(selectedIconStyle);
 //                    infoWindow.setInfoTitle('<strong>金水路泵站</strong>');
-                    infoWindow.setInfoBody('<p class="my-desc"><strong>这里是内容。</strong> <br/> 高德地图 JavaScript API，是由 JavaScript 语言编写的应用程序接口，' +
-                            '它能够帮助您在网站或移动端中构建功能丰富、交互性强的地图应用程序</p>');
+//                    infoWindow.setInfoBody('<div>');
+                    infoWindow.setContent(info);
                     infoWindow.open(map, e.target.getPosition());
                 });
             }
