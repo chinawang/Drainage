@@ -152,7 +152,7 @@
                 marker.on('click', function (e) {
                     e.target.setIconStyle(selectedIconStyle);
                     infoWindow.setInfoTitle('<strong>金水路泵站</strong>');
-                    infoWindow.setInfoBody('<div style="width: 50px">这里是内容</div><div style="width: 50px">这里是内容</div>');
+                    infoWindow.setInfoBody('<div style="width: 200px">这里是内容</div><div style="width: 200px">这里是内容</div>');
                     infoWindow.open(map, e.target.getPosition());
                 });
             }
