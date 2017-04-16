@@ -97,11 +97,7 @@
 
             var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -40)});
 
-            var info = [];
-            info.push("<div><div><img style=\"float:left;\" src=\" http://webapi.amap.com/images/autonavi.png \"/></div> ");
-            info.push("<div style=\"padding:0px 0px 0px 4px;\"><b>高德软件</b>");
-            info.push("电话 : 010-84107000   邮编 : 100102");
-            info.push("地址 :北京市朝阳区望京阜荣街10号首开广场4层</div></div>");
+            var info = "<div>Test<div>";
 
             for (var i = 0, len = lngLats.length; i < len; i++) {
 
