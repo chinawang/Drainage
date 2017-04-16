@@ -53,7 +53,7 @@
         var map = new AMap.Map('map-container',{
             zoom: 13,
             center:[113.658578,34.746427],
-            mapStyle:'normal',
+            mapStyle:'light',
             resizeEnable: true
         });
 
@@ -65,12 +65,7 @@
 
             //缩放控件
             map.addControl(new BasicControl.Zoom({
-                position: 'rb', //right bottom，右下角
-            }));
-
-            //图层切换控件
-            map.addControl(new BasicControl.LayerSwitcher({
-                position: 'rt' //right top，右上角
+                position: 'rb' //right bottom，右下角
             }));
 
         });
