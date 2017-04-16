@@ -55,7 +55,7 @@
 
                                 <div class="col-md-6">
                                     <input id="address" type="text" class="form-control" name="address"
-                                           value="{{ old('address') }}" placeholder="请输入泵站详细地址" oninput="geocoder()"
+                                           value="{{ old('address') }}" placeholder="请输入泵站详细地址"
                                            required>
 
                                     @if ($errors->has('address'))
