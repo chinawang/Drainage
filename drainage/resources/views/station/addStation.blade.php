@@ -98,7 +98,7 @@
                             </div>
                         </form>
                         <div>
-                            <a href="" class="btn btn-primary btn-sm" onclick="geocoder()">搜索坐标</a>
+                            <a href="javascript:geocoder();" class="btn btn-primary btn-sm" >搜索坐标</a>
                         </div>
                     </div>
                 </div>
