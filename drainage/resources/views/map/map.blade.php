@@ -95,7 +95,7 @@
         //加载SimpleMarker
         AMapUI.loadUI(['overlay/SimpleMarker', 'overlay/SimpleInfoWindow'], function (SimpleMarker, SimpleInfoWindow) {
 
-            var infoWindow = new SimpleInfoWindow({offset: new AMap.Pixel(0, -40)});
+            var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -40)});
 
             var info = [];
             info.push("<div><div><img style=\"float:left;\" src=\" http://webapi.amap.com/images/autonavi.png \"/></div> ");
