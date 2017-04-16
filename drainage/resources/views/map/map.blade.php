@@ -136,6 +136,8 @@
 
         });
 
+        map.setFeatures(['road','bg'])//要素显示:道路、背景
+
         map.setFitView();
 
     </script>
