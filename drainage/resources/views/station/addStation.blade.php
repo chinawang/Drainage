@@ -159,8 +159,12 @@
             //地理编码,返回地理编码结果
             geocoder.getLocation(address, function (status, result) {
                 if (status === 'complete' && result.info === 'OK') {
-                    geocoder_CallBack(result);
                     alert(result.location.getLng());
+                    geocoder_CallBack(result);
+                }
+                else
+                {
+                    alert('Fail!');
                 }
             });
         }
