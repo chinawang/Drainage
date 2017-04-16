@@ -120,6 +120,7 @@
         //创建地图
         var map = new AMap.Map('map-container', {
             zoom: 13,
+            center: [113.658578, 34.746427],
             mapStyle: 'normal',
             resizeEnable: true
         });
@@ -190,7 +191,7 @@
 
         map.setFeatures(['road', 'bg', 'point'])//要素显示:道路、背景、标记
 
-        map.setFitView();
+//        map.setFitView();
 
     </script>
 
