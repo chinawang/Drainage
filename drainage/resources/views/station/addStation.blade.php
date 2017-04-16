@@ -156,7 +156,7 @@
             var address = document.getElementById('address').value;
 
             //地理编码,返回地理编码结果
-            geocoder.getLocation(address, function(status, result) {
+            geocoder.getLocation("郑州火车站", function(status, result) {
                 if (status === 'complete' && result.info === 'OK') {
                     geocoder_CallBack(result);
                     alert(result.geocodes);
