@@ -29,11 +29,10 @@
     <script type="text/javascript">
 
         var map = new AMap.Map('map-container',{
-            zoom: 15,
+            zoom: 12,
+            center:[113.658578,34.746427],
             resizeEnable: true
         });
-
-        map.setCity("郑州");
 
     </script>
 
