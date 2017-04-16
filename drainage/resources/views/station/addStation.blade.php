@@ -65,7 +65,7 @@
                                     @endif
                                 </div>
                                 <div>
-                                    <a href="" class="btn btn-primary btn-sm" onclick="geocoder()">搜索坐标</a>
+                                    <a href="" class="btn-sm" onclick="geocoder()">搜索坐标</a>
                                 </div>
                             </div>
 
