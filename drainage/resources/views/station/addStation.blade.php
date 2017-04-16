@@ -159,6 +159,7 @@
             geocoder.getLocation(address, function(status, result) {
                 if (status === 'complete' && result.info === 'OK') {
                     geocoder_CallBack(result);
+                    alert(result.geocodes);
                 }else {
                     alert('搜索失败');
                 }
