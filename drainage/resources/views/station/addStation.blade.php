@@ -74,11 +74,11 @@
 
                                 <div class="col-md-3">
                                     <input id="lang" type="text" class="form-control" name="lang"
-                                            placeholder="经度" required disabled="disabled">
+                                            placeholder="经度" required  readonly="readonly">
                                 </div>
                                 <div class="col-md-3">
                                     <input id="lat" type="text" class="form-control" name="lat"
-                                           placeholder="维度" required disabled="disabled">
+                                           placeholder="维度" required  readonly="readonly">
                                 </div>
 
                             </div>
