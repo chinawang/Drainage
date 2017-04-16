@@ -73,7 +73,7 @@
                                 <label for="point" class="col-md-4 control-label">坐标</label>
 
                                 <div class="col-md-3">
-                                    <input id="lang" type="text" class="form-control" name="lang"
+                                    <input id="lng" type="text" class="form-control" name="lng"
                                             placeholder="经度" required  readonly="readonly">
                                 </div>
                                 <div class="col-md-3">
@@ -144,7 +144,7 @@
 
             positionPicker.on('success', function (positionResult) {
                 document.getElementById('lat').value = positionResult.position.getLat();
-                document.getElementById('lang').value = positionResult.position.getLng();
+                document.getElementById('lng').value = positionResult.position.getLng();
             });
 
         });
@@ -196,7 +196,7 @@
             addMarker(0, geocode[0]);
 
             document.getElementById("lat").value = geocode[0].location.getLat();
-            document.getElementById("lang").value = geocode[0].location.getLng();
+            document.getElementById("lng").value = geocode[0].location.getLng();
             map.setFitView();
         }
 
