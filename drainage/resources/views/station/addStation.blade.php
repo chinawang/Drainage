@@ -188,6 +188,7 @@
 
             document.getElementById("lat").value = geocode[0].location.getLat();
             document.getElementById("lang").value = geocode[0].location.getLng();
+            map.setFitView();
         }
 
         map.setFeatures(['road', 'bg', 'point'])//要素显示:道路、背景、标记
