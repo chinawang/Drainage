@@ -61,7 +61,7 @@
 
         //创建地图
         var map = new AMap.Map('map-container', {
-            zoom: 13,
+            zoom: 12,
             center: [113.658578, 34.746427],
             mapStyle: 'normal',
             resizeEnable: true
