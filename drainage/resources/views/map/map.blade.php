@@ -2,6 +2,24 @@
 
 @section('stylesheet')
     <link href="{{ asset('css/map/map.css') }}" rel="stylesheet">
+
+    <style>
+        html,
+        body,
+        #map-container {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+
+        .amap-marker-label {
+            font-size: 13px;
+            border: 1px solid orange;
+            background: #fff;
+            border-radius: 10px 0 0 0;
+            color: #690441;
+        }
+    </style>
 @endsection
 
 @section('subtitle')
@@ -83,15 +101,15 @@
 
                 new SimpleMarker({
                     //使用内置的iconStyle
-                    iconStyle: iconStyles[i],
+                    iconStyle: 'darkblue',
 
                     //图标文字
                     iconLabel: {
                         //A,B,C.....
-                        innerHTML: String.fromCharCode('A'.charCodeAt(0) + i),
+                        innerHTML: '泵',
                         style: {
                             //颜色, #333, red等等，这里仅作示例，取iconStyle中首尾相对的颜色
-                            color: iconStyles[len - 1 - i]
+                            color: '#ffffff'
                         }
                     },
 
@@ -103,7 +121,7 @@
 
                     //Marker的label(见http://lbs.amap.com/api/javascript-api/reference/overlay/#Marker)
                     label: {
-                        content: iconStyles[i],
+                        content: '金水路泵站',
                         offset: new AMap.Pixel(27, 25)
                     }
                 });
