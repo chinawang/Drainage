@@ -58,7 +58,7 @@
         });
 
         //标记位置
-        var lnglats=[
+        var lngLats=[
             [113.655831,34.805647],[113.69394,34.779145],
             [113.606393,34.763634],[113.684671,34.732885],
             [113.610856,34.735142],[113.652398,34.754326],
@@ -66,7 +66,7 @@
         ];
 
 //        //创建标记位置
-//        for(var i = 0, marker; i < lnglats.length; i++){
+//        for(var i = 0, marker; i < lngLats.length; i++){
 //            marker=new AMap.Marker({
 //                position:lnglats[i],
 //                map:map
