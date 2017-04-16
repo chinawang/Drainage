@@ -95,8 +95,7 @@
         //加载SimpleMarker
         AMapUI.loadUI(['overlay/SimpleMarker', 'overlay/SimpleInfoWindow'], function (SimpleMarker, SimpleInfoWindow) {
 
-            //内置的样式
-            var iconStyles = SimpleMarker.getBuiltInIconStyles();
+            var infoWindow = new SimpleInfoWindow({offset: new AMap.Pixel(0, -30)});
 
             for (var i = 0, len = lngLats.length; i < len; i++) {
 
@@ -127,20 +126,6 @@
                     }
                 });
 
-                var infoWindow = new SimpleInfoWindow({
-
-                    infoTitle: '<strong>这里是标题</strong>',
-                    infoBody: '<p class="my-desc"><strong>这里是内容。</strong> <br/> 高德地图 JavaScript API，是由 JavaScript 语言编写的应用程序接口，' +
-                    '它能够帮助您在网站或移动端中构建功能丰富、交互性强的地图应用程序</p>',
-
-                    //基点指向marker的头部位置
-                    offset: new AMap.Pixel(0, -31)
-                });
-
-                function openInfoWin() {
-                    infoWindow.open(map, marker.getPosition());
-                }
-
                 marker.emit('mouseover', {target: marker});
 
                 marker.on('mouseover', function (e) {
@@ -157,7 +142,9 @@
 
                 marker.on('click', function (e) {
                     e.target.setIconStyle(selectedIconStyle);
-                    openInfoWin();
+                    infoWindow.setContent('<p class="my-desc"><strong>这里是内容。</strong> <br/> 高德地图 JavaScript API，是由 JavaScript 语言编写的应用程序接口，' +
+                            '它能够帮助您在网站或移动端中构建功能丰富、交互性强的地图应用程序</p>');
+                    infoWindow.open(map, e.target.getPosition());
                 });
             }
 
