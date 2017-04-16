@@ -120,7 +120,6 @@
         //创建地图
         var map = new AMap.Map('map-container', {
             zoom: 13,
-            center: [113.658578, 34.746427],
             mapStyle: 'normal',
             resizeEnable: true
         });
@@ -136,15 +135,15 @@
                 position: 'rt' //right top，右上角
             }));
 
-            var positionPicker = new PositionPicker({
-                mode: 'dragMap',
-                map: map
-            });
-
-            positionPicker.on('success', function (positionResult) {
-                document.getElementById('lat').value = positionResult.position.getLat();
-                document.getElementById('lang').value = positionResult.position.getLang();
-            });
+//            var positionPicker = new PositionPicker({
+//                mode: 'dragMap',
+//                map: map
+//            });
+//
+//            positionPicker.on('success', function (positionResult) {
+//                document.getElementById('lat').value = positionResult.position.getLat();
+//                document.getElementById('lang').value = positionResult.position.getLang();
+//            });
 
         });
 
