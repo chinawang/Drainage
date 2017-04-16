@@ -184,14 +184,14 @@
             //地理编码结果数组
             var geocode = data.geocodes;
             addMarker(0, geocode[0]);
-            map.setFitView();
+
             document.getElementById("lat").value = geocode[0].location.getLat();
             document.getElementById("lang").value = geocode[0].location.getLang();
         }
 
         map.setFeatures(['road', 'bg', 'point'])//要素显示:道路、背景、标记
 
-//        map.setFitView();
+        map.setFitView();
 
     </script>
 
