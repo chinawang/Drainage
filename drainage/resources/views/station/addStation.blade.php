@@ -155,12 +155,11 @@
             var address = document.getElementById('address').value;
 
             //地理编码,返回地理编码结果
-            geocoder.getLocation("郑州火车站", function(status, result) {
+            geocoder.getLocation(address, function(status, result) {
                 if (status === 'complete' && result.info === 'OK') {
-                    alert('succcess!');
                     geocoder_CallBack(result);
                 }else {
-                    alert('fail!');
+                    alert('搜索失败');
                 }
             });
         }
