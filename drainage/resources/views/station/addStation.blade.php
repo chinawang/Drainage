@@ -163,7 +163,7 @@
                 }
                 else
                 {
-                    alert('Fail!');
+//                    alert('Fail!');
                 }
             });
         }
