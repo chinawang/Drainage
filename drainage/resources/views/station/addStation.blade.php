@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="point" class="col-md-4 control-label">选取坐标</label>
+                                <label for="point" class="col-md-4 control-label">坐标位置</label>
 
                                 <div class="col-md-6">
                                     <div style="width: 100%;height: 300px" id="map-container">
@@ -130,23 +130,12 @@
         AMapUI.setDomLibrary($);
 
         //加载BasicControl，loadUI的路径参数为模块名中 'ui/' 之后的部分
-        AMapUI.loadUI(['control/BasicControl', 'misc/PositionPicker'], function (BasicControl, PositionPicker) {
+        AMapUI.loadUI(['control/BasicControl'], function (BasicControl) {
 
             //缩放控件
             map.addControl(new BasicControl.Zoom({
                 position: 'rt' //right top，右上角
             }));
-
-            var positionPicker = new PositionPicker({
-                mode: 'dragMap',
-                map: map
-            });
-
-            positionPicker.on('success', function (positionResult) {
-                document.getElementById('lat').value = positionResult.position.getLat();
-                document.getElementById('lng').value = positionResult.position.getLng();
-            });
-
         });
 
         function geocoder() {
@@ -161,7 +150,12 @@
                 if (status === 'complete' && result.info === 'OK') {
                     geocoder_CallBack(result);
                 } else {
-                    alert('搜索失败');
+                    swal({
+                        title: "搜索失败!",
+                        text: "请填写准确的地址信息,稍后重试!",
+                        type: "error",
+                        confirmButtonText: '关闭'
+                    });
                 }
             });
         }
