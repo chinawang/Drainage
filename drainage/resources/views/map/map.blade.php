@@ -126,6 +126,12 @@
                 marker.on('mouseover', function(e) {
                     e.target.setIconStyle('orange');
                 });
+
+                marker.emit('mouseout', {target: marker});
+
+                marker.on('mouseout', function(e) {
+                    e.target.setIconStyle('darkblue');
+                });
             }
 
         });
