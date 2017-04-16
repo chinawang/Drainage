@@ -53,7 +53,7 @@
         var map = new AMap.Map('map-container',{
             zoom: 13,
             center:[113.658578,34.746427],
-            mapStyle:'light',
+            mapStyle:'normal',
             resizeEnable: true
         });
 
@@ -124,7 +124,7 @@
                 marker.emit('mouseover', {target: marker});
 
                 marker.on('mouseover', function(e) {
-                    e.target.setIconStyle('green');
+                    e.target.setIconStyle('blue');
                 });
 
                 marker.emit('mouseout', {target: marker});
