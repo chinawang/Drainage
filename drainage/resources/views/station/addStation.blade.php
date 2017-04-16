@@ -154,37 +154,37 @@
             });
             var address = document.getElementById('address').value;
 
-
             //地理编码,返回地理编码结果
-            geocoder.getLocation("郑州火车站", function (status, result) {
+            geocoder.getLocation("郑州火车站", function(status, result) {
                 if (status === 'complete' && result.info === 'OK') {
-                    alert(result.location.getLng());
+                    alert('succcess!');
                     geocoder_CallBack(result);
-                }
-                else
-                {
-//                    alert('Fail!');
+                }else {
+                    alert('fail!');
                 }
             });
         }
+
         function addMarker(i, d) {
             var marker = new AMap.Marker({
                 map: map,
-                position: [d.location.getLng(), d.location.getLat()]
+                position: [ d.location.getLng(),  d.location.getLat()]
             });
             var infoWindow = new AMap.InfoWindow({
                 content: d.formattedAddress,
                 offset: {x: 0, y: -30}
             });
-            marker.on("mouseover", function (e) {
+            marker.on("mouseover", function(e) {
                 infoWindow.open(map, marker.getPosition());
             });
         }
+
         //地理编码返回结果展示
         function geocoder_CallBack(data) {
             //地理编码结果数组
             var geocode = data.geocodes;
             addMarker(0, geocode[0]);
+            map.setFitView();
             document.getElementById("lat").value = geocode[0].location.getLat();
             document.getElementById("lang").value = geocode[0].location.getLang();
         }
