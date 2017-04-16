@@ -64,9 +64,6 @@
                                     </span>
                                     @endif
                                 </div>
-                                <div>
-                                    <a href="" onclick="geocoder()">搜索坐标</a>
-                                </div>
                             </div>
 
                             <div class="form-group">
@@ -100,6 +97,9 @@
                                 </div>
                             </div>
                         </form>
+                        <div>
+                            <a href="" class="btn btn-primary btn-sm" onclick="geocoder()">搜索坐标</a>
+                        </div>
                     </div>
                 </div>
             </div>
