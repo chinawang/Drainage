@@ -142,7 +142,7 @@
 
                 marker.on('click', function (e) {
                     e.target.setIconStyle(selectedIconStyle);
-                    infoWindow.setInfoTitle('<strong>金水路泵站</strong>');
+//                    infoWindow.setInfoTitle('<strong>金水路泵站</strong>');
                     infoWindow.setInfoBody('<p class="my-desc"><strong>这里是内容。</strong> <br/> 高德地图 JavaScript API，是由 JavaScript 语言编写的应用程序接口，' +
                             '它能够帮助您在网站或移动端中构建功能丰富、交互性强的地图应用程序</p>');
                     infoWindow.open(map, e.target.getPosition());
