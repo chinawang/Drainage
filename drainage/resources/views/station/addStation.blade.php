@@ -74,10 +74,10 @@
 
                                 <div class="col-md-3">
                                     <input id="lang" type="text" class="form-control" name="lang"
-                                           value="{{ old('lang') }}" placeholder="经度" required disabled="disabled">
+                                            placeholder="经度" required disabled="disabled">
                                 </div>
                                 <div class="col-md-3">
-                                    <input id="lat" type="text" class="form-control" name="lat" value="{{ old('lat') }}"
+                                    <input id="lat" type="text" class="form-control" name="lat"
                                            placeholder="维度" required disabled="disabled">
                                 </div>
 
@@ -169,6 +169,11 @@
         var marker = null;
 
         function addMarker(i, d) {
+
+            if (marker) {
+                marker.setMap(null);
+                marker = null;
+            }
 
             marker = new AMap.Marker({
                 map: map,

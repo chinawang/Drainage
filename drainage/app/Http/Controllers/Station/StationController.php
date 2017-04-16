@@ -93,6 +93,7 @@ class StationController extends Controller
     {
         $input = $this->stationValidation->storeNewStation();
         $result = $this->stationLogic->createStation($input);
+        return $input;
         if($result)
         {
             session()->flash('flash_message', [
