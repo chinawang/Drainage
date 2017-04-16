@@ -73,6 +73,44 @@
             });
         }
 
+        //加载SimpleMarker
+        AMapUI.loadUI(['overlay/SimpleMarker'], function(SimpleMarker) {
+
+            //内置的样式
+            var iconStyles = SimpleMarker.getBuiltInIconStyles();
+
+            for (var i = 0, len = lngLats.length; i < len; i++) {
+
+                new SimpleMarker({
+                    //使用内置的iconStyle
+                    iconStyle: iconStyles[i],
+
+                    //图标文字
+                    iconLabel: {
+                        //A,B,C.....
+                        innerHTML: String.fromCharCode('A'.charCodeAt(0) + i),
+                        style: {
+                            //颜色, #333, red等等，这里仅作示例，取iconStyle中首尾相对的颜色
+                            color: iconStyles[len - 1 - i]
+                        }
+                    },
+
+                    //显示定位点
+                    //showPositionPoint:true,
+
+                    map: map,
+                    position: lngLats[i],
+
+                    //Marker的label(见http://lbs.amap.com/api/javascript-api/reference/overlay/#Marker)
+                    label: {
+                        content: iconStyles[i],
+                        offset: new AMap.Pixel(27, 25)
+                    }
+                });
+            }
+
+        });
+
         map.setFitView();
 
     </script>
