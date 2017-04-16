@@ -65,7 +65,7 @@
                                     @endif
                                 </div>
                                 <div>
-                                    <a href="javascript:geocoder();" class="btn btn-primary btn-sm" >搜索坐标</a>
+                                    <a href="javascript:geocoder();" class="btn btn-primary btn-sm">搜索坐标</a>
                                 </div>
                             </div>
 
@@ -127,27 +127,27 @@
         });
 
         //设置DomLibrary，jQuery或者Zepto
-//        AMapUI.setDomLibrary($);
+        AMapUI.setDomLibrary($);
 
         //加载BasicControl，loadUI的路径参数为模块名中 'ui/' 之后的部分
-//        AMapUI.loadUI(['control/BasicControl', 'misc/PositionPicker'], function (BasicControl, PositionPicker) {
-//
-//            //缩放控件
-//            map.addControl(new BasicControl.Zoom({
-//                position: 'rt' //right top，右上角
-//            }));
-//
-//            var positionPicker = new PositionPicker({
-//                mode: 'dragMap',
-//                map: map
-//            });
-//
-//            positionPicker.on('success', function (positionResult) {
-//                document.getElementById('lat').value = positionResult.position.getLat();
-//                document.getElementById('lang').value = positionResult.position.getLang();
-//            });
-//
-//        });
+        AMapUI.loadUI(['control/BasicControl', 'misc/PositionPicker'], function (BasicControl, PositionPicker) {
+
+            //缩放控件
+            map.addControl(new BasicControl.Zoom({
+                position: 'rt' //right top，右上角
+            }));
+
+            var positionPicker = new PositionPicker({
+                mode: 'dragMap',
+                map: map
+            });
+
+            positionPicker.on('success', function (positionResult) {
+                document.getElementById('lat').value = positionResult.position.getLat();
+                document.getElementById('lang').value = positionResult.position.getLng();
+            });
+
+        });
 
         function geocoder() {
             var geocoder = new AMap.Geocoder({
@@ -157,25 +157,28 @@
             var address = document.getElementById('address').value;
 
             //地理编码,返回地理编码结果
-            geocoder.getLocation(address, function(status, result) {
+            geocoder.getLocation(address, function (status, result) {
                 if (status === 'complete' && result.info === 'OK') {
                     geocoder_CallBack(result);
-                }else {
+                } else {
                     alert('搜索失败');
                 }
             });
         }
 
+        var marker = null;
+
         function addMarker(i, d) {
-            var marker = new AMap.Marker({
+
+            marker = new AMap.Marker({
                 map: map,
-                position: [ d.location.getLng(),  d.location.getLat()]
+                position: [d.location.getLng(), d.location.getLat()]
             });
             var infoWindow = new AMap.InfoWindow({
                 content: d.formattedAddress,
                 offset: {x: 0, y: -30}
             });
-            marker.on("mouseover", function(e) {
+            marker.on("mouseover", function (e) {
                 infoWindow.open(map, marker.getPosition());
             });
         }
@@ -184,6 +187,7 @@
         function geocoder_CallBack(data) {
             //地理编码结果数组
             var geocode = data.geocodes;
+
             addMarker(0, geocode[0]);
 
             document.getElementById("lat").value = geocode[0].location.getLat();
