@@ -95,9 +95,7 @@
         //加载SimpleMarker
         AMapUI.loadUI(['overlay/SimpleMarker', 'overlay/SimpleInfoWindow'], function (SimpleMarker, SimpleInfoWindow) {
 
-            var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -40)});
-
-            var info = "<div>Test<div>";
+            var infoWindow = new SimpleInfoWindow({offset: new AMap.Pixel(0, -40)});
 
             for (var i = 0, len = lngLats.length; i < len; i++) {
 
@@ -144,9 +142,8 @@
 
                 marker.on('click', function (e) {
                     e.target.setIconStyle(selectedIconStyle);
-//                    infoWindow.setInfoTitle('<strong>金水路泵站</strong>');
-//                    infoWindow.setInfoBody('<div>');
-                    infoWindow.setContent(info);
+                    infoWindow.setInfoTitle('<strong>金水路泵站</strong>');
+                    infoWindow.setInfoBody('<p>这里是内容。</p>');
                     infoWindow.open(map, e.target.getPosition());
                 });
             }
