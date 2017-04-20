@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 class MapController extends Controller
 {
+    /**
+     * MapController constructor.
+     */
     public function __construct()
     {
     }
@@ -15,4 +18,6 @@ class MapController extends Controller
     {
         return view('map.map');
     }
+
+
 }

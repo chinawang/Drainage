@@ -147,6 +147,12 @@ class WeatherController extends Controller
         return view('weather.weather',$param);
     }
 
+    /**
+     * 获取实时天气
+     *
+     * @param $url
+     * @return mixed
+     */
     public function getNowWeather($url)
     {
         // 1. 初始化
@@ -167,6 +173,12 @@ class WeatherController extends Controller
         return $output;
     }
 
+    /**
+     * 获取三天内天气
+     *
+     * @param $url
+     * @return mixed
+     */
     public function getDailyWeather($url)
     {
         // 1. 初始化
@@ -187,6 +199,11 @@ class WeatherController extends Controller
         return $output;
     }
 
+    /**
+     * 实时天气URL
+     *
+     * @return string
+     */
     public function getNowURL()
     {
         // 心知天气接口调用凭据
@@ -209,6 +226,11 @@ class WeatherController extends Controller
         return $url;
     }
 
+    /**
+     * 三天内天气URL
+     *
+     * @return string
+     */
     public function getDailyURL()
     {
         // 心知天气接口调用凭据

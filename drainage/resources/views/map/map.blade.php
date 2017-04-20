@@ -139,12 +139,6 @@
                     }
                 });
 
-//                marker.emit('mouseover', {target: marker});
-//
-//                marker.on('mouseover', function (e) {
-//                    e.target.setIconStyle(hoverIconStyle);
-//                });
-
                 marker.emit('mouseout', {target: marker});
 
                 marker.on('mouseout', function (e) {
