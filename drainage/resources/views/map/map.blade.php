@@ -86,10 +86,10 @@
             [113.606393, 34.763634], [113.684671, 34.732885],
             [113.610856, 34.735142], [113.652398, 34.754326],
             [113.637635, 34.781118], [113.679864, 34.698456],
-            [113.726642,34.76032], [113.697803,34.749601],
-            [113.671195,34.73874], [113.617808,34.74283],
-            [113.62519,34.722798], [113.596007,34.723926],
-            [113.621757,34.75623], [113.602874,34.742478]
+            [113.726642, 34.76032], [113.697803, 34.749601],
+            [113.671195, 34.73874], [113.617808, 34.74283],
+            [113.62519, 34.722798], [113.596007, 34.723926],
+            [113.621757, 34.75623], [113.602874, 34.742478]
         ];
 
         //        //创建标记位置
@@ -147,17 +147,19 @@
 
                 marker.emit('mouseover', {target: marker});
 
+                var contentHtml = '<div class="row" style="width: 260px;margin: 10px 0;"><div class="col-md-3 col-md-offset-0"><img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;"></div><div class="col-md-6 col-md-offset-0" style="margin-left: -5px"><div style="font-size: 14px;color:#4a4a4a">已启动泵组: 3组</div><div style="font-size: 14px;color:#4a4a4a">未启动泵组: 2组</div></div><div class="col-md-3 col-md-offset-0"><a href="/station/lists" class="btn-link" style="font-size: 12px;height: 40px;line-height: 40px">详情</a></div></div>';
+
                 marker.on('mouseover', function (e) {
                     e.target.setIconStyle(hoverIconStyle);
                     infoWindow.setInfoTitle('<strong style="margin: 10px;">金水路泵站</strong>');
-                    infoWindow.setInfoBody('<div class="row" style="width: 260px;margin: 10px 0;"><div class="col-md-3 col-md-offset-0"><img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;"></div><div class="col-md-6 col-md-offset-0" style="margin-left: -5px"><div style="font-size: 14px;color:#4a4a4a">已启动泵组: 3组</div><div style="font-size: 14px;color:#4a4a4a">未启动泵组: 2组</div></div><div class="col-md-3 col-md-offset-0"><a href="/station/lists" class="btn-link" style="font-size: 12px;height: 40px;line-height: 40px">详情</a></div></div>');
+                    infoWindow.setInfoBody('contentHtml');
                     infoWindow.open(map, e.target.getPosition());
                 });
             }
 
         });
 
-        map.setFeatures(['road','bg'])//要素显示:道路、背景
+        map.setFeatures(['road', 'bg'])//要素显示:道路、背景
 
         map.setFitView();
 

@@ -18,6 +18,4 @@ class MapController extends Controller
     {
         return view('map.map');
     }
-
-
 }
