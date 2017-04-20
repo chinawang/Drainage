@@ -152,7 +152,7 @@
                 marker.on('mouseover', function (e) {
                     e.target.setIconStyle(hoverIconStyle);
                     infoWindow.setInfoTitle('<strong style="margin: 10px;">金水路泵站</strong>');
-                    infoWindow.setInfoBody('contentHtml');
+                    infoWindow.setInfoBody(contentHtml);
                     infoWindow.open(map, e.target.getPosition());
                 });
             }
