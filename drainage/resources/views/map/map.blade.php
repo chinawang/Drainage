@@ -147,7 +147,7 @@
 
                 marker.emit('mouseover', {target: marker});
 
-                var contentHtml = '<div class="row" style="width: 260px;margin: 10px 0;">' +
+                var contentHtml = '<div class="row" style="width: 280px;margin: 10px 0;">' +
                         '<div class="col-md-3 col-md-offset-0" style="height: 60px;line-height: 60px">' +
                         '<img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;">' +
                         '</div>' +
