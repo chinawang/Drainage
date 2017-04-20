@@ -149,7 +149,7 @@
 
                 var contentHtml = '<div class="row" style="width: 260px;margin: 10px 0;">' +
                         '<div class="col-md-3 col-md-offset-0">' +
-                        '<img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;">' +
+                        '<img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;line-height: 60px;">' +
                         '</div>' +
                         '<div class="col-md-6 col-md-offset-0" style="margin-left: -5px">' +
                         '<div style="font-size: 14px;color:#4a4a4a">已启动泵组: 3组</div>' +
