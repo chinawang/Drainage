@@ -77,7 +77,7 @@ class StationController extends Controller
 
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'desc');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 10);
         $stationPaginate = $this->stationLogic->getStations($pageSize,$orderColumn,$orderDirection,$cursorPage);
         $param = ['stations' => $stationPaginate];
