@@ -25,7 +25,7 @@ class MapController extends Controller
 
     public function showMap()
     {
-        return $this->getStationRTs();
+        return $this->getStationRTs("1");
         $stationList = $this->stationLogic->getAllStations();
         $param = ['stations' => $stationList];
         return view('map.map',$param);
@@ -45,9 +45,10 @@ class MapController extends Controller
         return response()->json(array('stations'=> $stationList), 200);
     }
 
-    public function getStationRTs()
+    public function getStationRTs($stationNum)
     {
-        $stationRTs = DB::select('select * from 170418test order by Time desc limit 1');
+        $stationTable = "stationRT_".$stationNum;
+        $stationRTs = DB::select('select * from $stationTable order by Time desc limit 1');
         return $stationRTs;
     }
 
