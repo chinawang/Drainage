@@ -25,7 +25,6 @@ class MapController extends Controller
 
     public function showMap()
     {
-        return $this->getStationRTs("1");
         $stationList = $this->stationLogic->getAllStations();
         $param = ['stations' => $stationList];
         return view('map.map',$param);
