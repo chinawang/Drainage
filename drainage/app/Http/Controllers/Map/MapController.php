@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Map;
 use App\Http\Logic\Station\StationLogic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class MapController extends Controller
 {
@@ -24,6 +25,7 @@ class MapController extends Controller
 
     public function showMap()
     {
+        return $this->getStationRTs();
         $stationList = $this->stationLogic->getAllStations();
         $param = ['stations' => $stationList];
         return view('map.map',$param);
@@ -41,6 +43,12 @@ class MapController extends Controller
     {
         $stationList = $this->stationLogic->getAllStations();
         return response()->json(array('stations'=> $stationList), 200);
+    }
+
+    public function getStationRTs()
+    {
+        $stationRTs = DB::table('stationRT_1')->latest()->first();
+        return $stationRTs;
     }
 
 }
