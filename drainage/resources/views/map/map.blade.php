@@ -306,10 +306,11 @@
 
                     marker.on('mouseover', function (e) {
                         e.target.setIconStyle(hoverIconStyle);
-                        infoWindow.setInfoTitle('<strong style="margin: 10px;">stations[i].name</strong>');
+                        infoWindow.setInfoTitle('<strong id="title_info" style="margin: 10px;"></strong>');
                         infoWindow.setInfoBody(contentHtml);
                         infoWindow.open(map, e.target.getPosition());
                     });
+                    $("#title_info").html(stations[i].name);
                 }
 
             });
