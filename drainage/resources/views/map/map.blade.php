@@ -29,7 +29,7 @@
             padding: 10px;
         }
     </style>
-    <meta http-equiv="refresh" content="5">
+
 @endsection
 
 @section('subtitle')
