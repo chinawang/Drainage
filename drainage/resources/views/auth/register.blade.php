@@ -1,17 +1,21 @@
 @extends('layouts.app')
 
+@section('subtitle')
+    <span>注册</span>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">注册</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">登录账号</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -40,7 +44,7 @@
                         {{--</div>--}}
 
                         <div class="form-group{{ $errors->has('employee_number') ? ' has-error' : '' }}">
-                            <label for="employee_number" class="col-md-4 control-label">Employee Number</label>
+                            <label for="employee_number" class="col-md-4 control-label">员工编号</label>
 
                             <div class="col-md-6">
                                 <input id="employee_number" type="text" class="form-control" name="employee_number" value="{{ old('employee_number') }}" required autofocus>
@@ -54,7 +58,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('realname') ? ' has-error' : '' }}">
-                            <label for="realname" class="col-md-4 control-label">Realname</label>
+                            <label for="realname" class="col-md-4 control-label">员工姓名</label>
 
                             <div class="col-md-6">
                                 <input id="realname" type="text" class="form-control" name="realname" value="{{ old('realname') }}" required autofocus>
@@ -68,7 +72,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('office') ? ' has-error' : '' }}">
-                            <label for="office" class="col-md-4 control-label">Office</label>
+                            <label for="office" class="col-md-4 control-label">职位</label>
 
                             <div class="col-md-6">
                                 <input id="office" type="text" class="form-control" name="office" value="{{ old('office') }}" required autofocus>
@@ -82,7 +86,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('contact') ? ' has-error' : '' }}">
-                            <label for="contact" class="col-md-4 control-label">Contact</label>
+                            <label for="contact" class="col-md-4 control-label">联系方式</label>
 
                             <div class="col-md-6">
                                 <input id="contact" type="text" class="form-control" name="contact" value="{{ old('contact') }}" required autofocus>
@@ -96,7 +100,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">密码</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -110,7 +114,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">确认密码</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -120,7 +124,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    注册
                                 </button>
                             </div>
                         </div>

@@ -18,7 +18,7 @@
                     {{--</div>--}}
                     <div class="panel-body custom-panel-body">
                         <div class="row">
-                            <div class="col-md-2 col-md-offset-0">
+                            <div class="col-md-12 col-md-offset-0">
                                 <div class="text-city">
                                     郑州
                                     <a href="/weather/view" class="btn-link" style="float: right">刷新</a>
