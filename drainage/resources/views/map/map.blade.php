@@ -29,6 +29,7 @@
             padding: 10px;
         }
     </style>
+    <meta http-equiv="refresh" content="5">
 @endsection
 
 @section('subtitle')
@@ -214,14 +215,6 @@
 
         map.setFitView();
 
-    </script>
-
-    <script language="JavaScript">
-        function myrefresh()
-        {
-            window.location.reload();
-        }
-        setTimeout('myrefresh()',10000); //指定1秒刷新一次
     </script>
 
 @endsection
