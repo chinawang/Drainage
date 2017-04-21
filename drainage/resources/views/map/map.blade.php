@@ -309,8 +309,9 @@
                         infoWindow.setInfoTitle('<strong id="title_info" style="margin: 10px;"></strong>');
                         infoWindow.setInfoBody(contentHtml);
                         infoWindow.open(map, e.target.getPosition());
+                        $("#title_info").attr("value",stations[i].name);
                     });
-                    $("#title_info").html(stations[i].name);
+
                 }
 
             });
