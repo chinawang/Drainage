@@ -171,10 +171,10 @@
                         position: [{{ $station['lng'] }},{{ $station['lat'] }}],
 
                         //Marker的label(见http://lbs.amap.com/api/javascript-api/reference/overlay/#Marker)
-                        label: {
-                            content: '{{ $station['name'] }}',
-                            offset: new AMap.Pixel(27, 25)
-                        }
+                        {{--label: {--}}
+                            {{--content: '{{ $station['name'] }}',--}}
+                            {{--offset: new AMap.Pixel(27, 25)--}}
+                        {{--}--}}
                     });
 
             marker.emit('mouseout', {target: marker});
