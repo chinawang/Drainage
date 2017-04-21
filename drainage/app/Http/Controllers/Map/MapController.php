@@ -29,4 +29,18 @@ class MapController extends Controller
         return view('map.map',$param);
     }
 
+    public function showMapEmpty()
+    {
+        return view('map.map');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllStations()
+    {
+        $stationList = $this->stationLogic->getAllStations();
+        return response()->json(array('stations'=> $stationList), 200);
+    }
+
 }

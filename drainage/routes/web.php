@@ -189,3 +189,6 @@ Route::get('/weather/view', 'Weather\WeatherController@showWeather');
  */
 
 Route::get('/map/view', 'Map\MapController@showMap');
+
+Route::get('/map/show', 'Map\MapController@showMapEmpty');
+Route::get('/map/stations', 'Map\MapController@getAllStations');
