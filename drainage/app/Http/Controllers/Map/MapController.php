@@ -47,7 +47,7 @@ class MapController extends Controller
 
     public function getStationRTs()
     {
-        $stationRTs = DB::select('select * from stationRT_1 order by "Time" asc');
+        $stationRTs = DB::select('select * from stationRT_1 order by "Time" desc');
         return $stationRTs;
     }
 
