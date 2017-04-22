@@ -42,7 +42,7 @@
         }
         $('#chartContainer').highcharts({
             chart: {
-                type: 'spline',
+                type: 'areaspline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
@@ -68,7 +68,7 @@
             },
             yAxis: {
                 title: {
-                    text: '水位高度'
+                    text: '水位高度(米)'
                 },
                 plotLines: [{
                     value: 0,
@@ -90,7 +90,7 @@
                 enabled: false
             },
             series: [{
-                name: '水位高度(m)',
+                name: '水位高度',
                 data: (function () {
                     // generate an array of random data
                     var data = [],
