@@ -121,7 +121,7 @@
         }
         $('#culvertContainer').highcharts({
             chart: {
-                type: 'areaspline',
+                type: 'column',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
