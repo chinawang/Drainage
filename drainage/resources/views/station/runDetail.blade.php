@@ -14,7 +14,7 @@
             <div class="col-md-6 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        涵洞水位
+                        涵洞
                     </div>
                     <div class="panel-body custom-panel-body" id="culvertContainer" style="min-width:400px;height:400px">
                     </div>
@@ -23,7 +23,7 @@
             <div class="col-md-6 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        集水池水位
+                        集水池
                     </div>
                     <div class="panel-body custom-panel-body" id="tankContainer" style="min-width:400px;height:400px">
                     </div>
@@ -109,6 +109,21 @@
                 enabled: false
             },
             series: [{
+                name: '水位高度',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random()*2
+                        });
+                    }
+                    return data;
+                }())
+            },{
                 name: '水位高度',
                 data: (function () {
                     // generate an array of random data
