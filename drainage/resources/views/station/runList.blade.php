@@ -38,7 +38,7 @@
                                     <tr>
                                         <td>{{ $station['station_number'] }}</td>
                                         <td>{{ $station['name'] }}</td>
-                                        <td><img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 32px;height: 32px;"></td>
+                                        <td><img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 28px;height: 28px;"></td>
                                         <td>{{ $station['runPump'] }}</td>
                                         <td>{{ $station['stopPump'] }}</td>
                                         <td>{{ $station['culvertWater'] }}</td>
