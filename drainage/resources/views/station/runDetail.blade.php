@@ -52,7 +52,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random();
+                                    y = Math.random()*2;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -76,8 +76,8 @@
                     color: '#808080'
                 }],
                 plotBands: [{ // 警戒线
-                    from: 1.0,
-                    to: 1.1,
+                    from: 1.5,
+                    to: 1.6,
                     color: 'rgb(244, 91, 91)',
                     label: {
                         text: '警戒高度',
@@ -110,7 +110,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()
+                            y: Math.random()*2
                         });
                     }
                     return data;
