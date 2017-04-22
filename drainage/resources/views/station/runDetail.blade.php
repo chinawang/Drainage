@@ -127,7 +127,7 @@
                 }
             },
             title: {
-                text: '涵洞实时水位'
+                text: '涵洞实时水位(米)'
             },
             xAxis: {
                 type: 'datetime',
@@ -220,7 +220,7 @@
                 }
             },
             title: {
-                text: '集水池实时水位'
+                text: '集水池实时水位(米)'
             },
             xAxis: {
                 type: 'datetime',
@@ -313,7 +313,7 @@
                 }
             },
             title: {
-                text: '泵组实时电压(伏）'
+                text: '泵组实时电压(伏)'
             },
             xAxis: {
                 type: 'datetime',
@@ -395,7 +395,7 @@
                 }
             },
             title: {
-                text: '泵组实时电流(毫安）'
+                text: '泵组实时电流(毫安)'
             },
             xAxis: {
                 type: 'datetime',
@@ -477,7 +477,7 @@
                 }
             },
             title: {
-                text: '格栅除污机实时电压(伏）'
+                text: '格栅除污机实时电压(伏)'
             },
             xAxis: {
                 type: 'datetime',
@@ -559,7 +559,7 @@
                 }
             },
             title: {
-                text: '格栅除污机实时电流(毫安）'
+                text: '格栅除污机实时电流(毫安)'
             },
             xAxis: {
                 type: 'datetime',
@@ -641,7 +641,7 @@
                 }
             },
             title: {
-                text: '发电机功率(千瓦）'
+                text: '发电机功率(千瓦)'
             },
             xAxis: {
                 type: 'datetime',
