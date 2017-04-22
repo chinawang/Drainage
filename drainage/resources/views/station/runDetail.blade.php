@@ -95,9 +95,7 @@
     <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
     {{--<script src="http://cdn.hcharts.cn/highcharts/themes/dark-unica.js"></script>--}}
     {{--<script src="http://cdn.hcharts.cn/highcharts/themes/gray.js"></script>--}}
-    <script src="http://cdn.hcharts.cn/highcharts/themes/sand-signika.js"></script>
-    {{--<script src="http://cdn.hcharts.cn/highcharts/themes/sand-signika.js"></script>--}}
-    {{--<script src="http://cdn.hcharts.cn/highcharts/themes/skies.js"></script>--}}
+    <script src="http://cdn.hcharts.cn/highcharts/themes/skies.js"></script>
     {{--<script src="http://cdn.hcharts.cn/highcharts/themes/grid-light.js"></script>--}}
 
     {{--涵洞水位--}}
