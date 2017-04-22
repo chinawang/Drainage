@@ -15,6 +15,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         泵站工作状态列表
+                        <a href="/station/runList" class="btn-link">刷新</a>
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($stations[0]))
@@ -37,7 +38,7 @@
                                     <tr>
                                         <td>{{ $station['station_number'] }}</td>
                                         <td>{{ $station['name'] }}</td>
-                                        <td><img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 26px;height: 26px;"></td>
+                                        <td><img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 32px;height: 32px;"></td>
                                         <td>{{ $station['runPump'] }}</td>
                                         <td>{{ $station['stopPump'] }}</td>
                                         <td>{{ $station['culvertWater'] }}</td>
