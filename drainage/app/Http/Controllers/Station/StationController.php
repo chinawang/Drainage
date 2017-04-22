@@ -186,7 +186,7 @@ class StationController extends Controller
         $stationPaginate = $this->stationLogic->getStations($pageSize,$orderColumn,$orderDirection,$cursorPage);
         foreach ($stationPaginate as $station)
         {
-            $station['status'] = '运行中';
+            $station['status'] = 'yellow';
             $station['runPump'] = 2;
             $station['stopPump'] = 0;
             $station['culvertWater'] = 1.5;
