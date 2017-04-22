@@ -5,7 +5,7 @@
 @endsection
 
 @section('subtitle')
-    <span>郑湾泵站运行状态</span>
+    <span>郑湾泵站运行详情</span>
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@
 @endsection
 
 @section('javascript')
-    // Highcharts
+
     <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
     <script src="http://cdn.hcharts.cn/highcharts/themes/dark-unica.js"></script>
 
@@ -60,7 +60,7 @@
                 }
             },
             title: {
-                text: '动态模拟实时数据'
+                text: '实时水位'
             },
             xAxis: {
                 type: 'datetime',
@@ -68,7 +68,7 @@
             },
             yAxis: {
                 title: {
-                    text: '值'
+                    text: '水位高度'
                 },
                 plotLines: [{
                     value: 0,
@@ -90,7 +90,7 @@
                 enabled: false
             },
             series: [{
-                name: '随机数据',
+                name: '水位高度(m)',
                 data: (function () {
                     // generate an array of random data
                     var data = [],
