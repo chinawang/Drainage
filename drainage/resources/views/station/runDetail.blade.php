@@ -38,7 +38,7 @@
         });
         function activeLastPointToolip(chart) {
             var points = chart.series[0].points;
-            chart.tooltip.refresh(points[points.length -1]);
+            chart.tooltip.refresh(points[points.length - 1]);
         }
         $('#chartContainer').highcharts({
             chart: {
@@ -74,6 +74,17 @@
                     value: 0,
                     width: 1,
                     color: '#808080'
+                }],
+                plotBands: [{ // 警戒线
+                    from: 1.0,
+                    to: 1.1,
+                    color: 'rgb(244, 91, 91)',
+                    label: {
+                        text: '警戒高度',
+                        style: {
+                            color: '#606060'
+                        }
+                    }
                 }]
             },
             tooltip: {
@@ -105,7 +116,7 @@
                     return data;
                 }())
             }]
-        }, function(c) {
+        }, function (c) {
             activeLastPointToolip(c)
         });
 
