@@ -5,7 +5,7 @@
 @endsection
 
 @section('subtitle')
-    <span>郑湾泵站运行详情</span>
+    <span>{{ $station['name'] }}运行详情</span>
 @endsection
 
 @section('content')

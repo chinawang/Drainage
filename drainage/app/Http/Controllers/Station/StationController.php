@@ -175,8 +175,10 @@ class StationController extends Controller
         return redirect('/station/lists');
     }
 
-    public function runDetail()
+    public function runDetail($stationID)
     {
-        return view('station.runDetail');
+        $station = $this->stationInfo($stationID);
+        $param = ['station' => $station];
+        return view('station.runDetail',$param);
     }
 }
