@@ -174,4 +174,9 @@ class StationController extends Controller
 
         return redirect('/station/lists');
     }
+
+    public function runDetail()
+    {
+        return view('station.runDetail');
+    }
 }
