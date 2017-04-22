@@ -184,6 +184,14 @@ class StationController extends Controller
         $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 10);
         $stationPaginate = $this->stationLogic->getStations($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        foreach ($stationPaginate as $station)
+        {
+            $station['status'] = '运行中';
+            $station['runPump'] = 2;
+            $station['stopPump'] = 0;
+            $station['culvertWater'] = 1.5;
+            $station['tankWater'] = 3;
+        }
         $param = ['stations' => $stationPaginate];
         return view('station.runList',$param);
     }
