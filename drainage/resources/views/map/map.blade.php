@@ -129,7 +129,7 @@
                     '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: 2.8米</div>' +
                     '</div>' +
                     '<div class="col-md-3 col-md-offset-0">' +
-                    '<a href="/station/runDetail" class="btn-link" style="font-size: 12px;height: 60px;line-height: 60px">详情</a>' +
+                    '<a href="/station/runDetail/{{ $station['id'] }}" class="btn-link" style="font-size: 12px;height: 60px;line-height: 60px">详情</a>' +
                     '</div>' +
                     '</div>';
 
