@@ -134,6 +134,8 @@
             }));
         });
 
+        $(document).ready(geocoder());
+
         function geocoder() {
             var geocoder = new AMap.Geocoder({
                 city: "郑州", //城市，默认：“全国”
