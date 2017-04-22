@@ -313,7 +313,7 @@
                 }
             },
             title: {
-                text: '泵组实时电压(V）'
+                text: '泵组实时电压(伏）'
             },
             xAxis: {
                 type: 'datetime',
@@ -321,7 +321,7 @@
             },
             yAxis: {
                 title: {
-                    text: '电压(V)'
+                    text: '电压(伏)'
                 },
                 plotLines: [{
                     value: 0,
@@ -395,7 +395,7 @@
                 }
             },
             title: {
-                text: '泵组实时电流(mA）'
+                text: '泵组实时电流(毫安）'
             },
             xAxis: {
                 type: 'datetime',
@@ -403,7 +403,7 @@
             },
             yAxis: {
                 title: {
-                    text: '电流(mA)'
+                    text: '电流(毫安)'
                 },
                 plotLines: [{
                     value: 0,
@@ -477,7 +477,7 @@
                 }
             },
             title: {
-                text: '格栅除污机实时电压(V）'
+                text: '格栅除污机实时电压(伏）'
             },
             xAxis: {
                 type: 'datetime',
@@ -485,7 +485,7 @@
             },
             yAxis: {
                 title: {
-                    text: '电压(V)'
+                    text: '电压(伏)'
                 },
                 plotLines: [{
                     value: 0,
@@ -559,7 +559,7 @@
                 }
             },
             title: {
-                text: '格栅除污机实时电流(mA）'
+                text: '格栅除污机实时电流(毫安）'
             },
             xAxis: {
                 type: 'datetime',
@@ -567,7 +567,7 @@
             },
             yAxis: {
                 title: {
-                    text: '电流(mA)'
+                    text: '电流(毫安)'
                 },
                 plotLines: [{
                     value: 0,
@@ -633,7 +633,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*100;
+                                    y = Math.random()*1000;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -641,7 +641,7 @@
                 }
             },
             title: {
-                text: '发电机功率(W）'
+                text: '发电机功率(千瓦）'
             },
             xAxis: {
                 type: 'datetime',
@@ -649,7 +649,7 @@
             },
             yAxis: {
                 title: {
-                    text: '功率(W)'
+                    text: '功率(千瓦)'
                 },
                 plotLines: [{
                     value: 0,
@@ -680,7 +680,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*100
+                            y: Math.random()*1000
                         });
                     }
                     return data;
@@ -723,7 +723,7 @@
                 }
             },
             title: {
-                text: '发电机电阻(Ω)'
+                text: '发电机电阻(欧)'
             },
             xAxis: {
                 type: 'datetime',
@@ -731,7 +731,7 @@
             },
             yAxis: {
                 title: {
-                    text: '电阻(Ω)'
+                    text: '电阻(欧)'
                 },
                 plotLines: [{
                     value: 0,
