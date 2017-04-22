@@ -40,7 +40,7 @@
                             </a>
                         </li>
                         <li class="status">
-                            <a href="" class="menu-item">
+                            <a href="/station/runList" class="menu-item">
                                 <img class="menu-icon" src="/img/home/status.png">
                                 <h4>泵站工作状态</h4>
                             </a>

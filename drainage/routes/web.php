@@ -61,6 +61,9 @@ Route::post('/station/update/{station_id}','Station\StationController@updateStat
 //删除泵站
 Route::post('/station/delete/{station_id}','Station\StationController@deleteStation');
 
+//泵站运行列表
+Route::get('/station/runList', 'Station\StationController@runList');
+
 //泵站运行详细
 Route::get('/station/runDetail/{station_id}', 'Station\StationController@runDetail');
 
