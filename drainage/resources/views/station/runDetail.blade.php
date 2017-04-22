@@ -149,7 +149,7 @@
                     label: {
                         text: '警戒高度',
                         style: {
-                            color: '#90ee7e'
+                            color: '#ffffff'
                         }
                     }
                 }]
