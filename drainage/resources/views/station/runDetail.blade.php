@@ -122,7 +122,7 @@
                                     y = Math.random()*2;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
-                        }, 10000);
+                        }, 1000);
                     }
                 }
             },
@@ -176,7 +176,7 @@
                             i;
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
-                            x: time + i * 10000,
+                            x: time + i * 1000,
                             y: Math.random()*2
                         });
                     }
