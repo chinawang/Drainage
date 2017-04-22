@@ -135,7 +135,7 @@
 
             marker.on('mouseover', function (e) {
                 e.target.setIconStyle(hoverIconStyle);
-                infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['name'] }}</strong>');
+                infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['name'] }}{{ $station['id'] }}</strong>');
                 infoWindow.setInfoBody(contentHtml);
                 infoWindow.open(map, e.target.getPosition());
             });
