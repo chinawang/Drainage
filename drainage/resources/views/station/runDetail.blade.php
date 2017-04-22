@@ -20,7 +20,7 @@
                     <div class="panel-body custom-panel-body">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
+                                <div class="panel panel-primary custom-panel">
                                     <div class="panel-heading">
                                         涵洞
                                     </div>
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
+                                <div class="panel panel-primary custom-panel">
                                     <div class="panel-heading">
                                         集水池
                                     </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
+                                <div class="panel panel-primary custom-panel">
                                     <div class="panel-heading">
                                         泵组
                                     </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
+                                <div class="panel panel-primary custom-panel">
                                     <div class="panel-heading">
                                         格栅除污机
                                     </div>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
+                                <div class="panel panel-info custom-panel">
                                     <div class="panel-heading">
                                         发电机
                                     </div>
