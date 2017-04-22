@@ -5,82 +5,94 @@
 @endsection
 
 @section('subtitle')
-    <span>{{ $station['name'] }}运行详情</span>
+    <span>泵站运行详情</span>
 @endsection
 
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-0">
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading">
-                        涵洞
-                    </div>
-                    <div class="panel-body custom-panel-body" id="culvertContainer" style="min-width:400px;height:400px">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-md-offset-0">
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading">
-                        集水池
-                    </div>
-                    <div class="panel-body custom-panel-body" id="tankContainer" style="min-width:400px;height:400px">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        泵组
+                        {{ $station['name'] }}
+                        <a href="#" onClick="javascript :history.back(-1);" class="btn-link">返回</a>
                     </div>
                     <div class="panel-body custom-panel-body">
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-0" id="pumpVoltageContainer" style="min-width:400px;height:400px">
-
+                            <div class="col-md-6 col-md-offset-0">
+                                <div class="panel panel-default custom-panel">
+                                    <div class="panel-heading">
+                                        涵洞
+                                    </div>
+                                    <div class="panel-body custom-panel-body" id="culvertContainer" style="min-width:400px;height:400px">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-md-offset-0" id="pumpCurrentContainer" style="min-width:400px;height:400px">
-
+                            <div class="col-md-6 col-md-offset-0">
+                                <div class="panel panel-default custom-panel">
+                                    <div class="panel-heading">
+                                        集水池
+                                    </div>
+                                    <div class="panel-body custom-panel-body" id="tankContainer" style="min-width:400px;height:400px">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading">
-                        格栅除污机
-                    </div>
-                    <div class="panel-body custom-panel-body">
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-0" id="removerVoltageContainer" style="min-width:400px;height:400px">
+                            <div class="col-md-12 col-md-offset-0">
+                                <div class="panel panel-default custom-panel">
+                                    <div class="panel-heading">
+                                        泵组
+                                    </div>
+                                    <div class="panel-body custom-panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-md-offset-0" id="pumpVoltageContainer" style="min-width:400px;height:400px">
 
-                            </div>
-                            <div class="col-md-6 col-md-offset-0" id="removerCurrentContainer" style="min-width:400px;height:400px">
+                                            </div>
+                                            <div class="col-md-6 col-md-offset-0" id="pumpCurrentContainer" style="min-width:400px;height:400px">
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading">
-                        发电机
-                    </div>
-                    <div class="panel-body custom-panel-body">
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-0" id="alternatorPowerContainer" style="min-width:400px;height:400px">
+                            <div class="col-md-12 col-md-offset-0">
+                                <div class="panel panel-default custom-panel">
+                                    <div class="panel-heading">
+                                        格栅除污机
+                                    </div>
+                                    <div class="panel-body custom-panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-md-offset-0" id="removerVoltageContainer" style="min-width:400px;height:400px">
 
+                                            </div>
+                                            <div class="col-md-6 col-md-offset-0" id="removerCurrentContainer" style="min-width:400px;height:400px">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-md-offset-0" id="alternatoresistanceContainer" style="min-width:400px;height:400px">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-md-offset-0">
+                                <div class="panel panel-default custom-panel">
+                                    <div class="panel-heading">
+                                        发电机
+                                    </div>
+                                    <div class="panel-body custom-panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-md-offset-0" id="alternatorPowerContainer" style="min-width:400px;height:400px">
 
+                                            </div>
+                                            <div class="col-md-6 col-md-offset-0" id="alternatoresistanceContainer" style="min-width:400px;height:400px">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
