@@ -122,6 +122,8 @@
             resizeEnable: true
         });
 
+        var positionPicker;//拖拽定位控件
+
         //设置DomLibrary，jQuery或者Zepto
         AMapUI.setDomLibrary($);
 
@@ -134,7 +136,7 @@
             }));
 
             //拖拽定位控件
-            var positionPicker = new PositionPicker({
+            positionPicker = new PositionPicker({
                 mode: 'dragMarker',
                 map: map
             });
@@ -201,6 +203,8 @@
             var geocode = data.geocodes;
 
             addMarker(0, geocode[0]);
+
+            positionPicker.start(geocode[0]);
 
             document.getElementById("lat").value = geocode[0].location.getLat();
             document.getElementById("lng").value = geocode[0].location.getLng();
