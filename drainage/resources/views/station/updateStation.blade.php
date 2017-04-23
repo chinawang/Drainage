@@ -106,7 +106,7 @@
 
 @section('javascript')
 
-    <!--引入高德地图JSAPI -->
+    <!--引入高德地图JSAPI Web端Key-->
     <script type="text/javascript"
             src="http://webapi.amap.com/maps?v=1.3&key=eee431b39cbd7204722c3c4cd57864c8&plugin=AMap.Geocoder"></script>
     <!--引入UI组件库（1.0版本） -->
@@ -126,12 +126,27 @@
         AMapUI.setDomLibrary($);
 
         //加载BasicControl，loadUI的路径参数为模块名中 'ui/' 之后的部分
-        AMapUI.loadUI(['control/BasicControl'], function (BasicControl) {
+        AMapUI.loadUI(['control/BasicControl','misc/PositionPicker'], function (BasicControl,PositionPicker) {
 
             //缩放控件
             map.addControl(new BasicControl.Zoom({
                 position: 'rt' //right top，右上角
             }));
+
+            //拖拽定位控件
+            var positionPicker = new PositionPicker({
+                mode: 'dragMarker',
+                map: map
+            });
+
+            positionPicker.on('success', function(positionResult) {
+                document.getElementById("lat").value = positionResult.position.getLat();
+                document.getElementById("lng").value = positionResult.position.getLng();
+            });
+            positionPicker.on('fail', function(positionResult) {
+                document.getElementById("lat").value = '';
+                document.getElementById("lng").value = '';
+            });
         });
 
         $(document).ready(geocoder());

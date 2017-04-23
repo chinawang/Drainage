@@ -44,7 +44,7 @@
 
 @section('javascript')
 
-    <!--引入高德地图JSAPI -->
+    <!--引入高德地图JSAPI Web服务Key-->
     <script type="text/javascript"
             src="http://webapi.amap.com/maps?v=1.3&key=be195b71e866e63bb1688b420135565c"></script>
     <!--引入UI组件库（1.0版本） -->

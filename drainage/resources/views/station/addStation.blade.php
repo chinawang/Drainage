@@ -110,7 +110,7 @@
 
 @section('javascript')
 
-    <!--引入高德地图JSAPI -->
+    <!--引入高德地图JSAPI Web端Key-->
     <script type="text/javascript"
             src="http://webapi.amap.com/maps?v=1.3&key=eee431b39cbd7204722c3c4cd57864c8&plugin=AMap.Geocoder"></script>
     <!--引入UI组件库（1.0版本） -->
