@@ -25,8 +25,8 @@
                                         涵洞
                                     </div>
                                     <div class="panel-body custom-panel-body" id="culvertContainer" style="min-width:400px;height:400px">
-                                        <input id="culvertTime" value="{{ $stationRT->Time }}" type="hidden">
-                                        <input id="culvertWater" value="{{ $stationRT->ywhandong }}" type="hidden">
+                                        {{--<input id="culvertTime" value="{{ $stationRT->Time }}" type="hidden">--}}
+                                        {{--<input id="culvertWater" value="{{ $stationRT->ywhandong }}" type="hidden">--}}
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                             var x = (new Date()).getTime(), // current time
                                     y = Math.random()*2;
 
-                            series.addPoint([x, {{ $stationRT->ywhandong }}], true, true);
+                            series.addPoint([{{ $stationRT->Time }}, {{ $stationRT->ywhandong }}], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
                     }
@@ -194,7 +194,7 @@
                         data.push({
 //                            x: time + i * 1000,
 //                            y: Math.random()*2
-                            x: time + i * 1000,
+                            x: {{ $stationRT->Time }} + i * 1000,
                             y: {{ $stationRT->ywhandong }}
                         });
                     }
