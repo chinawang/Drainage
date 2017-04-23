@@ -152,9 +152,7 @@
                 document.getElementById("lng").value = '';
             });
 
-            var startLngLat = [document.getElementById("lng").value,document.getElementById("lat").value];
-
-            positionPicker.start(startLngLat);
+            positionPicker.start();
         });
 
         function geocoder() {
