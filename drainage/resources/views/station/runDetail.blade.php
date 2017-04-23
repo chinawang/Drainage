@@ -136,7 +136,7 @@
                                     y = Math.random()*2;
 //                            var x = (new Date()).getTime(), // current time
 //                                    y = $("#culvertWater").val();
-                            alert($("#culvertWater").val());
+                            alert({{ $stationRT->ywhandong }});
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
