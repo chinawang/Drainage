@@ -132,10 +132,10 @@
                         var series = this.series[0],
                                 chart = this;
                         setInterval(function () {
-//                            var x = (new Date()).getTime(), // current time
-//                                    y = Math.random()*2;
                             var x = (new Date()).getTime(), // current time
-                                    y = $("#culvertWater").val();
+                                    y = Math.random()*2;
+//                            var x = (new Date()).getTime(), // current time
+//                                    y = $("#culvertWater").val();
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -192,10 +192,10 @@
                             i;
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
-//                            x: time + i * 1000,
-//                            y: Math.random()*2
                             x: time + i * 1000,
-                            y: $("#culvertWater").val()
+                            y: Math.random()*2
+//                            x: time + i * 1000,
+//                            y: $("#culvertWater").val()
                         });
                     }
                     return data;
