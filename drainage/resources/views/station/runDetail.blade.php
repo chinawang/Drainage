@@ -194,7 +194,7 @@
                         data.push({
 //                            x: time + i * 1000,
 //                            y: Math.random()*2
-                            x: rtTime,
+                            x: time + i * 1000,
                             y: '{{ $stationRT->ywhandong }}'
                         });
                     }
