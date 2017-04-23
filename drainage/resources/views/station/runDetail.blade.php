@@ -25,8 +25,8 @@
                                         涵洞
                                     </div>
                                     <div class="panel-body custom-panel-body" id="culvertContainer" style="min-width:400px;height:400px">
-                                        {{--<input id="culvertTime" value="{{ $stationRT['Time'] }}" type="hidden">--}}
-                                        {{--<input id="culvertWater" value="{{ $stationRT['ywhandong'] }}" type="hidden">--}}
+                                        <input id="culvertTime" value="{{ $stationRT['Time'] }}" type="hidden">
+                                        <input id="culvertWater" value="{{ $stationRT['ywhandong'] }}" type="hidden">
                                     </div>
                                 </div>
                             </div>
