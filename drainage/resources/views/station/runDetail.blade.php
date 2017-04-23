@@ -151,7 +151,7 @@
                             getStations();
                             series.addPoint([x, stationRT['ywhandong']], true, true);
                             activeLastPointToolip(chart)
-                        }, 1000);
+                        }, 10000);
                     }
                 }
             },
@@ -203,14 +203,18 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-//                            x: time + i * 1000,
-//                            y: Math.random()*2
-                            x: time + i * 1000,
-                            y: {{ $stationRT->ywhandong }}
-                        });
-                    }
+                    {{--for (i = -19; i <= 0; i += 1) {--}}
+                        {{--data.push({--}}
+{{--//                            x: time + i * 1000,--}}
+{{--//                            y: Math.random()*2--}}
+                            {{--x: time + i * 1000,--}}
+                            {{--y: {{ $stationRT->ywhandong }}--}}
+                        {{--});--}}
+                    {{--}--}}
+                    data.push({
+                        x: time + i * 1000,
+                        y: {{ $stationRT->ywhandong }}
+                    });
                     return data;
                 }())
             }]
