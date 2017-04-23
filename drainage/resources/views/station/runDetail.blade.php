@@ -132,7 +132,7 @@
                         setInterval(function () {
 //                            var x = (new Date()).getTime(), // current time
 //                                    y = Math.random()*2;
-                            var x = '{{ $stationRT['Time'] }}', // current time
+                            var x = (new Date()).getTime(), // current time
                                     y = '{{ $stationRT['ywhandong'] }}';
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
