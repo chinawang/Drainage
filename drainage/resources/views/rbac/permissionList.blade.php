@@ -28,7 +28,7 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th>序号</th>
+                                    <th style="width: 80px">序号</th>
                                     <th>行为权限</th>
                                     <th>别名</th>
                                     <th>操作</th>

@@ -28,7 +28,7 @@
                         <table class="table table-hover table-bordered ">
                             <thead>
                             <tr>
-                                <th>编号</th>
+                                <th style="width: 80px">编号</th>
                                 <th>所属泵站</th>
                                 <th>设备名称</th>
                                 <th>型号</th>

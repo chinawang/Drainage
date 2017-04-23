@@ -22,7 +22,7 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th>编号</th>
+                                    <th style="width: 80px">编号</th>
                                     <th>泵站名称</th>
                                     <th style="width: 100px">时间</th>
                                     <th>工作状态</th>
