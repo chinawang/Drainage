@@ -187,11 +187,15 @@ class StationController extends Controller
         $stationPaginate = $this->stationLogic->getStations($pageSize,$orderColumn,$orderDirection,$cursorPage);
         foreach ($stationPaginate as $station)
         {
+            $stationNum = $station['station_number'];
+            $stationRT = $this->findStationRT($stationNum);
+
             $station['status'] = 'yellow';
             $station['runPump'] = 2;
             $station['stopPump'] = 0;
-            $station['culvertWater'] = 1.5;
-            $station['tankWater'] = 3;
+            $station['culvertWater'] = $stationRT[0]->ywhandong;
+            $station['tankWater'] = $stationRT[0]->ywjishui;
+            $station['Time'] = $stationRT[0]->Time;
         }
         $param = ['stations' => $stationPaginate];
         return view('station.runList',$param);

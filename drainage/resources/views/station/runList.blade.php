@@ -24,6 +24,7 @@
                                 <tr>
                                     <th>编号</th>
                                     <th>泵站名称</th>
+                                    <th>时间</th>
                                     <th>工作状态</th>
                                     <th>已运行泵组</th>
                                     <th>未运行泵组</th>
@@ -38,6 +39,7 @@
                                     <tr>
                                         <td>{{ $station['station_number'] }}</td>
                                         <td>{{ $station['name'] }}</td>
+                                        <td>{{ $station['Time'] }}</td>
                                         <td><img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 28px;height: 28px;"></td>
                                         <td>{{ $station['runPump'] }}</td>
                                         <td>{{ $station['stopPump'] }}</td>
