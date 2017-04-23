@@ -136,7 +136,7 @@
                                     y = Math.random()*2;
                             var x1 = (new Date('{{ $stationRT->Time }}')).getTime();
                             var y1 = {{ $stationRT->ywhandong }};
-                            series.addPoint([x, y1], true, true);
+                            series.addPoint([x1, y1], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
                     }
