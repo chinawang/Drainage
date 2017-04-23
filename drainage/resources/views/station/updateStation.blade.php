@@ -148,7 +148,9 @@
                 document.getElementById("lng").value = '';
             });
 
-            positionPicker.start([document.getElementById("lng").value,document.getElementById("lat").value]);
+            var startLngLat = [document.getElementById("lng").value,document.getElementById("lat").value];
+
+            positionPicker.start(startLngLat);
         });
 
         $(document).ready(geocoder());
