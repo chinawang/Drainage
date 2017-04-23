@@ -202,7 +202,7 @@ class StationController extends Controller
         $station = $this->stationInfo($stationID);
         $stationNum = $station['station_number'];
         $stationRT = $this->findStationRT($stationNum);
-        $param = ['station' => $station,'stationRT' => json_decode($stationRT,true)];
+        $param = ['station' => $station,'stationRT' => $stationRT];
         return $param;
         return view('station.runDetail',$param);
     }
