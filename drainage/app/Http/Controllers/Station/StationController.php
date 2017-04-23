@@ -202,11 +202,15 @@ class StationController extends Controller
         $station = $this->stationInfo($stationID);
         $stationNum = $station['station_number'];
         $stationRT = $this->findStationRT($stationNum);
-        $param = ['station' => $station,'stationRT' => $stationRT[0]];
-//        return $param;
+        $param = ['station' => $station,'stationRT' => json_decode($stationRT[0],true)];
+        return $param;
         return view('station.runDetail',$param);
     }
 
+    /**
+     * @param $stationNum
+     * @return mixed
+     */
     public function findStationRT($stationNum)
     {
         $stationTable = "stationRT_".$stationNum;
