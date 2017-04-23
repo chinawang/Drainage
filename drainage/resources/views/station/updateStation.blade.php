@@ -122,8 +122,6 @@
             resizeEnable: true
         });
 
-        var positionPicker;//拖拽定位控件
-
         //设置DomLibrary，jQuery或者Zepto
         AMapUI.setDomLibrary($);
 
@@ -136,7 +134,7 @@
             }));
 
             //拖拽定位控件
-            positionPicker = new PositionPicker({
+            var positionPicker = new PositionPicker({
                 mode: 'dragMarker',
                 map: map
             });
@@ -149,6 +147,8 @@
                 document.getElementById("lat").value = '';
                 document.getElementById("lng").value = '';
             });
+
+            positionPicker.start();
         });
 
         $(document).ready(geocoder());
@@ -203,8 +203,6 @@
             var geocode = data.geocodes;
 
             addMarker(0, geocode[0]);
-
-            positionPicker.start(geocode[0]);
 
             document.getElementById("lat").value = geocode[0].location.getLat();
             document.getElementById("lng").value = geocode[0].location.getLng();
