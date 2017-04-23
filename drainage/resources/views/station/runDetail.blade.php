@@ -154,10 +154,13 @@
                         var series = this.series[0],
                                 chart = this;
                         setInterval(function () {
+
+                            getStationRT();// 定时获取实时数据
+
                             var x = (new Date()).getTime(), // current time
 //                                    y = Math.random()*2;
                                     y = stationRT['ywhandong'];
-                            getStationRT();
+
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 10000);
