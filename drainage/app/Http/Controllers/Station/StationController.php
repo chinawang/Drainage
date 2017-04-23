@@ -7,6 +7,7 @@ use App\Http\Validations\Station\StationValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class StationController extends Controller
 {
