@@ -210,7 +210,7 @@
 //                        });
 //                    }
                     data.push({
-                        x: time + i * 1000,
+                        x: time + 1000,
                         y: {{ $stationRT->ywhandong }}
                     });
                     return data;
