@@ -203,6 +203,7 @@ class StationController extends Controller
         $stationNum = $station['station_number'];
         $stationRT = $this->findStationRT($stationNum);
         $param = ['station' => $station,'stationRT' => $stationRT];
+        return $param;
         return view('station.runDetail',$param);
     }
 
