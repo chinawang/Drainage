@@ -134,8 +134,8 @@
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
                                     y = Math.random()*2;
-
-                            series.addPoint([{{ $stationRT->Time }}, {{ $stationRT->ywhandong }}], true, true);
+                            alert(x);
+                            series.addPoint([x, {{ $stationRT->ywhandong }}], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
                     }
