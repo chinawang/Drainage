@@ -106,7 +106,7 @@
 
                         //Marker的label(见http://lbs.amap.com/api/javascript-api/reference/overlay/#Marker)
                         label: {
-                            content: '{{ $station['name'] }}',
+                            content: '{{ $station['station_number'] }}.{{ $station['name'] }}',
                             offset: new AMap.Pixel(27, 25)
                         }
                     });
@@ -121,7 +121,7 @@
 
             marker.on('mouseover', function (e) {
                 e.target.setIconStyle(hoverIconStyle);
-                infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['name'] }}</strong>');
+                infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}</strong>');
                 var contentHtml = '<div class="row" style="width: 280px;margin: 10px 0;">' +
                         '<div class="col-md-3 col-md-offset-0" style="height: 60px;line-height: 60px">' +
                         '<img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;">' +
