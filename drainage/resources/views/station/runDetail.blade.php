@@ -24,7 +24,8 @@
                                     <div class="panel-heading">
                                         涵洞
                                     </div>
-                                    <div class="panel-body custom-panel-body" id="culvertContainer" style="min-width:400px;height:400px">
+                                    <div class="panel-body custom-panel-body" id="culvertContainer"
+                                         style="min-width:400px;height:400px">
                                         {{--<input id="culvertTime" value="{{ $stationRT->Time }}" type="hidden">--}}
                                         {{--<input id="culvertWater" value="{{ $stationRT->ywhandong }}" type="hidden">--}}
                                     </div>
@@ -35,7 +36,8 @@
                                     <div class="panel-heading">
                                         集水池
                                     </div>
-                                    <div class="panel-body custom-panel-body" id="tankContainer" style="min-width:400px;height:400px">
+                                    <div class="panel-body custom-panel-body" id="tankContainer"
+                                         style="min-width:400px;height:400px">
                                     </div>
                                 </div>
                             </div>
@@ -48,10 +50,12 @@
                                     </div>
                                     <div class="panel-body custom-panel-body">
                                         <div class="row">
-                                            <div class="col-md-6 col-md-offset-0" id="pumpVoltageContainer" style="min-width:400px;height:400px">
+                                            <div class="col-md-6 col-md-offset-0" id="pumpVoltageContainer"
+                                                 style="min-width:400px;height:400px">
 
                                             </div>
-                                            <div class="col-md-6 col-md-offset-0" id="pumpCurrentContainer" style="min-width:400px;height:400px">
+                                            <div class="col-md-6 col-md-offset-0" id="pumpCurrentContainer"
+                                                 style="min-width:400px;height:400px">
 
                                             </div>
                                         </div>
@@ -67,10 +71,12 @@
                                     </div>
                                     <div class="panel-body custom-panel-body">
                                         <div class="row">
-                                            <div class="col-md-6 col-md-offset-0" id="removerVoltageContainer" style="min-width:400px;height:400px">
+                                            <div class="col-md-6 col-md-offset-0" id="removerVoltageContainer"
+                                                 style="min-width:400px;height:400px">
 
                                             </div>
-                                            <div class="col-md-6 col-md-offset-0" id="removerCurrentContainer" style="min-width:400px;height:400px">
+                                            <div class="col-md-6 col-md-offset-0" id="removerCurrentContainer"
+                                                 style="min-width:400px;height:400px">
 
                                             </div>
                                         </div>
@@ -86,10 +92,12 @@
                                     </div>
                                     <div class="panel-body custom-panel-body">
                                         <div class="row">
-                                            <div class="col-md-6 col-md-offset-0" id="alternatorPowerContainer" style="min-width:400px;height:400px">
+                                            <div class="col-md-6 col-md-offset-0" id="alternatorPowerContainer"
+                                                 style="min-width:400px;height:400px">
 
                                             </div>
-                                            <div class="col-md-6 col-md-offset-0" id="alternatoresistanceContainer" style="min-width:400px;height:400px">
+                                            <div class="col-md-6 col-md-offset-0" id="alternatoresistanceContainer"
+                                                 style="min-width:400px;height:400px">
 
                                             </div>
                                         </div>
@@ -111,8 +119,8 @@
     {{--<script src="http://cdn.hcharts.cn/highcharts/themes/gray.js"></script>--}}
 
     <script type="text/javascript">
-        var stationRT ;
-        function getStations() {
+        var stationRT;
+        function getStationRT() {
             $.ajax({
                 type: 'get',
                 url: '/station/realTime/{{ $station['station_number'] }}',
@@ -147,9 +155,10 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*2;
-                            getStations();
-                            series.addPoint([x, stationRT['ywhandong']], true, true);
+//                                    y = Math.random()*2;
+                                    y = stationRT['ywhandong'];
+                            getStationRT();
+                            series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 10000);
                     }
@@ -203,16 +212,13 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-//                    for (i = -19; i <= 0; i += 1) {
-//                        data.push({
-//                            x: time + i * 1000,
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
 //                            y: Math.random()*2
-//                        });
-//                    }
-                    data.push({
-                        x: time + 1000,
-                        y: {{ $stationRT->ywhandong }}
-                    });
+                            y: {{ $stationRT->ywhandong }}
+                        });
+                    }
                     return data;
                 }())
             }]
@@ -245,7 +251,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*5;
+                                    y = Math.random() * 5;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -303,7 +309,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*5
+                            y: Math.random() * 5
                         });
                     }
                     return data;
@@ -338,7 +344,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*200;
+                                    y = Math.random() * 200;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -385,7 +391,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*200
+                            y: Math.random() * 200
                         });
                     }
                     return data;
@@ -420,7 +426,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*100;
+                                    y = Math.random() * 100;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -467,7 +473,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*100
+                            y: Math.random() * 100
                         });
                     }
                     return data;
@@ -502,7 +508,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*200;
+                                    y = Math.random() * 200;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -549,7 +555,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*200
+                            y: Math.random() * 200
                         });
                     }
                     return data;
@@ -584,7 +590,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*100;
+                                    y = Math.random() * 100;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -631,7 +637,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*100
+                            y: Math.random() * 100
                         });
                     }
                     return data;
@@ -666,7 +672,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*1000;
+                                    y = Math.random() * 1000;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -713,7 +719,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*1000
+                            y: Math.random() * 1000
                         });
                     }
                     return data;
@@ -748,7 +754,7 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*50;
+                                    y = Math.random() * 50;
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -795,7 +801,7 @@
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*50
+                            y: Math.random() * 50
                         });
                     }
                     return data;
