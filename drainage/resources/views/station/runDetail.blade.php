@@ -149,6 +149,7 @@
                             var x = (new Date()).getTime(), // current time
                                     y = Math.random()*2;
                             getStations();
+                            alert(stationRT);
                             series.addPoint([x, stationRT['ywhandong']], true, true);
                             activeLastPointToolip(chart)
                         }, 10000);
