@@ -24,7 +24,7 @@
                                 <tr>
                                     <th>编号</th>
                                     <th>泵站名称</th>
-                                    <th style="width: 50px">时间</th>
+                                    <th style="width: 100px">时间</th>
                                     <th>工作状态</th>
                                     <th>已运行泵组</th>
                                     <th>未运行泵组</th>
