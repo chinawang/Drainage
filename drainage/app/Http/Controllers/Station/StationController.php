@@ -217,4 +217,10 @@ class StationController extends Controller
         $stationRT = DB::select('select * from '.$stationTable.' order by Time desc limit 1');
         return $stationRT;
     }
+
+    public function stationRT($stationNum)
+    {
+        $stationRT = $this->findStationRT($stationNum);
+        return response()->json(array('stationRT'=> $stationRT[0]), 200);
+    }
 }

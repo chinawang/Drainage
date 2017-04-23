@@ -67,6 +67,9 @@ Route::get('/station/runList', 'Station\StationController@runList');
 //泵站运行详细
 Route::get('/station/runDetail/{station_id}', 'Station\StationController@runDetail');
 
+//泵站实时信息Ajax
+Route::get('/station/realTime/{station_number}', 'Station\StationController@stationRT');
+
 
 /**
  *设备相关

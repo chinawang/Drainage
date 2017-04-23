@@ -110,6 +110,20 @@
     <script src="http://cdn.hcharts.cn/highcharts/themes/dark-unica.js"></script>
     {{--<script src="http://cdn.hcharts.cn/highcharts/themes/gray.js"></script>--}}
 
+    <script type="text/javascript">
+        var stationRT ;
+        function getStations() {
+            $.ajax({
+                type: 'get',
+                url: '/station/realTime/{{ $station['station_number'] }}',
+                data: '_token = <?php echo csrf_token() ?>',
+                success: function (data) {
+                    stationRT = data.stationRT;
+                }
+            });
+        }
+    </script>
+
     {{--涵洞水位--}}
     <script type="text/javascript">
         Highcharts.setOptions({
@@ -134,7 +148,8 @@
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
                                     y = Math.random()*2;
-                            series.addPoint([x, {{ $stationRT->ywhandong }}], true, true);
+                            getStations();
+                            series.addPoint([x, stationRT['ywhandong']], true, true);
                             activeLastPointToolip(chart)
                         }, 10000);
                     }
@@ -192,8 +207,8 @@
                         data.push({
 //                            x: time + i * 1000,
 //                            y: Math.random()*2
-                            x: time + i * 10000,
-                            y: {{ $stationRT->ywhandong }}
+                            x: time + i * 1000,
+                            y: stationRT['ywhandong']
                         });
                     }
                     return data;
