@@ -136,7 +136,7 @@
                                     y = Math.random()*2;
                             series.addPoint([x, {{ $stationRT->ywhandong }}], true, true);
                             activeLastPointToolip(chart)
-                        }, 1000);
+                        }, 60000);
                     }
                 }
             },
