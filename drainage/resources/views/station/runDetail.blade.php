@@ -134,9 +134,8 @@
                         setInterval(function () {
 //                            var x = (new Date()).getTime(), // current time
 //                                    y = Math.random()*2;
-                            var x = $("#culvertTime").val(), // current time
+                            var x = (new Date()).getTime(), // current time
                                     y = $("#culvertWater").val();
-                            alert(x);
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -195,7 +194,7 @@
                         data.push({
 //                            x: time + i * 1000,
 //                            y: Math.random()*2
-                            x: $("#culvertTime").val() + i * 1000,
+                            x: time + i * 1000,
                             y: $("#culvertWater").val()
                         });
                     }
