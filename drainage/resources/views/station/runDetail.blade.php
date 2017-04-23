@@ -163,7 +163,7 @@
 
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
-                        }, 60000);
+                        }, 1000);
                     }
                 }
             },
