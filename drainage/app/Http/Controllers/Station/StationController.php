@@ -199,7 +199,16 @@ class StationController extends Controller
     public function runDetail($stationID)
     {
         $station = $this->stationInfo($stationID);
-        $param = ['station' => $station];
+        $stationNum = $station['station_number'];
+        $stationRT = $this->findStationRT($stationNum);
+        $param = ['station' => $station,'stationRT' => $stationRT];
         return view('station.runDetail',$param);
+    }
+
+    public function findStationRT($stationNum)
+    {
+        $stationTable = "stationRT_".$stationNum;
+        $stationRT = DB::select('select * from '.$stationTable.' order by Time desc limit 1');
+        return $stationRT;
     }
 }
