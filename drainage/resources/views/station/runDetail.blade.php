@@ -25,8 +25,8 @@
                                         涵洞
                                     </div>
                                     <div class="panel-body custom-panel-body" id="culvertContainer" style="min-width:400px;height:400px">
-                                        <input id="culvertTime" value="{{ $stationRT['Time'] }}" type="hidden">
-                                        <input id="culvertWater" value="{{ $stationRT['ywhandong'] }}" type="hidden">
+                                        <input id="culvertTime" value="{{ $stationRT->Time }}" type="hidden">
+                                        <input id="culvertWater" value="{{ $stationRT->ywhandong }}" type="hidden">
                                     </div>
                                 </div>
                             </div>
@@ -132,10 +132,10 @@
                         var series = this.series[0],
                                 chart = this;
                         setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                    y = Math.random()*2;
-//                            var x = $("#culvertTime").val(), // current time
-//                                    y = $("#culvertWater").val();
+//                            var x = (new Date()).getTime(), // current time
+//                                    y = Math.random()*2;
+                            var x = $("#culvertTime").val(), // current time
+                                    y = $("#culvertWater").val();
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -192,10 +192,10 @@
                             i;
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
-                            x: time + i * 1000,
-                            y: Math.random()*2
-//                            x: $("#culvertTime").val() + i * 1000,
-//                            y: $("#culvertWater").val()
+//                            x: time + i * 1000,
+//                            y: Math.random()*2
+                            x: $("#culvertTime").val() + i * 1000,
+                            y: $("#culvertWater").val()
                         });
                     }
                     return data;
