@@ -134,9 +134,7 @@
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
                                     y = Math.random()*2;
-                            var x1 = (new Date('{{ $stationRT->Time }}')).getTime();
-                            var y1 = {{ $stationRT->ywhandong }};
-                            series.addPoint([x1, y1], true, true);
+                            series.addPoint([x, {{ $stationRT->ywhandong }}], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
                     }
@@ -190,14 +188,12 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    var time1 = (new Date('{{ $stationRT->Time }}')).getTime();
-                    var yValue = {{ $stationRT->ywhandong }};
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
 //                            x: time + i * 1000,
 //                            y: Math.random()*2
-                            x: time1 + i * 1000,
-                            y: yValue
+                            x: time + i * 1000,
+                            y: {{ $stationRT->ywhandong }}
                         });
                     }
                     return data;
