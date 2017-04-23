@@ -130,6 +130,9 @@
                 }
             });
         }
+        $(document).ready(function () {
+            setInterval(getStationRT(), 1000);
+        });
     </script>
 
     {{--涵洞水位--}}
@@ -155,7 +158,7 @@
                                 chart = this;
                         setInterval(function () {
 
-                            getStationRT();// 定时获取实时数据
+//                            getStationRT();// 定时获取实时数据
 
                             var x = (new Date()).getTime(), // current time
 //                                    y = Math.random()*2;
@@ -215,7 +218,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -299; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random()*2
@@ -254,7 +257,8 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 5;
+//                                    y = Math.random() * 5;
+                                    y = stationRT['ywjishui'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -309,10 +313,11 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -299; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random() * 5
+//                            y: Math.random() * 5
+                            y: {{ $stationRT->ywjishui }}
                         });
                     }
                     return data;
@@ -391,7 +396,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -299; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 200
@@ -473,7 +478,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -299; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 100
@@ -555,7 +560,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -299; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 200
@@ -637,7 +642,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -299; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 100
@@ -719,7 +724,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -299; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 1000
@@ -801,7 +806,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -299; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 50
