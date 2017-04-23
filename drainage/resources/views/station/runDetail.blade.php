@@ -134,7 +134,7 @@
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
                                     y = Math.random()*2;
-                            var x1 = (new Date({{ $stationRT->Time }})).getTime(),
+                            var x1 = (new Date('{{ $stationRT->Time }}')).getTime(),
                                     y1 = {{ $stationRT->ywhandong }};
                             series.addPoint([x1, y1], true, true);
                             activeLastPointToolip(chart)
@@ -190,7 +190,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    var time1 = (new Date({{ $stationRT->Time }})).getTime(),
+                    var time1 = (new Date('{{ $stationRT->Time }}')).getTime(),
                             yValue = {{ $stationRT->ywhandong }};
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
