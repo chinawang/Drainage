@@ -136,7 +136,7 @@
                                     y = Math.random()*2;
                             series.addPoint([x, {{ $stationRT->ywhandong }}], true, true);
                             activeLastPointToolip(chart)
-                        }, 60000);
+                        }, 10000);
                     }
                 }
             },
@@ -192,7 +192,7 @@
                         data.push({
 //                            x: time + i * 1000,
 //                            y: Math.random()*2
-                            x: time + i * 1000,
+                            x: time + i * 10000,
                             y: {{ $stationRT->ywhandong }}
                         });
                     }
