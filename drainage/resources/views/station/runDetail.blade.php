@@ -396,7 +396,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -119; i <= 0; i += 1) {
+                    for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 200
@@ -478,7 +478,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -119; i <= 0; i += 1) {
+                    for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 100
@@ -560,7 +560,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -119; i <= 0; i += 1) {
+                    for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 200
@@ -642,7 +642,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -119; i <= 0; i += 1) {
+                    for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 100
@@ -724,7 +724,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -119; i <= 0; i += 1) {
+                    for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 1000
@@ -806,7 +806,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -119; i <= 0; i += 1) {
+                    for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 50
