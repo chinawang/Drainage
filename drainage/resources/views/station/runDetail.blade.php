@@ -50,6 +50,12 @@
                                     </div>
                                     <div class="panel-body custom-panel-body">
                                         <div class="row">
+                                            <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
+                                                 style="min-width:400px;height:400px">
+
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px">
                                             <div class="col-md-4 col-md-offset-0" id="pumpVoltageAContainer"
                                                  style="height:400px">
 
@@ -60,12 +66,6 @@
                                             </div>
                                             <div class="col-md-4 col-md-offset-0" id="pumpVoltageCContainer"
                                                  style="height:400px">
-
-                                            </div>
-                                        </div>
-                                        <div class="row" style="margin-top: 15px">
-                                            <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
-                                                 style="min-width:400px;height:400px">
 
                                             </div>
                                         </div>
@@ -362,7 +362,8 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 100;
+//                                    y = Math.random() * 100;
+                                    y = stationRT['ib1'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -370,7 +371,7 @@
                 }
             },
             title: {
-                text: '泵组实时电流(毫安)'
+                text: '1号泵实时电流(毫安)'
             },
             xAxis: {
                 type: 'datetime',
@@ -406,12 +407,12 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -59; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random() * 100
-                        });
-                    }
+//                    for (i = -59; i <= 0; i += 1) {
+//                        data.push({
+//                            x: time + i * 1000,
+//                            y: Math.random() * 100
+//                        });
+//                    }
                     return data;
                 }())
             }]
@@ -421,7 +422,7 @@
 
     </script>
 
-    {{--泵组电压--}}
+    {{--泵组电压UAB--}}
     <script type="text/javascript">
         Highcharts.setOptions({
             global: {
@@ -444,7 +445,8 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 200;
+//                                    y = Math.random() * 200;
+                                    y = stationRT['uab'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -452,7 +454,7 @@
                 }
             },
             title: {
-                text: '泵组实时电压(伏)'
+                text: '实时AB相线电压(伏)'
             },
             xAxis: {
                 type: 'datetime',
@@ -503,7 +505,7 @@
 
     </script>
 
-    {{--泵组电压--}}
+    {{--泵组电压UBC--}}
     <script type="text/javascript">
         Highcharts.setOptions({
             global: {
@@ -526,7 +528,8 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 200;
+//                                    y = Math.random() * 200;
+                                    y = stationRT['ubc'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -534,7 +537,7 @@
                 }
             },
             title: {
-                text: '泵组实时电压(伏)'
+                text: '实时BC相线电压(伏)'
             },
             xAxis: {
                 type: 'datetime',
@@ -585,7 +588,7 @@
 
     </script>
 
-    {{--泵组电压--}}
+    {{--泵组电压UCA--}}
     <script type="text/javascript">
         Highcharts.setOptions({
             global: {
@@ -608,7 +611,8 @@
                                 chart = this;
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 200;
+//                                    y = Math.random() * 200;
+                                    y = stationRT['uca'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -616,7 +620,7 @@
                 }
             },
             title: {
-                text: '泵组实时电压(伏)'
+                text: '实时CA相线电压(伏)'
             },
             xAxis: {
                 type: 'datetime',
