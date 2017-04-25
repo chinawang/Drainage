@@ -144,9 +144,6 @@
             setInterval(getStationRT(), 1000);
         });
 
-        alert(stationRT);
-
-
     </script>
 
     <script type="text/javascript">
@@ -165,9 +162,6 @@
 //            getStationRTHistory();
             setInterval(getStationRTHistory(), 1000);
         });
-
-
-        alert(stationRTHistory);
 
     </script>
 
