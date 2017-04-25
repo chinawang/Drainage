@@ -279,8 +279,8 @@
                     color: '#808080'
                 }],
                 plotBands: [{ // 警戒线
-                    from: 1.8,
-                    to: 1.82,
+                    from: 11.8,
+                    to: 11.82,
                     color: 'rgb(244, 91, 91)',
                     label: {
                         text: '警戒高度',
@@ -375,8 +375,8 @@
                     color: '#808080'
                 }],
                 plotBands: [{ // 警戒线
-                    from: 4.5,
-                    to: 4.54,
+                    from: 11.5,
+                    to: 11.54,
                     color: 'rgb(244, 91, 91)',
                     label: {
                         text: '警戒高度',
