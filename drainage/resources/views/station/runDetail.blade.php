@@ -251,11 +251,12 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
+                    var valueTmp = stationRTHistory;
                     for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-//                            y: Math.random()*2
-                            y: {{ $stationRT[0]->ywhandong }}
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['ywhandong']
                         });
                     }
                     return data;
@@ -346,11 +347,12 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
+                    var valueTmp = stationRTHistory;
                     for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-//                            y: Math.random() * 5
-                            y: {{ $stationRT[0]->ywjishui }}
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['ywjishui']
                         });
                     }
                     return data;
@@ -515,11 +517,12 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
+                    var valueTmp = stationRTHistory;
                     for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-//                            y: Math.random() * 200
-                            y: {{ $stationRT[0]->uab }}
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['uab']
                         });
                     }
                     return data;
@@ -599,11 +602,12 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
+                    var valueTmp = stationRTHistory;
                     for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-//                            y: Math.random() * 200
-                            y: {{ $stationRT[0]->ubc }}
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['ubc']
                         });
                     }
                     return data;
@@ -683,11 +687,12 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
+                    var valueTmp = stationRTHistory;
                     for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-//                            y: Math.random() * 200
-                            y: {{ $stationRT[0]->uca }}
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['uca']
                         });
                     }
                     return data;
