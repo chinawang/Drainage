@@ -409,7 +409,7 @@
                             time = (new Date()).getTime(),
                             i;
 
-                    var stationRTHistory = null;
+                    var stationRTHistory;
                     $.ajax({
                         type: 'get',
                         url: '/station/realTimeHistory/{{ $station['station_number'] }}',
