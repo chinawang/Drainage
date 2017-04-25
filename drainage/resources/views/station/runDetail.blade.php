@@ -153,16 +153,14 @@
                 type: 'get',
                 url: '/station/realTimeHistory/{{ $station['station_number'] }}',
                 data: '_token = <?php echo csrf_token() ?>',
-                async : false,
                 success: function (data) {
                     stationRTHistory = data.stationRTHistory;
-                    alert(stationRTHistory);
                 }
             });
         }
         $(document).ready(function () {
-            getStationRTHistory();
-            alert('1');
+//            getStationRTHistory();
+            setInterval(getStationRTHistory(), 1000);
         });
 
 
