@@ -50,12 +50,6 @@
                                     </div>
                                     <div class="panel-body custom-panel-body">
                                         <div class="row">
-                                            <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
-                                                 style="min-width:400px;height:400px">
-
-                                            </div>
-                                        </div>
-                                        <div class="row" style="margin-top: 20px">
                                             <div class="col-md-4 col-md-offset-0" id="pumpVoltageAContainer"
                                                  style="height:400px">
 
@@ -66,6 +60,12 @@
                                             </div>
                                             <div class="col-md-4 col-md-offset-0" id="pumpVoltageCContainer"
                                                  style="height:400px">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
+                                                 style="min-width:400px;height:400px">
 
                                             </div>
                                         </div>
