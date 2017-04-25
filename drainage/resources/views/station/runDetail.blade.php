@@ -56,16 +56,16 @@
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 20px">
-                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageAContainer"
-                                                 style="width:30%;height:400px">
+                                            <div class="col-md-4 col-md-offset-0" id="pumpVoltageAContainer"
+                                                 style="height:400px">
 
                                             </div>
-                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageBContainer"
-                                                 style="width:30%;height:400px">
+                                            <div class="col-md-4 col-md-offset-0" id="pumpVoltageBContainer"
+                                                 style="height:400px">
 
                                             </div>
-                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageCContainer"
-                                                 style="width:30%;height:400px">
+                                            <div class="col-md-4 col-md-offset-0" id="pumpVoltageCContainer"
+                                                 style="height:400px">
 
                                             </div>
                                         </div>
