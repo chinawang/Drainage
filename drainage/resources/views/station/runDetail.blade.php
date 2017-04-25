@@ -147,7 +147,7 @@
     </script>
 
     <script type="text/javascript">
-        var stationRTHistory;
+//        var stationRTHistory;
         function getStationRTHistory() {
             var resultValue =[];
             $.ajax({
@@ -161,11 +161,10 @@
             });
             return resultValue;
         }
-        $(document).ready(function () {
-            stationRTHistory = getStationRTHistory();
-        });
+//        $(document).ready(function () {
+//            stationRTHistory = getStationRTHistory();
+//        });
 
-        alert(getStationRTHistory());
 
     </script>
 
@@ -431,7 +430,7 @@
                             i;
 
                     for (i = -119; i <= 0; i += 1) {
-                        var valueTmp = stationRTHistory[0]['ib1'];
+                        var valueTmp = getStationRTHistory()[0]['ib1'];
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
