@@ -423,7 +423,7 @@
 
     </script>
 
-    {{--泵组电流--}}
+    {{--1号泵组电流--}}
     <script type="text/javascript">
         Highcharts.setOptions({
             global: {
@@ -434,7 +434,347 @@
             var points = chart.series[0].points;
             chart.tooltip.refresh(points[points.length - 1]);
         }
-        $('#pumpCurrentContainer').highcharts({
+        $('#pumpCurrentContainer_1').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0],
+                                chart = this;
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+//                                    y = Math.random() * 100;
+                                    y = stationRT['ib1'];
+                            series.addPoint([x, y], true, true);
+                            activeLastPointToolip(chart)
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: '1号泵实时电流(毫安)'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: '电流(毫安)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                            Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: '电流',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+                    var valueTmp = stationRTHistory;
+                    for (i = -119; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['ib1']
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        }, function (c) {
+            activeLastPointToolip(c)
+        });
+
+    </script>
+
+    {{--2号泵组电流--}}
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        function activeLastPointToolip(chart) {
+            var points = chart.series[0].points;
+            chart.tooltip.refresh(points[points.length - 1]);
+        }
+        $('#pumpCurrentContainer_2').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0],
+                                chart = this;
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+//                                    y = Math.random() * 100;
+                                    y = stationRT['ib1'];
+                            series.addPoint([x, y], true, true);
+                            activeLastPointToolip(chart)
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: '1号泵实时电流(毫安)'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: '电流(毫安)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                            Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: '电流',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+                    var valueTmp = stationRTHistory;
+                    for (i = -119; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['ib1']
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        }, function (c) {
+            activeLastPointToolip(c)
+        });
+
+    </script>
+
+    {{--3号泵组电流--}}
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        function activeLastPointToolip(chart) {
+            var points = chart.series[0].points;
+            chart.tooltip.refresh(points[points.length - 1]);
+        }
+        $('#pumpCurrentContainer_3').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0],
+                                chart = this;
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+//                                    y = Math.random() * 100;
+                                    y = stationRT['ib1'];
+                            series.addPoint([x, y], true, true);
+                            activeLastPointToolip(chart)
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: '1号泵实时电流(毫安)'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: '电流(毫安)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                            Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: '电流',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+                    var valueTmp = stationRTHistory;
+                    for (i = -119; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['ib1']
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        }, function (c) {
+            activeLastPointToolip(c)
+        });
+
+    </script>
+
+    {{--4号泵组电流--}}
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        function activeLastPointToolip(chart) {
+            var points = chart.series[0].points;
+            chart.tooltip.refresh(points[points.length - 1]);
+        }
+        $('#pumpCurrentContainer_4').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0],
+                                chart = this;
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+//                                    y = Math.random() * 100;
+                                    y = stationRT['ib1'];
+                            series.addPoint([x, y], true, true);
+                            activeLastPointToolip(chart)
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: '1号泵实时电流(毫安)'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: '电流(毫安)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                            Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: '电流',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+                    var valueTmp = stationRTHistory;
+                    for (i = -119; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+//                            y: Math.random() * 100
+                            y: valueTmp[0-i]['ib1']
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        }, function (c) {
+            activeLastPointToolip(c)
+        });
+
+    </script>
+
+    {{--5号泵组电流--}}
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        function activeLastPointToolip(chart) {
+            var points = chart.series[0].points;
+            chart.tooltip.refresh(points[points.length - 1]);
+        }
+        $('#pumpCurrentContainer_5').highcharts({
             chart: {
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
