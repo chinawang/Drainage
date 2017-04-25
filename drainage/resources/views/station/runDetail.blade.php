@@ -156,11 +156,13 @@
                 async : false,
                 success: function (data) {
                     stationRTHistory = data.stationRTHistory;
+                    alert(stationRTHistory);
                 }
             });
         }
         $(document).ready(function () {
             getStationRTHistory();
+            alert(stationRTHistory);
         });
 
 
