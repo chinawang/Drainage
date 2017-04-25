@@ -428,12 +428,12 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    var valueTmp = getStationRTHistory()[0]['ib1'];
+                    var valueTmp = getStationRTHistory();
                     for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: valueTmp
+                            y: valueTmp[0-i]['ib1']
                         });
                     }
                     return data;
