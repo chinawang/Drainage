@@ -232,7 +232,7 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random()*2
-                            y: {{ $stationRT->ywhandong }}
+                            y: {{ $stationRT[0]->ywhandong }}
                         });
                     }
                     return data;
@@ -327,7 +327,7 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 5
-                            y: {{ $stationRT->ywjishui }}
+                            y: {{ $stationRT[0]->ywjishui }}
                         });
                     }
                     return data;
@@ -410,7 +410,8 @@
                     for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random() * 100
+//                            y: Math.random() * 100
+                            y: {{ $stationRT[1-i]->ib1 }}
                         });
                     }
                     return data;
@@ -493,7 +494,8 @@
                     for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random() * 200
+//                            y: Math.random() * 200
+                            y: {{ $stationRT[0]->uab }}
                         });
                     }
                     return data;
@@ -576,7 +578,8 @@
                     for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random() * 200
+//                            y: Math.random() * 200
+                            y: {{ $stationRT[0]->ubc }}
                         });
                     }
                     return data;
@@ -659,7 +662,8 @@
                     for (i = -59; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random() * 200
+//                            y: Math.random() * 200
+                            y: {{ $stationRT[0]->uca }}
                         });
                     }
                     return data;
