@@ -416,9 +416,10 @@
                         data: '_token = <?php echo csrf_token() ?>',
                         success: function (data) {
                             stationRTHistory = data.stationRTHistory;
+                            alert(stationRTHistory);
                         }
                     });
-                    alert(stationRTHistory);
+
                     for (i = -119; i <= 0; i += 1) {
                         var valueTmp = stationRTHistory[0]['ib1'];
                         data.push({
