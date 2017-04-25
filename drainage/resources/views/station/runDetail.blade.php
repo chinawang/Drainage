@@ -160,6 +160,7 @@
         }
         $(document).ready(function () {
             getStationRTHistory();
+            console.log(stationRTHistory);
         });
 
     </script>
