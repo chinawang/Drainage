@@ -425,7 +425,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    alert(stationRTHistory[0]['ib1']);
+                    alert(stationRTHistory);
                     for (i = -119; i <= 0; i += 1) {
                         var valueTmp = stationRTHistory[0]['ib1'];
                         data.push({
