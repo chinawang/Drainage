@@ -426,10 +426,11 @@
                             time = (new Date()).getTime(),
                             i;
                     for (i = -119; i <= 0; i += 1) {
+                        var valueTmp = stationRTHistory[0]['ib1'];
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: stationRTHistory[0]['ib1']
+                            y: valueTmp
                         });
                     }
                     return data;
