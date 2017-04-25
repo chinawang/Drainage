@@ -231,7 +231,7 @@ class StationController extends Controller
     public function stationRTHistory($stationNum)
     {
         $stationRT = $this->findStationRT($stationNum);
-        return $stationRT;
+
         return response()->json(array('stationRTHistory'=> $stationRT), 200);
     }
 }

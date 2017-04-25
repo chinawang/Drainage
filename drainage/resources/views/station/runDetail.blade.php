@@ -155,7 +155,7 @@
                 data: '_token = <?php echo csrf_token() ?>',
                 success: function (data) {
                     stationRTHistory = data.stationRTHistory;
-//                    alert(data.stationRTHistory);
+                    alert(data.stationRTHistory);
                 }
             });
         }
