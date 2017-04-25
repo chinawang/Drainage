@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-primary custom-panel">
+                <div class="panel panel-info custom-panel">
                     <div class="panel-heading">
                         {{ $station['name'] }}
                         <a href="#" onClick="javascript :history.back(-1);" class="btn-link">返回</a>
