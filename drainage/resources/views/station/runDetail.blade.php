@@ -154,6 +154,7 @@
                 type: 'get',
                 url: '/station/realTimeHistory/{{ $station['station_number'] }}',
                 data: '_token = <?php echo csrf_token() ?>',
+                async: false,//同步
                 success: function (data) {
                     resultValue = data.stationRTHistory;
                 }
