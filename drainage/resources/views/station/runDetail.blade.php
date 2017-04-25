@@ -155,12 +155,13 @@
                 data: '_token = <?php echo csrf_token() ?>',
                 success: function (data) {
                     stationRTHistory = data.stationRTHistory;
+                    alert(data);
                 }
             });
         }
         $(document).ready(function () {
             getStationRTHistory();
-            alert(stationRTHistory);
+//            alert(stationRTHistory);
         });
 
     </script>
