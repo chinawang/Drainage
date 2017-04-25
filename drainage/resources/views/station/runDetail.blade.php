@@ -540,7 +540,7 @@
                 }
             },
             title: {
-                text: '1号泵实时电流(毫安)'
+                text: '2号泵实时电流(毫安)'
             },
             xAxis: {
                 type: 'datetime',
@@ -625,7 +625,7 @@
                 }
             },
             title: {
-                text: '1号泵实时电流(毫安)'
+                text: '3号泵实时电流(毫安)'
             },
             xAxis: {
                 type: 'datetime',
@@ -710,7 +710,7 @@
                 }
             },
             title: {
-                text: '1号泵实时电流(毫安)'
+                text: '4号泵实时电流(毫安)'
             },
             xAxis: {
                 type: 'datetime',
@@ -795,7 +795,7 @@
                 }
             },
             title: {
-                text: '1号泵实时电流(毫安)'
+                text: '5号泵实时电流(毫安)'
             },
             xAxis: {
                 type: 'datetime',
