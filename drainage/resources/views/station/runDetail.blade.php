@@ -532,7 +532,7 @@
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
 //                                    y = Math.random() * 100;
-                                    y = stationRT['ib1'];
+                                    y = stationRT['ib2'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -581,7 +581,7 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: valueTmp[0-i]['ib1']
+                            y: valueTmp[0-i]['ib2']
                         });
                     }
                     return data;
@@ -617,7 +617,7 @@
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
 //                                    y = Math.random() * 100;
-                                    y = stationRT['ib1'];
+                                    y = stationRT['ib3'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -666,7 +666,7 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: valueTmp[0-i]['ib1']
+                            y: valueTmp[0-i]['ib3']
                         });
                     }
                     return data;
@@ -702,7 +702,7 @@
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
 //                                    y = Math.random() * 100;
-                                    y = stationRT['ib1'];
+                                    y = stationRT['ib4'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -751,7 +751,7 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: valueTmp[0-i]['ib1']
+                            y: valueTmp[0-i]['ib4']
                         });
                     }
                     return data;
@@ -787,7 +787,7 @@
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
 //                                    y = Math.random() * 100;
-                                    y = stationRT['ib1'];
+                                    y = stationRT['ib5'];
                             series.addPoint([x, y], true, true);
                             activeLastPointToolip(chart)
                         }, 1000);
@@ -836,7 +836,7 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: valueTmp[0-i]['ib1']
+                            y: valueTmp[0-i]['ib5']
                         });
                     }
                     return data;
