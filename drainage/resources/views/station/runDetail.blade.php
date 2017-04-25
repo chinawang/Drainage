@@ -143,6 +143,25 @@
         $(document).ready(function () {
             setInterval(getStationRT(), 1000);
         });
+
+    </script>
+
+    <script type="text/javascript">
+        var stationRTHistory;
+        function getStationRTHistory() {
+            $.ajax({
+                type: 'get',
+                url: '/station/realTimeHistory/{{ $station['station_number'] }}',
+                data: '_token = <?php echo csrf_token() ?>',
+                success: function (data) {
+                    stationRTHistory = data.stationRTHistory;
+                }
+            });
+        }
+        $(document).ready(function () {
+            getStationRTHistory();
+        });
+
     </script>
 
     {{--涵洞水位--}}
@@ -167,8 +186,6 @@
                         var series = this.series[0],
                                 chart = this;
                         setInterval(function () {
-
-//                            getStationRT();// 定时获取实时数据
 
                             var x = (new Date()).getTime(), // current time
 //                                    y = Math.random()*2;
@@ -407,11 +424,11 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -59; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: {{ $stationRT[59]->ib1 }}
+                            y: stationRTHistory[0-i]['ib1']
                         });
                     }
                     return data;
@@ -491,7 +508,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -59; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 200
@@ -575,7 +592,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -59; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 200
@@ -659,7 +676,7 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-                    for (i = -59; i <= 0; i += 1) {
+                    for (i = -119; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 200
