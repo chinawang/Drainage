@@ -164,7 +164,7 @@
         });
 
 
-        alert(stationRTHistory[119]['ib1']);
+        alert(stationRTHistory);
 
     </script>
 
