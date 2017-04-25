@@ -165,7 +165,7 @@
             stationRTHistory = getStationRTHistory();
         });
 
-        alert(stationRTHistory);
+        alert(getStationRTHistory());
 
     </script>
 
