@@ -428,9 +428,8 @@
                     var data = [],
                             time = (new Date()).getTime(),
                             i;
-
+                    var valueTmp = getStationRTHistory()[0]['ib1'];
                     for (i = -119; i <= 0; i += 1) {
-                        var valueTmp = getStationRTHistory()[0]['ib1'];
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
