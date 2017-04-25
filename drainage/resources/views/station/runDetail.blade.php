@@ -52,7 +52,8 @@
                                         <div class="row">
                                             <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
                                                  style="min-width:400px;height:400px">
-                                                @for($i=0;$i<60;$i++)
+                                                @for($i=60;$i>=0;$i--)
+                                                    <input type="hidden" class="current" value="{{ $stationRT[$i]->ib1 }}">
                                                 @endfor
                                             </div>
                                         </div>
@@ -412,7 +413,8 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: {{ $stationRT[1-$i]->ib1 }}
+                            {{--y: {{ $stationRT[1-$i]->ib1 }}--}}
+                            y:$(".current").siblings().next().val()
                         });
                     }
                     return data;
