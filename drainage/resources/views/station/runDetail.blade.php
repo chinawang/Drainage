@@ -19,19 +19,19 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-0">
+                            <div class="col-md-12 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
                                         涵洞
                                     </div>
                                     <div class="panel-body custom-panel-body" id="culvertContainer"
                                          style="min-width:400px;height:400px">
-                                        {{--<input id="culvertTime" value="{{ $stationRT->Time }}" type="hidden">--}}
-                                        {{--<input id="culvertWater" value="{{ $stationRT->ywhandong }}" type="hidden">--}}
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-md-offset-0">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
                                         集水池
@@ -162,10 +162,10 @@
             return resultValue;
         }
 
-        var stationRTHistory;
-        $(document).ready(function () {
-            stationRTHistory = getStationRTHistory();
-        });
+        var stationRTHistory = getStationRTHistory();
+//        $(document).ready(function () {
+//            stationRTHistory = getStationRTHistory();
+//        });
 
 
     </script>
