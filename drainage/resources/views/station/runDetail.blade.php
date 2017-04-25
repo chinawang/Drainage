@@ -46,16 +46,23 @@
                             <div class="col-md-12 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
-                                        {{--泵组--}}
+                                        {{--泵组电流--}}
+                                    {{--</div>--}}
+                                    <div class="panel-body custom-panel-body" id="pumpCurrentContainer"
+                                         style="min-width:400px;height:400px">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-md-offset-0">
+                                <div class="panel panel-default custom-panel">
+                                    {{--<div class="panel-heading">--}}
+                                    {{--泵组电压--}}
                                     {{--</div>--}}
                                     <div class="panel-body custom-panel-body">
                                         <div class="row">
-                                            <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
-                                                 style="min-width:400px;height:400px">
-
-                                            </div>
-                                        </div>
-                                        <div class="row" style="margin-top: 15px">
                                             <div class="col-md-4 col-md-offset-0" id="pumpVoltageAContainer"
                                                  style="height:400px">
 
