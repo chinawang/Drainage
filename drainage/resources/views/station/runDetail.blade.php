@@ -12,14 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
-                <div class="jumbotron">
-                    <h1>{{ $station['name'] }}</h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-info custom-panel">
+                <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         {{ $station['name'] }}
                         <a href="#" onClick="javascript :history.back(-1);" class="btn-link">返回</a>
