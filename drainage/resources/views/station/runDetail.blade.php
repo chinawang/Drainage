@@ -10,6 +10,9 @@
 
 @section('content')
     <div class="container">
+        <div class="jumbotron">
+            <h1>{{ $station['name'] }}</h1>
+        </div>
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-info custom-panel">
