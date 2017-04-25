@@ -21,9 +21,9 @@
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        涵洞
-                                    </div>
+                                    {{--<div class="panel-heading">--}}
+                                        {{--涵洞--}}
+                                    {{--</div>--}}
                                     <div class="panel-body custom-panel-body" id="culvertContainer"
                                          style="min-width:400px;height:400px">
                                     </div>
@@ -33,9 +33,9 @@
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        集水池
-                                    </div>
+                                    {{--<div class="panel-heading">--}}
+                                        {{--集水池--}}
+                                    {{--</div>--}}
                                     <div class="panel-body custom-panel-body" id="tankContainer"
                                          style="min-width:400px;height:400px">
                                     </div>
@@ -45,9 +45,9 @@
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        泵组
-                                    </div>
+                                    {{--<div class="panel-heading">--}}
+                                        {{--泵组--}}
+                                    {{--</div>--}}
                                     <div class="panel-body custom-panel-body">
                                         <div class="row">
                                             <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
