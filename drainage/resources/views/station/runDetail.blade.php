@@ -162,10 +162,10 @@
             return resultValue;
         }
 
-        var stationRTHistory = getStationRTHistory();
-//        $(document).ready(function () {
-//            stationRTHistory = getStationRTHistory();
-//        });
+        var stationRTHistory;
+        $(document).ready(function () {
+            stationRTHistory = getStationRTHistory();
+        });
 
 
     </script>
