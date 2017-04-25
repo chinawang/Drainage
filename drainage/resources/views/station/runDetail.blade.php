@@ -430,7 +430,7 @@
                     $.ajax({
                         type: 'get',
                         url: '/station/realTimeHistory/{{ $station['station_number'] }}',
-                        {{--data: '_token = <?php echo csrf_token() ?>',--}}
+                        data: '_token = <?php echo csrf_token() ?>',
                         success: function (data) {
                             stationRTHistory = data.stationRTHistory;
                         }
