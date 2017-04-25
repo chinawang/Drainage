@@ -146,24 +146,7 @@
 
     </script>
 
-    <script type="text/javascript">
-        {{--var stationRTHistory;--}}
-        {{--function getStationRTHistory() {--}}
-            {{--$.ajax({--}}
-                {{--type: 'get',--}}
-                {{--url: '/station/realTimeHistory/{{ $station['station_number'] }}',--}}
-                {{--data: '_token = <?php echo csrf_token() ?>',--}}
-                {{--success: function (data) {--}}
-                    {{--stationRTHistory = data.stationRTHistory;--}}
-{{--//                    alert(stationRTHistory[119]['ib1']);--}}
-                {{--}--}}
-            {{--});--}}
-        {{--}--}}
-        {{--$(document).ready(function () {--}}
-            {{--getStationRTHistory();--}}
-        {{--});--}}
 
-    </script>
 
     {{--涵洞水位--}}
     <script type="text/javascript">
