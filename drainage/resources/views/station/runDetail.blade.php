@@ -50,53 +50,21 @@
                                     </div>
                                     <div class="panel-body custom-panel-body">
                                         <div class="row">
-                                            <div class="col-md-6 col-md-offset-0" id="pumpVoltageContainer"
-                                                 style="min-width:400px;height:400px">
-
-                                            </div>
-                                            <div class="col-md-6 col-md-offset-0" id="pumpCurrentContainer"
+                                            <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
                                                  style="min-width:400px;height:400px">
 
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        格栅除污机
-                                    </div>
-                                    <div class="panel-body custom-panel-body">
                                         <div class="row">
-                                            <div class="col-md-6 col-md-offset-0" id="removerVoltageContainer"
+                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageContainer"
                                                  style="min-width:400px;height:400px">
 
                                             </div>
-                                            <div class="col-md-6 col-md-offset-0" id="removerCurrentContainer"
+                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageContainer"
                                                  style="min-width:400px;height:400px">
 
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        发电机
-                                    </div>
-                                    <div class="panel-body custom-panel-body">
-                                        <div class="row">
-                                            <div class="col-md-6 col-md-offset-0" id="alternatorPowerContainer"
-                                                 style="min-width:400px;height:400px">
-
-                                            </div>
-                                            <div class="col-md-6 col-md-offset-0" id="alternatoresistanceContainer"
+                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageContainer"
                                                  style="min-width:400px;height:400px">
 
                                             </div>
@@ -105,6 +73,48 @@
                                 </div>
                             </div>
                         </div>
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md-12 col-md-offset-0">--}}
+                                {{--<div class="panel panel-default custom-panel">--}}
+                                    {{--<div class="panel-heading">--}}
+                                        {{--格栅除污机--}}
+                                    {{--</div>--}}
+                                    {{--<div class="panel-body custom-panel-body">--}}
+                                        {{--<div class="row">--}}
+                                            {{--<div class="col-md-6 col-md-offset-0" id="removerVoltageContainer"--}}
+                                                 {{--style="min-width:400px;height:400px">--}}
+
+                                            {{--</div>--}}
+                                            {{--<div class="col-md-6 col-md-offset-0" id="removerCurrentContainer"--}}
+                                                 {{--style="min-width:400px;height:400px">--}}
+
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md-12 col-md-offset-0">--}}
+                                {{--<div class="panel panel-default custom-panel">--}}
+                                    {{--<div class="panel-heading">--}}
+                                        {{--发电机--}}
+                                    {{--</div>--}}
+                                    {{--<div class="panel-body custom-panel-body">--}}
+                                        {{--<div class="row">--}}
+                                            {{--<div class="col-md-6 col-md-offset-0" id="alternatorPowerContainer"--}}
+                                                 {{--style="min-width:400px;height:400px">--}}
+
+                                            {{--</div>--}}
+                                            {{--<div class="col-md-6 col-md-offset-0" id="alternatoresistanceContainer"--}}
+                                                 {{--style="min-width:400px;height:400px">--}}
+
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
             </div>
@@ -494,331 +504,331 @@
     </script>
 
     {{--格栅除污机电压--}}
-    <script type="text/javascript">
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
-        function activeLastPointToolip(chart) {
-            var points = chart.series[0].points;
-            chart.tooltip.refresh(points[points.length - 1]);
-        }
-        $('#removerVoltageContainer').highcharts({
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-                        // set up the updating of the chart each second
-                        var series = this.series[0],
-                                chart = this;
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 200;
-                            series.addPoint([x, y], true, true);
-                            activeLastPointToolip(chart)
-                        }, 1000);
-                    }
-                }
-            },
-            title: {
-                text: '格栅除污机实时电压(伏)'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: '电压(伏)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                            Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: '电压',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                            time = (new Date()).getTime(),
-                            i;
-                    for (i = -59; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random() * 200
-                        });
-                    }
-                    return data;
-                }())
-            }]
-        }, function (c) {
-            activeLastPointToolip(c)
-        });
+    {{--<script type="text/javascript">--}}
+        {{--Highcharts.setOptions({--}}
+            {{--global: {--}}
+                {{--useUTC: false--}}
+            {{--}--}}
+        {{--});--}}
+        {{--function activeLastPointToolip(chart) {--}}
+            {{--var points = chart.series[0].points;--}}
+            {{--chart.tooltip.refresh(points[points.length - 1]);--}}
+        {{--}--}}
+        {{--$('#removerVoltageContainer').highcharts({--}}
+            {{--chart: {--}}
+                {{--type: 'spline',--}}
+                {{--animation: Highcharts.svg, // don't animate in old IE--}}
+                {{--marginRight: 10,--}}
+                {{--events: {--}}
+                    {{--load: function () {--}}
+                        {{--// set up the updating of the chart each second--}}
+                        {{--var series = this.series[0],--}}
+                                {{--chart = this;--}}
+                        {{--setInterval(function () {--}}
+                            {{--var x = (new Date()).getTime(), // current time--}}
+                                    {{--y = Math.random() * 200;--}}
+                            {{--series.addPoint([x, y], true, true);--}}
+                            {{--activeLastPointToolip(chart)--}}
+                        {{--}, 1000);--}}
+                    {{--}--}}
+                {{--}--}}
+            {{--},--}}
+            {{--title: {--}}
+                {{--text: '格栅除污机实时电压(伏)'--}}
+            {{--},--}}
+            {{--xAxis: {--}}
+                {{--type: 'datetime',--}}
+                {{--tickPixelInterval: 150--}}
+            {{--},--}}
+            {{--yAxis: {--}}
+                {{--title: {--}}
+                    {{--text: '电压(伏)'--}}
+                {{--},--}}
+                {{--plotLines: [{--}}
+                    {{--value: 0,--}}
+                    {{--width: 1,--}}
+                    {{--color: '#808080'--}}
+                {{--}]--}}
+            {{--},--}}
+            {{--tooltip: {--}}
+                {{--formatter: function () {--}}
+                    {{--return '<b>' + this.series.name + '</b><br/>' +--}}
+                            {{--Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +--}}
+                            {{--Highcharts.numberFormat(this.y, 2);--}}
+                {{--}--}}
+            {{--},--}}
+            {{--legend: {--}}
+                {{--enabled: false--}}
+            {{--},--}}
+            {{--exporting: {--}}
+                {{--enabled: false--}}
+            {{--},--}}
+            {{--series: [{--}}
+                {{--name: '电压',--}}
+                {{--data: (function () {--}}
+                    {{--// generate an array of random data--}}
+                    {{--var data = [],--}}
+                            {{--time = (new Date()).getTime(),--}}
+                            {{--i;--}}
+                    {{--for (i = -59; i <= 0; i += 1) {--}}
+                        {{--data.push({--}}
+                            {{--x: time + i * 1000,--}}
+                            {{--y: Math.random() * 200--}}
+                        {{--});--}}
+                    {{--}--}}
+                    {{--return data;--}}
+                {{--}())--}}
+            {{--}]--}}
+        {{--}, function (c) {--}}
+            {{--activeLastPointToolip(c)--}}
+        {{--});--}}
 
-    </script>
+    {{--</script>--}}
 
     {{--格栅除污机电流--}}
-    <script type="text/javascript">
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
-        function activeLastPointToolip(chart) {
-            var points = chart.series[0].points;
-            chart.tooltip.refresh(points[points.length - 1]);
-        }
-        $('#removerCurrentContainer').highcharts({
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-                        // set up the updating of the chart each second
-                        var series = this.series[0],
-                                chart = this;
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 100;
-                            series.addPoint([x, y], true, true);
-                            activeLastPointToolip(chart)
-                        }, 1000);
-                    }
-                }
-            },
-            title: {
-                text: '格栅除污机实时电流(毫安)'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: '电流(毫安)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                            Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: '电流',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                            time = (new Date()).getTime(),
-                            i;
-                    for (i = -59; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random() * 100
-                        });
-                    }
-                    return data;
-                }())
-            }]
-        }, function (c) {
-            activeLastPointToolip(c)
-        });
+    {{--<script type="text/javascript">--}}
+        {{--Highcharts.setOptions({--}}
+            {{--global: {--}}
+                {{--useUTC: false--}}
+            {{--}--}}
+        {{--});--}}
+        {{--function activeLastPointToolip(chart) {--}}
+            {{--var points = chart.series[0].points;--}}
+            {{--chart.tooltip.refresh(points[points.length - 1]);--}}
+        {{--}--}}
+        {{--$('#removerCurrentContainer').highcharts({--}}
+            {{--chart: {--}}
+                {{--type: 'spline',--}}
+                {{--animation: Highcharts.svg, // don't animate in old IE--}}
+                {{--marginRight: 10,--}}
+                {{--events: {--}}
+                    {{--load: function () {--}}
+                        {{--// set up the updating of the chart each second--}}
+                        {{--var series = this.series[0],--}}
+                                {{--chart = this;--}}
+                        {{--setInterval(function () {--}}
+                            {{--var x = (new Date()).getTime(), // current time--}}
+                                    {{--y = Math.random() * 100;--}}
+                            {{--series.addPoint([x, y], true, true);--}}
+                            {{--activeLastPointToolip(chart)--}}
+                        {{--}, 1000);--}}
+                    {{--}--}}
+                {{--}--}}
+            {{--},--}}
+            {{--title: {--}}
+                {{--text: '格栅除污机实时电流(毫安)'--}}
+            {{--},--}}
+            {{--xAxis: {--}}
+                {{--type: 'datetime',--}}
+                {{--tickPixelInterval: 150--}}
+            {{--},--}}
+            {{--yAxis: {--}}
+                {{--title: {--}}
+                    {{--text: '电流(毫安)'--}}
+                {{--},--}}
+                {{--plotLines: [{--}}
+                    {{--value: 0,--}}
+                    {{--width: 1,--}}
+                    {{--color: '#808080'--}}
+                {{--}]--}}
+            {{--},--}}
+            {{--tooltip: {--}}
+                {{--formatter: function () {--}}
+                    {{--return '<b>' + this.series.name + '</b><br/>' +--}}
+                            {{--Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +--}}
+                            {{--Highcharts.numberFormat(this.y, 2);--}}
+                {{--}--}}
+            {{--},--}}
+            {{--legend: {--}}
+                {{--enabled: false--}}
+            {{--},--}}
+            {{--exporting: {--}}
+                {{--enabled: false--}}
+            {{--},--}}
+            {{--series: [{--}}
+                {{--name: '电流',--}}
+                {{--data: (function () {--}}
+                    {{--// generate an array of random data--}}
+                    {{--var data = [],--}}
+                            {{--time = (new Date()).getTime(),--}}
+                            {{--i;--}}
+                    {{--for (i = -59; i <= 0; i += 1) {--}}
+                        {{--data.push({--}}
+                            {{--x: time + i * 1000,--}}
+                            {{--y: Math.random() * 100--}}
+                        {{--});--}}
+                    {{--}--}}
+                    {{--return data;--}}
+                {{--}())--}}
+            {{--}]--}}
+        {{--}, function (c) {--}}
+            {{--activeLastPointToolip(c)--}}
+        {{--});--}}
 
-    </script>
+    {{--</script>--}}
 
     {{--发电机功率--}}
-    <script type="text/javascript">
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
-        function activeLastPointToolip(chart) {
-            var points = chart.series[0].points;
-            chart.tooltip.refresh(points[points.length - 1]);
-        }
-        $('#alternatorPowerContainer').highcharts({
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-                        // set up the updating of the chart each second
-                        var series = this.series[0],
-                                chart = this;
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 1000;
-                            series.addPoint([x, y], true, true);
-                            activeLastPointToolip(chart)
-                        }, 1000);
-                    }
-                }
-            },
-            title: {
-                text: '发电机功率(千瓦)'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: '功率(千瓦)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                            Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: '功率',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                            time = (new Date()).getTime(),
-                            i;
-                    for (i = -59; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random() * 1000
-                        });
-                    }
-                    return data;
-                }())
-            }]
-        }, function (c) {
-            activeLastPointToolip(c)
-        });
+    {{--<script type="text/javascript">--}}
+        {{--Highcharts.setOptions({--}}
+            {{--global: {--}}
+                {{--useUTC: false--}}
+            {{--}--}}
+        {{--});--}}
+        {{--function activeLastPointToolip(chart) {--}}
+            {{--var points = chart.series[0].points;--}}
+            {{--chart.tooltip.refresh(points[points.length - 1]);--}}
+        {{--}--}}
+        {{--$('#alternatorPowerContainer').highcharts({--}}
+            {{--chart: {--}}
+                {{--type: 'spline',--}}
+                {{--animation: Highcharts.svg, // don't animate in old IE--}}
+                {{--marginRight: 10,--}}
+                {{--events: {--}}
+                    {{--load: function () {--}}
+                        {{--// set up the updating of the chart each second--}}
+                        {{--var series = this.series[0],--}}
+                                {{--chart = this;--}}
+                        {{--setInterval(function () {--}}
+                            {{--var x = (new Date()).getTime(), // current time--}}
+                                    {{--y = Math.random() * 1000;--}}
+                            {{--series.addPoint([x, y], true, true);--}}
+                            {{--activeLastPointToolip(chart)--}}
+                        {{--}, 1000);--}}
+                    {{--}--}}
+                {{--}--}}
+            {{--},--}}
+            {{--title: {--}}
+                {{--text: '发电机功率(千瓦)'--}}
+            {{--},--}}
+            {{--xAxis: {--}}
+                {{--type: 'datetime',--}}
+                {{--tickPixelInterval: 150--}}
+            {{--},--}}
+            {{--yAxis: {--}}
+                {{--title: {--}}
+                    {{--text: '功率(千瓦)'--}}
+                {{--},--}}
+                {{--plotLines: [{--}}
+                    {{--value: 0,--}}
+                    {{--width: 1,--}}
+                    {{--color: '#808080'--}}
+                {{--}]--}}
+            {{--},--}}
+            {{--tooltip: {--}}
+                {{--formatter: function () {--}}
+                    {{--return '<b>' + this.series.name + '</b><br/>' +--}}
+                            {{--Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +--}}
+                            {{--Highcharts.numberFormat(this.y, 2);--}}
+                {{--}--}}
+            {{--},--}}
+            {{--legend: {--}}
+                {{--enabled: false--}}
+            {{--},--}}
+            {{--exporting: {--}}
+                {{--enabled: false--}}
+            {{--},--}}
+            {{--series: [{--}}
+                {{--name: '功率',--}}
+                {{--data: (function () {--}}
+                    {{--// generate an array of random data--}}
+                    {{--var data = [],--}}
+                            {{--time = (new Date()).getTime(),--}}
+                            {{--i;--}}
+                    {{--for (i = -59; i <= 0; i += 1) {--}}
+                        {{--data.push({--}}
+                            {{--x: time + i * 1000,--}}
+                            {{--y: Math.random() * 1000--}}
+                        {{--});--}}
+                    {{--}--}}
+                    {{--return data;--}}
+                {{--}())--}}
+            {{--}]--}}
+        {{--}, function (c) {--}}
+            {{--activeLastPointToolip(c)--}}
+        {{--});--}}
 
-    </script>
+    {{--</script>--}}
 
     {{--发电机电阻--}}
-    <script type="text/javascript">
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
-        function activeLastPointToolip(chart) {
-            var points = chart.series[0].points;
-            chart.tooltip.refresh(points[points.length - 1]);
-        }
-        $('#alternatoresistanceContainer').highcharts({
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-                        // set up the updating of the chart each second
-                        var series = this.series[0],
-                                chart = this;
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 50;
-                            series.addPoint([x, y], true, true);
-                            activeLastPointToolip(chart)
-                        }, 1000);
-                    }
-                }
-            },
-            title: {
-                text: '发电机电阻(欧)'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: '电阻(欧)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                            Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: '电阻',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                            time = (new Date()).getTime(),
-                            i;
-                    for (i = -59; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random() * 50
-                        });
-                    }
-                    return data;
-                }())
-            }]
-        }, function (c) {
-            activeLastPointToolip(c)
-        });
+    {{--<script type="text/javascript">--}}
+        {{--Highcharts.setOptions({--}}
+            {{--global: {--}}
+                {{--useUTC: false--}}
+            {{--}--}}
+        {{--});--}}
+        {{--function activeLastPointToolip(chart) {--}}
+            {{--var points = chart.series[0].points;--}}
+            {{--chart.tooltip.refresh(points[points.length - 1]);--}}
+        {{--}--}}
+        {{--$('#alternatoresistanceContainer').highcharts({--}}
+            {{--chart: {--}}
+                {{--type: 'spline',--}}
+                {{--animation: Highcharts.svg, // don't animate in old IE--}}
+                {{--marginRight: 10,--}}
+                {{--events: {--}}
+                    {{--load: function () {--}}
+                        {{--// set up the updating of the chart each second--}}
+                        {{--var series = this.series[0],--}}
+                                {{--chart = this;--}}
+                        {{--setInterval(function () {--}}
+                            {{--var x = (new Date()).getTime(), // current time--}}
+                                    {{--y = Math.random() * 50;--}}
+                            {{--series.addPoint([x, y], true, true);--}}
+                            {{--activeLastPointToolip(chart)--}}
+                        {{--}, 1000);--}}
+                    {{--}--}}
+                {{--}--}}
+            {{--},--}}
+            {{--title: {--}}
+                {{--text: '发电机电阻(欧)'--}}
+            {{--},--}}
+            {{--xAxis: {--}}
+                {{--type: 'datetime',--}}
+                {{--tickPixelInterval: 150--}}
+            {{--},--}}
+            {{--yAxis: {--}}
+                {{--title: {--}}
+                    {{--text: '电阻(欧)'--}}
+                {{--},--}}
+                {{--plotLines: [{--}}
+                    {{--value: 0,--}}
+                    {{--width: 1,--}}
+                    {{--color: '#808080'--}}
+                {{--}]--}}
+            {{--},--}}
+            {{--tooltip: {--}}
+                {{--formatter: function () {--}}
+                    {{--return '<b>' + this.series.name + '</b><br/>' +--}}
+                            {{--Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +--}}
+                            {{--Highcharts.numberFormat(this.y, 2);--}}
+                {{--}--}}
+            {{--},--}}
+            {{--legend: {--}}
+                {{--enabled: false--}}
+            {{--},--}}
+            {{--exporting: {--}}
+                {{--enabled: false--}}
+            {{--},--}}
+            {{--series: [{--}}
+                {{--name: '电阻',--}}
+                {{--data: (function () {--}}
+                    {{--// generate an array of random data--}}
+                    {{--var data = [],--}}
+                            {{--time = (new Date()).getTime(),--}}
+                            {{--i;--}}
+                    {{--for (i = -59; i <= 0; i += 1) {--}}
+                        {{--data.push({--}}
+                            {{--x: time + i * 1000,--}}
+                            {{--y: Math.random() * 50--}}
+                        {{--});--}}
+                    {{--}--}}
+                    {{--return data;--}}
+                {{--}())--}}
+            {{--}]--}}
+        {{--}, function (c) {--}}
+            {{--activeLastPointToolip(c)--}}
+        {{--});--}}
 
-    </script>
+    {{--</script>--}}
 @endsection
 
