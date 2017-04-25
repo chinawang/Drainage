@@ -427,21 +427,14 @@
                             i;
 
                     var stationRTHistory = null;
-                    function getStationRTHistory() {
-                        $.ajax({
-                            type: 'get',
-                            url: '/station/realTimeHistory/{{ $station['station_number'] }}',
-                            data: '_token = <?php echo csrf_token() ?>',
-                            success: function (data) {
-                                stationRTHistory = data.stationRTHistory;
-//                    alert(stationRTHistory[119]['ib1']);
-                            }
-                        });
-                    }
-                    $(document).ready(function () {
-                        getStationRTHistory();
+                    $.ajax({
+                        type: 'get',
+                        url: '/station/realTimeHistory/{{ $station['station_number'] }}',
+                        data: '_token = <?php echo csrf_token() ?>',
+                        success: function (data) {
+                            stationRTHistory = data.stationRTHistory;
+                        }
                     });
-
                     alert(stationRTHistory);
                     for (i = -119; i <= 0; i += 1) {
                         var valueTmp = stationRTHistory[0]['ib1'];
