@@ -10,8 +10,12 @@
 
 @section('content')
     <div class="container">
-        <div class="jumbotron">
-            <h1>{{ $station['name'] }}</h1>
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <div class="jumbotron">
+                    <h1>{{ $station['name'] }}</h1>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
