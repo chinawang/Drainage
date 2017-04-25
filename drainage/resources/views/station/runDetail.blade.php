@@ -63,7 +63,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="row" style="margin-top: 10px">
+                                        <div class="row" style="margin-top: 15px">
                                             <div class="col-md-12 col-md-offset-0" id="pumpCurrentContainer"
                                                  style="min-width:400px;height:400px">
 
