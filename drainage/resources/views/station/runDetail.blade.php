@@ -55,17 +55,17 @@
 
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageContainer"
-                                                 style="min-width:400px;height:400px">
+                                        <div class="row" style="margin-top: 20px">
+                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageAContainer"
+                                                 style="width:100%;height:400px">
 
                                             </div>
-                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageContainer"
-                                                 style="min-width:400px;height:400px">
+                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageBContainer"
+                                                 style="width:100%;height:400px">
 
                                             </div>
-                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageContainer"
-                                                 style="min-width:400px;height:400px">
+                                            <div class="col-md-3 col-md-offset-0" id="pumpVoltageCContainer"
+                                                 style="width:100%;height:400px">
 
                                             </div>
                                         </div>
@@ -339,88 +339,6 @@
 
     </script>
 
-    {{--泵组电压--}}
-    <script type="text/javascript">
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
-        function activeLastPointToolip(chart) {
-            var points = chart.series[0].points;
-            chart.tooltip.refresh(points[points.length - 1]);
-        }
-        $('#pumpVoltageContainer').highcharts({
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-                        // set up the updating of the chart each second
-                        var series = this.series[0],
-                                chart = this;
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                    y = Math.random() * 200;
-                            series.addPoint([x, y], true, true);
-                            activeLastPointToolip(chart)
-                        }, 1000);
-                    }
-                }
-            },
-            title: {
-                text: '泵组实时电压(伏)'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: '电压(伏)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                            Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: '电压',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                            time = (new Date()).getTime(),
-                            i;
-                    for (i = -59; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random() * 200
-                        });
-                    }
-                    return data;
-                }())
-            }]
-        }, function (c) {
-            activeLastPointToolip(c)
-        });
-
-    </script>
-
     {{--泵组电流--}}
     <script type="text/javascript">
         Highcharts.setOptions({
@@ -492,6 +410,252 @@
                         data.push({
                             x: time + i * 1000,
                             y: Math.random() * 100
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        }, function (c) {
+            activeLastPointToolip(c)
+        });
+
+    </script>
+
+    {{--泵组电压--}}
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        function activeLastPointToolip(chart) {
+            var points = chart.series[0].points;
+            chart.tooltip.refresh(points[points.length - 1]);
+        }
+        $('#pumpVoltageAContainer').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0],
+                                chart = this;
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                    y = Math.random() * 200;
+                            series.addPoint([x, y], true, true);
+                            activeLastPointToolip(chart)
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: '泵组实时电压(伏)'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: '电压(伏)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                            Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: '电压',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+                    for (i = -59; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random() * 200
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        }, function (c) {
+            activeLastPointToolip(c)
+        });
+
+    </script>
+
+    {{--泵组电压--}}
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        function activeLastPointToolip(chart) {
+            var points = chart.series[0].points;
+            chart.tooltip.refresh(points[points.length - 1]);
+        }
+        $('#pumpVoltageBContainer').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0],
+                                chart = this;
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                    y = Math.random() * 200;
+                            series.addPoint([x, y], true, true);
+                            activeLastPointToolip(chart)
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: '泵组实时电压(伏)'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: '电压(伏)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                            Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: '电压',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+                    for (i = -59; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random() * 200
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        }, function (c) {
+            activeLastPointToolip(c)
+        });
+
+    </script>
+
+    {{--泵组电压--}}
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        function activeLastPointToolip(chart) {
+            var points = chart.series[0].points;
+            chart.tooltip.refresh(points[points.length - 1]);
+        }
+        $('#pumpVoltageCContainer').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0],
+                                chart = this;
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                    y = Math.random() * 200;
+                            series.addPoint([x, y], true, true);
+                            activeLastPointToolip(chart)
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: '泵组实时电压(伏)'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: '电压(伏)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                            Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: '电压',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+                    for (i = -59; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random() * 200
                         });
                     }
                     return data;
