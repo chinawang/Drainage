@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="icon" href="/img/header/logo_title.png" type="image/x-icon"/>
+    <link rel="icon" href="/img/header/logo_title_blue.png" type="image/x-icon"/>
 
     <!-- Styles -->
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
@@ -34,7 +34,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" style="background-color: #1296db;">
             <div class="container">
                 <div class="navbar-header">
 
