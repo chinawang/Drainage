@@ -411,7 +411,7 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: {{ $stationRT[0]->ib1 }}
+                            y: {{ $stationRT[59]->ib1 }}
                         });
                     }
                     return data;
