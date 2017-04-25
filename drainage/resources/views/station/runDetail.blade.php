@@ -149,19 +149,22 @@
     <script type="text/javascript">
         var stationRTHistory;
         function getStationRTHistory() {
+            var resultValue =[];
             $.ajax({
                 type: 'get',
                 url: '/station/realTimeHistory/{{ $station['station_number'] }}',
                 data: '_token = <?php echo csrf_token() ?>',
                 success: function (data) {
-                    stationRTHistory = data.stationRTHistory;
+                    resultValue = data.stationRTHistory;
                 }
             });
+            return resultValue;
         }
         $(document).ready(function () {
-//            getStationRTHistory();
-            setInterval(getStationRTHistory(), 1000);
+            stationRTHistory = getStationRTHistory();
         });
+
+        alert(stationRTHistory);
 
     </script>
 
