@@ -162,7 +162,7 @@
         }
         $(document).ready(function () {
             getStationRTHistory();
-            alert(stationRTHistory);
+            alert('1');
         });
 
 
