@@ -429,7 +429,7 @@
                         data.push({
                             x: time + i * 1000,
 //                            y: Math.random() * 100
-                            y: stationRTHistory[0-i]['ib1']
+                            y: stationRTHistory[119]['ib1']
                         });
                     }
                     return data;
