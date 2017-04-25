@@ -146,7 +146,27 @@
 
     </script>
 
+    <script type="text/javascript">
+        var stationRTHistory;
+        function getStationRTHistory() {
+            $.ajax({
+                type: 'get',
+                url: '/station/realTimeHistory/{{ $station['station_number'] }}',
+                data: '_token = <?php echo csrf_token() ?>',
+                async : false,
+                success: function (data) {
+                    stationRTHistory = data.stationRTHistory;
+                }
+            });
+        }
+        $(document).ready(function () {
+            getStationRTHistory();
+        });
 
+
+        alert(stationRTHistory[119]['ib1']);
+
+    </script>
 
     {{--涵洞水位--}}
     <script type="text/javascript">
@@ -409,34 +429,14 @@
                             time = (new Date()).getTime(),
                             i;
 
-                    var stationRTHistory;
-                    $.ajax({
-                        type: 'get',
-                        url: '/station/realTimeHistory/{{ $station['station_number'] }}',
-                        data: '_token = <?php echo csrf_token() ?>',
-                        success: function (data) {
-                            stationRTHistory = data.stationRTHistory;
-                            for (i = -119; i <= 0; i += 1) {
-                                var valueTmp = stationRTHistory[0-i]['ib1'];
-                                data.push({
-                                    x: time + i * 1000,
+                    for (i = -119; i <= 0; i += 1) {
+                        var valueTmp = stationRTHistory[0]['ib1'];
+                        data.push({
+                            x: time + i * 1000,
 //                            y: Math.random() * 100
-                                    y: valueTmp
-                                });
-                            }
-                        }
-                    });
-
-//                    alert(stationRTHistory);
-
-//                    for (i = -119; i <= 0; i += 1) {
-//                        var valueTmp = stationRTHistory[0]['ib1'];
-//                        data.push({
-//                            x: time + i * 1000,
-////                            y: Math.random() * 100
-//                            y: valueTmp
-//                        });
-//                    }
+                            y: valueTmp
+                        });
+                    }
                     return data;
                 }())
             }]
