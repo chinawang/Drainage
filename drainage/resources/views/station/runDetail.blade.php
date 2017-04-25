@@ -57,15 +57,15 @@
                                         </div>
                                         <div class="row" style="margin-top: 20px">
                                             <div class="col-md-3 col-md-offset-0" id="pumpVoltageAContainer"
-                                                 style="width:100%;height:400px">
+                                                 style="width:30%;height:400px">
 
                                             </div>
                                             <div class="col-md-3 col-md-offset-0" id="pumpVoltageBContainer"
-                                                 style="width:100%;height:400px">
+                                                 style="width:30%;height:400px">
 
                                             </div>
                                             <div class="col-md-3 col-md-offset-0" id="pumpVoltageCContainer"
-                                                 style="width:100%;height:400px">
+                                                 style="width:30%;height:400px">
 
                                             </div>
                                         </div>
