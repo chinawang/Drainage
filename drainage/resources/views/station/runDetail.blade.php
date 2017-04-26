@@ -313,7 +313,7 @@
                     var valueTmp = stationRTHistory;
                     for (i = -119; i <= 0; i += 1) {
                         data.push({
-                            x: time + i * 1000,
+                            x: time + i * 60000,
 //                            y: Math.random() * 100
                             y: valueTmp[0-i]['ywhandong']
                         });
