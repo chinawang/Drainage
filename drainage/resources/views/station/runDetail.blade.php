@@ -145,7 +145,7 @@
                                         1号格栅除污机运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" id="remover1Status" src="/img/status/checking.png" style="height: 220px">
+                                        <img class="status-icon" id="remover1Status" src="/img/status/checking.png">
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                                         2号格栅除污机运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" id="remover2Status" src="/img/status/checking.png" style="height: 220px">
+                                        <img class="status-icon" id="remover2Status" src="/img/status/checking.png">
                                     </div>
                                 </div>
                             </div>
@@ -167,8 +167,7 @@
                                         绞龙运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" id="augerStatus" src="/img/status/checking.png"
-                                             style="height: 220px">
+                                        <img class="status-icon" id="augerStatus" src="/img/status/checking.png">
                                     </div>
                                 </div>
                             </div>
@@ -276,7 +275,7 @@
         //监测1号格栅运行状态
         function checkRemover1Status() {
             if(stationRTHistory[0]['yx_gs1'] == '1'){
-                $("#remover1Status").src = "/img/status/running.png";
+                document.getElementById("remover1Status").src = "/img/status/running.png";
             }
             else{
                 document.getElementById("remover1Status").src = "/img/status/stop_black.png";
@@ -286,20 +285,20 @@
         //监测2号格栅运行状态
         function checkRemover2Status() {
             if(stationRTHistory[0]['yx_gs2'] == '1'){
-                $("#remover2Status").src = "/img/status/running.png";
+                document.getElementById("remover2Status").src = "/img/status/running.png";
             }
             else{
-                $("#remover2Status").src = "/img/status/stop_black.png";
+                document.getElementById("remover2Status").src = "/img/status/stop_black.png";
             }
         }
 
         //监测绞龙运行状态
         function checkAugerStatus() {
             if(stationRTHistory[0]['yx_jl'] == '1'){
-                $("#augerStatus").src = "/img/status/running.png";
+                document.getElementById("augerStatus").src = "/img/status/running.png";
             }
             else{
-                $("#augerStatus").src = "/img/status/stop_black.png";
+                document.getElementById("augerStatus").src = "/img/status/stop_black.png";
             }
         }
 
