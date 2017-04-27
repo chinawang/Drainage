@@ -16,7 +16,7 @@
                 <div class="panel-body custom-panel-body">
                     <ul class="main-menu">
                         <li class="station">
-                            <a href="/station/lists" class="menu-item">
+                            <a href="/station/lists" class="menu-item" >
                                 <img class="menu-icon" src="/img/home/station_blue.png">
                                 <h4>泵站资料管理</h4>
                             </a>
