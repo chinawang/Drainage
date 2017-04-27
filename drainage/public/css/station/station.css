@@ -70,8 +70,6 @@
 
 .panel-body > img {
     height: 220px;
-    -webkit-transition: all 1.5s ease;
-    transition: all 1.5s ease;
 }
 
 
