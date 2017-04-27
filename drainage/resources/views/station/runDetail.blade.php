@@ -142,7 +142,7 @@
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
-                                    格栅除污机运行状态
+                                    1号格栅除污机运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
                                         <img class="status-icon" src="/img/status/running.png" style="height: 220px">
@@ -152,13 +152,24 @@
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
-                                        绞龙运行状态
+                                        2号格栅除污机运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" src="/img/status/stop_black.png" style="height: 220px">
+                                        <img class="status-icon" src="/img/status/stop_red.png" style="height: 220px">
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-0">
+                                    <div class="panel panel-default custom-panel">
+                                        <div class="panel-heading">
+                                            绞龙运行状态
+                                        </div>
+                                        <div class="panel-body custom-panel-body" style="text-align: center">
+                                            <img class="status-icon" src="/img/status/stop_black.png" style="height: 220px">
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                         {{--<div class="row">--}}
                             {{--<div class="col-md-12 col-md-offset-0">--}}
