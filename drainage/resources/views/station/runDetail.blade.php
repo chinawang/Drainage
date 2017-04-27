@@ -275,7 +275,7 @@
 
         //监测1号格栅运行状态
         function checkRemover1Status() {
-            if(stationRT['yx_gs1'] == '1'){
+            if(stationRTHistory[0]['yx_gs1'] == '1'){
                 $("#remover1Status").src = "/img/status/running.png";
             }
             else{
@@ -285,7 +285,7 @@
 
         //监测2号格栅运行状态
         function checkRemover2Status() {
-            if(stationRT['yx_gs2'] == '1'){
+            if(stationRTHistory[0]['yx_gs2'] == '1'){
                 $("#remover2Status").src = "/img/status/running.png";
             }
             else{
@@ -295,7 +295,7 @@
 
         //监测绞龙运行状态
         function checkAugerStatus() {
-            if(stationRT['yx_jl'] == '1'){
+            if(stationRTHistory[0]['yx_jl'] == '1'){
                 $("#augerStatus").src = "/img/status/running.png";
             }
             else{
