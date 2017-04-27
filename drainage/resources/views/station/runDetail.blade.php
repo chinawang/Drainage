@@ -138,8 +138,8 @@
                                     <div class="panel-heading">
                                     格栅除污机运行状态
                                     </div>
-                                    <div class="panel-body custom-panel-body">
-                                        <img class="status-icon" src="/img/status/running.png">
+                                    <div class="panel-body custom-panel-body" style="text-align: center">
+                                        <img class="status-icon" src="/img/status/running.png" style="height: 220px">
                                     </div>
                                 </div>
                             </div>
@@ -148,8 +148,8 @@
                                     <div class="panel-heading">
                                         绞龙运行状态
                                     </div>
-                                    <div class="panel-body custom-panel-body">
-                                        <img class="status-icon" src="/img/status/stop.png">
+                                    <div class="panel-body custom-panel-body" style="text-align: center">
+                                        <img class="status-icon" src="/img/status/stop.png" style="height: 220px">
                                     </div>
                                 </div>
                             </div>
