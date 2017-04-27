@@ -68,6 +68,12 @@
     padding: 10px 40px;
 }
 
+.panel-body > img {
+    height: 220px;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+
 .status-icon {
     height: 220px;
     -webkit-transition: all .15s ease;
