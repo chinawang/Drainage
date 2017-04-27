@@ -155,7 +155,7 @@
                                         2号格栅除污机运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" src="/img/status/running_blue.png" style="height: 220px">
+                                        <img class="status-icon" src="/img/status/running.png" style="height: 220px">
                                     </div>
                                 </div>
                             </div>
