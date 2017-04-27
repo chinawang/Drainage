@@ -145,7 +145,7 @@
                                         1号格栅除污机运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" id="remover1Status" src="/img/status/running.png" style="height: 220px">
+                                        <img class="status-icon" id="remover1Status" src="/img/status/checking.png" style="height: 220px">
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                                         2号格栅除污机运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" id="remover2Status" src="/img/status/running.png" style="height: 220px">
+                                        <img class="status-icon" id="remover2Status" src="/img/status/checking.png" style="height: 220px">
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@
                                         绞龙运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" id="augerStatus" src="/img/status/stop_black.png"
+                                        <img class="status-icon" id="augerStatus" src="/img/status/checking.png"
                                              style="height: 220px">
                                     </div>
                                 </div>
