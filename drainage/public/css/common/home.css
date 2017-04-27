@@ -47,11 +47,11 @@
     width: 70px;
     height: 70px;
     margin-top: 40px;
-    -webkit-transition: all .15s ease;
-    transition: all .15s ease;
 }
 
 .menu-icon:hover {
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
     transform: scale(1.2);
 }
 
