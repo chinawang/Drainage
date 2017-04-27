@@ -70,14 +70,8 @@
 
 .panel-body > img {
     height: 220px;
-    -webkit-transition: all .15s ease;
-    transition: all .15s ease;
-}
-
-.status-icon {
-    height: 220px;
-    -webkit-transition: all .15s ease;
-    transition: all .15s ease;
+    -webkit-transition: all 1.5s ease;
+    transition: all 1.5s ease;
 }
 
 
