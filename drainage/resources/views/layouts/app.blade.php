@@ -23,9 +23,9 @@
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
 
-    @yield('stylesheet')
+@yield('stylesheet')
 
-    <!-- Scripts -->
+<!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -33,115 +33,139 @@
     </script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top" style="background-color: #1296db;">
-            <div class="container">
-                <div class="navbar-header">
+<div id="app">
+    <nav class="navbar navbar-default navbar-static-top" style="background-color: #1296db;">
+        <div class="container">
+            <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar">1</span>
-                        <span class="icon-bar">2</span>
-                        <span class="icon-bar">3</span>
-                    </button>
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar">1</span>
+                    <span class="icon-bar">2</span>
+                    <span class="icon-bar">3</span>
+                </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/img/header/logo.png" alt="logo">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="/img/header/logo.png" alt="logo">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
 
-                    <div class="navbar-line"></div>
+                <div class="navbar-line"></div>
 
-                    <div class="navbar-subtitle">
-                        @yield('subtitle')
-                    </div>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">登录</a></li>
-                            <li><a href="{{ route('register') }}">注册</a></li>
-                        @else
-                            {{--<li class="back-to-home"><a href="{{ url('/') }}">返回首页</a></li>--}}
-                            <li class="sayhello"><span>你好,</span></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->realname }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="back-to-home"><a href="{{ url('/') }}">首页</a></li>
-                        @endif
-                    </ul>
+                <div class="navbar-subtitle">
+                    @yield('subtitle')
                 </div>
             </div>
-        </nav>
 
-        @yield('content')
-    </div>
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
 
-    <!-- Scripts -->
-    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+                </ul>
 
-    {{--<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>--}}
-    {{--<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
 
-    <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-3.3.7.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.zh-CN.js') }}"></script>
-    <script src="{{ asset('js/zh-CN.js') }}"></script>
-    <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+                    <li id="dateStr"></li>
 
-    <script type="text/javascript">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ route('login') }}">登录</a></li>
+                        <li><a href="{{ route('register') }}">注册</a></li>
+                    @else
+                        {{--<li class="back-to-home"><a href="{{ url('/') }}">返回首页</a></li>--}}
+                        <li class="sayhello"><span>你好,</span></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">
+                                {{ Auth::user()->realname }} <span class="caret"></span>
+                            </a>
 
-        <!-- 日期选择 -->
-        $("#datetimepicker").datetimepicker({
-            format: "yyyy-mm-dd hh:ii",
-            autoclose: true,
-            todayBtn: false,
-            todayHighlight: true,
-            showMeridian: true,
-            keyboardNavigation:true,
-            forceParse:true,
-            weekStart:1,
-            bootcssVer:3,
-            pickerPosition: "bottom-right",
-            language: 'zh-CN',//中文，需要引用zh-CN.js包
-            startView: 2,//月视图
-            minView: 0//日期时间选择器所能够提供的最精确的时间选择视图
-        });
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
 
-    </script>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="back-to-home"><a href="{{ url('/') }}">首页</a></li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    @yield('javascript')
+    @yield('content')
+</div>
 
-    @include('common.flash_message')
+<!-- Scripts -->
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
+
+{{--<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>--}}
+{{--<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
+
+<script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-3.3.7.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datetimepicker.zh-CN.js') }}"></script>
+<script src="{{ asset('js/zh-CN.js') }}"></script>
+<script src="{{ asset('js/select2.min.js') }}"></script>
+<script src="{{ asset('js/select2.full.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+
+<script type="text/javascript">
+
+    <!-- 日期选择 -->
+    $("#datetimepicker").datetimepicker({
+        format: "yyyy-mm-dd hh:ii",
+        autoclose: true,
+        todayBtn: false,
+        todayHighlight: true,
+        showMeridian: true,
+        keyboardNavigation: true,
+        forceParse: true,
+        weekStart: 1,
+        bootcssVer: 3,
+        pickerPosition: "bottom-right",
+        language: 'zh-CN',//中文，需要引用zh-CN.js包
+        startView: 2,//月视图
+        minView: 0//日期时间选择器所能够提供的最精确的时间选择视图
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        function showTime() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            var dateStr = year + "年" + month + "月" + day + "日" + hour + "时" + minute + "分" + second + "秒";
+            $("#dateStr").html(dateStr);
+        }
+
+        var interval = window.setInterval(showTime, 100);
+    });
+</script>
+
+@yield('javascript')
+
+@include('common.flash_message')
 
 </body>
 </html>
