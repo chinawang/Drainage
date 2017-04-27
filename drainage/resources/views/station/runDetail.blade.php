@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
+                            <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
                                         {{--泵组1电流--}}
@@ -54,9 +54,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
+                            <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
                                     {{--泵组2电流--}}
@@ -69,7 +67,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
+                            <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
                                     {{--泵组3电流--}}
@@ -80,9 +78,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
+                            <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
                                     {{--泵组4电流--}}
@@ -95,7 +91,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
+                            <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
                                     {{--泵组5电流--}}
@@ -106,28 +102,38 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
+                            <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
-                                    {{--泵组电压--}}
+                                    {{--系统AB相电压--}}
                                     {{--</div>--}}
-                                    <div class="panel-body custom-panel-body">
-                                        <div class="row">
-                                            <div class="col-md-4 col-md-offset-0" id="pumpVoltageAContainer"
-                                                 style="height:400px">
+                                    <div class="panel-body custom-panel-body" id="pumpVoltageAContainer"
+                                         style="min-width:400px;height:400px">
 
-                                            </div>
-                                            <div class="col-md-4 col-md-offset-0" id="pumpVoltageBContainer"
-                                                 style="height:400px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-0">
+                                <div class="panel panel-default custom-panel">
+                                    {{--<div class="panel-heading">--}}
+                                    {{--系统BC相电压--}}
+                                    {{--</div>--}}
+                                    <div class="panel-body custom-panel-body" id="pumpVoltageBContainer"
+                                         style="min-width:400px;height:400px">
 
-                                            </div>
-                                            <div class="col-md-4 col-md-offset-0" id="pumpVoltageCContainer"
-                                                 style="height:400px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-md-offset-0">
+                                <div class="panel panel-default custom-panel">
+                                    {{--<div class="panel-heading">--}}
+                                    {{--系统CA相电压--}}
+                                    {{--</div>--}}
+                                    <div class="panel-body custom-panel-body" id="pumpVoltageCContainer"
+                                         style="min-width:400px;height:400px">
 
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
