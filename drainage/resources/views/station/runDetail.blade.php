@@ -155,7 +155,7 @@
                                         绞龙运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
-                                        <img class="status-icon" src="/img/status/stop.png" style="height: 220px">
+                                        <img class="status-icon" src="/img/status/stop_black.png" style="height: 220px">
                                     </div>
                                 </div>
                             </div>
