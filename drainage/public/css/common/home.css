@@ -30,12 +30,12 @@
 .menu-item:hover, .menu-item:focus {
     text-decoration: none;
     /*color: #18bc9c;*/
-    font-size: 25px;
+    color: #2c3e50;
     cursor: pointer;
     box-shadow: 0 0 26px rgba(0, 0, 0, .08) inset;
     -webkit-transition: all .15s ease;
     transition: all .15s ease;
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
 .menu-item > h4 {
