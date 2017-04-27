@@ -276,12 +276,10 @@
         //监测1号格栅运行状态
         function checkRemover1Status() {
             if(stationRTHistory[0]['yx_gs1'] == '1'){
-                alert('1');
                 $("#remover1Status").src = "/img/status/running.png";
             }
             else{
-                alert(stationRTHistory[0]['yx_gs1']);
-                $("#remover1Status").src = "/img/status/stop_black.png";
+                document.getElementById("remover1Status").src = "/img/status/stop_black.png";
             }
         }
 
