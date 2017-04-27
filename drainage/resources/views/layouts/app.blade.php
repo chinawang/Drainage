@@ -69,7 +69,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li id="dateStr"></li>
+                    <li class="dateStr" id="dateStr"></li>
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
