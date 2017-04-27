@@ -280,7 +280,7 @@
                 $("#remover1Status").src = "/img/status/running.png";
             }
             else{
-                alert('2');
+                alert(stationRTHistory[0]['yx_gs1']);
                 $("#remover1Status").src = "/img/status/stop_black.png";
             }
         }
@@ -309,7 +309,6 @@
             checkRemover1Status();
             checkRemover2Status();
             checkAugerStatus();
-            alert('3');
         }
 
         $(document).ready(function () {
