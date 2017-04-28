@@ -33,7 +33,7 @@
     color: #2c3e50;
     background-color: #fdfdfd;
     cursor: pointer;
-    box-shadow: 0 0 26px rgba(18, 150, 219, .08) inset;
+    box-shadow: 0 0 26px rgba(0, 0, 0, .08) inset;
     -webkit-transition: all .15s ease;
     transition: all .15s ease;
 }
