@@ -20,6 +20,8 @@ class MapController extends Controller
      */
     public function __construct(StationLogic $stationLogic)
     {
+        $this->middleware('auth');
+
         $this->stationLogic = $stationLogic;
     }
 

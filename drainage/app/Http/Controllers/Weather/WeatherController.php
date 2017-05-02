@@ -12,6 +12,7 @@ class WeatherController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
     }
 
     /**

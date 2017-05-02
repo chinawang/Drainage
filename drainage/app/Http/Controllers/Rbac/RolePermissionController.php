@@ -40,6 +40,8 @@ class RolePermissionController extends Controller
      */
     public function __construct(RolePermissionLogic $rolePermissionLogic,PermissionLogic $permissionLogic,RoleLogic $roleLogic,RolePermissionValidation $rolePermissionValidation)
     {
+        $this->middleware('auth');
+
         $this->rolePermissionLogic = $rolePermissionLogic;
         $this->permissionLogic = $permissionLogic;
         $this->roleLogic = $roleLogic;

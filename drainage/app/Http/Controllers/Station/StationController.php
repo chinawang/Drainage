@@ -28,6 +28,8 @@ class StationController extends Controller
      */
     public function __construct(StationLogic $stationLogic,StationValidation $stationValidation)
     {
+        $this->middleware('auth');
+
         $this->stationLogic = $stationLogic;
         $this->stationValidation = $stationValidation;
     }

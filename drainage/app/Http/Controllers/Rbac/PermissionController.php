@@ -26,6 +26,8 @@ class PermissionController extends Controller
      */
     public function __construct(PermissionLogic $permissionLogic,PermissionValidation $permissionValidation)
     {
+        $this->middleware('auth');
+
         $this->permissionLogic = $permissionLogic;
         $this->permissionValidation = $permissionValidation;
     }

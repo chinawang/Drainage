@@ -40,6 +40,8 @@ class UserRoleController extends Controller
      */
     public function __construct(UserRoleLogic $userRoleLogic,RoleLogic $roleLogic,UserRoleValidation $userRoleValidation,UserLogic $userLogic)
     {
+        $this->middleware('auth');
+
         $this->userRoleLogic = $userRoleLogic;
         $this->roleLogic = $roleLogic;
         $this->userRoleValidation = $userRoleValidation;

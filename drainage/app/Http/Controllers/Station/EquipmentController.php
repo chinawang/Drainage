@@ -41,6 +41,8 @@ class EquipmentController extends Controller
     public function __construct(EquipmentLogic $equipmentLogic,EquipmentValidation $equipmentValidation,
                                 StationLogic $stationLogic,UserLogic $userLogic)
     {
+        $this->middleware('auth');
+
         $this->equipmentLogic = $equipmentLogic;
         $this->equipmentValidation = $equipmentValidation;
         $this->stationLogic = $stationLogic;

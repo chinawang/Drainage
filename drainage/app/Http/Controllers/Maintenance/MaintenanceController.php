@@ -55,6 +55,8 @@ class MaintenanceController extends Controller
     public function __construct(MaintenanceLogic $maintenanceLogic,MaintenanceValidation $maintenanceValidation,
                                 FailureLogic $failureLogic,EquipmentLogic $equipmentLogic,StationLogic $stationLogic,UserLogic $userLogic)
     {
+        $this->middleware('auth');
+
         $this->maintenanceLogic = $maintenanceLogic;
         $this->maintenanceValidation = $maintenanceValidation;
         $this->failureLogic = $failureLogic;

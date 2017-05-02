@@ -48,6 +48,8 @@ class FailureController extends Controller
     public function __construct(FailureLogic $failureLogic,FailureValidation $failureValidation,
                                 EquipmentLogic $equipmentLogic,StationLogic $stationLogic,UserLogic $userLogic)
     {
+        $this->middleware('auth');
+
         $this->failureLogic = $failureLogic;
         $this->failureValidation =$failureValidation;
 
