@@ -210,4 +210,8 @@ Route::get('/map/stations', 'Map\MapController@getAllStations');
  *报警相关
  */
 
-Route::get('/warning/warningList', 'Warning\WarningController@WarningList');
+//泵站报警列表
+Route::get('/warning/warningList', 'Warning\WarningController@warningList');
+
+//泵站报警详细
+Route::get('/warning/warningDetail/{station_id}', 'Warning\WarningController@warningDetail');

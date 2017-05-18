@@ -62,6 +62,39 @@ class WarningController extends Controller
         return view('warning.warningList',$param);
     }
 
+    public function warningDetail($stationID)
+    {
+        $station = $this->stationInfo($stationID);
+        $stationNum = $station['station_number'];
+        $stationRT = $this->findStationRT($stationNum);
+
+        $station['alarmPump1'] = $stationRT[0]->bj_b1;
+        $station['alarmPump2'] = $stationRT[0]->bj_b2;
+        $station['alarmPump3'] = $stationRT[0]->bj_b3;
+        $station['alarmPump4'] = $stationRT[0]->bj_b4;
+
+        $station['alarmAuger'] = $stationRT[0]->bj_jl;
+        $station['alarmCleaner1'] = $stationRT[0]->bj_gs1;
+        $station['alarmCleaner2'] = $stationRT[0]->bj_gs2;
+
+        $param = ['station' => $station,'stationRT' => $stationRT];
+
+        return view('warning.warningDetail',$param);
+    }
+
+    /**
+     * 查询泵站信息
+     *
+     * @param $stationID
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function stationInfo($stationID)
+    {
+        $station = $this->stationLogic->findStation($stationID);
+        return $station;
+    }
+
+
     /**
      * @param $stationNum
      * @return mixed
