@@ -46,7 +46,7 @@
                             </a>
                         </li>
                         <li class="station-warning">
-                            <a href="" class="menu-item">
+                            <a href="warning/warningList" class="menu-item">
                                 <img class="menu-icon" src="/img/home/warning_blue.png">
                                 <h4>泵站报警管理</h4>
                             </a>

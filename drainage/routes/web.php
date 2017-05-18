@@ -204,3 +204,10 @@ Route::get('/map/view', 'Map\MapController@showMap');
 
 Route::get('/map/show', 'Map\MapController@showMapEmpty');
 Route::get('/map/stations', 'Map\MapController@getAllStations');
+
+
+/**
+ *报警相关
+ */
+
+Route::get('/warning/warningList', 'Warning\WarningController@WarningList');
