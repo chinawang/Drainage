@@ -88,8 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+
                             <div class="col-md-3 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
@@ -132,7 +131,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
