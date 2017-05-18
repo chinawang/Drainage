@@ -6,6 +6,7 @@ use App\Http\Logic\Station\StationLogic;
 use App\Http\Validations\Station\StationValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class WarningController extends Controller
 {
@@ -59,5 +60,29 @@ class WarningController extends Controller
         }
         $param = ['stations' => $stationPaginate];
         return view('warning.warningList',$param);
+    }
+
+    /**
+     * @param $stationNum
+     * @return mixed
+     */
+    public function findStationRT($stationNum)
+    {
+        $stationTable = "stationRT_".$stationNum;
+        $stationRT = DB::select('select * from '.$stationTable.' order by Time desc limit 120');
+        return $stationRT;
+    }
+
+    public function stationRT($stationNum)
+    {
+        $stationRT = $this->findStationRT($stationNum);
+        return response()->json(array('stationRT'=> $stationRT[0]), 200);
+    }
+
+    public function stationRTHistory($stationNum)
+    {
+        $stationRT = $this->findStationRT($stationNum);
+
+        return response()->json(array('stationRTHistory'=> $stationRT), 200);
     }
 }
