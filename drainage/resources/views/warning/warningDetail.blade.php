@@ -28,12 +28,12 @@
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        实时报警状态
+                        实时报警
                     </div>
                     <div class="panel-body custom-panel-body">
                         <div class="row">
                             @if($station['alarmPump1'] == 1)
-                                <div class="col-md-3 col-md-offset-0">
+                                <div class="col-md-4 col-md-offset-0">
                                     <div class="panel panel-danger custom-panel">
                                         <div class="panel-heading">
                                             1号泵报警
@@ -45,7 +45,7 @@
                                 </div>
                             @endif
                                 @if($station['alarmPump2'] == 1)
-                                    <div class="col-md-3 col-md-offset-0">
+                                    <div class="col-md-4 col-md-offset-0">
                                         <div class="panel panel-danger custom-panel">
                                             <div class="panel-heading">
                                                 2号泵报警
@@ -57,7 +57,7 @@
                                     </div>
                                 @endif
                                 @if($station['alarmPump3'] == 1)
-                                    <div class="col-md-3 col-md-offset-0">
+                                    <div class="col-md-4 col-md-offset-0">
                                         <div class="panel panel-danger custom-panel">
                                             <div class="panel-heading">
                                                 3号泵报警
@@ -69,7 +69,7 @@
                                     </div>
                                 @endif
                                 @if($station['alarmPump4'] == 1)
-                                    <div class="col-md-3 col-md-offset-0">
+                                    <div class="col-md-4 col-md-offset-0">
                                         <div class="panel panel-danger custom-panel">
                                             <div class="panel-heading">
                                                 4号泵报警
@@ -81,7 +81,7 @@
                                     </div>
                                 @endif
                                 @if($station['alarmAuger'] == 1)
-                                    <div class="col-md-3 col-md-offset-0">
+                                    <div class="col-md-4 col-md-offset-0">
                                         <div class="panel panel-danger custom-panel">
                                             <div class="panel-heading">
                                                 绞龙报警
@@ -93,7 +93,7 @@
                                     </div>
                                 @endif
                                 @if($station['alarmCleaner1'] == 1)
-                                    <div class="col-md-3 col-md-offset-0">
+                                    <div class="col-md-4 col-md-offset-0">
                                         <div class="panel panel-danger custom-panel">
                                             <div class="panel-heading">
                                                 1号格栅报警
@@ -105,7 +105,7 @@
                                     </div>
                                 @endif
                                 @if($station['alarmCleaner2'] == 1)
-                                    <div class="col-md-3 col-md-offset-0">
+                                    <div class="col-md-4 col-md-offset-0">
                                         <div class="panel panel-danger custom-panel">
                                             <div class="panel-heading">
                                                 2号格栅报警
@@ -115,6 +115,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                @endif
+                                @if($station['alarmPump1'] == 0 && $station['alarmPump2'] == 0 && $station['alarmPump3'] == 0 && $station['alarmPump4'] == 0 && $station['alarmAuger'] == 0 && $station['alarmCleaner1'] == 0 && $station['alarmCleaner2'] == 0)
+                                <span>无报警</span>
                                 @endif
                         </div>
                     </div>
