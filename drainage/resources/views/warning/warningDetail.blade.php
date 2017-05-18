@@ -32,105 +32,90 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         <div class="row">
-                            <div class="col-md-3 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        1号泵报警
-                                    </div>
-                                    <div class="panel-body custom-panel-body">
-                                        @if($station['alarmPump1'] == 1)
+                            @if($station['alarmPump1'] == 1)
+                                <div class="col-md-3 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            1号泵报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
                                             <span style="color: red;">报警</span>
-                                        @else
-                                            <span>无</span>
-                                        @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        2号泵报警
+                            @endif
+                                @if($station['alarmPump2'] == 1)
+                                    <div class="col-md-3 col-md-offset-0">
+                                        <div class="panel panel-danger custom-panel">
+                                            <div class="panel-heading">
+                                                2号泵报警
+                                            </div>
+                                            <div class="panel-body custom-panel-body">
+                                                <span style="color: red;">报警</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="panel-body custom-panel-body">
-                                        @if($station['alarmPump2'] == 1)
-                                            <span style="color: red;">报警</span>
-                                        @else
-                                            <span>无</span>
-                                        @endif
+                                @endif
+                                @if($station['alarmPump3'] == 1)
+                                    <div class="col-md-3 col-md-offset-0">
+                                        <div class="panel panel-danger custom-panel">
+                                            <div class="panel-heading">
+                                                3号泵报警
+                                            </div>
+                                            <div class="panel-body custom-panel-body">
+                                                <span style="color: red;">报警</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        3号泵报警
+                                @endif
+                                @if($station['alarmPump4'] == 1)
+                                    <div class="col-md-3 col-md-offset-0">
+                                        <div class="panel panel-danger custom-panel">
+                                            <div class="panel-heading">
+                                                4号泵报警
+                                            </div>
+                                            <div class="panel-body custom-panel-body">
+                                                <span style="color: red;">报警</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="panel-body custom-panel-body">
-                                        @if($station['alarmPump3'] == 1)
-                                            <span style="color: red;">报警</span>
-                                        @else
-                                            <span>无</span>
-                                        @endif
+                                @endif
+                                @if($station['alarmAuger'] == 1)
+                                    <div class="col-md-3 col-md-offset-0">
+                                        <div class="panel panel-danger custom-panel">
+                                            <div class="panel-heading">
+                                                绞龙报警
+                                            </div>
+                                            <div class="panel-body custom-panel-body">
+                                                <span style="color: red;">报警</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        4号泵报警
+                                @endif
+                                @if($station['alarmCleaner1'] == 1)
+                                    <div class="col-md-3 col-md-offset-0">
+                                        <div class="panel panel-danger custom-panel">
+                                            <div class="panel-heading">
+                                                1号格栅报警
+                                            </div>
+                                            <div class="panel-body custom-panel-body">
+                                                <span style="color: red;">报警</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="panel-body custom-panel-body">
-                                        @if($station['alarmPump4'] == 1)
-                                            <span style="color: red;">报警</span>
-                                        @else
-                                            <span>无</span>
-                                        @endif
+                                @endif
+                                @if($station['alarmCleaner2'] == 1)
+                                    <div class="col-md-3 col-md-offset-0">
+                                        <div class="panel panel-danger custom-panel">
+                                            <div class="panel-heading">
+                                                2号格栅报警
+                                            </div>
+                                            <div class="panel-body custom-panel-body">
+                                                <span style="color: red;">报警</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        绞龙报警
-                                    </div>
-                                    <div class="panel-body custom-panel-body">
-                                        @if($station['alarmAuger'] == 1)
-                                            <span style="color: red;">报警</span>
-                                        @else
-                                            <span>无</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        1号格栅报警
-                                    </div>
-                                    <div class="panel-body custom-panel-body">
-                                        @if($station['alarmCleaner1'] == 1)
-                                            <span style="color: red;">报警</span>
-                                        @else
-                                            <span>无</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-offset-0">
-                                <div class="panel panel-default custom-panel">
-                                    <div class="panel-heading">
-                                        2号格栅报警
-                                    </div>
-                                    <div class="panel-body custom-panel-body">
-                                        @if($station['alarmCleaner2'] == 1)
-                                            <span style="color: red;">报警</span>
-                                        @else
-                                            <span>无</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
+                                @endif
                         </div>
                     </div>
                 </div>
