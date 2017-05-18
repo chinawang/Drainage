@@ -32,7 +32,7 @@
         ]) !!};
     </script>
 </head>
-<body>
+<body style="padding-bottom: 80px;">
 <div id="app">
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #1296db;">
         <div class="container">
