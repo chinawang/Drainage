@@ -21,11 +21,11 @@
                 {{--</div>--}}
             {{--</div>--}}
         {{--</div>--}}
-        <ul class="breadcrumb">
+        <ol class="breadcrumb">
             <li><a href="{{ url('/') }}">首页</a></li>
-            <li><a href="warning/warningList">报警实时列表</a></li>
+            <li><a href="/warning/warningList">报警实时列表</a></li>
             <li class="active">{{ $station['name'] }}</li>
-        </ul>
+        </ol>
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
