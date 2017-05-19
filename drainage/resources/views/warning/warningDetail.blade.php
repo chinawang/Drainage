@@ -62,8 +62,11 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <h5 class="media-heading" style="margin-top: 10px">有新的报警,请及时处理!</h5>
+
+                                                </div>
+                                                <div class="media-body">
                                                     <a href="/station/runDetail/{{ $station['id'] }}" class="btn btn-default btn-sm"
-                                                    style="font-size: 12px;">接警</a>
+                                                       style="font-size: 12px;">接警</a>
                                                 </div>
                                             </div>
                                         </div>
