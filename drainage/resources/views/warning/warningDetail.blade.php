@@ -12,11 +12,11 @@
     <div class="location">
         <div class="container">
             <h2>
-                <a href="#">首页</a>
+                <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <a href="#">泵站报警列表</a>
+                <a href="/warning/warningList">报警实时列表</a>
                 <em>›</em>
-                <a href="#">{{ $station['name'] }}</a>
+                <a href="#" class="active">{{ $station['name'] }}</a>
 
             </h2>
         </div>
@@ -26,23 +26,6 @@
 
 @section('content')
     <div class="container">
-        {{--<div class="row">--}}
-            {{--<div class="col-md-12 col-md-offset-0">--}}
-                {{--<div class="panel panel-default custom-panel">--}}
-                    {{--<div class="panel-heading">--}}
-                        {{--{{ $station['name'] }}--}}
-                        {{--<a href="#" onClick="javascript :history.back(-1);" class="btn-link">返回</a>--}}
-                    {{--</div>--}}
-
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<ol class="breadcrumb">--}}
-        {{--<li><a href="{{ url('/') }}">首页</a></li>--}}
-        {{--<li><a href="/warning/warningList">报警实时列表</a></li>--}}
-        {{--<li class="active">{{ $station['name'] }}</li>--}}
-        {{--</ol>--}}
-
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">

@@ -8,6 +8,20 @@
     <span>泵站设备实时报警状态</span>
 @endsection
 
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <a href="#">报警实时列表</a>
+
+            </h2>
+        </div>
+
+    </div>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
