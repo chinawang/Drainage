@@ -87,6 +87,10 @@
 }
 
 .location h2 a:link, .location h2 a:visited {
+    color: #1296db;
+}
+
+.location h2 .active{
     color: #757575;
 }
 
