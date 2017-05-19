@@ -9,6 +9,10 @@
 @endsection
 
 @section('location')
+
+@endsection
+
+@section('content')
     <div class="location">
         <div class="container-sm">
             <h2>
@@ -22,9 +26,7 @@
         </div>
 
     </div>
-@endsection
 
-@section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
