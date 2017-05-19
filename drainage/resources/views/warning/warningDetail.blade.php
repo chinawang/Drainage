@@ -58,11 +58,12 @@
                                             {{--<span style="color: red;">报警</span>--}}
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <img class="media-object" src="/img/warning/alarm.png" style="width: 48px;height: 48px;">
+                                                    <img class="media-object" src="/img/warning/alarm.png" style="width: 64px;height: 64px;">
                                                 </div>
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">有新的报警,请及时处理!</h4>
-
+                                                    <h5 class="media-heading" style="margin-top: 10px">有新的报警,请及时处理!</h5>
+                                                    <a href="/station/runDetail/{{ $station['id'] }}" class="btn btn-default btn-sm"
+                                                    style="font-size: 12px;">接警</a>
                                                 </div>
                                             </div>
                                         </div>
