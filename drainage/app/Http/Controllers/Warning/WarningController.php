@@ -113,7 +113,7 @@ class WarningController extends Controller
     public function getStationRTList($stationNum)
     {
         $stationTable = "stationRT_".$stationNum;
-        $stationRTList = DB::select('select * from '.$stationTable.' order by Time desc');
+        $stationRTList = DB::select('select * from '.$stationTable.' order by Time asc');
         $stationWarningList = "";
 
         for($i = 0 ; $i < count($stationRTList)-1;$i++)
