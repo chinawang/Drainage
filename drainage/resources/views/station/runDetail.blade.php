@@ -8,6 +8,20 @@
     <span>泵站运行详情</span>
 @endsection
 
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <a href="/station/runList">泵站工作状态列表</a>
+                <em>›</em>
+                <span>{{ $station['name'] }}</span>
+            </h2>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -15,7 +29,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         {{ $station['name'] }}
-                        <a href="#" onClick="javascript :history.back(-1);" class="btn-link">返回</a>
+                        {{--<a href="#" onClick="javascript :history.back(-1);" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
                         <div class="row">

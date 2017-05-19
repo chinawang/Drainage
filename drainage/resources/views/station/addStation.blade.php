@@ -8,6 +8,20 @@
     <span>泵站资料管理</span>
 @endsection
 
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <a href="/station/lists">泵站列表</a>
+                <em>›</em>
+                <span>添加泵站</span>
+            </h2>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -15,7 +29,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         添加泵站
-                        <a href="/station/lists" class="btn-link">返回</a>
+                        {{--<a href="/station/lists" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/station/store">

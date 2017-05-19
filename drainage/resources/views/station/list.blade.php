@@ -8,6 +8,20 @@
     <span>泵站资料管理</span>
 @endsection
 
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <span>泵站列表</span>
+
+            </h2>
+        </div>
+
+    </div>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
