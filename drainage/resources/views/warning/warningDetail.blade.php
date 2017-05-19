@@ -47,14 +47,12 @@
                                                     <img src="/img/warning/alarm.png"
                                                          style="width: 48px;height: 48px;">
                                                 </div>
-                                                <div class="col-md-6 col-md-offset-0" style="margin-left: -5px">
+                                                <div class="col-md-6 col-md-offset-0">
                                                     <div style="font-size: 14px;color:#4a4a4a">有新的报警,请及时处理!</div>
-
-
                                                 </div>
                                                 <div class="col-md-3 col-md-offset-0">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}" class="btn-link"
-                                                       style="font-size: 12px;height: 60px;line-height: 60px">详情</a>
+                                                    <a href="/station/runDetail/{{ $station['id'] }}" class="btn btn-default btn-sm"
+                                                       style="font-size: 12px;height: 60px;line-height: 60px">接警</a>
                                                 </div>
                                             </div>
                                             {{--<span style="color: red;">报警</span>--}}
