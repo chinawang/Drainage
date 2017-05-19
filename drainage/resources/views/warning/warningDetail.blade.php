@@ -245,7 +245,7 @@
                                         <td>{{ $station['name'] }}</td>
                                         <td>{{ $stationWarning['alarmEquipment'] }}</td>
                                         @if($stationWarning['alarmStatus'] == 0)
-                                            <td style="color: green;">消警</td>
+                                            <td style="color: lightgreen;">消警</td>
                                         @else
                                             <td style="color: red;">报警</td>
                                         @endif
