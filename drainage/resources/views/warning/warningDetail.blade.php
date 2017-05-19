@@ -224,10 +224,43 @@
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        报警记录
+                        报警历史记录
                     </div>
                     <div class="panel-body custom-panel-body">
+                        @if (!empty($stations[0]))
+                            <table class="table table-hover table-bordered ">
+                                <thead>
+                                <tr>
+                                    <th style="width: 100px">报警时间</th>
+                                    <th>泵站名称</th>
+                                    <th>报警设备</th>
+                                    <th>报警状态记录</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
+                                @foreach ($stations as $station)
+                                    <tr>
+                                        <td>{{ $station['Time'] }}</td>
+                                        <td>{{ $station['name'] }}</td>
+                                        <td>{{ $station['alarmEquipment'] }}</td>
+                                        @if($station['alarmStatus'] == 0)
+                                            <td style="color: green;">消警</td>
+                                        @else
+                                            <td style="color: red;">报警</td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            <div class="table-pagination">
+                                {!! $stations->render() !!}
+                            </div>
+                        @else
+                            <div class="well" style="text-align: center; padding: 100px;">
+                                暂无内容
+                            </div>
+                        @endif
 
                     </div>
                 </div>

@@ -79,6 +79,10 @@ class WarningController extends Controller
 
         $param = ['station' => $station,'stationRT' => $stationRT];
 
+        $stationWarningList = $this->getStationRTList($stationNum);
+
+        return $stationWarningList;
+
         return view('warning.warningDetail',$param);
     }
 
@@ -102,8 +106,139 @@ class WarningController extends Controller
     public function findStationRT($stationNum)
     {
         $stationTable = "stationRT_".$stationNum;
-        $stationRT = DB::select('select * from '.$stationTable.' order by Time desc limit 120');
+        $stationRT = DB::select('select * from '.$stationTable.' order by Time desc limit 1');
         return $stationRT;
+    }
+
+    public function getStationRTList($stationNum)
+    {
+        $stationTable = "stationRT_".$stationNum;
+        $stationRTList = DB::select('select * from '.$stationTable.' order by Time desc');
+        $stationWarningList = "";
+
+        for($i = 0 ; $i < count($stationRTList)-1;$i++)
+        {
+            if($stationRTList[$i]->bj_b1 == 0 && $stationRTList[$i+1]->bj_b1 == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "1号泵";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->bj_b1 == 1 && $stationRTList[$i+1]->bj_b1 == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "1号泵";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+
+            if($stationRTList[$i]->bj_b2 == 0 && $stationRTList[$i+1]->bj_b2 == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "2号泵";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->bj_b2 == 1 && $stationRTList[$i+1]->bj_b2 == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "2号泵";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+
+            if($stationRTList[$i]->bj_b3 == 0 && $stationRTList[$i+1]->bj_b3 == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "3号泵";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->bj_b3 == 1 && $stationRTList[$i+1]->bj_b3 == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "3号泵";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+
+            if($stationRTList[$i]->bj_b4 == 0 && $stationRTList[$i+1]->bj_b4 == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "4号泵";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->bj_b4 == 1 && $stationRTList[$i+1]->bj_b4 == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "4号泵";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+
+            if($stationRTList[$i]->bj_jl == 0 && $stationRTList[$i+1]->bj_jl == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "绞龙";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->bj_jl == 1 && $stationRTList[$i+1]->bj_jl == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "绞龙";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+
+            if($stationRTList[$i]->bj_gs1 == 0 && $stationRTList[$i+1]->bj_gs1 == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "1号格栅";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->bj_gs1 == 1 && $stationRTList[$i+1]->bj_gs1 == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "1号格栅";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+
+            if($stationRTList[$i]->bj_gs2 == 0 && $stationRTList[$i+1]->bj_gs2 == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "2号格栅";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->bj_gs2 == 1 && $stationRTList[$i+1]->bj_gs2 == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "2号格栅";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+        }
+
+        return $stationWarningList;
     }
 
     public function stationRT($stationNum)
