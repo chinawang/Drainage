@@ -231,10 +231,10 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th style="width: 100px">报警时间</th>
+                                    <th>记录时间</th>
                                     <th>泵站名称</th>
                                     <th>报警设备</th>
-                                    <th>报警状态记录</th>
+                                    <th>报警状态</th>
                                 </tr>
                                 </thead>
                                 <tbody>
