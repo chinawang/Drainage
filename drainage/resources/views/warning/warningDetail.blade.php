@@ -41,21 +41,30 @@
                                             1号泵报警
                                         </div>
                                         <div class="panel-body custom-panel-body">
-                                            <div class="row" style="width: 280px;margin: 10px 0;">
-                                                <div class="col-md-3 col-md-offset-0"
-                                                     style="height: 60px;line-height: 60px">
-                                                    <img src="/img/warning/alarm.png"
-                                                         style="width: 48px;height: 48px;">
+                                            {{--<div class="row" style="width: 280px;margin: 10px 0;">--}}
+                                                {{--<div class="col-md-3 col-md-offset-0"--}}
+                                                     {{--style="height: 60px;line-height: 60px">--}}
+                                                    {{--<img src="/img/warning/alarm.png"--}}
+                                                         {{--style="width: 48px;height: 48px;">--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col-md-6 col-md-offset-0">--}}
+                                                    {{--<div style="font-size: 14px;color:#4a4a4a">有新的报警,请及时处理!</div>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col-md-3 col-md-offset-0">--}}
+                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}" class="btn btn-default btn-sm"--}}
+                                                       {{--style="font-size: 12px;height: 60px;line-height: 60px">接警</a>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<span style="color: red;">报警</span>--}}
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.png" style="width: 48px;height: 48px;">
                                                 </div>
-                                                <div class="col-md-6 col-md-offset-0">
-                                                    <div style="font-size: 14px;color:#4a4a4a">有新的报警,请及时处理!</div>
-                                                </div>
-                                                <div class="col-md-3 col-md-offset-0">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}" class="btn btn-default btn-sm"
-                                                       style="font-size: 12px;height: 60px;line-height: 60px">接警</a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">有新的报警,请及时处理!</h4>
+
                                                 </div>
                                             </div>
-                                            {{--<span style="color: red;">报警</span>--}}
                                         </div>
                                     </div>
                                 </div>
