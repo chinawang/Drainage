@@ -10,17 +10,22 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading">
-                        {{ $station['name'] }}
-                        <a href="#" onClick="javascript :history.back(-1);" class="btn-link">返回</a>
-                    </div>
+        {{--<div class="row">--}}
+            {{--<div class="col-md-12 col-md-offset-0">--}}
+                {{--<div class="panel panel-default custom-panel">--}}
+                    {{--<div class="panel-heading">--}}
+                        {{--{{ $station['name'] }}--}}
+                        {{--<a href="#" onClick="javascript :history.back(-1);" class="btn-link">返回</a>--}}
+                    {{--</div>--}}
 
-                </div>
-            </div>
-        </div>
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        <ul class="breadcrumb">
+            <li><a href="{{ url('/') }}">首页</a></li>
+            <li><a href="warning/warningList">报警实时列表</a></li>
+            <li class="active">{{ $station['name'] }}</li>
+        </ul>
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
