@@ -68,7 +68,7 @@
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <img class="media-object" src="/img/warning/alarm.png"
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
                                                          style="width: 64px;height: 64px;">
                                                 </div>
                                                 <div class="media-body">
@@ -93,7 +93,7 @@
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <img class="media-object" src="/img/warning/alarm.png"
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
                                                          style="width: 64px;height: 64px;">
                                                 </div>
                                                 <div class="media-body">
@@ -118,7 +118,7 @@
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <img class="media-object" src="/img/warning/alarm.png"
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
                                                          style="width: 64px;height: 64px;">
                                                 </div>
                                                 <div class="media-body">
@@ -143,7 +143,7 @@
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <img class="media-object" src="/img/warning/alarm.png"
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
                                                          style="width: 64px;height: 64px;">
                                                 </div>
                                                 <div class="media-body">
@@ -168,7 +168,7 @@
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <img class="media-object" src="/img/warning/alarm.png"
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
                                                          style="width: 64px;height: 64px;">
                                                 </div>
                                                 <div class="media-body">
@@ -193,7 +193,7 @@
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <img class="media-object" src="/img/warning/alarm.png"
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
                                                          style="width: 64px;height: 64px;">
                                                 </div>
                                                 <div class="media-body">
