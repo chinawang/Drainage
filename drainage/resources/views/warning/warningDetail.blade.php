@@ -61,12 +61,12 @@
                                                     <img class="media-object" src="/img/warning/alarm.png" style="width: 64px;height: 64px;">
                                                 </div>
                                                 <div class="media-body">
-                                                    <h5 class="media-heading" style="margin-top: 10px">有新的报警,请及时处理!</h5>
+                                                    <h5 class="media-heading" style="margin-top: 15px">有新的报警,请及时处理!</h5>
 
                                                 </div>
-                                                <div class="media-body">
+                                                <div class="media-right">
                                                     <a href="/station/runDetail/{{ $station['id'] }}" class="btn btn-default btn-sm"
-                                                       style="font-size: 12px;">接警</a>
+                                                       style="font-size: 12px;margin-top: 15px">接警</a>
                                                 </div>
                                             </div>
                                         </div>
