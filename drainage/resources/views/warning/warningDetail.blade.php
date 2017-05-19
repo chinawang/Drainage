@@ -16,7 +16,7 @@
                 <em>›</em>
                 <a href="/warning/warningList">报警实时列表</a>
                 <em>›</em>
-                <a href="#" class="active">{{ $station['name'] }}</a>
+                <span>{{ $station['name'] }}</span>
 
             </h2>
         </div>
