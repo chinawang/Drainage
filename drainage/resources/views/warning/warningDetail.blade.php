@@ -11,8 +11,8 @@
 @section('location')
     <div class="location">
         <div class="container">
+            <span>所在位置:</span>
             <h2>
-                <span>所在位置:</span>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
                 <a href="/warning/warningList">报警实时列表</a>
