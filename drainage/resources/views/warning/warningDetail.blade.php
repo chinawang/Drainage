@@ -51,7 +51,7 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-default btn-sm"
+                                                       class="btn btn-info btn-sm"
                                                        style="font-size: 12px;margin-top: 18px">接警</a>
                                                 </div>
                                             </div>
@@ -76,7 +76,7 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-default btn-sm"
+                                                       class="btn btn-info btn-sm"
                                                        style="font-size: 12px;margin-top: 18px">接警</a>
                                                 </div>
                                             </div>
@@ -101,7 +101,7 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-default btn-sm"
+                                                       class="btn btn-info btn-sm"
                                                        style="font-size: 12px;margin-top: 18px">接警</a>
                                                 </div>
                                             </div>
@@ -126,7 +126,7 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-default btn-sm"
+                                                       class="btn btn-info btn-sm"
                                                        style="font-size: 12px;margin-top: 18px">接警</a>
                                                 </div>
                                             </div>
@@ -151,7 +151,7 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-default btn-sm"
+                                                       class="btn btn-info btn-sm"
                                                        style="font-size: 12px;margin-top: 18px">接警</a>
                                                 </div>
                                             </div>
@@ -176,7 +176,7 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-default btn-sm"
+                                                       class="btn btn-info btn-sm"
                                                        style="font-size: 12px;margin-top: 18px">接警</a>
                                                 </div>
                                             </div>
@@ -201,7 +201,7 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-default btn-sm"
+                                                       class="btn btn-info btn-sm"
                                                        style="font-size: 12px;margin-top: 18px">接警</a>
                                                 </div>
                                             </div>
