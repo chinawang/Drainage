@@ -9,12 +9,8 @@
 @endsection
 
 @section('location')
-
-@endsection
-
-@section('content')
     <div class="location">
-        <div class="container-sm">
+        <div class="container">
             <h2>
                 <a href="#">首页</a>
                 <em>›</em>
@@ -26,7 +22,9 @@
         </div>
 
     </div>
+@endsection
 
+@section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
