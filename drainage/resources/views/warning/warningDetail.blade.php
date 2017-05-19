@@ -49,11 +49,11 @@
                                                 <div class="media-body">
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
-                                                <div class="media-right">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-info btn-sm"
-                                                       style="font-size: 12px;margin-top: 18px">接警</a>
-                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                       {{--class="btn btn-info btn-sm"--}}
+                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -74,11 +74,11 @@
                                                 <div class="media-body">
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
-                                                <div class="media-right">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-info btn-sm"
-                                                       style="font-size: 12px;margin-top: 18px">接警</a>
-                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                       {{--class="btn btn-info btn-sm"--}}
+                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -99,11 +99,11 @@
                                                 <div class="media-body">
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
-                                                <div class="media-right">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-info btn-sm"
-                                                       style="font-size: 12px;margin-top: 18px">接警</a>
-                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                       {{--class="btn btn-info btn-sm"--}}
+                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -124,11 +124,11 @@
                                                 <div class="media-body">
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
-                                                <div class="media-right">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-info btn-sm"
-                                                       style="font-size: 12px;margin-top: 18px">接警</a>
-                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                       {{--class="btn btn-info btn-sm"--}}
+                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -149,11 +149,11 @@
                                                 <div class="media-body">
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
-                                                <div class="media-right">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-info btn-sm"
-                                                       style="font-size: 12px;margin-top: 18px">接警</a>
-                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                       {{--class="btn btn-info btn-sm"--}}
+                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -174,11 +174,11 @@
                                                 <div class="media-body">
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
-                                                <div class="media-right">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-info btn-sm"
-                                                       style="font-size: 12px;margin-top: 18px">接警</a>
-                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                       {{--class="btn btn-info btn-sm"--}}
+                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -199,11 +199,11 @@
                                                 <div class="media-body">
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
-                                                <div class="media-right">
-                                                    <a href="/station/runDetail/{{ $station['id'] }}"
-                                                       class="btn btn-info btn-sm"
-                                                       style="font-size: 12px;margin-top: 18px">接警</a>
-                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                       {{--class="btn btn-info btn-sm"--}}
+                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -224,7 +224,7 @@
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        报警历史记录
+                        报警记录
                     </div>
                     <div class="panel-body custom-panel-body">
 
