@@ -105,7 +105,7 @@
             </div>
         </div>
     </nav>
-
+    @yield('location')
     @yield('content')
 </div>
 

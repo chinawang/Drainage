@@ -8,6 +8,22 @@
     <span>泵站报警详情</span>
 @endsection
 
+@section('location')
+    <div class="location">
+        <div class="container-sm">
+            <h2>
+                <a href="#">首页</a>
+                <em>›</em>
+                <a href="#">泵站报警列表</a>
+                <em>›</em>
+                <a href="#">泵站报警详情</a>
+
+            </h2>
+        </div>
+
+    </div>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
