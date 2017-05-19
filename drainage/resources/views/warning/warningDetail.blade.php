@@ -227,7 +227,7 @@
                         报警历史记录
                     </div>
                     <div class="panel-body custom-panel-body">
-                        @if (!empty($stations[0]))
+                        @if (!empty($stationWarningList[0]))
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
@@ -239,12 +239,12 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach ($stations as $station)
+                                @foreach ($stationWarningList as $stationWarning)
                                     <tr>
-                                        <td>{{ $station['Time'] }}</td>
+                                        <td>{{ $stationWarning['Time'] }}</td>
                                         <td>{{ $station['name'] }}</td>
-                                        <td>{{ $station['alarmEquipment'] }}</td>
-                                        @if($station['alarmStatus'] == 0)
+                                        <td>{{ $stationWarning['alarmEquipment'] }}</td>
+                                        @if($stationWarning['alarmStatus'] == 0)
                                             <td style="color: green;">消警</td>
                                         @else
                                             <td style="color: red;">报警</td>

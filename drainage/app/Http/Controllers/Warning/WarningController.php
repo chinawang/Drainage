@@ -77,11 +77,11 @@ class WarningController extends Controller
         $station['alarmCleaner1'] = $stationRT[0]->bj_gs1;
         $station['alarmCleaner2'] = $stationRT[0]->bj_gs2;
 
-        $param = ['station' => $station,'stationRT' => $stationRT];
-
         $stationWarningList = $this->getStationRTList($stationNum);
 
-        return $stationWarningList;
+        $param = ['station' => $station,'stationRT' => $stationRT,'stationWarningList' => $stationWarningList];
+
+        //return $stationWarningList;
 
         return view('warning.warningDetail',$param);
     }
