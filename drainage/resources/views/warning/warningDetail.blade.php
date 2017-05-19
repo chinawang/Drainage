@@ -253,9 +253,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="table-pagination">
-                                {!! $stations->render() !!}
-                            </div>
+                            {{--<div class="table-pagination">--}}
+                                {{--{!! $stations->render() !!}--}}
+                            {{--</div>--}}
                         @else
                             <div class="well" style="text-align: center; padding: 100px;">
                                 暂无内容
