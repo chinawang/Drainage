@@ -5,7 +5,21 @@
 @endsection
 
 @section('subtitle')
-    <span>行为权限管理</span>
+    {{--<span>行为权限管理</span>--}}
+@endsection
+
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <a href="/permission/lists">角色管理</a>
+                <em>›</em>
+                <span>编辑权限</span>
+            </h2>
+        </div>
+    </div>
 @endsection
 
 @section('content')
@@ -15,7 +29,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         编辑权限
-                        <a href="/permission/lists" class="btn-link">返回</a>
+                        {{--<a href="/permission/lists" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/permission/update/{{ $permission['id'] }}">

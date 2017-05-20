@@ -29,7 +29,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         添加设备
-                        <a href="/equipment/lists" class="btn-link">返回</a>
+                        {{--<a href="/equipment/lists" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/equipment/store">

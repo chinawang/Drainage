@@ -29,7 +29,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         添加故障记录
-                        <a href="/failure/lists" class="btn-link">返回</a>
+                        {{--<a href="/failure/lists" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/failure/store">

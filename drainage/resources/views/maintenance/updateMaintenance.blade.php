@@ -29,7 +29,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         编辑维修记录
-                        <a href="/failure/maintenance/lists/{{ $maintenance['failure_id'] }}" class="btn-link">返回</a>
+                        {{--<a href="/failure/maintenance/lists/{{ $maintenance['failure_id'] }}" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/maintenance/update/{{ $maintenance['id'] }}">
