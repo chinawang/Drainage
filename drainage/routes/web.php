@@ -215,3 +215,11 @@ Route::get('/warning/warningList', 'Warning\WarningController@warningList');
 
 //泵站报警详细
 Route::get('/warning/warningDetail/{station_id}', 'Warning\WarningController@warningDetail');
+
+
+/**
+ *统计报表相关
+ */
+
+//统计报表
+Route::get('/report/reportList', 'Reporte\ReportController@showReport');

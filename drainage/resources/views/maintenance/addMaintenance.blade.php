@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <a href="/failure/lists">设备维修管理</a>
+                <a href="/failure/lists">设备故障管理</a>
                 <em>›</em>
                 <span>添加维修记录</span>
             </h2>
