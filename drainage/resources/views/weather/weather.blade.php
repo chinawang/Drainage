@@ -5,7 +5,21 @@
 @endsection
 
 @section('subtitle')
-    <span>天气</span>
+    {{--<span>天气</span>--}}
+@endsection
+
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <span>天气预报</span>
+
+            </h2>
+        </div>
+
+    </div>
 @endsection
 
 @section('content')

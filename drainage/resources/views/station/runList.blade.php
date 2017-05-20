@@ -5,7 +5,7 @@
 @endsection
 
 @section('subtitle')
-    <span>泵站实时工作状态</span>
+    {{--<span>泵站实时工作状态</span>--}}
 @endsection
 
 @section('location')
@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <span>泵站工作状态列表</span>
+                <span>泵站实时工作状态</span>
             </h2>
         </div>
     </div>

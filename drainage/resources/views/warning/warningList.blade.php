@@ -5,7 +5,7 @@
 @endsection
 
 @section('subtitle')
-    <span>泵站设备实时报警状态</span>
+    {{--<span>泵站设备实时报警状态</span>--}}
 @endsection
 
 @section('location')
@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <span>报警实时列表</span>
+                <span>泵站报警管理</span>
 
             </h2>
         </div>
@@ -28,7 +28,7 @@
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        泵站设备报警状态列表
+                        设备实时报警状态列表
                         <a href="/warning/warningList" class="btn-link">刷新</a>
                     </div>
                     <div class="panel-body custom-panel-body">

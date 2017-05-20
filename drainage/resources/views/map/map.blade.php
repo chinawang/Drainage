@@ -25,7 +25,21 @@
 @endsection
 
 @section('subtitle')
-    <span>地图</span>
+    {{--<span>地图</span>--}}
+@endsection
+
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <span>泵站地图</span>
+
+            </h2>
+        </div>
+
+    </div>
 @endsection
 
 @section('content')

@@ -53,7 +53,7 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
-                <div class="navbar-line"></div>
+                {{--<div class="navbar-line"></div>--}}
 
                 <div class="navbar-subtitle">
                     @yield('subtitle')
@@ -99,7 +99,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="back-to-home"><a href="{{ url('/') }}">首页</a></li>
+                        {{--<li class="back-to-home"><a href="{{ url('/') }}">首页</a></li>--}}
                     @endif
                 </ul>
             </div>
