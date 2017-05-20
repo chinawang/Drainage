@@ -38,7 +38,7 @@
                             <li class=""><a href="#mantenance" data-toggle="tab" aria-expanded="true">设备维修统计</a></li>
 
                         </ul>
-                        <div id="myTabContent" class="tab-content">
+                        <div id="myTabContent" class="tab-content" style="margin-top: 20px">
                             <div class="tab-pane fade active in" id="water">
                                 <div class="well" style="text-align: center; padding: 100px;">
                                     暂无内容
