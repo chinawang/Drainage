@@ -52,7 +52,7 @@
                             </a>
                         </li>
                         <li class="report">
-                            <a href="" class="menu-item">
+                            <a href="/report/reportList" class="menu-item">
                                 <img class="menu-icon" src="/img/home/report_blue.png">
                                 <h4>统计报表</h4>
                             </a>
