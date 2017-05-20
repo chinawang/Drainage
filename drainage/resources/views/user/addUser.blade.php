@@ -5,7 +5,21 @@
 @endsection
 
 @section('subtitle')
-    <span>账户管理</span>
+    {{--<span>账户管理</span>--}}
+@endsection
+
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <a href="/user/lists">账户管理</a>
+                <em>›</em>
+                <span>添加用户</span>
+            </h2>
+        </div>
+    </div>
 @endsection
 
 @section('content')
@@ -15,7 +29,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         添加用户
-                        <a href="/user/lists" class="btn-link">返回</a>
+                        {{--<a href="/user/lists" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/user/store">

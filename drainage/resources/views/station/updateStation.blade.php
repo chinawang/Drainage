@@ -5,7 +5,7 @@
 @endsection
 
 @section('subtitle')
-    <span>泵站资料管理</span>
+    {{--<span>泵站资料管理</span>--}}
 @endsection
 
 @section('location')
@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <a href="/station/lists">泵站列表</a>
+                <a href="/station/lists">泵站资料管理</a>
                 <em>›</em>
                 <span>{{ $station['name'] }}</span>
             </h2>

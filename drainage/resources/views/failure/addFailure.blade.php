@@ -5,7 +5,21 @@
 @endsection
 
 @section('subtitle')
-    <span>设备故障管理</span>
+    {{--<span>设备故障管理</span>--}}
+@endsection
+
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <a href="/failure/lists">设备故障管理</a>
+                <em>›</em>
+                <span>添加故障记录</span>
+            </h2>
+        </div>
+    </div>
 @endsection
 
 @section('content')
