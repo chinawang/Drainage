@@ -32,16 +32,32 @@
                     {{--</div>--}}
                     <div class="panel-body custom-panel-body">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#home" data-toggle="tab" aria-expanded="false">水位统计</a></li>
-                            <li class=""><a href="#profile" data-toggle="tab" aria-expanded="true">设备运行统计</a></li>
+                            <li class="active"><a href="#water" data-toggle="tab" aria-expanded="false">泵站水位统计</a></li>
+                            <li class=""><a href="#run" data-toggle="tab" aria-expanded="true">设备运行统计</a></li>
+                            <li class=""><a href="#fail" data-toggle="tab" aria-expanded="true">设备故障统计</a></li>
+                            <li class=""><a href="#mantenance" data-toggle="tab" aria-expanded="true">设备维修统计</a></li>
 
                         </ul>
                         <div id="myTabContent" class="tab-content">
-                            <div class="tab-pane fade active in" id="home">
-                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                            <div class="tab-pane fade active in" id="water">
+                                <div class="well" style="text-align: center; padding: 100px;">
+                                    暂无内容
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="profile">
-                                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                            <div class="tab-pane fade" id="run">
+                                <div class="well" style="text-align: center; padding: 100px;">
+                                    暂无内容
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="fail">
+                                <div class="well" style="text-align: center; padding: 100px;">
+                                    暂无内容
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="mantenance">
+                                <div class="well" style="text-align: center; padding: 100px;">
+                                    暂无内容
+                                </div>
                             </div>
 
                         </div>
