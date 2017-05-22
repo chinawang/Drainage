@@ -110,6 +110,10 @@
                                                 {{--<td>{{ $water['tankWater'] }}</td>--}}
                                                 {{--<td>{{ $water['ywhandong'] }}</td>--}}
                                                 {{--<td>{{ $water['ywjishui'] }}</td>--}}
+                                                <td>{{ $water->Time }}</td>
+                                                <td>{{ $stationSelect['name'] }}</td>
+                                                <td>{{ $water->ywhandong }}</td>
+                                                <td>{{ $water->ywjishui }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
