@@ -42,7 +42,7 @@
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
 
 
-                            <form class="form-horizontal" role="form" method="POST" action="" style="margin-top: 20px;margin-bottom: 20px">
+                            <form class="form-horizontal" role="form" method="POST" action="" style="margin-top: 40px;margin-bottom: 20px">
                                 {{ csrf_field() }}
 
                                 <div class="row">
