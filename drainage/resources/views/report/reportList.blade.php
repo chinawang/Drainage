@@ -46,36 +46,27 @@
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="station" class="col-md-4 control-label">选择泵站:</label>
-
-                                    <div class="col-md-8">
-                                        <select class="form-control" id="select" name="station_id">
-                                            {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
-                                            @foreach ($stations as $station)
-                                                <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <select class="form-control" id="select" name="station_id">
+                                        {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
+                                        @foreach ($stations as $station)
+                                            <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="repair_at" class="col-md-3 control-label">时间范围:</label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control pick-event-time" id="start-time"
-                                               name="timeStart"
-                                               value="" placeholder="起始时间" data-data="yyyy-mm-dd hh:ii" >
-                                    </div>
+                                    <label for="searchTime" class="col-md-3 control-label">时间范围:</label>
+                                    <input type="text" class="form-control pick-event-time" id="start-time"
+                                           name="timeStart"
+                                           value="" placeholder="起始时间" data-data="yyyy-mm-dd hh:ii" >
                                     <label for="time" class="col-md-1 control-label">—</label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control pick-event-time" id="end-time"
-                                               name="timeEnd"
-                                               value="" placeholder="结束时间" data-data="yyyy-mm-dd hh:ii" >
-                                    </div>
+                                    <input type="text" class="form-control pick-event-time" id="end-time"
+                                           name="timeEnd"
+                                           value="" placeholder="结束时间" data-data="yyyy-mm-dd hh:ii" >
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
-                                        <button type="submit" class="btn btn-primary btn-custom">
-                                            查询
-                                        </button>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-custom">
+                                        查询
+                                    </button>
                                 </div>
                             </form>
 
