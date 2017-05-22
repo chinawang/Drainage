@@ -71,9 +71,9 @@ class ReportController extends Controller
     public function showReport()
     {
         $stationNum = "1";
-//        $stationID = null
-//        $stationTemp = $this->stationInfo($stationID);
-//        $stationNum = $stationTemp['station_number'];
+        $stationID = 1;
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
 
         $input = $this->stationValidation->stationPaginate();
@@ -120,7 +120,8 @@ class ReportController extends Controller
 
         $param = ['stations' => $stations,'waterList' => $stationRTPaginate,
             'runList' => $stationRTPaginate,'statusList' => $stationRTPaginate,
-            'failures' => $failurePaginate,'maintenances' => $maintenancePaginate,];
+            'failures' => $failurePaginate,'maintenances' => $maintenancePaginate,
+            'stationSelect' => $stationTemp];
         return $param;
 
         return view('report.reportList',$param);
