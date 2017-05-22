@@ -122,7 +122,7 @@ class ReportController extends Controller
             'runList' => $stationRTPaginate,'statusList' => $stationRTPaginate,
             'failures' => $failurePaginate,'maintenances' => $maintenancePaginate,
             'stationSelect' => $stationTemp];
-        return $param;
+//        return $param;
 
         return view('report.reportList',$param);
     }
