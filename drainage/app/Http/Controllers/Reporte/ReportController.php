@@ -121,6 +121,7 @@ class ReportController extends Controller
         $param = ['stations' => $stations,'waterList' => $stationRTPaginate,
             'runList' => $stationRTPaginate,'statusList' => $stationRTPaginate,
             'failures' => $failurePaginate,'maintenances' => $maintenancePaginate,];
+        return $param;
 
         return view('report.reportList',$param);
     }
