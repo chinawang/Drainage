@@ -85,40 +85,40 @@
                                 </div>
                             </form>
 
-                            <div class="tab-pane fade active in" id="water">
-                                @if (!empty($waterList[0]))
-                                    <table class="table table-hover table-bordered ">
-                                        <thead>
-                                        <tr>
-                                            <th>时间</th>
-                                            <th>泵站名称</th>
-                                            <th>涵洞水位</th>
-                                            <th>集水池水位</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
+                            {{--<div class="tab-pane fade active in" id="water">--}}
+                                {{--@if (!empty($waterList[0]))--}}
+                                    {{--<table class="table table-hover table-bordered ">--}}
+                                        {{--<thead>--}}
+                                        {{--<tr>--}}
+                                            {{--<th>时间</th>--}}
+                                            {{--<th>泵站名称</th>--}}
+                                            {{--<th>涵洞水位</th>--}}
+                                            {{--<th>集水池水位</th>--}}
+                                        {{--</tr>--}}
+                                        {{--</thead>--}}
+                                        {{--<tbody>--}}
 
-                                        @foreach ($waterList as $water)
-                                            <tr>
-                                                <td>{{ $water['Time'] }}</td>
-                                                <td>{{ $stationSelect['name'] }}</td>
+                                        {{--@foreach ($waterList as $water)--}}
+                                            {{--<tr>--}}
+                                                {{--<td>{{ $water['Time'] }}</td>--}}
+                                                {{--<td>{{ $stationSelect['name'] }}</td>--}}
                                                 {{--<td>{{ $water['culvertWater'] }}</td>--}}
                                                 {{--<td>{{ $water['tankWater'] }}</td>--}}
-                                                <td>{{ $water['ywhandong'] }}</td>
-                                                <td>{{ $water['ywjishui'] }}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="table-pagination">
-                                        {!! $waterList->render() !!}
-                                    </div>
-                                @else
-                                    <div class="well" style="text-align: center; padding: 100px;">
-                                        暂无内容
-                                    </div>
-                                @endif
-                            </div>
+                                                {{--<td>{{ $water['ywhandong'] }}</td>--}}
+                                                {{--<td>{{ $water['ywjishui'] }}</td>--}}
+                                            {{--</tr>--}}
+                                        {{--@endforeach--}}
+                                        {{--</tbody>--}}
+                                    {{--</table>--}}
+                                    {{--<div class="table-pagination">--}}
+                                        {{--{!! $waterList->render() !!}--}}
+                                    {{--</div>--}}
+                                {{--@else--}}
+                                    {{--<div class="well" style="text-align: center; padding: 100px;">--}}
+                                        {{--暂无内容--}}
+                                    {{--</div>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
                             {{--<div class="tab-pane fade" id="run">--}}
                                 {{--@if (!empty($runList[0]))--}}
                                     {{--<table class="table table-hover table-bordered ">--}}
