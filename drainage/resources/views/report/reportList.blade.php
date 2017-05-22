@@ -42,15 +42,15 @@
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
 
 
-                            <form class="form-horizontal" role="form" method="POST" action="">
+                            <form class="form-horizontal" role="form" method="POST" action="" style="margin-top: 10px;margin-bottom: 10px">
                                 {{ csrf_field() }}
 
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="station" class="col-md-4 control-label">选择泵站:</label>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <select class="form-control" id="select" name="station_id">
                                                     {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
                                                     @foreach ($stations as $station)
@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="repair_at" class="col-md-3 control-label">时间范围:</label>
                                             <div class="col-md-4">
@@ -68,9 +68,7 @@
                                                        name="timeStart"
                                                        value="" placeholder="起始时间" required>
                                             </div>
-                                            <div class="col-md-1">
-                                                <em>-</em>
-                                            </div>
+                                            <label for="time" class="col-md-1 control-label">—</label>
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control" id="datetimepicker"
                                                        name="timeEnd"
@@ -78,7 +76,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-4">
                                                 <button type="submit" class="btn btn-primary btn-custom">
