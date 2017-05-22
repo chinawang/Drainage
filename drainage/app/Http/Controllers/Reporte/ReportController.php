@@ -67,15 +67,12 @@ class ReportController extends Controller
         $this->maintenanceLogic = $maintenanceLogic;
     }
 
-    public function showReport($stationID)
+    public function showReport()
     {
         $stationNum = "1";
-        if($stationID != null)
-        {
-            $stationTemp = $this->stationInfo($stationID);
-            $stationNum = $stationTemp['station_number'];
-        }
-
+//        $stationID = null
+//        $stationTemp = $this->stationInfo($stationID);
+//        $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
 
         $input = $this->stationValidation->stationPaginate();
@@ -126,6 +123,7 @@ class ReportController extends Controller
 
         return view('report.reportList',$param);
     }
+
 
     public function getStationRTList($stationNum, $size, $cursorPage)
     {
