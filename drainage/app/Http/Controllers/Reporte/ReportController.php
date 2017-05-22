@@ -129,7 +129,8 @@ class ReportController extends Controller
     public function getStationRTList($stationNum, $size, $cursorPage)
     {
         $stationTable = "stationRT_".$stationNum;
-        $stationRTList = DB::select('select * from '.$stationTable.' order by Time asc')->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+//        $stationRTList = DB::select('select * from '.$stationTable.' order by Time asc')->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+        $stationRTList = DB::table($stationTable)->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
 
         return $stationRTList;
     }
