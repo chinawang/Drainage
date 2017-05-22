@@ -10,6 +10,7 @@ use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Station\StationValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
