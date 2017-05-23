@@ -109,24 +109,24 @@
                                     <tbody>
                                     @foreach ($failures as $failure)
                                         <tr>
-                                            <td>{{ $failure['report_at'] }}</td>
-                                            <td>{{ $failure['station_name'] }}</td>
-                                            <td>{{ $failure['equipment_name'] }}</td>
-                                            <td>{{ $failure['failure_type'] }}</td>
-                                            <td>{{ $failure['failure_description'] }}</td>
-                                            <td>{{ $failure['equipment_status'] }}</td>
-                                            <td>{{ $failure['reporter_name'] }}</td>
+                                            <td>{{ $failure->report_at }}</td>
+                                            <td>{{ $failure->station_name }}</td>
+                                            <td>{{ $failure->equipment_name }}</td>
+                                            <td>{{ $failure->failure_type }}</td>
+                                            <td>{{ $failure->failure_description }}</td>
+                                            <td>{{ $failure->equipment_status }}</td>
+                                            <td>{{ $failure->reporter_name }}</td>
                                             <td>
-                                                @if($failure['repair_process'] == 0)
+                                                @if($failure->repair_process == 0)
                                                     未维修
-                                                @elseif($failure['repair_process'] == 1)
+                                                @elseif($failure->repair_process == 1)
                                                     维修中
-                                                @elseif($failure['repair_process'] == 2)
+                                                @elseif($failure->repair_process == 2)
                                                     维修完成
                                                 @endif
                                             </td>
-                                            <td hidden="hidden">{{ $failure['repairer_name'] }}</td>
-                                            <td hidden="hidden">{{ $failure['repair_at'] }}</td>
+                                            <td hidden="hidden">{{ $failure->repairer_name }}</td>
+                                            <td hidden="hidden">{{ $failure->repair_at }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
