@@ -71,9 +71,14 @@ class ReportController extends Controller
 
     public function showWaterReport()
     {
-        $stationID = Input::get('station_id',1);
-        $startTime = Input::get('timeStart','');
-        $endTime = Input::get('timeEnd','');
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-01 h:i:sa");
+            $endTime = date("Y-m-d h:i:sa");
+        }
 
 
         $stationTemp = $this->stationInfo($stationID);
@@ -82,20 +87,19 @@ class ReportController extends Controller
 
         $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage      = array_get($input, 'cursor_page', null);
-        $pageSize        = array_get($input, 'page_size', 20);
-        $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $cursorPage = array_get($input, 'cursor_page', null);
+        $pageSize = array_get($input, 'page_size', 20);
+        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderDirection = array_get($input, 'order_direction', 'asc');
 
-        $stationRTPaginate = $this->getStationRTList($stationNum,$pageSize,$cursorPage);
+        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage);
 
 
-
-        $param = ['stations' => $stations,'waterList' => $stationRTPaginate,
-            'stationSelect' => $stationTemp,'startTime' => $startTime,'endTime' => $endTime];
+        $param = ['stations' => $stations, 'waterList' => $stationRTPaginate,
+            'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
-        return view('report.stationWater',$param);
+        return view('report.stationWater', $param);
     }
 
     public function showRunningReport()
@@ -107,17 +111,17 @@ class ReportController extends Controller
 
         $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage      = array_get($input, 'cursor_page', null);
-        $pageSize        = array_get($input, 'page_size', 20);
-        $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $cursorPage = array_get($input, 'cursor_page', null);
+        $pageSize = array_get($input, 'page_size', 20);
+        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderDirection = array_get($input, 'order_direction', 'asc');
 
-        $stationRTPaginate = $this->getStationRTList($stationNum,$pageSize,$cursorPage);
+        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage);
 
-        $param = ['stations' => $stations,'runList' => $stationRTPaginate,'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations, 'runList' => $stationRTPaginate, 'stationSelect' => $stationTemp];
 //        return $param;
 
-        return view('report.stationRunning',$param);
+        return view('report.stationRunning', $param);
     }
 
     public function showStatusReport()
@@ -129,17 +133,17 @@ class ReportController extends Controller
 
         $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage      = array_get($input, 'cursor_page', null);
-        $pageSize        = array_get($input, 'page_size', 20);
-        $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $cursorPage = array_get($input, 'cursor_page', null);
+        $pageSize = array_get($input, 'page_size', 20);
+        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderDirection = array_get($input, 'order_direction', 'asc');
 
-        $stationRTPaginate = $this->getStationRTList($stationNum,$pageSize,$cursorPage);
+        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage);
 
-        $param = ['stations' => $stations,'statusList' => $stationRTPaginate,'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations, 'statusList' => $stationRTPaginate, 'stationSelect' => $stationTemp];
 //        return $param;
 
-        return view('report.stationStatus',$param);
+        return view('report.stationStatus', $param);
     }
 
     public function showFailureReport()
@@ -150,17 +154,16 @@ class ReportController extends Controller
 
         $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage      = array_get($input, 'cursor_page', null);
-        $pageSize        = array_get($input, 'page_size', 20);
-        $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $cursorPage = array_get($input, 'cursor_page', null);
+        $pageSize = array_get($input, 'page_size', 20);
+        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderDirection = array_get($input, 'order_direction', 'asc');
 
         // 故障统计
 
-        $failurePaginate = $this->failureLogic->getFailures($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        $failurePaginate = $this->failureLogic->getFailures($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
-        foreach($failurePaginate as $failure)
-        {
+        foreach ($failurePaginate as $failure) {
             $equipment = $this->equipmentInfo($failure['equipment_id']);
             $station = $this->stationInfo($failure['station_id']);
             $reporter = $this->userInfo($failure['reporter_id']);
@@ -172,10 +175,10 @@ class ReportController extends Controller
             $failure['repairer_name'] = $repairer['realname'];
         }
 
-        $param = ['stations' => $stations,'failures' => $failurePaginate,'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations, 'failures' => $failurePaginate, 'stationSelect' => $stationTemp];
 //        return $param;
 
-        return view('report.stationFailure',$param);
+        return view('report.stationFailure', $param);
     }
 
     public function showMaintenanceReport()
@@ -186,17 +189,16 @@ class ReportController extends Controller
 
         $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage      = array_get($input, 'cursor_page', null);
-        $pageSize        = array_get($input, 'page_size', 20);
-        $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $cursorPage = array_get($input, 'cursor_page', null);
+        $pageSize = array_get($input, 'page_size', 20);
+        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderDirection = array_get($input, 'order_direction', 'asc');
 
         // 维修统计
 
-        $maintenancePaginate = $this->maintenanceLogic->getMaintenances($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        $maintenancePaginate = $this->maintenanceLogic->getMaintenances($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
-        foreach($maintenancePaginate as $maintenance)
-        {
+        foreach ($maintenancePaginate as $maintenance) {
             $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
             $repairer = $this->userInfo($maintenance['repairer_id']);
@@ -206,16 +208,16 @@ class ReportController extends Controller
             $maintenance['repairer_name'] = $repairer['realname'];
         }
 
-        $param = ['stations' => $stations,'maintenances' => $maintenancePaginate,'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations, 'maintenances' => $maintenancePaginate, 'stationSelect' => $stationTemp];
 //        return $param;
 
-        return view('report.stationMaintenance',$param);
+        return view('report.stationMaintenance', $param);
     }
 
 
     public function getStationRTList($stationNum, $size, $cursorPage)
     {
-        $stationTable = "stationRT_".$stationNum;
+        $stationTable = "stationRT_" . $stationNum;
 //        $stationRTList = DB::select('select * from '.$stationTable.' order by Time asc')->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
         $stationRTList = DB::table($stationTable)->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
 

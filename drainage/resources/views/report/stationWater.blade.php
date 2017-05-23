@@ -56,7 +56,7 @@
                                                 <select class="form-control" id="select" name="station_id">
                                                     {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
                                                     @foreach ($stations as $station)
-                                                        <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
+                                                        <option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -68,13 +68,13 @@
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control pick-event-time" id="start-time"
                                                        name="timeStart"
-                                                       value="{{date('Y-m-01')}}" placeholder="起始时间" data-data="yyyy-mm-dd hh:ii">
+                                                       value="{{ $startTime }}" placeholder="起始时间" data-data="yyyy-mm-dd hh:ii">
                                             </div>
                                             <label for="time" class="col-md-1 control-label">—</label>
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control pick-event-time" id="end-time"
                                                        name="timeEnd"
-                                                       value="{{date('Y-m-d')}}" placeholder="截止时间" data-data="yyyy-mm-dd hh:ii">
+                                                       value="{{ $endTime }}" placeholder="截止时间" data-data="yyyy-mm-dd hh:ii">
                                             </div>
                                         </div>
                                     </div>
