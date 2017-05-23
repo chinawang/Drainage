@@ -73,7 +73,7 @@
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control pick-event-time" id="end-time"
                                                        name="timeEnd"
-                                                       value="" placeholder="结束时间" data-data="yyyy-mm-dd hh:ii">
+                                                       value="" placeholder="截止时间" data-data="yyyy-mm-dd hh:ii">
                                             </div>
                                         </div>
                                     </div>

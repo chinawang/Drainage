@@ -74,8 +74,7 @@ class ReportController extends Controller
         $stationID = Input::get('station_id',1);
         $startTime = Input::get('timeStart','');
         $endTime = Input::get('timeEnd','');
-        $temp = ['id' => $stationID,'start' => $startTime,'end' => $endTime];
-        return $temp;
+
 
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
@@ -92,7 +91,8 @@ class ReportController extends Controller
 
 
 
-        $param = ['stations' => $stations,'waterList' => $stationRTPaginate,'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations,'waterList' => $stationRTPaginate,
+            'stationSelect' => $stationTemp,'startTime' => $startTime,'endTime' => $endTime];
 //        return $param;
 
         return view('report.stationWater',$param);
