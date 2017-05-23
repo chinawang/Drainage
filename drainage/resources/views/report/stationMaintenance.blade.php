@@ -87,42 +87,40 @@
                                 </div>
                             </form>
 
-                            <div class="row">
-                                @if (!empty($maintenances[0]))
-                                    <table class="table table-hover table-bordered ">
-                                        <thead>
-                                        <tr>
-                                            <th>维修时间</th>
-                                            <th>所属泵站</th>
-                                            <th>故障设备</th>
-                                            <th>故障原因</th>
-                                            <th>解决办法</th>
-                                            <th>维修人</th>
+                            @if (!empty($maintenances[0]))
+                                <table class="table table-hover table-bordered ">
+                                    <thead>
+                                    <tr>
+                                        <th>维修时间</th>
+                                        <th>所属泵站</th>
+                                        <th>故障设备</th>
+                                        <th>故障原因</th>
+                                        <th>解决办法</th>
+                                        <th>维修人</th>
 
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($maintenances as $maintenance)
+                                        <tr>
+                                            <td>{{ $maintenance['repair_at'] }}</td>
+                                            <td>{{ $maintenance['station_name'] }}</td>
+                                            <td>{{ $maintenance['equipment_name'] }}</td>
+                                            <td>{{ $maintenance['failure_reason'] }}</td>
+                                            <td>{{ $maintenance['repair_solution'] }}</td>
+                                            <td>{{ $maintenance['repairer_name'] }}</td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($maintenances as $maintenance)
-                                            <tr>
-                                                <td>{{ $maintenance['repair_at'] }}</td>
-                                                <td>{{ $maintenance['station_name'] }}</td>
-                                                <td>{{ $maintenance['equipment_name'] }}</td>
-                                                <td>{{ $maintenance['failure_reason'] }}</td>
-                                                <td>{{ $maintenance['repair_solution'] }}</td>
-                                                <td>{{ $maintenance['repairer_name'] }}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="table-pagination">
-                                        {!! $maintenances->render() !!}
-                                    </div>
-                                @else
-                                    <div class="well" style="text-align: center; padding: 100px;">
-                                        暂无内容
-                                    </div>
-                                @endif
-                            </div>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="table-pagination">
+                                    {!! $maintenances->render() !!}
+                                </div>
+                            @else
+                                <div class="well" style="text-align: center; padding: 100px;">
+                                    暂无内容
+                                </div>
+                            @endif
 
                         </div>
                     </div>

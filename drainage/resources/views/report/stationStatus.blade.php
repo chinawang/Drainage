@@ -87,55 +87,53 @@
                                 </div>
                             </form>
 
-                            <div class="row">
-                                @if (!empty($statusList[0]))
-                                    <table class="table table-hover table-bordered ">
-                                        <thead>
-                                        <tr>
-                                            <th>时间</th>
-                                            <th>泵站名称</th>
-                                            <th>1号泵启停状态</th>
-                                            <th>2号泵启停状态</th>
-                                            <th>3号泵启停状态</th>
-                                            <th>4号泵启停状态</th>
-                                            <th>1号格栅启停状态</th>
-                                            <th>2号格栅启停状态</th>
-                                            <th>绞龙启停状态</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
+                            @if (!empty($statusList[0]))
+                                <table class="table table-hover table-bordered ">
+                                    <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>泵站名称</th>
+                                        <th>1号泵启停状态</th>
+                                        <th>2号泵启停状态</th>
+                                        <th>3号泵启停状态</th>
+                                        <th>4号泵启停状态</th>
+                                        <th>1号格栅启停状态</th>
+                                        <th>2号格栅启停状态</th>
+                                        <th>绞龙启停状态</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-                                        @foreach ($statusList as $status)
-                                            <tr>
-                                                <td>{{ $status->Time }}</td>
-                                                <td>{{ $stationSelect['name'] }}</td>
-                                                {{--<td>{{ $status['pumpStatus1'] }}</td>--}}
-                                                {{--<td>{{ $status['pumpStatus2'] }}</td>--}}
-                                                {{--<td>{{ $status['pumpStatus3'] }}</td>--}}
-                                                {{--<td>{{ $status['pumpStatus4'] }}</td>--}}
-                                                {{--<td>{{ $status['removerStatus1'] }}</td>--}}
-                                                {{--<td>{{ $status['removerStatus2'] }}</td>--}}
-                                                {{--<td>{{ $status['augerStatus'] }}</td>--}}
-                                                <td>{{ $status->yx_b1 == '1' ? '运行中' : '未启动' }}</td>
-                                                <td>{{ $status->yx_b2 == '1' ? '运行中' : '未启动' }}</td>
-                                                <td>{{ $status->yx_b3 == '1' ? '运行中' : '未启动' }}</td>
-                                                <td>{{ $status->yx_b4 == '1' ? '运行中' : '未启动' }}</td>
-                                                <td>{{ $status->yx_gs1 == '1' ? '运行中' : '未启动' }}</td>
-                                                <td>{{ $status->yx_gs2 == '1' ? '运行中' : '未启动' }}</td>
-                                                <td>{{ $status->yx_jl == '1' ? '运行中' : '未启动' }}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="table-pagination">
-                                        {!! $statusList->render() !!}
-                                    </div>
-                                @else
-                                    <div class="well" style="text-align: center; padding: 100px;">
-                                        暂无内容
-                                    </div>
-                                @endif
-                            </div>
+                                    @foreach ($statusList as $status)
+                                        <tr>
+                                            <td>{{ $status->Time }}</td>
+                                            <td>{{ $stationSelect['name'] }}</td>
+                                            {{--<td>{{ $status['pumpStatus1'] }}</td>--}}
+                                            {{--<td>{{ $status['pumpStatus2'] }}</td>--}}
+                                            {{--<td>{{ $status['pumpStatus3'] }}</td>--}}
+                                            {{--<td>{{ $status['pumpStatus4'] }}</td>--}}
+                                            {{--<td>{{ $status['removerStatus1'] }}</td>--}}
+                                            {{--<td>{{ $status['removerStatus2'] }}</td>--}}
+                                            {{--<td>{{ $status['augerStatus'] }}</td>--}}
+                                            <td>{{ $status->yx_b1 == '1' ? '运行中' : '未启动' }}</td>
+                                            <td>{{ $status->yx_b2 == '1' ? '运行中' : '未启动' }}</td>
+                                            <td>{{ $status->yx_b3 == '1' ? '运行中' : '未启动' }}</td>
+                                            <td>{{ $status->yx_b4 == '1' ? '运行中' : '未启动' }}</td>
+                                            <td>{{ $status->yx_gs1 == '1' ? '运行中' : '未启动' }}</td>
+                                            <td>{{ $status->yx_gs2 == '1' ? '运行中' : '未启动' }}</td>
+                                            <td>{{ $status->yx_jl == '1' ? '运行中' : '未启动' }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="table-pagination">
+                                    {!! $statusList->render() !!}
+                                </div>
+                            @else
+                                <div class="well" style="text-align: center; padding: 100px;">
+                                    暂无内容
+                                </div>
+                            @endif
 
                         </div>
                     </div>

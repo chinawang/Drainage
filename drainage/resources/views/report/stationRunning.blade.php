@@ -86,58 +86,57 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="row">
-                                @if (!empty($runList[0]))
-                                    <table class="table table-hover table-bordered ">
-                                        <thead>
-                                        <tr>
-                                            <th>时间</th>
-                                            <th>泵站名称</th>
-                                            <th>1号泵电流</th>
-                                            <th>2号泵电流</th>
-                                            <th>3号泵电流</th>
-                                            <th>4号泵电流</th>
-                                            <th>5号泵电流</th>
-                                            <th>AB相线电压</th>
-                                            <th>BC相线电压</th>
-                                            <th>CA相线电压</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
 
-                                        @foreach ($runList as $run)
-                                            <tr>
-                                                <td>{{ $run->Time }}</td>
-                                                <td>{{ $stationSelect['name'] }}</td>
-                                                {{--<td>{{ $run['pumpCurrent1'] }}</td>--}}
-                                                {{--<td>{{ $run['pumpCurrent2'] }}</td>--}}
-                                                {{--<td>{{ $run['pumpCurrent3'] }}</td>--}}
-                                                {{--<td>{{ $run['pumpCurrent4'] }}</td>--}}
-                                                {{--<td>{{ $run['pumpCurrent5'] }}</td>--}}
-                                                {{--<td>{{ $run['pumpVoltageAB'] }}</td>--}}
-                                                {{--<td>{{ $run['pumpVoltageBC'] }}</td>--}}
-                                                {{--<td>{{ $run['pumpVoltageCA'] }}</td>--}}
-                                                <td>{{ $run->ib1 }}</td>
-                                                <td>{{ $run->ib2 }}</td>
-                                                <td>{{ $run->ib3 }}</td>
-                                                <td>{{ $run->ib4 }}</td>
-                                                <td>{{ $run->ib5 }}</td>
-                                                <td>{{ $run->uab }}</td>
-                                                <td>{{ $run->ubc }}</td>
-                                                <td>{{ $run->uca }}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="table-pagination">
-                                        {!! $runList->render() !!}
-                                    </div>
-                                @else
-                                    <div class="well" style="text-align: center; padding: 100px;">
-                                        暂无内容
-                                    </div>
-                                @endif
-                            </div>
+                            @if (!empty($runList[0]))
+                                <table class="table table-hover table-bordered ">
+                                    <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>泵站名称</th>
+                                        <th>1号泵电流</th>
+                                        <th>2号泵电流</th>
+                                        <th>3号泵电流</th>
+                                        <th>4号泵电流</th>
+                                        <th>5号泵电流</th>
+                                        <th>AB相线电压</th>
+                                        <th>BC相线电压</th>
+                                        <th>CA相线电压</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    @foreach ($runList as $run)
+                                        <tr>
+                                            <td>{{ $run->Time }}</td>
+                                            <td>{{ $stationSelect['name'] }}</td>
+                                            {{--<td>{{ $run['pumpCurrent1'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpCurrent2'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpCurrent3'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpCurrent4'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpCurrent5'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpVoltageAB'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpVoltageBC'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpVoltageCA'] }}</td>--}}
+                                            <td>{{ $run->ib1 }}</td>
+                                            <td>{{ $run->ib2 }}</td>
+                                            <td>{{ $run->ib3 }}</td>
+                                            <td>{{ $run->ib4 }}</td>
+                                            <td>{{ $run->ib5 }}</td>
+                                            <td>{{ $run->uab }}</td>
+                                            <td>{{ $run->ubc }}</td>
+                                            <td>{{ $run->uca }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="table-pagination">
+                                    {!! $runList->render() !!}
+                                </div>
+                            @else
+                                <div class="well" style="text-align: center; padding: 100px;">
+                                    暂无内容
+                                </div>
+                            @endif
 
                         </div>
                     </div>

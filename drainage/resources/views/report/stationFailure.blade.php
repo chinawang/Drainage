@@ -87,58 +87,56 @@
                                 </div>
                             </form>
 
-                            <div class="row">
-                                @if (!empty($failures[0]))
-                                    <table class="table table-hover table-bordered ">
-                                        <thead>
-                                        <tr>
-                                            <th>报修时间</th>
-                                            <th>所属泵站</th>
-                                            <th>故障设备</th>
-                                            <th>故障类型</th>
-                                            <th>故障描述</th>
-                                            <th>设备状态</th>
-                                            <th>报修人</th>
-                                            <th>维修进度</th>
-                                            <th hidden="hidden">维修人</th>
-                                            <th hidden="hidden">维修时间</th>
+                            @if (!empty($failures[0]))
+                                <table class="table table-hover table-bordered ">
+                                    <thead>
+                                    <tr>
+                                        <th>报修时间</th>
+                                        <th>所属泵站</th>
+                                        <th>故障设备</th>
+                                        <th>故障类型</th>
+                                        <th>故障描述</th>
+                                        <th>设备状态</th>
+                                        <th>报修人</th>
+                                        <th>维修进度</th>
+                                        <th hidden="hidden">维修人</th>
+                                        <th hidden="hidden">维修时间</th>
 
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($failures as $failure)
+                                        <tr>
+                                            <td>{{ $failure['report_at'] }}</td>
+                                            <td>{{ $failure['station_name'] }}</td>
+                                            <td>{{ $failure['equipment_name'] }}</td>
+                                            <td>{{ $failure['failure_type'] }}</td>
+                                            <td>{{ $failure['failure_description'] }}</td>
+                                            <td>{{ $failure['equipment_status'] }}</td>
+                                            <td>{{ $failure['reporter_name'] }}</td>
+                                            <td>
+                                                @if($failure['repair_process'] == 0)
+                                                    未维修
+                                                @elseif($failure['repair_process'] == 1)
+                                                    维修中
+                                                @elseif($failure['repair_process'] == 2)
+                                                    维修完成
+                                                @endif
+                                            </td>
+                                            <td hidden="hidden">{{ $failure['repairer_name'] }}</td>
+                                            <td hidden="hidden">{{ $failure['repair_at'] }}</td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($failures as $failure)
-                                            <tr>
-                                                <td>{{ $failure['report_at'] }}</td>
-                                                <td>{{ $failure['station_name'] }}</td>
-                                                <td>{{ $failure['equipment_name'] }}</td>
-                                                <td>{{ $failure['failure_type'] }}</td>
-                                                <td>{{ $failure['failure_description'] }}</td>
-                                                <td>{{ $failure['equipment_status'] }}</td>
-                                                <td>{{ $failure['reporter_name'] }}</td>
-                                                <td>
-                                                    @if($failure['repair_process'] == 0)
-                                                        未维修
-                                                    @elseif($failure['repair_process'] == 1)
-                                                        维修中
-                                                    @elseif($failure['repair_process'] == 2)
-                                                        维修完成
-                                                    @endif
-                                                </td>
-                                                <td hidden="hidden">{{ $failure['repairer_name'] }}</td>
-                                                <td hidden="hidden">{{ $failure['repair_at'] }}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="table-pagination">
-                                        {!! $failures->render() !!}
-                                    </div>
-                                @else
-                                    <div class="well" style="text-align: center; padding: 100px;">
-                                        暂无内容
-                                    </div>
-                                @endif
-                            </div>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="table-pagination">
+                                    {!! $failures->render() !!}
+                                </div>
+                            @else
+                                <div class="well" style="text-align: center; padding: 100px;">
+                                    暂无内容
+                                </div>
+                            @endif
 
                         </div>
                     </div>
