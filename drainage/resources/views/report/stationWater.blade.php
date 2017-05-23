@@ -66,15 +66,15 @@
                                         <div class="form-group">
                                             <label for="repair_at" class="col-md-3 control-label">时间范围:</label>
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control pick-event-time" id="start-time"
+                                                <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
-                                                       value="{{ $startTime }}" placeholder="起始时间" data-data="yyyy-mm-dd hh:ii">
+                                                       value="{{ $startTime }}" placeholder="起始时间" data-data="yyyy-mm-dd">
                                             </div>
                                             <label for="time" class="col-md-1 control-label">—</label>
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control pick-event-time" id="end-time"
+                                                <input type="text" class="form-control pick-event-date" id="end-time"
                                                        name="timeEnd"
-                                                       value="{{ $endTime }}" placeholder="截止时间" data-data="yyyy-mm-dd hh:ii">
+                                                       value="{{ $endTime }}" placeholder="截止时间" data-data="yyyy-mm-dd">
                                             </div>
                                         </div>
                                     </div>
