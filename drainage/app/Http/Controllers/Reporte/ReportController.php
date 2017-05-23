@@ -288,13 +288,13 @@ class ReportController extends Controller
     {
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-            $failureList = DB::table('failures')->where('station_id','=',$stationID,'and','delete_process','=',0)->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'asc')
+            $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'asc')
                 ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
 
         }
         else
         {
-            $failureList = DB::table('failures')->where('station_id','=',$stationID,'and','delete_process','=',0)->orderBy('created_at', 'asc')
+            $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'asc')
                 ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
         }
 
