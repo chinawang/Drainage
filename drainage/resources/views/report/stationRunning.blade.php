@@ -42,7 +42,7 @@
                             </ul>
                         </div>
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
-                            <form class="form-horizontal" role="form" method="POST" action="/report/stationRunning"
+                            <form class="form-horizontal" role="form" method="GET" action="/report/stationRunning"
                                   style="margin-bottom: 10px">
                                 {{ csrf_field() }}
 

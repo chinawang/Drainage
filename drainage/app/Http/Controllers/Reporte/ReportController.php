@@ -11,6 +11,7 @@ use App\Http\Validations\Station\StationValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class ReportController extends Controller
 {
@@ -70,7 +71,12 @@ class ReportController extends Controller
 
     public function showWaterReport()
     {
-        $stationID = 1;
+        $stationID = Input::get('station_id',1);
+        $startTime = Input::get('timeStart','');
+        $endTime = Input::get('timeEnd','');
+        $temp = ['id' => $stationID,'start' => $startTime,'end' => $endTime];
+        return $temp;
+
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
