@@ -193,7 +193,9 @@ class ReportController extends Controller
 
         // 故障统计
 
-        $failurePaginate = $this->failureLogic->getFailures($pageSize, $orderColumn, $orderDirection, $cursorPage);
+//        $failurePaginate = $this->failureLogic->getFailures($pageSize, $orderColumn, $orderDirection, $cursorPage);
+
+        $failurePaginate = $this->getFailureListByID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime)
 
         foreach ($failurePaginate as $failure) {
             $equipment = $this->equipmentInfo($failure['equipment_id']);
@@ -267,15 +269,34 @@ class ReportController extends Controller
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
 
         }
         else
         {
-            $stationRTList = DB::table($stationTable)->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
         }
 
         return $stationRTList;
+    }
+
+    public function getFailureListByID($stationID, $size, $cursorPage,$searchStartTime,$searchEndTime)
+    {
+        if(!empty($searchStartTime) && !empty($searchEndTime))
+        {
+            $failureList = DB::table('failures')->where('station_id','=',$stationID,'and','delete_process','=',0)->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+
+        }
+        else
+        {
+            $failureList = DB::table('failures')->where('station_id','=',$stationID,'and','delete_process','=',0)->orderBy('created_at', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+        }
+
+        return $failureList;
     }
 
     public function stationList()
