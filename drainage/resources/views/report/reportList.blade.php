@@ -148,7 +148,7 @@
 
                                         @foreach ($runList as $run)
                                             <tr>
-                                                <td>{{ $run['Time'] }}</td>
+                                                <td>{{ $run->Time }}</td>
                                                 <td>{{ $stationSelect['name'] }}</td>
                                                 {{--<td>{{ $run['pumpCurrent1'] }}</td>--}}
                                                 {{--<td>{{ $run['pumpCurrent2'] }}</td>--}}
@@ -158,14 +158,14 @@
                                                 {{--<td>{{ $run['pumpVoltageAB'] }}</td>--}}
                                                 {{--<td>{{ $run['pumpVoltageBC'] }}</td>--}}
                                                 {{--<td>{{ $run['pumpVoltageCA'] }}</td>--}}
-                                                <td>{{ $run['ib1'] }}</td>
-                                                <td>{{ $run['ib2'] }}</td>
-                                                <td>{{ $run['ib3'] }}</td>
-                                                <td>{{ $run['ib4'] }}</td>
-                                                <td>{{ $run['ib5'] }}</td>
-                                                <td>{{ $run['uab'] }}</td>
-                                                <td>{{ $run['ubc'] }}</td>
-                                                <td>{{ $run['uca'] }}</td>
+                                                <td>{{ $run->ib1 }}</td>
+                                                <td>{{ $run->ib2 }}</td>
+                                                <td>{{ $run->ib3 }}</td>
+                                                <td>{{ $run->ib4 }}</td>
+                                                <td>{{ $run->ib5 }}</td>
+                                                <td>{{ $run->uab }}</td>
+                                                <td>{{ $run->ubc }}</td>
+                                                <td>{{ $run->uca }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -199,22 +199,22 @@
 
                                         @foreach ($statusList as $status)
                                             <tr>
-                                                <td>{{ $status['Time'] }}</td>
+                                                <td>{{ $status->Time }}</td>
                                                 <td>{{ $stationSelect['name'] }}</td>
-                                                <td>{{ $status['pumpStatus1'] }}</td>
-                                                <td>{{ $status['pumpStatus2'] }}</td>
-                                                <td>{{ $status['pumpStatus3'] }}</td>
-                                                <td>{{ $status['pumpStatus4'] }}</td>
-                                                <td>{{ $status['removerStatus1'] }}</td>
-                                                <td>{{ $status['removerStatus2'] }}</td>
-                                                <td>{{ $status['augerStatus'] }}</td>
-                                                <td>{{ $status['yx_b1'] }}</td>
-                                                <td>{{ $status['yx_b2'] }}</td>
-                                                <td>{{ $status['yx_b3'] }}</td>
-                                                <td>{{ $status['yx_b4'] }}</td>
-                                                <td>{{ $status['yx_b5'] }}</td>
-                                                <td>{{ $status['yx_b6'] }}</td>
-                                                <td>{{ $status['yx_b7'] }}</td>
+                                                {{--<td>{{ $status['pumpStatus1'] }}</td>--}}
+                                                {{--<td>{{ $status['pumpStatus2'] }}</td>--}}
+                                                {{--<td>{{ $status['pumpStatus3'] }}</td>--}}
+                                                {{--<td>{{ $status['pumpStatus4'] }}</td>--}}
+                                                {{--<td>{{ $status['removerStatus1'] }}</td>--}}
+                                                {{--<td>{{ $status['removerStatus2'] }}</td>--}}
+                                                {{--<td>{{ $status['augerStatus'] }}</td>--}}
+                                                <td>{{ $status->yx_b1 == '1' ? '运行中' : '未启动' }}</td>
+                                                <td>{{ $status->yx_b2 == '1' ? '运行中' : '未启动' }}</td>
+                                                <td>{{ $status->yx_b3 == '1' ? '运行中' : '未启动' }}</td>
+                                                <td>{{ $status->yx_b4 == '1' ? '运行中' : '未启动' }}</td>
+                                                <td>{{ $status->yx_gs1 == '1' ? '运行中' : '未启动' }}</td>
+                                                <td>{{ $status->yx_gs2 == '1' ? '运行中' : '未启动' }}</td>
+                                                <td>{{ $status->yx_jl == '1' ? '运行中' : '未启动' }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
