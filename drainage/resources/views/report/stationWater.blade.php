@@ -81,7 +81,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-4">
-                                                <button type="submit" class="btn btn-primary btn-sm btn-custom">
+                                                <button type="submit" class="btn btn-primary btn-sm">
                                                     查询
                                                 </button>
                                             </div>
