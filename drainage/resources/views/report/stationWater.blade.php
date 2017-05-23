@@ -31,7 +31,7 @@
                     {{----}}
                     {{--</div>--}}
                     <div class="panel-body custom-panel-body">
-                        <ul class="nav nav-tabs" style="margin-top: -10px">
+                        <ul class="nav nav-tabs">
                             <li class="active"><a href="/report/stationWater">泵站水位统计</a></li>
                             <li class=""><a href="/report/stationRunning">设备运行统计</a></li>
                             <li class=""><a href="/report/stationStatus">设备启停统计</a></li>
@@ -41,7 +41,7 @@
                         </ul>
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
                             <form class="form-horizontal" role="form" method="POST" action="/report/stationWater"
-                                  style="margin-bottom: 20px">
+                                  style="margin-bottom: 10px">
                                 {{ csrf_field() }}
 
                                 <div class="row">
