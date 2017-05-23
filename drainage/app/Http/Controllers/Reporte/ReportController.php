@@ -90,8 +90,7 @@ class ReportController extends Controller
 
 //        $input = $this->stationValidation->stationPaginate();
 
-//        $cursorPage = isset($input['cursor_page']) ? $input['cursor_page'] : 1;
-        $cursorPage =null;
+        $cursorPage = null;
         $pageSize = 20;
 
         $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
