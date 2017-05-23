@@ -88,12 +88,11 @@ class ReportController extends Controller
         $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
 
-        $input = $this->stationValidation->stationPaginate();
+//        $input = $this->stationValidation->stationPaginate();
+        $page = isset($input['page']) ? $input['page'] : 1;
 
-        $cursorPage = array_get($input, 'cursor_page', null);
-        $pageSize = array_get($input, 'page_size', 20);
-        $orderColumn = array_get($input, 'order_column', 'created_at');
-        $orderDirection = array_get($input, 'order_direction', 'asc');
+        $cursorPage = $page;
+        $pageSize = 20;
 
         $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
@@ -107,7 +106,18 @@ class ReportController extends Controller
 
     public function showRunningReport()
     {
-        $stationID = 1;
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-01");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
@@ -119,9 +129,10 @@ class ReportController extends Controller
         $orderColumn = array_get($input, 'order_column', 'created_at');
         $orderDirection = array_get($input, 'order_direction', 'asc');
 
-        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage);
+        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
-        $param = ['stations' => $stations, 'runList' => $stationRTPaginate, 'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations, 'runList' => $stationRTPaginate,
+            'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
         return view('report.stationRunning', $param);
@@ -129,7 +140,18 @@ class ReportController extends Controller
 
     public function showStatusReport()
     {
-        $stationID = 1;
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-01");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
@@ -141,9 +163,10 @@ class ReportController extends Controller
         $orderColumn = array_get($input, 'order_column', 'created_at');
         $orderDirection = array_get($input, 'order_direction', 'asc');
 
-        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage);
+        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
-        $param = ['stations' => $stations, 'statusList' => $stationRTPaginate, 'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations, 'statusList' => $stationRTPaginate,
+            'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
         return view('report.stationStatus', $param);
@@ -151,7 +174,18 @@ class ReportController extends Controller
 
     public function showFailureReport()
     {
-        $stationID = 1;
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-01");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
         $stationTemp = $this->stationInfo($stationID);
         $stations = $this->stationList();
 
@@ -178,7 +212,8 @@ class ReportController extends Controller
             $failure['repairer_name'] = $repairer['realname'];
         }
 
-        $param = ['stations' => $stations, 'failures' => $failurePaginate, 'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations, 'failures' => $failurePaginate,
+            'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
         return view('report.stationFailure', $param);
@@ -186,7 +221,18 @@ class ReportController extends Controller
 
     public function showMaintenanceReport()
     {
-        $stationID = 1;
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-01");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
         $stationTemp = $this->stationInfo($stationID);
         $stations = $this->stationList();
 
@@ -211,7 +257,8 @@ class ReportController extends Controller
             $maintenance['repairer_name'] = $repairer['realname'];
         }
 
-        $param = ['stations' => $stations, 'maintenances' => $maintenancePaginate, 'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations, 'maintenances' => $maintenancePaginate,
+            'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
         return view('report.stationMaintenance', $param);
