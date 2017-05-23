@@ -121,12 +121,10 @@ class ReportController extends Controller
         $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
 
-        $input = $this->stationValidation->stationPaginate();
+        //        $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage = array_get($input, 'cursor_page', null);
-        $pageSize = array_get($input, 'page_size', 20);
-        $orderColumn = array_get($input, 'order_column', 'created_at');
-        $orderDirection = array_get($input, 'order_direction', 'asc');
+        $cursorPage = null;
+        $pageSize = 20;
 
         $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
@@ -155,12 +153,10 @@ class ReportController extends Controller
         $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
 
-        $input = $this->stationValidation->stationPaginate();
+        //        $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage = array_get($input, 'cursor_page', null);
-        $pageSize = array_get($input, 'page_size', 20);
-        $orderColumn = array_get($input, 'order_column', 'created_at');
-        $orderDirection = array_get($input, 'order_direction', 'asc');
+        $cursorPage = null;
+        $pageSize = 20;
 
         $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
@@ -188,12 +184,12 @@ class ReportController extends Controller
         $stationTemp = $this->stationInfo($stationID);
         $stations = $this->stationList();
 
-        $input = $this->stationValidation->stationPaginate();
+        //        $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage = array_get($input, 'cursor_page', null);
-        $pageSize = array_get($input, 'page_size', 20);
-        $orderColumn = array_get($input, 'order_column', 'created_at');
-        $orderDirection = array_get($input, 'order_direction', 'asc');
+        $cursorPage = null;
+        $pageSize = 20;
+        $orderColumn = 'created_at';
+        $orderDirection = 'asc';
 
         // 故障统计
 
@@ -235,12 +231,12 @@ class ReportController extends Controller
         $stationTemp = $this->stationInfo($stationID);
         $stations = $this->stationList();
 
-        $input = $this->stationValidation->stationPaginate();
+        //        $input = $this->stationValidation->stationPaginate();
 
-        $cursorPage = array_get($input, 'cursor_page', null);
-        $pageSize = array_get($input, 'page_size', 20);
-        $orderColumn = array_get($input, 'order_column', 'created_at');
-        $orderDirection = array_get($input, 'order_direction', 'asc');
+        $cursorPage = null;
+        $pageSize = 20;
+        $orderColumn = 'created_at';
+        $orderDirection = 'asc';
 
         // 维修统计
 
