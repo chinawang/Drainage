@@ -188,14 +188,14 @@ class ReportController extends Controller
 
         $cursorPage = null;
         $pageSize = 20;
-        $orderColumn = 'created_at';
-        $orderDirection = 'asc';
+//        $orderColumn = 'created_at';
+//        $orderDirection = 'asc';
 
         // 故障统计
 
 //        $failurePaginate = $this->failureLogic->getFailures($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
-        $failurePaginate = $this->getFailureListByID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
+        $failurePaginate = $this->getFailureListByStationID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
 
         foreach ($failurePaginate as $failure) {
             $equipment = $this->equipmentInfo($failure->equipment_id);
@@ -237,21 +237,23 @@ class ReportController extends Controller
 
         $cursorPage = null;
         $pageSize = 20;
-        $orderColumn = 'created_at';
-        $orderDirection = 'asc';
+//        $orderColumn = 'created_at';
+//        $orderDirection = 'asc';
 
         // 维修统计
 
-        $maintenancePaginate = $this->maintenanceLogic->getMaintenances($pageSize, $orderColumn, $orderDirection, $cursorPage);
+//        $maintenancePaginate = $this->maintenanceLogic->getMaintenances($pageSize, $orderColumn, $orderDirection, $cursorPage);
+
+        $maintenancePaginate = $this->getMaintenanceListByStationID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
 
         foreach ($maintenancePaginate as $maintenance) {
-            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
-            $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->userInfo($maintenance['repairer_id']);
+            $equipment = $this->equipmentInfo($maintenance->equipment_id);
+            $station = $this->stationInfo($maintenance->station_id);
+            $repairer = $this->userInfo($maintenance->repairer_id);
 
-            $maintenance['equipment_name'] = $equipment['name'];
-            $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['realname'];
+            $maintenance->equipment_name = $equipment['name'];
+            $maintenance->station_name = $station['name'];
+            $maintenance->repairer_name = $repairer['realname'];
         }
 
         $param = ['stations' => $stations, 'maintenances' => $maintenancePaginate,
@@ -282,7 +284,7 @@ class ReportController extends Controller
         return $stationRTList;
     }
 
-    public function getFailureListByID($stationID, $size, $cursorPage,$searchStartTime,$searchEndTime)
+    public function getFailureListByStationID($stationID, $size, $cursorPage,$searchStartTime,$searchEndTime)
     {
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
@@ -297,6 +299,23 @@ class ReportController extends Controller
         }
 
         return $failureList;
+    }
+
+    public function getMaintenanceListByStationID($stationID, $size, $cursorPage,$searchStartTime,$searchEndTime)
+    {
+        if(!empty($searchStartTime) && !empty($searchEndTime))
+        {
+            $MaintenanceList = DB::table('maintenances')->where('station_id','=',$stationID,'and','delete_process','=',0)->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+
+        }
+        else
+        {
+            $MaintenanceList = DB::table('maintenances')->where('station_id','=',$stationID,'and','delete_process','=',0)->orderBy('created_at', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+        }
+
+        return $MaintenanceList;
     }
 
     public function stationList()

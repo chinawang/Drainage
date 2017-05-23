@@ -105,12 +105,12 @@
                                     <tbody>
                                     @foreach ($maintenances as $maintenance)
                                         <tr>
-                                            <td>{{ $maintenance['repair_at'] }}</td>
-                                            <td>{{ $maintenance['station_name'] }}</td>
-                                            <td>{{ $maintenance['equipment_name'] }}</td>
-                                            <td>{{ $maintenance['failure_reason'] }}</td>
-                                            <td>{{ $maintenance['repair_solution'] }}</td>
-                                            <td>{{ $maintenance['repairer_name'] }}</td>
+                                            <td>{{ $maintenance->repair_at }}</td>
+                                            <td>{{ $maintenance->station_name }}</td>
+                                            <td>{{ $maintenance->equipment_name }}</td>
+                                            <td>{{ $maintenance->failure_reason }}</td>
+                                            <td>{{ $maintenance->repair_solution }}</td>
+                                            <td>{{ $maintenance->repairer_name }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
