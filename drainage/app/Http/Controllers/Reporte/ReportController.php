@@ -198,15 +198,15 @@ class ReportController extends Controller
         $failurePaginate = $this->getFailureListByID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
 
         foreach ($failurePaginate as $failure) {
-            $equipment = $this->equipmentInfo($failure['equipment_id']);
-            $station = $this->stationInfo($failure['station_id']);
-            $reporter = $this->userInfo($failure['reporter_id']);
-            $repairer = $this->userInfo($failure['repairer_id']);
+            $equipment = $this->equipmentInfo($failure->equipment_id);
+            $station = $this->stationInfo($failure->station_id);
+            $reporter = $this->userInfo($failure->reporter_id);
+            $repairer = $this->userInfo($failure->repairer_id);
 
-            $failure['equipment_name'] = $equipment['name'];
-            $failure['station_name'] = $station['name'];
-            $failure['reporter_name'] = $reporter['realname'];
-            $failure['repairer_name'] = $repairer['realname'];
+            $failure->equipment_name = $equipment['name'];
+            $failure->station_name = $station['name'];
+            $failure->reporter_name = $reporter['realname'];
+            $failure->repairer_name = $repairer['realname'];
         }
 
         $param = ['stations' => $stations, 'failures' => $failurePaginate,
