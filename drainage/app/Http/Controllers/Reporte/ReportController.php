@@ -95,7 +95,7 @@ class ReportController extends Controller
         $orderColumn = array_get($input, 'order_column', 'created_at');
         $orderDirection = array_get($input, 'order_direction', 'asc');
 
-        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage);
+        $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
 
         $param = ['stations' => $stations, 'waterList' => $stationRTPaginate,
@@ -218,11 +218,20 @@ class ReportController extends Controller
     }
 
 
-    public function getStationRTList($stationNum, $size, $cursorPage)
+    public function getStationRTList($stationNum, $size, $cursorPage,$searchStartTime,$searchEndTime)
     {
         $stationTable = "stationRT_" . $stationNum;
 //        $stationRTList = DB::select('select * from '.$stationTable.' order by Time asc')->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
-        $stationRTList = DB::table($stationTable)->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+
+        if(!empty($searchStartTime) && !empty($searchEndTime))
+        {
+            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+
+        }
+        else
+        {
+            $stationRTList = DB::table($stationTable)->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+        }
 
         return $stationRTList;
     }
