@@ -31,7 +31,7 @@
                     {{----}}
                     {{--</div>--}}
                     <div class="panel-body custom-panel-body">
-                        <div class="row">
+                        <div class="row" style="margin-top: -10px">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="/report/stationWater">泵站水位统计</a></li>
                                 <li class=""><a href="/report/stationRunning">设备运行统计</a></li>
