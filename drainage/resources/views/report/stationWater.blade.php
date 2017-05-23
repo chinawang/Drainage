@@ -32,16 +32,14 @@
                     {{--</div>--}}
                     <div class="panel-body custom-panel-body">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="/report/stationWater" data-toggle="tab" aria-expanded="false">泵站水位统计</a></li>
+                            <li class="active"><a href="/report/stationWater">泵站水位统计</a></li>
                             <li class=""><a href="/report/stationRunning">设备运行统计</a></li>
-                            <li class=""><a href="/report/stationStatus" data-toggle="tab" aria-expanded="true">设备启停统计</a></li>
-                            <li class=""><a href="/report/stationFailure" data-toggle="tab" aria-expanded="true">设备故障统计</a></li>
-                            <li class=""><a href="/report/stationMaintenance" data-toggle="tab" aria-expanded="true">设备维修统计</a></li>
+                            <li class=""><a href="/report/stationStatus">设备启停统计</a></li>
+                            <li class=""><a href="/report/stationFailure">设备故障统计</a></li>
+                            <li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>
 
                         </ul>
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
-
-
                             <form class="form-horizontal" role="form" method="POST" action="/report/stationWater"
                                   style="margin-top: 40px;margin-bottom: 20px">
                                 {{ csrf_field() }}
@@ -88,8 +86,7 @@
                                     </div>
                                 </div>
                             </form>
-
-                            <div class="tab-pane fade active in" id="water">
+                            <div class="row">
                                 @if (!empty($waterList[0]))
                                     <table class="table table-hover table-bordered ">
                                         <thead>
