@@ -68,9 +68,8 @@ class ReportController extends Controller
         $this->maintenanceLogic = $maintenanceLogic;
     }
 
-    public function showReport()
+    public function showWaterReport()
     {
-        $stationNum = "1";
         $stationID = 1;
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
@@ -84,6 +83,71 @@ class ReportController extends Controller
         $orderDirection  = array_get($input, 'order_direction', 'asc');
 
         $stationRTPaginate = $this->getStationRTList($stationNum,$pageSize,$cursorPage);
+
+
+
+        $param = ['stations' => $stations,'waterList' => $stationRTPaginate,'stationSelect' => $stationTemp];
+//        return $param;
+
+        return view('report.stationWater',$param);
+    }
+
+    public function showRunningReport()
+    {
+        $stationID = 1;
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
+        $stations = $this->stationList();
+
+        $input = $this->stationValidation->stationPaginate();
+
+        $cursorPage      = array_get($input, 'cursor_page', null);
+        $pageSize        = array_get($input, 'page_size', 20);
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
+
+        $stationRTPaginate = $this->getStationRTList($stationNum,$pageSize,$cursorPage);
+
+        $param = ['stations' => $stations,'runList' => $stationRTPaginate,'stationSelect' => $stationTemp];
+//        return $param;
+
+        return view('report.stationRunning',$param);
+    }
+
+    public function showStatusReport()
+    {
+        $stationID = 1;
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
+        $stations = $this->stationList();
+
+        $input = $this->stationValidation->stationPaginate();
+
+        $cursorPage      = array_get($input, 'cursor_page', null);
+        $pageSize        = array_get($input, 'page_size', 20);
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
+
+        $stationRTPaginate = $this->getStationRTList($stationNum,$pageSize,$cursorPage);
+
+        $param = ['stations' => $stations,'statusList' => $stationRTPaginate,'stationSelect' => $stationTemp];
+//        return $param;
+
+        return view('report.stationStatus',$param);
+    }
+
+    public function showFailureReport()
+    {
+        $stationID = 1;
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+
+        $input = $this->stationValidation->stationPaginate();
+
+        $cursorPage      = array_get($input, 'cursor_page', null);
+        $pageSize        = array_get($input, 'page_size', 20);
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
 
         // 故障统计
 
@@ -102,6 +166,24 @@ class ReportController extends Controller
             $failure['repairer_name'] = $repairer['realname'];
         }
 
+        $param = ['stations' => $stations,'failures' => $failurePaginate,'stationSelect' => $stationTemp];
+//        return $param;
+
+        return view('report.stationFailure',$param);
+    }
+
+    public function showMaintenanceReport()
+    {
+        $stationID = 1;
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+
+        $input = $this->stationValidation->stationPaginate();
+
+        $cursorPage      = array_get($input, 'cursor_page', null);
+        $pageSize        = array_get($input, 'page_size', 20);
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
 
         // 维修统计
 
@@ -118,13 +200,10 @@ class ReportController extends Controller
             $maintenance['repairer_name'] = $repairer['realname'];
         }
 
-        $param = ['stations' => $stations,'waterList' => $stationRTPaginate,
-            'runList' => $stationRTPaginate,'statusList' => $stationRTPaginate,
-            'failures' => $failurePaginate,'maintenances' => $maintenancePaginate,
-            'stationSelect' => $stationTemp];
+        $param = ['stations' => $stations,'maintenances' => $maintenancePaginate,'stationSelect' => $stationTemp];
 //        return $param;
 
-        return view('report.reportList',$param);
+        return view('report.stationMaintenance',$param);
     }
 
 

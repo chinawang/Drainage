@@ -221,5 +221,13 @@ Route::get('/warning/warningDetail/{station_id}', 'Warning\WarningController@war
  *统计报表相关
  */
 
-//统计报表
-Route::get('/report/reportList', 'Reporte\ReportController@showReport');
+//液位统计
+Route::get('/report/stationWater', 'Reporte\ReportController@showWaterReport');
+//运行统计
+Route::get('/report/stationRunning', 'Reporte\ReportController@showRunningReport');
+//启停统计
+Route::get('/report/stationStatus', 'Reporte\ReportController@showStatusReport');
+//故障统计
+Route::get('/report/stationFailure', 'Reporte\ReportController@showFailureReport');
+//维修统计
+Route::get('/report/stationMaintenance', 'Reporte\ReportController@showMaintenanceReport');
