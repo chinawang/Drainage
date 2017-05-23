@@ -195,7 +195,7 @@ class ReportController extends Controller
 
 //        $failurePaginate = $this->failureLogic->getFailures($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
-        $failurePaginate = $this->getFailureListByID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime)
+        $failurePaginate = $this->getFailureListByID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
 
         foreach ($failurePaginate as $failure) {
             $equipment = $this->equipmentInfo($failure['equipment_id']);
