@@ -33,7 +33,7 @@
                     <div class="panel-body custom-panel-body">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="/report/stationWater" data-toggle="tab" aria-expanded="false">泵站水位统计</a></li>
-                            <li class=""><a href="/report/stationRunning" data-toggle="tab" aria-expanded="true">设备运行统计</a></li>
+                            <li class=""><a href="/report/stationRunning">设备运行统计</a></li>
                             <li class=""><a href="/report/stationStatus" data-toggle="tab" aria-expanded="true">设备启停统计</a></li>
                             <li class=""><a href="/report/stationFailure" data-toggle="tab" aria-expanded="true">设备故障统计</a></li>
                             <li class=""><a href="/report/stationMaintenance" data-toggle="tab" aria-expanded="true">设备维修统计</a></li>
