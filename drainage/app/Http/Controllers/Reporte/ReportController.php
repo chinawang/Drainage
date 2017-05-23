@@ -76,10 +76,14 @@ class ReportController extends Controller
         $endTime = Input::get('timeEnd', '');
 
         if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-01 h:i:sa");
-            $endTime = date("Y-m-d h:i:sa");
+            $startTime = date("Y-m-01 H:i");
+            $endTime = date("Y-m-d H:i");
         }
 
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+return $searchEndTime;
 
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
