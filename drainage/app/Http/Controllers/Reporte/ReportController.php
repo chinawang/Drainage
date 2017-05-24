@@ -409,12 +409,12 @@ class ReportController extends Controller
             if($stationRTList[$i]->yx_b1 == 0 && $stationRTList[$i+1]->yx_b1 == 1 )
             {
                 $sRunning['timeStart_b1'] = $stationRTList[$i+1]->Time;
-
+                array_push($stationStatusList,$sRunning);
             }
             if($stationRTList[$i]->yx_b1 == 1 && $stationRTList[$i+1]->yx_b1 == 0 )
             {
                 $sRunning['timeEnd_b1'] = $stationRTList[$i+1]->Time;
-
+                array_push($stationStatusList,$sRunning);
             }
             if(!empty($sRunning['timeStart_b1']) && !empty($sRunning['timeEnd_b1']))
             {
