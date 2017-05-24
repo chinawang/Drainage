@@ -53,7 +53,7 @@
 
                                             <div class="col-md-8">
                                                 <select class="form-control" id="select" name="station_id">
-                                                    {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
+                                                    {{--<option value="0" selected="selected">全部</option>--}}
                                                     @foreach ($stations as $station)
                                                         <option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>
                                                     @endforeach

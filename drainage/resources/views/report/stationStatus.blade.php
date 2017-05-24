@@ -361,6 +361,9 @@
         });
 
         var chart2 = new Highcharts.Chart('pump2Container', {
+            chart:{
+                type:'column'
+            },
             title: {
                 text: '',
                 x: -20
@@ -398,6 +401,9 @@
         });
 
         var chart3 = new Highcharts.Chart('pump3Container', {
+            chart:{
+                type:'column'
+            },
             title: {
                 text: '',
                 x: -20
@@ -435,6 +441,9 @@
         });
 
         var chart4 = new Highcharts.Chart('pump4Container', {
+            chart:{
+                type:'column'
+            },
             title: {
                 text: '',
                 x: -20
@@ -472,6 +481,9 @@
         });
 
         var chart5 = new Highcharts.Chart('gs1Container', {
+            chart:{
+                type:'column'
+            },
             title: {
                 text: '',
                 x: -20
@@ -509,6 +521,9 @@
         });
 
         var chart6 = new Highcharts.Chart('gs2Container', {
+            chart:{
+                type:'column'
+            },
             title: {
                 text: '',
                 x: -20
@@ -546,6 +561,9 @@
         });
 
         var chart7 = new Highcharts.Chart('jlContainer', {
+            chart:{
+                type:'column'
+            },
             title: {
                 text: '',
                 x: -20
