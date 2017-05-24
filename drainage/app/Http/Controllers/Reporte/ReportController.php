@@ -451,11 +451,12 @@ class ReportController extends Controller
                 if($index > 1)
                 {
                     $sRunning['timeGap'] = abs(strtotime($sRunning['timeEnd']) - strtotime($stationStatusList[$index -2]['timeStart']))/60;
+                    array_push($stationStatusList,$sRunning);
                 }
 
                 $sRunning['index'] = $index;
                 $index ++;
-                array_push($stationStatusList,$sRunning);
+
             }
 
         }
