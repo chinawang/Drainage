@@ -206,7 +206,7 @@
         var datas2 = [];
 
         $.each(stationRTHistory,function(i,n){
-            categories[i] = n["Time"];
+            categories[i] = new Date(n["Time"]);
             datas1[i] = n["ywhandong"];
             datas2[i] = n["ywjishui"];
         });
