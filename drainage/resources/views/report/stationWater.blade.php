@@ -178,6 +178,21 @@
 
         });
     </script>
+    
+    <script>
+        function dateStrFormat(dateStr) {
+
+            var dateResult = dateStr ;
+            var timeArr=dateStr.replace(" ",":").replace(/\:/g,"-").split("-");
+            if(timeArr.length==6)
+            {
+                dateResult = timeArr[1] + '-' + timeArr[2] + ' ' + timeArr[3] + ':' + timeArr[4];
+            }
+
+            return dateResult;
+
+        }
+    </script>
 
     <script type="text/javascript">
 
@@ -206,7 +221,7 @@
         var datas2 = [];
 
         $.each(stationRTHistory,function(i,n){
-            categories[i] = new Date(n["Time"]);
+            categories[i] = dateStrFormat(n["Time"]);
             datas1[i] = n["ywhandong"];
             datas2[i] = n["ywjishui"];
         });
