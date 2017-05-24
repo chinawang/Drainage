@@ -455,10 +455,10 @@ class ReportController extends Controller
         $stationStatusList6 = $this->getStationStatusList($stationRTList,'yx_gs2');
         $stationStatusList7 = $this->getStationStatusList($stationRTList,'yx_jl');
 
-        $param = array('$stationStatusList1'=> $stationStatusList1,'$stationStatusList2'=> $stationStatusList2,
-            '$stationStatusList3'=> $stationStatusList3,'$stationStatusList4'=> $stationStatusList4,
-            '$stationStatusList5'=> $stationStatusList5,'$stationStatusList6'=> $stationStatusList6,
-            '$stationStatusList7'=> $stationStatusList7);
+        $param = array('stationStatusList1'=> $stationStatusList1,'stationStatusList2'=> $stationStatusList2,
+            'stationStatusList3'=> $stationStatusList3,'stationStatusList4'=> $stationStatusList4,
+            'stationStatusList5'=> $stationStatusList5,'stationStatusList6'=> $stationStatusList6,
+            'stationStatusList7'=> $stationStatusList7);
 
         return response()->json($param, 200);
     }
