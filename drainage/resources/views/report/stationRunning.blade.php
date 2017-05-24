@@ -101,12 +101,12 @@
                                 <div id="myTabContent" class="tab-content">
                                     <div class="tab-pane fade active in" id="current">
                                         <div class="panel-body custom-panel-body" id="currentContainer"
-                                             style="min-width:400px;">
+                                             style="min-width:400px;height:400px">
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="voltage">
                                         <div class="panel-body custom-panel-body" id="voltageContainer"
-                                             style="min-width:400px;">
+                                             style="min-width:400px;height:400px">
                                         </div>
                                     </div>
 
