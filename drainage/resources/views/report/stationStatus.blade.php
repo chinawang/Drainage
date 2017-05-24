@@ -90,8 +90,55 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <div class="panel-body custom-panel-body" id="statusContainer"
-                                     style="min-width:400px;height:400px">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#pump1" data-toggle="tab">1号泵启动趋势</a></li>
+                                        <li><a href="#pump2" data-toggle="tab">2号泵启动趋势</a></li>
+                                        <li><a href="#pump3" data-toggle="tab">3号泵启动趋势</a></li>
+                                        <li><a href="#pump4" data-toggle="tab">4号泵启动趋势</a></li>
+                                        <li><a href="#gs1" data-toggle="tab">1号格栅启动趋势</a></li>
+                                        <li><a href="#gs2" data-toggle="tab">2号格栅启动趋势</a></li>
+                                        <li><a href="#jl" data-toggle="tab">绞龙启动趋势</a></li>
+                                    </ul>
+                                </div>
+
+                                <div id="myTabContent" class="tab-content">
+                                    <div class="tab-pane fade active in" id="pump1">
+                                        <div class="panel-body custom-panel-body" id="pump1Container"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="pump2">
+                                        <div class="panel-body custom-panel-body" id="pump2Container"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="pump3">
+                                        <div class="panel-body custom-panel-body" id="pump3Container"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="pump4">
+                                        <div class="panel-body custom-panel-body" id="pump4Container"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="gs1">
+                                        <div class="panel-body custom-panel-body" id="gs1Container"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="gs2">
+                                        <div class="panel-body custom-panel-body" id="gs2Container"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="jl">
+                                        <div class="panel-body custom-panel-body" id="jlContainer"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -210,33 +257,69 @@
             var resultValue = [];
             $.ajax({
                 type: 'get',
-                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}/yx_b1',
+                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}',
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
-                    resultValue = data.stationStatusList;
+                    resultValue = data;
                 }
             });
             return resultValue;
         }
 
-        var stationStatusList = getStationStatusList();
+        var statusRTList = getStationStatusList();
 
     </script>
 
     <script>
 
-        var categories = [];
+        var categories1 = [];
+        var categories2 = [];
+        var categories3 = [];
+        var categories4 = [];
+        var categories5 = [];
+        var categories6 = [];
+        var categories7 = [];
         var datas1 = [];
+        var datas2 = [];
+        var datas3 = [];
+        var datas4 = [];
+        var datas5 = [];
+        var datas6 = [];
+        var datas7 = [];
 
-        $.each(stationStatusList,function(i,n){
-            categories[i] = dateStrFormat(n["timeEnd"]);
+        $.each(statusRTList.stationStatusList1,function(i,n){
+            categories1[i] = dateStrFormat(n["timeEnd"]);
             datas1[i] = n["timeGap"];
         });
+        $.each(statusRTList.stationStatusList2,function(i,n){
+            categories2[i] = dateStrFormat(n["timeEnd"]);
+            datas2[i] = n["timeGap"];
+        });
+        $.each(statusRTList.stationStatusList3,function(i,n){
+            categories3[i] = dateStrFormat(n["timeEnd"]);
+            datas3[i] = n["timeGap"];
+        });
+        $.each(statusRTList.stationStatusList4,function(i,n){
+            categories4[i] = dateStrFormat(n["timeEnd"]);
+            datas4[i] = n["timeGap"];
+        });
+        $.each(statusRTList.stationStatusList5,function(i,n){
+            categories5[i] = dateStrFormat(n["timeEnd"]);
+            datas5[i] = n["timeGap"];
+        });
+        $.each(statusRTList.stationStatusList6,function(i,n){
+            categories6[i] = dateStrFormat(n["timeEnd"]);
+            datas6[i] = n["timeGap"];
+        });
+        $.each(statusRTList.stationStatusList7,function(i,n){
+            categories7[i] = dateStrFormat(n["timeEnd"]);
+            datas7[i] = n["timeGap"];
+        });
 
-        var chart = new Highcharts.Chart('statusContainer', {
+        var chart1 = new Highcharts.Chart('pump1Container', {
             title: {
-                text: '设备启动趋势',
+                text: '',
                 x: -20
             },
             subtitle: {
@@ -244,7 +327,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories
+                categories:categories1
             },
             yAxis: {
                 title: {
@@ -268,6 +351,228 @@
             series: [{
                 name: '1号泵启动时长',
                 data: datas1},
+            ]
+        });
+
+        var chart2 = new Highcharts.Chart('pump2Container', {
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories:categories2
+            },
+            yAxis: {
+                title: {
+                    text: '时间 (分钟)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '分钟'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '2号泵启动时长',
+                data: datas2},
+            ]
+        });
+
+        var chart3 = new Highcharts.Chart('pump3Container', {
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories:categories1
+            },
+            yAxis: {
+                title: {
+                    text: '时间 (分钟)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '分钟'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '3号泵启动时长',
+                data: datas3},
+            ]
+        });
+
+        var chart4 = new Highcharts.Chart('pump4Container', {
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories:categories4
+            },
+            yAxis: {
+                title: {
+                    text: '时间 (分钟)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '分钟'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '4号泵启动时长',
+                data: datas4},
+            ]
+        });
+
+        var chart5 = new Highcharts.Chart('gs1Container', {
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories:categories5
+            },
+            yAxis: {
+                title: {
+                    text: '时间 (分钟)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '分钟'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '1号格栅启动时长',
+                data: datas5},
+            ]
+        });
+
+        var chart6 = new Highcharts.Chart('gs2Container', {
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories:categories6
+            },
+            yAxis: {
+                title: {
+                    text: '时间 (分钟)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '分钟'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '2号格栅启动时长',
+                data: datas6},
+            ]
+        });
+
+        var chart7 = new Highcharts.Chart('jlContainer', {
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories:categories7
+            },
+            yAxis: {
+                title: {
+                    text: '时间 (分钟)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '分钟'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '绞龙启动时长',
+                data: datas7},
             ]
         });
     </script>

@@ -424,7 +424,7 @@ class ReportController extends Controller
         return response()->json(array('stationRTHistory'=> $stationRTList), 200);
     }
 
-    public function statusRTHistory($stationID,$startTime,$endTime,$equipmentCode)
+    public function statusRTHistory($stationID,$startTime,$endTime)
     {
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
@@ -447,9 +447,20 @@ class ReportController extends Controller
                 ->get();
         }
 
-        $stationStatusList = $this->getStationStatusList($stationRTList,$equipmentCode);
+        $stationStatusList1 = $this->getStationStatusList($stationRTList,'yx_b1');
+        $stationStatusList2 = $this->getStationStatusList($stationRTList,'yx_b2');
+        $stationStatusList3 = $this->getStationStatusList($stationRTList,'yx_b3');
+        $stationStatusList4 = $this->getStationStatusList($stationRTList,'yx_b4');
+        $stationStatusList5 = $this->getStationStatusList($stationRTList,'yx_b5');
+        $stationStatusList6 = $this->getStationStatusList($stationRTList,'yx_b6');
+        $stationStatusList7 = $this->getStationStatusList($stationRTList,'yx_b7');
 
-        return response()->json(array('stationStatusList'=> $stationStatusList), 200);
+        $param = array('$stationStatusList1'=> $stationStatusList1,'$stationStatusList2'=> $stationStatusList2,
+            '$stationStatusList3'=> $stationStatusList3,'$stationStatusList4'=> $stationStatusList4,
+            '$stationStatusList5'=> $stationStatusList5,'$stationStatusList6'=> $stationStatusList6,
+            '$stationStatusList7'=> $stationStatusList7);
+
+        return response()->json($param, 200);
     }
 
     public function getStationStatusList($stationRTList,$equipmentCode)
