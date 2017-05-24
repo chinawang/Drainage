@@ -454,7 +454,6 @@ class ReportController extends Controller
 
                     $stationStatusList[$index -2]['timeEnd'] = $sRunning['timeEnd'];
                     $stationStatusList[$index -2]['timeGap'] = $sRunning['timeGap'];
-                    $index ++;
                 }
 
             }
