@@ -231,3 +231,6 @@ Route::get('/report/stationStatus', 'Reporte\ReportController@showStatusReport')
 Route::get('/report/stationFailure', 'Reporte\ReportController@showFailureReport');
 //维修统计
 Route::get('/report/stationMaintenance', 'Reporte\ReportController@showMaintenanceReport');
+
+//泵站历史实时信息Ajax
+Route::get('/report/realTimeHistory/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@stationRTHistory');

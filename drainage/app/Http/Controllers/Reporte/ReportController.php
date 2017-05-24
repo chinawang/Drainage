@@ -371,5 +371,26 @@ class ReportController extends Controller
         return $user;
     }
 
+    public function stationRTHistory($stationID,$searchStartTime,$searchEndTime)
+    {
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
+
+        $stationTable = "stationRT_" . $stationNum;
+
+        if(!empty($searchStartTime) && !empty($searchEndTime))
+        {
+            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+                ->get();
+
+        }
+        else
+        {
+            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+                ->get();
+        }
+
+        return response()->json(array('stationRTHistory'=> $stationRTList), 200);
+    }
 
 }

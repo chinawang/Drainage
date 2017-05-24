@@ -90,6 +90,12 @@
                                 </div>
                             </form>
 
+                            <div class="panel panel-default custom-panel">
+                                <div class="panel-body custom-panel-body" id="waterContainer"
+                                     style="min-width:400px;height:400px">
+                                </div>
+                            </div>
+
                             @if (!empty($waterList[0]))
                                 <table class="table table-hover table-bordered ">
                                     <thead>
@@ -136,6 +142,9 @@
 @endsection
 
 @section('javascript')
+
+    <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+
     <script>
         $(document).ready(function () {
 
@@ -167,6 +176,75 @@
             $('.pick-event-time').datetimepicker(timePickerConfig);
 
 
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        function getStationRTHistory() {
+            var resultValue = [];
+            $.ajax({
+                type: 'get',
+                url: '/report/realTimeHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}',
+                data: '_token = <?php echo csrf_token() ?>',
+                async: false,//同步
+                success: function (data) {
+                    resultValue = data.stationRTHistory;
+                }
+            });
+            return resultValue;
+        }
+
+        var stationRTHistory = getStationRTHistory();
+
+    </script>
+
+    <script>
+
+        var categories = [];
+        var datas = [];
+
+        $.each(stationRTHistory,function(i,n){
+            categories[i] = n["Time"];
+            datas[i] = n["ywhandong"];
+        });
+
+        var chart = new Highcharts.Chart('waterContainer', {
+            title: {
+                text: '泵站水位趋势',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: '水位 (米)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '米'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '涵洞水位',
+                data: datas
+            }]
         });
     </script>
 @endsection
