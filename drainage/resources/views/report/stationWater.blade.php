@@ -202,11 +202,13 @@
     <script>
 
         var categories = [];
-        var datas = [];
+        var datas1 = [];
+        var datas2 = [];
 
         $.each(stationRTHistory,function(i,n){
             categories[i] = n["Time"];
-            datas[i] = n["ywhandong"];
+            datas1[i] = n["ywhandong"];
+            datas2[i] = n["ywjishui"];
         });
 
         var chart = new Highcharts.Chart('waterContainer', {
@@ -219,8 +221,7 @@
                 x: -20
             },
             xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
+                categories:categories
             },
             yAxis: {
                 title: {
@@ -243,8 +244,10 @@
             },
             series: [{
                 name: '涵洞水位',
-                data: datas
-            }]
+                data: datas1},{
+                name: '集水池水位',
+                data: datas2}
+            ]
         });
     </script>
 @endsection
