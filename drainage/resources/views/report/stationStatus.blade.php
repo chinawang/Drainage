@@ -321,6 +321,9 @@
         });
 
         var chart1 = new Highcharts.Chart('pump1Container', {
+            chart:{
+                type:'column'
+            },
             title: {
                 text: '',
                 x: -20
