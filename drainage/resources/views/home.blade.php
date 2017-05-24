@@ -81,12 +81,12 @@
                                 <h4>行为权限管理</h4>
                             </a>
                         </li>
-                        <li class="log">
+                        {{--<li class="log">--}}
                             {{--<a href="" class="menu-item">--}}
                                 {{--<img class="menu-icon" src="/img/home/log_blue.png">--}}
                                 {{--<h4>系统日志管理</h4>--}}
                             {{--</a>--}}
-                        </li>
+                        {{--</li>--}}
                     </ul>
                 </div>
             </div>
