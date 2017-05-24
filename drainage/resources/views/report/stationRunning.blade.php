@@ -91,10 +91,13 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#current" data-toggle="tab">泵组电流趋势</a></li>
-                                    <li><a href="#voltage" data-toggle="tab">泵组电压趋势</a></li>
-                                </ul>
+                                <div class="col-md-4 col-md-offset-4">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#current" data-toggle="tab">泵组电流趋势</a></li>
+                                        <li><a href="#voltage" data-toggle="tab">泵组电压趋势</a></li>
+                                    </ul>
+                                </div>
+
                                 <div id="myTabContent" class="tab-content">
                                     <div class="tab-pane fade active in" id="current">
                                         <div class="panel-body custom-panel-body" id="currentContainer"
