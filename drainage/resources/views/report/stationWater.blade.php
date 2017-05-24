@@ -206,7 +206,7 @@
         var datas2 = [];
 
         $.each(stationRTHistory,function(i,n){
-            categories[i] = n["Time"];
+            categories[i] = n["Time"].Format("MM-dd HH:mm");
             datas1[i] = n["ywhandong"];
             datas2[i] = n["ywjishui"];
         });
@@ -221,7 +221,7 @@
                 x: -20
             },
             xAxis: {
-//                categories:categories
+                categories:categories
             },
             yAxis: {
                 title: {
