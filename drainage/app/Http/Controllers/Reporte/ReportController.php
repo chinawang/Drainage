@@ -371,12 +371,16 @@ class ReportController extends Controller
         return $user;
     }
 
-    public function stationRTHistory($stationID,$searchStartTime,$searchEndTime)
+    public function stationRTHistory($stationID,$startTime,$endTime)
     {
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
 
         $stationTable = "stationRT_" . $stationNum;
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
