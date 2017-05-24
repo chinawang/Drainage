@@ -90,16 +90,19 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <div class="col-md-12 col-md-offset-0">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#pump1" data-toggle="tab">1号泵启动趋势</a></li>
-                                        <li><a href="#pump2" data-toggle="tab">2号泵启动趋势</a></li>
-                                        <li><a href="#pump3" data-toggle="tab">3号泵启动趋势</a></li>
-                                        <li><a href="#pump4" data-toggle="tab">4号泵启动趋势</a></li>
-                                        <li><a href="#gs1" data-toggle="tab">1号格栅启动趋势</a></li>
-                                        <li><a href="#gs2" data-toggle="tab">2号格栅启动趋势</a></li>
-                                        <li><a href="#jl" data-toggle="tab">绞龙启动趋势</a></li>
-                                    </ul>
+                                <div class="row">
+                                    <div class="col-md-12 col-md-offset-0">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#pump1" data-toggle="tab">1号泵启动趋势</a></li>
+                                            <li><a href="#pump2" data-toggle="tab">2号泵启动趋势</a></li>
+                                            <li><a href="#pump3" data-toggle="tab">3号泵启动趋势</a></li>
+                                            <li><a href="#pump4" data-toggle="tab">4号泵启动趋势</a></li>
+                                            <li><a href="#gs1" data-toggle="tab">1号格栅启动趋势</a></li>
+                                            <li><a href="#gs2" data-toggle="tab">2号格栅启动趋势</a></li>
+                                            <li><a href="#jl" data-toggle="tab">绞龙启动趋势</a></li>
+                                        </ul>
+                                    </div>
+
                                 </div>
 
                                 <div id="myTabContent" class="tab-content">
