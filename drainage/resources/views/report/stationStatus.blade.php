@@ -228,17 +228,15 @@
 
         var categories = [];
         var datas1 = [];
-        var datas2 = [];
 
         $.each(stationStatusList,function(i,n){
-            categories[i] = dateStrFormat(n["endTime"]);
-            datas1[i] = n["ywhandong"];
-            datas2[i] = n["ywjishui"];
+            categories[i] = dateStrFormat(n["timeEnd_b1"]);
+            datas1[i] = n["timeGap_b1"];
         });
 
-        var chart = new Highcharts.Chart('waterContainer', {
+        var chart = new Highcharts.Chart('statusContainer', {
             title: {
-                text: '泵站水位趋势',
+                text: '泵组启停趋势',
                 x: -20
             },
             subtitle: {
@@ -250,7 +248,7 @@
             },
             yAxis: {
                 title: {
-                    text: '水位 (米)'
+                    text: '时间 (分钟)'
                 },
                 plotLines: [{
                     value: 0,
@@ -259,7 +257,7 @@
                 }]
             },
             tooltip: {
-                valueSuffix: '米'
+                valueSuffix: '分钟'
             },
             legend: {
                 layout: 'vertical',
@@ -268,10 +266,8 @@
                 borderWidth: 0
             },
             series: [{
-                name: '涵洞水位',
-                data: datas1},{
-                name: '集水池水位',
-                data: datas2}
+                name: '1号泵启停时间',
+                data: datas1},
             ]
         });
     </script>
