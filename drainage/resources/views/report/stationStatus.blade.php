@@ -105,37 +105,37 @@
                                 <div id="myTabContent" class="tab-content">
                                     <div class="tab-pane fade active in" id="pump1">
                                         <div class="panel-body custom-panel-body" id="pump1Container"
-                                             style="min-width:400px;height:400px">
+                                             style="min-width:400px;">
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="pump2">
                                         <div class="panel-body custom-panel-body" id="pump2Container"
-                                             style="min-width:400px;height:400px">
+                                             style="min-width:400px;">
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="pump3">
                                         <div class="panel-body custom-panel-body" id="pump3Container"
-                                             style="min-width:400px;height:400px">
+                                             style="min-width:400px;">
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="pump4">
                                         <div class="panel-body custom-panel-body" id="pump4Container"
-                                             style="min-width:400px;height:400px">
+                                             style="min-width:400px;">
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="gs1">
                                         <div class="panel-body custom-panel-body" id="gs1Container"
-                                             style="min-width:400px;height:400px">
+                                             style="min-width:400px;">
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="gs2">
                                         <div class="panel-body custom-panel-body" id="gs2Container"
-                                             style="min-width:400px;height:400px">
+                                             style="min-width:400px;">
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="jl">
                                         <div class="panel-body custom-panel-body" id="jlContainer"
-                                             style="min-width:400px;height:400px">
+                                             style="min-width:400px;">
                                         </div>
                                     </div>
 
