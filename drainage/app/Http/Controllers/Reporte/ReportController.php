@@ -426,145 +426,41 @@ class ReportController extends Controller
         return response()->json(array('stationRTHistory'=> $stationRTList), 200);
     }
 
-    public function getStationStatusList($stationRTList)
+    public function getStationStatusList($stationRTList,$equipmentCode)
     {
         $stationStatusList = [];
 
         for($i = 0 ; $i < count($stationRTList)-1;$i++)
         {
             $sRunning = [];
-            if($stationRTList[$i]->yx_b1 == 0 && $stationRTList[$i+1]->yx_b1 == 1 )
+
+            if($stationRTList[$i]->$equipmentCode == 0 && $stationRTList[$i+1]->$equipmentCode == 1 )
             {
-                $sRunning['timeStart_b1'] = $stationRTList[$i+1]->Time;
+                $sRunning['timeStart'] = $stationRTList[$i+1]->Time;
+                $sRunning['timeEnd'] = '';
                 array_push($stationStatusList,$sRunning);
             }
-            if($stationRTList[$i]->yx_b1 == 1 && $stationRTList[$i+1]->yx_b1 == 0 )
+            if($stationRTList[$i]->$equipmentCode == 1 && $stationRTList[$i+1]->$equipmentCode == 0 )
             {
-                $sRunning['timeEnd_b1'] = $stationRTList[$i+1]->Time;
-                array_push($stationStatusList,$sRunning);
-            }
-            if(!empty($sRunning['timeStart_b1']) && !empty($sRunning['timeEnd_b1']))
-            {
-                $sRunning['timeGap_b1'] = abs(strtotime($sRunning['timeEnd_b1']) - $sRunning['timeStart_b1'])/60;
-                array_push($stationStatusList,$sRunning);
-            }
-
-
-            /**/
-
-            if($stationRTList[$i]->yx_b2 == 0 && $stationRTList[$i+1]->yx_b2 == 1 )
-            {
-                $sRunning['timeStart_b2'] = $stationRTList[$i+1]->Time;
-
-            }
-            if($stationRTList[$i]->yx_b2 == 1 && $stationRTList[$i+1]->yx_b2 == 0 )
-            {
-                $sRunning['timeEnd_b2'] = $stationRTList[$i+1]->Time;
-
-            }
-            if(!empty($sRunning['timeStart_b2']) && !empty($sRunning['timeEnd_b2']))
-            {
-                $sRunning['timeGap_b2'] = abs(strtotime($sRunning['timeEnd_b2']) - $sRunning['timeStart_b2'])/60;
+                $sRunning['timeStart'] = '';
+                $sRunning['timeEnd'] = $stationRTList[$i+1]->Time;
                 array_push($stationStatusList,$sRunning);
             }
 
-            /**/
-
-            if($stationRTList[$i]->yx_b3 == 0 && $stationRTList[$i+1]->yx_b3 == 1 )
+            if(!empty($sRunning['timeStart']) && !empty($sRunning['timeEnd']))
             {
-                $sRunning['timeStart_b3'] = $stationRTList[$i+1]->Time;
-
-            }
-            if($stationRTList[$i]->yx_b3 == 1 && $stationRTList[$i+1]->yx_b3 == 0 )
-            {
-                $sRunning['timeEnd_b3'] = $stationRTList[$i+1]->Time;
-
-            }
-            if(!empty($sRunning['timeStart_b3']) && !empty($sRunning['timeEnd_b3']))
-            {
-                $sRunning['timeGap_b3'] = abs(strtotime($sRunning['timeEnd_b3']) - $sRunning['timeStart_b3'])/60;
+                $sRunning['timeGap'] = abs(strtotime($sRunning['timeEnd']) - $sRunning['timeStart'])/60;
                 array_push($stationStatusList,$sRunning);
-            }
-
-            /**/
-
-            if($stationRTList[$i]->yx_b4 == 0 && $stationRTList[$i+1]->yx_b4 == 1 )
-            {
-                $sRunning['timeStart_b4'] = $stationRTList[$i+1]->Time;
-
-            }
-            if($stationRTList[$i]->yx_b4 == 1 && $stationRTList[$i+1]->yx_b4 == 0 )
-            {
-                $sRunning['timeEnd_b4'] = $stationRTList[$i+1]->Time;
-
-            }
-            if(!empty($sRunning['timeStart_b4']) && !empty($sRunning['timeEnd_b4']))
-            {
-                $sRunning['timeGap_b4'] = abs(strtotime($sRunning['timeEnd_b4']) - $sRunning['timeStart_b4'])/60;
-                array_push($stationStatusList,$sRunning);
-
-            }
-
-            /**/
-
-            if($stationRTList[$i]->yx_jl == 0 && $stationRTList[$i+1]->yx_jl == 1 )
-            {
-                $sRunning['timeStart_jl'] = $stationRTList[$i+1]->Time;
-
-            }
-            if($stationRTList[$i]->yx_jl == 1 && $stationRTList[$i+1]->yx_jl == 0 )
-            {
-                $sRunning['timeEnd_jl'] = $stationRTList[$i+1]->Time;
-
-            }
-            if(!empty($sRunning['timeStart_jl']) && !empty($sRunning['timeEnd_jl']))
-            {
-                $sRunning['timeGap_jl'] = abs(strtotime($sRunning['timeEnd_jl']) - $sRunning['timeStart_jl'])/60;
-                array_push($stationStatusList,$sRunning);
-            }
-
-            /**/
-
-            if($stationRTList[$i]->yx_gs1 == 0 && $stationRTList[$i+1]->yx_gs1 == 1 )
-            {
-                $sRunning['timeStart_gs1'] = $stationRTList[$i+1]->Time;
-
-            }
-            if($stationRTList[$i]->yx_gs1 == 1 && $stationRTList[$i+1]->yx_gs1 == 0 )
-            {
-                $sRunning['timeEnd_gs1'] = $stationRTList[$i+1]->Time;
-
-            }
-            if(!empty($sRunning['timeStart_gs1']) && !empty($sRunning['timeEnd_gs1']))
-            {
-                $sRunning['timeGap_gs1'] = abs(strtotime($sRunning['timeEnd_gs1']) - $sRunning['timeStart_gs1'])/60;
-                array_push($stationStatusList,$sRunning);
-
-            }
-
-            /**/
-
-            if($stationRTList[$i]->yx_gs2 == 0 && $stationRTList[$i+1]->yx_gs2 == 1 )
-            {
-                $sRunning['timeStart_gs2'] = $stationRTList[$i+1]->Time;
-
-            }
-            if($stationRTList[$i]->yx_gs2 == 1 && $stationRTList[$i+1]->yx_gs2 == 0 )
-            {
-                $sRunning['timeEnd_gs2'] = $stationRTList[$i+1]->Time;
-
-            }
-            if(!empty($sRunning['timeStart_gs2']) && !empty($sRunning['timeEnd_gs2']))
-            {
-                $sRunning['timeGap_gs2'] = abs(strtotime($sRunning['timeEnd_gs2']) - $sRunning['timeStart_gs2'])/60;
-                array_push($stationStatusList,$sRunning);
-
             }
 
         }
 
-        $param = array('stationRTHistory'=> $stationRTList,'stationStatusList' => $stationStatusList);
-        return $param;
+        for($i = 0 ; $i < count($stationStatusList); $i++)
+        {
+
+        }
+
+        return $stationStatusList;
     }
 
 }
