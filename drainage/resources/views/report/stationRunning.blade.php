@@ -91,22 +91,24 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <div class="col-md-3 col-md-offset-4">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#current" data-toggle="tab">泵组电流趋势</a></li>
-                                        <li><a href="#voltage" data-toggle="tab">泵组电压趋势</a></li>
-                                    </ul>
+                                <div class="row">
+                                    <div class="col-md-3 col-md-offset-4">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#current" data-toggle="tab">泵组电流趋势</a></li>
+                                            <li><a href="#voltage" data-toggle="tab">泵组电压趋势</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 <div id="myTabContent" class="tab-content">
                                     <div class="tab-pane fade active in" id="current">
                                         <div class="panel-body custom-panel-body" id="currentContainer"
-                                             style="min-width:400px;height:420px">
+                                             style="min-width:400px;height:400px">
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="voltage">
                                         <div class="panel-body custom-panel-body" id="voltageContainer"
-                                             style="min-width:400px;height:420px">
+                                             style="min-width:400px;height:400px">
                                         </div>
                                     </div>
 
