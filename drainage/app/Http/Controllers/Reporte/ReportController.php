@@ -158,13 +158,14 @@ class ReportController extends Controller
         $cursorPage = null;
         $pageSize = 20;
 
+        return $this->getStationStatusList($this.$this->getStationRTAll($stationID,$searchStartTime,$searchEndTime));
+
         $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
         $param = ['stations' => $stations, 'statusList' => $stationRTPaginate,
             'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
-        return $this->getStationStatusList($stationRTPaginate);
 
         return view('report.stationStatus', $param);
     }
@@ -371,6 +372,32 @@ class ReportController extends Controller
     {
         $user = $this->userLogic->findUser($userID);
         return $user;
+    }
+
+    public function getStationRTAll($stationID,$startTime,$endTime)
+    {
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
+
+        $stationTable = "stationRT_" . $stationNum;
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+
+        if(!empty($searchStartTime) && !empty($searchEndTime))
+        {
+            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+                ->get();
+
+        }
+        else
+        {
+            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+                ->get();
+        }
+
+        return $stationRTList;
     }
 
     public function stationRTHistory($stationID,$startTime,$endTime)
