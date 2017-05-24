@@ -429,6 +429,7 @@ class ReportController extends Controller
     public function getStationStatusList($stationRTList,$equipmentCode)
     {
         $stationStatusList = [];
+        $index = 1;
 
         for($i = 0 ; $i < count($stationRTList)-1;$i++)
         {
@@ -438,25 +439,24 @@ class ReportController extends Controller
             {
                 $sRunning['timeStart'] = $stationRTList[$i+1]->Time;
                 $sRunning['timeEnd'] = '';
+                $sRunning['timeGap'] = '';
+                $sRunning['index'] = $index;
+                $index ++;
                 array_push($stationStatusList,$sRunning);
             }
             if($stationRTList[$i]->$equipmentCode == 1 && $stationRTList[$i+1]->$equipmentCode == 0 )
             {
                 $sRunning['timeStart'] = '';
                 $sRunning['timeEnd'] = $stationRTList[$i+1]->Time;
+                if($index > 1)
+                {
+                    $sRunning['timeGap'] = abs(strtotime($sRunning['timeEnd']) - strtotime($stationStatusList[$index -1]->timeStart))/60;
+                }
+
+                $sRunning['index'] = $index;
+                $index ++;
                 array_push($stationStatusList,$sRunning);
             }
-
-            if(!empty($sRunning['timeStart']) && !empty($sRunning['timeEnd']))
-            {
-                $sRunning['timeGap'] = abs(strtotime($sRunning['timeEnd']) - $sRunning['timeStart'])/60;
-                array_push($stationStatusList,$sRunning);
-            }
-
-        }
-
-        for($i = 0 ; $i < count($stationStatusList); $i++)
-        {
 
         }
 
