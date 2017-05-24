@@ -89,6 +89,12 @@
                                 </div>
                             </form>
 
+                            <div class="panel panel-default custom-panel">
+                                <div class="panel-body custom-panel-body" id="statusContainer"
+                                     style="min-width:400px;height:400px">
+                                </div>
+                            </div>
+
                             @if (!empty($statusList[0]))
                                 <table class="table table-hover table-bordered ">
                                     <thead>
@@ -146,6 +152,9 @@
 @endsection
 
 @section('javascript')
+
+    <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+
     <script>
         $(document).ready(function () {
 
@@ -177,6 +186,93 @@
             $('.pick-event-time').datetimepicker(timePickerConfig);
 
 
+        });
+    </script>
+
+    <script>
+        function dateStrFormat(dateStr) {
+
+            var dateResult = dateStr ;
+            var timeArr=dateStr.replace(" ",":").replace(/\:/g,"-").split("-");
+            if(timeArr.length==6)
+            {
+                dateResult = timeArr[1] + '-' + timeArr[2] + ' ' + timeArr[3] + ':' + timeArr[4];
+            }
+
+            return dateResult;
+
+        }
+    </script>
+
+    <script type="text/javascript">
+
+        function getStationStatusList() {
+            var resultValue = [];
+            $.ajax({
+                type: 'get',
+                url: '/report/realTimeHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}',
+                data: '_token = <?php echo csrf_token() ?>',
+                async: false,//同步
+                success: function (data) {
+                    resultValue = data.stationStatusList;
+                }
+            });
+            return resultValue;
+        }
+
+        var stationStatusList = getStationStatusList();
+
+    </script>
+
+    <script>
+
+        var categories = [];
+        var datas1 = [];
+        var datas2 = [];
+
+        $.each(stationStatusList,function(i,n){
+            categories[i] = dateStrFormat(n["endTime"]);
+            datas1[i] = n["ywhandong"];
+            datas2[i] = n["ywjishui"];
+        });
+
+        var chart = new Highcharts.Chart('waterContainer', {
+            title: {
+                text: '泵站水位趋势',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories:categories
+            },
+            yAxis: {
+                title: {
+                    text: '水位 (米)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '米'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '涵洞水位',
+                data: datas1},{
+                name: '集水池水位',
+                data: datas2}
+            ]
         });
     </script>
 @endsection
