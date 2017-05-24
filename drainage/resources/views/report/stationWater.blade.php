@@ -221,7 +221,9 @@
                 x: -20
             },
             xAxis: {
-                categories:categories
+//                categories:categories
+                type: 'datetime',
+                tickPixelInterval: 600
             },
             yAxis: {
                 title: {
