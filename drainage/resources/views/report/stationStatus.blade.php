@@ -208,10 +208,9 @@
 
         function getStationStatusList() {
             var resultValue = [];
-            var equipment_code = 'yx_b1';
             $.ajax({
                 type: 'get',
-                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}/equipment_code',
+                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}/yx_b1',
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
