@@ -89,6 +89,12 @@
                                 </div>
                             </form>
 
+                            <div class="panel panel-default custom-panel">
+                                <div class="panel-body custom-panel-body" id="currentContainer"
+                                     style="min-width:400px;height:400px">
+                                </div>
+                            </div>
+
                             @if (!empty($runList[0]))
                                 <table class="table table-hover table-bordered ">
                                     <thead>
@@ -180,6 +186,106 @@
             $('.pick-event-time').datetimepicker(timePickerConfig);
 
 
+        });
+    </script>
+
+    <script>
+        function dateStrFormat(dateStr) {
+
+            var dateResult = dateStr ;
+            var timeArr=dateStr.replace(" ",":").replace(/\:/g,"-").split("-");
+            if(timeArr.length==6)
+            {
+                dateResult = timeArr[1] + '-' + timeArr[2] + ' ' + timeArr[3] + ':' + timeArr[4];
+            }
+
+            return dateResult;
+
+        }
+    </script>
+
+    <script type="text/javascript">
+
+        function getStationRTHistory() {
+            var resultValue = [];
+            $.ajax({
+                type: 'get',
+                url: '/report/realTimeHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}',
+                data: '_token = <?php echo csrf_token() ?>',
+                async: false,//同步
+                success: function (data) {
+                    resultValue = data.stationRTHistory;
+                }
+            });
+            return resultValue;
+        }
+
+        var stationRTHistory = getStationRTHistory();
+
+    </script>
+
+    <script>
+
+        var categories = [];
+        var datas1 = [];
+        var datas2 = [];
+        var datas3 = [];
+        var datas4 = [];
+        var datas5 = [];
+
+        $.each(stationRTHistory,function(i,n){
+            categories[i] = dateStrFormat(n["Time"]);
+            datas1[i] = n["ib1"];
+            datas2[i] = n["ib2"];
+            datas3[i] = n["ib3"];
+            datas4[i] = n["ib4"];
+            datas5[i] = n["ib5"];
+        });
+
+        var chart = new Highcharts.Chart('currentContainer', {
+            title: {
+                text: '泵组电流趋势',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories:categories
+            },
+            yAxis: {
+                title: {
+                    text: '电流 (毫安)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '毫安'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '1号泵电流',
+                data: datas1},{
+                name: '2号泵电流',
+                data: datas2},{
+                name: '3号泵电流',
+                data: datas3},{
+                name: '4号泵电流',
+                data: datas4},{
+                name: '5号泵电流',
+                data: datas5},
+
+            ]
         });
     </script>
 @endsection
