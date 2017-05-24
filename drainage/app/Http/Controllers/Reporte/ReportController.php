@@ -158,7 +158,7 @@ class ReportController extends Controller
         $cursorPage = null;
         $pageSize = 20;
 
-        return $this->getStationStatusList($this.$this->getStationRTAll($stationID,$searchStartTime,$searchEndTime));
+        return $this->getStationStatusList($this->getStationRTAll($stationID,$searchStartTime,$searchEndTime));
 
         $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
