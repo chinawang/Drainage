@@ -164,6 +164,8 @@ class ReportController extends Controller
             'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
+        return $this->getStationStatusList($stationRTPaginate);
+
         return view('report.stationStatus', $param);
     }
 
@@ -394,6 +396,11 @@ class ReportController extends Controller
                 ->get();
         }
 
+        return response()->json(array('stationRTHistory'=> $stationRTList), 200);
+    }
+
+    public function getStationStatusList($stationRTList)
+    {
         $stationStatusList = [];
 
         for($i = 0 ; $i < count($stationRTList)-1;$i++)
@@ -526,8 +533,6 @@ class ReportController extends Controller
 
         $param = array('stationRTHistory'=> $stationRTList,'stationStatusList' => $stationStatusList);
         return $param;
-
-        return response()->json(array('stationRTHistory'=> $stationRTList,'stationStatusList' => $stationStatusList), 200);
     }
 
 }
