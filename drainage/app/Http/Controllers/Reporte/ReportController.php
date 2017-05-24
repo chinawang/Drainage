@@ -158,8 +158,6 @@ class ReportController extends Controller
         $cursorPage = null;
         $pageSize = 20;
 
-        return $this->getStationStatusList($this->getStationRTAll($stationID,$searchStartTime,$searchEndTime),'yx_b1');
-
         $stationRTPaginate = $this->getStationRTList($stationNum, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
 
         $param = ['stations' => $stations, 'statusList' => $stationRTPaginate,
@@ -424,6 +422,34 @@ class ReportController extends Controller
         }
 
         return response()->json(array('stationRTHistory'=> $stationRTList), 200);
+    }
+
+    public function statusRTHistory($stationID,$startTime,$endTime,$equipmentCode)
+    {
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
+
+        $stationTable = "stationRT_" . $stationNum;
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+
+        if(!empty($searchStartTime) && !empty($searchEndTime))
+        {
+            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+                ->get();
+
+        }
+        else
+        {
+            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+                ->get();
+        }
+
+        $stationStatusList = $this->getStationStatusList($stationRTList,$equipmentCode);
+
+        return response()->json(array('stationStatusList'=> $stationStatusList), 200);
     }
 
     public function getStationStatusList($stationRTList,$equipmentCode)

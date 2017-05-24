@@ -208,9 +208,10 @@
 
         function getStationStatusList() {
             var resultValue = [];
+            var equipment_code = 'yx_b1';
             $.ajax({
                 type: 'get',
-                url: '/report/realTimeHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}',
+                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}/equipment_code',
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
@@ -230,8 +231,8 @@
         var datas1 = [];
 
         $.each(stationStatusList,function(i,n){
-            categories[i] = dateStrFormat(n["timeEnd_b1"]);
-            datas1[i] = n["timeGap_b1"];
+            categories[i] = dateStrFormat(n["timeEnd"]);
+            datas1[i] = n["timeGap"];
         });
 
         var chart = new Highcharts.Chart('statusContainer', {
