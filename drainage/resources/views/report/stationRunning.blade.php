@@ -67,7 +67,8 @@
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
-                                                       value="{{ $startTime }}" placeholder="起始时间" data-data="yyyy-mm-dd">
+                                                       value="{{ $startTime }}" placeholder="起始时间"
+                                                       data-data="yyyy-mm-dd">
                                             </div>
                                             <label for="time" class="col-md-1 control-label">—</label>
                                             <div class="col-md-4">
@@ -90,8 +91,22 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <div class="panel-body custom-panel-body" id="currentContainer"
-                                     style="min-width:400px;height:400px">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#current" data-toggle="tab">泵组电流趋势</a></li>
+                                    <li><a href="#voltage" data-toggle="tab">泵组电压趋势</a></li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div class="tab-pane fade active in" id="current">
+                                        <div class="panel-body custom-panel-body" id="currentContainer"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="voltage">
+                                        <div class="panel-body custom-panel-body" id="voltageContainer"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -195,10 +210,9 @@
     <script>
         function dateStrFormat(dateStr) {
 
-            var dateResult = dateStr ;
-            var timeArr=dateStr.replace(" ",":").replace(/\:/g,"-").split("-");
-            if(timeArr.length==6)
-            {
+            var dateResult = dateStr;
+            var timeArr = dateStr.replace(" ", ":").replace(/\:/g, "-").split("-");
+            if (timeArr.length == 6) {
                 dateResult = timeArr[1] + '-' + timeArr[2] + ' ' + timeArr[3] + ':' + timeArr[4];
             }
 
@@ -236,18 +250,26 @@
         var datas4 = [];
         var datas5 = [];
 
-        $.each(stationRTHistory,function(i,n){
+        var datas6 = [];
+        var datas7 = [];
+        var datas8 = [];
+
+        $.each(stationRTHistory, function (i, n) {
             categories[i] = dateStrFormat(n["Time"]);
             datas1[i] = n["ib1"];
             datas2[i] = n["ib2"];
             datas3[i] = n["ib3"];
             datas4[i] = n["ib4"];
             datas5[i] = n["ib5"];
+
+            datas6[i] = n["uab"];
+            datas7[i] = n["ubc"];
+            datas8[i] = n["uca"];
         });
 
-        var chart = new Highcharts.Chart('currentContainer', {
+        var chart1 = new Highcharts.Chart('currentContainer', {
             title: {
-                text: '泵组电流趋势',
+                text: '',
                 x: -20
             },
             subtitle: {
@@ -255,7 +277,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories
+                categories: categories
             },
             yAxis: {
                 title: {
@@ -278,15 +300,65 @@
             },
             series: [{
                 name: '1号泵电流',
-                data: datas1},{
+                data: datas1
+            }, {
                 name: '2号泵电流',
-                data: datas2},{
+                data: datas2
+            }, {
                 name: '3号泵电流',
-                data: datas3},{
+                data: datas3
+            }, {
                 name: '4号泵电流',
-                data: datas4},{
+                data: datas4
+            }, {
                 name: '5号泵电流',
-                data: datas5},
+                data: datas5
+            },
+
+            ]
+        });
+
+        var chart2 = new Highcharts.Chart('voltageContainer', {
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories: categories
+            },
+            yAxis: {
+                title: {
+                    text: '电压 (伏)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '伏'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'AB相线电压',
+                data: datas6
+            }, {
+                name: 'BC相线电压',
+                data: datas7
+            }, {
+                name: 'CA相线电压',
+                data: datas8
+            },
 
             ]
         });
