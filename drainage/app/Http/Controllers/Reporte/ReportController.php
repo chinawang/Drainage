@@ -448,10 +448,10 @@ class ReportController extends Controller
             {
                 $sRunning['timeStart'] = '';
                 $sRunning['timeEnd'] = $stationRTList[$i+1]->Time;
-//                if($index > 1)
-//                {
-//                    $sRunning['timeGap'] = abs(strtotime($sRunning['timeEnd']) - strtotime($stationStatusList[$index -1]['timeStart']))/60;
-//                }
+                if($index > 1)
+                {
+                    $sRunning['timeGap'] = abs(strtotime($sRunning['timeEnd']) - strtotime($stationStatusList[$index -2]['timeStart']))/60;
+                }
 
                 $sRunning['index'] = $index;
                 $index ++;
