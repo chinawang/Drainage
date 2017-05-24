@@ -524,6 +524,9 @@ class ReportController extends Controller
 
         }
 
+        $param = array('stationRTHistory'=> $stationRTList,'stationStatusList' => $stationStatusList);
+        return $param;
+
         return response()->json(array('stationRTHistory'=> $stationRTList,'stationStatusList' => $stationStatusList), 200);
     }
 
