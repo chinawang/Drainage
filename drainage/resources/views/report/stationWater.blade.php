@@ -230,7 +230,7 @@
         var datas2 = [];
 
         $.each(stationRTHistory,function(i,n){
-            categories[i] = n["Time"].format('MM-dd h:m');
+            categories[i] = n["Time"].format('YYYY-MM-dd h:m:s');
             datas1[i] = n["ywhandong"];
             datas2[i] = n["ywjishui"];
         });
