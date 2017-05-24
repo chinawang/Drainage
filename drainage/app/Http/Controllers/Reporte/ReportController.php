@@ -419,8 +419,9 @@ class ReportController extends Controller
             if(!empty($sRunning['timeStart_b1']) && !empty($sRunning['timeEnd_b1']))
             {
                 $sRunning['timeGap_b1'] = abs(strtotime($sRunning['timeEnd_b1']) - $sRunning['timeStart_b1'])/60;
+                array_push($stationStatusList,$sRunning);
             }
-            array_push($stationStatusList,$sRunning);
+
 
             /**/
 
@@ -437,8 +438,8 @@ class ReportController extends Controller
             if(!empty($sRunning['timeStart_b2']) && !empty($sRunning['timeEnd_b2']))
             {
                 $sRunning['timeGap_b2'] = abs(strtotime($sRunning['timeEnd_b2']) - $sRunning['timeStart_b2'])/60;
+                array_push($stationStatusList,$sRunning);
             }
-            array_push($stationStatusList,$sRunning);
 
             /**/
 
@@ -455,8 +456,8 @@ class ReportController extends Controller
             if(!empty($sRunning['timeStart_b3']) && !empty($sRunning['timeEnd_b3']))
             {
                 $sRunning['timeGap_b3'] = abs(strtotime($sRunning['timeEnd_b3']) - $sRunning['timeStart_b3'])/60;
+                array_push($stationStatusList,$sRunning);
             }
-            array_push($stationStatusList,$sRunning);
 
             /**/
 
@@ -473,8 +474,9 @@ class ReportController extends Controller
             if(!empty($sRunning['timeStart_b4']) && !empty($sRunning['timeEnd_b4']))
             {
                 $sRunning['timeGap_b4'] = abs(strtotime($sRunning['timeEnd_b4']) - $sRunning['timeStart_b4'])/60;
+                array_push($stationStatusList,$sRunning);
+
             }
-            array_push($stationStatusList,$sRunning);
 
             /**/
 
@@ -491,8 +493,8 @@ class ReportController extends Controller
             if(!empty($sRunning['timeStart_jl']) && !empty($sRunning['timeEnd_jl']))
             {
                 $sRunning['timeGap_jl'] = abs(strtotime($sRunning['timeEnd_jl']) - $sRunning['timeStart_jl'])/60;
+                array_push($stationStatusList,$sRunning);
             }
-            array_push($stationStatusList,$sRunning);
 
             /**/
 
@@ -509,8 +511,9 @@ class ReportController extends Controller
             if(!empty($sRunning['timeStart_gs1']) && !empty($sRunning['timeEnd_gs1']))
             {
                 $sRunning['timeGap_gs1'] = abs(strtotime($sRunning['timeEnd_gs1']) - $sRunning['timeStart_gs1'])/60;
+                array_push($stationStatusList,$sRunning);
+
             }
-            array_push($stationStatusList,$sRunning);
 
             /**/
 
@@ -527,8 +530,9 @@ class ReportController extends Controller
             if(!empty($sRunning['timeStart_gs2']) && !empty($sRunning['timeEnd_gs2']))
             {
                 $sRunning['timeGap_gs2'] = abs(strtotime($sRunning['timeEnd_gs2']) - $sRunning['timeStart_gs2'])/60;
+                array_push($stationStatusList,$sRunning);
+
             }
-            array_push($stationStatusList,$sRunning);
 
         }
 
