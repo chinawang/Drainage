@@ -451,9 +451,9 @@ class ReportController extends Controller
         $stationStatusList2 = $this->getStationStatusList($stationRTList,'yx_b2');
         $stationStatusList3 = $this->getStationStatusList($stationRTList,'yx_b3');
         $stationStatusList4 = $this->getStationStatusList($stationRTList,'yx_b4');
-        $stationStatusList5 = $this->getStationStatusList($stationRTList,'yx_b5');
-        $stationStatusList6 = $this->getStationStatusList($stationRTList,'yx_b6');
-        $stationStatusList7 = $this->getStationStatusList($stationRTList,'yx_b7');
+        $stationStatusList5 = $this->getStationStatusList($stationRTList,'yx_gs1');
+        $stationStatusList6 = $this->getStationStatusList($stationRTList,'yx_gs2');
+        $stationStatusList7 = $this->getStationStatusList($stationRTList,'yx_jl');
 
         $param = array('$stationStatusList1'=> $stationStatusList1,'$stationStatusList2'=> $stationStatusList2,
             '$stationStatusList3'=> $stationStatusList3,'$stationStatusList4'=> $stationStatusList4,

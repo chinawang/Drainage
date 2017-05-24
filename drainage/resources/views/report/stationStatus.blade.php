@@ -90,7 +90,7 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <div class="col-md-8 col-md-offset-2">
+                                <div class="col-md-12 col-md-offset-0">
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#pump1" data-toggle="tab">1号泵启动趋势</a></li>
                                         <li><a href="#pump2" data-toggle="tab">2号泵启动趋势</a></li>
