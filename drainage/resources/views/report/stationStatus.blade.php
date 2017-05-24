@@ -236,7 +236,7 @@
 
         var chart = new Highcharts.Chart('statusContainer', {
             title: {
-                text: '泵组启停趋势',
+                text: '设备启动趋势',
                 x: -20
             },
             subtitle: {
@@ -266,7 +266,7 @@
                 borderWidth: 0
             },
             series: [{
-                name: '1号泵启停时间',
+                name: '1号泵启动时长',
                 data: datas1},
             ]
         });
