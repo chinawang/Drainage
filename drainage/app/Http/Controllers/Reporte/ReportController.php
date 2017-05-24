@@ -405,6 +405,7 @@ class ReportController extends Controller
 
         for($i = 0 ; $i < count($stationRTList)-1;$i++)
         {
+            $sRunning = [];
             if($stationRTList[$i]->yx_b1 == 0 && $stationRTList[$i+1]->yx_b1 == 1 )
             {
                 $sRunning['timeStart_b1'] = $stationRTList[$i+1]->Time;
