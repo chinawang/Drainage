@@ -68,7 +68,8 @@
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
-                                                       value="{{ $startTime }}" placeholder="起始时间" data-data="yyyy-mm-dd">
+                                                       value="{{ $startTime }}" placeholder="起始时间"
+                                                       data-data="yyyy-mm-dd">
                                             </div>
                                             <label for="time" class="col-md-1 control-label">—</label>
                                             <div class="col-md-4">
@@ -178,14 +179,13 @@
 
         });
     </script>
-    
+
     <script>
         function dateStrFormat(dateStr) {
 
-            var dateResult = dateStr ;
-            var timeArr=dateStr.replace(" ",":").replace(/\:/g,"-").split("-");
-            if(timeArr.length==6)
-            {
+            var dateResult = dateStr;
+            var timeArr = dateStr.replace(" ", ":").replace(/\:/g, "-").split("-");
+            if (timeArr.length == 6) {
                 dateResult = timeArr[1] + '-' + timeArr[2] + ' ' + timeArr[3] + ':' + timeArr[4];
             }
 
@@ -220,7 +220,7 @@
         var datas1 = [];
         var datas2 = [];
 
-        $.each(stationRTHistory,function(i,n){
+        $.each(stationRTHistory, function (i, n) {
             categories[i] = dateStrFormat(n["Time"]);
             datas1[i] = n["ywhandong"];
             datas2[i] = n["ywjishui"];
@@ -236,7 +236,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories
+                categories: categories
             },
             yAxis: {
                 title: {
@@ -259,37 +259,14 @@
             },
             series: [{
                 name: '涵洞水位',
-                data: datas1},{
+                data: datas1
+            }, {
                 name: '集水池水位',
-                data: datas2}
+                data: datas2
+            }
             ]
         });
     </script>
 
-    <script>
-        //获取浏览器页面可见高度和宽度
-        var _PageHeight = document.documentElement.clientHeight,
-                _PageWidth = document.documentElement.clientWidth;
-        //计算loading框距离顶部和左部的距离（loading框的宽度为215px，高度为61px）
-        var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,
-                _LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;
-        //在页面未加载完毕之前显示的loading Html自定义内容
-        var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background:#f3f8ff;opacity:0.8;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: auto; height: 57px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: #fff url(/Content/loading.gif) no-repeat scroll 5px 10px; border: 2px solid #95B8E7; color: #696969; font-family:\'Microsoft YaHei\';">页面加载中，请等待...</div></div>';
-        //呈现loading效果
-        document.write(_LoadingHtml);
-        //window.onload = function () {
-        //  var loadingMask = document.getElementById('loadingDiv');
-        //  loadingMask.parentNode.removeChild(loadingMask);
-        //};
-        //监听加载状态改变
-        document.onreadystatechange = completeLoading;
-        //加载状态为complete时移除loading效果
-        function completeLoading() {
-            if (document.readyState == "complete") {
-                var loadingMask = document.getElementById('loadingDiv');
-                loadingMask.parentNode.removeChild(loadingMask);
-            }
-        }
-    </script>
 @endsection
 
