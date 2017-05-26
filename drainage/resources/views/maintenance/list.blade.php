@@ -37,7 +37,7 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($failures[0]))
-                            <table class="table table-hover table-bordered ">
+                            <table class="table table-hover table-bordered " id="tb_failure">
                                 <thead>
                                 <tr>
                                     <th style="width: 80px">序号</th>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($maintenances[0]))
-                            <table class="table table-hover table-bordered ">
+                            <table class="table table-hover table-bordered " id="tb_mainten">
                                 <thead>
                                 <tr>
                                     <th style="width: 80px">序号</th>
@@ -190,9 +190,18 @@
     <script>
         $(function(){
             //$('table tr:not(:first)').remove();
-            var len = $('table tr').length;
-            for(var i = 1;i<len;i++){
-                $('table tr:eq('+i+') td:first').text(i);
+//            var len = $('table#tb_mainten tr').length;
+            for(var i = 1;i<$('table#tb_failure tr').length;i++){
+                $('table#tb_failure tr:eq('+i+') td:first').text(i);
+            }
+
+        });
+
+        $(function(){
+            //$('table tr:not(:first)').remove();
+//            var len = $('table#tb_mainten tr').length;
+            for(var i = 1;i<$('table#tb_mainten tr').length;i++){
+                $('table#tb_mainten tr:eq('+i+') td:first').text(i);
             }
 
         });
