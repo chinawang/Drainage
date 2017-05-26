@@ -78,11 +78,10 @@
                                         <td hidden="hidden">{{ $failure['repairer_name'] }}</td>
                                         <td hidden="hidden">{{ $failure['repair_at'] }}</td>
                                         <td>
-                                            @if($failure['repair_process'] == 0)
-                                                <a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>
-                                            @else
-                                                <a href="/failure/maintenance/lists/{{ $failure['id'] }}" class="btn btn-link">查看维修记录</a>
-                                            @endif
+                                            <a href="/maintenance/add/{{ $failure['id'] }}"
+                                               class="btn btn-link">添加维修</a>
+                                            <a href="/failure/maintenance/lists/{{ $failure['id'] }}"
+                                               class="btn btn-link">查看维修</a>
                                         </td>
                                         <td>
                                             {{--<a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>--}}
