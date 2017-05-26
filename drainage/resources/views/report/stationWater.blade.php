@@ -289,10 +289,8 @@
         //加载状态为complete时移除loading效果
         function completeLoading() {
             if (document.readyState == "complete") {
-                setTimeout(function () {
-                    var loadingMask = document.getElementById('loadingDiv');
-                    loadingMask.parentNode.removeChild(loadingMask);
-                },2000);
+                var loadingMask = document.getElementById('loadingDiv');
+                loadingMask.parentNode.removeChild(loadingMask);
 
             }
         }
