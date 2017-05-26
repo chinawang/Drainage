@@ -29,7 +29,13 @@
                         </li>
                         <li class="failure">
                             <a href="/failure/lists" class="menu-item">
-                                <img class="menu-icon" src="/img/home/failure_blue.png">
+                                <img class="menu-icon" src="/img/home/failure_blue_new.png">
+                                <h4>设备故障管理</h4>
+                            </a>
+                        </li>
+                        <li class="maintenance">
+                            <a href="/maintenance/lists" class="menu-item">
+                                <img class="menu-icon" src="/img/home/maintenance_blue.png">
                                 <h4>设备维修管理</h4>
                             </a>
                         </li>
