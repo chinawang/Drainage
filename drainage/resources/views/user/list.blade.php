@@ -146,7 +146,7 @@
         function completeLoading() {
             if (document.readyState == "complete") {
                 var loadingMask = document.getElementById('loadingDiv');
-//                loadingMask.parentNode.removeChild(loadingMask);
+                loadingMask.parentNode.removeChild(loadingMask);
             }
         }
     </script>
