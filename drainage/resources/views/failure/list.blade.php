@@ -31,7 +31,7 @@
                                 故障记录列表
                             </div>
                             <div class="col-md-6 col-btn">
-                                <a href="/failure/add" class="btn btn-primary btn-sm">添加故障记录</a>
+                                <a href="/failure/add" class="btn btn-primary btn-sm">故障报修</a>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                                             @if($failure['repair_process'] == 0)
                                                 <a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>
                                             @else
-                                                <a href="/failure/maintenance/lists/{{ $failure['id'] }}" class="btn btn-link">查看</a>
+                                                <a href="/failure/maintenance/lists/{{ $failure['id'] }}" class="btn btn-link">查看维修记录</a>
                                             @endif
                                         </td>
                                         <td>

@@ -7,6 +7,7 @@ use App\Http\Logic\Maintenance\MaintenanceLogic;
 use App\Http\Logic\Station\EquipmentLogic;
 use App\Http\Logic\Station\StationLogic;
 use App\Http\Logic\User\UserLogic;
+use App\Http\Validations\Maintenance\FailureValidation;
 use App\Http\Validations\Maintenance\MaintenanceValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -44,21 +45,28 @@ class MaintenanceController extends Controller
     protected $maintenanceValidation;
 
     /**
+     * @var FailureValidation
+     */
+    protected $failureValidation;
+
+    /**
      * MaintenanceController constructor.
      * @param MaintenanceLogic $maintenanceLogic
      * @param MaintenanceValidation $maintenanceValidation
+     * @param FailureValidation $failureValidation
      * @param FailureLogic $failureLogic
      * @param EquipmentLogic $equipmentLogic
      * @param StationLogic $stationLogic
      * @param UserLogic $userLogic
      */
-    public function __construct(MaintenanceLogic $maintenanceLogic,MaintenanceValidation $maintenanceValidation,
+    public function __construct(MaintenanceLogic $maintenanceLogic,MaintenanceValidation $maintenanceValidation,FailureValidation $failureValidation,
                                 FailureLogic $failureLogic,EquipmentLogic $equipmentLogic,StationLogic $stationLogic,UserLogic $userLogic)
     {
         $this->middleware('auth');
 
         $this->maintenanceLogic = $maintenanceLogic;
         $this->maintenanceValidation = $maintenanceValidation;
+        $this->failureValidation = $failureValidation;
         $this->failureLogic = $failureLogic;
         $this->equipmentLogic = $equipmentLogic;
         $this->stationLogic = $stationLogic;
@@ -162,6 +170,34 @@ class MaintenanceController extends Controller
     }
 
     /**
+     * @return mixed
+     */
+    public function failureList()
+    {
+        $input = $this->failureValidation->failurePaginate();
+        $cursorPage      = array_get($input, 'cursor_page', null);
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $pageSize        = array_get($input, 'page_size', 20);
+        $failurePaginate = $this->failureLogic->getFailures($pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        foreach($failurePaginate as $failure)
+        {
+            $equipment = $this->equipmentInfo($failure['equipment_id']);
+            $station = $this->stationInfo($failure['station_id']);
+            $reporter = $this->userInfo($failure['reporter_id']);
+            $repairer = $this->userInfo($failure['repairer_id']);
+
+            $failure['equipment_name'] = $equipment['name'];
+            $failure['station_name'] = $station['name'];
+            $failure['reporter_name'] = $reporter['realname'];
+            $failure['repairer_name'] = $repairer['realname'];
+        }
+
+        return $failurePaginate;
+    }
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function maintenanceList()
@@ -184,7 +220,9 @@ class MaintenanceController extends Controller
             $maintenance['repairer_name'] = $repairer['realname'];
         }
 
-        $param = ['maintenances' => $maintenancePaginate];
+        $failurePaginate = $this->failureList();
+
+        $param = ['maintenances' => $maintenancePaginate,'failures' => $failurePaginate];
         return view('maintenance.list',$param);
     }
 
