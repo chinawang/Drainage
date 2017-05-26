@@ -20,6 +20,8 @@
         </div>
 
     </div>
+    <div id="loadingDiv" style="position:absolute;left:0;width:100%;height:500px;top:0;background:#f3f8ff;opacity:0.8;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: 20px; top:20px; width: auto; height: 57px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: #fff url(/img/loading.gif) no-repeat scroll 5px 10px; border: 2px solid #95B8E7; color: #696969; font-family:\'Microsoft YaHei\';">页面加载中...</div></div>
+
 @endsection
 
 @section('content')
