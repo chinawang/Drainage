@@ -115,4 +115,15 @@
         </script>
     @endforeach
 
+    <script>
+        $(function(){
+            //$('table tr:not(:first)').remove();
+//            var len = $('table#tb_mainten tr').length;
+            for(var i = 1;i<$('table tr').length;i++){
+                $('table tr:eq('+i+') td:first').text(i);
+            }
+
+        });
+    </script>
+
 @endsection
