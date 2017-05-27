@@ -267,8 +267,6 @@
             ]
         });
 
-        chart.showLoading('Loading data ...');
-
     </script>
 
     <!--Loading-->
