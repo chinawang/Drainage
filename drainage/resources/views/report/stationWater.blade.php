@@ -266,6 +266,12 @@
             }
             ]
         });
+
+        chart.showLoading({
+            text : '正在努力的读取数据中...',
+        });
+
+
     </script>
 
     <!--Loading-->
