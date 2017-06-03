@@ -70,9 +70,9 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
 
-                    {{--<li class="dateStr" id="dateStr"></li>--}}
+                {{--<li class="dateStr" id="dateStr"></li>--}}
 
-                    <!-- Authentication Links -->
+                <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">登录</a></li>
                         <li><a href="{{ route('register') }}">注册</a></li>
@@ -165,8 +165,30 @@
 </script>
 
 <!--天气-->
-<script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
-<script>tpwidget("init", {
+<script>
+    (function (T, h, i, n, k, P, a, g, e) {
+        g = function () {
+            P = h.createElement(i);
+            a = h.getElementsByTagName(i)[0];
+            P.src = k;
+            P.charset = "utf-8";
+            P.async = 1;
+            a.parentNode.insertBefore(P, a)
+        };
+        T["ThinkPageWeatherWidgetObject"] = n;
+        T[n] || (T[n] = function () {
+            (T[n].q = T[n].q || []).push(arguments)
+        });
+        T[n].l = +new Date();
+        if (T.attachEvent) {
+            T.attachEvent("onload", g)
+        } else {
+            T.addEventListener("load", g, false)
+        }
+    }(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))
+</script>
+<script>
+    tpwidget("init", {
         "flavor": "slim",
         "location": "WW0V9QP93VS8",
         "geolocation": "disabled",
@@ -176,11 +198,12 @@
         "container": "tp-weather-widget",
         "bubble": "enabled",
         "alarmType": "badge",
-        "color": "#C6C6C6",
+        "color": "#FFFFFF",
         "uid": "U4954D65B6",
-        "hash": "59143c660a039c6c14bafea5b44a6b3b"
+        "hash": "45ac23d099f73c1ab7a6f95c18371794"
     });
-    tpwidget("show");</script>
+    tpwidget("show");
+</script>
 
 @yield('javascript')
 
