@@ -53,18 +53,17 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
-                <div class="navbar-line"></div>
+                {{--<div class="navbar-line"></div>--}}
 
                 <div class="navbar-subtitle">
                     @yield('subtitle')
-                    <div id="tp-weather-widget"></div>
                 </div>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-
+                    <div id="tp-weather-widget"></div>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
