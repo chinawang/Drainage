@@ -89,14 +89,14 @@ class RbacLogic extends Logic
 
         $conditions['user_id'] = $uid;
         $fileds = ['role_id'];
-        return $this->userRoles[$uid] = $this->userRoleRepository->getBy($conditions,array(),$fileds);
+        return $this->userRoles[$uid] = $this->object_to_array($this->userRoleRepository->getBy($conditions,array(),$fileds));
     }
 
     public function getRoleActions($roleId)
     {
         $conditions['role_id'] = $roleId;
         $fileds = ['permission_id'];
-        return $this->rolePermissionRepository->getBy($conditions,array(),$fileds);
+        return $this->object_to_array($this->rolePermissionRepository->getBy($conditions,array(),$fileds));
     }
 
     public function getUserActions($uid)
@@ -128,6 +128,19 @@ class RbacLogic extends Logic
         $conditions['name'] = $actionName;
         $fileds = ['id'];
         return $this->permissionRepository->getBy($conditions,array(),$fileds);
+    }
+
+    /**
+     * object 转 array
+     */
+    function object_to_array($obj){
+        $_arr = is_object($obj)? get_object_vars($obj) : $obj;
+        foreach ($_arr as $key => $val) {
+            $val = (is_array($val)) || is_object($val) ? object_to_array($val) : $val;
+            $arr[$key] = $val;
+        }
+
+        return $arr;
     }
 
 }
