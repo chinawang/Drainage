@@ -52,7 +52,7 @@ class RbacLogic extends Logic
      * @param UserRoleRepository $userRoleRepository
      * @param RolePermissionRepository $rolePermissionRepository
      */
-    public function __construct(PermissionRepository $permissionRepository,UserRoleRepository $userRoleRepository,
+    public function __construct(PermissionRepository $permissionRepository, UserRoleRepository $userRoleRepository,
                                 RolePermissionRepository $rolePermissionRepository)
     {
         $this->permissionRepository = $permissionRepository;
@@ -60,7 +60,7 @@ class RbacLogic extends Logic
         $this->rolePermissionRepository = $rolePermissionRepository;
     }
 
-    public function check($uid,$action)
+    public function check($uid, $action)
     {
         if (empty($uid)) return false;
 
@@ -83,7 +83,6 @@ class RbacLogic extends Logic
         if (!in_array($actionId, $userActions)) return false;
 
 
-
         return true;
     }
 
@@ -93,14 +92,14 @@ class RbacLogic extends Logic
 
         $conditions['user_id'] = $uid;
         $fileds = ['role_id'];
-        return $this->userRoles[$uid] = $this->userRoleRepository->getBy($conditions,array(),$fileds);
+        return $this->userRoles[$uid] = $this->object_to_array($this->userRoleRepository->getBy($conditions, array(), $fileds));
     }
 
     public function getRoleActions($roleId)
     {
         $conditions['role_id'] = $roleId;
         $fileds = ['permission_id'];
-        return $this->object_to_array($this->rolePermissionRepository->getBy($conditions,array(),$fileds));
+        return $this->object_to_array($this->rolePermissionRepository->getBy($conditions, array(), $fileds));
     }
 
     public function getUserActions($uid)
@@ -112,10 +111,9 @@ class RbacLogic extends Logic
         $userRoles = $this->userRoles[$uid];
         $userActions = array();
 
-        for($i = 0 ; $i < count($userRoles) ; $i++)
-        {
+        for ($i = 0; $i < count($userRoles); $i++) {
             $tmpActions = $this->getRoleActions($userRoles[$i]);
-            $userActions = array_merge($userActions,$tmpActions);
+            $userActions = array_merge($userActions, $tmpActions);
         }
 
         $this->userActions[$uid] = empty($userActions) ? array() : $userActions;
@@ -135,35 +133,21 @@ class RbacLogic extends Logic
     {
         $conditions['name'] = $actionName;
         $fileds = ['id'];
-        return $this->permissionRepository->getBy($conditions,array(),$fileds);
+        return $this->permissionRepository->getBy($conditions, array(), $fileds);
     }
 
     /**
      * object 转 array
      */
-    function object_to_array($cgi,$type=0){
-        if(is_object($cgi)) {
-            $cgi = get_object_vars($cgi);
-        }
-        if(!is_array($cgi)) {
-            $cgi = array();
-        }
-        foreach($cgi as $kk=>$vv) {
-            if(is_object($vv)) {
-                $cgi[$kk] = get_object_vars($vv);
+    function object_to_array($stdclassobject)
+    {
+        $_array = is_object($stdclassobject) ? get_object_vars($stdclassobject) : $stdclassobject;
 
-                object_to_array($cgi[$kk],$type);
-                //utf8_gbk($vv);
-            }
-            else if(is_array($vv)) {
-                object_to_array($cgi[$kk],$type);
-            } else {
-                $v = $vv;
-                $k = $kk;
-                $cgi["$k"] = $v;
-            }
+        foreach ($_array as $key => $value) {
+            $value = (is_array($value) || is_object($value)) ? object_to_array($value) : $value;
+            $array[$key] = $value;
         }
-        return $cgi;
+        return $array;
     }
 
 }
