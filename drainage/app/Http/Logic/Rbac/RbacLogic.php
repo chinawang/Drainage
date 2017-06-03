@@ -116,8 +116,9 @@ class RbacLogic extends Logic
 
         $this->userActions[$uid] = empty($userActions) ? array() : $userActions;
 
+        $test = $this->userActions[$uid];
 
-        return "test";
+        return $test[0];
     }
 
     /**
