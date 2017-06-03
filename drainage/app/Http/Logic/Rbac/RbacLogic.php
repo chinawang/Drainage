@@ -67,6 +67,8 @@ class RbacLogic extends Logic
         // role
         $userRoles = $this->getUserRoles($uid);
 
+        echo $userRoles;
+
         // super administrator
         if (in_array(1, $userRoles)) return true;
 
@@ -79,6 +81,8 @@ class RbacLogic extends Logic
         // check permission
         $userActions = $this->getUserActions($uid);
         if (!in_array($actionId, $userActions)) return false;
+
+
 
         return true;
     }
