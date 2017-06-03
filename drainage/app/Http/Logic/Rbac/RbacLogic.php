@@ -115,7 +115,7 @@ class RbacLogic extends Logic
         }
 
         $this->userActions[$uid] = empty($userActions) ? array() : $userActions;
-        $result = implode(',',$this->userActions[$uid]);
+//        $result = implode(',',$this->userActions[$uid]);
 
         return "success";
     }
