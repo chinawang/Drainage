@@ -63,13 +63,14 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <div id="tp-weather-widget"></div>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
 
                 {{--<li class="dateStr" id="dateStr"></li>--}}
+                    <li><div id="tp-weather-widget"></div></li>
 
                 <!-- Authentication Links -->
                     @if (Auth::guest())
