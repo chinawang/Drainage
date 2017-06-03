@@ -58,11 +58,12 @@
                 <div class="navbar-subtitle">
                     @yield('subtitle')
                     <span>
-                        {{ app('App\Http\Logic\Rbac\RbacLogic')->getUserActions(Auth::user()->id) }}
+                        {{--{{ app('App\Http\Logic\Rbac\RbacLogic')->getUserActions(Auth::user()->id) }}--}}
+                        {{ Auth::user()->id }}
                     </span>
-                    {{--@if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'user-add'))--}}
-                        {{--<span>BingGo!</span>--}}
-                    {{--@endif--}}
+                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'user-add'))
+                        <span>BingGo!</span>
+                    @endif
                 </div>
             </div>
 
