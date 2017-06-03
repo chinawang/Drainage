@@ -142,12 +142,12 @@ class RbacLogic extends Logic
     function object_to_array($stdclassobject)
     {
         $_array = is_object($stdclassobject) ? get_object_vars($stdclassobject) : $stdclassobject;
-
+        $array = array();
         foreach ($_array as $key => $value) {
             $value = (is_array($value) || is_object($value)) ? object_to_array($value) : $value;
-            $_array[$key] = $value;
+            $array[$key] = $value;
         }
-        return $_array;
+        return $array;
     }
 
 }
