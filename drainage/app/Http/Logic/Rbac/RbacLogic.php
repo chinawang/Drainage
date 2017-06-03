@@ -105,7 +105,15 @@ class RbacLogic extends Logic
     {
         $conditions['role_id'] = $roleId;
         $fileds = ['permission_id'];
-        return $this->object_to_array($this->rolePermissionRepository->getBy($conditions, array(), $fileds));
+        $lists = $this->rolePermissionRepository->getBy($conditions, array(), $fileds);
+        $result = array();
+
+        foreach ($lists as $action)
+        {
+            array_push($result,$action->permission_id);
+        }
+
+        return $result;
     }
 
     public function getUserActions($uid)
