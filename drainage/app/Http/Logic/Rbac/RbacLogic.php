@@ -146,6 +146,10 @@ class RbacLogic extends Logic
         $conditions['name'] = $actionName;
         $fileds = ['id'];
         $result = $this->permissionRepository->findBy($conditions, array(), $fileds);
+        if(empty($result))
+        {
+            return 0;
+        }
         return $result->id;
     }
 
