@@ -192,9 +192,65 @@ class StationController extends Controller
             $stationNum = $station['station_number'];
             $stationRT = $this->findStationRT($stationNum);
 
-            $station['status'] = 'yellow';
-            $station['runPump'] = 2;
-            $station['stopPump'] = 0;
+            $runCount = 0;
+            $stopCount = 0;
+
+            if($stationRT[0]->yx_b1 == '1')
+            {
+                $runCount ++;
+            }
+            else
+            {
+                $stopCount ++;
+            }
+
+            if($stationRT[0]->yx_b2 == '1')
+            {
+                $runCount ++;
+            }
+            else
+            {
+                $stopCount ++;
+            }
+
+            if($stationRT[0]->yx_b3 == '1')
+            {
+                $runCount ++;
+            }
+            else
+            {
+                $stopCount ++;
+            }
+
+            if($stationRT[0]->yx_b4 == '1')
+            {
+                $runCount ++;
+            }
+            else
+            {
+                $stopCount ++;
+            }
+
+            if($runCount == 0)
+            {
+                $station['status'] = 'grey';
+            }
+            elseif ($stopCount == 0)
+            {
+                $station['status'] = 'red';
+            }
+            elseif ($stopCount == 1)
+            {
+                $station['status'] = 'yellow';
+            }
+            else
+            {
+                $station['status'] = 'green';
+            }
+
+
+            $station['runPump'] = $runCount;
+            $station['stopPump'] = $stopCount;
             $station['culvertWater'] = $stationRT[0]->ywhandong;
             $station['tankWater'] = $stationRT[0]->ywjishui;
             $station['Time'] = $stationRT[0]->Time;

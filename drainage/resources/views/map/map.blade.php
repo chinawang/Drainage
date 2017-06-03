@@ -138,12 +138,12 @@
                 infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}</strong>');
                 var contentHtml = '<div class="row" style="width: 280px;margin: 10px 0;">' +
                         '<div class="col-md-3 col-md-offset-0" style="height: 60px;line-height: 60px">' +
-                        '<img src="/img/map/dot_yellow.png" style="width: 32px;height: 32px;">' +
+                        '<img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 32px;height: 32px;">' +
                         '</div>' +
                         '<div class="col-md-6 col-md-offset-0" style="margin-left: -5px">' +
-                        '<div style="font-size: 14px;color:#4a4a4a">已启动泵组: 3组</div>' +
-                        '<div style="font-size: 14px;color:#4a4a4a">未启动泵组: 2组</div>' +
-                        '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: 2.8米</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">已启动泵组: {{ $station['runPump'] }}组</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">未启动泵组: {{ $station['stopPump'] }}组</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: {{ $station['culvertWater'] }}米</div>' +
                         '</div>' +
                         '<div class="col-md-3 col-md-offset-0">' +
                         '<a href="/station/runDetail/{{ $station['id'] }}" class="btn-link" style="font-size: 12px;height: 60px;line-height: 60px">详情</a>' +
