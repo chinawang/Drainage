@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Rbac;
 
 use App\Http\Logic\Rbac\PermissionLogic;
+use App\Http\Logic\Rbac\RbacLogic;
 use App\Http\Validations\Rbac\PermissionValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,17 +20,20 @@ class PermissionController extends Controller
      */
     protected $permissionValidation;
 
+    protected $rbacLogic;
+
     /**
      * PermissionController constructor.
      * @param PermissionLogic $permissionLogic
      * @param PermissionValidation $permissionValidation
      */
-    public function __construct(PermissionLogic $permissionLogic,PermissionValidation $permissionValidation)
+    public function __construct(PermissionLogic $permissionLogic,PermissionValidation $permissionValidation,RbacLogic $rbacLogic)
     {
         $this->middleware('auth');
 
         $this->permissionLogic = $permissionLogic;
         $this->permissionValidation = $permissionValidation;
+        $this->rbacLogic=$rbacLogic;
     }
 
     /**
@@ -174,5 +178,10 @@ class PermissionController extends Controller
         }
 
         return redirect('/permission/lists');
+    }
+
+    public function check()
+    {
+        return $this->rbacLogic->check(3,'user-add');
     }
 }

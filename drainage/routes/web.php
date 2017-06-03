@@ -112,6 +112,8 @@ Route::post('/permission/update/{permission_id}','Rbac\PermissionController@upda
 //删除权限
 Route::post('/permission/delete/{permission_id}','Rbac\PermissionController@deletePermission');
 
+Route::get('/permission/test', 'Rbac\PermissionController@check');
+
 
 /**
  *角色相关
