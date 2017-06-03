@@ -93,9 +93,10 @@ class RbacLogic extends Logic
         $conditions['user_id'] = $uid;
         $fileds = ['role_id'];
         $lists = $this->userRoleRepository->getBy($conditions,array(),$fileds);
+        $this->userRoles[$uid] = array();
         foreach ($lists as $role)
         {
-            array_push($this->userRoles[$uid],'role');
+            array_push($this->userRoles[$uid],$role->role_id);
         }
         return $this->userRoles[$uid];
     }
