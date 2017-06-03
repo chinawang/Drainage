@@ -74,7 +74,7 @@
                 <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">登录</a></li>
-                        <li><a href="{{ route('register') }}">注册</a></li>
+                        {{--<li><a href="{{ route('register') }}">注册</a></li>--}}
                     @else
                         {{--<li class="back-to-home"><a href="{{ url('/') }}">返回首页</a></li>--}}
                         <li class="back-to-home" style="padding-top: 15px;">
