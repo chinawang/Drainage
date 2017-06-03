@@ -114,7 +114,9 @@ class RbacLogic extends Logic
             $userActions = array_merge($userActions,$tmpActions);
         }
 
-        return $this->userActions[$uid] = empty($userActions) ? array() : $userActions;
+        $this->userActions[$uid] = empty($userActions) ? array() : $userActions;
+
+        return implode(',',$this->userActions[$uid]);
     }
 
     /**
