@@ -67,7 +67,7 @@ class RbacLogic extends Logic
         // role
         $userRoles = $this->getUserRoles($uid);
 
-        echo implode(",",$userRoles);
+        return $userRoles;
 
         // super administrator
         if (in_array(1, $userRoles)) return true;
