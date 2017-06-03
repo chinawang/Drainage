@@ -57,7 +57,7 @@
 
                 <div class="navbar-subtitle">
                     @yield('subtitle')
-                    @if (app('App.Http.Logic.Rbac.RbacLogic')->check(Auth::user()->id, 'user-add'))
+                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'user-add'))
                         <span>BingGo!</span>
                     @endif
                 </div>
