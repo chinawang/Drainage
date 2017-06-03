@@ -92,7 +92,7 @@ class RbacLogic extends Logic
 
         $conditions['user_id'] = $uid;
         $fileds = ['role_id'];
-        return $this->userRoles[$uid] = call_user_func_array(array($this->userRoleRepository->getBy($conditions),'lists'),$fileds);
+        return $this->userRoles[$uid] = call_user_func_array($this->userRoleRepository->getBy($conditions),$fileds);
     }
 
     public function getRoleActions($roleId)
