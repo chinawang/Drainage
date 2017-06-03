@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('subtitle')
-    <span>登录</span>
+    {{--<span>登录</span>--}}
 @endsection
 
 @section('content')
@@ -58,9 +58,9 @@
                                     登录
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    忘记密码?
-                                </a>
+                                {{--<a class="btn btn-link" href="{{ route('password.request') }}">--}}
+                                    {{--忘记密码?--}}
+                                {{--</a>--}}
                             </div>
                         </div>
                     </form>

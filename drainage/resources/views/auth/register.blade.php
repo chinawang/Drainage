@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('subtitle')
-    <span>注册</span>
+    {{--<span>注册</span>--}}
 @endsection
 
 @section('content')
