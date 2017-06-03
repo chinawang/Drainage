@@ -145,9 +145,9 @@ class RbacLogic extends Logic
 
         foreach ($_array as $key => $value) {
             $value = (is_array($value) || is_object($value)) ? object_to_array($value) : $value;
-            $array[$key] = $value;
+            $_array[$key] = $value;
         }
-        return $array;
+        return $_array;
     }
 
 }
