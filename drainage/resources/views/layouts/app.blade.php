@@ -60,9 +60,9 @@
                     <span>
                         {{ app('App\Http\Logic\Rbac\RbacLogic')->getUserActions(Auth::user()->id) }}
                     </span>
-                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'user-add'))
-                        <span>BingGo!</span>
-                    @endif
+                    {{--@if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'user-add'))--}}
+                        {{--<span>BingGo!</span>--}}
+                    {{--@endif--}}
                 </div>
             </div>
 
