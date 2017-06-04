@@ -53,7 +53,9 @@
                                     <th>解决办法</th>
                                     <th>维修人</th>
                                     <th>维修时间</th>
-                                    <th>操作</th>
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,8 +68,9 @@
                                         <td>{{ $maintenance['repair_solution'] }}</td>
                                         <td>{{ $maintenance['repairer_name'] }}</td>
                                         <td>{{ $maintenance['repair_at'] }}</td>
-                                        <td>
-                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
+
+                                        @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
+                                            <td>
                                                 <a href="/maintenance/edit/{{ $maintenance['id'] }}"
                                                    class="btn btn-link">编辑</a>
                                                 <a href="#" class="btn btn-link btn-delete-station"
@@ -75,13 +78,13 @@
                                                 <form role="form" method="POST" style="display: none"
                                                       action="/maintenance/delete/{{ $maintenance['id'] }}">
                                                     {{ csrf_field() }}
-                                                    <button type="submit" id="btn-delete-submit-{{ $maintenance['id'] }}">
+                                                    <button type="submit"
+                                                            id="btn-delete-submit-{{ $maintenance['id'] }}">
                                                     </button>
                                                 </form>
-                                            @else
-                                                无
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -34,7 +34,7 @@
                             </div>
                             @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'role-add'))
                                 <div class="col-md-6 col-btn">
-                                    <a href="/role/add" class="btn btn-primary btn-sm" >添加角色</a>
+                                    <a href="/role/add" class="btn btn-primary btn-sm">添加角色</a>
                                 </div>
                             @endif
                         </div>
@@ -47,7 +47,9 @@
                                     <th style="width: 80px">序号</th>
                                     <th>角色</th>
                                     <th>权限</th>
-                                    <th>操作</th>
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'role-edit'))
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -64,8 +66,9 @@
                                                 @endforeach
                                             @endif
                                         </td>
-                                        <td>
-                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'role-edit'))
+
+                                        @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'role-edit'))
+                                            <td>
                                                 <a href="/role/permission/edit/{{ $role['id'] }}" class="btn btn-link">设置权限</a>
                                                 <a href="/role/edit/{{ $role['id'] }}" class="btn btn-link">编辑</a>
                                                 <a href="#" class="btn btn-link btn-delete-station"
@@ -76,10 +79,9 @@
                                                     <button type="submit" id="btn-delete-submit-{{ $role['id'] }}">
                                                     </button>
                                                 </form>
-                                            @else
-                                                无
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -122,11 +124,11 @@
     @endforeach
 
     <script>
-        $(function(){
+        $(function () {
             //$('table tr:not(:first)').remove();
 //            var len = $('table#tb_mainten tr').length;
-            for(var i = 1;i<$('table tr').length;i++){
-                $('table tr:eq('+i+') td:first').text(i);
+            for (var i = 1; i < $('table tr').length; i++) {
+                $('table tr:eq(' + i + ') td:first').text(i);
             }
 
         });

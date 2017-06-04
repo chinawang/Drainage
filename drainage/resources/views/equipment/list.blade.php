@@ -54,7 +54,9 @@
                                     <th>设备管理员</th>
                                     <th>数量</th>
                                     <th>变动情况</th>
-                                    <th>操作</th>
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-edit'))
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -70,8 +72,9 @@
                                         <td>{{ $equipment['custodian_name'] }}</td>
                                         <td>{{ $equipment['quantity'] }}</td>
                                         <td>{{ $equipment['alteration'] }}</td>
-                                        <td>
-                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-edit'))
+
+                                        @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-edit'))
+                                            <td>
                                                 <a href="/equipment/edit/{{ $equipment['id'] }}"
                                                    class="btn btn-link">编辑</a>
                                                 <a href="#" class="btn btn-link btn-delete-station"
@@ -82,10 +85,9 @@
                                                     <button type="submit" id="btn-delete-submit-{{ $equipment['id'] }}">
                                                     </button>
                                                 </form>
-                                            @else
-                                                无
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                                 </tbody>

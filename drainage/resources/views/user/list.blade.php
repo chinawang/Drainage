@@ -51,7 +51,9 @@
                                     <th>联系方式</th>
                                     <th>登录账号</th>
                                     <th>角色</th>
-                                    <th>操作</th>
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'user-edit'))
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -71,8 +73,9 @@
                                                 @endforeach
                                             @endif
                                         </td>
-                                        <td>
-                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'user-edit'))
+
+                                        @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'user-edit'))
+                                            <td>
                                                 <a href="/user/role/edit/{{ $user['id'] }}"
                                                    class="btn btn-link">设置角色</a>
                                                 <a href="/user/edit/{{ $user['id'] }}" class="btn btn-link">编辑</a>
@@ -86,10 +89,9 @@
                                                     <button type="submit" id="btn-delete-submit-{{ $user['id'] }}">
                                                     </button>
                                                 </form>
-                                            @else
-                                                无
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                                 </tbody>

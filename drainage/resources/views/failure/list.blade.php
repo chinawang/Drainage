@@ -54,7 +54,9 @@
                                     <th hidden="hidden">维修人</th>
                                     <th hidden="hidden">维修时间</th>
                                     <th>维修记录</th>
-                                    <th>操作</th>
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-edit'))
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -85,8 +87,9 @@
                                             <a href="/failure/maintenance/lists/{{ $failure['id'] }}"
                                                class="btn btn-link">查看维修</a>
                                         </td>
-                                        <td>
-                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-edit'))
+
+                                        @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-edit'))
+                                            <td>
                                                 {{--<a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>--}}
                                                 <a href="/failure/edit/{{ $failure['id'] }}" class="btn btn-link">编辑</a>
                                                 <a href="#" class="btn btn-link btn-delete-station"
@@ -97,10 +100,9 @@
                                                     <button type="submit" id="btn-delete-submit-{{ $failure['id'] }}">
                                                     </button>
                                                 </form>
-                                            @else
-                                                无
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -51,7 +51,9 @@
                                     <th>维修进度</th>
                                     <th hidden="hidden">维修人</th>
                                     <th hidden="hidden">维修时间</th>
-                                    <th>操作</th>
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-add-maintenance') || app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-view-maintenance'))
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -76,17 +78,26 @@
                                         </td>
                                         <td hidden="hidden">{{ $failure['repairer_name'] }}</td>
                                         <td hidden="hidden">{{ $failure['repair_at'] }}</td>
-                                        <td>
-                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-add-maintenance'))
+
+                                        @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-add-maintenance') && app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-view-maintenance'))
+                                            <td>
                                                 <a href="/maintenance/add/{{ $failure['id'] }}"
                                                    class="btn btn-link">添加维修</a>
-                                            @elseif(app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-view-maintenance'))
                                                 <a href="/failure/maintenance/lists/{{ $failure['id'] }}"
                                                    class="btn btn-link">查看维修</a>
-                                            @else
-                                                无
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @elseif(app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-add-maintenance'))
+                                            <td>
+                                                <a href="/maintenance/add/{{ $failure['id'] }}"
+                                                   class="btn btn-link">添加维修</a>
+                                            </td>
+                                        @elseif(app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-view-maintenance'))
+                                            <td>
+                                                <a href="/failure/maintenance/lists/{{ $failure['id'] }}"
+                                                   class="btn btn-link">查看维修</a>
+                                            </td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -126,7 +137,9 @@
                                     <th>解决办法</th>
                                     <th>维修人</th>
                                     <th>维修时间</th>
-                                    <th>操作</th>
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -139,8 +152,9 @@
                                         <td>{{ $maintenance['repair_solution'] }}</td>
                                         <td>{{ $maintenance['repairer_name'] }}</td>
                                         <td>{{ $maintenance['repair_at'] }}</td>
-                                        <td>
-                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
+
+                                        @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
+                                            <td>
                                                 <a href="/maintenance/edit/{{ $maintenance['id'] }}"
                                                    class="btn btn-link">编辑</a>
                                                 <a href="#" class="btn btn-link btn-delete-station"
@@ -148,13 +162,13 @@
                                                 <form role="form" method="POST" style="display: none"
                                                       action="/maintenance/delete/{{ $maintenance['id'] }}">
                                                     {{ csrf_field() }}
-                                                    <button type="submit" id="btn-delete-submit-{{ $maintenance['id'] }}">
+                                                    <button type="submit"
+                                                            id="btn-delete-submit-{{ $maintenance['id'] }}">
                                                     </button>
                                                 </form>
-                                            @else
-                                                无
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                                 </tbody>
