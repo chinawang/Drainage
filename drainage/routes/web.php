@@ -93,6 +93,9 @@ Route::post('/equipment/update/{equipment_id}','Station\EquipmentController@upda
 //删除设备
 Route::post('/equipment/delete/{equipment_id}','Station\EquipmentController@deleteEquipment');
 
+//设备导出
+Route::get('/equipment/export','Station\EquipmentController@exportToExcel');
+
 
 /**
  *权限相关

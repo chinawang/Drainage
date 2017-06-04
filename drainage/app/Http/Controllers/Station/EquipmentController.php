@@ -8,6 +8,7 @@ use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Station\EquipmentValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Excel;
 
 class EquipmentController extends Controller
 {
@@ -38,8 +39,8 @@ class EquipmentController extends Controller
      * @param StationLogic $stationLogic
      * @param UserLogic $userLogic
      */
-    public function __construct(EquipmentLogic $equipmentLogic,EquipmentValidation $equipmentValidation,
-                                StationLogic $stationLogic,UserLogic $userLogic)
+    public function __construct(EquipmentLogic $equipmentLogic, EquipmentValidation $equipmentValidation,
+                                StationLogic $stationLogic, UserLogic $userLogic)
     {
         $this->middleware('auth');
 
@@ -59,8 +60,8 @@ class EquipmentController extends Controller
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['stations' => $stations,'users' => $users];
-        return view('equipment.addEquipment',$param);
+        $param = ['stations' => $stations, 'users' => $users];
+        return view('equipment.addEquipment', $param);
     }
 
     /**
@@ -83,8 +84,8 @@ class EquipmentController extends Controller
         $stations = $this->stationLogic->getAllStations();
         $users = $this->userLogic->getAllUsers();
 
-        $param = ['equipment' => $equipment,'stations' => $stations,'users' => $users];
-        return view('equipment.updateEquipment',$param);
+        $param = ['equipment' => $equipment, 'stations' => $stations, 'users' => $users];
+        return view('equipment.updateEquipment', $param);
     }
 
     /**
@@ -132,14 +133,13 @@ class EquipmentController extends Controller
     {
         $input = $this->equipmentValidation->equipmentPaginate();
 
-        $cursorPage      = array_get($input, 'cursor_page', null);
-        $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
-        $pageSize        = array_get($input, 'page_size', 1);
-        $equipmentPaginate = $this->equipmentLogic->getEquipments($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        $cursorPage = array_get($input, 'cursor_page', null);
+        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderDirection = array_get($input, 'order_direction', 'asc');
+        $pageSize = array_get($input, 'page_size', 20);
+        $equipmentPaginate = $this->equipmentLogic->getEquipments($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
-        foreach($equipmentPaginate as $equipment)
-        {
+        foreach ($equipmentPaginate as $equipment) {
             $station = $this->stationInfo($equipment['station_id']);
             $leader = $this->userInfo($equipment['leader_id']);
             $custodian = $this->userInfo($equipment['custodian_id']);
@@ -151,7 +151,7 @@ class EquipmentController extends Controller
 
         $param = ['equipments' => $equipmentPaginate];
 //        return $equipmentPaginate;
-        return view('equipment.list',$param);
+        return view('equipment.list', $param);
     }
 
     /**
@@ -162,14 +162,13 @@ class EquipmentController extends Controller
     {
         $input = $this->equipmentValidation->equipmentPaginate();
 
-        $cursorPage      = array_get($input, 'cursor_page', null);
-        $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
-        $pageSize        = array_get($input, 'page_size', 20);
-        $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+        $cursorPage = array_get($input, 'cursor_page', null);
+        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderDirection = array_get($input, 'order_direction', 'asc');
+        $pageSize = array_get($input, 'page_size', 20);
+        $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID, $pageSize, $orderColumn, $orderDirection, $cursorPage);
 
-        foreach($equipmentPaginate as $equipment)
-        {
+        foreach ($equipmentPaginate as $equipment) {
             $station = $this->stationInfo($equipment['station_id']);
             $leader = $this->userInfo($equipment['leader_id']);
             $custodian = $this->userInfo($equipment['custodian_id']);
@@ -180,7 +179,7 @@ class EquipmentController extends Controller
         }
 
         $param = ['equipments' => $equipmentPaginate];
-        return view('equipment.listOfStation',$param);
+        return view('equipment.listOfStation', $param);
     }
 
     /**
@@ -193,21 +192,18 @@ class EquipmentController extends Controller
         $input = $this->equipmentValidation->storeNewEquipment();
         $result = $this->equipmentLogic->createEquipment($input);
 
-        if($result)
-        {
+        if ($result) {
             session()->flash('flash_message', [
-                'title'     => '保存成功!',
-                'message'   => '',
-                'level'     => 'success'
+                'title' => '保存成功!',
+                'message' => '',
+                'level' => 'success'
             ]);
             return redirect('/equipment/lists');
-        }
-        else
-        {
+        } else {
             session()->flash('flash_message_overlay', [
-                'title'     => '保存失败!',
-                'message'   => '数据未保存成功,请稍后重试!',
-                'level'     => 'error'
+                'title' => '保存失败!',
+                'message' => '数据未保存成功,请稍后重试!',
+                'level' => 'error'
             ]);
             return redirect()->back();
         }
@@ -222,23 +218,20 @@ class EquipmentController extends Controller
     public function updateEquipment($equipmentID)
     {
         $input = $this->equipmentValidation->updateEquipment($equipmentID);
-        $result = $this->equipmentLogic->updateEquipment($equipmentID,$input);
+        $result = $this->equipmentLogic->updateEquipment($equipmentID, $input);
 
-        if($result)
-        {
+        if ($result) {
             session()->flash('flash_message', [
-                'title'     => '保存成功!',
-                'message'   => '',
-                'level'     => 'success'
+                'title' => '保存成功!',
+                'message' => '',
+                'level' => 'success'
             ]);
             return redirect('/equipment/lists');
-        }
-        else
-        {
+        } else {
             session()->flash('flash_message_overlay', [
-                'title'     => '保存失败!',
-                'message'   => '数据未保存成功,请稍后重试!',
-                'level'     => 'error'
+                'title' => '保存失败!',
+                'message' => '数据未保存成功,请稍后重试!',
+                'level' => 'error'
             ]);
             return redirect()->back();
         }
@@ -254,23 +247,82 @@ class EquipmentController extends Controller
 //        $equipmentID = $this->equipmentValidation->deleteEquipment();
         $result = $this->equipmentLogic->deleteEquipment($equipmentID);
 
-        if($result)
-        {
+        if ($result) {
             session()->flash('flash_message', [
-                'title'     => '删除成功!',
-                'message'   => '',
-                'level'     => 'success'
+                'title' => '删除成功!',
+                'message' => '',
+                'level' => 'success'
             ]);
-        }
-        else
-        {
+        } else {
             session()->flash('flash_message_overlay', [
-                'title'     => '删除失败!',
-                'message'   => '数据未删除成功,请稍后重试!',
-                'level'     => 'error'
+                'title' => '删除失败!',
+                'message' => '数据未删除成功,请稍后重试!',
+                'level' => 'error'
             ]);
         }
 
         return redirect('/equipment/lists');
+    }
+
+    public function getAllEquipments()
+    {
+        $equipmentList = $this->equipmentLogic->getAllEquipments();
+        foreach ($equipmentList as $equipment) {
+            $station = $this->stationInfo($equipment['station_id']);
+            $leader = $this->userInfo($equipment['leader_id']);
+            $custodian = $this->userInfo($equipment['custodian_id']);
+
+            $equipment['station_name'] = $station['name'];
+            $equipment['leader_name'] = $leader['realname'];
+            $equipment['custodian_name'] = $custodian['realname'];
+        }
+
+        return $equipmentList;
+    }
+
+    public function exportToExcel()
+    {
+        $title = '泵站设备信息';
+        $excelData = $this->getAllEquipments();
+
+        Excel::create($title, function ($excel) use ($excelData, $title) {
+
+            $excel->setTitle($title);
+
+            $excel->setCreator('Eason')->setCompany('LegendX');
+
+            $excel->sheet('设备信息', function ($sheet) use ($excelData) {
+
+                $sheet->row(1, ['编号', '所属泵站', '设备名称', '型号', '制造单位', '使用部门	', '负责人', '设备管理员', '数量', '变动情况']);
+
+                if (empty($excelData)) {
+
+                    $sheet->row(2, ['空']);
+                    return;
+                }
+
+                $i = 2;
+                // 循环写入订单数据
+                foreach ($excelData as $rowData) {
+
+                    $row = [
+                        $rowData['equipment_number'],
+                        $rowData['station_name'],
+                        $rowData['name'],
+                        $rowData['type'],
+                        $rowData['producer'],
+                        $rowData['department'],
+                        $rowData['leader_name'],
+                        $rowData['custodian_name'],
+                        $rowData['quantity'],
+                        $rowData['alteration'],
+                    ];
+
+                    $sheet->row($i, $row);
+                    $i++;
+                }
+            });
+
+        })->export('xlsx');
     }
 }
