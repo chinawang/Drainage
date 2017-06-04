@@ -32,9 +32,11 @@
                             <div class="col-md-6 col-title">
                                 角色列表
                             </div>
-                            <div class="col-md-6 col-btn">
-                                <a href="/role/add" class="btn btn-primary btn-sm" >添加角色</a>
-                            </div>
+                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'role-add'))
+                                <div class="col-md-6 col-btn">
+                                    <a href="/role/add" class="btn btn-primary btn-sm" >添加角色</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
@@ -63,16 +65,20 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="/role/permission/edit/{{ $role['id'] }}" class="btn btn-link">设置权限</a>
-                                            <a href="/role/edit/{{ $role['id'] }}" class="btn btn-link">编辑</a>
-                                            <a href="#" class="btn btn-link btn-delete-station"
-                                               id="btn-delete-alert-{{ $role['id'] }}">删除</a>
-                                            <form role="form" method="POST" style="display: none"
-                                                  action="/role/delete/{{ $role['id'] }}">
-                                                {{ csrf_field() }}
-                                                <button type="submit" id="btn-delete-submit-{{ $role['id'] }}">
-                                                </button>
-                                            </form>
+                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'role-edit'))
+                                                <a href="/role/permission/edit/{{ $role['id'] }}" class="btn btn-link">设置权限</a>
+                                                <a href="/role/edit/{{ $role['id'] }}" class="btn btn-link">编辑</a>
+                                                <a href="#" class="btn btn-link btn-delete-station"
+                                                   id="btn-delete-alert-{{ $role['id'] }}">删除</a>
+                                                <form role="form" method="POST" style="display: none"
+                                                      action="/role/delete/{{ $role['id'] }}">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" id="btn-delete-submit-{{ $role['id'] }}">
+                                                    </button>
+                                                </form>
+                                            @else
+                                                无
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

@@ -77,10 +77,15 @@
                                         <td hidden="hidden">{{ $failure['repairer_name'] }}</td>
                                         <td hidden="hidden">{{ $failure['repair_at'] }}</td>
                                         <td>
-                                            <a href="/maintenance/add/{{ $failure['id'] }}"
-                                               class="btn btn-link">添加维修</a>
-                                            <a href="/failure/maintenance/lists/{{ $failure['id'] }}"
-                                               class="btn btn-link">查看维修</a>
+                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-add-maintenance'))
+                                                <a href="/maintenance/add/{{ $failure['id'] }}"
+                                                   class="btn btn-link">添加维修</a>
+                                            @elseif(app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-view-maintenance'))
+                                                <a href="/failure/maintenance/lists/{{ $failure['id'] }}"
+                                                   class="btn btn-link">查看维修</a>
+                                            @else
+                                                无
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -135,16 +140,20 @@
                                         <td>{{ $maintenance['repairer_name'] }}</td>
                                         <td>{{ $maintenance['repair_at'] }}</td>
                                         <td>
-                                            <a href="/maintenance/edit/{{ $maintenance['id'] }}"
-                                               class="btn btn-link">编辑</a>
-                                            <a href="#" class="btn btn-link btn-delete-station"
-                                               id="btn-delete-alert-{{ $maintenance['id'] }}">删除</a>
-                                            <form role="form" method="POST" style="display: none"
-                                                  action="/maintenance/delete/{{ $maintenance['id'] }}">
-                                                {{ csrf_field() }}
-                                                <button type="submit" id="btn-delete-submit-{{ $maintenance['id'] }}">
-                                                </button>
-                                            </form>
+                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
+                                                <a href="/maintenance/edit/{{ $maintenance['id'] }}"
+                                                   class="btn btn-link">编辑</a>
+                                                <a href="#" class="btn btn-link btn-delete-station"
+                                                   id="btn-delete-alert-{{ $maintenance['id'] }}">删除</a>
+                                                <form role="form" method="POST" style="display: none"
+                                                      action="/maintenance/delete/{{ $maintenance['id'] }}">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" id="btn-delete-submit-{{ $maintenance['id'] }}">
+                                                    </button>
+                                                </form>
+                                            @else
+                                                无
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -188,20 +197,20 @@
     @endforeach
 
     <script>
-        $(function(){
+        $(function () {
             //$('table tr:not(:first)').remove();
 //            var len = $('table#tb_mainten tr').length;
-            for(var i = 1;i<$('table#tb_failure tr').length;i++){
-                $('table#tb_failure tr:eq('+i+') td:first').text(i);
+            for (var i = 1; i < $('table#tb_failure tr').length; i++) {
+                $('table#tb_failure tr:eq(' + i + ') td:first').text(i);
             }
 
         });
 
-        $(function(){
+        $(function () {
             //$('table tr:not(:first)').remove();
 //            var len = $('table#tb_mainten tr').length;
-            for(var i = 1;i<$('table#tb_mainten tr').length;i++){
-                $('table#tb_mainten tr:eq('+i+') td:first').text(i);
+            for (var i = 1; i < $('table#tb_mainten tr').length; i++) {
+                $('table#tb_mainten tr:eq(' + i + ') td:first').text(i);
             }
 
         });

@@ -32,50 +32,58 @@
                             <div class="col-md-6 col-title">
                                 泵站列表
                             </div>
-                            <div class="col-md-6 col-btn">
-                                <a href="/station/add" class="btn btn-primary btn-sm">添加泵站</a>
-                            </div>
+                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'station-add'))
+                                <div class="col-md-6 col-btn">
+                                    <a href="/station/add" class="btn btn-primary btn-sm">添加泵站</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($stations[0]))
-                        <table class="table table-hover table-bordered ">
-                            <thead>
-                            <tr>
-                                <th style="width: 80px">编号</th>
-                                <th>泵站名称</th>
-                                <th>泵站地址</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                            <table class="table table-hover table-bordered ">
+                                <thead>
+                                <tr>
+                                    <th style="width: 80px">编号</th>
+                                    <th>泵站名称</th>
+                                    <th>泵站地址</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                            @foreach ($stations as $station)
-                            <tr>
-                                <td>{{ $station['station_number'] }}</td>
-                                <td>{{ $station['name'] }}</td>
-                                <td>{{ $station['address'] }}</td>
-                                <td>
-                                    <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
-                                    <a href="#" class="btn btn-link btn-delete-station" id="btn-delete-alert-{{ $station['id'] }}" >删除</a>
-                                    <form role="form" method="POST" style="display: none" action="/station/delete/{{ $station['id'] }}">
-                                        {{ csrf_field() }}
-                                        <button type="submit" id="btn-delete-submit-{{ $station['id'] }}">
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <div class="table-pagination">
-                            {!! $stations->render() !!}
-                        </div>
-                            @else
+                                @foreach ($stations as $station)
+                                    <tr>
+                                        <td>{{ $station['station_number'] }}</td>
+                                        <td>{{ $station['name'] }}</td>
+                                        <td>{{ $station['address'] }}</td>
+                                        <td>
+                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'station-edit'))
+                                                <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
+                                                <a href="#" class="btn btn-link btn-delete-station"
+                                                   id="btn-delete-alert-{{ $station['id'] }}">删除</a>
+                                                <form role="form" method="POST" style="display: none"
+                                                      action="/station/delete/{{ $station['id'] }}">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" id="btn-delete-submit-{{ $station['id'] }}">
+                                                    </button>
+                                                </form>
+                                            @else
+                                                无
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            <div class="table-pagination">
+                                {!! $stations->render() !!}
+                            </div>
+                        @else
                             <div class="well" style="text-align: center; padding: 100px;">
                                 暂无内容
                             </div>
-                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
@@ -86,56 +94,56 @@
 @section('javascript')
 
     @foreach ($stations as $station)
-    <script type="text/javascript">
-        $('#btn-delete-alert-{{ $station['id'] }}').on("click",function () {
-            swal({
-                title: "确认删除吗?",
-                text: "删除之后,将无法恢复!",
-                type: "warning",
-                showCancelButton: true,
-                cancelButtonText: "取消",
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "确认删除",
-                closeOnConfirm: false
-            },
-            function () {
-                $("#btn-delete-submit-{{ $station['id'] }}").click();
-            })
-        });
-    </script>
+        <script type="text/javascript">
+            $('#btn-delete-alert-{{ $station['id'] }}').on("click", function () {
+                swal({
+                            title: "确认删除吗?",
+                            text: "删除之后,将无法恢复!",
+                            type: "warning",
+                            showCancelButton: true,
+                            cancelButtonText: "取消",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确认删除",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                            $("#btn-delete-submit-{{ $station['id'] }}").click();
+                        })
+            });
+        </script>
     @endforeach
 
     {{--<script type="text/javascript">--}}
 
-        {{--$.ajax({--}}
-            {{--type: "post",--}}
-            {{--url: '/station/delete',--}}
-            {{--traditional: true,--}}
-            {{--dataType: "json",--}}
-            {{--data: {'_token': $('input[name=_token]').val()},--}}
-            {{--success: function (data) {--}}
-                {{--swal({--}}
-                            {{--title: "删除成功!",--}}
-                            {{--text: "",--}}
-                            {{--type: "success",--}}
-                            {{--timer: 2000,--}}
-                            {{--showConfirmButton: false--}}
-                        {{--},--}}
-                        {{--function () {--}}
-{{--//                                            alert(data['status']);--}}
-                            {{--window.location.reload();--}}
-                        {{--})--}}
-            {{--},--}}
-            {{--error: function () {--}}
-                {{--swal({--}}
-                    {{--title: "删除失败!",--}}
-                    {{--text: "数据未删除成功,请稍后重试!",--}}
-                    {{--type: "error",--}}
-                    {{--timer: 2000,--}}
-                    {{--showConfirmButton: false--}}
-                {{--})--}}
-            {{--}--}}
-        {{--})--}}
+    {{--$.ajax({--}}
+    {{--type: "post",--}}
+    {{--url: '/station/delete',--}}
+    {{--traditional: true,--}}
+    {{--dataType: "json",--}}
+    {{--data: {'_token': $('input[name=_token]').val()},--}}
+    {{--success: function (data) {--}}
+    {{--swal({--}}
+    {{--title: "删除成功!",--}}
+    {{--text: "",--}}
+    {{--type: "success",--}}
+    {{--timer: 2000,--}}
+    {{--showConfirmButton: false--}}
+    {{--},--}}
+    {{--function () {--}}
+    {{--//                                            alert(data['status']);--}}
+    {{--window.location.reload();--}}
+    {{--})--}}
+    {{--},--}}
+    {{--error: function () {--}}
+    {{--swal({--}}
+    {{--title: "删除失败!",--}}
+    {{--text: "数据未删除成功,请稍后重试!",--}}
+    {{--type: "error",--}}
+    {{--timer: 2000,--}}
+    {{--showConfirmButton: false--}}
+    {{--})--}}
+    {{--}--}}
+    {{--})--}}
     {{--</script>--}}
 @endsection
 

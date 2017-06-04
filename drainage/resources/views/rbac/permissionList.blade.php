@@ -32,9 +32,11 @@
                             <div class="col-md-6 col-title">
                                 权限列表
                             </div>
-                            <div class="col-md-6 col-btn">
-                                <a href="/permission/add" class="btn btn-primary btn-sm">添加权限</a>
-                            </div>
+                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'action-add'))
+                                <div class="col-md-6 col-btn">
+                                    <a href="/permission/add" class="btn btn-primary btn-sm">添加权限</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
@@ -55,15 +57,19 @@
                                         <td>{{ $permission['name'] }}</td>
                                         <td>{{ $permission['slug'] }}</td>
                                         <td>
-                                            <a href="/permission/edit/{{ $permission['id'] }}" class="btn btn-link">编辑</a>
-                                            <a href="#" class="btn btn-link btn-delete-station"
-                                               id="btn-delete-alert-{{ $permission['id'] }}">删除</a>
-                                            <form role="form" method="POST" style="display: none"
-                                                  action="/permission/delete/{{ $permission['id'] }}">
-                                                {{ csrf_field() }}
-                                                <button type="submit" id="btn-delete-submit-{{ $permission['id'] }}">
-                                                </button>
-                                            </form>
+                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'action-edit'))
+                                                <a href="/permission/edit/{{ $permission['id'] }}" class="btn btn-link">编辑</a>
+                                                <a href="#" class="btn btn-link btn-delete-station"
+                                                   id="btn-delete-alert-{{ $permission['id'] }}">删除</a>
+                                                <form role="form" method="POST" style="display: none"
+                                                      action="/permission/delete/{{ $permission['id'] }}">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" id="btn-delete-submit-{{ $permission['id'] }}">
+                                                    </button>
+                                                </form>
+                                            @else
+                                                无
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

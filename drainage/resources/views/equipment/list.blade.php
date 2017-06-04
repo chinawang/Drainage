@@ -32,55 +32,64 @@
                             <div class="col-md-6 col-title">
                                 设备列表
                             </div>
-                            <div class="col-md-6 col-btn">
-                                <a href="/equipment/add" class="btn btn-primary btn-sm">添加设备</a>
-                            </div>
+                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-add'))
+                                <div class="col-md-6 col-btn">
+                                    <a href="/equipment/add" class="btn btn-primary btn-sm">添加设备</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($equipments[0]))
-                        <table class="table table-hover table-bordered ">
-                            <thead>
-                            <tr>
-                                <th style="width: 80px">编号</th>
-                                <th>所属泵站</th>
-                                <th>设备名称</th>
-                                <th>型号</th>
-                                <th>制造单位</th>
-                                <th>使用部门</th>
-                                <th>负责人</th>
-                                <th>设备管理员</th>
-                                <th>数量</th>
-                                <th>变动情况</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($equipments as $equipment)
+                            <table class="table table-hover table-bordered ">
+                                <thead>
                                 <tr>
-                                    <td>{{ $equipment['equipment_number'] }}</td>
-                                    <td>{{ $equipment['station_name'] }}</td>
-                                    <td>{{ $equipment['name'] }}</td>
-                                    <td>{{ $equipment['type'] }}</td>
-                                    <td>{{ $equipment['producer'] }}</td>
-                                    <td>{{ $equipment['department'] }}</td>
-                                    <td>{{ $equipment['leader_name'] }}</td>
-                                    <td>{{ $equipment['custodian_name'] }}</td>
-                                    <td>{{ $equipment['quantity'] }}</td>
-                                    <td>{{ $equipment['alteration'] }}</td>
-                                    <td>
-                                        <a href="/equipment/edit/{{ $equipment['id'] }}" class="btn btn-link">编辑</a>
-                                        <a href="#" class="btn btn-link btn-delete-station" id="btn-delete-alert-{{ $equipment['id'] }}" >删除</a>
-                                        <form role="form" method="POST" style="display: none" action="/equipment/delete/{{ $equipment['id'] }}">
-                                            {{ csrf_field() }}
-                                            <button type="submit" id="btn-delete-submit-{{ $equipment['id'] }}">
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <th style="width: 80px">编号</th>
+                                    <th>所属泵站</th>
+                                    <th>设备名称</th>
+                                    <th>型号</th>
+                                    <th>制造单位</th>
+                                    <th>使用部门</th>
+                                    <th>负责人</th>
+                                    <th>设备管理员</th>
+                                    <th>数量</th>
+                                    <th>变动情况</th>
+                                    <th>操作</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach ($equipments as $equipment)
+                                    <tr>
+                                        <td>{{ $equipment['equipment_number'] }}</td>
+                                        <td>{{ $equipment['station_name'] }}</td>
+                                        <td>{{ $equipment['name'] }}</td>
+                                        <td>{{ $equipment['type'] }}</td>
+                                        <td>{{ $equipment['producer'] }}</td>
+                                        <td>{{ $equipment['department'] }}</td>
+                                        <td>{{ $equipment['leader_name'] }}</td>
+                                        <td>{{ $equipment['custodian_name'] }}</td>
+                                        <td>{{ $equipment['quantity'] }}</td>
+                                        <td>{{ $equipment['alteration'] }}</td>
+                                        <td>
+                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-edit'))
+                                                <a href="/equipment/edit/{{ $equipment['id'] }}"
+                                                   class="btn btn-link">编辑</a>
+                                                <a href="#" class="btn btn-link btn-delete-station"
+                                                   id="btn-delete-alert-{{ $equipment['id'] }}">删除</a>
+                                                <form role="form" method="POST" style="display: none"
+                                                      action="/equipment/delete/{{ $equipment['id'] }}">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" id="btn-delete-submit-{{ $equipment['id'] }}">
+                                                    </button>
+                                                </form>
+                                            @else
+                                                无
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                             <div class="table-pagination">
                                 {!! $equipments->render() !!}
                             </div>
@@ -100,7 +109,7 @@
 
     @foreach ($equipments as $equipment)
         <script type="text/javascript">
-            $('#btn-delete-alert-{{ $equipment['id'] }}').on("click",function () {
+            $('#btn-delete-alert-{{ $equipment['id'] }}').on("click", function () {
                 swal({
                             title: "确认删除吗?",
                             text: "删除之后,将无法恢复!",

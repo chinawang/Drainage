@@ -30,9 +30,11 @@
                             <div class="col-md-6 col-title">
                                 故障记录列表
                             </div>
-                            <div class="col-md-6 col-btn">
-                                <a href="/failure/add" class="btn btn-primary btn-sm">故障报修</a>
-                            </div>
+                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-add'))
+                                <div class="col-md-6 col-btn">
+                                    <a href="/failure/add" class="btn btn-primary btn-sm">故障报修</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
@@ -84,16 +86,20 @@
                                                class="btn btn-link">查看维修</a>
                                         </td>
                                         <td>
-                                            {{--<a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>--}}
-                                            <a href="/failure/edit/{{ $failure['id'] }}" class="btn btn-link">编辑</a>
-                                            <a href="#" class="btn btn-link btn-delete-station"
-                                               id="btn-delete-alert-{{ $failure['id'] }}">删除</a>
-                                            <form role="form" method="POST" style="display: none"
-                                                  action="/failure/delete/{{ $failure['id'] }}">
-                                                {{ csrf_field() }}
-                                                <button type="submit" id="btn-delete-submit-{{ $failure['id'] }}">
-                                                </button>
-                                            </form>
+                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-edit'))
+                                                {{--<a href="/maintenance/add/{{ $failure['id'] }}" class="btn btn-link">添加维修记录</a>--}}
+                                                <a href="/failure/edit/{{ $failure['id'] }}" class="btn btn-link">编辑</a>
+                                                <a href="#" class="btn btn-link btn-delete-station"
+                                                   id="btn-delete-alert-{{ $failure['id'] }}">删除</a>
+                                                <form role="form" method="POST" style="display: none"
+                                                      action="/failure/delete/{{ $failure['id'] }}">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" id="btn-delete-submit-{{ $failure['id'] }}">
+                                                    </button>
+                                                </form>
+                                            @else
+                                                无
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -138,11 +144,11 @@
 
 
     <script>
-        $(function(){
+        $(function () {
             //$('table tr:not(:first)').remove();
 //            var len = $('table tr').length;
-            for(var i = 1;i<$('table#tb_failure tr').length;i++){
-                $('table#tb_failure tr:eq('+i+') td:first').text(i);
+            for (var i = 1; i < $('table#tb_failure tr').length; i++) {
+                $('table#tb_failure tr:eq(' + i + ') td:first').text(i);
             }
 
         });
