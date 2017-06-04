@@ -285,9 +285,7 @@ class EquipmentController extends Controller
         $title = '泵站设备信息';
         $excelData = $this->getAllEquipments();
 
-        $excelClass = new Excel();
-
-        $excelClass->create($title, function ($excel) use ($excelData, $title) {
+        \Maatwebsite\Excel\Facades\Excel::create($title, function ($excel) use ($excelData, $title) {
 
             $excel->setTitle($title);
 
