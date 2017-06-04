@@ -37,9 +37,6 @@
                                     <a href="/equipment/add" class="btn btn-primary btn-sm">添加设备</a>
                                 </div>
                             @endif
-                            <div class="col-md-6 col-btn">
-                                <a href="/equipment/add" class="btn btn-default btn-sm">导出Excel</a>
-                            </div>
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
@@ -97,6 +94,9 @@
                             </table>
                             <div class="table-pagination">
                                 {!! $equipments->render() !!}
+                            </div>
+                            <div class="col-md-6 col-btn">
+                                <a href="/equipment/add" class="btn btn-default btn-sm">导出Excel</a>
                             </div>
                         @else
                             <div class="well" style="text-align: center; padding: 100px;">
