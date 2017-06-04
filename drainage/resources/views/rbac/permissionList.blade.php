@@ -47,7 +47,9 @@
                                     <th style="width: 80px">序号</th>
                                     <th>行为权限</th>
                                     <th>别名</th>
-                                    <th>操作</th>
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'action-edit'))
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -56,21 +58,20 @@
                                         <td>{{ $permission['id'] }}</td>
                                         <td>{{ $permission['name'] }}</td>
                                         <td>{{ $permission['slug'] }}</td>
-                                        <td>
-                                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'action-edit'))
+                                        @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'action-edit'))
+                                            <td>
                                                 <a href="/permission/edit/{{ $permission['id'] }}" class="btn btn-link">编辑</a>
                                                 <a href="#" class="btn btn-link btn-delete-station"
                                                    id="btn-delete-alert-{{ $permission['id'] }}">删除</a>
                                                 <form role="form" method="POST" style="display: none"
                                                       action="/permission/delete/{{ $permission['id'] }}">
                                                     {{ csrf_field() }}
-                                                    <button type="submit" id="btn-delete-submit-{{ $permission['id'] }}">
+                                                    <button type="submit"
+                                                            id="btn-delete-submit-{{ $permission['id'] }}">
                                                     </button>
                                                 </form>
-                                            @else
-                                                -
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -113,11 +114,11 @@
     @endforeach
 
     <script>
-        $(function(){
+        $(function () {
             //$('table tr:not(:first)').remove();
 //            var len = $('table#tb_mainten tr').length;
-            for(var i = 1;i<$('table tr').length;i++){
-                $('table tr:eq('+i+') td:first').text(i);
+            for (var i = 1; i < $('table tr').length; i++) {
+                $('table tr:eq(' + i + ') td:first').text(i);
             }
 
         });
