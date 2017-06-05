@@ -54,10 +54,6 @@ class Handler extends ExceptionHandler
 //        }
 //        return parent::render($request, $exception);
 
-//        return view('error.404');
-
-        return response()->view('error.404');
-
 //        return parent::render($request, $exception);
     }
 
