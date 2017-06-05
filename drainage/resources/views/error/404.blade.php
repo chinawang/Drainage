@@ -1,14 +1,10 @@
 @extends('layouts.app')
 
-@section('stylesheet')
-    <link href="{{ asset('css/weather/weather.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-default custom-panel" style="background: {{ $backgroundStyle }}"
+                <div class="panel panel-default custom-panel"
                      id="content-weather">
                     <div class="panel-body custom-panel-body">
                         <div>
