@@ -423,6 +423,10 @@ class MaintenanceController extends Controller
                     $sheet->row($i, $row);
                     $i++;
                 }
+
+                $sheet->setAllBorders('thin');
+                $sheet->setAutoFilter();
+
             });
 
         })->export('xlsx');
