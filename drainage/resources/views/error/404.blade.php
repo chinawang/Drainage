@@ -12,7 +12,7 @@
                      id="content-weather">
                     <div class="panel-body custom-panel-body">
                         <div style="text-align: center;margin-top: 40px">
-                            <img style="width: 500px" src="/img/error/sorry.jpg">
+                            <img style="width: 200px" src="/img/error/sorry.jpg">
                         </div>
                         <div style="text-align: center;margin-top: 40px">
                             <img style="width: 100px" src="/img/error/404.png">
