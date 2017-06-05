@@ -54,8 +54,6 @@ class Handler extends ExceptionHandler
 //        }
 //        return parent::render($request, $exception);
 
-        $message  = $exception->getMessage();
-        return response()->view('error.404', ['message'=>$message], $exception->getStatusCode());
 
 //        if (view()->exists('error.404')) {
 //            $message  = $exception->getMessage();
@@ -66,7 +64,7 @@ class Handler extends ExceptionHandler
 //            return (new SymfonyDisplayer(config('app.debug')))->createResponse($exception);
 //        }
 
-//        return parent::render($request, $exception);
+        return parent::render($request, $exception);
     }
 
     /**
