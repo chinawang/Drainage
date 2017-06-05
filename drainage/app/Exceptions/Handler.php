@@ -45,14 +45,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof HttpException) {
-            $code = $exception->getStatusCode();
-            if (view()->exists('error.404')) {
-                $message  = $exception->getMessage();
-                return response()->view('error.404', ['message'=>$message], $exception->getStatusCode());
-            }
+//        if ($exception instanceof HttpException) {
+//            $code = $exception->getStatusCode();
+//            if (view()->exists('error.404')) {
+//                $message  = $exception->getMessage();
+//                return response()->view('error.404', ['message'=>$message], $exception->getStatusCode());
+//            }
+//        }
+//        return parent::render($request, $exception);
+
+        if (view()->exists('error.404')) {
+            $message  = $exception->getMessage();
+            return response()->view('error.404', ['message'=>$message], $exception->getStatusCode());
         }
-        return parent::render($request, $exception);
+        else
+        {
+            return (new SymfonyDisplayer(config('app.debug')))->createResponse($e);
+        }
 
 //        return parent::render($request, $exception);
     }
