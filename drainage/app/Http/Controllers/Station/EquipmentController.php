@@ -321,8 +321,11 @@ class EquipmentController extends Controller
                     $sheet->row($i, $row);
                     $i++;
                 }
+
+                $sheet->setAllBorders('thick');
+                $sheet->setAutoSize(true);
             });
 
-        })->export('xlsx');
+        })->export('xls');
     }
 }

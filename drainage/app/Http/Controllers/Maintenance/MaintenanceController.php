@@ -429,6 +429,6 @@ class MaintenanceController extends Controller
 
             });
 
-        })->export('xlsx');
+        })->export('xls');
     }
 }
