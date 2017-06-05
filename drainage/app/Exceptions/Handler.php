@@ -60,7 +60,7 @@ class Handler extends ExceptionHandler
         }
         else
         {
-            return (new SymfonyDisplayer(config('app.debug')))->createResponse($e);
+            return (new SymfonyDisplayer(config('app.debug')))->createResponse($exception);
         }
 
 //        return parent::render($request, $exception);
