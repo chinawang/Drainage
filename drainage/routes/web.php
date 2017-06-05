@@ -195,6 +195,9 @@ Route::post('/maintenance/update/{maintenance_id}','Maintenance\MaintenanceContr
 //删除维修
 Route::post('/maintenance/delete/{maintenance_id}','Maintenance\MaintenanceController@deleteMaintenance');
 
+//维修导出
+Route::get('/maintenance/export','Maintenance\MaintenanceController@exportToExcel');
+
 /**
  *天气相关
  */
