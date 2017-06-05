@@ -7,11 +7,11 @@
                 <div class="panel panel-default custom-panel"
                      id="content-weather">
                     <div class="panel-body custom-panel-body">
-                        <div>
-                            <img src="/img/error/404.png">
+                        <div style="text-align: center;margin-top: 40px">
+                            <img style="width: 500px" src="/img/error/404.png">
                         </div>
-                        <div class="col-md-6 col-md-offset-3">很抱歉,系统异常,请稍后重试。</div>
-                        <div class="col-md-6 col-md-offset-3"><a href="{{ url('/') }}">返回首页</a></div>
+                        <div style="text-align: center;margin-top: 40px">很抱歉,系统异常,请稍后重试。</div>
+                        <div style="text-align: center;margin-top: 40px;margin-bottom: 40px"><a href="{{ url('/') }}">返回首页</a></div>
                     </div>
                 </div>
             </div>
