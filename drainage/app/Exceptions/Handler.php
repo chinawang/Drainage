@@ -53,6 +53,8 @@ class Handler extends ExceptionHandler
 //            }
 //        }
 
+        return response()->view('error.404', ['message'=>$exception->getMessage()], $exception->getStatusCode());
+
         $code = $exception->getStatusCode();
         if (view()->exists('error.404')) {
             $message  = $exception->getMessage();
