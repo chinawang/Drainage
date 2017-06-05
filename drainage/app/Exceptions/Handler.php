@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof HttpException) {
             $code = $exception->getStatusCode();
-            if (view()->exists('errors.' . $code)) {
+            if (view()->exists('error.404')) {
                 $message  = $exception->getMessage();
                 return response()->view('error.404', ['message'=>$message], $exception->getStatusCode());
             }
