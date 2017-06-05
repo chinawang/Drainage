@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
             $code = $exception->getStatusCode();
             if (view()->exists('errors.' . $code)) {
                 $message  = $exception->getMessage();
-                return response()->view('error.' . $exception->getStatusCode(), ['message'=>$message], $exception->getStatusCode());
+                return response()->view('error.404', ['message'=>$message], $exception->getStatusCode());
             }
         }
         return parent::render($request, $exception);
