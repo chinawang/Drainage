@@ -150,7 +150,7 @@ class EquipmentController extends Controller
         }
 
         $param = ['equipments' => $equipmentPaginate];
-        return view('error.404');
+//        return view('error.404');
         return view('equipment.list', $param);
     }
 
