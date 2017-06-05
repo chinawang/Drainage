@@ -8,7 +8,7 @@ use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Station\EquipmentValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EquipmentController extends Controller
 {
@@ -285,7 +285,7 @@ class EquipmentController extends Controller
         $title = '泵站设备信息';
         $excelData = $this->getAllEquipments();
 
-        \Maatwebsite\Excel\Facades\Excel::create($title, function ($excel) use ($excelData, $title) {
+        Excel::create($title, function ($excel) use ($excelData, $title) {
 
             $excel->setTitle($title);
 

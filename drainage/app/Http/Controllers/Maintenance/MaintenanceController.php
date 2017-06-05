@@ -11,6 +11,7 @@ use App\Http\Validations\Maintenance\FailureValidation;
 use App\Http\Validations\Maintenance\MaintenanceValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MaintenanceController extends Controller
 {
@@ -365,5 +366,65 @@ class MaintenanceController extends Controller
         }
 
         return redirect('/maintenance/lists');
+    }
+
+    public function getAllMaintenance()
+    {
+        $maintenanceList = $this->maintenanceLogic->getAllMaintenance();
+
+        foreach($maintenanceList as $maintenance)
+        {
+            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+            $station = $this->stationInfo($maintenance['station_id']);
+            $repairer = $this->userInfo($maintenance['repairer_id']);
+
+            $maintenance['equipment_name'] = $equipment['name'];
+            $maintenance['station_name'] = $station['name'];
+            $maintenance['repairer_name'] = $repairer['realname'];
+        }
+
+        return $maintenanceList;
+    }
+
+    public function exportToExcel()
+    {
+        $title = '设备维修记录';
+        $excelData = $this->getAllMaintenance();
+
+        Excel::create($title, function ($excel) use ($excelData, $title) {
+
+            $excel->setTitle($title);
+
+            $excel->setCreator('Eason')->setCompany('LegendX');
+
+            $excel->sheet('维修记录', function ($sheet) use ($excelData) {
+
+                $sheet->row(1, ['所属泵站', '故障设备', '故障原因', '解决办法', '维修人	', '维修时间']);
+
+                if (empty($excelData)) {
+
+                    $sheet->row(2, ['空']);
+                    return;
+                }
+
+                $i = 2;
+                // 循环写入订单数据
+                foreach ($excelData as $rowData) {
+
+                    $row = [
+                        $rowData['station_name'],
+                        $rowData['equipment_name'],
+                        $rowData['failure_reason'],
+                        $rowData['repair_solution'],
+                        $rowData['repairer_name'],
+                        $rowData['repair_at'],
+                    ];
+
+                    $sheet->row($i, $row);
+                    $i++;
+                }
+            });
+
+        })->export('xlsx');
     }
 }
