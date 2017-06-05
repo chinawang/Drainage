@@ -19,7 +19,7 @@
                         </div>
                         <div style="text-align: center;margin-top: 40px;color: #75757d;">很抱歉, 系统异常, 请稍后重试。</div>
                         <div style="text-align: center;margin-top: 20px;margin-bottom: 20px"><a href="{{ url('/') }}">返回首页</a></div>
-                        <div style="text-align: center;margin-top: 20px;margin-bottom: 20px;color: #9BA2AB;">error: {{ $message }}</div>
+                        <div style="text-align: center;margin-top: 20px;margin-bottom: 20px;color: #F7F7F7;font-size: 12px">error: {{ $message }}</div>
                     </div>
                 </div>
             </div>
