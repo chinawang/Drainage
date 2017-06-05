@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index');
  */
 
 //用户列表
-Route::get('/user/lists', 'User\UserController@userList');
+Route::get('/user/lists', 'User\UserController@userList1');
 
 //用户创建保存
 Route::get('/user/add','User\UserController@showAddUserForm');
