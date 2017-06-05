@@ -424,7 +424,7 @@ class MaintenanceController extends Controller
                     $i++;
                 }
 
-                $sheet->setAllBorders('thin');
+                $sheet->setAllBorders('thick');
                 $sheet->setAutoSize(true);
 
             });
