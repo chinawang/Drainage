@@ -322,7 +322,7 @@ class EquipmentController extends Controller
                     $i++;
                 }
 
-                $sheet->setAllBorders('thick');
+                $sheet->setAllBorders('thin');
                 $sheet->setAutoSize(true);
             });
 
