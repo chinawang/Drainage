@@ -111,12 +111,14 @@
                                     </a>
                                 </li>
                             @endif
-                            {{--<li class="log">--}}
-                            {{--<a href="" class="menu-item">--}}
-                            {{--<img class="menu-icon" src="/img/home/log_blue.png">--}}
-                            {{--<h4>系统日志管理</h4>--}}
-                            {{--</a>--}}
-                            {{--</li>--}}
+                            @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'log-list'))
+                                <li class="log">
+                                    <a href="/log/lists" class="menu-item">
+                                        <img class="menu-icon" src="/img/home/log_blue.png">
+                                        <h4>系统日志</h4>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

@@ -245,3 +245,6 @@ Route::get('/report/realTimeHistory/{station_id}/{start_time}/{end_time}', 'Repo
 
 //泵站启停状态实时信息Ajax
 Route::get('/report/realTimeStatusHistory/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@statusRTHistory');
+
+//日志
+Route::get('/log/lists', 'Log\LogController@lgoList');
