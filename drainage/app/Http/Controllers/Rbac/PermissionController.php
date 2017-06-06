@@ -7,6 +7,7 @@ use App\Http\Logic\Rbac\RbacLogic;
 use App\Http\Validations\Rbac\PermissionValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PermissionController extends Controller
 {

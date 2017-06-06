@@ -8,6 +8,7 @@ use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Rbac\UserRoleValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserRoleController extends Controller
 {

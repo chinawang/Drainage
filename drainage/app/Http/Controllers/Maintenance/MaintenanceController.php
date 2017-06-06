@@ -12,6 +12,7 @@ use App\Http\Validations\Maintenance\MaintenanceValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class MaintenanceController extends Controller
 {

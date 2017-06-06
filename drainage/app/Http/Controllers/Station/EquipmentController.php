@@ -9,6 +9,7 @@ use App\Http\Validations\Station\EquipmentValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class EquipmentController extends Controller
 {

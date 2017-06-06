@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Log;
 use App\Http\Logic\Log\LogLogic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LogController extends Controller
 {
@@ -31,6 +32,8 @@ class LogController extends Controller
         $pageSize        = 20;
         $logPaginate = $this->logLogic->getLogs($pageSize,$orderColumn,$orderDirection,$cursorPage);
         $param = ['logs' => $logPaginate];
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了日志信息']);
         return view('log.list',$param);
     }
 }

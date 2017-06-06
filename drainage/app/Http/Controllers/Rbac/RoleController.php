@@ -8,6 +8,7 @@ use App\Http\Logic\Rbac\RolePermissionLogic;
 use App\Http\Validations\Rbac\RoleValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
