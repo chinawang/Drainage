@@ -9,6 +9,8 @@ use App\Http\Logic\User\UserLogic;
 use App\Http\Validations\Maintenance\FailureValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class FailureController extends Controller
 {
@@ -149,12 +151,24 @@ class FailureController extends Controller
      */
     public function failureList()
     {
+        $stationID = Input::get('station_id', 0);
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+
         $input = $this->failureValidation->failurePaginate();
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 20);
-        $failurePaginate = $this->failureLogic->getFailures($pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        if($stationID == 0)
+        {
+            $failurePaginate = $this->failureLogic->getFailures($pageSize,$orderColumn,$orderDirection,$cursorPage);
+        }
+        else
+        {
+            $failurePaginate = $this->getFailureListByStationID($stationID,$pageSize,$cursorPage);
+        }
 
         foreach($failurePaginate as $failure)
         {
@@ -169,7 +183,7 @@ class FailureController extends Controller
             $failure['repairer_name'] = $repairer['realname'];
         }
 
-        $param = ['failures' => $failurePaginate];
+        $param = ['stations' => $stations,'stationSelect' => $stationTemp,'failures' => $failurePaginate];
         return view('failure.list',$param);
     }
 
@@ -286,5 +300,20 @@ class FailureController extends Controller
         }
 
         return redirect('/failure/lists');
+    }
+
+    public function stationList()
+    {
+        $stations = $this->stationLogic->getAllStations();
+
+        return $stations;
+    }
+
+    public function getFailureListByStationID($stationID, $size, $cursorPage)
+    {
+        $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'asc')
+            ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+
+        return $failureList;
     }
 }

@@ -38,6 +38,38 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
+
+                        <form class="form-horizontal" role="form" method="GET" action="/equipment/lists"
+                              style="margin-bottom: 10px">
+                            {{ csrf_field() }}
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="station" class="col-md-4 control-label">选择泵站:</label>
+
+                                        <div class="col-md-8">
+                                            <select class="form-control" id="select" name="station_id">
+                                                <option value="0" {{$stationSelect['id'] == 0 ? 'selected=selected' :''}}>全部</option>
+                                                @foreach ($stations as $station)
+                                                    <option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <button type="submit" class="btn btn-primary btn-custom">
+                                                查询
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                         @if (!empty($failures[0]))
                             <table class="table table-hover table-bordered " id="tb_failure">
                                 <thead>
