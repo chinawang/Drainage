@@ -39,7 +39,7 @@
                     </div>
                     <div class="panel-body custom-panel-body">
 
-                        <form class="form-horizontal" role="form" method="GET" action="/equipment/lists"
+                        <form class="form-horizontal" role="form" method="GET" action="/failure/lists"
                               style="margin-bottom: 10px">
                             {{ csrf_field() }}
 
