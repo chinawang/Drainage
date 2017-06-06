@@ -155,14 +155,14 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '退出了系统']);
+
         $this->guard()->logout();
 
         $request->session()->flush();
 
         $request->session()->regenerate();
-
-        //记录Log
-        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '退出了系统']);
 
         return redirect('/login');
     }
