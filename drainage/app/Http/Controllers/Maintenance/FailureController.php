@@ -167,6 +167,23 @@ class FailureController extends Controller
 
             foreach($failurePaginate as $failure)
             {
+                $equipment = $this->equipmentInfo($failure['equipment_id']);
+                $station = $this->stationInfo($failure['station_id']);
+                $reporter = $this->userInfo($failure['reporter_id']);
+                $repairer = $this->userInfo($failure['repairer_id']);
+
+                $failure['equipment_name'] = $equipment['name'];
+                $failure['station_name'] = $station['name'];
+                $failure['reporter_name'] = $reporter['realname'];
+                $failure['repairer_name'] = $repairer['realname'];
+            }
+        }
+        else
+        {
+            $failurePaginate = $this->getFailureListByStationID($stationID,$pageSize,$cursorPage);
+
+            foreach($failurePaginate as $failure)
+            {
                 $equipment = $this->equipmentInfo($failure->equipment_id);
                 $station = $this->stationInfo($failure->station_id);
                 $reporter = $this->userInfo($failure->reporter_id);
@@ -177,10 +194,6 @@ class FailureController extends Controller
                 $failure->reporter_name = $reporter['realname'];
                 $failure->repairer_name = $repairer['realname'];
             }
-        }
-        else
-        {
-            $failurePaginate = $this->getFailureListByStationID($stationID,$pageSize,$cursorPage);
         }
 
 
