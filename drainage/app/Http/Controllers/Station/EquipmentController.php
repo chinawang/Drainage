@@ -150,7 +150,10 @@ class EquipmentController extends Controller
         }
 
         $param = ['equipments' => $equipmentPaginate];
-//        return view('error.404');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了设备信息']);
+
         return view('equipment.list', $param);
     }
 
@@ -198,6 +201,10 @@ class EquipmentController extends Controller
                 'message' => '',
                 'level' => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '新增了设备信息']);
+
             return redirect('/equipment/lists');
         } else {
             session()->flash('flash_message_overlay', [
@@ -226,6 +233,10 @@ class EquipmentController extends Controller
                 'message' => '',
                 'level' => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了设备信息']);
+
             return redirect('/equipment/lists');
         } else {
             session()->flash('flash_message_overlay', [
@@ -253,6 +264,10 @@ class EquipmentController extends Controller
                 'message' => '',
                 'level' => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '删除了设备信息']);
+
         } else {
             session()->flash('flash_message_overlay', [
                 'title' => '删除失败!',
@@ -327,5 +342,8 @@ class EquipmentController extends Controller
             });
 
         })->export('xls');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '导出了设备信息']);
     }
 }

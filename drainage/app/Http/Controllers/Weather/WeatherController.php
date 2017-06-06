@@ -145,6 +145,9 @@ class WeatherController extends Controller
 
         $param = ['nowWeather' => $nowResult['results'][0],'dailyWeather' => $dailyResult['results'][0],'backgroundStyle' => $backgroundStyle];
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了天气信息']);
+
         return view('weather.weather',$param);
     }
 

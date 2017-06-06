@@ -86,6 +86,10 @@ class StationController extends Controller
         $pageSize        = array_get($input, 'page_size', 10);
         $stationPaginate = $this->stationLogic->getStations($pageSize,$orderColumn,$orderDirection,$cursorPage);
         $param = ['stations' => $stationPaginate];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站信息']);
+
         return view('station.list',$param);
     }
 
@@ -106,6 +110,9 @@ class StationController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '新增了泵站信息']);
 
             return redirect('/station/lists');
         }
@@ -139,6 +146,7 @@ class StationController extends Controller
                 'level'     => 'success'
             ]);
 
+            //记录Log
             app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了泵站信息']);
 
             return redirect('/station/lists');
@@ -171,6 +179,9 @@ class StationController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '删除了泵站信息']);
         }
         else
         {
@@ -262,6 +273,10 @@ class StationController extends Controller
             $station['Time'] = $stationRT[0]->Time;
         }
         $param = ['stations' => $stationPaginate];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站运行信息']);
+
         return view('station.runList',$param);
     }
 
@@ -272,6 +287,10 @@ class StationController extends Controller
         $stationRT = $this->findStationRT($stationNum);
         $param = ['station' => $station,'stationRT' => $stationRT];
 //        return $param;
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站运行详细']);
+
         return view('station.runDetail',$param);
     }
 

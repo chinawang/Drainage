@@ -120,6 +120,9 @@ class UserController extends Controller
             $user['assignRoles'] = $assignRoles;
         }
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了账户信息']);
+
         $param = ['users' => $userPaginate];
         return view('user.list',$param);
     }
@@ -141,6 +144,10 @@ class UserController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '新增了账户信息']);
+
             return redirect('/user/lists');
         }
         else
@@ -172,6 +179,10 @@ class UserController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了账户信息']);
+
             return redirect('/user/lists');
         }
         else
@@ -202,6 +213,10 @@ class UserController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '删除了账户信息']);
+
         }
         else
         {
@@ -233,6 +248,10 @@ class UserController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '修改了账户密码']);
+
             return redirect('/user/lists');
         }
         else

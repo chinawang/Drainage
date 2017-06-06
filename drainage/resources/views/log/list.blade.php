@@ -35,8 +35,8 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th>时间</th>
-                                    <th>操作者</th>
+                                    <th style="width: 100px">时间</th>
+                                    <th style="width: 100px">操作者</th>
                                     <th>内容</th>
                                 </tr>
                                 </thead>

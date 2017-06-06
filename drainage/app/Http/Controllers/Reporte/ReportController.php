@@ -100,6 +100,9 @@ class ReportController extends Controller
             'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站水位统计']);
+
         return view('report.stationWater', $param);
     }
 
@@ -131,6 +134,9 @@ class ReportController extends Controller
         $param = ['stations' => $stations, 'runList' => $stationRTPaginate,
             'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站运行统计']);
 
         return view('report.stationRunning', $param);
     }
@@ -164,6 +170,8 @@ class ReportController extends Controller
             'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
 
         return view('report.stationStatus', $param);
     }
@@ -214,6 +222,9 @@ class ReportController extends Controller
             'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了设备故障统计']);
+
         return view('report.stationFailure', $param);
     }
 
@@ -260,6 +271,9 @@ class ReportController extends Controller
         $param = ['stations' => $stations, 'maintenances' => $maintenancePaginate,
             'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了设备维修统计']);
 
         return view('report.stationMaintenance', $param);
     }

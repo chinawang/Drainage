@@ -199,6 +199,10 @@ class FailureController extends Controller
 
 
         $param = ['stations' => $stations,'stationSelect' => $stationTemp,'failures' => $failurePaginate];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了故障信息']);
+
         return view('failure.list',$param);
     }
 
@@ -247,6 +251,10 @@ class FailureController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '新增了故障信息']);
+
             return redirect('/failure/lists');
         }
         else
@@ -276,6 +284,10 @@ class FailureController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了故障信息']);
+
             return redirect('/failure/lists');
         }
         else
@@ -304,6 +316,9 @@ class FailureController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '删除了故障信息']);
         }
         else
         {

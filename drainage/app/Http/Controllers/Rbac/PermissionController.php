@@ -86,6 +86,10 @@ class PermissionController extends Controller
         $pageSize        = array_get($input, 'page_size', 10);
         $permissionPaginate = $this->permissionLogic->getPermissions($pageSize,$orderColumn,$orderDirection,$cursorPage);
         $param = ['permissions' => $permissionPaginate];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了权限信息']);
+
         return view('rbac.permissionList',$param);
     }
 
@@ -106,6 +110,10 @@ class PermissionController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '新增了权限行为']);
+
             return redirect('/permission/lists');
         }
         else
@@ -137,6 +145,10 @@ class PermissionController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了权限行为']);
+
             return redirect('/permission/lists');
         }
         else
@@ -167,6 +179,9 @@ class PermissionController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '删除了权限行为']);
         }
         else
         {

@@ -47,6 +47,9 @@ trait AuthenticatesUsers
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '登录了系统']);
+
         return $this->sendFailedLoginResponse($request);
     }
 
@@ -157,6 +160,9 @@ trait AuthenticatesUsers
         $request->session()->flush();
 
         $request->session()->regenerate();
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '退出了系统']);
 
         return redirect('/login');
     }

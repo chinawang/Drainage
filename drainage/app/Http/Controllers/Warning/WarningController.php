@@ -59,6 +59,10 @@ class WarningController extends Controller
             $station['Time'] = $stationRT[0]->Time;
         }
         $param = ['stations' => $stationPaginate];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了实时报警信息']);
+
         return view('warning.warningList',$param);
     }
 
@@ -82,6 +86,9 @@ class WarningController extends Controller
         $param = ['station' => $station,'stationRT' => $stationRT,'stationWarningList' => $stationWarningList];
 
         //return $stationWarningList;
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了实时报警详细']);
 
         return view('warning.warningDetail',$param);
     }

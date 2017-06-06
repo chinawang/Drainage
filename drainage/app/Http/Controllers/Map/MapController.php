@@ -99,6 +99,10 @@ class MapController extends Controller
         }
 
         $param = ['stations' => $stationList];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站地图']);
+
         return view('map.map',$param);
     }
 

@@ -96,6 +96,9 @@ class RoleController extends Controller
             $role['assignPermissions'] = $assignPermissions;
         }
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了角色信息']);
+
         $param = ['roles' => $rolePaginate];
         return view('rbac.roleList', $param);
     }
@@ -114,6 +117,10 @@ class RoleController extends Controller
                 'message' => '',
                 'level' => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '新增了角色信息']);
+
             return redirect('/role/lists');
         } else {
             session()->flash('flash_message_overlay', [
@@ -140,6 +147,10 @@ class RoleController extends Controller
                 'message' => '',
                 'level' => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了角色信息']);
+
             return redirect('/role/lists');
         } else {
             session()->flash('flash_message_overlay', [
@@ -165,6 +176,10 @@ class RoleController extends Controller
                 'message' => '',
                 'level' => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '删除了角色信息']);
+
         } else {
             session()->flash('flash_message_overlay', [
                 'title' => '删除失败!',

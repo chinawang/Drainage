@@ -81,6 +81,10 @@ class UserRoleController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '设置了用户角色']);
+
             return redirect('/user/lists');
         }
         else

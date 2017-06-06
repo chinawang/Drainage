@@ -223,6 +223,9 @@ class MaintenanceController extends Controller
 
         $failurePaginate = $this->failureList();
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了维修记录']);
+
         $param = ['maintenances' => $maintenancePaginate,'failures' => $failurePaginate];
         return view('maintenance.list',$param);
     }
@@ -279,6 +282,9 @@ class MaintenanceController extends Controller
             $maintenance['repairer_name'] = $repairer['realname'];
         }
 
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了维修记录']);
+
         $param = ['maintenances' => $maintenancePaginate,'failureID' => $failureID];
         return view('maintenance.listOfFailure',$param);
     }
@@ -298,6 +304,10 @@ class MaintenanceController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '新增了维修记录']);
+
             return redirect('/maintenance/lists');
         }
         else
@@ -327,6 +337,10 @@ class MaintenanceController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了维修记录']);
+
             return redirect('/maintenance/lists');
         }
         else
@@ -355,6 +369,9 @@ class MaintenanceController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '删除了维修记录']);
         }
         else
         {
@@ -430,5 +447,8 @@ class MaintenanceController extends Controller
             });
 
         })->export('xls');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '导出了维修记录']);
     }
 }

@@ -80,6 +80,10 @@ class RolePermissionController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '设置了角色权限']);
+
             return redirect('/role/lists');
         }
         else
