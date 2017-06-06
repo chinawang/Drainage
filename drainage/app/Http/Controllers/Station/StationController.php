@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Station;
 
+use App\Http\Logic\Log\LogLogic;
 use App\Http\Logic\Station\StationLogic;
 use App\Http\Validations\Station\StationValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
@@ -104,6 +106,7 @@ class StationController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
             return redirect('/station/lists');
         }
         else
@@ -135,6 +138,9 @@ class StationController extends Controller
                 'message'   => '',
                 'level'     => 'success'
             ]);
+
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了泵站信息']);
+
             return redirect('/station/lists');
         }
         else
