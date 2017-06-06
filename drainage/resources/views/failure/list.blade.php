@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
+                                        <div class="col-md-6 col-md-offset-0">
                                             <button type="submit" class="btn btn-primary btn-custom">
                                                 查询
                                             </button>

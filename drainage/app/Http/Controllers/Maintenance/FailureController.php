@@ -164,24 +164,26 @@ class FailureController extends Controller
         if($stationID == 0)
         {
             $failurePaginate = $this->failureLogic->getFailures($pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+            foreach($failurePaginate as $failure)
+            {
+                $equipment = $this->equipmentInfo($failure->equipment_id);
+                $station = $this->stationInfo($failure->station_id);
+                $reporter = $this->userInfo($failure->reporter_id);
+                $repairer = $this->userInfo($failure->repairer_id);
+
+                $failure->equipment_name = $equipment['name'];
+                $failure->station_name = $station['name'];
+                $failure->reporter_name = $reporter['realname'];
+                $failure->repairer_name = $repairer['realname'];
+            }
         }
         else
         {
             $failurePaginate = $this->getFailureListByStationID($stationID,$pageSize,$cursorPage);
         }
 
-        foreach($failurePaginate as $failure)
-        {
-            $equipment = $this->equipmentInfo($failure['equipment_id']);
-            $station = $this->stationInfo($failure['station_id']);
-            $reporter = $this->userInfo($failure['reporter_id']);
-            $repairer = $this->userInfo($failure['repairer_id']);
 
-            $failure['equipment_name'] = $equipment['name'];
-            $failure['station_name'] = $station['name'];
-            $failure['reporter_name'] = $reporter['realname'];
-            $failure['repairer_name'] = $repairer['realname'];
-        }
 
         $param = ['stations' => $stations,'stationSelect' => $stationTemp,'failures' => $failurePaginate];
         return view('failure.list',$param);
