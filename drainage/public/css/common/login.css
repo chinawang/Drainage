@@ -7,10 +7,11 @@ body {
 }
 
 .navbar-default {
-    background-color: #1296db;
-    opacity: 0.2;
+    /*background-color: #1296db;*/
+    /*opacity: 0.2;*/
+    background: transparent;
 }
 
 .custom-panel {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, .88);
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, .28);
 }
