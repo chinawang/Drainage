@@ -7,11 +7,29 @@ body {
 }
 
 .navbar-default {
-    /*background-color: #1296db;*/
-    /*opacity: 0.2;*/
     background: transparent;
 }
 
 .custom-panel {
     box-shadow: 0px 0px 30px rgba(0, 0, 0, .58);
+}
+
+.panel-heading .row {
+    line-height: 35px;
+}
+
+.panel-heading {
+    font-weight: bold;
+}
+
+.panel-heading .col-btn a {
+    float: right;
+}
+
+.panel-heading .btn-link{
+    float: right;
+}
+
+.btn-custom {
+    padding: 10px 40px;
 }
