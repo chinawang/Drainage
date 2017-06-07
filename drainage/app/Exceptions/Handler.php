@@ -51,6 +51,10 @@ class Handler extends ExceptionHandler
             {
                 $message = '未知';
             }
+            elseif($message == 'Unauthenticated.')
+            {
+                return redirect()->guest(route('login'));
+            }
             return response()->view('error.404',['message'=>$message]);
         }
 
