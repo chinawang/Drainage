@@ -45,18 +45,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if (view()->exists('error.404')) {
-            $message  = $exception->getMessage();
-            if(empty($message))
-            {
-                $message = '未知';
-            }
-            elseif($message == 'Unauthenticated.')
-            {
-                return redirect()->guest(route('login'));
-            }
-            return response()->view('error.404',['message'=>$message]);
-        }
+//        if (view()->exists('error.404')) {
+//            $message  = $exception->getMessage();
+//            if(empty($message))
+//            {
+//                $message = '未知';
+//            }
+//            elseif($message == 'Unauthenticated.')
+//            {
+//                return redirect()->guest(route('login'));
+//            }
+//            return response()->view('error.404',['message'=>$message]);
+//        }
 
         return parent::render($request, $exception);
     }
