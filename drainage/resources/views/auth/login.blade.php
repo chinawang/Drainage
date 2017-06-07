@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('stylesheet')
+    <link href="{{ asset('css/common/login.css') }}" rel="stylesheet">
+@endsection
+
 @section('subtitle')
     {{--<span>登录</span>--}}
 @endsection
