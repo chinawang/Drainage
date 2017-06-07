@@ -48,7 +48,7 @@ trait AuthenticatesUsers
         $this->incrementLoginAttempts($request);
 
         //记录Log
-        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '登录了系统']);
+//        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '登录了系统']);
 
         return $this->sendFailedLoginResponse($request);
     }
