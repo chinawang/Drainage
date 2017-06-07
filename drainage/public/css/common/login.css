@@ -5,3 +5,6 @@ body {
     background: url(../..//img/back-water.jpeg) center center no-repeat;;
     background-size: cover;
 }
+.custom-panel {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);
+}
