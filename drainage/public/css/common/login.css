@@ -5,6 +5,12 @@ body {
     background: url(../..//img/back-water.jpeg) center center no-repeat;;
     background-size: cover;
 }
+
+.navbar-default {
+    background-color: #1296db;
+    opacity: 0.5;
+}
+
 .custom-panel {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);
 }
