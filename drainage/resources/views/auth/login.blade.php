@@ -23,7 +23,7 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="name" class="form-control" name="name"
-                                           value="{{ old('name') }}" required autofocus>
+                                           value="{{ old('name') }}" required autofocus placeholder="请输入登录账号">
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -38,7 +38,7 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password"
-                                           required>
+                                           required placeholder="请输入密码">
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
