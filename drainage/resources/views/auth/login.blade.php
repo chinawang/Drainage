@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div style="background: transparent url(/img/back-water.jpeg) no-repeat center center;">
+    <div style="background: transparent url(/img/back-water.jpeg) no-repeat center center; width:100%; height:100%; z-index:-1">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
