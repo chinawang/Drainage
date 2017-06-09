@@ -20,6 +20,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\Log\\LogController' => $baseDir . '/app/Http/Controllers/Log/LogController.php',
     'App\\Http\\Controllers\\Maintenance\\FailureController' => $baseDir . '/app/Http/Controllers/Maintenance/FailureController.php',
     'App\\Http\\Controllers\\Maintenance\\MaintenanceController' => $baseDir . '/app/Http/Controllers/Maintenance/MaintenanceController.php',
     'App\\Http\\Controllers\\Map\\MapController' => $baseDir . '/app/Http/Controllers/Map/MapController.php',

@@ -316,6 +316,7 @@ class ComposerStaticInit669c95193cab03cd306c11c2feb1a31f
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\Log\\LogController' => __DIR__ . '/../..' . '/app/Http/Controllers/Log/LogController.php',
         'App\\Http\\Controllers\\Maintenance\\FailureController' => __DIR__ . '/../..' . '/app/Http/Controllers/Maintenance/FailureController.php',
         'App\\Http\\Controllers\\Maintenance\\MaintenanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Maintenance/MaintenanceController.php',
         'App\\Http\\Controllers\\Map\\MapController' => __DIR__ . '/../..' . '/app/Http/Controllers/Map/MapController.php',
