@@ -61,7 +61,8 @@
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary btn-custom">
+                                    <button id="login" type="submit" class="btn btn-primary btn-custom"
+                                            data-loading-text="Loading..." autocomplete="off">
                                         登录
                                     </button>
 
@@ -76,4 +77,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script>
+        $('#login').on('click', function () {
+            var btn = $(this).button('loading');
+            // business logic...
+            setTimeout(function () { btn.button('reset'); },2000);
+        })
+    </script>
 @endsection
