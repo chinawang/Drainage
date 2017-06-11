@@ -215,10 +215,12 @@
 <script>
     $('.btn').on('click', function () {
         var btn = $(this).button('loading');
+        btn.data-loading-text('llllll');
         // business logic...
-        setTimeout(function () {
-            btn.button('reset');
-        }, 2000);
+        btn.button('reset');
+//        setTimeout(function () {
+//            btn.button('reset');
+//        }, 2000);
     })
 </script>
 
