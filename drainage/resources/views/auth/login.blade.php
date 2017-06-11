@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button id="login" type="submit" class="btn btn-primary btn-custom"
-                                            data-loading-text="Loading..." autocomplete="off">
+                                            data-loading-text="加载中..." autocomplete="off">
                                         登录
                                     </button>
 
