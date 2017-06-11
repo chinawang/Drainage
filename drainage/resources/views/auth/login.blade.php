@@ -81,7 +81,7 @@
 
 @section('javascript')
     <script>
-        $('#login').on('click', function () {
+        $('.btn').on('click', function () {
             var btn = $(this).button('loading');
             // business logic...
             setTimeout(function () { btn.button('reset'); },2000);
