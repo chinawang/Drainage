@@ -78,13 +78,3 @@
         </div>
     </div>
 @endsection
-
-@section('javascript')
-    <script>
-        $('.btn').on('click', function () {
-            var btn = $(this).button('loading');
-            // business logic...
-            setTimeout(function () { btn.button('reset'); },2000);
-        })
-    </script>
-@endsection

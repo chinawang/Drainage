@@ -2,7 +2,7 @@
 <html lang="{{ config('app.locale') }}">
 <head>
     <!-- Powered by wangyx -->
-    <!-- chinawangyx@hotmail.com -->
+<!-- chinawangyx@hotmail.com -->
     <!-- May the force be with you. -->
 
     <meta charset="utf-8">
@@ -73,13 +73,13 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
 
-                {{--<li class="dateStr" id="dateStr"></li>--}}
+                    {{--<li class="dateStr" id="dateStr"></li>--}}
 
                     <li class="back-to-home" style="padding-top: 15px;">
                         <div id="tp-weather-widget"></div>
                     </li>
 
-                <!-- Authentication Links -->
+                    <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">登录</a></li>
                         {{--<li><a href="{{ route('register') }}">注册</a></li>--}}
@@ -211,6 +211,15 @@
         "hash": "45ac23d099f73c1ab7a6f95c18371794"
     });
     tpwidget("show");
+</script>
+<script>
+    $('.btn').on('click', function () {
+        var btn = $(this).button('loading');
+        // business logic...
+        setTimeout(function () {
+            btn.button('reset');
+        }, 2000);
+    })
 </script>
 
 @yield('javascript')
