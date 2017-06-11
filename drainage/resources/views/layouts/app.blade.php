@@ -212,17 +212,6 @@
     });
     tpwidget("show");
 </script>
-<script>
-    $('.btn').on('click', function () {
-        var btn = $(this).button('loading');
-        btn.data-loading-text('llllll');
-        // business logic...
-        btn.button('reset');
-//        setTimeout(function () {
-//            btn.button('reset');
-//        }, 2000);
-    })
-</script>
 
 @yield('javascript')
 
