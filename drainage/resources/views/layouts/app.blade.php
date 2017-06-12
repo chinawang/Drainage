@@ -1,10 +1,9 @@
+<!-- Powered by wangyx -->
+<!-- chinawangyx@hotmail.com -->
+<!-- May the force be with you. -->
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
-    <!-- Powered by wangyx -->
-<!-- chinawangyx@hotmail.com -->
-    <!-- May the force be with you. -->
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
