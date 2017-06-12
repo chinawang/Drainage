@@ -118,10 +118,10 @@
     @yield('content')
 
     <footer class="footer">
-        <div class="container" style="background: #0f0f0f;color: white">
-            <span style="text-align: center">Powered By Wangyx</span>
+        <div class="container" style="background: rgba(255, 255, 255, 0.15);color: rgba(255, 255, 255, 0.15);margin: 0;text-align: center">
+            <span>Powered By Wangyx</span>
             <br/>
-            <span style="text-align: center">Eamil: chinawangyx@hotmail.com</span>
+            <span>Eamil: chinawangyx@hotmail.com</span>
         </div>
     </footer>
 </div>
