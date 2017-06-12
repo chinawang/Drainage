@@ -117,7 +117,7 @@
     @yield('location')
     @yield('content')
 
-    <footer class="footer" style="position: absolute;bottom: 0; width: 100%;height: 50px;">
+    <footer class="footer" style="width: 100%;height: 50px;">
         <div class="container" style="background: rgba(0, 0, 0, 0);color: rgba(255, 255, 255, 0.15);text-align: center">
             <span>Powered By Wangyx</span>
             <br/>
