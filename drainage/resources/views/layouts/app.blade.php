@@ -118,7 +118,7 @@
     @yield('content')
 
     <footer class="footer">
-        <div class="container">
+        <div class="container" style="background: #0f0f0f;color: white">
             <span style="text-align: center">Powered By Wangyx</span>
             <br/>
             <span style="text-align: center">Eamil: chinawangyx@hotmail.com</span>
