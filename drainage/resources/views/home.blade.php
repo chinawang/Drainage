@@ -125,4 +125,11 @@
             </div>
         </div>
     </div>
+    <footer class="footer navbar-fixed-bottom ">
+        <div class="container">
+            <span style="text-align: center">Powered By Wangyx</span>
+            <br/>
+            <span style="text-align: center">Eamil: chinawangyx@hotmail.com</span>
+        </div>
+    </footer>
 @endsection
