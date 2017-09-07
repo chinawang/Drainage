@@ -248,3 +248,6 @@ Route::get('/report/realTimeStatusHistory/{station_id}/{start_time}/{end_time}',
 
 //日志
 Route::get('/log/lists', 'Log\LogController@lgoList');
+
+// API
+Route::get('/api/v1/test/{station_num}', 'Api\TestController@stationRTHistory');
