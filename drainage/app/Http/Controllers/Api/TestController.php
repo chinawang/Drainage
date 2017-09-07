@@ -26,7 +26,7 @@ class TestController extends Controller
 
             'status_code'=> 200,
 
-            'data'  =>$stationRT->toArray()
+            'data'  =>$stationRT
 
         ]);
     }
