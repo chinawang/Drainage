@@ -106,9 +106,9 @@
 
 @section('javascript')
 
-    @foreach ($equipments as $equipment)
+    @foreach ($employees as $employee)
         <script type="text/javascript">
-            $('#btn-delete-alert-{{ $equipment['id'] }}').on("click", function () {
+            $('#btn-delete-alert-{{ $employee['id'] }}').on("click", function () {
                 swal({
                             title: "确认删除吗?",
                             text: "删除之后,将无法恢复!",
@@ -120,7 +120,7 @@
                             closeOnConfirm: false
                         },
                         function () {
-                            $("#btn-delete-submit-{{ $equipment['id'] }}").click();
+                            $("#btn-delete-submit-{{ $employee['id'] }}").click();
                         })
             });
         </script>
