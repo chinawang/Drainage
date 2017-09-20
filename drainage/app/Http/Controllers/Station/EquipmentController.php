@@ -318,7 +318,7 @@ class EquipmentController extends Controller
                 }
 
                 $i = 2;
-                // 循环写入订单数据
+                // 循环写入数据
                 foreach ($excelData as $rowData) {
 
                     $row = [

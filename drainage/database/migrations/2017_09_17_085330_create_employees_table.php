@@ -16,6 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable()->comment('姓名');
+            $table->string('number')->nullable()->comment('员工编号');
             $table->string('job')->nullable()->comment('职务');
             $table->string('department')->nullable()->comment('部门');
             $table->string('cellphone')->nullable()->comment('手机');
