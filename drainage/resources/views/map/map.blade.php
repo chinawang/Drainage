@@ -124,7 +124,7 @@
                             {{--offset: new AMap.Pixel(27, 25)--}}
                         {{--}--}}
                         label: {
-                            content: '{{ $station['type'] }}泵',
+                            content: '{{ $station['type'] }}',
                             offset: new AMap.Pixel(27, 25)
                         }
                     });
