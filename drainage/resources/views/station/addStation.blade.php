@@ -64,6 +64,22 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-4 control-label">泵站类型</label>
+
+                                <div class="col-md-6">
+                                    <label class="checkbox-inline">
+                                        <input name="type" type="radio" id="radio1"
+                                               value="雨水"  checked>雨水
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input name="type" type="radio" id="radio1"
+                                               value="污水"  >污水
+                                    </label>
+
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                                 <label for="address" class="col-md-4 control-label">详细地址</label>
 

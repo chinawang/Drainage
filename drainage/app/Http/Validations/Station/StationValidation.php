@@ -40,12 +40,13 @@ class StationValidation extends Validation
     public function storeNewStation()
     {
         $input = $this->filterRequest([
-            'station_number','name','address','lat','lng'
+            'station_number','name','type','address','lat','lng'
         ]);
 
         $rules = [
             'station_number' => ['string'],
             'name' => ['string'],
+            'type' => ['string'],
             'address' => ['string'],
             'lat' => ['string'],
             'lng' => ['string'],
@@ -66,12 +67,13 @@ class StationValidation extends Validation
     public function updateStation($stationID)
     {
         $input = $this->filterRequest([
-            'station_number','name','address','lat','lng'
+            'station_number','name','type','address','lat','lng'
         ]);
 
         $rules = [
             'station_number' => ['string'],
             'name' => ['string'],
+            'type' => ['string'],
             'address' => ['string'],
             'lat' => ['string'],
             'lng' => ['string'],

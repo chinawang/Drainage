@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <a href="/permission/lists">角色管理</a>
+                <a href="/permission/lists">权限管理</a>
                 <em>›</em>
                 <span>编辑权限</span>
             </h2>

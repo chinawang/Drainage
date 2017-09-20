@@ -46,6 +46,7 @@
                                 <tr>
                                     <th style="width: 80px">编号</th>
                                     <th>泵站名称</th>
+                                    <th>泵站类型</th>
                                     <th>泵站地址</th>
                                     @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'station-edit'))
                                         <th>操作</th>
@@ -58,6 +59,7 @@
                                     <tr>
                                         <td>{{ $station['station_number'] }}</td>
                                         <td>{{ $station['name'] }}</td>
+                                        <td>{{ $station['type'] }}</td>
                                         <td>{{ $station['address'] }}</td>
 
                                         @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'station-edit'))
