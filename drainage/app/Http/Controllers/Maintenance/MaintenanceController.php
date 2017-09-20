@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Maintenance;
 
+use App\Http\Logic\Employee\EmployeeLogic;
 use App\Http\Logic\Maintenance\FailureLogic;
 use App\Http\Logic\Maintenance\MaintenanceLogic;
 use App\Http\Logic\Station\EquipmentLogic;
@@ -41,6 +42,8 @@ class MaintenanceController extends Controller
      */
     protected $userLogic;
 
+    protected $employeeLogic;
+
     /**
      * @var MaintenanceValidation
      */
@@ -62,7 +65,7 @@ class MaintenanceController extends Controller
      * @param UserLogic $userLogic
      */
     public function __construct(MaintenanceLogic $maintenanceLogic,MaintenanceValidation $maintenanceValidation,FailureValidation $failureValidation,
-                                FailureLogic $failureLogic,EquipmentLogic $equipmentLogic,StationLogic $stationLogic,UserLogic $userLogic)
+                                FailureLogic $failureLogic,EquipmentLogic $equipmentLogic,StationLogic $stationLogic,UserLogic $userLogic,EmployeeLogic $employeeLogic)
     {
         $this->middleware('auth');
 
@@ -73,6 +76,7 @@ class MaintenanceController extends Controller
         $this->equipmentLogic = $equipmentLogic;
         $this->stationLogic = $stationLogic;
         $this->userLogic = $userLogic;
+        $this->employeeLogic = $employeeLogic;
     }
 
     /**
@@ -83,9 +87,9 @@ class MaintenanceController extends Controller
         $failure = $this->failureInfo($failureID);
         $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
-        $users = $this->userLogic->getAllUsers();
+        $employees = $this->employeeLogic->getAllEmployees();
 
-        $param = ['failure' => $failure,'equipments' => $equipments,'stations' => $stations,'users' => $users];
+        $param = ['failure' => $failure,'equipments' => $equipments,'stations' => $stations,'employees' => $employees];
         return view('maintenance.addMaintenance',$param);
     }
 
@@ -99,18 +103,18 @@ class MaintenanceController extends Controller
 
         $equipment = $this->equipmentInfo($maintenance['equipment_id']);
         $station = $this->stationInfo($maintenance['station_id']);
-        $repairer = $this->userInfo($maintenance['repairer_id']);
+        $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
         $maintenance['equipment_name'] = $equipment['name'];
         $maintenance['station_name'] = $station['name'];
-        $maintenance['repairer_name'] = $repairer['realname'];
+        $maintenance['repairer_name'] = $repairer['name'];
 
         $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
-        $users = $this->userLogic->getAllUsers();
+        $employees = $this->employeeLogic->getAllEmployees();
 
         $param = ['maintenance' => $maintenance,'equipments' => $equipments,
-            'stations' => $stations,'users' => $users];
+            'stations' => $stations,'employees' => $employees];
 
         return view('maintenance.updateMaintenance',$param);
     }
@@ -162,13 +166,13 @@ class MaintenanceController extends Controller
     /**
      * 查询人员信息
      *
-     * @param $userID
+     * @param $employeeID
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function userInfo($userID)
+    public function employeeInfo($employeeID)
     {
-        $user = $this->userLogic->findUser($userID);
-        return $user;
+        $employee = $this->employeeLogic->findEmployee($employeeID);
+        return $employee;
     }
 
     /**
@@ -187,13 +191,13 @@ class MaintenanceController extends Controller
         {
             $equipment = $this->equipmentInfo($failure['equipment_id']);
             $station = $this->stationInfo($failure['station_id']);
-            $reporter = $this->userInfo($failure['reporter_id']);
-            $repairer = $this->userInfo($failure['repairer_id']);
+            $reporter = $this->employeeInfo($failure['reporter_id']);
+            $repairer = $this->employeeInfo($failure['repairer_id']);
 
             $failure['equipment_name'] = $equipment['name'];
             $failure['station_name'] = $station['name'];
-            $failure['reporter_name'] = $reporter['realname'];
-            $failure['repairer_name'] = $repairer['realname'];
+            $failure['reporter_name'] = $reporter['name'];
+            $failure['repairer_name'] = $repairer['name'];
         }
 
         return $failurePaginate;
@@ -215,11 +219,11 @@ class MaintenanceController extends Controller
         {
             $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->userInfo($maintenance['repairer_id']);
+            $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
             $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['realname'];
+            $maintenance['repairer_name'] = $repairer['name'];
         }
 
         $failurePaginate = $this->failureList();
@@ -248,11 +252,11 @@ class MaintenanceController extends Controller
         {
             $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->userInfo($maintenance['repairer_id']);
+            $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
             $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['realname'];
+            $maintenance['repairer_name'] = $repairer['name'];
         }
 
         $param = ['maintenances' => $maintenancePaginate];
@@ -276,11 +280,11 @@ class MaintenanceController extends Controller
         {
             $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->userInfo($maintenance['repairer_id']);
+            $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
             $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['realname'];
+            $maintenance['repairer_name'] = $repairer['name'];
         }
 
         //记录Log
@@ -394,11 +398,11 @@ class MaintenanceController extends Controller
         {
             $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->userInfo($maintenance['repairer_id']);
+            $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
             $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['realname'];
+            $maintenance['repairer_name'] = $repairer['name'];
         }
 
         return $maintenanceList;

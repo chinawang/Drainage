@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Station;
 
+use App\Http\Logic\Employee\EmployeeLogic;
 use App\Http\Logic\Station\EquipmentLogic;
 use App\Http\Logic\Station\StationLogic;
 use App\Http\Logic\User\UserLogic;
@@ -28,6 +29,8 @@ class EquipmentController extends Controller
      */
     protected $userLogic;
 
+    protected $employeeLogic;
+
     /**
      * @var EquipmentValidation
      */
@@ -41,7 +44,7 @@ class EquipmentController extends Controller
      * @param UserLogic $userLogic
      */
     public function __construct(EquipmentLogic $equipmentLogic, EquipmentValidation $equipmentValidation,
-                                StationLogic $stationLogic, UserLogic $userLogic)
+                                StationLogic $stationLogic, UserLogic $userLogic,EmployeeLogic $employeeLogic)
     {
         $this->middleware('auth');
 
@@ -49,6 +52,7 @@ class EquipmentController extends Controller
         $this->equipmentValidation = $equipmentValidation;
         $this->stationLogic = $stationLogic;
         $this->userLogic = $userLogic;
+        $this->employeeLogic = $employeeLogic;
     }
 
     /**
@@ -59,9 +63,9 @@ class EquipmentController extends Controller
     public function showAddEquipmentForm()
     {
         $stations = $this->stationLogic->getAllStations();
-        $users = $this->userLogic->getAllUsers();
+        $employees = $this->employeeLogic->getAllEmployees();
 
-        $param = ['stations' => $stations, 'users' => $users];
+        $param = ['stations' => $stations, 'employees' => $employees];
         return view('equipment.addEquipment', $param);
     }
 
@@ -75,17 +79,17 @@ class EquipmentController extends Controller
     {
         $equipment = $this->equipmentInfo($equipmentID);
         $station = $this->stationInfo($equipment['station_id']);
-        $leader = $this->userInfo($equipment['leader_id']);
-        $custodian = $this->userInfo($equipment['custodian_id']);
+        $leader = $this->employeeInfo($equipment['leader_id']);
+        $custodian = $this->employeeInfo($equipment['custodian_id']);
 
         $equipment['station_name'] = $station['name'];
-        $equipment['leader_name'] = $leader['realname'];
-        $equipment['custodian_name'] = $custodian['realname'];
+        $equipment['leader_name'] = $leader['name'];
+        $equipment['custodian_name'] = $custodian['name'];
 
         $stations = $this->stationLogic->getAllStations();
-        $users = $this->userLogic->getAllUsers();
+        $employees = $this->employeeLogic->getAllEmployees();
 
-        $param = ['equipment' => $equipment, 'stations' => $stations, 'users' => $users];
+        $param = ['equipment' => $equipment, 'stations' => $stations, 'employees' => $employees];
         return view('equipment.updateEquipment', $param);
     }
 
@@ -116,13 +120,13 @@ class EquipmentController extends Controller
     /**
      * 查询人员信息
      *
-     * @param $userID
+     * @param $employeeID
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function userInfo($userID)
+    public function employeeInfo($employeeID)
     {
-        $user = $this->userLogic->findUser($userID);
-        return $user;
+        $employee = $this->employeeLogic->findEmployee($employeeID);
+        return $employee;
     }
 
     /**
@@ -142,12 +146,12 @@ class EquipmentController extends Controller
 
         foreach ($equipmentPaginate as $equipment) {
             $station = $this->stationInfo($equipment['station_id']);
-            $leader = $this->userInfo($equipment['leader_id']);
-            $custodian = $this->userInfo($equipment['custodian_id']);
+            $leader = $this->employeeInfo($equipment['leader_id']);
+            $custodian = $this->employeeInfo($equipment['custodian_id']);
 
             $equipment['station_name'] = $station['name'];
-            $equipment['leader_name'] = $leader['realname'];
-            $equipment['custodian_name'] = $custodian['realname'];
+            $equipment['leader_name'] = $leader['name'];
+            $equipment['custodian_name'] = $custodian['name'];
         }
 
         $param = ['equipments' => $equipmentPaginate];
@@ -174,12 +178,12 @@ class EquipmentController extends Controller
 
         foreach ($equipmentPaginate as $equipment) {
             $station = $this->stationInfo($equipment['station_id']);
-            $leader = $this->userInfo($equipment['leader_id']);
-            $custodian = $this->userInfo($equipment['custodian_id']);
+            $leader = $this->employeeInfo($equipment['leader_id']);
+            $custodian = $this->employeeInfo($equipment['custodian_id']);
 
             $equipment['station_name'] = $station['name'];
-            $equipment['leader_name'] = $leader['realname'];
-            $equipment['custodian_name'] = $custodian['realname'];
+            $equipment['leader_name'] = $leader['name'];
+            $equipment['custodian_name'] = $custodian['name'];
         }
 
         $param = ['equipments' => $equipmentPaginate];
@@ -285,12 +289,12 @@ class EquipmentController extends Controller
         $equipmentList = $this->equipmentLogic->getAllEquipments();
         foreach ($equipmentList as $equipment) {
             $station = $this->stationInfo($equipment['station_id']);
-            $leader = $this->userInfo($equipment['leader_id']);
-            $custodian = $this->userInfo($equipment['custodian_id']);
+            $leader = $this->employeeInfo($equipment['leader_id']);
+            $custodian = $this->employeeInfo($equipment['custodian_id']);
 
             $equipment['station_name'] = $station['name'];
-            $equipment['leader_name'] = $leader['realname'];
-            $equipment['custodian_name'] = $custodian['realname'];
+            $equipment['leader_name'] = $leader['name'];
+            $equipment['custodian_name'] = $custodian['name'];
         }
 
         return $equipmentList;

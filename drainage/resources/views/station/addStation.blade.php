@@ -70,11 +70,11 @@
                                 <div class="col-md-6">
                                     <label class="checkbox-inline">
                                         <input name="type" type="radio" id="radio1"
-                                               value="雨水"  checked>雨水
+                                               value="雨水"  checked>  雨水
                                     </label>
                                     <label class="checkbox-inline">
                                         <input name="type" type="radio" id="radio1"
-                                               value="污水"  >污水
+                                               value="污水"  >  污水
                                     </label>
 
                                 </div>

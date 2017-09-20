@@ -132,8 +132,8 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="leader_id">
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}" {{$equipment['leader_id'] == $user['id'] ? 'selected="selected"' : ''}}>{{ $user['realname'] }}</option>
+                                        @foreach ($employees as $employee)
+                                            <option value="{{ $employee['id'] }}" {{$equipment['leader_id'] == $employee['id'] ? 'selected="selected"' : ''}}>{{ $employee['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('leader'))
@@ -149,8 +149,8 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="custodian_id">
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}" {{$equipment['custodian_id'] == $user['id'] ? 'selected="selected"' : ''}}>{{ $user['realname'] }}</option>
+                                        @foreach ($employees as $employee)
+                                            <option value="{{ $employee['id'] }}" {{$equipment['custodian_id'] == $employee['id'] ? 'selected="selected"' : ''}}>{{ $employee['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('custodian'))

@@ -120,8 +120,8 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="reporter_id">
                                         <option value="" selected="selected" style="display: none">选择报修人</option>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
+                                        @foreach ($employees as $employee)
+                                            <option value="{{ $employee['id'] }}">{{ $employee['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('reporter'))

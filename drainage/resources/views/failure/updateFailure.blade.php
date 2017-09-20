@@ -117,8 +117,8 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="reporter_id">
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}" {{$failure['reporter_id'] == $user['id'] ? 'selected="selected"' : ''}}>{{ $user['realname'] }}</option>
+                                        @foreach ($employees as $employee)
+                                            <option value="{{ $employee['id'] }}" {{$failure['reporter_id'] == $employee['id'] ? 'selected="selected"' : ''}}>{{ $employee['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('reporter'))

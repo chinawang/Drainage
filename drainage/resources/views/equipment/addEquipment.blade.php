@@ -128,8 +128,8 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="leader_id">
                                         <option value="" selected="selected" style="display: none">选择负责人</option>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
+                                        @foreach ($employees as $employee)
+                                            <option value="{{ $employee['id'] }}">{{ $employee['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('leader'))
@@ -146,8 +146,8 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="custodian_id">
                                         <option value="" selected="selected" style="display: none">选择管理员</option>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user['id'] }}">{{ $user['realname'] }}</option>
+                                        @foreach ($employees as $employee)
+                                            <option value="{{ $employee['id'] }}">{{ $employee['name'] }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('custodian'))

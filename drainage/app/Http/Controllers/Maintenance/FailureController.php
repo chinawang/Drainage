@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Maintenance;
 
+use App\Http\Logic\Employee\EmployeeLogic;
 use App\Http\Logic\Maintenance\FailureLogic;
 use App\Http\Logic\Station\EquipmentLogic;
 use App\Http\Logic\Station\StationLogic;
@@ -35,6 +36,8 @@ class FailureController extends Controller
      */
     protected $userLogic;
 
+    protected $employeeLogic;
+
     /**
      * @var FailureValidation
      */
@@ -49,7 +52,7 @@ class FailureController extends Controller
      * @param UserLogic $userLogic
      */
     public function __construct(FailureLogic $failureLogic,FailureValidation $failureValidation,
-                                EquipmentLogic $equipmentLogic,StationLogic $stationLogic,UserLogic $userLogic)
+                                EquipmentLogic $equipmentLogic,StationLogic $stationLogic,UserLogic $userLogic,EmployeeLogic $employeeLogic)
     {
         $this->middleware('auth');
 
@@ -59,6 +62,7 @@ class FailureController extends Controller
         $this->equipmentLogic = $equipmentLogic;
         $this->stationLogic = $stationLogic;
         $this->userLogic = $userLogic;
+        $this->employeeLogic = $employeeLogic;
     }
 
     /**
@@ -68,9 +72,9 @@ class FailureController extends Controller
     {
         $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
-        $users = $this->userLogic->getAllUsers();
+        $employees = $this->employeeLogic->getAllEmployees();
 
-        $param = ['equipments' => $equipments,'stations' => $stations,'users' => $users];
+        $param = ['equipments' => $equipments,'stations' => $stations,'employees' => $employees];
         return view('failure.addFailure',$param);
     }
 
@@ -84,20 +88,20 @@ class FailureController extends Controller
 
         $equipment = $this->equipmentInfo($failure['equipment_id']);
         $station = $this->stationInfo($failure['station_id']);
-        $reporter = $this->userInfo($failure['reporter_id']);
-        $repairer = $this->userInfo($failure['repairer_id']);
+        $reporter = $this->employeeInfo($failure['reporter_id']);
+        $repairer = $this->employeeInfo($failure['repairer_id']);
 
         $failure['equipment_name'] = $equipment['name'];
         $failure['station_name'] = $station['name'];
-        $failure['reporter_name'] = $reporter['realname'];
-        $failure['repairer_name'] = $repairer['realname'];
+        $failure['reporter_name'] = $reporter['name'];
+        $failure['repairer_name'] = $repairer['name'];
 
         $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
-        $users = $this->userLogic->getAllUsers();
+        $employees = $this->employeeLogic->getAllEmployees();
 
         $param = ['failure' => $failure,'equipments' => $equipments,
-            'stations' => $stations,'users' => $users];
+            'stations' => $stations,'employees' => $employees];
         return view('failure.updateFailure',$param);
     }
 
@@ -138,13 +142,13 @@ class FailureController extends Controller
     /**
      * 查询人员信息
      *
-     * @param $userID
+     * @param $employeeID
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function userInfo($userID)
+    public function employeeInfo($employeeID)
     {
-        $user = $this->userLogic->findUser($userID);
-        return $user;
+        $employee = $this->employeeLogic->findEmployee($employeeID);
+        return $employee;
     }
 
     /**
@@ -170,13 +174,13 @@ class FailureController extends Controller
             {
                 $equipment = $this->equipmentInfo($failure['equipment_id']);
                 $station = $this->stationInfo($failure['station_id']);
-                $reporter = $this->userInfo($failure['reporter_id']);
-                $repairer = $this->userInfo($failure['repairer_id']);
+                $reporter = $this->employeeInfo($failure['reporter_id']);
+                $repairer = $this->employeeInfo($failure['repairer_id']);
 
                 $failure['equipment_name'] = $equipment['name'];
                 $failure['station_name'] = $station['name'];
-                $failure['reporter_name'] = $reporter['realname'];
-                $failure['repairer_name'] = $repairer['realname'];
+                $failure['reporter_name'] = $reporter['name'];
+                $failure['repairer_name'] = $repairer['name'];
             }
         }
         else
@@ -187,13 +191,13 @@ class FailureController extends Controller
             {
                 $equipment = $this->equipmentInfo($failure->equipment_id);
                 $station = $this->stationInfo($failure->station_id);
-                $reporter = $this->userInfo($failure->reporter_id);
-                $repairer = $this->userInfo($failure->repairer_id);
+                $reporter = $this->employeeInfo($failure->reporter_id);
+                $repairer = $this->employeeInfo($failure->repairer_id);
 
                 $failure->equipment_name = $equipment['name'];
                 $failure->station_name = $station['name'];
-                $failure->reporter_name = $reporter['realname'];
-                $failure->repairer_name = $repairer['realname'];
+                $failure->reporter_name = $reporter['name'];
+                $failure->repairer_name = $repairer['name'];
             }
         }
 
@@ -224,13 +228,13 @@ class FailureController extends Controller
         {
             $equipment = $this->equipmentInfo($failure['equipment_id']);
             $station = $this->stationInfo($failure['station_id']);
-            $reporter = $this->userInfo($failure['reporter_id']);
-            $repairer = $this->userInfo($failure['repairer_id']);
+            $reporter = $this->employeeInfo($failure['reporter_id']);
+            $repairer = $this->employeeInfo($failure['repairer_id']);
 
             $failure['equipment_name'] = $equipment['name'];
             $failure['station_name'] = $station['name'];
-            $failure['reporter_name'] = $reporter['realname'];
-            $failure['repairer_name'] = $repairer['realname'];
+            $failure['reporter_name'] = $reporter['name'];
+            $failure['repairer_name'] = $repairer['name'];
         }
 
         $param = ['failures' => $failurePaginate];
