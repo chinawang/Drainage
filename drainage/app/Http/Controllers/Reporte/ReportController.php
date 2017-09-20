@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Reporte;
 
+use App\Http\Logic\Employee\EmployeeLogic;
 use App\Http\Logic\Maintenance\FailureLogic;
 use App\Http\Logic\Maintenance\MaintenanceLogic;
 use App\Http\Logic\Station\EquipmentLogic;
@@ -47,6 +48,8 @@ class ReportController extends Controller
      */
     protected $maintenanceLogic;
 
+    protected $employeeLogic;
+
     /**
      * ReportController constructor.
      * @param StationLogic $stationLogic
@@ -58,7 +61,7 @@ class ReportController extends Controller
      */
     public function __construct(StationLogic $stationLogic, StationValidation $stationValidation,
                                 EquipmentLogic $equipmentLogic, UserLogic $userLogic,
-                                FailureLogic $failureLogic, MaintenanceLogic $maintenanceLogic)
+                                FailureLogic $failureLogic, MaintenanceLogic $maintenanceLogic,EmployeeLogic $employeeLogic)
     {
         $this->middleware('auth');
 
@@ -68,6 +71,7 @@ class ReportController extends Controller
         $this->userLogic = $userLogic;
         $this->failureLogic = $failureLogic;
         $this->maintenanceLogic = $maintenanceLogic;
+        $this->employeeLogic = $employeeLogic;
     }
 
     public function showWaterReport()
@@ -210,13 +214,13 @@ class ReportController extends Controller
         foreach ($failurePaginate as $failure) {
             $equipment = $this->equipmentInfo($failure->equipment_id);
             $station = $this->stationInfo($failure->station_id);
-            $reporter = $this->userInfo($failure->reporter_id);
-            $repairer = $this->userInfo($failure->repairer_id);
+            $reporter = $this->employeeInfo($failure->reporter_id);
+            $repairer = $this->employeeInfo($failure->repairer_id);
 
             $failure->equipment_name = $equipment['name'];
             $failure->station_name = $station['name'];
-            $failure->reporter_name = $reporter['realname'];
-            $failure->repairer_name = $repairer['realname'];
+            $failure->reporter_name = $reporter['name'];
+            $failure->repairer_name = $repairer['name'];
         }
 
         $param = ['stations' => $stations, 'failures' => $failurePaginate,
@@ -262,11 +266,11 @@ class ReportController extends Controller
         foreach ($maintenancePaginate as $maintenance) {
             $equipment = $this->equipmentInfo($maintenance->equipment_id);
             $station = $this->stationInfo($maintenance->station_id);
-            $repairer = $this->userInfo($maintenance->repairer_id);
+            $repairer = $this->employeeInfo($maintenance->repairer_id);
 
             $maintenance->equipment_name = $equipment['name'];
             $maintenance->station_name = $station['name'];
-            $maintenance->repairer_name = $repairer['realname'];
+            $maintenance->repairer_name = $repairer['name'];
         }
 
         $param = ['stations' => $stations, 'maintenances' => $maintenancePaginate,
@@ -378,13 +382,13 @@ class ReportController extends Controller
     /**
      * 查询人员信息
      *
-     * @param $userID
+     * @param $employeeID
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function userInfo($userID)
+    public function employeeInfo($employeeID)
     {
-        $user = $this->userLogic->findUser($userID);
-        return $user;
+        $employee = $this->employeeLogic->findEmployee($employeeID);
+        return $employee;
     }
 
     public function getStationRTAll($stationID,$startTime,$endTime)
