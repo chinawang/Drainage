@@ -87,7 +87,7 @@
                                 </tbody>
                             </table>
                             <div class="table-pagination">
-                                {!! $employee->render() !!}
+                                {!! $employees->render() !!}
                             </div>
                             <div class="col-md-6 col-btn">
                                 <a href="/employee/export" class="btn btn-default btn-sm">导出Excel</a>
