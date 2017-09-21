@@ -121,19 +121,19 @@ class StationController extends Controller
 
         if($type == "全部")
         {
-            $stationPaginate = $this->stationLogic->getStations(10,'created_at','asc',null);
-
+            $conditions = ['delete_process' => 0];
         }
         else
         {
-            $stationPaginate = DB::table('stations')->where(['type'=>$type,'delete_process'=>0])->orderBy('created_at', 'asc')
-                ->paginate(10, $columns = ['*'], $pageName = 'page', null);
+            $conditions = ['delete_process' => 0,'type' => $type];
         }
 
+        $stationPaginate = $this->stationLogic->getStationsBy($conditions,10,'created_at','asc',null);
+
         foreach ($stationPaginate as $station) {
-            $assignEmployeeIDs = $this->stationEmployeeLogic->getEmployeeIDsByStationID($station->id);
+            $assignEmployeeIDs = $this->stationEmployeeLogic->getEmployeeIDsByStationID($station['id']);
             $assignEmployees = $this->employeeLogic->getEmployeesByIDs($assignEmployeeIDs);
-            $station->assignEmployees = $assignEmployees;
+            $station['assignEmployees'] = $assignEmployees;
         }
 
         $param = ['stations' => $stationPaginate];

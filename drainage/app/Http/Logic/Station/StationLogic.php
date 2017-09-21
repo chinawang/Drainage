@@ -53,6 +53,12 @@ class StationLogic extends Logic
         return $stationList;
     }
 
+    public function getStationsBy($conditions,$pageSize, $orderColumn, $orderDirection, $cursorPage = null)
+    {
+        $stationList = $this->stationRepository->getPaginate($conditions,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+        return $stationList;
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Collection
      */
