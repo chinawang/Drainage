@@ -52,19 +52,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('equipment_number') ? ' has-error' : '' }}">
-                                <label for="equipment_number" class="col-md-4 control-label">设备编号</label>
+                            {{--<div class="form-group{{ $errors->has('equipment_number') ? ' has-error' : '' }}">--}}
+                                {{--<label for="equipment_number" class="col-md-4 control-label">设备编号</label>--}}
 
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="equipment_number" value="{{ old('equipment_number') }}" placeholder="请输入设备编号" required >
+                                {{--<div class="col-md-6">--}}
+                                    {{--<input type="text" class="form-control" name="equipment_number" value="{{ old('equipment_number') }}" placeholder="请输入设备编号" required >--}}
 
-                                    @if ($errors->has('equipment_number'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('equipment_number') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
+                                    {{--@if ($errors->has('equipment_number'))--}}
+                                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('equipment_number') }}</strong>--}}
+                                    {{--</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">设备名称</label>
@@ -94,33 +94,91 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('producer') ? ' has-error' : '' }}">
-                                <label for="producer" class="col-md-4 control-label">制造单位</label>
+                            <div class="form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
+                                <label for="capacity" class="col-md-4 control-label">容量(选填)</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="producer" value="{{ old('producer') }}" placeholder="请输入制造单位" required >
+                                    <input type="text" class="form-control" name="capacity" value="{{ old('capacity') }}" placeholder="请输入设备容量"  >
 
-                                    @if ($errors->has('producer'))
+                                    @if ($errors->has('capacity'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('producer') }}</strong>
+                                        <strong>{{ $errors->first('capacity') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                                <label for="department" class="col-md-4 control-label">使用部门</label>
+                            <div class="form-group{{ $errors->has('flux') ? ' has-error' : '' }}">
+                                <label for="flux" class="col-md-4 control-label">泵机流量(选填)</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="department" value="{{ old('department') }}" placeholder="请输入使用部门" required >
+                                    <input type="text" class="form-control" name="flux" value="{{ old('flux') }}" placeholder="请输入泵机流量"  >
 
-                                    @if ($errors->has('department'))
+                                    @if ($errors->has('flux'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('department') }}</strong>
+                                        <strong>{{ $errors->first('flux') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <label for="flux" class="col-md-4 control-label">m³/h</label>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('range') ? ' has-error' : '' }}">
+                                <label for="range" class="col-md-4 control-label">泵机扬程(选填)</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="range" value="{{ old('range') }}" placeholder="请输入泵机扬程"  >
+
+                                    @if ($errors->has('range'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('range') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <label for="flux" class="col-md-4 control-label">m</label>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
+                                <label for="quantity" class="col-md-4 control-label">数量</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="quantity" value="{{ old('quantity') }}" placeholder="请输入设备数量" required >
+
+                                    @if ($errors->has('quantity'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('quantity') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
+
+                            {{--<div class="form-group{{ $errors->has('producer') ? ' has-error' : '' }}">--}}
+                                {{--<label for="producer" class="col-md-4 control-label">制造单位</label>--}}
+
+                                {{--<div class="col-md-6">--}}
+                                    {{--<input type="text" class="form-control" name="producer" value="{{ old('producer') }}" placeholder="请输入制造单位" required >--}}
+
+                                    {{--@if ($errors->has('producer'))--}}
+                                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('producer') }}</strong>--}}
+                                    {{--</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+
+                            {{--<div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">--}}
+                                {{--<label for="department" class="col-md-4 control-label">使用部门</label>--}}
+
+                                {{--<div class="col-md-6">--}}
+                                    {{--<input type="text" class="form-control" name="department" value="{{ old('department') }}" placeholder="请输入使用部门" required >--}}
+
+                                    {{--@if ($errors->has('department'))--}}
+                                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('department') }}</strong>--}}
+                                    {{--</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div class="form-group{{ $errors->has('leader') ? ' has-error' : '' }}">
                                 <label for="leader" class="col-md-4 control-label">负责人</label>
@@ -158,25 +216,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
-                                <label for="quantity" class="col-md-4 control-label">数量</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="quantity" value="{{ old('quantity') }}" placeholder="请输入设备数量" required >
-
-                                    @if ($errors->has('quantity'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('quantity') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
                             <div class="form-group{{ $errors->has('alteration') ? ' has-error' : '' }}">
-                                <label for="alteration" class="col-md-4 control-label">变更情况</label>
+                                <label for="alteration" class="col-md-4 control-label">备注(选填)</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="alteration" value="{{ old('alteration') }}" placeholder="请输入设备变更情况" required >
+                                    <input type="text" class="form-control" name="alteration" value="{{ old('alteration') }}" placeholder="请输入备注"  >
 
                                     @if ($errors->has('alteration'))
                                         <span class="help-block">

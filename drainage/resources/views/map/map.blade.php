@@ -105,7 +105,7 @@
                         //图标文字
                         iconLabel: {
                             //A,B,C.....
-                            innerHTML: '{{ $station['type'] }}',
+                            innerHTML: '泵',
                             style: {
                                 //颜色, #333, red等等，这里仅作示例，取iconStyle中首尾相对的颜色
                                 color: '#ffffff'

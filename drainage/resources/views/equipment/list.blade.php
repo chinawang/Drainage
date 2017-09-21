@@ -44,16 +44,19 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th style="width: 80px">编号</th>
+                                    {{--<th style="width: 80px">编号</th>--}}
                                     <th>所属泵站</th>
                                     <th>设备名称</th>
                                     <th>型号</th>
-                                    <th>制造单位</th>
-                                    <th>使用部门</th>
+                                    <th>容量</th>
+                                    <th>流量(m³/h)</th>
+                                    <th>扬程(m)</th>
+                                    <th>数量</th>
+                                    {{--<th>制造单位</th>--}}
+                                    {{--<th>使用部门</th>--}}
                                     <th>负责人</th>
                                     <th>设备管理员</th>
-                                    <th>数量</th>
-                                    <th>变动情况</th>
+                                    <th>备注</th>
                                     @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-edit'))
                                         <th>操作</th>
                                     @endif
@@ -62,15 +65,18 @@
                                 <tbody>
                                 @foreach ($equipments as $equipment)
                                     <tr>
-                                        <td>{{ $equipment['equipment_number'] }}</td>
+                                        {{--<td>{{ $equipment['equipment_number'] }}</td>--}}
                                         <td>{{ $equipment['station_name'] }}</td>
                                         <td>{{ $equipment['name'] }}</td>
                                         <td>{{ $equipment['type'] }}</td>
-                                        <td>{{ $equipment['producer'] }}</td>
-                                        <td>{{ $equipment['department'] }}</td>
+                                        <td>{{ $equipment['capacity'] }}</td>
+                                        <td>{{ $equipment['flux'] }}</td>
+                                        <td>{{ $equipment['range'] }}</td>
+                                        <td>{{ $equipment['quantity'] }}</td>
+                                        {{--<td>{{ $equipment['producer'] }}</td>--}}
+                                        {{--<td>{{ $equipment['department'] }}</td>--}}
                                         <td>{{ $equipment['leader_name'] }}</td>
                                         <td>{{ $equipment['custodian_name'] }}</td>
-                                        <td>{{ $equipment['quantity'] }}</td>
                                         <td>{{ $equipment['alteration'] }}</td>
 
                                         @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-edit'))

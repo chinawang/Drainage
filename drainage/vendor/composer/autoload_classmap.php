@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddCapacityToEquipmentsTable' => $baseDir . '/database/migrations/2017_09_21_023451_add_capacity_to_equipments_table.php',
     'AddTypeToStationsTable' => $baseDir . '/database/migrations/2017_09_17_092021_add_type_to_stations_table.php',
     'CreateEmployeesTable' => $baseDir . '/database/migrations/2017_09_17_085330_create_employees_table.php',
     'CreateEquipmentsTable' => $baseDir . '/database/migrations/2017_03_29_111641_create_equipments_table.php',
