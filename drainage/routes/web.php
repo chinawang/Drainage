@@ -50,6 +50,9 @@ Route::post('/user/delete/{user_id}','User\UserController@deleteUser');
 //泵站列表
 Route::get('/station/lists', 'Station\StationController@stationList');
 
+//泵站筛选
+Route::get('/station/search', 'Station\StationController@getStationListByType');
+
 //泵站创建保存
 Route::get('/station/add','Station\StationController@showAddStationForm');
 Route::post('/station/store','Station\StationController@storeNewStation');

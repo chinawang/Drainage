@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class StationController extends Controller
 {
@@ -99,6 +100,35 @@ class StationController extends Controller
         $orderDirection  = array_get($input, 'order_direction', 'asc');
         $pageSize        = array_get($input, 'page_size', 10);
         $stationPaginate = $this->stationLogic->getStations($pageSize,$orderColumn,$orderDirection,$cursorPage);
+
+        foreach ($stationPaginate as $station) {
+            $assignEmployeeIDs = $this->stationEmployeeLogic->getEmployeeIDsByStationID($station['id']);
+            $assignEmployees = $this->employeeLogic->getEmployeesByIDs($assignEmployeeIDs);
+            $station['assignEmployees'] = $assignEmployees;
+        }
+
+        $param = ['stations' => $stationPaginate];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站信息']);
+
+        return view('station.list',$param);
+    }
+
+    public function getStationListByType()
+    {
+        $type = Input::get('type', 1);
+
+        if($type == "全部")
+        {
+            $stationPaginate = $this->stationLogic->getStations(10,'created_at','asc',null);
+
+        }
+        else
+        {
+            $stationPaginate = DB::table('stations')->where(['type'=>$type,'delete_process'=>0])->orderBy('created_at', 'asc')
+                ->paginate(10, $columns = ['*'], $pageName = 'page', null);
+        }
 
         foreach ($stationPaginate as $station) {
             $assignEmployeeIDs = $this->stationEmployeeLogic->getEmployeeIDsByStationID($station['id']);
