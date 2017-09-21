@@ -351,12 +351,27 @@ class EquipmentController extends Controller
                     ];
 
                     $sheet->row($i, $row);
+
+                    $sheet->setHeight($i, 20);
+
                     $i++;
                 }
 
                 //表体样式
                 $sheet->setBorder('A2:J'.$i, 'thin');
                 $sheet->setAutoSize(true);
+                $sheet->setWidth(array(
+                    'A'     =>  10,
+                    'B'     =>  10,
+                    'C'     =>  10,
+                    'D'     =>  10,
+                    'E'     =>  10,
+                    'F'     =>  10,
+                    'G'     =>  10,
+                    'H'     =>  10,
+                    'I'     =>  10,
+                    'J'     =>  10
+                ));
                 $sheet->cells('A2:J'.$i, function($cells) {
 
                     $cells->setFontSize(14);
