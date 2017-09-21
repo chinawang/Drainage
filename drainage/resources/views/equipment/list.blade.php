@@ -61,10 +61,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-1">
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-4">
-                                            <button type="submit" class="btn btn-primary btn-custom">
+                                            <button type="submit" class="btn btn-primary ">
                                                 查询
                                             </button>
                                         </div>
