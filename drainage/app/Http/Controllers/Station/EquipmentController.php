@@ -313,7 +313,7 @@ class EquipmentController extends Controller
 
             $excel->sheet('设备信息', function ($sheet) use ($excelData) {
 
-                $sheet->row(1, ['编号', '所属泵站', '设备名称', '型号', '制造单位', '使用部门	', '负责人', '设备管理员', '数量', '变动情况']);
+                $sheet->row(1, ['所属泵站', '设备名称', '型号', '容量', '流量(m³/h)', '扬程(m)','数量','负责人', '设备管理员', '备注']);
 
                 if (empty($excelData)) {
 
@@ -326,15 +326,15 @@ class EquipmentController extends Controller
                 foreach ($excelData as $rowData) {
 
                     $row = [
-                        $rowData['equipment_number'],
                         $rowData['station_name'],
                         $rowData['name'],
                         $rowData['type'],
-                        $rowData['producer'],
-                        $rowData['department'],
+                        $rowData['capacity'],
+                        $rowData['flux'],
+                        $rowData['range'],
+                        $rowData['quantity'],
                         $rowData['leader_name'],
                         $rowData['custodian_name'],
-                        $rowData['quantity'],
                         $rowData['alteration'],
                     ];
 
