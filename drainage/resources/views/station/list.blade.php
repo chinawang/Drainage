@@ -74,7 +74,7 @@
 
                                         @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'station-edit'))
                                             <td>
-                                                <a href="/station/employee/edit/{{ $station['id'] }}" class="btn btn-link">设置工作人员</a>
+                                                <a href="/station/employee/edit/{{ $station['id'] }}" class="btn btn-link">设置人员</a>
                                                 <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
                                                 <a href="#" class="btn btn-link btn-delete-station"
                                                    id="btn-delete-alert-{{ $station['id'] }}">删除</a>
