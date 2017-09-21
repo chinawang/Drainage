@@ -142,7 +142,7 @@ class EquipmentController extends Controller
         $cursorPage = array_get($input, 'cursor_page', null);
         $orderColumn = array_get($input, 'order_column', 'station_id');
         $orderDirection = array_get($input, 'order_direction', 'asc');
-        $pageSize = array_get($input, 'page_size', 20);
+        $pageSize = array_get($input, 'page_size', 3);
         $equipmentPaginate = $this->equipmentLogic->getEquipments($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
         foreach ($equipmentPaginate as $equipment) {
@@ -171,7 +171,7 @@ class EquipmentController extends Controller
     {
         $stationID = Input::get('station_id', 1);
 
-        $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID, 10, 'created_at', 'asc', null);
+        $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID, 3, 'created_at', 'asc', null);
 
         $stationTemp = $this->stationInfo($stationID);
         $stations = $this->stationLogic->getAllStations();
