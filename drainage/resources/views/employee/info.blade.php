@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <a href="/employee/lists">工作人员管理</a>
+                <a href="/station/lists">泵站管理</a>
                 <em>›</em>
                 <span>{{ $employee['name'] }}</span>
             </h2>

@@ -49,6 +49,19 @@ class EmployeeController extends Controller
     }
 
     /**
+     * 显示信息窗口
+     *
+     * @param $employeeID
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showEmployeeForm($employeeID)
+    {
+        $employee = $this->employeeLogic->findEmployee($employeeID);
+        $param = ['employee' => $employee];
+        return view('employee.info',$param);
+    }
+
+    /**
      * 查询信息
      *
      * @param $employeeID
