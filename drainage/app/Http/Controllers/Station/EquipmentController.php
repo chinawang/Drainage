@@ -171,7 +171,7 @@ class EquipmentController extends Controller
     {
         $stationID = Input::get('station_id', 1);
 
-        if(isNull($stationID))
+        if($stationID == '0')
         {
             $equipmentPaginate = $this->equipmentLogic->getEquipments( 10, 'created_at', 'asc', null);
 
