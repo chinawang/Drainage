@@ -323,8 +323,6 @@ class EquipmentController extends Controller
 
             $excel->sheet('设备信息', function ($sheet) use ($excelData) {
 
-                $sheet->mergeCells('A1:J1');
-
                 $sheet->row(1, '泵站所管辖泵站设备汇总表');
 
                 $sheet->row(2, ['所属泵站', '设备名称', '型号', '容量', '流量(m³/h)', '扬程(m)','数量','负责人', '设备管理员', '备注']);
@@ -357,21 +355,20 @@ class EquipmentController extends Controller
                 }
 
                 //标题样式
+                $sheet->mergeCells('A1:J1');
                 $sheet->setHeight(1, 50);
                 $sheet->setFontSize('A1',24);
                 $sheet->setFontBold('A1',true);
 
                 //表头样式
-                $sheet->setFontSize('A2:J2',18);
+                $sheet->setFontSize('A2:J2',24);
                 $sheet->setFontBold('A2:J2',true);
                 $sheet->setHeight(2, 30);
 
                 //表体样式
                 $sheet->setFontSize(16);
-                $sheet->setBorder('A2:J'.$i, 'thin');
+                $sheet->setBorder('A2:J'.$i-1, 'thin');
                 $sheet->setAutoSize(true);
-//                $sheet->cells->setAlignment('center');
-//                $sheet->cells->setValignment('center');
             });
 
         })->export('xls');
