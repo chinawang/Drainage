@@ -37,7 +37,7 @@ class EquipmentRepository extends Repository
     public function getByPage($conditions, $orderColumn, $orderDirection, $cursor, $size, array $with = [], array $fields = ['*'])
     {
         return $this->model->where($conditions)
-            ->orderBy($orderColumn, $orderDirection)
+//            ->orderBy($orderColumn, $orderDirection)
             ->groupBy('station_id')
             ->skip($cursor)->take($size)->with($with)
             ->get($fields);
@@ -56,7 +56,7 @@ class EquipmentRepository extends Repository
     public function getPaginate($conditions, $size, $orderColumn, $orderDirection, $cursorPage = null)
     {
         return $this->model->where($conditions)
-            ->orderBy($orderColumn, $orderDirection)
+//            ->orderBy($orderColumn, $orderDirection)
             ->groupBy('station_id')
             ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
     }
