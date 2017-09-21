@@ -67,7 +67,7 @@
                                                 暂无
                                             @else
                                                 @foreach($station['assignEmployees'] as $assignEmployee)
-                                                    <a href="/employee/info/{{ $assignEmployee['id'] }}" class="btn btn-default btn-sm">{{ $assignEmployee['name'] }}</a>
+                                                    <a href="/employee/info/{{ $assignEmployee['id'] }}" class="btn btn-default btn-xs">{{ $assignEmployee['name'] }}</a>
                                                 @endforeach
                                             @endif
                                         </td>
