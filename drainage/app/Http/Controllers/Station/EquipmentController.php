@@ -354,22 +354,22 @@ class EquipmentController extends Controller
                     $i++;
                 }
 
-                //标题样式
-                $sheet->mergeCells('A1:J1');
-                $sheet->setHeight(1, 70);
-                $sheet->setFontSize('A1',24);
-                $sheet->setFontBold('A1',true);
+                //表体样式
+                $sheet->setFontSize(16);
+                $sheet->setFontBold(false);
+                $sheet->setBorder('A2:J'.$i, 'thin');
+                $sheet->setAutoSize(true);
 
                 //表头样式
                 $sheet->setFontSize('A2',24);
                 $sheet->setFontBold('A2',true);
                 $sheet->setHeight(2, 40);
 
-                //表体样式
-                $sheet->setFontSize(16);
-                $sheet->setFontBold(false);
-                $sheet->setBorder('A2:J'.$i, 'thin');
-                $sheet->setAutoSize(true);
+                //标题样式
+                $sheet->mergeCells('A1:J1');
+                $sheet->setHeight(1, 60);
+                $sheet->setFontSize('A1',24);
+                $sheet->setFontBold('A1',true);
             });
 
         })->export('xls');
