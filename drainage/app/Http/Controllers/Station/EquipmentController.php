@@ -155,7 +155,9 @@ class EquipmentController extends Controller
             $equipment['custodian_name'] = $custodian['name'];
         }
 
-        $param = ['equipments' => $equipmentPaginate];
+        $stations = $this->stationLogic->getAllStations();
+
+        $param = ['equipments' => $equipmentPaginate ,'stations' => $stations];
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了设备信息']);
