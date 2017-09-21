@@ -367,7 +367,7 @@ class EquipmentController extends Controller
 
                 //表体样式
                 $sheet->setFontSize(16);
-                $sheet->setBorder('A2:J'.$i-1, 'thin');
+                $sheet->setBorder('A2:J'.$i, 'thin');
                 $sheet->setAutoSize(true);
             });
 
