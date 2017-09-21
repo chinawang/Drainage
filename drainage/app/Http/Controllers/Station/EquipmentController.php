@@ -370,8 +370,8 @@ class EquipmentController extends Controller
                 $sheet->setFontSize(16);
                 $sheet->setBorder('A2:J'.$i, 'thin');
                 $sheet->setAutoSize(true);
-                $sheet->setAlignment('center');
-                $sheet->setValignment('center');
+                $sheet->cells->setAlignment('center');
+                $sheet->cells->setValignment('center');
             });
 
         })->export('xls');
