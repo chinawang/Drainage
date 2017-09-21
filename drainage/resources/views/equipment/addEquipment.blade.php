@@ -120,7 +120,7 @@
                                     </span>
                                     @endif
                                 </div>
-                                <label for="flux" class="col-md-1 control-label">m³/h</label>
+                                <label for="flux" class="col-md-0 control-label">m³/h</label>
                             </div>
 
                             <div class="form-group{{ $errors->has('range') ? ' has-error' : '' }}">
@@ -135,7 +135,7 @@
                                     </span>
                                     @endif
                                 </div>
-                                <label for="flux" class="col-md-1 control-label">m</label>
+                                <label for="flux" class="col-md-0 control-label">m</label>
                             </div>
 
                             <div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
