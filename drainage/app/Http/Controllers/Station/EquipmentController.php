@@ -139,7 +139,7 @@ class EquipmentController extends Controller
         $input = $this->equipmentValidation->equipmentPaginate();
 
         $cursorPage = array_get($input, 'cursor_page', null);
-        $orderColumn = array_get($input, 'order_column', 'created_at');
+        $orderColumn = array_get($input, 'order_column', 'station_id');
         $orderDirection = array_get($input, 'order_direction', 'asc');
         $pageSize = array_get($input, 'page_size', 20);
         $equipmentPaginate = $this->equipmentLogic->getEquipments($pageSize, $orderColumn, $orderDirection, $cursorPage);
