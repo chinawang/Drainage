@@ -171,9 +171,19 @@ class EquipmentController extends Controller
     {
         $stationID = Input::get('station_id', 1);
 
-        $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID, 10, 'created_at', 'asc', null);
+        if(isNull($stationID))
+        {
+            $equipmentPaginate = $this->equipmentLogic->getEquipments( 10, 'created_at', 'asc', null);
 
-        $stationTemp = $this->stationInfo($stationID);
+            $stationTemp = null;
+        }
+        else
+        {
+            $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID, 10, 'created_at', 'asc', null);
+
+            $stationTemp = $this->stationInfo($stationID);
+        }
+
         $stations = $this->stationLogic->getAllStations();
 
         foreach ($equipmentPaginate as $equipment) {
