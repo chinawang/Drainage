@@ -35,6 +35,12 @@ class EmployeeLogic extends Logic
         return $employeeList;
     }
 
+    public function getEmployeesByIDs($employeeIDs)
+    {
+        $employeeList = $this->employeeRepository->get($employeeIDs);
+        return $employeeList;
+    }
+
     public function getAllEmployees()
     {
         $conditions = ['delete_process' => 0];

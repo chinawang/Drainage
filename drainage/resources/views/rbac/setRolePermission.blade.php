@@ -5,7 +5,21 @@
 @endsection
 
 @section('subtitle')
-    <span>角色管理</span>
+    {{--<span>角色管理</span>--}}
+@endsection
+
+@section('location')
+    <div class="location">
+        <div class="container">
+            <h2>
+                <a href="{{ url('/') }}">首页</a>
+                <em>›</em>
+                <a href="/role/lists">角色管理</a>
+                <em>›</em>
+                <span>设置角色权限</span>
+            </h2>
+        </div>
+    </div>
 @endsection
 
 @section('content')

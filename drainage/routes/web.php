@@ -81,6 +81,9 @@ Route::get('/station/realTimeHistory/{station_number}', 'Station\StationControll
 //工作人员列表
 Route::get('/employee/lists', 'Employee\EmployeeController@employeeList');
 
+//工作人员详情
+Route::get('/employee/info/{employee_id}','Employee\EmployeeController@showUpdateEmployeeForm');
+
 //工作人员创建保存
 Route::get('/employee/add','Employee\EmployeeController@showAddEmployeeForm');
 Route::post('/employee/store','Employee\EmployeeController@storeNewEmployee');
@@ -94,6 +97,14 @@ Route::post('/employee/delete/{employee_id}','Employee\EmployeeController@delete
 
 //工作人员导出
 Route::get('/employee/export','Employee\EmployeeController@exportToExcel');
+
+/**
+ *泵站工作人员相关
+ */
+
+//泵站工作人员设置
+Route::get('/station/employee/edit/{station_id}','Station\StationController@showSetStationEmployeeForm');
+Route::post('/station/employee/store/{station_id}','Station\StationController@setStationEmployee');
 
 
 /**

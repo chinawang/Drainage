@@ -14,9 +14,9 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <a href="/role/lists">角色管理</a>
+                <a href="/station/lists">泵站资料管理</a>
                 <em>›</em>
-                <span>设置用户角色</span>
+                <span>设置工作人员</span>
             </h2>
         </div>
     </div>
@@ -28,37 +28,37 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
-                        设置用户角色
-                        <a href="/user/lists" class="btn-link">返回</a>
+                        设置工作人员
+                        {{--<a href="/station/lists" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
                         <form class="form-horizontal" role="form" method="POST"
-                              action="/user/role/store/{{ $user['id'] }}">
+                              action="/station/employee/store/{{ $station['id'] }}">
                             {{ csrf_field() }}
-                            <input type="hidden" name="user_id" value="{{ $user['id'] }}">
-                            <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                                <label for="user" class="col-md-4 control-label">用户</label>
+                            <input type="hidden" name="station_id" value="{{ $station['id'] }}">
+                            <div class="form-group{{ $errors->has('employee') ? ' has-error' : '' }}">
+                                <label for="station" class="col-md-4 control-label">泵站</label>
 
                                 <div class="col-md-6">
-                                    <input id="realname" type="text" class="form-control" name="realname"
-                                           disabled="disabled" value="{{ $user['realname'] }}" required>
+                                    <input id="name" type="text" class="form-control" name="name"
+                                           disabled="disabled" value="{{ $station['name'] }}" required>
 
-                                    @if ($errors->has('realname'))
+                                    @if ($errors->has('name'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('realname') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="role" class="col-md-4 control-label">角色</label>
+                                <label for="employee" class="col-md-4 control-label">工作人员</label>
 
                                 <div class="col-md-6">
-                                    @foreach ($roles as $role)
+                                    @foreach ($employees as $employee)
                                         <label class="checkbox-inline">
-                                            <input name="roles[]" type="checkbox" id="inlineCheckbox{{$role['id']}}"
-                                                   value="{{$role['id']}}" {{!in_array($role['id'], $assignRoleIDs)?:' checked'}}>{{$role['name']}}
+                                            <input name="employees[]" type="checkbox" id="inlineCheckbox{{$employee['id']}}"
+                                                   value="{{$employee['id']}}" {{!in_array($employee['id'], $assignEmployeeIDs)?:' checked'}}>{{$employee['name']}}
                                         </label>
                                     @endforeach
                                 </div>

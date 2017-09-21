@@ -18,6 +18,7 @@ return array(
     'CreateRbacRolePermissionsTable' => $baseDir . '/database/migrations/2017_03_29_111343_create_rbac_role_permissions_table.php',
     'CreateRbacRolesTable' => $baseDir . '/database/migrations/2017_03_29_110925_create_rbac_roles_table.php',
     'CreateRbacUserRolesTable' => $baseDir . '/database/migrations/2017_03_29_111241_create_rbac_user_roles_table.php',
+    'CreateStationEmployeesTable' => $baseDir . '/database/migrations/2017_09_21_051032_create_station_employees_table.php',
     'CreateStationRT001' => $baseDir . '/database/migrations/2017_04_18_054912_create_stationRT_001.php',
     'CreateStationsTable' => $baseDir . '/database/migrations/2017_03_29_111558_create_stations_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',

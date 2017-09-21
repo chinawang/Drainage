@@ -48,6 +48,7 @@
                                     <th>泵站名称</th>
                                     <th>泵站类型</th>
                                     <th>泵站地址</th>
+                                    <th>工作人员</th>
                                     @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'station-edit'))
                                         <th>操作</th>
                                     @endif
@@ -61,9 +62,19 @@
                                         <td>{{ $station['name'] }}</td>
                                         <td>{{ $station['type'] }}</td>
                                         <td>{{ $station['address'] }}</td>
+                                        <td>
+                                            @if(empty($station['assignEmployees']))
+                                                暂无
+                                            @else
+                                                @foreach($station['assignEmployees'] as $assignEmployee)
+                                                    <span class="label label-default"><a href="/employee/info/{{ $assignEmployee['id'] }}">{{ $assignEmployee['name'] }}</a></span>
+                                                @endforeach
+                                            @endif
+                                        </td>
 
                                         @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'station-edit'))
                                             <td>
+                                                <a href="/station/employee/edit/{{ $station['id'] }}" class="btn btn-link">设置工作人员</a>
                                                 <a href="/station/edit/{{ $station['id'] }}" class="btn btn-link">编辑</a>
                                                 <a href="#" class="btn btn-link btn-delete-station"
                                                    id="btn-delete-alert-{{ $station['id'] }}">删除</a>
