@@ -353,7 +353,7 @@ class EquipmentController extends Controller
                     $sheet->row($i, $row);
 
                     //行高
-                    $sheet->setHeight($i, 20);
+                    $sheet->setHeight($i, 25);
 
                     $i++;
                 }
@@ -363,14 +363,14 @@ class EquipmentController extends Controller
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
                     'A'     =>  30,
-                    'B'     =>  30,
-                    'C'     =>  30,
-                    'D'     =>  30,
-                    'E'     =>  30,
-                    'F'     =>  30,
-                    'G'     =>  30,
-                    'H'     =>  30,
-                    'I'     =>  30,
+                    'B'     =>  20,
+                    'C'     =>  20,
+                    'D'     =>  20,
+                    'E'     =>  20,
+                    'F'     =>  20,
+                    'G'     =>  20,
+                    'H'     =>  20,
+                    'I'     =>  20,
                     'J'     =>  30
                 ));
                 $sheet->cells('A2:J'.$i, function($cells) {
