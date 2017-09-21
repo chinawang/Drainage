@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Logic\Employee\EmployeeLogic;
+use App\Http\Logic\Station\StationLogic;
 use App\Http\Validations\Employee\EmployeeValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class EmployeeController extends Controller
 {
@@ -17,12 +19,15 @@ class EmployeeController extends Controller
 
     protected $employeeValidation;
 
-    public function __construct(EmployeeLogic $employeeLogic,EmployeeValidation $employeeValidation)
+    protected $stationLogic;
+
+    public function __construct(EmployeeLogic $employeeLogic,EmployeeValidation $employeeValidation,StationLogic $stationLogic)
     {
         $this->middleware('auth');
 
         $this->employeeLogic = $employeeLogic;
         $this->employeeValidation = $employeeValidation;
+        $this->stationLogic = $stationLogic;
     }
 
     /**
@@ -94,6 +99,23 @@ class EmployeeController extends Controller
 
         return view('employee.list',$param);
     }
+
+    public function employeeListByStation()
+    {
+        $stationID = Input::get('station_id', 1);
+        $stationTemp = $this->stationLogic->findStation($stationID);
+        $stations = $this->stationLogic->getAllStations();
+
+        $conditions = ['delete_process' => 0,'station_id' => $stationID];
+        $employeePaginate = $this->employeeLogic->getEmployeesBy($conditions,10,'created_at','asc',null);
+        $param = ['employees' => $employeePaginate,'stations' => $stations,'stationSelect' => $stationTemp];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了工作人员信息']);
+
+        return view('employee.list',$param);
+    }
+
 
     /**
      * 新增

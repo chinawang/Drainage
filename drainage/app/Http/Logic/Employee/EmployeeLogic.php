@@ -35,6 +35,12 @@ class EmployeeLogic extends Logic
         return $employeeList;
     }
 
+    public function getEmployeesBy($conditions,$pageSize, $orderColumn, $orderDirection, $cursorPage = null)
+    {
+        $employeeList = $this->employeeRepository->getPaginate($conditions,$pageSize,$orderColumn,$orderDirection,$cursorPage);
+        return $employeeList;
+    }
+
     public function getEmployeesByIDs($employeeIDs)
     {
         $employeeList = $this->employeeRepository->get($employeeIDs);

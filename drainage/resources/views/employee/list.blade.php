@@ -40,6 +40,38 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
+
+                        <form class="form-horizontal" role="form" method="GET" action="/employee/search"
+                              style="margin-bottom: 10px">
+                            {{ csrf_field() }}
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="station" class="col-md-4 control-label">选择泵站:</label>
+
+                                        <div class="col-md-8">
+                                            <select class="form-control" id="select" name="station_id">
+                                                {{--<option value="0" selected="selected">全部</option>--}}
+                                                @foreach ($stations as $station)
+                                                    <option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <button type="submit" class="btn btn-primary btn-custom">
+                                                查询
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                         @if (!empty($employees[0]))
                             <table class="table table-hover table-bordered ">
                                 <thead>
@@ -87,7 +119,7 @@
                                 </tbody>
                             </table>
                             <div class="table-pagination">
-                                {!! $employees->render() !!}
+                                {!! $employees->appends(['station_id' => $stationSelect['id']])->render() !!}
                             </div>
                             <div class="col-md-6 col-btn">
                                 <a href="/employee/export" class="btn btn-default btn-sm">导出Excel</a>

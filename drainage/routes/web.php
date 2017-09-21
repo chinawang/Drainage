@@ -84,6 +84,9 @@ Route::get('/station/realTimeHistory/{station_number}', 'Station\StationControll
 //工作人员列表
 Route::get('/employee/lists', 'Employee\EmployeeController@employeeList');
 
+//工作人员筛选
+Route::get('/employee/search', 'Employee\EmployeeController@employeeListByStation');
+
 //工作人员详情
 Route::get('/employee/info/{employee_id}','Employee\EmployeeController@showEmployeeForm');
 
