@@ -323,7 +323,7 @@ class EquipmentController extends Controller
 
             $excel->sheet('设备信息', function ($sheet) use ($excelData) {
 
-                $sheet->row(1, '泵站所管辖泵站设备汇总表');
+                $sheet->row(1, ['泵站所管辖泵站设备汇总表']);
 
                 $sheet->row(2, ['所属泵站', '设备名称', '型号', '容量', '流量(m³/h)', '扬程(m)','数量','负责人', '设备管理员', '备注']);
 
@@ -355,21 +355,39 @@ class EquipmentController extends Controller
                 }
 
                 //表体样式
-                $sheet->setFontSize(16);
-                $sheet->setFontBold(false);
                 $sheet->setBorder('A2:J'.$i, 'thin');
                 $sheet->setAutoSize(true);
+                $sheet->cells('A2:J'.$i, function($cells) {
+
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('normal');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
 
                 //表头样式
-                $sheet->setFontSize('A2',24);
-                $sheet->setFontBold('A2',true);
                 $sheet->setHeight(2, 40);
+                $sheet->cells('A2:J2', function($cells) {
+
+                    $cells->setFontSize(18);
+                    $cells->setFontWeight('bold');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
 
                 //标题样式
                 $sheet->mergeCells('A1:J1');
                 $sheet->setHeight(1, 60);
-                $sheet->setFontSize('A1',24);
-                $sheet->setFontBold('A1',true);
+                $sheet->cells('A1', function($cells) {
+
+                    $cells->setFontSize(24);
+                    $cells->setFontWeight('bold');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
             });
 
         })->export('xls');
