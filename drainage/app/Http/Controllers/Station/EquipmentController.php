@@ -352,6 +352,7 @@ class EquipmentController extends Controller
 
                     $sheet->row($i, $row);
 
+                    //行高
                     $sheet->setHeight($i, 20);
 
                     $i++;
