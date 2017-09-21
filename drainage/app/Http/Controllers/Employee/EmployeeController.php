@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Logic\Employee\EmployeeLogic;
-use App\Http\Logic\Station\StationLogic;
 use App\Http\Validations\Employee\EmployeeValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 
 class EmployeeController extends Controller
 {
@@ -19,15 +17,12 @@ class EmployeeController extends Controller
 
     protected $employeeValidation;
 
-    protected $stationLogic;
-
-    public function __construct(EmployeeLogic $employeeLogic,EmployeeValidation $employeeValidation,StationLogic $stationLogic)
+    public function __construct(EmployeeLogic $employeeLogic,EmployeeValidation $employeeValidation)
     {
         $this->middleware('auth');
 
         $this->employeeLogic = $employeeLogic;
         $this->employeeValidation = $employeeValidation;
-        $this->stationLogic = $stationLogic;
     }
 
     /**
@@ -51,19 +46,6 @@ class EmployeeController extends Controller
         $employee = $this->employeeLogic->findEmployee($employeeID);
         $param = ['employee' => $employee];
         return view('employee.updateEmployee',$param);
-    }
-
-    /**
-     * 显示信息窗口
-     *
-     * @param $employeeID
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function showEmployeeForm($employeeID)
-    {
-        $employee = $this->employeeLogic->findEmployee($employeeID);
-        $param = ['employee' => $employee];
-        return view('employee.info',$param);
     }
 
     /**
@@ -99,23 +81,6 @@ class EmployeeController extends Controller
 
         return view('employee.list',$param);
     }
-
-    public function employeeListByStation()
-    {
-        $stationID = Input::get('station_id', 1);
-        $stationTemp = $this->stationLogic->findStation($stationID);
-        $stations = $this->stationLogic->getAllStations();
-
-        $conditions = ['delete_process' => 0,'station_id' => $stationID];
-        $employeePaginate = $this->employeeLogic->getEmployeesBy($conditions,10,'created_at','asc',null);
-        $param = ['employees' => $employeePaginate,'stations' => $stations,'stationSelect' => $stationTemp];
-
-        //记录Log
-        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了工作人员信息']);
-
-        return view('employee.list',$param);
-    }
-
 
     /**
      * 新增

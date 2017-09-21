@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class EquipmentController extends Controller
 {
@@ -162,19 +163,15 @@ class EquipmentController extends Controller
         return view('equipment.list', $param);
     }
 
-    /**
-     * @param $stationID
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function equipmentListOfStation($stationID)
-    {
-        $input = $this->equipmentValidation->equipmentPaginate();
 
-        $cursorPage = array_get($input, 'cursor_page', null);
-        $orderColumn = array_get($input, 'order_column', 'created_at');
-        $orderDirection = array_get($input, 'order_direction', 'asc');
-        $pageSize = array_get($input, 'page_size', 20);
-        $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID, $pageSize, $orderColumn, $orderDirection, $cursorPage);
+    public function equipmentListOfStation()
+    {
+        $stationID = Input::get('station_id', 1);
+
+        $equipmentPaginate = $this->equipmentLogic->getEquipmentsByStation($stationID, 10, 'created_at', 'asc', null);
+
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationLogic->getAllStations();
 
         foreach ($equipmentPaginate as $equipment) {
             $station = $this->stationInfo($equipment['station_id']);
@@ -186,8 +183,8 @@ class EquipmentController extends Controller
             $equipment['custodian_name'] = $custodian['name'];
         }
 
-        $param = ['equipments' => $equipmentPaginate];
-        return view('equipment.listOfStation', $param);
+        $param = ['equipments' => $equipmentPaginate,'stations' => $stations,'stationSelect' => $stationTemp];
+        return view('equipment.list', $param);
     }
 
     /**

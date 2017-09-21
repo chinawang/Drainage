@@ -84,8 +84,6 @@ Route::get('/station/realTimeHistory/{station_number}', 'Station\StationControll
 //工作人员列表
 Route::get('/employee/lists', 'Employee\EmployeeController@employeeList');
 
-//工作人员筛选
-Route::get('/employee/search', 'Employee\EmployeeController@employeeListByStation');
 
 //工作人员详情
 Route::get('/employee/info/{employee_id}','Employee\EmployeeController@showEmployeeForm');
@@ -120,6 +118,9 @@ Route::post('/station/employee/store/{station_id}','Station\StationController@se
 //设备列表
 Route::get('/equipment/lists', 'Station\EquipmentController@equipmentList');
 Route::get('/station/equipment/lists/{station_id}', 'Station\EquipmentController@equipmentListOfStation');
+
+//设备筛选
+Route::get('/equipment/search', 'Station\EquipmentController@equipmentListOfStation');
 
 //设备创建保存
 Route::get('/equipment/add','Station\EquipmentController@showAddEquipmentForm');
