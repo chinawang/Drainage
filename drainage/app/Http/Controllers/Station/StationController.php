@@ -225,7 +225,7 @@ class StationController extends Controller
         $employees = $this->employeeLogic->getAllEmployees();
         $assignEmployeeIDs = $this->stationEmployeeLogic->getEmployeeIDsByStationID($stationID);
         $station = $this->stationLogic->findStation($stationID);
-        $param = ['$station' => $station ,'employees' => $employees,'assignEmployeeIDs' => $assignEmployeeIDs];
+        $param = ['station' => $station ,'employees' => $employees,'assignEmployeeIDs' => $assignEmployeeIDs];
 
         return view('station.setStationEmployee',$param);
     }
