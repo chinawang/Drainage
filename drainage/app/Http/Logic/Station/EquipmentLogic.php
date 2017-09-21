@@ -86,7 +86,7 @@ class EquipmentLogic extends Logic
         $conditions = [
             'delete_process' => 0
         ];
-        $equipmentList = $this->equipmentRepository->getBy($conditions);
+        $equipmentList = $this->equipmentRepository->getGroupBy($conditions);
         return $equipmentList;
     }
 
