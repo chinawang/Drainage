@@ -131,9 +131,9 @@ class StationController extends Controller
         }
 
         foreach ($stationPaginate as $station) {
-            $assignEmployeeIDs = $this->stationEmployeeLogic->getEmployeeIDsByStationID($station['id']);
+            $assignEmployeeIDs = $this->stationEmployeeLogic->getEmployeeIDsByStationID($station->id);
             $assignEmployees = $this->employeeLogic->getEmployeesByIDs($assignEmployeeIDs);
-            $station['assignEmployees'] = $assignEmployees;
+            $station->assignEmployees = $assignEmployees;
         }
 
         $param = ['stations' => $stationPaginate];
