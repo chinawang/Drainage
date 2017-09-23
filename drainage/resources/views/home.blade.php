@@ -128,6 +128,14 @@
                                         </a>
                                     </li>
                                 @endif
+                                    @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'pump-list'))
+                                        <li class="employee">
+                                            <a href="/pump/lists" class="menu-item">
+                                                <img class="menu-icon" src="/img/home/pump_blue.png">
+                                                <h4>泵组抽水量配置</h4>
+                                            </a>
+                                        </li>
+                                    @endif
                             </ul>
                         </div>
                     </div>
