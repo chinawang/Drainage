@@ -24,7 +24,7 @@ class PumpLogic extends Logic
      */
     public function __construct(PumpRepository $pumpRepository)
     {
-        $this->$pumpRepository = $pumpRepository;
+        $this->pumpRepository = $pumpRepository;
     }
 
     /**
