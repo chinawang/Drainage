@@ -109,7 +109,7 @@ class PumpController extends Controller
         $cursorPage = array_get($input, 'cursor_page', null);
         $orderColumn = array_get($input, 'order_column', 'station_id');
         $orderDirection = array_get($input, 'order_direction', 'asc');
-        $pageSize = array_get($input, 'page_size', 10);
+        $pageSize = array_get($input, 'page_size', 40);
         $pumpPaginate = $this->pumpLogic->getPumps($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
         foreach ($pumpPaginate as $pump) {
