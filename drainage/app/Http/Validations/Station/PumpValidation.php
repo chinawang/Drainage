@@ -44,11 +44,11 @@ class PumpValidation extends Validation
 
         $rules = [
             'station_id' => ['integer', 'min:0'],
-            'flux1' => ['float'],
-            'flux2' => ['float'],
-            'flux3' => ['float'],
-            'flux4' => ['float'],
-            'flux5' => ['float'],
+            'flux1' => ['numeric'],
+            'flux2' => ['numeric'],
+            'flux3' => ['numeric'],
+            'flux4' => ['numeric'],
+            'flux5' => ['numeric'],
         ];
 
         $validator = Validator::make($input,$rules);
@@ -71,11 +71,11 @@ class PumpValidation extends Validation
 
         $rules = [
             'station_id' => ['integer', 'min:0'],
-            'flux1' => ['float'],
-            'flux2' => ['float'],
-            'flux3' => ['float'],
-            'flux4' => ['float'],
-            'flux5' => ['float'],
+            'flux1' => ['numeric'],
+            'flux2' => ['numeric'],
+            'flux3' => ['numeric'],
+            'flux4' => ['numeric'],
+            'flux5' => ['numeric'],
         ];
 
         $validator = Validator::make($input,$rules);
