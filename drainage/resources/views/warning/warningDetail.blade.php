@@ -138,7 +138,7 @@
                                 <div class="col-md-4 col-md-offset-0">
                                     <div class="panel panel-danger custom-panel">
                                         <div class="panel-heading">
-                                            绞龙报警
+                                            绞笼报警
                                         </div>
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">

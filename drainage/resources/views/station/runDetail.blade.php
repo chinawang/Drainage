@@ -178,7 +178,7 @@
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
-                                        绞龙运行状态
+                                        绞笼运行状态
                                     </div>
                                     <div class="panel-body custom-panel-body" style="text-align: center">
                                         <img class="status-icon" id="augerStatus" src="/img/status/checking.png">
@@ -979,7 +979,7 @@
                 }
             },
             title: {
-                text: '实时AB相线电压(伏)'
+                text: '实时A相电压(伏)'
             },
             xAxis: {
                 type: 'datetime',
@@ -1064,7 +1064,7 @@
                 }
             },
             title: {
-                text: '实时BC相线电压(伏)'
+                text: '实时B相电压(伏)'
             },
             xAxis: {
                 type: 'datetime',
@@ -1149,7 +1149,7 @@
                 }
             },
             title: {
-                text: '实时CA相线电压(伏)'
+                text: '实时C相电压(伏)'
             },
             xAxis: {
                 type: 'datetime',

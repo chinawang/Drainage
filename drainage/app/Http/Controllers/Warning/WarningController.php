@@ -197,7 +197,7 @@ class WarningController extends Controller
             if($stationRTList[$i]->bj_jl == 0 && $stationRTList[$i+1]->bj_jl == 1 )
             {
                 $sWarning['Time'] = $stationRTList[$i+1]->Time;
-                $sWarning['alarmEquipment'] = "绞龙";
+                $sWarning['alarmEquipment'] = "绞笼";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($stationWarningList,$sWarning);
@@ -205,7 +205,7 @@ class WarningController extends Controller
             if($stationRTList[$i]->bj_jl == 1 && $stationRTList[$i+1]->bj_jl == 0 )
             {
                 $sWarning['Time'] = $stationRTList[$i+1]->Time;
-                $sWarning['alarmEquipment'] = "绞龙";
+                $sWarning['alarmEquipment'] = "绞笼";
                 $sWarning['alarmStatus'] = 0;
 
                 array_push($stationWarningList,$sWarning);

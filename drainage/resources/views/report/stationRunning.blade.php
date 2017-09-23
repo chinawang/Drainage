@@ -126,9 +126,9 @@
                                         <th>3号泵电流</th>
                                         <th>4号泵电流</th>
                                         <th>5号泵电流</th>
-                                        <th>AB相线电压</th>
-                                        <th>BC相线电压</th>
-                                        <th>CA相线电压</th>
+                                        <th>A相电压</th>
+                                        <th>B相电压</th>
+                                        <th>C相电压</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -355,13 +355,13 @@
                 borderWidth: 0
             },
             series: [{
-                name: 'AB相线电压',
+                name: 'A相电压',
                 data: datas6
             }, {
-                name: 'BC相线电压',
+                name: 'B相电压',
                 data: datas7
             }, {
-                name: 'CA相线电压',
+                name: 'C相电压',
                 data: datas8
             },
 
