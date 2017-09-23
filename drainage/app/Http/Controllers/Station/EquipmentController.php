@@ -375,7 +375,7 @@ class EquipmentController extends Controller
                     'J'     =>  20
                 ));
                 $sheet->cells('A2:J'.$i, function($cells) {
-
+                    $cells->setFontFamily('Hei');
                     $cells->setFontSize(14);
                     $cells->setFontWeight('normal');
                     $cells->setAlignment('center');
@@ -386,7 +386,7 @@ class EquipmentController extends Controller
                 //表头样式
                 $sheet->setHeight(2, 40);
                 $sheet->cells('A2:J2', function($cells) {
-
+                    $cells->setFontFamily('Hei');
                     $cells->setFontSize(18);
                     $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
