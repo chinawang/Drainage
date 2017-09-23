@@ -99,7 +99,7 @@
                                             <li><a href="#pump4" data-toggle="tab">4号泵启动趋势</a></li>
                                             <li><a href="#gs1" data-toggle="tab">1号格栅启动趋势</a></li>
                                             <li><a href="#gs2" data-toggle="tab">2号格栅启动趋势</a></li>
-                                            <li><a href="#jl" data-toggle="tab">绞龙启动趋势</a></li>
+                                            <li><a href="#jl" data-toggle="tab">绞笼启动趋势</a></li>
                                         </ul>
                                     </div>
 
@@ -157,7 +157,7 @@
                                         <th>4号泵启停状态</th>
                                         <th>1号格栅启停状态</th>
                                         <th>2号格栅启停状态</th>
-                                        <th>绞龙启停状态</th>
+                                        <th>绞笼启停状态</th>
                                     </tr>
                                     </thead>
                                     <tbody>
