@@ -68,7 +68,7 @@
                             <ul class="main-menu">
                                 @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'report-view'))
                                     <li class="report">
-                                        <a href="/report/stationWater" class="menu-item">
+                                        <a href="/report/stationStatus" class="menu-item">
                                             <img class="menu-icon" src="/img/home/report_run_blue.png">
                                             <h4>运行抽升统计</h4>
                                         </a>
@@ -76,7 +76,7 @@
                                 @endif
                                 @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'report-view'))
                                     <li class="report">
-                                        <a href="/report/stationWater" class="menu-item">
+                                        <a href="/report/stationRunning" class="menu-item">
                                             <img class="menu-icon" src="/img/home/report_current_blue.png">
                                             <h4>电流电压统计</h4>
                                         </a>
@@ -100,7 +100,7 @@
             app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'employee-list'))
                     <div class="panel panel-default custom-panel">
                         <div class="panel-heading" style="color:#6f7c85;font-size:18px;background-color:#fafafa">
-                            <h3 class="panel-title" style="line-height: 30px;margin-left: 10px;">设备与人员</h3>
+                            <h3 class="panel-title" style="line-height: 30px;margin-left: 10px;">泵站基础信息</h3>
                         </div>
                         <div class="panel-body custom-panel-body">
                             <ul class="main-menu">
@@ -161,7 +161,7 @@
                                 @endif
                                 @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'report-view'))
                                     <li class="report">
-                                        <a href="/report/stationWater" class="menu-item">
+                                        <a href="/report/stationFailure" class="menu-item">
                                             <img class="menu-icon" src="/img/home/report_failure_blue.png">
                                             <h4>故障统计</h4>
                                         </a>
@@ -169,7 +169,7 @@
                                 @endif
                                 @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'report-view'))
                                     <li class="report">
-                                        <a href="/report/stationWater" class="menu-item">
+                                        <a href="/report/stationMaintenance" class="menu-item">
                                             <img class="menu-icon" src="/img/home/report_mainten_blue.png">
                                             <h4>维修统计</h4>
                                         </a>

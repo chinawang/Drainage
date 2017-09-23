@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <span>泵站水位统计</span>
+                <span>泵站统计报表</span>
 
             </h2>
         </div>
@@ -27,21 +27,22 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
-
+                    {{--<div class="panel-heading">--}}
+                    {{----}}
+                    {{--</div>--}}
                     <div class="panel-body custom-panel-body">
-                        {{--<div class="row" style="margin-top: -10px">--}}
-                            {{--<ul class="nav nav-tabs">--}}
-                                {{--<li class="active"><a href="/report/stationWater">泵站水位统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationRunning">设备运行统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationStatus">设备启停统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationFailure">设备故障统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>--}}
+                        <div class="row" style="margin-top: -10px">
+                            <ul class="nav nav-tabs">
+                                <li class=""><a href="/report/stationWater">泵站水位统计</a></li>
+                                <li class=""><a href="/report/stationRunning">设备运行统计</a></li>
+                                <li class=""><a href="/report/stationStatus">设备启停统计</a></li>
+                                <li class=""><a href="/report/stationFailure">设备故障统计</a></li>
+                                <li class="active"><a href="/report/stationMaintenance">设备维修统计</a></li>
 
-                            {{--</ul>--}}
-                        {{--</div>--}}
-
+                            </ul>
+                        </div>
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
-                            <form class="form-horizontal" role="form" method="GET" action="/report/stationWater"
+                            <form class="form-horizontal" role="form" method="GET" action="/report/stationMaintenance"
                                   style="margin-bottom: 10px">
                                 {{ csrf_field() }}
 
@@ -66,8 +67,7 @@
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
-                                                       value="{{ $startTime }}" placeholder="起始时间"
-                                                       data-data="yyyy-mm-dd">
+                                                       value="{{ $startTime }}" placeholder="起始时间" data-data="yyyy-mm-dd">
                                             </div>
                                             <label for="time" class="col-md-1 control-label">—</label>
                                             <div class="col-md-4">
@@ -89,42 +89,34 @@
                                 </div>
                             </form>
 
-                            <div class="panel panel-default custom-panel">
-                                <div class="panel-body custom-panel-body" id="waterContainer"
-                                     style="min-width:400px;height:400px">
-                                </div>
-                            </div>
-
-                            @if (!empty($waterList[0]))
+                            @if (!empty($maintenances[0]))
                                 <table class="table table-hover table-bordered ">
                                     <thead>
                                     <tr>
-                                        <th>时间</th>
-                                        <th>泵站名称</th>
-                                        <th>涵洞水位</th>
-                                        <th>集水池水位</th>
+                                        <th>维修时间</th>
+                                        <th>所属泵站</th>
+                                        <th>故障设备</th>
+                                        <th>故障原因</th>
+                                        <th>解决办法</th>
+                                        <th>维修人</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
-
-                                    @foreach ($waterList as $water)
+                                    @foreach ($maintenances as $maintenance)
                                         <tr>
-                                            {{--<td>{{ $water['Time'] }}</td>--}}
-                                            {{--<td>{{ $stationSelect['name'] }}</td>--}}
-                                            {{--<td>{{ $water['culvertWater'] }}</td>--}}
-                                            {{--<td>{{ $water['tankWater'] }}</td>--}}
-                                            {{--<td>{{ $water['ywhandong'] }}</td>--}}
-                                            {{--<td>{{ $water['ywjishui'] }}</td>--}}
-                                            <td>{{ $water->Time }}</td>
-                                            <td>{{ $stationSelect['name'] }}</td>
-                                            <td>{{ $water->ywhandong }}</td>
-                                            <td>{{ $water->ywjishui }}</td>
+                                            <td>{{ $maintenance->repair_at }}</td>
+                                            <td>{{ $maintenance->station_name }}</td>
+                                            <td>{{ $maintenance->equipment_name }}</td>
+                                            <td>{{ $maintenance->failure_reason }}</td>
+                                            <td>{{ $maintenance->repair_solution }}</td>
+                                            <td>{{ $maintenance->repairer_name }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                                 <div class="table-pagination">
-                                    {!! $waterList->appends(['station_id' => $stationSelect['id'],'timeStart' => $startTime,'timeEnd' => $endTime])->render() !!}
+                                    {!! $maintenances->appends(['station_id' => $stationSelect['id'],'timeStart' => $startTime,'timeEnd' => $endTime])->render() !!}
                                 </div>
                             @else
                                 <div class="well" style="text-align: center; padding: 100px;">
@@ -141,9 +133,6 @@
 @endsection
 
 @section('javascript')
-
-    <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-
     <script>
         $(document).ready(function () {
 
@@ -178,95 +167,6 @@
         });
     </script>
 
-    <script>
-        function dateStrFormat(dateStr) {
-
-            var dateResult = dateStr;
-            var timeArr = dateStr.replace(" ", ":").replace(/\:/g, "-").split("-");
-            if (timeArr.length == 6) {
-                dateResult = timeArr[1] + '-' + timeArr[2] + ' ' + timeArr[3] + ':' + timeArr[4];
-            }
-
-            return dateResult;
-
-        }
-    </script>
-
-    <script type="text/javascript">
-
-        function getStationRTHistory() {
-            var resultValue = [];
-            $.ajax({
-                type: 'get',
-                url: '/report/realTimeHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}',
-                data: '_token = <?php echo csrf_token() ?>',
-                async: false,//同步
-                success: function (data) {
-                    resultValue = data.stationRTHistory;
-                }
-            });
-            return resultValue;
-        }
-
-        var stationRTHistory = getStationRTHistory();
-
-    </script>
-
-    <script>
-
-        var categories = [];
-        var datas1 = [];
-        var datas2 = [];
-
-        $.each(stationRTHistory, function (i, n) {
-            categories[i] = dateStrFormat(n["Time"]);
-            datas1[i] = n["ywhandong"];
-            datas2[i] = n["ywjishui"];
-        });
-
-        var chart = new Highcharts.Chart('waterContainer', {
-            title: {
-                text: '泵站水位趋势',
-                x: -20
-            },
-            subtitle: {
-                text: '',
-                x: -20
-            },
-            xAxis: {
-                categories: categories
-            },
-            yAxis: {
-                title: {
-                    text: '水位 (米)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '米'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: '涵洞水位',
-                data: datas1
-            }, {
-                name: '集水池水位',
-                data: datas2
-            }
-            ]
-        });
-
-    </script>
-
     <!--Loading-->
     {{--<script>--}}
         {{--//获取浏览器页面可见高度和宽度--}}
@@ -290,10 +190,8 @@
             {{--if (document.readyState == "complete") {--}}
                 {{--var loadingMask = document.getElementById('loadingDiv');--}}
                 {{--loadingMask.parentNode.removeChild(loadingMask);--}}
-
             {{--}--}}
         {{--}--}}
     {{--</script>--}}
-
 @endsection
 

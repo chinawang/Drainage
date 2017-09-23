@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <span>泵站水位统计</span>
+                <span>泵站统计报表</span>
 
             </h2>
         </div>
@@ -27,18 +27,20 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
-
+                    {{--<div class="panel-heading">--}}
+                    {{----}}
+                    {{--</div>--}}
                     <div class="panel-body custom-panel-body">
-                        {{--<div class="row" style="margin-top: -10px">--}}
-                            {{--<ul class="nav nav-tabs">--}}
-                                {{--<li class="active"><a href="/report/stationWater">泵站水位统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationRunning">设备运行统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationStatus">设备启停统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationFailure">设备故障统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>--}}
+                        <div class="row" style="margin-top: -10px">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="/report/stationWater">泵站水位统计</a></li>
+                                <li class=""><a href="/report/stationRunning">设备运行统计</a></li>
+                                <li class=""><a href="/report/stationStatus">设备启停统计</a></li>
+                                <li class=""><a href="/report/stationFailure">设备故障统计</a></li>
+                                <li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>
 
-                            {{--</ul>--}}
-                        {{--</div>--}}
+                            </ul>
+                        </div>
 
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
                             <form class="form-horizontal" role="form" method="GET" action="/report/stationWater"

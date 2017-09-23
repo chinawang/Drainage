@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <span>泵站水位统计</span>
+                <span>泵站统计报表</span>
 
             </h2>
         </div>
@@ -27,21 +27,22 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
-
+                    {{--<div class="panel-heading">--}}
+                    {{----}}
+                    {{--</div>--}}
                     <div class="panel-body custom-panel-body">
-                        {{--<div class="row" style="margin-top: -10px">--}}
-                            {{--<ul class="nav nav-tabs">--}}
-                                {{--<li class="active"><a href="/report/stationWater">泵站水位统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationRunning">设备运行统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationStatus">设备启停统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationFailure">设备故障统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>--}}
+                        <div class="row" style="margin-top: -10px">
+                            <ul class="nav nav-tabs">
+                                <li class=""><a href="/report/stationWater">泵站水位统计</a></li>
+                                <li class="active"><a href="/report/stationRunning">设备运行统计</a></li>
+                                <li class=""><a href="/report/stationStatus">设备启停统计</a></li>
+                                <li class=""><a href="/report/stationFailure">设备故障统计</a></li>
+                                <li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>
 
-                            {{--</ul>--}}
-                        {{--</div>--}}
-
+                            </ul>
+                        </div>
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
-                            <form class="form-horizontal" role="form" method="GET" action="/report/stationWater"
+                            <form class="form-horizontal" role="form" method="GET" action="/report/stationRunning"
                                   style="margin-bottom: 10px">
                                 {{ csrf_field() }}
 
@@ -90,41 +91,74 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <div class="panel-body custom-panel-body" id="waterContainer"
-                                     style="min-width:400px;height:400px">
+                                <div class="row">
+                                    <div class="col-md-3 col-md-offset-4">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#current" data-toggle="tab">泵组电流趋势</a></li>
+                                            <li><a href="#voltage" data-toggle="tab">泵组电压趋势</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="myTabContent" class="tab-content">
+                                    <div class="tab-pane fade active in" id="current">
+                                        <div class="panel-body custom-panel-body" id="currentContainer"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="voltage">
+                                        <div class="panel-body custom-panel-body" id="voltageContainer"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
-                            @if (!empty($waterList[0]))
+                            @if (!empty($runList[0]))
                                 <table class="table table-hover table-bordered ">
                                     <thead>
                                     <tr>
                                         <th>时间</th>
                                         <th>泵站名称</th>
-                                        <th>涵洞水位</th>
-                                        <th>集水池水位</th>
+                                        <th>1号泵电流</th>
+                                        <th>2号泵电流</th>
+                                        <th>3号泵电流</th>
+                                        <th>4号泵电流</th>
+                                        <th>5号泵电流</th>
+                                        <th>A相电压</th>
+                                        <th>B相电压</th>
+                                        <th>C相电压</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    @foreach ($waterList as $water)
+                                    @foreach ($runList as $run)
                                         <tr>
-                                            {{--<td>{{ $water['Time'] }}</td>--}}
-                                            {{--<td>{{ $stationSelect['name'] }}</td>--}}
-                                            {{--<td>{{ $water['culvertWater'] }}</td>--}}
-                                            {{--<td>{{ $water['tankWater'] }}</td>--}}
-                                            {{--<td>{{ $water['ywhandong'] }}</td>--}}
-                                            {{--<td>{{ $water['ywjishui'] }}</td>--}}
-                                            <td>{{ $water->Time }}</td>
+                                            <td>{{ $run->Time }}</td>
                                             <td>{{ $stationSelect['name'] }}</td>
-                                            <td>{{ $water->ywhandong }}</td>
-                                            <td>{{ $water->ywjishui }}</td>
+                                            {{--<td>{{ $run['pumpCurrent1'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpCurrent2'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpCurrent3'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpCurrent4'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpCurrent5'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpVoltageAB'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpVoltageBC'] }}</td>--}}
+                                            {{--<td>{{ $run['pumpVoltageCA'] }}</td>--}}
+                                            <td>{{ $run->ib1 }}</td>
+                                            <td>{{ $run->ib2 }}</td>
+                                            <td>{{ $run->ib3 }}</td>
+                                            <td>{{ $run->ib4 }}</td>
+                                            <td>{{ $run->ib5 }}</td>
+                                            <td>{{ $run->uab }}</td>
+                                            <td>{{ $run->ubc }}</td>
+                                            <td>{{ $run->uca }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                                 <div class="table-pagination">
-                                    {!! $waterList->appends(['station_id' => $stationSelect['id'],'timeStart' => $startTime,'timeEnd' => $endTime])->render() !!}
+                                    {!! $runList->appends(['station_id' => $stationSelect['id'],'timeStart' => $startTime,'timeEnd' => $endTime])->render() !!}
                                 </div>
                             @else
                                 <div class="well" style="text-align: center; padding: 100px;">
@@ -217,16 +251,30 @@
         var categories = [];
         var datas1 = [];
         var datas2 = [];
+        var datas3 = [];
+        var datas4 = [];
+        var datas5 = [];
+
+        var datas6 = [];
+        var datas7 = [];
+        var datas8 = [];
 
         $.each(stationRTHistory, function (i, n) {
             categories[i] = dateStrFormat(n["Time"]);
-            datas1[i] = n["ywhandong"];
-            datas2[i] = n["ywjishui"];
+            datas1[i] = n["ib1"];
+            datas2[i] = n["ib2"];
+            datas3[i] = n["ib3"];
+            datas4[i] = n["ib4"];
+            datas5[i] = n["ib5"];
+
+            datas6[i] = n["uab"];
+            datas7[i] = n["ubc"];
+            datas8[i] = n["uca"];
         });
 
-        var chart = new Highcharts.Chart('waterContainer', {
+        var chart1 = new Highcharts.Chart('currentContainer', {
             title: {
-                text: '泵站水位趋势',
+                text: '',
                 x: -20
             },
             subtitle: {
@@ -238,7 +286,7 @@
             },
             yAxis: {
                 title: {
-                    text: '水位 (米)'
+                    text: '电流 (毫安)'
                 },
                 plotLines: [{
                     value: 0,
@@ -247,7 +295,7 @@
                 }]
             },
             tooltip: {
-                valueSuffix: '米'
+                valueSuffix: '毫安'
             },
             legend: {
                 layout: 'vertical',
@@ -256,15 +304,69 @@
                 borderWidth: 0
             },
             series: [{
-                name: '涵洞水位',
+                name: '1号泵电流',
                 data: datas1
             }, {
-                name: '集水池水位',
+                name: '2号泵电流',
                 data: datas2
-            }
+            }, {
+                name: '3号泵电流',
+                data: datas3
+            }, {
+                name: '4号泵电流',
+                data: datas4
+            }, {
+                name: '5号泵电流',
+                data: datas5
+            },
+
             ]
         });
 
+        var chart2 = new Highcharts.Chart('voltageContainer', {
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories: categories
+            },
+            yAxis: {
+                title: {
+                    text: '电压 (伏)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '伏'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'A相电压',
+                data: datas6
+            }, {
+                name: 'B相电压',
+                data: datas7
+            }, {
+                name: 'C相电压',
+                data: datas8
+            },
+
+            ]
+        });
     </script>
 
     <!--Loading-->
@@ -290,10 +392,8 @@
             {{--if (document.readyState == "complete") {--}}
                 {{--var loadingMask = document.getElementById('loadingDiv');--}}
                 {{--loadingMask.parentNode.removeChild(loadingMask);--}}
-
             {{--}--}}
         {{--}--}}
     {{--</script>--}}
-
 @endsection
 

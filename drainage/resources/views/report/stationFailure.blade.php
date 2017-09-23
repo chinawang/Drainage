@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <span>泵站统计报表</span>
+                <span>设备故障统计</span>
 
             </h2>
         </div>
@@ -31,16 +31,16 @@
                     {{----}}
                     {{--</div>--}}
                     <div class="panel-body custom-panel-body">
-                        <div class="row" style="margin-top: -10px">
-                            <ul class="nav nav-tabs">
-                                <li class=""><a href="/report/stationWater">泵站水位统计</a></li>
-                                <li class=""><a href="/report/stationRunning">设备运行统计</a></li>
-                                <li class=""><a href="/report/stationStatus">设备启停统计</a></li>
-                                <li class="active"><a href="/report/stationFailure">设备故障统计</a></li>
-                                <li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>
+                        {{--<div class="row" style="margin-top: -10px">--}}
+                            {{--<ul class="nav nav-tabs">--}}
+                                {{--<li class=""><a href="/report/stationWater">泵站水位统计</a></li>--}}
+                                {{--<li class=""><a href="/report/stationRunning">设备运行统计</a></li>--}}
+                                {{--<li class=""><a href="/report/stationStatus">设备启停统计</a></li>--}}
+                                {{--<li class="active"><a href="/report/stationFailure">设备故障统计</a></li>--}}
+                                {{--<li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>--}}
 
-                            </ul>
-                        </div>
+                            {{--</ul>--}}
+                        {{--</div>--}}
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
                             <form class="form-horizontal" role="form" method="GET" action="/report/stationFailure"
                                   style="margin-bottom: 10px">
