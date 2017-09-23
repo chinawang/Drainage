@@ -87,7 +87,7 @@
                                 </tbody>
                             </table>
                             <div class="table-pagination">
-                                {!! $$pumps->render() !!}
+                                {!! $pumps->render() !!}
                             </div>
 
                         @else
