@@ -138,6 +138,25 @@ Route::get('/equipment/export','Station\EquipmentController@exportToExcel');
 
 
 /**
+ *泵组抽水量设置相关
+ */
+
+//泵组抽水量列表
+Route::get('/pump/lists', 'Station\PumpController@pumpList');
+
+//泵组抽水量创建保存
+Route::get('/pump/add','Station\PumpController@showAddPumpForm');
+Route::post('/pump/store','Station\PumpController@storeNewPump');
+
+//泵组抽水量编辑更新
+Route::get('/pump/edit/{pump_id}','Station\PumpController@showUpdatePumpForm');
+Route::post('/pump/update/{pump_id}','Station\PumpController@updatePump');
+
+//删除泵组抽水量
+Route::post('/pump/delete/{pump_id}','Station\PumpController@deletePump');
+
+
+/**
  *权限相关
  */
 

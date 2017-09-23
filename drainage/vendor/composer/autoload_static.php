@@ -319,6 +319,7 @@ class ComposerStaticInit669c95193cab03cd306c11c2feb1a31f
         'CreateLogsTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_04_042933_create_logs_table.php',
         'CreateMaintenancesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_29_112139_create_maintenances_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePumpsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_23_173518_create_pumps_table.php',
         'CreateRbacPermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_29_111051_create_rbac_permissions_table.php',
         'CreateRbacRolePermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_29_111343_create_rbac_role_permissions_table.php',
         'CreateRbacRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_29_110925_create_rbac_roles_table.php',
