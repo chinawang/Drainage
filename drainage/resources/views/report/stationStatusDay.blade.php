@@ -140,8 +140,8 @@
                                     @foreach ($stationStatusList1 as $status)
                                         <tr>
                                             <td>{{ $status['index'] }}</td>
-                                            <td>{{ $status['timeStart'] }}</td>
-                                            <td>{{ $status['timeEnd'] }}</td>
+                                            <td>{{ substr($status['timeStart'],10) }}</td>
+                                            <td>{{ substr($status['timeEnd'],10) }}</td>
                                             <td>{{ $status['timeGap'] }}</td>
                                             <td>{{ $status['current'] }}</td>
                                         </tr>
