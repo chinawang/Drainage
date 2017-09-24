@@ -296,7 +296,7 @@ Route::get('/report/stationStatusMonthAll', 'Reporte\StatusReportController@show
 //泵站启停状态实时信息Ajax
 Route::get('/report/realTimeStatusHistory/{station_id}/{start_time}', 'Reporte\StatusReportController@statusRTHistoryAjax');
 //泵站单机按月统计Ajax
-Route::get('/report/realTimeStatusMonth/{$type}/{start_time}', 'Reporte\StatusReportController@statusRTMonthAjax');
+Route::get('/report/realTimeStatusMonth/{type}/{start_time}', 'Reporte\StatusReportController@statusRTMonthAjax');
 
 
 
