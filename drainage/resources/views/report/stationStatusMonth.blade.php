@@ -257,7 +257,7 @@
         var datas4 = [];
 
         $.each(statusRTList.stations, function (i, n) {
-            categories[i] = n["id"];
+            categories[i] = n[0]["name"];
             datas1[i] = n["totalTimeDay1"];
             datas2[i] = n["totalTimeDay2"];
             datas3[i] = n["totalTimeDay3"];
