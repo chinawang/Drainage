@@ -106,6 +106,7 @@
                                     </form>
                                 </li>
                             </ul>
+                            <input value="全屏" type='button' onclick='toggleFullScreen();' />
                         </li>
                         {{--<li class="back-to-home"><a href="{{ url('/') }}">首页</a></li>--}}
                     @endif
@@ -218,6 +219,29 @@
         "hash": "45ac23d099f73c1ab7a6f95c18371794"
     });
     tpwidget("show");
+</script>
+
+<script>
+    function toggleFullScreen() {
+        if (!document.fullscreenElement && // alternative standard method
+                !document.mozFullScreenElement && !document.webkitFullscreenElement) {// current working methods
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        } else {
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+        }
+    }
 </script>
 
 @yield('javascript')

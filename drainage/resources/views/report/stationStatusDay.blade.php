@@ -75,12 +75,12 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <div class="col-md-6 col-md-offset-0">
+                                            <div class="col-md-6 col-md-offset-1">
                                                 <button type="submit" class="btn btn-primary btn-custom">
                                                     查询
                                                 </button>
                                             </div>
-                                            <div class="col-md-6 col-md-offset-0">
+                                            <div class="col-md-3 col-md-offset-1">
                                                 <button type="submit" class="btn btn-primary btn-custom">
                                                     导出报表
                                                 </button>
