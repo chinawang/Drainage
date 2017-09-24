@@ -39,7 +39,7 @@
                                 <li class=""><a
                                             href="/report/stationStatusMonth?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">每月运行统计</a>
                                 </li>
-                                <li class=""><a href="/report/stationStatusMonthAll">泵站生产报表</a></li>
+                                <li class=""><a href="/report/stationStatusMonthAll">泵站月生产报表</a></li>
 
                             </ul>
                         </div>
@@ -63,21 +63,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="repair_at" class="col-md-3 control-label">选择日期:</label>
-                                            <div class="col-md-4">
+                                            <label for="repair_at" class="col-md-4 control-label">选择日期:</label>
+                                            <div class="col-md-8">
                                                 <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
                                                        value="{{ $startTime }}" placeholder="日期" data-data="yyyy-mm-dd">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <div class="col-md-6 col-md-offset-4">
+                                            <div class="col-md-6 col-md-offset-0">
                                                 <button type="submit" class="btn btn-primary btn-custom">
                                                     查询
+                                                </button>
+                                            </div>
+                                            <div class="col-md-6 col-md-offset-0">
+                                                <button type="submit" class="btn btn-primary btn-custom">
+                                                    导出报表
                                                 </button>
                                             </div>
                                         </div>
@@ -185,8 +190,8 @@
                                     @foreach ($stationStatusList2 as $status)
                                         <tr>
                                             <td>{{ $status['index'] }}</td>
-                                            <td>{{ $status['timeStart'] }}</td>
-                                            <td>{{ $status['timeEnd'] }}</td>
+                                            <td>{{ substr($status['timeStart'],10) }}</td>
+                                            <td>{{ substr($status['timeEnd'],10) }}</td>
                                             <td>{{ $status['timeGap'] }}</td>
                                             <td>{{ $status['current'] }}</td>
                                         </tr>
@@ -231,8 +236,8 @@
                                     @foreach ($stationStatusList3 as $status)
                                         <tr>
                                             <td>{{ $status['index'] }}</td>
-                                            <td>{{ $status['timeStart'] }}</td>
-                                            <td>{{ $status['timeEnd'] }}</td>
+                                            <td>{{ substr($status['timeStart'],10) }}</td>
+                                            <td>{{ substr($status['timeEnd'],10) }}</td>
                                             <td>{{ $status['timeGap'] }}</td>
                                             <td>{{ $status['current'] }}</td>
                                         </tr>
@@ -277,8 +282,8 @@
                                     @foreach ($stationStatusList4 as $status)
                                         <tr>
                                             <td>{{ $status['index'] }}</td>
-                                            <td>{{ $status['timeStart'] }}</td>
-                                            <td>{{ $status['timeEnd'] }}</td>
+                                            <td>{{ substr($status['timeStart'],10) }}</td>
+                                            <td>{{ substr($status['timeEnd'],10) }}</td>
                                             <td>{{ $status['timeGap'] }}</td>
                                             <td>{{ $status['current'] }}</td>
                                         </tr>
