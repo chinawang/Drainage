@@ -288,11 +288,11 @@ Route::get('/warning/warningDetail/{station_id}', 'Warning\WarningController@war
  *统计报表相关
  */
 //按日单机运行时间统计
-Route::get('/report/stationStatusDay', 'Reporte\ReportController@showStatusReportDay');
+Route::get('/report/stationStatusDay', 'Reporte\StatusReportController@showStatusReportDay');
 //按月单机运行时间统计
-Route::get('/report/stationStatusMonth', 'Reporte\ReportController@showStatusReportMonth');
+Route::get('/report/stationStatusMonth', 'Reporte\StatusReportController@showStatusReportMonth');
 //按日泵站总计运行时间统计
-Route::get('/report/stationStatusMonthAll', 'Reporte\ReportController@showStatusReportMonthAll');
+Route::get('/report/stationStatusMonthAll', 'Reporte\StatusReportController@showStatusReportMonthAll');
 
 
 //液位统计
