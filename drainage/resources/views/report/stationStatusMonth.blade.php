@@ -245,6 +245,7 @@
         }
 
         var statusRTList = getStationStatusList();
+        alert(statusRTList[0]['name']);
 
     </script>
 
@@ -257,7 +258,7 @@
         var datas4 = [];
 
         $.each(statusRTList, function (i, n) {
-            categories[i] = "泵站";
+            categories[i] = n["name"];
             datas1[i] = n["totalTimeDay1"];
             datas2[i] = n["totalTimeDay2"];
             datas3[i] = n["totalTimeDay3"];
