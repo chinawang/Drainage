@@ -541,8 +541,8 @@ class StatusReportController extends Controller
             $station['totalFluxBefore3'] = $param['totalFluxBefore3'];
             $station['totalFluxBefore4'] = $param['totalFluxBefore4'];
         }
-        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
-        return response()->json($paramMonth, 200);
+//        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
+        return response()->json(array('stations'=> $stations), 200);
     }
 
 }
