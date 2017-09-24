@@ -387,7 +387,7 @@ class StatusReportController extends Controller
             if($stationRTList[$i]->$equipmentCode == 0 && $stationRTList[$i+1]->$equipmentCode == 1 )
             {
                 $sRunning['timeStart'] = $stationRTList[$i+1]->Time;
-                $sRunning['current'] = $stationRTList[$i+1]->$currentCode;
+//                $sRunning['current'] = $stationRTList[$i+1]->$currentCode;
 //                $sRunning['timeEnd'] = '';
 //                $sRunning['timeGap'] = '';
 //                $sRunning['index'] = $index;
@@ -402,6 +402,7 @@ class StatusReportController extends Controller
                 {
                     $sRunning['timeGap'] = abs(strtotime($sRunning['timeEnd']) - strtotime($stationStatusList[$index -2]['timeStart']))/60;
                     $sRunning['timeGap'] = round($sRunning['timeGap']);
+                    $sRunning['current'] = $stationRTList[$i+1]->$currentCode;
                     $stationStatusList[$index -2]['timeEnd'] = $sRunning['timeEnd'];
                     $stationStatusList[$index -2]['timeGap'] = $sRunning['timeGap'];
                     $stationStatusList[$index -2]['flux'] = $sRunning['timeGap'] * $pumpFlux;
