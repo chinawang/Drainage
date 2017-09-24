@@ -238,7 +238,7 @@
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
-                    resultValue = data;
+                    resultValue = data.stations;
                 }
             });
             return resultValue;
@@ -256,7 +256,7 @@
         var datas3 = [];
         var datas4 = [];
 
-        $.each(statusRTList.stations, function (i, n) {
+        $.each(statusRTList, function (i, n) {
             categories[i] = n["name"];
             datas1[i] = n["totalTimeDay1"];
             datas2[i] = n["totalTimeDay2"];
