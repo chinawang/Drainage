@@ -185,7 +185,7 @@
 
             // 日期
             var datePickerConfig = {
-//                format: 'yyyy-mm',
+                format: 'yyyy-mm',
                 language: "zh-CN",
                 autoclose: true,
                 todayHighlight: true,
