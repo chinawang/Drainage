@@ -34,12 +34,12 @@
                         <div class="row" style="margin-top: -10px">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a
-                                            href="/report/stationStatusDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">泵组按天运行统计</a>
+                                            href="/report/stationStatusDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">每日运行统计</a>
                                 </li>
                                 <li class=""><a
-                                            href="/report/stationStatusMonth?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">泵组按月运行统计</a>
+                                            href="/report/stationStatusMonth?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">每月运行统计</a>
                                 </li>
-                                <li class=""><a href="/report/stationStatusMonthAll">泵站按月生产报表</a></li>
+                                <li class=""><a href="/report/stationStatusMonthAll">泵站生产报表</a></li>
 
                             </ul>
                         </div>
@@ -87,7 +87,7 @@
 
                             <div class="panel panel-default custom-panel">
                                 <div class="row">
-                                    <div class="col-md-12 col-md-offset-0">
+                                    <div class="col-md-6 col-md-offset-3">
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#pump1" data-toggle="tab">1号泵启动趋势</a></li>
                                             <li><a href="#pump2" data-toggle="tab">2号泵启动趋势</a></li>
