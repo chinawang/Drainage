@@ -245,7 +245,6 @@
         }
 
         var statusRTList = getStationStatusList();
-        alert(statusRTList[0]['name']);
 
     </script>
 
