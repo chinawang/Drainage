@@ -234,7 +234,7 @@
             var resultValue = [];
             $.ajax({
                 type: 'get',
-                url: '/report/realTimeStatusHistory/{{ $startTime }}',
+                url: '/report/realTimeStatusMonth/{{ $selectType }}/{{ $startTime }}',
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
@@ -250,53 +250,23 @@
 
     <script>
 
-        var categories1 = [];
-        var categories2 = [];
-        var categories3 = [];
-        var categories4 = [];
-        var categories5 = [];
-        var categories6 = [];
-        var categories7 = [];
+        var categories = [];
         var datas1 = [];
         var datas2 = [];
         var datas3 = [];
         var datas4 = [];
-        var datas5 = [];
-        var datas6 = [];
-        var datas7 = [];
 
-        $.each(statusRTList.stationStatusList1, function (i, n) {
-            categories1[i] = dateStrFormat(n["timeEnd"]);
-            datas1[i] = n["timeGap"];
-        });
-        $.each(statusRTList.stationStatusList2, function (i, n) {
-            categories2[i] = dateStrFormat(n["timeEnd"]);
-            datas2[i] = n["timeGap"];
-        });
-        $.each(statusRTList.stationStatusList3, function (i, n) {
-            categories3[i] = dateStrFormat(n["timeEnd"]);
-            datas3[i] = n["timeGap"];
-        });
-        $.each(statusRTList.stationStatusList4, function (i, n) {
-            categories4[i] = dateStrFormat(n["timeEnd"]);
-            datas4[i] = n["timeGap"];
-        });
-        $.each(statusRTList.stationStatusList5, function (i, n) {
-            categories5[i] = dateStrFormat(n["timeEnd"]);
-            datas5[i] = n["timeGap"];
-        });
-        $.each(statusRTList.stationStatusList6, function (i, n) {
-            categories6[i] = dateStrFormat(n["timeEnd"]);
-            datas6[i] = n["timeGap"];
-        });
-        $.each(statusRTList.stationStatusList7, function (i, n) {
-            categories7[i] = dateStrFormat(n["timeEnd"]);
-            datas7[i] = n["timeGap"];
+        $.each(statusRTList.stations, function (i, n) {
+            categories[i] = n["name"];
+            datas1[i] = n["totalTimeDay1"];
+            datas2[i] = n["totalTimeDay2"];
+            datas3[i] = n["totalTimeDay3"];
+            datas4[i] = n["totalTimeDay4"];
         });
 
-        var chart1 = new Highcharts.Chart('pump1Container', {
+        var chart1 = new Highcharts.Chart('statusContainer', {
             chart: {
-                type: 'column'
+                type: 'areaspline'
             },
             title: {
                 text: '',
@@ -307,11 +277,11 @@
                 x: -20
             },
             xAxis: {
-                categories: categories1
+                categories: categories
             },
             yAxis: {
                 title: {
-                    text: '时间 (分钟)'
+                    text: '时长 (小时)'
                 },
                 plotLines: [{
                     value: 0,
@@ -320,7 +290,7 @@
                 }]
             },
             tooltip: {
-                valueSuffix: '分钟'
+                valueSuffix: '小时'
             },
             legend: {
                 layout: 'vertical',
@@ -329,254 +299,17 @@
                 borderWidth: 0
             },
             series: [{
-                name: '1号泵启动时长',
+                name: '1号泵运行时长',
                 data: datas1
-            },
-            ]
-        });
-
-        var chart2 = new Highcharts.Chart('pump2Container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '',
-                x: -20
-            },
-            subtitle: {
-                text: '',
-                x: -20
-            },
-            xAxis: {
-                categories: categories2
-            },
-            yAxis: {
-                title: {
-                    text: '时间 (分钟)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '分钟'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: '2号泵启动时长',
+            },{
+                name: '2号泵运行时长',
                 data: datas2
-            },
-            ]
-        });
-
-        var chart3 = new Highcharts.Chart('pump3Container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '',
-                x: -20
-            },
-            subtitle: {
-                text: '',
-                x: -20
-            },
-            xAxis: {
-                categories: categories1
-            },
-            yAxis: {
-                title: {
-                    text: '时间 (分钟)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '分钟'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: '3号泵启动时长',
+            },{
+                name: '3号泵运行时长',
                 data: datas3
-            },
-            ]
-        });
-
-        var chart4 = new Highcharts.Chart('pump4Container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '',
-                x: -20
-            },
-            subtitle: {
-                text: '',
-                x: -20
-            },
-            xAxis: {
-                categories: categories4
-            },
-            yAxis: {
-                title: {
-                    text: '时间 (分钟)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '分钟'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: '4号泵启动时长',
+            },{
+                name: '4号泵运行时长',
                 data: datas4
-            },
-            ]
-        });
-
-        var chart5 = new Highcharts.Chart('gs1Container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '',
-                x: -20
-            },
-            subtitle: {
-                text: '',
-                x: -20
-            },
-            xAxis: {
-                categories: categories5
-            },
-            yAxis: {
-                title: {
-                    text: '时间 (分钟)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '分钟'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: '1号格栅启动时长',
-                data: datas5
-            },
-            ]
-        });
-
-        var chart6 = new Highcharts.Chart('gs2Container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '',
-                x: -20
-            },
-            subtitle: {
-                text: '',
-                x: -20
-            },
-            xAxis: {
-                categories: categories6
-            },
-            yAxis: {
-                title: {
-                    text: '时间 (分钟)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '分钟'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: '2号格栅启动时长',
-                data: datas6
-            },
-            ]
-        });
-
-        var chart7 = new Highcharts.Chart('jlContainer', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '',
-                x: -20
-            },
-            subtitle: {
-                text: '',
-                x: -20
-            },
-            xAxis: {
-                categories: categories7
-            },
-            yAxis: {
-                title: {
-                    text: '时间 (分钟)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '分钟'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: '绞龙启动时长',
-                data: datas7
             },
             ]
         });

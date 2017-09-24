@@ -499,4 +499,50 @@ class StatusReportController extends Controller
         return response()->json($param, 200);
     }
 
+    /**
+     * 按月查询单机运行时间Ajax
+     * @param $type
+     * @param $selectDay
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function statusRTMonthAjax($type,$selectDay)
+    {
+        if ($selectDay == '')
+        {
+            $selectDay = date("Y-m-d");
+        }
+        $days = $this->getTheMonthDay($selectDay);
+        $startTime = $days[0];
+        $endTime = $days[1];
+
+        $stations = $this->stationListByType($type);
+
+        foreach ($stations as $station)
+        {
+            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+            //单位小时
+            $station['totalTimeDay1'] = round(($param['totalTimeDay1'])/60,2);
+            $station['totalTimeDay2'] = round(($param['totalTimeDay2'])/60,2);
+            $station['totalTimeDay3'] = round(($param['totalTimeDay3'])/60,2);
+            $station['totalTimeDay4'] = round(($param['totalTimeDay4'])/60,2);
+
+            $station['totalFluxDay1'] = $param['totalFluxDay1'];
+            $station['totalFluxDay2'] = $param['totalFluxDay2'];
+            $station['totalFluxDay3'] = $param['totalFluxDay3'];
+            $station['totalFluxDay4'] = $param['totalFluxDay4'];
+
+            $station['totalTimeBefore1'] = $param['totalTimeBefore1'];
+            $station['totalTimeBefore2'] = $param['totalTimeBefore2'];
+            $station['totalTimeBefore3'] = $param['totalTimeBefore3'];
+            $station['totalTimeBefore4'] = $param['totalTimeBefore4'];
+
+            $station['totalFluxBefore1'] = $param['totalFluxBefore1'];
+            $station['totalFluxBefore2'] = $param['totalFluxBefore2'];
+            $station['totalFluxBefore3'] = $param['totalFluxBefore3'];
+            $station['totalFluxBefore4'] = $param['totalFluxBefore4'];
+        }
+        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
+        return response()->json($paramMonth, 200);
+    }
+
 }
