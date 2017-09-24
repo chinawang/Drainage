@@ -116,7 +116,7 @@
     @yield('location')
     @yield('content')
 
-    <footer class="footer" style="width: 100%;height: 50px;">
+    <footer class="footer" style="width: 100%;height: 50px;margin-top: 10px">
         <div class="col-md-12 col-md-offset-0" style="text-align: center">
             <button onclick="toggleFullScreen();" type="button" class="btn btn-default btn-sm"
                     style="background-color: #cccccc;border-color: #cccccc;">
