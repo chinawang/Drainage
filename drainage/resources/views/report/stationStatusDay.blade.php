@@ -161,9 +161,7 @@
                                     </tr>
                                 @else
                                     <tr>
-                                        <td rowspan="2" colspan="5">暂无数据</td>
-                                    </tr>
-                                    <tr>
+                                        <td style="height: 80px" colspan="5">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -208,13 +206,7 @@
                                     </tr>
                                 @else
                                     <tr>
-                                        <td rowspan="4" colspan="5">暂无数据</td>
-                                    </tr>
-                                    <tr>
-                                    </tr>
-                                    <tr>
-                                    </tr>
-                                    <tr>
+                                        <td style="height: 80px" colspan="5">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -260,9 +252,7 @@
                                     </tr>
                                 @else
                                     <tr>
-                                        <td rowspan="2" colspan="5">暂无数据</td>
-                                    </tr>
-                                    <tr>
+                                        <td style="height: 80px" colspan="5">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -308,9 +298,7 @@
                                     </tr>
                                 @else
                                     <tr>
-                                        <td rowspan="2" colspan="5">暂无数据</td>
-                                    </tr>
-                                    <tr>
+                                        <td style="height: 80px" colspan="5">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
