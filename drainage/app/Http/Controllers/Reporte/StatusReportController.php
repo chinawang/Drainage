@@ -142,6 +142,14 @@ class StatusReportController extends Controller
 
         $stations = $this->stationListByType($type);
 
+        $index = 1;
+
+        //所有泵站之和
+        $totalTimeDayAll = 0;
+        $totalTimeBeforeAll = 0;
+        $totalFluxDayAll = 0;
+        $totalFluxBeforeAll = 0;
+
         foreach ($stations as $station)
         {
             $param = $this->getStatusReport($station['id'],$startTime,$endTime);
@@ -150,8 +158,17 @@ class StatusReportController extends Controller
             $station['totalFluxDay'] = $param['totalFluxDay'];
             $station['totalTimeBefore'] = $param['totalTimeBefore'];
             $station['totalFluxBefore'] = $param['totalFluxBefore'];
+            $totalTimeDayAll += $station['totalTimeDay'];
+            $totalTimeBeforeAll += $station['totalTimeBefore'];
+            $totalFluxDayAll += $station['totalFluxDay'];
+            $totalFluxBeforeAll += $station['totalFluxBefore'];
+
+            $station['index'] = $index;
+            $index ++;
         }
-        $paramMonthAll = ['stations' => $stations, '$selectType' => $type, 'startTime' => $startTime];
+        $paramMonthAll = ['stations' => $stations,'totalTimeDayAll'=>$totalTimeDayAll,
+            'totalTimeBeforeAll'=>$totalTimeBeforeAll,'totalFluxDayAll'=>$totalFluxDayAll,
+            'totalFluxBeforeAll'=>$totalFluxBeforeAll, '$selectType' => $type, 'startTime' => $startTime];
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
@@ -540,6 +557,37 @@ class StatusReportController extends Controller
             $station['totalFluxBefore2'] = $param['totalFluxBefore2'];
             $station['totalFluxBefore3'] = $param['totalFluxBefore3'];
             $station['totalFluxBefore4'] = $param['totalFluxBefore4'];
+        }
+//        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
+        return response()->json(array('stations'=> $stations), 200);
+    }
+
+    /**
+     * 按月查询泵站所有泵组运行时间Ajax
+     * @param $type
+     * @param $selectDay
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function statusRTMonthAllAjax($type,$selectDay)
+    {
+        if ($selectDay == '')
+        {
+            $selectDay = date("Y-m-d");
+        }
+        $days = $this->getTheMonthDay($selectDay);
+        $startTime = $days[0];
+        $endTime = $days[1];
+
+        $stations = $this->stationListByType($type);
+
+        foreach ($stations as $station)
+        {
+            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+            //单位小时
+            $station['totalTimeDay'] = round(($param['totalTimeDay'])/60,2);
+            $station['totalFluxDay'] = $param['totalFluxDay'];
+            $station['totalTimeBefore'] = $param['totalTimeBefore'];
+            $station['totalFluxBefore'] = $param['totalFluxBefore'];
         }
 //        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
         return response()->json(array('stations'=> $stations), 200);
