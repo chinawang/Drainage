@@ -406,6 +406,7 @@ class StatusReportController extends Controller
                     $stationStatusList[$index -2]['timeGap'] = $sRunning['timeGap'];
                     $stationStatusList[$index -2]['flux'] = $sRunning['timeGap'] * $pumpFlux;
                     $stationStatusList[$index -2]['current'] = $sRunning['current'];
+                    $stationStatusList[$index -2]['index'] = $index + 1;
                 }
 
             }

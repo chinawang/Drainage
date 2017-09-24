@@ -287,6 +287,13 @@ Route::get('/warning/warningDetail/{station_id}', 'Warning\WarningController@war
 /**
  *统计报表相关
  */
+//按日单机运行时间统计
+Route::get('/report/stationStatusDay', 'Reporte\ReportController@showStatusReportDay');
+//按月单机运行时间统计
+Route::get('/report/stationStatusMonth', 'Reporte\ReportController@showStatusReportMonth');
+//按日泵站总计运行时间统计
+Route::get('/report/stationStatusMonthAll', 'Reporte\ReportController@showStatusReportMonthAll');
+
 
 //液位统计
 Route::get('/report/stationWater', 'Reporte\ReportController@showWaterReport');
@@ -303,7 +310,7 @@ Route::get('/report/stationMaintenance', 'Reporte\ReportController@showMaintenan
 Route::get('/report/realTimeHistory/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@stationRTHistory');
 
 //泵站启停状态实时信息Ajax
-Route::get('/report/realTimeStatusHistory/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@statusRTHistory');
+Route::get('/report/realTimeStatusHistory/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@statusRTHistoryAjax');
 
 //日志
 Route::get('/log/lists', 'Log\LogController@lgoList');

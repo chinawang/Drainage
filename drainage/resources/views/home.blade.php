@@ -68,7 +68,7 @@
                             <ul class="main-menu">
                                 @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'report-view'))
                                     <li class="report">
-                                        <a href="/report/stationStatus" class="menu-item">
+                                        <a href="/report/stationStatusDay" class="menu-item">
                                             <img class="menu-icon" src="/img/home/report_run_blue.png">
                                             <h4>运行抽升统计</h4>
                                         </a>

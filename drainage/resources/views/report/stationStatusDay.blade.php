@@ -31,18 +31,20 @@
                     {{----}}
                     {{--</div>--}}
                     <div class="panel-body custom-panel-body">
-                        {{--<div class="row" style="margin-top: -10px">--}}
-                            {{--<ul class="nav nav-tabs">--}}
-                                {{--<li class=""><a href="/report/stationWater">泵站水位统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationRunning">设备运行统计</a></li>--}}
-                                {{--<li class="active"><a href="/report/stationStatus">设备启停统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationFailure">设备故障统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>--}}
+                        <div class="row" style="margin-top: -10px">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a
+                                            href="/report/stationStatusDay?_token={{ csrf_field() }}&station_id={{$stationSelect['id']}}&timeStart={{ '' }}">泵组按天运行统计</a>
+                                </li>
+                                <li class=""><a
+                                            href="/report/stationStatusMonth?_token={{ csrf_field() }}&station_id={{$stationSelect['id']}}&timeStart={{ '' }}">泵组按月运行统计</a>
+                                </li>
+                                <li class=""><a href="/report/stationStatusMonthAll">泵站按月生产报表</a></li>
 
-                            {{--</ul>--}}
-                        {{--</div>--}}
+                            </ul>
+                        </div>
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
-                            <form class="form-horizontal" role="form" method="GET" action="/report/stationStatus"
+                            <form class="form-horizontal" role="form" method="GET" action="/report/stationStatusDay"
                                   style="margin-bottom: 10px">
                                 {{ csrf_field() }}
 
@@ -63,17 +65,11 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="repair_at" class="col-md-3 control-label">时间范围:</label>
+                                            <label for="repair_at" class="col-md-3 control-label">选择日期:</label>
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
-                                                       value="{{ $startTime }}" placeholder="起始时间" data-data="yyyy-mm-dd">
-                                            </div>
-                                            <label for="time" class="col-md-1 control-label">—</label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control pick-event-date" id="end-time"
-                                                       name="timeEnd"
-                                                       value="{{ $endTime }}" placeholder="截止时间" data-data="yyyy-mm-dd">
+                                                       value="{{ $startTime }}" placeholder="日期" data-data="yyyy-mm-dd">
                                             </div>
                                         </div>
                                     </div>
@@ -97,9 +93,6 @@
                                             <li><a href="#pump2" data-toggle="tab">2号泵启动趋势</a></li>
                                             <li><a href="#pump3" data-toggle="tab">3号泵启动趋势</a></li>
                                             <li><a href="#pump4" data-toggle="tab">4号泵启动趋势</a></li>
-                                            <li><a href="#gs1" data-toggle="tab">1号格栅启动趋势</a></li>
-                                            <li><a href="#gs2" data-toggle="tab">2号格栅启动趋势</a></li>
-                                            <li><a href="#jl" data-toggle="tab">绞笼启动趋势</a></li>
                                         </ul>
                                     </div>
 
@@ -126,73 +119,168 @@
                                              style="min-width:400px;height:400px">
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="gs1">
-                                        <div class="panel-body custom-panel-body" id="gs1Container"
-                                             style="min-width:400px;height:400px">
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="gs2">
-                                        <div class="panel-body custom-panel-body" id="gs2Container"
-                                             style="min-width:400px;height:400px">
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="jl">
-                                        <div class="panel-body custom-panel-body" id="jlContainer"
-                                             style="min-width:400px;height:400px">
-                                        </div>
-                                    </div>
 
                                 </div>
                             </div>
+                            <table class="table table-hover table-bordered ">
+                                <thead>
+                                <tr>
+                                    <th colspan="5">1号泵</th>
+                                </tr>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>开泵时分</th>
+                                    <th>停泵时分</th>
+                                    <th>运行(分)</th>
+                                    <th>电流(A)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                            @if (!empty($statusList[0]))
-                                <table class="table table-hover table-bordered ">
-                                    <thead>
+                                @foreach ($stationStatusList1 as $status)
                                     <tr>
-                                        <th>时间</th>
-                                        <th>泵站名称</th>
-                                        <th>1号泵启停状态</th>
-                                        <th>2号泵启停状态</th>
-                                        <th>3号泵启停状态</th>
-                                        <th>4号泵启停状态</th>
-                                        <th>1号格栅启停状态</th>
-                                        <th>2号格栅启停状态</th>
-                                        <th>绞笼启停状态</th>
+                                        <td>{{ $status['index'] }}</td>
+                                        <td>{{ $status['timeStart'] }}</td>
+                                        <td>{{ $status['timeEnd'] }}</td>
+                                        <td>{{ $status['timeGap'] }}</td>
+                                        <td>{{ $status['current'] }}</td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
+                                @endforeach
+                                <tr>
+                                    <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
+                                    <td style="background-color: #f9f2f4">运行合计(分)</td>
+                                    <td>{{ $totalTimeDay1 }}</td>
+                                    <td style="background-color: #f9f2f4">连前累计运行(分)</td>
+                                    <td>{{ $totalTimeBefore1 }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f2f4">抽升量(吨)</td>
+                                    <td>{{ $totalFluxDay1 }}</td>
+                                    <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
+                                    <td>{{ $totalFluxBefore1 }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-                                    @foreach ($statusList as $status)
-                                        <tr>
-                                            <td>{{ $status->Time }}</td>
-                                            <td>{{ $stationSelect['name'] }}</td>
-                                            {{--<td>{{ $status['pumpStatus1'] }}</td>--}}
-                                            {{--<td>{{ $status['pumpStatus2'] }}</td>--}}
-                                            {{--<td>{{ $status['pumpStatus3'] }}</td>--}}
-                                            {{--<td>{{ $status['pumpStatus4'] }}</td>--}}
-                                            {{--<td>{{ $status['removerStatus1'] }}</td>--}}
-                                            {{--<td>{{ $status['removerStatus2'] }}</td>--}}
-                                            {{--<td>{{ $status['augerStatus'] }}</td>--}}
-                                            <td>{{ $status->yx_b1 == '1' ? '运行中' : '未启动' }}</td>
-                                            <td>{{ $status->yx_b2 == '1' ? '运行中' : '未启动' }}</td>
-                                            <td>{{ $status->yx_b3 == '1' ? '运行中' : '未启动' }}</td>
-                                            <td>{{ $status->yx_b4 == '1' ? '运行中' : '未启动' }}</td>
-                                            <td>{{ $status->yx_gs1 == '1' ? '运行中' : '未启动' }}</td>
-                                            <td>{{ $status->yx_gs2 == '1' ? '运行中' : '未启动' }}</td>
-                                            <td>{{ $status->yx_jl == '1' ? '运行中' : '未启动' }}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="table-pagination">
-                                    {!! $statusList->appends(['station_id' => $stationSelect['id'],'timeStart' => $startTime,'timeEnd' => $endTime])->render() !!}
-                                </div>
-                            @else
-                                <div class="well" style="text-align: center; padding: 100px;">
-                                    暂无内容
-                                </div>
-                            @endif
+                            <table class="table table-hover table-bordered ">
+                                <thead>
+                                <tr>
+                                    <th colspan="5">2号泵</th>
+                                </tr>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>开泵时分</th>
+                                    <th>停泵时分</th>
+                                    <th>运行(分)</th>
+                                    <th>电流(A)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
+                                @foreach ($stationStatusList2 as $status)
+                                    <tr>
+                                        <td>{{ $status['index'] }}</td>
+                                        <td>{{ $status['timeStart'] }}</td>
+                                        <td>{{ $status['timeEnd'] }}</td>
+                                        <td>{{ $status['timeGap'] }}</td>
+                                        <td>{{ $status['current'] }}</td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
+                                    <td style="background-color: #f9f2f4">运行合计(分)</td>
+                                    <td>{{ $totalTimeDay2 }}</td>
+                                    <td style="background-color: #f9f2f4">连前累计运行(分)</td>
+                                    <td>{{ $totalTimeBefore2 }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f2f4">抽升量(吨)</td>
+                                    <td>{{ $totalFluxDay2 }}</td>
+                                    <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
+                                    <td>{{ $totalFluxBefore2 }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-hover table-bordered ">
+                                <thead>
+                                <tr>
+                                    <th colspan="5">3号泵</th>
+                                </tr>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>开泵时分</th>
+                                    <th>停泵时分</th>
+                                    <th>运行(分)</th>
+                                    <th>电流(A)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                @foreach ($stationStatusList3 as $status)
+                                    <tr>
+                                        <td>{{ $status['index'] }}</td>
+                                        <td>{{ $status['timeStart'] }}</td>
+                                        <td>{{ $status['timeEnd'] }}</td>
+                                        <td>{{ $status['timeGap'] }}</td>
+                                        <td>{{ $status['current'] }}</td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
+                                    <td style="background-color: #f9f2f4">运行合计(分)</td>
+                                    <td>{{ $totalTimeDay3 }}</td>
+                                    <td style="background-color: #f9f2f4">连前累计运行(分)</td>
+                                    <td>{{ $totalTimeBefore3 }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f2f4">抽升量(吨)</td>
+                                    <td>{{ $totalFluxDay3 }}</td>
+                                    <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
+                                    <td>{{ $totalFluxBefore3 }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-hover table-bordered ">
+                                <thead>
+                                <tr>
+                                    <th colspan="5">4号泵</th>
+                                </tr>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>开泵时分</th>
+                                    <th>停泵时分</th>
+                                    <th>运行(分)</th>
+                                    <th>电流(A)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                @foreach ($stationStatusList4 as $status)
+                                    <tr>
+                                        <td>{{ $status['index'] }}</td>
+                                        <td>{{ $status['timeStart'] }}</td>
+                                        <td>{{ $status['timeEnd'] }}</td>
+                                        <td>{{ $status['timeGap'] }}</td>
+                                        <td>{{ $status['current'] }}</td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
+                                    <td style="background-color: #f9f2f4">运行合计(分)</td>
+                                    <td>{{ $totalTimeDay4 }}</td>
+                                    <td style="background-color: #f9f2f4">连前累计运行(分)</td>
+                                    <td>{{ $totalTimeBefore4 }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f2f4">抽升量(吨)</td>
+                                    <td>{{ $totalFluxDay4 }}</td>
+                                    <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
+                                    <td>{{ $totalFluxBefore4 }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -210,7 +298,7 @@
 
             // 日期
             var datePickerConfig = {
-                format: 'yyyy-mm-dd',
+                format: 'yyyy-mm',
                 language: "zh-CN",
                 autoclose: true,
                 todayHighlight: true,
@@ -242,10 +330,9 @@
     <script>
         function dateStrFormat(dateStr) {
 
-            var dateResult = dateStr ;
-            var timeArr=dateStr.replace(" ",":").replace(/\:/g,"-").split("-");
-            if(timeArr.length==6)
-            {
+            var dateResult = dateStr;
+            var timeArr = dateStr.replace(" ", ":").replace(/\:/g, "-").split("-");
+            if (timeArr.length == 6) {
                 dateResult = timeArr[1] + '-' + timeArr[2] + ' ' + timeArr[3] + ':' + timeArr[4];
             }
 
@@ -291,38 +378,38 @@
         var datas6 = [];
         var datas7 = [];
 
-        $.each(statusRTList.stationStatusList1,function(i,n){
+        $.each(statusRTList.stationStatusList1, function (i, n) {
             categories1[i] = dateStrFormat(n["timeEnd"]);
             datas1[i] = n["timeGap"];
         });
-        $.each(statusRTList.stationStatusList2,function(i,n){
+        $.each(statusRTList.stationStatusList2, function (i, n) {
             categories2[i] = dateStrFormat(n["timeEnd"]);
             datas2[i] = n["timeGap"];
         });
-        $.each(statusRTList.stationStatusList3,function(i,n){
+        $.each(statusRTList.stationStatusList3, function (i, n) {
             categories3[i] = dateStrFormat(n["timeEnd"]);
             datas3[i] = n["timeGap"];
         });
-        $.each(statusRTList.stationStatusList4,function(i,n){
+        $.each(statusRTList.stationStatusList4, function (i, n) {
             categories4[i] = dateStrFormat(n["timeEnd"]);
             datas4[i] = n["timeGap"];
         });
-        $.each(statusRTList.stationStatusList5,function(i,n){
+        $.each(statusRTList.stationStatusList5, function (i, n) {
             categories5[i] = dateStrFormat(n["timeEnd"]);
             datas5[i] = n["timeGap"];
         });
-        $.each(statusRTList.stationStatusList6,function(i,n){
+        $.each(statusRTList.stationStatusList6, function (i, n) {
             categories6[i] = dateStrFormat(n["timeEnd"]);
             datas6[i] = n["timeGap"];
         });
-        $.each(statusRTList.stationStatusList7,function(i,n){
+        $.each(statusRTList.stationStatusList7, function (i, n) {
             categories7[i] = dateStrFormat(n["timeEnd"]);
             datas7[i] = n["timeGap"];
         });
 
         var chart1 = new Highcharts.Chart('pump1Container', {
-            chart:{
-                type:'column'
+            chart: {
+                type: 'column'
             },
             title: {
                 text: '',
@@ -333,7 +420,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories1
+                categories: categories1
             },
             yAxis: {
                 title: {
@@ -356,13 +443,14 @@
             },
             series: [{
                 name: '1号泵启动时长',
-                data: datas1},
+                data: datas1
+            },
             ]
         });
 
         var chart2 = new Highcharts.Chart('pump2Container', {
-            chart:{
-                type:'column'
+            chart: {
+                type: 'column'
             },
             title: {
                 text: '',
@@ -373,7 +461,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories2
+                categories: categories2
             },
             yAxis: {
                 title: {
@@ -396,13 +484,14 @@
             },
             series: [{
                 name: '2号泵启动时长',
-                data: datas2},
+                data: datas2
+            },
             ]
         });
 
         var chart3 = new Highcharts.Chart('pump3Container', {
-            chart:{
-                type:'column'
+            chart: {
+                type: 'column'
             },
             title: {
                 text: '',
@@ -413,7 +502,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories1
+                categories: categories1
             },
             yAxis: {
                 title: {
@@ -436,13 +525,14 @@
             },
             series: [{
                 name: '3号泵启动时长',
-                data: datas3},
+                data: datas3
+            },
             ]
         });
 
         var chart4 = new Highcharts.Chart('pump4Container', {
-            chart:{
-                type:'column'
+            chart: {
+                type: 'column'
             },
             title: {
                 text: '',
@@ -453,7 +543,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories4
+                categories: categories4
             },
             yAxis: {
                 title: {
@@ -476,13 +566,14 @@
             },
             series: [{
                 name: '4号泵启动时长',
-                data: datas4},
+                data: datas4
+            },
             ]
         });
 
         var chart5 = new Highcharts.Chart('gs1Container', {
-            chart:{
-                type:'column'
+            chart: {
+                type: 'column'
             },
             title: {
                 text: '',
@@ -493,7 +584,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories5
+                categories: categories5
             },
             yAxis: {
                 title: {
@@ -516,13 +607,14 @@
             },
             series: [{
                 name: '1号格栅启动时长',
-                data: datas5},
+                data: datas5
+            },
             ]
         });
 
         var chart6 = new Highcharts.Chart('gs2Container', {
-            chart:{
-                type:'column'
+            chart: {
+                type: 'column'
             },
             title: {
                 text: '',
@@ -533,7 +625,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories6
+                categories: categories6
             },
             yAxis: {
                 title: {
@@ -556,13 +648,14 @@
             },
             series: [{
                 name: '2号格栅启动时长',
-                data: datas6},
+                data: datas6
+            },
             ]
         });
 
         var chart7 = new Highcharts.Chart('jlContainer', {
-            chart:{
-                type:'column'
+            chart: {
+                type: 'column'
             },
             title: {
                 text: '',
@@ -573,7 +666,7 @@
                 x: -20
             },
             xAxis: {
-                categories:categories7
+                categories: categories7
             },
             yAxis: {
                 title: {
@@ -596,7 +689,8 @@
             },
             series: [{
                 name: '绞龙启动时长',
-                data: datas7},
+                data: datas7
+            },
             ]
         });
     </script>
