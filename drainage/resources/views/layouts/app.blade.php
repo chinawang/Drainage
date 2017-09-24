@@ -118,7 +118,8 @@
 
     <footer class="footer" style="width: 100%;height: 50px;">
         <div class="col-md-12 col-md-offset-0" style="text-align: center">
-            <button onclick="toggleFullScreen();" type="button" class="btn btn-default btn-sm">
+            <button onclick="toggleFullScreen();" type="button" class="btn btn-default btn-sm"
+                    style="background-color: #cccccc;border-color: #cccccc;">
                 <span class="glyphicon glyphicon-fullscreen"></span> 全屏
             </button>
         </div>
