@@ -34,10 +34,10 @@
                         <div class="row" style="margin-top: -10px">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a
-                                            href="/report/stationStatusDay?_token={{ csrf_field() }}&station_id={{$stationSelect['id']}}&timeStart={{ '' }}">泵组按天运行统计</a>
+                                            href="/report/stationStatusDay?_token={{ csrf_field() }}&station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">泵组按天运行统计</a>
                                 </li>
                                 <li class=""><a
-                                            href="/report/stationStatusMonth?_token={{ csrf_field() }}&station_id={{$stationSelect['id']}}&timeStart={{ '' }}">泵组按月运行统计</a>
+                                            href="/report/stationStatusMonth?_token={{ csrf_field() }}&station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">泵组按月运行统计</a>
                                 </li>
                                 <li class=""><a href="/report/stationStatusMonthAll">泵站按月生产报表</a></li>
 
@@ -136,29 +136,36 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                @foreach ($stationStatusList1 as $status)
+                                @if (!empty($stationStatusList1[0]))
+                                    @foreach ($stationStatusList1 as $status)
+                                        <tr>
+                                            <td>{{ $status['index'] }}</td>
+                                            <td>{{ $status['timeStart'] }}</td>
+                                            <td>{{ $status['timeEnd'] }}</td>
+                                            <td>{{ $status['timeGap'] }}</td>
+                                            <td>{{ $status['current'] }}</td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
-                                        <td>{{ $status['index'] }}</td>
-                                        <td>{{ $status['timeStart'] }}</td>
-                                        <td>{{ $status['timeEnd'] }}</td>
-                                        <td>{{ $status['timeGap'] }}</td>
-                                        <td>{{ $status['current'] }}</td>
+                                        <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
+                                        <td style="background-color: #f9f2f4">运行合计(分)</td>
+                                        <td>{{ $totalTimeDay1 }}</td>
+                                        <td style="background-color: #f9f2f4">连前累计运行(分)</td>
+                                        <td>{{ $totalTimeBefore1 }}</td>
                                     </tr>
-                                @endforeach
-                                <tr>
-                                    <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
-                                    <td style="background-color: #f9f2f4">运行合计(分)</td>
-                                    <td>{{ $totalTimeDay1 }}</td>
-                                    <td style="background-color: #f9f2f4">连前累计运行(分)</td>
-                                    <td>{{ $totalTimeBefore1 }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: #f9f2f4">抽升量(吨)</td>
-                                    <td>{{ $totalFluxDay1 }}</td>
-                                    <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
-                                    <td>{{ $totalFluxBefore1 }}</td>
-                                </tr>
+                                    <tr>
+                                        <td style="background-color: #f9f2f4">抽升量(吨)</td>
+                                        <td>{{ $totalFluxDay1 }}</td>
+                                        <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
+                                        <td>{{ $totalFluxBefore1 }}</td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td rowspan="2" colspan="5">暂无数据</td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
 
@@ -176,29 +183,36 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                @foreach ($stationStatusList2 as $status)
+                                @if (!empty($stationStatusList2[0]))
+                                    @foreach ($stationStatusList2 as $status)
+                                        <tr>
+                                            <td>{{ $status['index'] }}</td>
+                                            <td>{{ $status['timeStart'] }}</td>
+                                            <td>{{ $status['timeEnd'] }}</td>
+                                            <td>{{ $status['timeGap'] }}</td>
+                                            <td>{{ $status['current'] }}</td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
-                                        <td>{{ $status['index'] }}</td>
-                                        <td>{{ $status['timeStart'] }}</td>
-                                        <td>{{ $status['timeEnd'] }}</td>
-                                        <td>{{ $status['timeGap'] }}</td>
-                                        <td>{{ $status['current'] }}</td>
+                                        <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
+                                        <td style="background-color: #f9f2f4">运行合计(分)</td>
+                                        <td>{{ $totalTimeDay2 }}</td>
+                                        <td style="background-color: #f9f2f4">连前累计运行(分)</td>
+                                        <td>{{ $totalTimeBefore2 }}</td>
                                     </tr>
-                                @endforeach
-                                <tr>
-                                    <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
-                                    <td style="background-color: #f9f2f4">运行合计(分)</td>
-                                    <td>{{ $totalTimeDay2 }}</td>
-                                    <td style="background-color: #f9f2f4">连前累计运行(分)</td>
-                                    <td>{{ $totalTimeBefore2 }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: #f9f2f4">抽升量(吨)</td>
-                                    <td>{{ $totalFluxDay2 }}</td>
-                                    <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
-                                    <td>{{ $totalFluxBefore2 }}</td>
-                                </tr>
+                                    <tr>
+                                        <td style="background-color: #f9f2f4">抽升量(吨)</td>
+                                        <td>{{ $totalFluxDay2 }}</td>
+                                        <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
+                                        <td>{{ $totalFluxBefore2 }}</td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td rowspan="2" colspan="5">暂无数据</td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
 
@@ -216,29 +230,37 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @if (!empty($stationStatusList3[0]))
 
-                                @foreach ($stationStatusList3 as $status)
+                                    @foreach ($stationStatusList3 as $status)
+                                        <tr>
+                                            <td>{{ $status['index'] }}</td>
+                                            <td>{{ $status['timeStart'] }}</td>
+                                            <td>{{ $status['timeEnd'] }}</td>
+                                            <td>{{ $status['timeGap'] }}</td>
+                                            <td>{{ $status['current'] }}</td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
-                                        <td>{{ $status['index'] }}</td>
-                                        <td>{{ $status['timeStart'] }}</td>
-                                        <td>{{ $status['timeEnd'] }}</td>
-                                        <td>{{ $status['timeGap'] }}</td>
-                                        <td>{{ $status['current'] }}</td>
+                                        <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
+                                        <td style="background-color: #f9f2f4">运行合计(分)</td>
+                                        <td>{{ $totalTimeDay3 }}</td>
+                                        <td style="background-color: #f9f2f4">连前累计运行(分)</td>
+                                        <td>{{ $totalTimeBefore3 }}</td>
                                     </tr>
-                                @endforeach
-                                <tr>
-                                    <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
-                                    <td style="background-color: #f9f2f4">运行合计(分)</td>
-                                    <td>{{ $totalTimeDay3 }}</td>
-                                    <td style="background-color: #f9f2f4">连前累计运行(分)</td>
-                                    <td>{{ $totalTimeBefore3 }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: #f9f2f4">抽升量(吨)</td>
-                                    <td>{{ $totalFluxDay3 }}</td>
-                                    <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
-                                    <td>{{ $totalFluxBefore3 }}</td>
-                                </tr>
+                                    <tr>
+                                        <td style="background-color: #f9f2f4">抽升量(吨)</td>
+                                        <td>{{ $totalFluxDay3 }}</td>
+                                        <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
+                                        <td>{{ $totalFluxBefore3 }}</td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td rowspan="2" colspan="5">暂无数据</td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
 
@@ -256,29 +278,37 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @if (!empty($stationStatusList4[0]))
 
-                                @foreach ($stationStatusList4 as $status)
+                                    @foreach ($stationStatusList4 as $status)
+                                        <tr>
+                                            <td>{{ $status['index'] }}</td>
+                                            <td>{{ $status['timeStart'] }}</td>
+                                            <td>{{ $status['timeEnd'] }}</td>
+                                            <td>{{ $status['timeGap'] }}</td>
+                                            <td>{{ $status['current'] }}</td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
-                                        <td>{{ $status['index'] }}</td>
-                                        <td>{{ $status['timeStart'] }}</td>
-                                        <td>{{ $status['timeEnd'] }}</td>
-                                        <td>{{ $status['timeGap'] }}</td>
-                                        <td>{{ $status['current'] }}</td>
+                                        <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
+                                        <td style="background-color: #f9f2f4">运行合计(分)</td>
+                                        <td>{{ $totalTimeDay4 }}</td>
+                                        <td style="background-color: #f9f2f4">连前累计运行(分)</td>
+                                        <td>{{ $totalTimeBefore4 }}</td>
                                     </tr>
-                                @endforeach
-                                <tr>
-                                    <td rowspan="2" style="background-color: #f9f2f4">今日运行合计</td>
-                                    <td style="background-color: #f9f2f4">运行合计(分)</td>
-                                    <td>{{ $totalTimeDay4 }}</td>
-                                    <td style="background-color: #f9f2f4">连前累计运行(分)</td>
-                                    <td>{{ $totalTimeBefore4 }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: #f9f2f4">抽升量(吨)</td>
-                                    <td>{{ $totalFluxDay4 }}</td>
-                                    <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
-                                    <td>{{ $totalFluxBefore4 }}</td>
-                                </tr>
+                                    <tr>
+                                        <td style="background-color: #f9f2f4">抽升量(吨)</td>
+                                        <td>{{ $totalFluxDay4 }}</td>
+                                        <td style="background-color: #f9f2f4">连前累计抽升量(吨)</td>
+                                        <td>{{ $totalFluxBefore4 }}</td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td rowspan="2" colspan="5">暂无数据</td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                         </div>
