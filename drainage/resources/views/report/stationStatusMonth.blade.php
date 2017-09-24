@@ -100,72 +100,74 @@
                                      style="min-width:400px;height:400px">
                                 </div>
                             </div>
-                            <table class="table table-hover table-bordered ">
-                                <thead>
-                                <tr>
-                                    <th rowspan="2">泵站名称</th>
-                                    <th colspan="4">1号泵</th>
-                                    <th colspan="4">2号泵</th>
-                                    <th colspan="4">3号泵</th>
-                                    <th colspan="4">4号泵</th>
-                                </tr>
-                                <tr>
-                                    <th>运行(小时)</th>
-                                    <th>连前累计(小时)</th>
-                                    <th>抽升量(万吨)</th>
-                                    <th>连前累计(万吨)</th>
-
-                                    <th>运行(小时)</th>
-                                    <th>连前累计(小时)</th>
-                                    <th>抽升量(万吨)</th>
-                                    <th>连前累计(万吨)</th>
-
-                                    <th>运行(小时)</th>
-                                    <th>连前累计(小时)</th>
-                                    <th>抽升量(万吨)</th>
-                                    <th>连前累计(万吨)</th>
-
-                                    <th>运行(小时)</th>
-                                    <th>连前累计(小时)</th>
-                                    <th>抽升量(万吨)</th>
-                                    <th>连前累计(万吨)</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if (!empty($stations[0]))
-                                    @foreach ($stations as $station)
-                                        <tr>
-                                            <td>{{ $station['name'] }}</td>
-
-                                            <td>{{ $station['totalTimeDay1'] }}</td>
-                                            <td>{{ $station['totalTimeBefore1'] }}</td>
-                                            <td>{{ $station['totalFluxDay1'] }}</td>
-                                            <td>{{ $station['totalFluxBefore1'] }}</td>
-
-                                            <td>{{ $station['totalTimeDay2'] }}</td>
-                                            <td>{{ $station['totalTimeBefore2'] }}</td>
-                                            <td>{{ $station['totalFluxDay2'] }}</td>
-                                            <td>{{ $station['totalFluxBefore2'] }}</td>
-
-                                            <td>{{ $station['totalTimeDay3'] }}</td>
-                                            <td>{{ $station['totalTimeBefore3'] }}</td>
-                                            <td>{{ $station['totalFluxDay3'] }}</td>
-                                            <td>{{ $station['totalFluxBefore3'] }}</td>
-
-                                            <td>{{ $station['totalTimeDay4'] }}</td>
-                                            <td>{{ $station['totalTimeBefore4'] }}</td>
-                                            <td>{{ $station['totalFluxDay4'] }}</td>
-                                            <td>{{ $station['totalFluxBefore4'] }}</td>
-                                        </tr>
-                                    @endforeach
-
-                                @else
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered ">
+                                    <thead>
                                     <tr>
-                                        <td style="height: 80px" colspan="17">暂无数据</td>
+                                        <th rowspan="2">泵站名称</th>
+                                        <th colspan="4">1号泵</th>
+                                        <th colspan="4">2号泵</th>
+                                        <th colspan="4">3号泵</th>
+                                        <th colspan="4">4号泵</th>
                                     </tr>
-                                @endif
-                                </tbody>
-                            </table>
+                                    <tr>
+                                        <th>运行(小时)</th>
+                                        <th>连前累计(小时)</th>
+                                        <th>抽升量(万吨)</th>
+                                        <th>连前累计(万吨)</th>
+
+                                        <th>运行(小时)</th>
+                                        <th>连前累计(小时)</th>
+                                        <th>抽升量(万吨)</th>
+                                        <th>连前累计(万吨)</th>
+
+                                        <th>运行(小时)</th>
+                                        <th>连前累计(小时)</th>
+                                        <th>抽升量(万吨)</th>
+                                        <th>连前累计(万吨)</th>
+
+                                        <th>运行(小时)</th>
+                                        <th>连前累计(小时)</th>
+                                        <th>抽升量(万吨)</th>
+                                        <th>连前累计(万吨)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if (!empty($stations[0]))
+                                        @foreach ($stations as $station)
+                                            <tr>
+                                                <td>{{ $station['name'] }}</td>
+
+                                                <td>{{ $station['totalTimeDay1'] }}</td>
+                                                <td>{{ $station['totalTimeBefore1'] }}</td>
+                                                <td>{{ $station['totalFluxDay1'] }}</td>
+                                                <td>{{ $station['totalFluxBefore1'] }}</td>
+
+                                                <td>{{ $station['totalTimeDay2'] }}</td>
+                                                <td>{{ $station['totalTimeBefore2'] }}</td>
+                                                <td>{{ $station['totalFluxDay2'] }}</td>
+                                                <td>{{ $station['totalFluxBefore2'] }}</td>
+
+                                                <td>{{ $station['totalTimeDay3'] }}</td>
+                                                <td>{{ $station['totalTimeBefore3'] }}</td>
+                                                <td>{{ $station['totalFluxDay3'] }}</td>
+                                                <td>{{ $station['totalFluxBefore3'] }}</td>
+
+                                                <td>{{ $station['totalTimeDay4'] }}</td>
+                                                <td>{{ $station['totalTimeBefore4'] }}</td>
+                                                <td>{{ $station['totalFluxDay4'] }}</td>
+                                                <td>{{ $station['totalFluxBefore4'] }}</td>
+                                            </tr>
+                                        @endforeach
+
+                                    @else
+                                        <tr>
+                                            <td style="height: 80px" colspan="17">暂无数据</td>
+                                        </tr>
+                                    @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,10 +189,10 @@
                 language: "zh-CN",
                 autoclose: true,
                 todayHighlight: true,
-                minView: 'year',
-                maxView: "year",
-                showMeridian: true,
-                setStartDate: '-1M'
+                minView: 3,
+                maxView: 3,
+                showMeridian: true
+//                setStartDate: '-1M'
             };
             // 选择查询日期
             $('.pick-event-date').datetimepicker(datePickerConfig);
