@@ -195,35 +195,35 @@ class StatusReportController extends Controller
         //当日泵站运行合计
         $totalTimeDay = $totalTimeDay1 + $totalTimeDay2 + $totalTimeDay3 + $totalTimeDay4;
 
-        //当日抽升量合计
-        $totalFluxDay1 = $this->sumFlux($statusRT['pump1']);
-        $totalFluxDay2 = $this->sumFlux($statusRT['pump2']);
-        $totalFluxDay3 = $this->sumFlux($statusRT['pump3']);
-        $totalFluxDay4 = $this->sumFlux($statusRT['pump4']);
+        //当日抽升量合计(万吨)
+        $totalFluxDay1 = ($this->sumFlux($statusRT['pump1']))/10000;
+        $totalFluxDay2 = ($this->sumFlux($statusRT['pump2']))/10000;
+        $totalFluxDay3 = ($this->sumFlux($statusRT['pump3']))/10000;
+        $totalFluxDay4 = ($this->sumFlux($statusRT['pump4']))/10000;
 
-        //当日泵站总抽升量
+        //当日泵站总抽升量(万吨)
         $totalFluxDay = $totalFluxDay1 + $totalFluxDay2 + $totalFluxDay3 + $totalFluxDay4;
 
         //连前累计
         $beforeTime = date("2017-1-1");
         $beforeStatusRT = $this->statusRTHistory($stationID,$beforeTime,$endTime);
 
-        //连前累计运行
-        $totalTimeBefore1 = $this->sumTime($beforeStatusRT['pump1']);
-        $totalTimeBefore2 = $this->sumTime($beforeStatusRT['pump2']);
-        $totalTimeBefore3 = $this->sumTime($beforeStatusRT['pump3']);
-        $totalTimeBefore4 = $this->sumTime($beforeStatusRT['pump4']);
+        //连前累计运行(小时)
+        $totalTimeBefore1 = ($this->sumTime($beforeStatusRT['pump1']))/60;
+        $totalTimeBefore2 = ($this->sumTime($beforeStatusRT['pump2']))/60;
+        $totalTimeBefore3 = ($this->sumTime($beforeStatusRT['pump3']))/60;
+        $totalTimeBefore4 = ($this->sumTime($beforeStatusRT['pump4']))/60;
 
-        //连前累计泵站总运行时间
+        //连前累计泵站总运行时间(小时)
         $totalTimeBefore = $totalTimeBefore1 + $totalTimeBefore2 + $totalTimeBefore3 + $totalTimeBefore4;
 
-        //连前累计抽水量
-        $totalFluxBefore1 = $this->sumFlux($beforeStatusRT['pump1']);
-        $totalFluxBefore2 = $this->sumFlux($beforeStatusRT['pump2']);
-        $totalFluxBefore3 = $this->sumFlux($beforeStatusRT['pump3']);
-        $totalFluxBefore4 = $this->sumFlux($beforeStatusRT['pump4']);
+        //连前累计抽水量(万吨)
+        $totalFluxBefore1 = ($this->sumFlux($beforeStatusRT['pump1']))/10000;
+        $totalFluxBefore2 = ($this->sumFlux($beforeStatusRT['pump2']))/10000;
+        $totalFluxBefore3 = ($this->sumFlux($beforeStatusRT['pump3']))/10000;
+        $totalFluxBefore4 = ($this->sumFlux($beforeStatusRT['pump4']))/10000;
 
-        //连前累计泵站总抽升量
+        //连前累计泵站总抽升量(万吨)
         $totalFluxBefore = $totalFluxBefore1 + $totalFluxBefore2 + $totalFluxBefore3 + $totalFluxBefore4;
 
         $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime,
@@ -407,7 +407,7 @@ class StatusReportController extends Controller
                     $stationStatusList[$index -2]['timeGap'] = $sRunning['timeGap'];
                     $stationStatusList[$index -2]['flux'] = $sRunning['timeGap'] * $pumpFlux;
                     $stationStatusList[$index -2]['current'] = $sRunning['current'];
-                    $stationStatusList[$index -2]['index'] = $index -2;
+                    $stationStatusList[$index -2]['index'] = $index -1;
                 }
 
             }
@@ -479,8 +479,15 @@ class StatusReportController extends Controller
      * @param $endTime
      * @return \Illuminate\Http\JsonResponse
      */
-    public function statusRTHistoryAjax($stationID,$startTime,$endTime)
+    public function statusRTHistoryAjax($stationID,$startTime)
     {
+        $endTime = $startTime;
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
         $statusRT = $this->statusRTHistory($stationID,$startTime,$endTime);
 
         $param = array('stationStatusList1'=> $statusRT['pump1'],'stationStatusList2'=> $statusRT['pump2'],

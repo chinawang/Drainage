@@ -310,7 +310,7 @@ Route::get('/report/stationMaintenance', 'Reporte\ReportController@showMaintenan
 Route::get('/report/realTimeHistory/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@stationRTHistory');
 
 //泵站启停状态实时信息Ajax
-Route::get('/report/realTimeStatusHistory/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@statusRTHistoryAjax');
+Route::get('/report/realTimeStatusHistory/{station_id}/{start_time}', 'Reporte\ReportController@statusRTHistoryAjax');
 
 //日志
 Route::get('/log/lists', 'Log\LogController@lgoList');

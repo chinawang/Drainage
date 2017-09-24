@@ -150,13 +150,13 @@
                                         <td rowspan="2">今日运行合计</td>
                                         <td >运行合计(分)</td>
                                         <td>{{ $totalTimeDay1 }}</td>
-                                        <td>连前累计运行(分)</td>
+                                        <td>连前累计运行(小时)</td>
                                         <td>{{ $totalTimeBefore1 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(吨)</td>
+                                        <td>抽升量(万吨)</td>
                                         <td>{{ $totalFluxDay1 }}</td>
-                                        <td>连前累计抽升量(吨)</td>
+                                        <td>连前累计抽升量(万吨)</td>
                                         <td>{{ $totalFluxBefore1 }}</td>
                                     </tr>
                                 @else
@@ -195,13 +195,13 @@
                                         <td rowspan="2" >今日运行合计</td>
                                         <td >运行合计(分)</td>
                                         <td>{{ $totalTimeDay2 }}</td>
-                                        <td>连前累计运行(分)</td>
+                                        <td>连前累计运行(小时)</td>
                                         <td>{{ $totalTimeBefore2 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(吨)</td>
+                                        <td>抽升量(万吨)</td>
                                         <td>{{ $totalFluxDay2 }}</td>
-                                        <td>连前累计抽升量(吨)</td>
+                                        <td>连前累计抽升量(万吨)</td>
                                         <td>{{ $totalFluxBefore2 }}</td>
                                     </tr>
                                 @else
@@ -241,13 +241,13 @@
                                         <td rowspan="2">今日运行合计</td>
                                         <td>运行合计(分)</td>
                                         <td>{{ $totalTimeDay3 }}</td>
-                                        <td>连前累计运行(分)</td>
+                                        <td>连前累计运行(小时)</td>
                                         <td>{{ $totalTimeBefore3 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(吨)</td>
+                                        <td>抽升量(万吨)</td>
                                         <td>{{ $totalFluxDay3 }}</td>
-                                        <td>连前累计抽升量(吨)</td>
+                                        <td>连前累计抽升量(万吨)</td>
                                         <td>{{ $totalFluxBefore3 }}</td>
                                     </tr>
                                 @else
@@ -287,13 +287,13 @@
                                         <td rowspan="2">今日运行合计</td>
                                         <td>运行合计(分)</td>
                                         <td>{{ $totalTimeDay4 }}</td>
-                                        <td>连前累计运行(分)</td>
+                                        <td>连前累计运行(小时)</td>
                                         <td>{{ $totalTimeBefore4 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(吨)</td>
+                                        <td>抽升量(万吨)</td>
                                         <td>{{ $totalFluxDay4 }}</td>
-                                        <td>连前累计抽升量(吨)</td>
+                                        <td>连前累计抽升量(万吨)</td>
                                         <td>{{ $totalFluxBefore4 }}</td>
                                     </tr>
                                 @else
@@ -369,7 +369,7 @@
             var resultValue = [];
             $.ajax({
                 type: 'get',
-                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}/{{ $endTime }}',
+                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}',
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
