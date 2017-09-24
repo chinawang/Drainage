@@ -106,7 +106,6 @@
                                     </form>
                                 </li>
                             </ul>
-                            <input value="全屏" type='button' onclick='toggleFullScreen();' />
                         </li>
                         {{--<li class="back-to-home"><a href="{{ url('/') }}">首页</a></li>--}}
                     @endif
@@ -118,6 +117,9 @@
     @yield('content')
 
     <footer class="footer" style="width: 100%;height: 50px;">
+        <div class="col-md-6 col-md-offset-3">
+            <a onclick="toggleFullScreen();" class="btn btn-link">全屏显示</a>
+        </div>
         <div class="container" style="background: rgba(0, 0, 0, 0);color: rgba(255, 255, 255, 0.02);text-align: center">
             <span>Powered By Wangyx</span>
             <br/>
