@@ -147,7 +147,7 @@
                                         </tr>
                                     @endforeach
                                     <tr style="background-color: #f9f9f9">
-                                        <td rowspan="2">今日运行合计</td>
+                                        <td rowspan="2">今日合计</td>
                                         <td >运行合计(分)</td>
                                         <td>{{ $totalTimeDay1 }}</td>
                                         <td>连前累计运行(小时)</td>
@@ -192,7 +192,7 @@
                                         </tr>
                                     @endforeach
                                     <tr style="background-color: #f9f9f9">
-                                        <td rowspan="2" >今日运行合计</td>
+                                        <td rowspan="2" >今日合计</td>
                                         <td >运行合计(分)</td>
                                         <td>{{ $totalTimeDay2 }}</td>
                                         <td>连前累计运行(小时)</td>
@@ -238,7 +238,7 @@
                                         </tr>
                                     @endforeach
                                     <tr style="background-color: #f9f9f9">
-                                        <td rowspan="2">今日运行合计</td>
+                                        <td rowspan="2">今日合计</td>
                                         <td>运行合计(分)</td>
                                         <td>{{ $totalTimeDay3 }}</td>
                                         <td>连前累计运行(小时)</td>
@@ -284,7 +284,7 @@
                                         </tr>
                                     @endforeach
                                     <tr style="background-color: #f9f9f9">
-                                        <td rowspan="2">今日运行合计</td>
+                                        <td rowspan="2">今日合计</td>
                                         <td>运行合计(分)</td>
                                         <td>{{ $totalTimeDay4 }}</td>
                                         <td>连前累计运行(小时)</td>
