@@ -185,12 +185,12 @@
 
             // 日期
             var datePickerConfig = {
-                format: 'yyyy-mm',
+//                format: 'yyyy-mm',
                 language: "zh-CN",
                 autoclose: true,
                 todayHighlight: true,
-                minView: 3,
-                maxView: 3,
+                minView: "year",
+                maxView: "year",
                 showMeridian: true
 //                setStartDate: '-1M'
             };
@@ -198,17 +198,17 @@
             $('.pick-event-date').datetimepicker(datePickerConfig);
 
 
-            var timePickerConfig = {
-                language: "zh-CN",
-                autoclose: true,
-                todayHighlight: true,
-                minuteStep: 30,
-                maxView: "year",
-                showMeridian: true
-
-            };
-            // 选择查询时间
-            $('.pick-event-time').datetimepicker(timePickerConfig);
+//            var timePickerConfig = {
+//                language: "zh-CN",
+//                autoclose: true,
+//                todayHighlight: true,
+//                minuteStep: 30,
+//                maxView: "year",
+//                showMeridian: true
+//
+//            };
+//            // 选择查询时间
+//            $('.pick-event-time').datetimepicker(timePickerConfig);
 
 
         });
