@@ -232,7 +232,7 @@
             var resultValue = [];
             $.ajax({
                 type: 'get',
-                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}',
+                url: '/report/realTimeStatusHistory/{{ $startTime }}',
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
