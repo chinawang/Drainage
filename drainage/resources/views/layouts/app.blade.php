@@ -117,8 +117,10 @@
     @yield('content')
 
     <footer class="footer" style="width: 100%;height: 50px;">
-        <div class="col-md-6 col-md-offset-3">
-            <a onclick="toggleFullScreen();" class="btn btn-link">全屏显示</a>
+        <div class="col-md-12 col-md-offset-0" style="text-align: center">
+            <button onclick="toggleFullScreen();" type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-fullscreen"></span> 全屏
+            </button>
         </div>
         <div class="container" style="background: rgba(0, 0, 0, 0);color: rgba(255, 255, 255, 0.02);text-align: center">
             <span>Powered By Wangyx</span>
