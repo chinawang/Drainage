@@ -209,10 +209,10 @@ class StatusReportController extends Controller
         $beforeStatusRT = $this->statusRTHistory($stationID,$beforeTime,$endTime);
 
         //连前累计运行(小时)
-        $totalTimeBefore1 = ($this->sumTime($beforeStatusRT['pump1']))/60;
-        $totalTimeBefore2 = ($this->sumTime($beforeStatusRT['pump2']))/60;
-        $totalTimeBefore3 = ($this->sumTime($beforeStatusRT['pump3']))/60;
-        $totalTimeBefore4 = ($this->sumTime($beforeStatusRT['pump4']))/60;
+        $totalTimeBefore1 = round(($this->sumTime($beforeStatusRT['pump1']))/60,2);
+        $totalTimeBefore2 = round(($this->sumTime($beforeStatusRT['pump2']))/60,2);
+        $totalTimeBefore3 = round(($this->sumTime($beforeStatusRT['pump3']))/60,2);
+        $totalTimeBefore4 = round(($this->sumTime($beforeStatusRT['pump4']))/60,2);
 
         //连前累计泵站总运行时间(小时)
         $totalTimeBefore = $totalTimeBefore1 + $totalTimeBefore2 + $totalTimeBefore3 + $totalTimeBefore4;
