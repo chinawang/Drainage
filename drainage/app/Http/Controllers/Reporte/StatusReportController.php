@@ -94,10 +94,11 @@ class StatusReportController extends Controller
         foreach ($stations as $station)
         {
             $param = $this->getStatusReport($station['id'],$startTime,$endTime);
-            $station['totalTimeDay1'] = $param['totalTimeDay1'];
-            $station['totalTimeDay2'] = $param['totalTimeDay2'];
-            $station['totalTimeDay3'] = $param['totalTimeDay3'];
-            $station['totalTimeDay4'] = $param['totalTimeDay4'];
+            //单位小时
+            $station['totalTimeDay1'] = round(($param['totalTimeDay1'])/60,2);
+            $station['totalTimeDay2'] = round(($param['totalTimeDay2'])/60,2);
+            $station['totalTimeDay3'] = round(($param['totalTimeDay3'])/60,2);
+            $station['totalTimeDay4'] = round(($param['totalTimeDay4'])/60,2);
 
             $station['totalFluxDay1'] = $param['totalFluxDay1'];
             $station['totalFluxDay2'] = $param['totalFluxDay2'];
@@ -114,11 +115,11 @@ class StatusReportController extends Controller
             $station['totalFluxBefore3'] = $param['totalFluxBefore3'];
             $station['totalFluxBefore4'] = $param['totalFluxBefore4'];
         }
-
+        $paramMonth = ['stations' => $stations, '$selectType' => $type, 'startTime' => $startTime];
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
 
-        return view('report.stationStatusMonth', $stations);
+        return view('report.stationStatusMonth', $paramMonth);
     }
 
     /**
@@ -144,16 +145,18 @@ class StatusReportController extends Controller
         foreach ($stations as $station)
         {
             $param = $this->getStatusReport($station['id'],$startTime,$endTime);
-            $station['totalTimeDay'] = $param['totalTimeDay'];
+            //单位小时
+            $station['totalTimeDay'] = round(($param['totalTimeDay'])/60,2);
             $station['totalFluxDay'] = $param['totalFluxDay'];
             $station['totalTimeBefore'] = $param['totalTimeBefore'];
             $station['totalFluxBefore'] = $param['totalFluxBefore'];
         }
+        $paramMonthAll = ['stations' => $stations, '$selectType' => $type, 'startTime' => $startTime];
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
 
-        return view('report.stationStatusMonthAll', $stations);
+        return view('report.stationStatusMonthAll', $paramMonthAll);
     }
 
 
@@ -186,13 +189,13 @@ class StatusReportController extends Controller
 
         $statusRT = $this->statusRTHistory($stationID,$startTime,$endTime);
 
-        //当日运行时间合计
+        //当日运行时间合计(分钟)
         $totalTimeDay1 = $this->sumTime($statusRT['pump1']);
         $totalTimeDay2 = $this->sumTime($statusRT['pump2']);
         $totalTimeDay3 = $this->sumTime($statusRT['pump3']);
         $totalTimeDay4 = $this->sumTime($statusRT['pump4']);
 
-        //当日泵站运行合计
+        //当日泵站运行合计(分钟)
         $totalTimeDay = $totalTimeDay1 + $totalTimeDay2 + $totalTimeDay3 + $totalTimeDay4;
 
         //当日抽升量合计(万吨)

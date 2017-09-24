@@ -33,43 +33,48 @@
                     <div class="panel-body custom-panel-body">
                         <div class="row" style="margin-top: -10px">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a
+                                <li class=""><a
                                             href="/report/stationStatusDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">每日运行统计</a>
                                 </li>
-                                <li class=""><a
-                                            href="/report/stationStatusMonth?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">每月运行统计</a>
+                                <li class="active"><a
+                                            href="/report/stationStatusMonth?type={{$selectType}}&timeStart={{ $startTime }}">每月运行统计</a>
                                 </li>
-                                <li class=""><a href="/report/stationStatusMonthAll?timeStart={{ $startTime }}">泵站月生产报表</a></li>
+                                <li class=""><a
+                                            href="/report/stationStatusMonthAll?type={{$selectType}}&timeStart={{ $startTime }}">泵站月生产报表</a>
+                                </li>
 
                             </ul>
                         </div>
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
-                            <form class="form-horizontal" role="form" method="GET" action="/report/stationStatusDay"
+                            <form class="form-horizontal" role="form" method="GET" action="/report/stationStatusMonth"
                                   style="margin-bottom: 10px">
                                 {{ csrf_field() }}
 
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="station" class="col-md-4 control-label">选择泵站:</label>
+                                            <label for="station" class="col-md-4 control-label">泵站类型:</label>
 
                                             <div class="col-md-8">
-                                                <select class="form-control" id="select" name="station_id">
-                                                    {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
-                                                    @foreach ($stations as $station)
-                                                        <option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>
-                                                    @endforeach
+                                                <select class="form-control" id="select" name="type">
+                                                    <option value="全部" selected="selected">全部</option>
+                                                    <option value="雨水" {{$selectType == '雨水' ? 'selected=selected' :''}}>
+                                                        雨水
+                                                    </option>
+                                                    <option value="污水" {{$selectType == '污水' ? 'selected=selected' :''}}>
+                                                        污水
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="repair_at" class="col-md-4 control-label">选择日期:</label>
+                                            <label for="repair_at" class="col-md-4 control-label">选择月份:</label>
                                             <div class="col-md-8">
                                                 <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
-                                                       value="{{ $startTime }}" placeholder="日期" data-data="yyyy-mm-dd">
+                                                       value="{{ $startTime }}" placeholder="日期" data-data="yyyy-mm">
                                             </div>
                                         </div>
                                     </div>
@@ -91,219 +96,72 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <div class="row">
-                                    <div class="col-md-6 col-md-offset-3">
-                                        <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#pump1" data-toggle="tab">1号泵启动趋势</a></li>
-                                            <li><a href="#pump2" data-toggle="tab">2号泵启动趋势</a></li>
-                                            <li><a href="#pump3" data-toggle="tab">3号泵启动趋势</a></li>
-                                            <li><a href="#pump4" data-toggle="tab">4号泵启动趋势</a></li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                                <div id="myTabContent" class="tab-content">
-                                    <div class="tab-pane fade active in" id="pump1">
-                                        <div class="panel-body custom-panel-body" id="pump1Container"
-                                             style="min-width:400px;height:400px">
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pump2">
-                                        <div class="panel-body custom-panel-body" id="pump2Container"
-                                             style="min-width:400px;height:400px">
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pump3">
-                                        <div class="panel-body custom-panel-body" id="pump3Container"
-                                             style="min-width:400px;height:400px">
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pump4">
-                                        <div class="panel-body custom-panel-body" id="pump4Container"
-                                             style="min-width:400px;height:400px">
-                                        </div>
-                                    </div>
-
+                                <div class="panel-body custom-panel-body" id="statusContainer"
+                                     style="min-width:400px;height:400px">
                                 </div>
                             </div>
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th colspan="5">1号泵</th>
+                                    <th rowspan="2">泵站名称</th>
+                                    <th colspan="4">1号泵</th>
+                                    <th colspan="4">2号泵</th>
+                                    <th colspan="4">3号泵</th>
+                                    <th colspan="4">4号泵</th>
                                 </tr>
                                 <tr>
-                                    <th>序号</th>
-                                    <th>开泵时分</th>
-                                    <th>停泵时分</th>
-                                    <th>运行(分)</th>
-                                    <th>电流(A)</th>
+                                    <th>运行(小时)</th>
+                                    <th>连前累计(小时)</th>
+                                    <th>抽升量(万吨)</th>
+                                    <th>连前累计(万吨)</th>
+
+                                    <th>运行(小时)</th>
+                                    <th>连前累计(小时)</th>
+                                    <th>抽升量(万吨)</th>
+                                    <th>连前累计(万吨)</th>
+
+                                    <th>运行(小时)</th>
+                                    <th>连前累计(小时)</th>
+                                    <th>抽升量(万吨)</th>
+                                    <th>连前累计(万吨)</th>
+
+                                    <th>运行(小时)</th>
+                                    <th>连前累计(小时)</th>
+                                    <th>抽升量(万吨)</th>
+                                    <th>连前累计(万吨)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if (!empty($stationStatusList1[0]))
-                                    @foreach ($stationStatusList1 as $status)
+                                @if (!empty($stations[0]))
+                                    @foreach ($stations as $station)
                                         <tr>
-                                            <td>{{ $status['index'] }}</td>
-                                            <td>{{ substr($status['timeStart'],10) }}</td>
-                                            <td>{{ substr($status['timeEnd'],10) }}</td>
-                                            <td>{{ $status['timeGap'] }}</td>
-                                            <td>{{ $status['current'] }}</td>
+                                            <td>{{ $station['name'] }}</td>
+
+                                            <td>{{ $station['totalTimeDay1'] }}</td>
+                                            <td>{{ $station['totalTimeBefore1'] }}</td>
+                                            <td>{{ $station['totalFluxDay1'] }}</td>
+                                            <td>{{ $station['totalFluxBefore1'] }}</td>
+
+                                            <td>{{ $station['totalTimeDay2'] }}</td>
+                                            <td>{{ $station['totalTimeBefore2'] }}</td>
+                                            <td>{{ $station['totalFluxDay2'] }}</td>
+                                            <td>{{ $station['totalFluxBefore2'] }}</td>
+
+                                            <td>{{ $station['totalTimeDay3'] }}</td>
+                                            <td>{{ $station['totalTimeBefore3'] }}</td>
+                                            <td>{{ $station['totalFluxDay3'] }}</td>
+                                            <td>{{ $station['totalFluxBefore3'] }}</td>
+
+                                            <td>{{ $station['totalTimeDay4'] }}</td>
+                                            <td>{{ $station['totalTimeBefore4'] }}</td>
+                                            <td>{{ $station['totalFluxDay4'] }}</td>
+                                            <td>{{ $station['totalFluxBefore4'] }}</td>
                                         </tr>
                                     @endforeach
-                                    <tr style="background-color: #f9f9f9">
-                                        <td rowspan="2">今日合计</td>
-                                        <td >运行合计(分)</td>
-                                        <td>{{ $totalTimeDay1 }}</td>
-                                        <td>连前累计运行(小时)</td>
-                                        <td>{{ $totalTimeBefore1 }}</td>
-                                    </tr>
-                                    <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(万吨)</td>
-                                        <td>{{ $totalFluxDay1 }}</td>
-                                        <td>连前累计抽升量(万吨)</td>
-                                        <td>{{ $totalFluxBefore1 }}</td>
-                                    </tr>
+
                                 @else
                                     <tr>
-                                        <td style="height: 80px" colspan="5">暂无数据</td>
-                                    </tr>
-                                @endif
-                                </tbody>
-                            </table>
-
-                            <table class="table table-hover table-bordered ">
-                                <thead>
-                                <tr>
-                                    <th colspan="5">2号泵</th>
-                                </tr>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>开泵时分</th>
-                                    <th>停泵时分</th>
-                                    <th>运行(分)</th>
-                                    <th>电流(A)</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if (!empty($stationStatusList2[0]))
-                                    @foreach ($stationStatusList2 as $status)
-                                        <tr>
-                                            <td>{{ $status['index'] }}</td>
-                                            <td>{{ substr($status['timeStart'],10) }}</td>
-                                            <td>{{ substr($status['timeEnd'],10) }}</td>
-                                            <td>{{ $status['timeGap'] }}</td>
-                                            <td>{{ $status['current'] }}</td>
-                                        </tr>
-                                    @endforeach
-                                    <tr style="background-color: #f9f9f9">
-                                        <td rowspan="2" >今日合计</td>
-                                        <td >运行合计(分)</td>
-                                        <td>{{ $totalTimeDay2 }}</td>
-                                        <td>连前累计运行(小时)</td>
-                                        <td>{{ $totalTimeBefore2 }}</td>
-                                    </tr>
-                                    <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(万吨)</td>
-                                        <td>{{ $totalFluxDay2 }}</td>
-                                        <td>连前累计抽升量(万吨)</td>
-                                        <td>{{ $totalFluxBefore2 }}</td>
-                                    </tr>
-                                @else
-                                    <tr>
-                                        <td style="height: 80px" colspan="5">暂无数据</td>
-                                    </tr>
-                                @endif
-                                </tbody>
-                            </table>
-
-                            <table class="table table-hover table-bordered ">
-                                <thead>
-                                <tr>
-                                    <th colspan="5">3号泵</th>
-                                </tr>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>开泵时分</th>
-                                    <th>停泵时分</th>
-                                    <th>运行(分)</th>
-                                    <th>电流(A)</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if (!empty($stationStatusList3[0]))
-
-                                    @foreach ($stationStatusList3 as $status)
-                                        <tr>
-                                            <td>{{ $status['index'] }}</td>
-                                            <td>{{ substr($status['timeStart'],10) }}</td>
-                                            <td>{{ substr($status['timeEnd'],10) }}</td>
-                                            <td>{{ $status['timeGap'] }}</td>
-                                            <td>{{ $status['current'] }}</td>
-                                        </tr>
-                                    @endforeach
-                                    <tr style="background-color: #f9f9f9">
-                                        <td rowspan="2">今日合计</td>
-                                        <td>运行合计(分)</td>
-                                        <td>{{ $totalTimeDay3 }}</td>
-                                        <td>连前累计运行(小时)</td>
-                                        <td>{{ $totalTimeBefore3 }}</td>
-                                    </tr>
-                                    <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(万吨)</td>
-                                        <td>{{ $totalFluxDay3 }}</td>
-                                        <td>连前累计抽升量(万吨)</td>
-                                        <td>{{ $totalFluxBefore3 }}</td>
-                                    </tr>
-                                @else
-                                    <tr>
-                                        <td style="height: 80px" colspan="5">暂无数据</td>
-                                    </tr>
-                                @endif
-                                </tbody>
-                            </table>
-
-                            <table class="table table-hover table-bordered ">
-                                <thead>
-                                <tr>
-                                    <th colspan="5">4号泵</th>
-                                </tr>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>开泵时分</th>
-                                    <th>停泵时分</th>
-                                    <th>运行(分)</th>
-                                    <th>电流(A)</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if (!empty($stationStatusList4[0]))
-
-                                    @foreach ($stationStatusList4 as $status)
-                                        <tr>
-                                            <td>{{ $status['index'] }}</td>
-                                            <td>{{ substr($status['timeStart'],10) }}</td>
-                                            <td>{{ substr($status['timeEnd'],10) }}</td>
-                                            <td>{{ $status['timeGap'] }}</td>
-                                            <td>{{ $status['current'] }}</td>
-                                        </tr>
-                                    @endforeach
-                                    <tr style="background-color: #f9f9f9">
-                                        <td rowspan="2">今日合计</td>
-                                        <td>运行合计(分)</td>
-                                        <td>{{ $totalTimeDay4 }}</td>
-                                        <td>连前累计运行(小时)</td>
-                                        <td>{{ $totalTimeBefore4 }}</td>
-                                    </tr>
-                                    <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(万吨)</td>
-                                        <td>{{ $totalFluxDay4 }}</td>
-                                        <td>连前累计抽升量(万吨)</td>
-                                        <td>{{ $totalFluxBefore4 }}</td>
-                                    </tr>
-                                @else
-                                    <tr>
-                                        <td style="height: 80px" colspan="5">暂无数据</td>
+                                        <td style="height: 80px" colspan="17">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -325,11 +183,11 @@
 
             // 日期
             var datePickerConfig = {
-                format: 'yyyy-mm-dd',
+                format: 'yyyy-mm',
                 language: "zh-CN",
                 autoclose: true,
                 todayHighlight: true,
-                minView: 'month',
+                minView: 'year',
                 maxView: "year",
                 showMeridian: true,
                 setStartDate: '-1M'
