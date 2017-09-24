@@ -71,6 +71,106 @@ class StatusReportController extends Controller
     }
 
     /**
+     * 获取当月单机运行统计
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showStatusReportMonth()
+    {
+//        $stationID = Input::get('station_id', 1);
+        $type = Input::get('type', '全部');
+        $selectDay = Input::get('timeStart', '');
+
+        if ($selectDay == '')
+        {
+            $selectDay = date("Y-m-d");
+        }
+        $days = $this->getTheMonthDay($selectDay);
+        $startTime = $days[0];
+        $endTime = $days[1];
+
+        $stations = $this->stationListByType($type);
+
+        foreach ($stations as $station)
+        {
+            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+            $station['totalTimeDay1'] = $param['totalTimeDay1'];
+            $station['totalTimeDay2'] = $param['totalTimeDay2'];
+            $station['totalTimeDay3'] = $param['totalTimeDay3'];
+            $station['totalTimeDay4'] = $param['totalTimeDay4'];
+
+            $station['totalFluxDay1'] = $param['totalFluxDay1'];
+            $station['totalFluxDay2'] = $param['totalFluxDay2'];
+            $station['totalFluxDay3'] = $param['totalFluxDay3'];
+            $station['totalFluxDay4'] = $param['totalFluxDay4'];
+
+            $station['totalTimeBefore1'] = $param['totalTimeBefore1'];
+            $station['totalTimeBefore2'] = $param['totalTimeBefore2'];
+            $station['totalTimeBefore3'] = $param['totalTimeBefore3'];
+            $station['totalTimeBefore4'] = $param['totalTimeBefore4'];
+
+            $station['totalFluxBefore1'] = $param['totalFluxBefore1'];
+            $station['totalFluxBefore2'] = $param['totalFluxBefore2'];
+            $station['totalFluxBefore3'] = $param['totalFluxBefore3'];
+            $station['totalFluxBefore4'] = $param['totalFluxBefore4'];
+        }
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
+
+        return view('report.stationStatusMonth', $stations);
+    }
+
+    /**
+     * 获取当前月泵站所有泵组运行总计
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showStatusReportMonthAll()
+    {
+        $type = Input::get('type', '全部');
+        $selectDay = Input::get('timeStart', '');
+
+        if ($selectDay == '')
+        {
+            $selectDay = date("Y-m-d");
+        }
+        $days = $this->getTheMonthDay($selectDay);
+        $startTime = $days[0];
+        $endTime = $days[1];
+
+        $stations = $this->stationListByType($type);
+
+        foreach ($stations as $station)
+        {
+            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+            $station['totalTimeDay'] = $param['totalTimeDay'];
+            $station['totalFluxDay'] = $param['totalFluxDay'];
+            $station['totalTimeBefore'] = $param['totalTimeBefore'];
+            $station['totalFluxBefore'] = $param['totalFluxBefore'];
+        }
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
+
+        return view('report.stationStatusMonthAll', $stations);
+    }
+
+
+
+    /**
+     * 获取当前月的第一天与最后一天
+     * @param $date
+     * @return array
+     */
+    function getTheMonthDay($date)
+    {
+        $firstDay = date('Y-m-01', strtotime($date));
+        $lastDay = date('Y-m-d', strtotime("$firstDay +1 month -1 day"));
+        return array($firstDay,$lastDay);
+    }
+
+    /**
      * 运行状态统计
      *
      * @param $stationID
@@ -182,6 +282,28 @@ class StatusReportController extends Controller
     public function stationList()
     {
         $stations = $this->stationLogic->getAllStations();
+
+        return $stations;
+    }
+
+    /**
+     * 根据泵站类型查看泵站
+     *
+     * @param $type
+     * @return mixed
+     */
+    public function stationListByType($type)
+    {
+        if($type == "全部")
+        {
+            $conditions = ['delete_process' => 0];
+        }
+        else
+        {
+            $conditions = ['delete_process' => 0,'type' => $type];
+        }
+
+        $stations = $this->stationLogic->getStationsBy($conditions,100,'created_at','asc',null);
 
         return $stations;
     }

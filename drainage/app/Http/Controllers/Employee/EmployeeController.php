@@ -48,6 +48,13 @@ class EmployeeController extends Controller
         return view('employee.updateEmployee',$param);
     }
 
+    public function showEmployeeForm($employeeID)
+    {
+        $employee = $this->employeeInfo($employeeID);
+        $param = ['employee' => $employee];
+        return view('employee.info',$param);
+    }
+
     /**
      * 查询信息
      *
