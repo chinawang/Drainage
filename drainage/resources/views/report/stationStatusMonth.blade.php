@@ -74,7 +74,7 @@
                                             <div class="col-md-8">
                                                 <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
-                                                       value="{{ date("Y-m",$startTime) }}" placeholder="日期" data-data="yyyy-mm">
+                                                       value="{{ substr($startTime , 0 , 7) }}" placeholder="日期" data-data="yyyy-mm">
                                             </div>
                                         </div>
                                     </div>
