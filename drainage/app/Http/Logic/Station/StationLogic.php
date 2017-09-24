@@ -69,6 +69,12 @@ class StationLogic extends Logic
         return $stationList;
     }
 
+    public function getAllStationsBy($conditions)
+    {
+        $stationList = $this->stationRepository->getBy($conditions);
+        return $stationList;
+    }
+
     /**
      * @param $attributes
      * @return bool|\Illuminate\Database\Eloquent\Model

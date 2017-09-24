@@ -306,7 +306,7 @@ class StatusReportController extends Controller
             $conditions = ['delete_process' => 0,'type' => $type];
         }
 
-        $stations = $this->stationLogic->getStationsBy($conditions,100,'created_at','asc',null);
+        $stations = $this->stationLogic->getAllStationsBy($conditions);
 
         return $stations;
     }
