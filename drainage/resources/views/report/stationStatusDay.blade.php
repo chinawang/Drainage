@@ -34,10 +34,10 @@
                         <div class="row" style="margin-top: -10px">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a
-                                            href="/report/stationStatusDay?_token={{ csrf_field() }}&station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">泵组按天运行统计</a>
+                                            href="/report/stationStatusDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">泵组按天运行统计</a>
                                 </li>
                                 <li class=""><a
-                                            href="/report/stationStatusMonth?_token={{ csrf_field() }}&station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">泵组按月运行统计</a>
+                                            href="/report/stationStatusMonth?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">泵组按月运行统计</a>
                                 </li>
                                 <li class=""><a href="/report/stationStatusMonthAll">泵站按月生产报表</a></li>
 
@@ -328,7 +328,7 @@
 
             // 日期
             var datePickerConfig = {
-                format: 'yyyy-mm',
+                format: 'yyyy-mm-dd',
                 language: "zh-CN",
                 autoclose: true,
                 todayHighlight: true,
