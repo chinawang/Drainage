@@ -116,13 +116,14 @@
     @yield('location')
     @yield('content')
 
+    <div class="side-bar">
+        <a onclick="toggleFullScreen();" type="button" class="btn btn-default btn-sm"
+                style="background-color: #cccccc;border-color: #cccccc;">
+            <a class="glyphicon glyphicon-fullscreen"></a> 全屏
+        </a>
+    </div>
+
     <footer class="footer" style="width: 100%;height: 50px;margin-top: 10px">
-        <div class="col-md-12 col-md-offset-0" style="text-align: center">
-            <button onclick="toggleFullScreen();" type="button" class="btn btn-default btn-sm"
-                    style="background-color: #cccccc;border-color: #cccccc;">
-                <span class="glyphicon glyphicon-fullscreen"></span> 全屏
-            </button>
-        </div>
         <div class="container" style="background: rgba(0, 0, 0, 0);color: rgba(255, 255, 255, 0.02);text-align: center">
             <span>Powered By Wangyx</span>
             <br/>

@@ -3,12 +3,11 @@
     background-color: #1296db;
 }
 
-
 .navbar-brand {
     margin-top: 2px;
     padding: 12px 15px;
-    display:block;
-    text-align:center;
+    display: block;
+    text-align: center;
     font-size: 20px;
 }
 
@@ -62,8 +61,7 @@
     display: block;
 }
 
-.location
-{
+.location {
     height: 50px;
     /* border-top: 1px solid transparent; */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);
@@ -96,7 +94,33 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    font-family: PingFang SC,Microsoft YaHei UI,STHeitiSC-Light,Microsoft YaHei;
+    font-family: PingFang SC, Microsoft YaHei UI, STHeitiSC-Light, Microsoft YaHei;
+}
+
+/*.side-bar a, .chat-tips i {*/
+    /*background: url(right_bg.png) no-repeat;*/
+/*}*/
+
+.side-bar {
+    width: 66px;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    font-size: 0;
+    line-height: 0;
+    z-index: 100;
+}
+
+.side-bar a {
+    width: 66px;
+    height: 66px;
+    display: inline-block;
+    background-color: #ddd;
+    margin-bottom: 2px;
+}
+
+.side-bar a:hover {
+    background-color: #fafafa;
 }
 
 
