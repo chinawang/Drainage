@@ -2,6 +2,7 @@
 
 @section('stylesheet')
     <link href="{{ asset('css/map/map.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/common/home.css') }}" rel="stylesheet">
 
     <style>
         html,
@@ -139,8 +140,8 @@
 
             marker.on('mouseover', function (e) {
                 e.target.setIconStyle(hoverIconStyle);
-                infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}</strong>');
-                var contentHtml = '<div class="row" style="width: 280px;margin: 10px 0;">' +
+                infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}({{ $station['type'] }})</strong>');
+                var contentHtml = '<div class="row" style="width: 360px;margin: 10px 0;">' +
                         '<div class="col-md-3 col-md-offset-0" style="height: 60px;line-height: 60px">' +
                         '<img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 32px;height: 32px;">' +
                         '</div>' +
@@ -151,6 +152,51 @@
                         '</div>' +
                         '<div class="col-md-3 col-md-offset-0">' +
                         '<a href="/station/runDetail/{{ $station['id'] }}" class="btn-link" style="font-size: 12px;height: 60px;line-height: 60px">详情</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row" style="width: 360px;margin: 10px 0;">' +
+                        '<div class="col-md-12 col-md-offset-0">' +
+                        '<div class="panel panel-default custom-panel">' +
+                        '<div class="panel-body custom-panel-body">' +
+                        '<ul class="main-menu">' +
+                        '<li>' +
+                        '<a href="" class="menu-item">' +
+                        '<span>泵站设备</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li>' +
+                        '<a href="" class="menu-item">' +
+                        '<span>报警信息</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li>' +
+                        '<a href="" class="menu-item">' +
+                        '<span>运行详情</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li>' +
+                        '<a href="" class="menu-item">' +
+                        '<span>运行报表</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li>' +
+                        '<a href="" class="menu-item">' +
+                        '<span>电流/电压统计</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li>' +
+                        '<a href="" class="menu-item">' +
+                        '<span>水位统计</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li>' +
+                        '<a href="" class="menu-item">' +
+                        '<span>下属人员</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '</ul>' +
+                        '</div>' +
+                        '</div>' +
                         '</div>' +
                         '</div>';
                 infoWindow.setInfoBody(contentHtml);
