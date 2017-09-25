@@ -300,6 +300,8 @@ Route::get('/report/realTimeStatusMonth/{type}/{start_time}', 'Reporte\StatusRep
 //泵站所有泵组按月统计Ajax
 Route::get('/report/realTimeStatusMonthAll/{type}/{start_time}', 'Reporte\StatusReportController@statusRTMonthAllAjax');
 
+//导出EXCEL 按日单机运行时间统计
+Route::get('/report/exporStatustDay', 'Reporte\StatusReportController@exportToExcelStatusDay');
 
 
 //液位统计

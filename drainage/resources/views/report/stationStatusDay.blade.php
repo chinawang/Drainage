@@ -81,9 +81,7 @@
                                                 </button>
                                             </div>
                                             <div class="col-md-3 col-md-offset-1">
-                                                <button type="submit" class="btn btn-default btn-custom">
-                                                    导出报表
-                                                </button>
+                                                <a href="/report/exporStatustDay" class="btn btn-default btn-custom">导出报表</a>
                                             </div>
                                         </div>
                                     </div>

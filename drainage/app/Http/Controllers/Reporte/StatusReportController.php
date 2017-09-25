@@ -838,24 +838,83 @@ class StatusReportController extends Controller
                 $sheet->row($rowMax, ['运行合计',$excelData['totalTimeDay1'],'分',$excelData['totalTimeDay2'],'分',
                     $excelData['totalTimeDay3'],'分',$excelData['totalTimeDay4'],'分','总耗电量(度)']);
 
-                $sheet->row($rowMax, ['连前累计运行',$excelData['$totalTimeBefore1'],'小时',$excelData['$totalTimeBefore2'],'小时',
+                $sheet->row($rowMax+1, ['连前累计运行',$excelData['$totalTimeBefore1'],'小时',$excelData['$totalTimeBefore2'],'小时',
                     $excelData['$totalTimeBefore3'],'小时',$excelData['$totalTimeBefore4'],'小时','电表指数差']);
 
-                $sheet->row($rowMax, ['抽升量',$excelData['$totalFluxDay1'],'万吨',$excelData['$totalFluxDay2'],'万吨',
+                $sheet->row($rowMax+2, ['抽升量',$excelData['$totalFluxDay1'],'万吨',$excelData['$totalFluxDay2'],'万吨',
                     $excelData['$totalFluxDay3'],'万吨',$excelData['$totalFluxDay4'],'万吨','倍率']);
 
-                $sheet->row($rowMax, ['连前累计抽升量',$excelData['$totalFluxBefore1'],'万吨',$excelData['$totalFluxBefore2'],'万吨',
+                $sheet->row($rowMax+3, ['连前累计抽升量',$excelData['$totalFluxBefore1'],'万吨',$excelData['$totalFluxBefore2'],'万吨',
                     $excelData['$totalFluxBefore3'],'万吨',$excelData['$totalFluxBefore4'],'万吨','今日电量']);
 
-                $sheet->row($rowMax, ['电度表读数','','度','','度','','度','','度','连前累计']);
+                $sheet->row($rowMax+4, ['电度表读数','','度','','度','','度','','度','连前累计']);
 
-                $sheet->row($rowMax, ['今日总抽升量',$excelData['$totalFluxBefore1'],'万吨',$excelData['$totalFluxBefore2'],'万吨',
-                    $excelData['$totalFluxBefore3'],'万吨',$excelData['$totalFluxBefore4'],'万吨','今日电量']);
+                $sheet->row($rowMax+5, ['今日总抽升量',$excelData['$totalFluxDay'],'万吨','值班人员','白']);
+
+                $sheet->row($rowMax+6, ['连前累计总抽升量',$excelData['$totalFluxBefore'],'万吨','签名','黑']);
+
+                $sheet->row($rowMax+7, ['记录:','校核:']);
 
 
 
                 //表体样式
-                $sheet->setBorder('A3:X'.$rowMax, 'thin');
+                $sheet->mergeCells('A'.$rowMax.':C'.$rowMax);
+                $sheet->mergeCells('D'.$rowMax.':F'.$rowMax);
+                $sheet->mergeCells('H'.$rowMax.':J'.$rowMax);
+                $sheet->mergeCells('L'.$rowMax.':N'.$rowMax);
+                $sheet->mergeCells('P'.$rowMax.':R'.$rowMax);
+                $sheet->mergeCells('T'.$rowMax.':X'.$rowMax);
+
+                $sheet->mergeCells('A'.($rowMax+1).':C'.($rowMax+1));
+                $sheet->mergeCells('D'.($rowMax+1).':F'.($rowMax+1));
+                $sheet->mergeCells('H'.($rowMax+1).':J'.($rowMax+1));
+                $sheet->mergeCells('L'.($rowMax+1).':N'.($rowMax+1));
+                $sheet->mergeCells('P'.($rowMax+1).':R'.($rowMax+1));
+                $sheet->mergeCells('T'.($rowMax+1).':U'.($rowMax+1));
+                $sheet->mergeCells('V'.($rowMax+1).':X'.($rowMax+1));
+
+                $sheet->mergeCells('A'.($rowMax+2).':C'.($rowMax+2));
+                $sheet->mergeCells('D'.($rowMax+2).':F'.($rowMax+2));
+                $sheet->mergeCells('H'.($rowMax+2).':J'.($rowMax+2));
+                $sheet->mergeCells('L'.($rowMax+2).':N'.($rowMax+2));
+                $sheet->mergeCells('P'.($rowMax+2).':R'.($rowMax+2));
+                $sheet->mergeCells('T'.($rowMax+2).':U'.($rowMax+2));
+                $sheet->mergeCells('V'.($rowMax+2).':X'.($rowMax+2));
+
+                $sheet->mergeCells('A'.($rowMax+3).':C'.($rowMax+3));
+                $sheet->mergeCells('D'.($rowMax+3).':F'.($rowMax+3));
+                $sheet->mergeCells('H'.($rowMax+3).':J'.($rowMax+3));
+                $sheet->mergeCells('L'.($rowMax+3).':N'.($rowMax+3));
+                $sheet->mergeCells('P'.($rowMax+3).':R'.($rowMax+3));
+                $sheet->mergeCells('T'.($rowMax+3).':U'.($rowMax+3));
+                $sheet->mergeCells('V'.($rowMax+3).':X'.($rowMax+3));
+
+                $sheet->mergeCells('A'.($rowMax+4).':C'.($rowMax+4));
+                $sheet->mergeCells('D'.($rowMax+4).':F'.($rowMax+4));
+                $sheet->mergeCells('H'.($rowMax+4).':J'.($rowMax+4));
+                $sheet->mergeCells('L'.($rowMax+4).':N'.($rowMax+4));
+                $sheet->mergeCells('P'.($rowMax+4).':R'.($rowMax+4));
+                $sheet->mergeCells('T'.($rowMax+4).':U'.($rowMax+4));
+                $sheet->mergeCells('V'.($rowMax+4).':X'.($rowMax+4));
+
+                $sheet->mergeCells('A'.($rowMax+5).':C'.($rowMax+5));
+                $sheet->mergeCells('D'.($rowMax+5).':F'.($rowMax+5));
+                $sheet->mergeCells('H'.($rowMax+5).':I'.($rowMax+5));
+                $sheet->mergeCells('L'.($rowMax+5).':N'.($rowMax+5));
+                $sheet->mergeCells('P'.($rowMax+5).':R'.($rowMax+5));
+                $sheet->mergeCells('T'.($rowMax+5).':X'.($rowMax+5));
+
+                $sheet->mergeCells('A'.($rowMax+6).':C'.($rowMax+6));
+                $sheet->mergeCells('D'.($rowMax+6).':F'.($rowMax+6));
+                $sheet->mergeCells('H'.($rowMax+6).':I'.($rowMax+6));
+                $sheet->mergeCells('L'.($rowMax+6).':N'.($rowMax+6));
+                $sheet->mergeCells('P'.($rowMax+6).':R'.($rowMax+6));
+                $sheet->mergeCells('T'.($rowMax+6).':X'.($rowMax+6));
+
+                $sheet->mergeCells('A'.($rowMax+7).':G'.($rowMax+7));
+                $sheet->mergeCells('H'.($rowMax+7).':O'.($rowMax+7));
+
+                $sheet->setBorder('A3:X'.($rowMax+6), 'thin');
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
                     'A'     =>  10,
@@ -883,7 +942,7 @@ class StatusReportController extends Controller
                     'W'     =>  10,
                     'X'     =>  10
                 ));
-                $sheet->cells('A3:J'.$rowMax, function($cells) {
+                $sheet->cells('A3:J'.($rowMax+7), function($cells) {
                     $cells->setFontSize(14);
                     $cells->setFontWeight('normal');
                     $cells->setAlignment('center');
