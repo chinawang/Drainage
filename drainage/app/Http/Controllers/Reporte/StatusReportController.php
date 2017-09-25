@@ -593,4 +593,356 @@ class StatusReportController extends Controller
         return response()->json(array('stations'=> $stations), 200);
     }
 
+    function get_max($a,$b,$c,$d)
+    {
+        return ( $a > $b ? $a : $b ) > $c ? ( $a > $b ? $a : $b ) : $c > $d ? (( $a > $b ? $a : $b ) > $c ? ( $a > $b ? $a : $b ) : $c) :$d;
+    }
+
+    /**
+     * 导出单机运行日志
+     */
+    public function exportToExcelStatusDay()
+    {
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = $startTime;
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+        $title = '泵站运行日志-'.$startTime;
+
+        $excelData = $this->getStatusReport($stationID,$startTime,$endTime);
+
+        Excel::create($title, function ($excel) use ($excelData, $title,$startTime) {
+
+            $excel->setTitle($title);
+
+            $excel->setCreator('Eason')->setCompany('LegendX');
+
+            $excel->sheet('泵站运行日志', function ($sheet) use ($excelData,$startTime) {
+
+                $sheet->row(1, ['郑州市市政工程管理处泵站所泵站运行日志']);
+                $sheet->row(2, [date('Y年m月d日',$startTime)]);
+                $sheet->row(3, ['总电流(A)','电压(V)','进水池位(M)','1号泵','2号泵','3号泵','4号泵','变压器','总电度表度数(度)']);
+                $sheet->row(4, ['开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
+                    '开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
+                    '环境温度(℃)','油温(℃)','有功读数','无功读数','功率读数']);
+
+                if (empty($excelData)) {
+
+                    $sheet->row(5, ['']);
+                    return;
+                }
+
+                $i = 5;
+                $j = 5;
+                $k = 5;
+                $h = 5;
+                $rowTmp1 = [];
+                $rowTmp2 = [];
+                $rowTmp3 = [];
+                $rowTmp4 = [];
+
+                // 循环写入数据
+                foreach ($excelData['stationStatusList1'] as $rowData1) {
+
+                    $row1 = [
+                        substr($rowData1['timeStart'],10),
+                        substr($rowData1['timeEnd'],10),
+                        $rowData1['timeGap'],
+                        $rowData1['current'],
+                    ];
+
+                    $sheet->row($i, $row1);
+
+                    //行高
+                    $sheet->setHeight($i, 25);
+
+                    $rowTmp1[$i] = $row1;
+                    $rowTmp2[$i] = $row1;
+                    $rowTmp3[$i] = $row1;
+                    $rowTmp4[$i] = $row1;
+
+                    $i++;
+                }
+
+                // 循环写入数据
+                foreach ($excelData['stationStatusList2'] as $rowData2) {
+
+                    $dataColumn1 = '';
+                    $dataColumn2 = '';
+                    $dataColumn3 = '';
+                    $dataColumn4 = '';
+
+                    if(!($i < $j)){
+                        $dataColumn1 = $rowTmp1[$j];
+                        $dataColumn2 = $rowTmp1[$j];
+                        $dataColumn3 = $rowTmp1[$j];
+                        $dataColumn4 = $rowTmp1[$j];
+                    }
+
+                    $row2 = [
+                        $dataColumn1,
+                        $dataColumn2,
+                        $dataColumn3,
+                        $dataColumn4,
+                        substr($rowData2['timeStart'],10),
+                        substr($rowData2['timeEnd'],10),
+                        $rowData2['timeGap'],
+                        $rowData2['current'],
+                    ];
+
+                    $sheet->row($j, $row2);
+
+                    //行高
+                    $sheet->setHeight($j, 25);
+
+                    $rowTmp1[$j] = $row2;
+                    $rowTmp2[$j] = $row2;
+                    $rowTmp3[$j] = $row2;
+                    $rowTmp4[$j] = $row2;
+
+                    $j++;
+                }
+
+                // 循环写入数据
+                foreach ($excelData['stationStatusList3'] as $rowData3) {
+
+                    $dataColumn1 = '';
+                    $dataColumn2 = '';
+                    $dataColumn3 = '';
+                    $dataColumn4 = '';
+
+                    if(!($i < $k)){
+                        $dataColumn1 = $rowTmp1[$k];
+                        $dataColumn2 = $rowTmp1[$k];
+                        $dataColumn3 = $rowTmp1[$k];
+                        $dataColumn4 = $rowTmp1[$k];
+                    }
+
+                    $dataColumn5 = '';
+                    $dataColumn6 = '';
+                    $dataColumn7 = '';
+                    $dataColumn8 = '';
+
+                    if(!($j < $k)){
+                        $dataColumn5 = $rowTmp2[$k];
+                        $dataColumn6 = $rowTmp2[$k];
+                        $dataColumn7 = $rowTmp2[$k];
+                        $dataColumn8 = $rowTmp2[$k];
+                    }
+
+                    $row3 = [
+                        $dataColumn1,
+                        $dataColumn2,
+                        $dataColumn3,
+                        $dataColumn4,
+                        $dataColumn5,
+                        $dataColumn6,
+                        $dataColumn7,
+                        $dataColumn8,
+                        substr($rowData3['timeStart'],10),
+                        substr($rowData3['timeEnd'],10),
+                        $rowData3['timeGap'],
+                        $rowData3['current'],
+                    ];
+
+                    $sheet->row($k, $row3);
+
+                    //行高
+                    $sheet->setHeight($k, 25);
+                    $rowTmp1[$k] = $row3;
+                    $rowTmp2[$k] = $row3;
+                    $rowTmp3[$k] = $row3;
+                    $rowTmp4[$k] = $row3;
+
+                    $k++;
+                }
+
+                // 循环写入数据
+                foreach ($excelData['stationStatusList4'] as $rowData4) {
+
+                    $dataColumn1 = '';
+                    $dataColumn2 = '';
+                    $dataColumn3 = '';
+                    $dataColumn4 = '';
+
+                    if(!($i < $h)){
+                        $dataColumn1 = $rowTmp1[$h];
+                        $dataColumn2 = $rowTmp1[$h];
+                        $dataColumn3 = $rowTmp1[$h];
+                        $dataColumn4 = $rowTmp1[$h];
+                    }
+
+                    $dataColumn5 = '';
+                    $dataColumn6 = '';
+                    $dataColumn7 = '';
+                    $dataColumn8 = '';
+
+                    if(!($j < $h)){
+                        $dataColumn5 = $rowTmp2[$h];
+                        $dataColumn6 = $rowTmp2[$h];
+                        $dataColumn7 = $rowTmp2[$h];
+                        $dataColumn8 = $rowTmp2[$h];
+                    }
+
+                    $dataColumn9 = '';
+                    $dataColumn10 = '';
+                    $dataColumn11 = '';
+                    $dataColumn12 = '';
+
+                    if(!($k < $h)){
+                        $dataColumn9 = $rowTmp3[$h];
+                        $dataColumn10 = $rowTmp3[$h];
+                        $dataColumn11 = $rowTmp3[$h];
+                        $dataColumn12 = $rowTmp3[$h];
+                    }
+
+                    $row4 = [
+                        $dataColumn1,
+                        $dataColumn2,
+                        $dataColumn3,
+                        $dataColumn4,
+                        $dataColumn5,
+                        $dataColumn6,
+                        $dataColumn7,
+                        $dataColumn8,
+                        $dataColumn9,
+                        $dataColumn10,
+                        $dataColumn11,
+                        $dataColumn12,
+                        substr($rowData4['timeStart'],10),
+                        substr($rowData4['timeEnd'],10),
+                        $rowData4['timeGap'],
+                        $rowData4['current'],
+                    ];
+
+                    $sheet->row($h, $row4);
+
+                    //行高
+                    $sheet->setHeight($h, 25);
+                    $rowTmp1[$h] = $row4;
+                    $rowTmp2[$h] = $row4;
+                    $rowTmp3[$h] = $row4;
+                    $rowTmp4[$h] = $row4;
+
+                    $h++;
+                }
+
+                $rowMax = $this->get_max($i,$j,$k,$h);
+
+                //运行合计
+                $sheet->row($rowMax, ['运行合计',$excelData['totalTimeDay1'],'分',$excelData['totalTimeDay2'],'分',
+                    $excelData['totalTimeDay3'],'分',$excelData['totalTimeDay4'],'分','总耗电量(度)']);
+
+                $sheet->row($rowMax, ['连前累计运行',$excelData['$totalTimeBefore1'],'小时',$excelData['$totalTimeBefore2'],'小时',
+                    $excelData['$totalTimeBefore3'],'小时',$excelData['$totalTimeBefore4'],'小时','电表指数差']);
+
+                $sheet->row($rowMax, ['抽升量',$excelData['$totalFluxDay1'],'万吨',$excelData['$totalFluxDay2'],'万吨',
+                    $excelData['$totalFluxDay3'],'万吨',$excelData['$totalFluxDay4'],'万吨','倍率']);
+
+                $sheet->row($rowMax, ['连前累计抽升量',$excelData['$totalFluxBefore1'],'万吨',$excelData['$totalFluxBefore2'],'万吨',
+                    $excelData['$totalFluxBefore3'],'万吨',$excelData['$totalFluxBefore4'],'万吨','今日电量']);
+
+                $sheet->row($rowMax, ['电度表读数','','度','','度','','度','','度','连前累计']);
+
+                $sheet->row($rowMax, ['今日总抽升量',$excelData['$totalFluxBefore1'],'万吨',$excelData['$totalFluxBefore2'],'万吨',
+                    $excelData['$totalFluxBefore3'],'万吨',$excelData['$totalFluxBefore4'],'万吨','今日电量']);
+
+
+
+                //表体样式
+                $sheet->setBorder('A3:X'.$rowMax, 'thin');
+                $sheet->setAutoSize(true);
+                $sheet->setWidth(array(
+                    'A'     =>  10,
+                    'B'     =>  10,
+                    'C'     =>  10,
+                    'D'     =>  10,
+                    'E'     =>  10,
+                    'F'     =>  10,
+                    'G'     =>  10,
+                    'H'     =>  10,
+                    'I'     =>  10,
+                    'J'     =>  10,
+                    'K'     =>  10,
+                    'L'     =>  10,
+                    'M'     =>  10,
+                    'N'     =>  10,
+                    'O'     =>  10,
+                    'P'     =>  10,
+                    'Q'     =>  10,
+                    'R'     =>  10,
+                    'S'     =>  10,
+                    'T'     =>  10,
+                    'U'     =>  10,
+                    'V'     =>  10,
+                    'W'     =>  10,
+                    'X'     =>  10
+                ));
+                $sheet->cells('A3:J'.$rowMax, function($cells) {
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('normal');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                //表头样式
+                $sheet->mergeCells('A3:A4');
+                $sheet->mergeCells('B3:B4');
+                $sheet->mergeCells('C3:C4');
+
+                $sheet->mergeCells('D3:G3');
+                $sheet->mergeCells('H3:K3');
+                $sheet->mergeCells('L3:O3');
+                $sheet->mergeCells('P3:S3');
+
+                $sheet->mergeCells('T3:U3');
+                $sheet->mergeCells('V3:X3');
+
+                $sheet->setHeight(2, 30);
+                $sheet->cells('A3:X4', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(16);
+                    $cells->setFontWeight('bold');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                //标题样式
+                $sheet->mergeCells('A1:X1');
+                $sheet->setHeight(1, 60);
+                $sheet->cells('A1', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(22);
+                    $cells->setFontWeight('bold');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                //日期样式
+                $sheet->mergeCells('A2:X2');
+                $sheet->setHeight(1, 20);
+                $sheet->cells('A2', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('bold');
+                    $cells->setAlignment('left');
+                    $cells->setValignment('center');
+
+                });
+            });
+
+        })->export('xls');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '导出了统计信息']);
+    }
+
 }
