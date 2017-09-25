@@ -104,6 +104,7 @@
                                 </div>
                             </div>
                         </div>
+                        @if($station['station_number'] == '33')
                         <div class="row">
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
@@ -116,6 +117,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        @endif
+                        <div class="row">
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
@@ -127,8 +131,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
@@ -140,6 +142,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     {{--<div class="panel-heading">--}}
@@ -151,8 +155,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
@@ -163,6 +165,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
@@ -173,8 +177,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6 col-md-offset-0">
                                 <div class="panel panel-default custom-panel">
                                     <div class="panel-heading">
