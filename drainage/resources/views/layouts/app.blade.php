@@ -116,20 +116,19 @@
     @yield('location')
     @yield('content')
 
-    <div class="side-bar" style="width: 66px;
+    <div class="side-bar" style="width: 40px;
     position: fixed;
     bottom: 20px;
     right: 25px;
-    font-size: 0;
-    line-height: 0;
     z-index: 100;">
         <a onclick="toggleFullScreen();" class="icon-full"
-           style="width: 66px;
-    height: 66px;
+           style="width: 40px;
+    height: 40px;
+    line-height: 40px;
     display: inline-block;
     background-color: #fafafa;
     margin-bottom: 2px;">
-            <span class="glyphicon glyphicon-fullscreen"></span> 全屏
+            <span class="glyphicon glyphicon-fullscreen" style="color: #cccccc"></span>
         </a>
     </div>
 
