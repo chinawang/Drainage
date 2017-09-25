@@ -617,6 +617,8 @@ class StatusReportController extends Controller
 
         $excelData = $this->getStatusReport($stationID,$startTime,$endTime);
 
+        return $excelData['stationStatusList1'];
+
         Excel::create($title, function ($excel) use ($excelData, $title,$startTime) {
 
             $excel->setTitle($title);
@@ -649,8 +651,6 @@ class StatusReportController extends Controller
                 $rowTmp2 = [];
                 $rowTmp3 = [];
                 $rowTmp4 = [];
-
-                return $excelData['stationStatusList1'];
 
                 // 循环写入数据
                 foreach ($excelData['stationStatusList1'] as $rowData1) {
