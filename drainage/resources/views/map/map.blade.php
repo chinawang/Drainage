@@ -104,7 +104,7 @@
 
             var  marker = new SimpleMarker({
                 //使用内置的iconStyle
-                iconStyle: selectedIconStyle,
+                iconStyle: hoverIconStyle,
 
                 //图标文字
                 iconLabel: {
@@ -136,7 +136,7 @@
             marker.emit('mouseout', {target: marker});
 
             marker.on('mouseout', function (e) {
-                e.target.setIconStyle(defaultIconStyle);
+                e.target.setIconStyle(hoverIconStyle);
             });
 
             marker.emit('mouseover', {target: marker});
@@ -336,7 +336,7 @@
             marker.emit('mouseout', {target: marker});
 
             marker.on('mouseout', function (e) {
-                e.target.setIconStyle(defaultIconStyle);
+                e.target.setIconStyle(hoverIconStyle);
             });
 
             marker.emit('mouseover', {target: marker});
