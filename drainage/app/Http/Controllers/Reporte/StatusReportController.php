@@ -736,7 +736,7 @@ class StatusReportController extends Controller
 
                     });
                     $sheet->cell('R'.$h, function($cell) use ($rowData4) {
-                        $cell->setValue($rowData4['timeGap']));
+                        $cell->setValue($rowData4['timeGap']);
 
                     });
                     $sheet->cell('S'.$h, function($cell) use ($rowData4) {
