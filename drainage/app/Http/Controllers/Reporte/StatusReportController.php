@@ -1252,7 +1252,7 @@ class StatusReportController extends Controller
 
                 $sheet->mergeCells('A'.($i+1).':D'.($i+1));
                 $sheet->mergeCells('E'.($i+1).':G'.($i+1));
-                $sheet->cells('A'.($i+1).':G'.($i+1, function($cells) {
+                $sheet->cells('A'.($i+1).':G'.($i+1), function($cells) {
                     $cells->setFontSize(14);
                     $cells->setFontWeight('normal');
                     $cells->setAlignment('left');
