@@ -88,9 +88,9 @@
 
         });
 
-        var defaultIconStyle = 'darkblue', //默认的图标样式
-                hoverIconStyle = 'blue', //鼠标hover时的样式
-                selectedIconStyle = 'lightblue' //选中时的图标样式
+        var darkIconStyle = 'darkblue', //深色图标样式
+                lightIconStyle = 'blue', //浅色图标样式
+                hoverIconStyle = 'lightblue' //鼠标hover的图标样式
                 ;
 
         //加载SimpleMarker
@@ -104,7 +104,7 @@
 
             var  marker = new SimpleMarker({
                 //使用内置的iconStyle
-                iconStyle: hoverIconStyle,
+                iconStyle: lightIconStyle,
 
                 //图标文字
                 iconLabel: {
@@ -136,7 +136,7 @@
             marker.emit('mouseout', {target: marker});
 
             marker.on('mouseout', function (e) {
-                e.target.setIconStyle(hoverIconStyle);
+                e.target.setIconStyle(lightIconStyle);
             });
 
             marker.emit('mouseover', {target: marker});
@@ -204,7 +204,7 @@
             @elseif($station['type'] == '污水')
             var  marker = new SimpleMarker({
                         //使用内置的iconStyle
-                        iconStyle: defaultIconStyle,
+                        iconStyle: darkIconStyle,
 
                         //图标文字
                         iconLabel: {
@@ -236,7 +236,7 @@
             marker.emit('mouseout', {target: marker});
 
             marker.on('mouseout', function (e) {
-                e.target.setIconStyle(defaultIconStyle);
+                e.target.setIconStyle(darkIconStyle);
             });
 
             marker.emit('mouseover', {target: marker});
@@ -304,7 +304,7 @@
             @else
             var  marker = new SimpleMarker({
                         //使用内置的iconStyle
-                        iconStyle: hoverIconStyle,
+                        iconStyle: lightIconStyle,
 
                         //图标文字
                         iconLabel: {
@@ -336,7 +336,7 @@
             marker.emit('mouseout', {target: marker});
 
             marker.on('mouseout', function (e) {
-                e.target.setIconStyle(hoverIconStyle);
+                e.target.setIconStyle(lightIconStyle);
             });
 
             marker.emit('mouseover', {target: marker});
