@@ -81,7 +81,7 @@
                                                 </button>
                                             </div>
                                             <div class="col-md-3 col-md-offset-1">
-                                                <a href="/report/exporStatustDay" class="btn btn-default btn-custom">导出报表</a>
+                                                <a href="/report/exporStatustDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}" class="btn btn-default btn-custom">导出报表</a>
                                             </div>
                                         </div>
                                     </div>
