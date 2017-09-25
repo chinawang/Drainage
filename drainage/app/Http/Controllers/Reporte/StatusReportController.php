@@ -848,7 +848,7 @@ class StatusReportController extends Controller
                 $sheet->setBorder('A3:Y'.($rowMax+6), 'thin');
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
-                    'A'     =>  10,
+                    'A'     =>  8,
                     'B'     =>  15,
                     'C'     =>  15,
                     'D'     =>  15,
@@ -935,6 +935,363 @@ class StatusReportController extends Controller
                     $cells->setAlignment('right');
                     $cells->setValignment('center');
 
+                });
+            });
+
+        })->export('xls');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '导出了统计信息']);
+    }
+
+    /**
+     * 导出单机当月运行报表
+     */
+    public function exportToExcelStatusMonth()
+    {
+        $type = Input::get('type', '全部');
+        $selectDay = Input::get('timeStart', '');
+
+        if ($selectDay == '')
+        {
+            $selectDay = date("Y-m-d");
+        }
+        $days = $this->getTheMonthDay($selectDay);
+        $startTime = $days[0];
+        $endTime = $days[1];
+
+        $stations = $this->stationListByType($type);
+
+        foreach ($stations as $station)
+        {
+            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+            //单位小时
+            $station['totalTimeDay1'] = round(($param['totalTimeDay1'])/60,2);
+            $station['totalTimeDay2'] = round(($param['totalTimeDay2'])/60,2);
+            $station['totalTimeDay3'] = round(($param['totalTimeDay3'])/60,2);
+            $station['totalTimeDay4'] = round(($param['totalTimeDay4'])/60,2);
+
+            $station['totalFluxDay1'] = $param['totalFluxDay1'];
+            $station['totalFluxDay2'] = $param['totalFluxDay2'];
+            $station['totalFluxDay3'] = $param['totalFluxDay3'];
+            $station['totalFluxDay4'] = $param['totalFluxDay4'];
+
+            $station['totalTimeBefore1'] = $param['totalTimeBefore1'];
+            $station['totalTimeBefore2'] = $param['totalTimeBefore2'];
+            $station['totalTimeBefore3'] = $param['totalTimeBefore3'];
+            $station['totalTimeBefore4'] = $param['totalTimeBefore4'];
+
+            $station['totalFluxBefore1'] = $param['totalFluxBefore1'];
+            $station['totalFluxBefore2'] = $param['totalFluxBefore2'];
+            $station['totalFluxBefore3'] = $param['totalFluxBefore3'];
+            $station['totalFluxBefore4'] = $param['totalFluxBefore4'];
+        }
+
+        $title = '单机运行情况月报表-'.$startTime;
+
+        $excelData = $stations;
+
+        Excel::create($title, function ($excel) use ($excelData, $title,$startTime) {
+
+            $excel->setTitle($title);
+
+            $excel->setCreator('Eason')->setCompany('LegendX');
+
+            $excel->sheet('单机运行情况月报表', function ($sheet) use ($excelData,$startTime) {
+
+                $strMonth = substr($startTime,0,4).'年'.substr($startTime,4,2).'月';
+                $today = date('Y-m-d');
+
+                $sheet->row(1, [$strMonth.'单机运行抽升情况报表']);
+                $sheet->row(2, [$today]);
+                $sheet->row(3, ['泵站名称','1号泵','','2号泵','','3号泵','4号泵','']);
+                $sheet->row(4, ['','运行(小时)','抽升量(万吨)','运行(小时)','抽升量(万吨)','运行(小时)','抽升量(万吨)','运行(小时)','抽升量(万吨)',]);
+
+                if (empty($excelData)) {
+
+                    $sheet->row(5, ['']);
+                    return;
+                }
+
+                $i = 5;
+
+                // 循环写入数据
+                foreach ($excelData as $rowData){
+                    $row1 = [
+                        $rowData['name'],
+                        $rowData['totalTimeDay1'],
+                        $rowData['totalFluxDay1'],
+                        $rowData['totalTimeDay2'],
+                        $rowData['totalFluxDay2'],
+                        $rowData['totalTimeDay3'],
+                        $rowData['totalFluxDay3'],
+                        $rowData['totalTimeDay4'],
+                        $rowData['totalFluxDay4'],
+                    ];
+
+                    $row2 = [
+                        '连前累计',
+                        $rowData['totalTimeBefore1'],
+                        $rowData['totalFluxBefore1'],
+                        $rowData['totalTimeBefore2'],
+                        $rowData['totalFluxBefore2'],
+                        $rowData['totalTimeBefore3'],
+                        $rowData['totalFluxBefore3'],
+                        $rowData['totalTimeBefore4'],
+                        $rowData['totalFluxBefore4'],
+                    ];
+
+                    $sheet->row($i, $row1);
+                    $sheet->row($i+1, $row2);
+
+                    //行高
+                    $sheet->setHeight($i, 25);
+                    $sheet->setHeight($i+1, 25);
+
+                    $i++;
+                    $i++;
+                }
+
+                $sheet->row($i-1, ['主管:','','','','制表:']);
+
+
+                //表体样式
+
+                $sheet->setBorder('A3:I'.($i-2), 'thin');
+                $sheet->setAutoSize(true);
+                $sheet->setWidth(array(
+                    'A'     =>  20,
+                    'B'     =>  15,
+                    'C'     =>  15,
+                    'D'     =>  15,
+                    'E'     =>  12,
+                    'F'     =>  12,
+                    'G'     =>  12,
+                    'H'     =>  12,
+                    'I'     =>  12,
+                ));
+                $sheet->cells('A4:I'.($i-2), function($cells) {
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('normal');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                $sheet->mergeCells('A'.($i-1).':F'.($i-1));
+                $sheet->mergeCells('G'.($i-1).':I'.($i-1));
+                $sheet->cells('A'.($i-1).':I'.($i-1), function($cells) {
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('normal');
+                    $cells->setAlignment('left');
+                    $cells->setValignment('center');
+
+                });
+
+                //表头样式
+                $sheet->mergeCells('A3:A4');
+                $sheet->mergeCells('B3:C3');
+                $sheet->mergeCells('D3:E4');
+                $sheet->mergeCells('F3:G4');
+                $sheet->mergeCells('H3:I3');
+
+                $sheet->setHeight(3, 30);
+                $sheet->setHeight(4, 30);
+                $sheet->cells('A3:I4', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(14);
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                //标题样式
+                $sheet->mergeCells('A1:I1');
+                $sheet->setHeight(1, 60);
+                $sheet->cells('A1', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(22);
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                //日期样式
+                $sheet->mergeCells('A2:I2');
+                $sheet->setHeight(2, 25);
+                $sheet->cells('A2', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(14);
+                    $cells->setAlignment('right');
+                    $cells->setValignment('center');
+                });
+            });
+
+        })->export('xls');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '导出了统计信息']);
+    }
+
+    /**
+     * 导出泵站所有泵组当月运行报表
+     */
+    public function exportToExcelStatusMonthAll()
+    {
+        $type = Input::get('type', '全部');
+        $selectDay = Input::get('timeStart', '');
+
+        if ($selectDay == '')
+        {
+            $selectDay = date("Y-m-d");
+        }
+        $days = $this->getTheMonthDay($selectDay);
+        $startTime = $days[0];
+        $endTime = $days[1];
+
+        $stations = $this->stationListByType($type);
+
+        $index = 1;
+
+        //所有泵站之和
+        $totalTimeDayAll = 0;
+        $totalTimeBeforeAll = 0;
+        $totalFluxDayAll = 0;
+        $totalFluxBeforeAll = 0;
+
+        foreach ($stations as $station)
+        {
+            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+            //单位小时
+            $station['totalTimeDay'] = round(($param['totalTimeDay'])/60,2);
+            $station['totalFluxDay'] = $param['totalFluxDay'];
+            $station['totalTimeBefore'] = $param['totalTimeBefore'];
+            $station['totalFluxBefore'] = $param['totalFluxBefore'];
+            $totalTimeDayAll += $station['totalTimeDay'];
+            $totalTimeBeforeAll += $station['totalTimeBefore'];
+            $totalFluxDayAll += $station['totalFluxDay'];
+            $totalFluxBeforeAll += $station['totalFluxBefore'];
+
+            $station['index'] = $index;
+            $index ++;
+        }
+        $paramMonthAll = ['stations' => $stations,'totalTimeDayAll'=>$totalTimeDayAll,
+            'totalTimeBeforeAll'=>$totalTimeBeforeAll,'totalFluxDayAll'=>$totalFluxDayAll,
+            'totalFluxBeforeAll'=>$totalFluxBeforeAll, 'selectType' => $type, 'startTime' => $startTime];
+
+        $title = '泵站月生产报表-'.$startTime;
+
+        $excelData = $paramMonthAll;
+
+        Excel::create($title, function ($excel) use ($excelData, $title,$startTime) {
+
+            $excel->setTitle($title);
+
+            $excel->setCreator('Eason')->setCompany('LegendX');
+
+            $excel->sheet('泵站月生产报表', function ($sheet) use ($excelData,$startTime) {
+
+                $strMonth = substr($startTime,0,4).'年'.substr($startTime,4,2).'月';
+                $today = date('Y-m-d');
+
+                $sheet->row(1, [$strMonth.'泵站月生产报表']);
+                $sheet->row(2, ['单位名称:市政工程管理处泵站管理所','','','','','',$today]);
+                $sheet->row(3, ['序号','泵站名称','泵组运行时间(小时)','连前累计(小时)','泵组抽升量(万吨)','连前累计(万吨)','备注']);
+
+                if (empty($excelData)) {
+
+                    $sheet->row(4, ['']);
+                    return;
+                }
+
+                $i = 4;
+
+                // 循环写入数据
+                foreach ($excelData['stations'] as $rowData){
+                    $row = [
+                        $rowData['index'],
+                        $rowData['name'],
+                        $rowData['totalTimeDay'],
+                        $rowData['totalTimeBefore'],
+                        $rowData['totalFluxDay'],
+                        $rowData['totalFluxBefore'],
+                    ];
+
+                    $sheet->row($i, $row);
+                    //行高
+                    $sheet->setHeight($i, 25);
+
+                    $i++;
+                }
+
+                $sheet->row($i, ['合计:','',$excelData['totalTimeDayAll'],$excelData['totalTimeBeforeAll'],$excelData['totalFluxDayAll'],$excelData['totalFluxBeforeAll']]);
+
+                $sheet->row($i+1, ['主管:','','','','制表:']);
+
+
+                //表体样式
+
+                $sheet->setBorder('A3:G'.($i), 'thin');
+                $sheet->setAutoSize(true);
+                $sheet->setWidth(array(
+                    'A'     =>  8,
+                    'B'     =>  20,
+                    'C'     =>  20,
+                    'D'     =>  20,
+                    'E'     =>  20,
+                    'F'     =>  20,
+                    'G'     =>  10,
+                ));
+                $sheet->cells('A4:G'.($i), function($cells) {
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('normal');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                $sheet->mergeCells('A'.($i+1).':D'.($i+1));
+                $sheet->mergeCells('E'.($i+1).':G'.($i+1));
+                $sheet->cells('A'.($i+1).':G'.($i+1, function($cells) {
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('normal');
+                    $cells->setAlignment('left');
+                    $cells->setValignment('center');
+
+                });
+
+                //表头样式
+
+                $sheet->setHeight(3, 30);
+                $sheet->setHeight(4, 30);
+                $sheet->cells('A3:G3', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(14);
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                //标题样式
+                $sheet->mergeCells('A1:G1');
+                $sheet->setHeight(1, 60);
+                $sheet->cells('A1', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(22);
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+
+                });
+
+                //日期样式
+                $sheet->mergeCells('A2:E2');
+                $sheet->mergeCells('F2:G2');
+                $sheet->setHeight(2, 25);
+                $sheet->cells('A2', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(14);
+                    $cells->setAlignment('left');
+                    $cells->setValignment('center');
                 });
             });
 

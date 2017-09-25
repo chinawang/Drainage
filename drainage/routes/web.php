@@ -302,6 +302,10 @@ Route::get('/report/realTimeStatusMonthAll/{type}/{start_time}', 'Reporte\Status
 
 //导出EXCEL 按日单机运行时间统计
 Route::get('/report/exporStatustDay', 'Reporte\StatusReportController@exportToExcelStatusDay');
+//导出EXCEL 按月单机运行时间统计
+Route::get('/report/exporStatustMonth', 'Reporte\StatusReportController@exportToExcelStatusMonth');
+//导出EXCEL 按月泵站泵组运行时间合计
+Route::get('/report/exporStatustMonthAll', 'Reporte\StatusReportController@exportToExcelStatusMonthAll');
 
 
 //液位统计
