@@ -126,7 +126,7 @@
                                 </tbody>
                             </table>
                             <div class="table-pagination">
-                                {!! $stations->render() !!}
+                                {!! $stations->appends(['type' => $selectType])->render() !!}
                             </div>
                         @else
                             <div class="well" style="text-align: center; padding: 100px;">
