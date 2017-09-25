@@ -628,7 +628,7 @@ class StatusReportController extends Controller
                 $station = $excelData['stationSelect'];
 
                 $sheet->row(1, ['郑州市市政工程管理处泵站所泵站运行日志']);
-                $sheet->row(2, ['泵站:'.$station['name'],'','','','','','','','','','',$startTime]);
+                $sheet->row(2, ['泵站: '.$station['name'],'','','','','','','','','','',$startTime]);
                 $sheet->row(3, ['总电流(A)','电压(V)','进水池位(M)','1号泵','','','','2号泵','','','','3号泵','','','','4号泵','','',''
                     ,'变压器','','总电度表度数(度)','','']);
                 $sheet->row(4, ['开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
@@ -649,6 +649,8 @@ class StatusReportController extends Controller
                 $rowTmp2 = [];
                 $rowTmp3 = [];
                 $rowTmp4 = [];
+
+                return $excelData['stationStatusList1'];
 
                 // 循环写入数据
                 foreach ($excelData['stationStatusList1'] as $rowData1) {
@@ -1000,7 +1002,7 @@ class StatusReportController extends Controller
 
                 });
 
-                $sheet->cells('B2', function($cells) {
+                $sheet->cells('L2', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(14);
                     $cells->setAlignment('right');
