@@ -999,7 +999,7 @@ class StatusReportController extends Controller
 
             $excel->sheet('单机运行情况月报表', function ($sheet) use ($excelData,$startTime) {
 
-                $strMonth = substr($startTime,0,4).'年'.substr($startTime,4,2).'月';
+                $strMonth = substr($startTime,0,4).'年'.substr($startTime,5,2).'月';
                 $today = date('Y-m-d');
 
                 $sheet->row(1, [$strMonth.'单机运行抽升情况报表']);
@@ -1052,7 +1052,7 @@ class StatusReportController extends Controller
                     $i++;
                 }
 
-                $sheet->row($i-1, ['主管:','','','','制表:']);
+                $sheet->row($i-1, ['主管:','','','','','','制表:']);
 
 
                 //表体样式
@@ -1091,8 +1091,8 @@ class StatusReportController extends Controller
                 //表头样式
                 $sheet->mergeCells('A3:A4');
                 $sheet->mergeCells('B3:C3');
-                $sheet->mergeCells('D3:E4');
-                $sheet->mergeCells('F3:G4');
+                $sheet->mergeCells('D3:E3');
+                $sheet->mergeCells('F3:G3');
                 $sheet->mergeCells('H3:I3');
 
                 $sheet->setHeight(3, 30);
@@ -1191,11 +1191,11 @@ class StatusReportController extends Controller
 
             $excel->sheet('泵站月生产报表', function ($sheet) use ($excelData,$startTime) {
 
-                $strMonth = substr($startTime,0,4).'年'.substr($startTime,4,2).'月';
+                $strMonth = substr($startTime,0,4).'年'.substr($startTime,5,2).'月';
                 $today = date('Y-m-d');
 
                 $sheet->row(1, [$strMonth.'泵站月生产报表']);
-                $sheet->row(2, ['单位名称:市政工程管理处泵站管理所','','','','','',$today]);
+                $sheet->row(2, ['单位名称:市政工程管理处泵站管理所','','','','',$today]);
                 $sheet->row(3, ['序号','泵站名称','泵组运行时间(小时)','连前累计(小时)','泵组抽升量(万吨)','连前累计(万吨)','备注']);
 
                 if (empty($excelData)) {
@@ -1234,13 +1234,13 @@ class StatusReportController extends Controller
                 $sheet->setBorder('A3:G'.($i), 'thin');
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
-                    'A'     =>  8,
-                    'B'     =>  20,
-                    'C'     =>  20,
-                    'D'     =>  20,
-                    'E'     =>  20,
-                    'F'     =>  20,
-                    'G'     =>  10,
+                    'A'     =>  10,
+                    'B'     =>  30,
+                    'C'     =>  30,
+                    'D'     =>  30,
+                    'E'     =>  30,
+                    'F'     =>  30,
+                    'G'     =>  20,
                 ));
                 $sheet->cells('A4:G'.($i), function($cells) {
                     $cells->setFontSize(14);
@@ -1249,6 +1249,8 @@ class StatusReportController extends Controller
                     $cells->setValignment('center');
 
                 });
+
+                $sheet->mergeCells('A'.($i).':B'.($i));
 
                 $sheet->mergeCells('A'.($i+1).':D'.($i+1));
                 $sheet->mergeCells('E'.($i+1).':G'.($i+1));
@@ -1262,8 +1264,7 @@ class StatusReportController extends Controller
 
                 //表头样式
 
-                $sheet->setHeight(3, 30);
-                $sheet->setHeight(4, 30);
+                $sheet->setHeight(3, 40);
                 $sheet->cells('A3:G3', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(14);
