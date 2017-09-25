@@ -151,7 +151,7 @@
                         '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: {{ $station['culvertWater'] }}米</div>' +
                         '</div>' +
                         '<div class="col-md-3 col-md-offset-0">' +
-                        '<a href="/station/runDetail/{{ $station['id'] }}" target="_blank" class="btn-link" style="font-size: 14px;height: 60px;line-height: 60px">实时详情</a>' +
+                        '<a href="/station/runDetail/{{ $station['id'] }}" target="_blank" class="btn-link" style="font-size: 14px;height: 60px;line-height: 60px">运行详情</a>' +
                         '</div>' +
                         '</div>' +
                         '<div class="row" style="width: 360px;margin: 10px 0;padding-top: 20px;">' +
@@ -165,7 +165,7 @@
                         '</a>' +
                         '</li>' +
                         '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
-                        '<a href="/station/equipment/lists/{{ $station['id'] }}" target="_blank" class="menu-item">' +
+                        '<a href="/equipment/search?station_id={{ $station['id'] }}" target="_blank" class="menu-item">' +
                         '<span>设备信息</span>' +
                         '</a>' +
                         '</li>' +
