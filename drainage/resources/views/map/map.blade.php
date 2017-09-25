@@ -151,7 +151,7 @@
                         '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: {{ $station['culvertWater'] }}米</div>' +
                         '</div>' +
                         '<div class="col-md-3 col-md-offset-0">' +
-                        '<a href="/station/runDetail/{{ $station['id'] }}" class="btn-link" style="font-size: 12px;height: 60px;line-height: 60px">详情</a>' +
+                        '<a href="/station/runDetail/{{ $station['id'] }}" class="btn-link" style="font-size: 12px;height: 60px;line-height: 60px">运行详情</a>' +
                         '</div>' +
                         '</div>' +
                         '<div class="row" style="width: 360px;margin: 10px 0;">' +
@@ -159,37 +159,32 @@
                         '<div class="panel panel-default custom-panel">' +
                         '<div class="panel-body custom-panel-body">' +
                         '<ul class="main-menu">' +
-                        '<li>' +
+                        '<li style="font-size: 12px;height: 30px;line-height: 30px;width: 33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>泵站设备</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li>' +
+                        '<li style="font-size: 12px;height: 30px;line-height: 30px;width: 33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>报警信息</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li>' +
-                        '<a href="" class="menu-item">' +
-                        '<span>运行详情</span>' +
-                        '</a>' +
-                        '</li>' +
-                        '<li>' +
+                        '<li style="font-size: 12px;height: 30px;line-height: 30px;width: 33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>运行报表</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li>' +
+                        '<li style="font-size: 12px;height: 30px;line-height: 30px;width: 33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>电流统计</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li>' +
+                        '<li style="font-size: 12px;height: 30px;line-height: 30px;width: 33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>水位统计</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li>' +
+                        '<li style="font-size: 12px;height: 30px;line-height: 30px;width: 33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>下属人员</span>' +
                         '</a>' +
