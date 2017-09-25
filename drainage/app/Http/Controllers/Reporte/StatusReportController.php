@@ -650,192 +650,291 @@ class StatusReportController extends Controller
                 $rowTmp3 = [];
                 $rowTmp4 = [];
 
-                // 循环写入数据
-                foreach ($excelData['stationStatusList1'] as $rowData1) {
+                // 循环写入数据(1号泵)
+                foreach ($excelData['stationStatusList1'] as $rowData1){
+                    $sheet->cell('D'.$i, function($cell) use ($rowData1) {
+                        $cell->setValue(substr($rowData1['timeStart'],10));
 
-                    $row1 = [
-                        substr($rowData1['timeStart'],10),
-                        substr($rowData1['timeEnd'],10),
-                        $rowData1['timeGap'],
-                        $rowData1['current'],
-                    ];
+                    });
+                    $sheet->cell('E'.$i, function($cell) use ($rowData1) {
+                        $cell->setValue(substr($rowData1['timeEnd'],10));
 
-                    $sheet->row($i, $row1);
+                    });
+                    $sheet->cell('F'.$i, function($cell) use ($rowData1) {
+                        $cell->setValue($rowData1['timeGap']);
+
+                    });
+                    $sheet->cell('G'.$i, function($cell) use ($rowData1) {
+                        $cell->setValue($rowData1['current']);
+
+                    });
 
                     //行高
                     $sheet->setHeight($i, 25);
 
-                    $rowTmp1[$i] = $row1;
-                    $rowTmp2[$i] = $row1;
-                    $rowTmp3[$i] = $row1;
-                    $rowTmp4[$i] = $row1;
-
                     $i++;
                 }
 
-                // 循环写入数据
-                foreach ($excelData['stationStatusList2'] as $rowData2) {
+                // 循环写入数据(2号泵)
+                foreach ($excelData['stationStatusList2'] as $rowData2){
+                    $sheet->cell('H'.$j, function($cell) use ($rowData2) {
+                        $cell->setValue(substr($rowData2['timeStart'],10));
 
-                    $dataColumn1 = '';
-                    $dataColumn2 = '';
-                    $dataColumn3 = '';
-                    $dataColumn4 = '';
+                    });
+                    $sheet->cell('I'.$j, function($cell) use ($rowData2) {
+                        $cell->setValue(substr($rowData2['timeEnd'],10));
 
-                    if(!($i < $j)){
-                        $dataColumn1 = $rowTmp1[$j];
-                        $dataColumn2 = $rowTmp1[$j];
-                        $dataColumn3 = $rowTmp1[$j];
-                        $dataColumn4 = $rowTmp1[$j];
-                    }
+                    });
+                    $sheet->cell('J'.$j, function($cell) use ($rowData2) {
+                        $cell->setValue($rowData2['timeGap']);
 
-                    $row2 = [
-                        $dataColumn1,
-                        $dataColumn2,
-                        $dataColumn3,
-                        $dataColumn4,
-                        substr($rowData2['timeStart'],10),
-                        substr($rowData2['timeEnd'],10),
-                        $rowData2['timeGap'],
-                        $rowData2['current'],
-                    ];
+                    });
+                    $sheet->cell('K'.$j, function($cell) use ($rowData2) {
+                        $cell->setValue($rowData2['current']);
 
-                    return $row2;
-                    $sheet->row($j, $row2);
+                    });
 
                     //行高
                     $sheet->setHeight($j, 25);
 
-                    $rowTmp1[$j] = $row2;
-                    $rowTmp2[$j] = $row2;
-                    $rowTmp3[$j] = $row2;
-                    $rowTmp4[$j] = $row2;
-
                     $j++;
                 }
 
-                // 循环写入数据
-                foreach ($excelData['stationStatusList3'] as $rowData3) {
+                // 循环写入数据(3号泵)
+                foreach ($excelData['stationStatusList3'] as $rowData3){
+                    $sheet->cell('L'.$k, function($cell) use ($rowData3) {
+                        $cell->setValue(substr($rowData3['timeStart'],10));
 
-                    $dataColumn1 = '';
-                    $dataColumn2 = '';
-                    $dataColumn3 = '';
-                    $dataColumn4 = '';
+                    });
+                    $sheet->cell('M'.$k, function($cell) use ($rowData3) {
+                        $cell->setValue(substr($rowData3['timeEnd'],10));
 
-                    if(!($i < $k)){
-                        $dataColumn1 = $rowTmp1[$k];
-                        $dataColumn2 = $rowTmp1[$k];
-                        $dataColumn3 = $rowTmp1[$k];
-                        $dataColumn4 = $rowTmp1[$k];
-                    }
+                    });
+                    $sheet->cell('N'.$k, function($cell) use ($rowData3) {
+                        $cell->setValue($rowData3['timeGap']);
 
-                    $dataColumn5 = '';
-                    $dataColumn6 = '';
-                    $dataColumn7 = '';
-                    $dataColumn8 = '';
+                    });
+                    $sheet->cell('O'.$k, function($cell) use ($rowData3) {
+                        $cell->setValue($rowData3['current']);
 
-                    if(!($j < $k)){
-                        $dataColumn5 = $rowTmp2[$k];
-                        $dataColumn6 = $rowTmp2[$k];
-                        $dataColumn7 = $rowTmp2[$k];
-                        $dataColumn8 = $rowTmp2[$k];
-                    }
-
-                    $row3 = [
-                        $dataColumn1,
-                        $dataColumn2,
-                        $dataColumn3,
-                        $dataColumn4,
-                        $dataColumn5,
-                        $dataColumn6,
-                        $dataColumn7,
-                        $dataColumn8,
-                        substr($rowData3['timeStart'],10),
-                        substr($rowData3['timeEnd'],10),
-                        $rowData3['timeGap'],
-                        $rowData3['current'],
-                    ];
-
-                    $sheet->row($k, $row3);
+                    });
 
                     //行高
                     $sheet->setHeight($k, 25);
-                    $rowTmp1[$k] = $row3;
-                    $rowTmp2[$k] = $row3;
-                    $rowTmp3[$k] = $row3;
-                    $rowTmp4[$k] = $row3;
 
                     $k++;
                 }
 
-                // 循环写入数据
-                foreach ($excelData['stationStatusList4'] as $rowData4) {
+                // 循环写入数据(4号泵)
+                foreach ($excelData['stationStatusList4'] as $rowData4){
+                    $sheet->cell('P'.$h, function($cell) use ($rowData4) {
+                        $cell->setValue(substr($rowData4['timeStart'],10));
 
-                    $dataColumn1 = '';
-                    $dataColumn2 = '';
-                    $dataColumn3 = '';
-                    $dataColumn4 = '';
+                    });
+                    $sheet->cell('Q'.$h, function($cell) use ($rowData4) {
+                        $cell->setValue(substr($rowData4['timeEnd'],10));
 
-                    if(!($i < $h)){
-                        $dataColumn1 = $rowTmp1[$h];
-                        $dataColumn2 = $rowTmp1[$h];
-                        $dataColumn3 = $rowTmp1[$h];
-                        $dataColumn4 = $rowTmp1[$h];
-                    }
+                    });
+                    $sheet->cell('R'.$h, function($cell) use ($rowData4) {
+                        $cell->setValue($rowData4['timeGap']));
 
-                    $dataColumn5 = '';
-                    $dataColumn6 = '';
-                    $dataColumn7 = '';
-                    $dataColumn8 = '';
+                    });
+                    $sheet->cell('S'.$h, function($cell) use ($rowData4) {
+                        $cell->setValue($rowData4['current']);
 
-                    if(!($j < $h)){
-                        $dataColumn5 = $rowTmp2[$h];
-                        $dataColumn6 = $rowTmp2[$h];
-                        $dataColumn7 = $rowTmp2[$h];
-                        $dataColumn8 = $rowTmp2[$h];
-                    }
-
-                    $dataColumn9 = '';
-                    $dataColumn10 = '';
-                    $dataColumn11 = '';
-                    $dataColumn12 = '';
-
-                    if(!($k < $h)){
-                        $dataColumn9 = $rowTmp3[$h];
-                        $dataColumn10 = $rowTmp3[$h];
-                        $dataColumn11 = $rowTmp3[$h];
-                        $dataColumn12 = $rowTmp3[$h];
-                    }
-
-                    $row4 = [
-                        $dataColumn1,
-                        $dataColumn2,
-                        $dataColumn3,
-                        $dataColumn4,
-                        $dataColumn5,
-                        $dataColumn6,
-                        $dataColumn7,
-                        $dataColumn8,
-                        $dataColumn9,
-                        $dataColumn10,
-                        $dataColumn11,
-                        $dataColumn12,
-                        substr($rowData4['timeStart'],10),
-                        substr($rowData4['timeEnd'],10),
-                        $rowData4['timeGap'],
-                        $rowData4['current'],
-                    ];
-
-                    $sheet->row($h, $row4);
+                    });
 
                     //行高
                     $sheet->setHeight($h, 25);
-                    $rowTmp1[$h] = $row4;
-                    $rowTmp2[$h] = $row4;
-                    $rowTmp3[$h] = $row4;
-                    $rowTmp4[$h] = $row4;
 
                     $h++;
                 }
+
+//                // 循环写入数据
+//                foreach ($excelData['stationStatusList1'] as $rowData1) {
+//
+//                    $row1 = [
+//                        substr($rowData1['timeStart'],10),
+//                        substr($rowData1['timeEnd'],10),
+//                        $rowData1['timeGap'],
+//                        $rowData1['current'],
+//                    ];
+//
+//                    $sheet->row($i, $row1);
+//
+//                    //行高
+//                    $sheet->setHeight($i, 25);
+//
+//                    $rowTmp1[$i] = $row1;
+//                    $rowTmp2[$i] = $row1;
+//                    $rowTmp3[$i] = $row1;
+//                    $rowTmp4[$i] = $row1;
+//
+//                    $i++;
+//                }
+//
+//                // 循环写入数据
+//                foreach ($excelData['stationStatusList2'] as $rowData2) {
+//
+//                    $dataColumn1 = '';
+//                    $dataColumn2 = '';
+//                    $dataColumn3 = '';
+//                    $dataColumn4 = '';
+//
+//                    if(!($i < $j)){
+//                        $dataColumn1 = $rowTmp1[$j];
+//                        $dataColumn2 = $rowTmp1[$j];
+//                        $dataColumn3 = $rowTmp1[$j];
+//                        $dataColumn4 = $rowTmp1[$j];
+//                    }
+//
+//                    $row2 = [
+//                        $dataColumn1,
+//                        $dataColumn2,
+//                        $dataColumn3,
+//                        $dataColumn4,
+//                        substr($rowData2['timeStart'],10),
+//                        substr($rowData2['timeEnd'],10),
+//                        $rowData2['timeGap'],
+//                        $rowData2['current'],
+//                    ];
+//
+//                    $sheet->row($j, $row2);
+//
+//                    //行高
+//                    $sheet->setHeight($j, 25);
+//
+//                    $rowTmp1[$j] = $row2;
+//                    $rowTmp2[$j] = $row2;
+//                    $rowTmp3[$j] = $row2;
+//                    $rowTmp4[$j] = $row2;
+//
+//                    $j++;
+//                }
+//
+//                // 循环写入数据
+//                foreach ($excelData['stationStatusList3'] as $rowData3) {
+//
+//                    $dataColumn1 = '';
+//                    $dataColumn2 = '';
+//                    $dataColumn3 = '';
+//                    $dataColumn4 = '';
+//
+//                    if(!($i < $k)){
+//                        $dataColumn1 = $rowTmp1[$k];
+//                        $dataColumn2 = $rowTmp1[$k];
+//                        $dataColumn3 = $rowTmp1[$k];
+//                        $dataColumn4 = $rowTmp1[$k];
+//                    }
+//
+//                    $dataColumn5 = '';
+//                    $dataColumn6 = '';
+//                    $dataColumn7 = '';
+//                    $dataColumn8 = '';
+//
+//                    if(!($j < $k)){
+//                        $dataColumn5 = $rowTmp2[$k];
+//                        $dataColumn6 = $rowTmp2[$k];
+//                        $dataColumn7 = $rowTmp2[$k];
+//                        $dataColumn8 = $rowTmp2[$k];
+//                    }
+//
+//                    $row3 = [
+//                        $dataColumn1,
+//                        $dataColumn2,
+//                        $dataColumn3,
+//                        $dataColumn4,
+//                        $dataColumn5,
+//                        $dataColumn6,
+//                        $dataColumn7,
+//                        $dataColumn8,
+//                        substr($rowData3['timeStart'],10),
+//                        substr($rowData3['timeEnd'],10),
+//                        $rowData3['timeGap'],
+//                        $rowData3['current'],
+//                    ];
+//
+//                    $sheet->row($k, $row3);
+//
+//                    //行高
+//                    $sheet->setHeight($k, 25);
+//                    $rowTmp1[$k] = $row3;
+//                    $rowTmp2[$k] = $row3;
+//                    $rowTmp3[$k] = $row3;
+//                    $rowTmp4[$k] = $row3;
+//
+//                    $k++;
+//                }
+//
+//                // 循环写入数据
+//                foreach ($excelData['stationStatusList4'] as $rowData4) {
+//
+//                    $dataColumn1 = '';
+//                    $dataColumn2 = '';
+//                    $dataColumn3 = '';
+//                    $dataColumn4 = '';
+//
+//                    if(!($i < $h)){
+//                        $dataColumn1 = $rowTmp1[$h];
+//                        $dataColumn2 = $rowTmp1[$h];
+//                        $dataColumn3 = $rowTmp1[$h];
+//                        $dataColumn4 = $rowTmp1[$h];
+//                    }
+//
+//                    $dataColumn5 = '';
+//                    $dataColumn6 = '';
+//                    $dataColumn7 = '';
+//                    $dataColumn8 = '';
+//
+//                    if(!($j < $h)){
+//                        $dataColumn5 = $rowTmp2[$h];
+//                        $dataColumn6 = $rowTmp2[$h];
+//                        $dataColumn7 = $rowTmp2[$h];
+//                        $dataColumn8 = $rowTmp2[$h];
+//                    }
+//
+//                    $dataColumn9 = '';
+//                    $dataColumn10 = '';
+//                    $dataColumn11 = '';
+//                    $dataColumn12 = '';
+//
+//                    if(!($k < $h)){
+//                        $dataColumn9 = $rowTmp3[$h];
+//                        $dataColumn10 = $rowTmp3[$h];
+//                        $dataColumn11 = $rowTmp3[$h];
+//                        $dataColumn12 = $rowTmp3[$h];
+//                    }
+//
+//                    $row4 = [
+//                        $dataColumn1,
+//                        $dataColumn2,
+//                        $dataColumn3,
+//                        $dataColumn4,
+//                        $dataColumn5,
+//                        $dataColumn6,
+//                        $dataColumn7,
+//                        $dataColumn8,
+//                        $dataColumn9,
+//                        $dataColumn10,
+//                        $dataColumn11,
+//                        $dataColumn12,
+//                        substr($rowData4['timeStart'],10),
+//                        substr($rowData4['timeEnd'],10),
+//                        $rowData4['timeGap'],
+//                        $rowData4['current'],
+//                    ];
+//
+//                    $sheet->row($h, $row4);
+//
+//                    //行高
+//                    $sheet->setHeight($h, 25);
+//                    $rowTmp1[$h] = $row4;
+//                    $rowTmp2[$h] = $row4;
+//                    $rowTmp3[$h] = $row4;
+//                    $rowTmp4[$h] = $row4;
+//
+//                    $h++;
+//                }
 
                 $rowMax = $this->get_max($i,$j,$k,$h);
 
@@ -863,6 +962,15 @@ class StatusReportController extends Controller
 
 
                 //表体样式
+                $sheet->setHeight($rowMax, 25);
+                $sheet->setHeight($rowMax+1, 25);
+                $sheet->setHeight($rowMax+2, 25);
+                $sheet->setHeight($rowMax+3, 25);
+                $sheet->setHeight($rowMax+4, 25);
+                $sheet->setHeight($rowMax+5, 25);
+                $sheet->setHeight($rowMax+6, 25);
+                $sheet->setHeight($rowMax+7, 25);
+
                 $sheet->mergeCells('A'.$rowMax.':C'.$rowMax);
                 $sheet->mergeCells('D'.$rowMax.':F'.$rowMax);
                 $sheet->mergeCells('H'.$rowMax.':J'.$rowMax);
