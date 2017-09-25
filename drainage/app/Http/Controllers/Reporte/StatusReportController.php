@@ -617,8 +617,6 @@ class StatusReportController extends Controller
 
         $excelData = $this->getStatusReport($stationID,$startTime,$endTime);
 
-        return $excelData;
-
         Excel::create($title, function ($excel) use ($excelData, $title,$startTime) {
 
             $excel->setTitle($title);
