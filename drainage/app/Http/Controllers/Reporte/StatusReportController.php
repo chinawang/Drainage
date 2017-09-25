@@ -964,7 +964,8 @@ class StatusReportController extends Controller
                 $sheet->mergeCells('T3:U3');
                 $sheet->mergeCells('V3:X3');
 
-                $sheet->setHeight(2, 60);
+                $sheet->setHeight(3, 30);
+                $sheet->setHeight(4, 30);
                 $sheet->cells('A3:X4', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(16);
@@ -986,7 +987,7 @@ class StatusReportController extends Controller
 
                 //日期样式
                 $sheet->mergeCells('A2:X2');
-                $sheet->setHeight(1, 20);
+                $sheet->setHeight(2, 20);
                 $sheet->cells('A2', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(14);
