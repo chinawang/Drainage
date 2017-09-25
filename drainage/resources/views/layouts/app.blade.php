@@ -119,12 +119,13 @@
     <div class="side-bar" style="width: 40px;
     position: fixed;
     bottom: 20px;
-    right: 25px;
+    right: 10px;
     z-index: 100;">
         <a onclick="toggleFullScreen();" class="icon-full"
            style="width: 40px;
     height: 40px;
     line-height: 40px;
+    text-align: center;
     display: inline-block;
     background-color: #fafafa;
     margin-bottom: 2px;">
