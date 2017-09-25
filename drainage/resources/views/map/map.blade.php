@@ -159,32 +159,32 @@
                         '<div class="panel panel-default custom-panel">' +
                         '<div class="panel-body custom-panel-body">' +
                         '<ul class="main-menu">' +
-                        '<li style="font-size: 12px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>泵站信息</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li style="font-size: 12px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>设备信息</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li style="font-size: 12px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>报警信息</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li style="font-size: 12px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>运行统计</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li style="font-size: 12px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>电流统计</span>' +
                         '</a>' +
                         '</li>' +
-                        '<li style="font-size: 12px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
                         '<a href="" class="menu-item">' +
                         '<span>水位统计</span>' +
                         '</a>' +
