@@ -97,35 +97,6 @@ body {
     font-family: PingFang SC, Microsoft YaHei UI, STHeitiSC-Light, Microsoft YaHei;
 }
 
-/*.side-bar a, .chat-tips i {*/
-/*background: url(right_bg.png) no-repeat;*/
-/*}*/
-
-.side-bar {
-    width: 66px;
-    position: fixed;
-    bottom: 20px;
-    right: 25px;
-    font-size: 0;
-    line-height: 0;
-    z-index: 100;
-}
-
-.side-bar a {
-    width: 66px;
-    height: 66px;
-    display: inline-block;
-    background-color: #ddd;
-    margin-bottom: 2px;
-}
-
-.side-bar a:hover {
-    background-color: #fafafa;
-}
-
-.side-bar .icon-full {
-    background-position: 0 -62px;
-}
 
 
 
