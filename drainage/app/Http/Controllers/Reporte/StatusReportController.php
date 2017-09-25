@@ -699,6 +699,7 @@ class StatusReportController extends Controller
                         $rowData2['current'],
                     ];
 
+                    return $row2;
                     $sheet->row($j, $row2);
 
                     //行高
