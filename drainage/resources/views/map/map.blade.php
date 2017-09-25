@@ -151,7 +151,7 @@
                         '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: {{ $station['culvertWater'] }}米</div>' +
                         '</div>' +
                         '<div class="col-md-3 col-md-offset-0">' +
-                        '<a href="/station/runDetail/{{ $station['id'] }}" class="btn-link" style="font-size: 14px;height: 60px;line-height: 60px">实时详情</a>' +
+                        '<a href="/station/runDetail/{{ $station['id'] }}" target="_blank" class="btn-link" style="font-size: 14px;height: 60px;line-height: 60px">实时详情</a>' +
                         '</div>' +
                         '</div>' +
                         '<div class="row" style="width: 360px;margin: 10px 0;padding-top: 20px;">' +
@@ -160,32 +160,32 @@
                         '<div class="panel-body custom-panel-body">' +
                         '<ul class="main-menu">' +
                         '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
-                        '<a href="" class="menu-item">' +
+                        '<a href="/station/info/{{ $station['id'] }}" target="_blank" class="menu-item">' +
                         '<span>泵站信息</span>' +
                         '</a>' +
                         '</li>' +
                         '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
-                        '<a href="" class="menu-item">' +
+                        '<a href="/station/equipment/lists/{{ $station['id'] }}" target="_blank" class="menu-item">' +
                         '<span>设备信息</span>' +
                         '</a>' +
                         '</li>' +
                         '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
-                        '<a href="" class="menu-item">' +
+                        '<a href="/warning/warningDetail/{{ $station['id'] }}" target="_blank" class="menu-item">' +
                         '<span>报警信息</span>' +
                         '</a>' +
                         '</li>' +
                         '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
-                        '<a href="" class="menu-item">' +
+                        '<a href="/report/stationStatusDay?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
                         '<span>运行统计</span>' +
                         '</a>' +
                         '</li>' +
                         '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
-                        '<a href="" class="menu-item">' +
+                        '<a href="/report/stationRunning?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}&timeEnd={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
                         '<span>电流统计</span>' +
                         '</a>' +
                         '</li>' +
                         '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
-                        '<a href="" class="menu-item">' +
+                        '<a href="/report/stationWater?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}&timeEnd={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
                         '<span>水位统计</span>' +
                         '</a>' +
                         '</li>' +

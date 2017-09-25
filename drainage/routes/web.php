@@ -49,6 +49,8 @@ Route::post('/user/delete/{user_id}','User\UserController@deleteUser');
 
 //泵站列表
 Route::get('/station/lists', 'Station\StationController@stationList');
+//泵站信息
+Route::get('/station/info/{station_id}', 'Station\StationController@showStationInfoForm');
 
 //泵站筛选
 Route::get('/station/search', 'Station\StationController@getStationListByType');

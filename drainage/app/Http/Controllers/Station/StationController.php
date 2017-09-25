@@ -75,6 +75,23 @@ class StationController extends Controller
     }
 
     /**
+     * 显示泵站信息窗口
+     *
+     * @param $stationID
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showStationInfoForm($stationID)
+    {
+        $station = $this->stationLogic->findStation($stationID);
+        $assignEmployeeIDs = $this->stationEmployeeLogic->getEmployeeIDsByStationID($station['id']);
+        $assignEmployees = $this->employeeLogic->getEmployeesByIDs($assignEmployeeIDs);
+        $station['assignEmployees'] = $assignEmployees;
+
+        $param = ['station' => $station];
+        return view('station.info',$param);
+    }
+
+    /**
      * 查询泵站信息
      *
      * @param $stationID
