@@ -117,9 +117,9 @@
     @yield('content')
 
     <div class="side-bar">
-        <a onclick="toggleFullScreen();" type="button" class="btn btn-default btn-sm"
+        <a onclick="toggleFullScreen();" class="icon-full"
                 style="background-color: #cccccc;border-color: #cccccc;">
-            <a class="glyphicon glyphicon-fullscreen"></a> 全屏
+            <span class="glyphicon glyphicon-fullscreen"></span> 全屏
         </a>
     </div>
 

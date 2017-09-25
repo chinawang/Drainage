@@ -98,7 +98,7 @@ body {
 }
 
 /*.side-bar a, .chat-tips i {*/
-    /*background: url(right_bg.png) no-repeat;*/
+/*background: url(right_bg.png) no-repeat;*/
 /*}*/
 
 .side-bar {
@@ -121,6 +121,10 @@ body {
 
 .side-bar a:hover {
     background-color: #fafafa;
+}
+
+.side-bar .icon-full {
+    background-position: 0 -62px;
 }
 
 
