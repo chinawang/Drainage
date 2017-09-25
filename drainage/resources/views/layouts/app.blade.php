@@ -128,7 +128,7 @@
     text-align: center;
     display: inline-block;
     background-color: #fafafa;
-    margin-bottom: 2px;">
+    margin-bottom: 2px;cursor: pointer" >
             <span class="glyphicon glyphicon-fullscreen" style="color: #cccccc"></span>
         </a>
     </div>
