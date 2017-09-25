@@ -127,20 +127,16 @@
                         {{--content: '{{ $station['station_number'] }}.{{ $station['name'] }}',--}}
                         {{--offset: new AMap.Pixel(27, 25)--}}
                         {{--}--}}
-                label: {
-                    content: '{{ $station['type'] }}',
-                    offset: new AMap.Pixel(27, 25)
-                }
+                {{--label: {--}}
+                    {{--content: '{{ $station['type'] }}',--}}
+                    {{--offset: new AMap.Pixel(27, 25)--}}
+                {{--}--}}
             });
-
             marker.emit('mouseout', {target: marker});
-
             marker.on('mouseout', function (e) {
                 e.target.setIconStyle(lightIconStyle);
             });
-
             marker.emit('mouseover', {target: marker});
-
             marker.on('mouseover', function (e) {
                 e.target.setIconStyle(hoverIconStyle);
                 infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}({{ $station['type'] }})</strong>');
@@ -202,6 +198,7 @@
             });
 
             @elseif($station['type'] == '污水')
+
             var  marker = new SimpleMarker({
                         //使用内置的iconStyle
                         iconStyle: darkIconStyle,
@@ -227,20 +224,16 @@
                                 {{--content: '{{ $station['station_number'] }}.{{ $station['name'] }}',--}}
                                 {{--offset: new AMap.Pixel(27, 25)--}}
                                 {{--}--}}
-                        label: {
-                            content: '{{ $station['type'] }}',
-                            offset: new AMap.Pixel(27, 25)
-                        }
+                        {{--label: {--}}
+                            {{--content: '{{ $station['type'] }}',--}}
+                            {{--offset: new AMap.Pixel(27, 25)--}}
+                        {{--}--}}
                     });
-
             marker.emit('mouseout', {target: marker});
-
             marker.on('mouseout', function (e) {
                 e.target.setIconStyle(darkIconStyle);
             });
-
             marker.emit('mouseover', {target: marker});
-
             marker.on('mouseover', function (e) {
                 e.target.setIconStyle(hoverIconStyle);
                 infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}({{ $station['type'] }})</strong>');
@@ -302,6 +295,7 @@
             });
 
             @else
+
             var  marker = new SimpleMarker({
                         //使用内置的iconStyle
                         iconStyle: lightIconStyle,
@@ -327,20 +321,17 @@
                                 {{--content: '{{ $station['station_number'] }}.{{ $station['name'] }}',--}}
                                 {{--offset: new AMap.Pixel(27, 25)--}}
                                 {{--}--}}
-                        label: {
-                            content: '{{ $station['type'] }}',
-                            offset: new AMap.Pixel(27, 25)
-                        }
+                        {{--label: {--}}
+                            {{--content: '{{ $station['type'] }}',--}}
+                            {{--offset: new AMap.Pixel(27, 25)--}}
+                        {{--}--}}
                     });
 
             marker.emit('mouseout', {target: marker});
-
             marker.on('mouseout', function (e) {
                 e.target.setIconStyle(lightIconStyle);
             });
-
             marker.emit('mouseover', {target: marker});
-
             marker.on('mouseover', function (e) {
                 e.target.setIconStyle(hoverIconStyle);
                 infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}({{ $station['type'] }})</strong>');
@@ -400,6 +391,7 @@
                 infoWindow.setInfoBody(contentHtml);
                 infoWindow.open(map, e.target.getPosition());
             });
+
             @endif
 
             @endforeach
