@@ -132,6 +132,11 @@ class StationController extends Controller
         return view('station.list',$param);
     }
 
+    /**
+     * 分局泵站分类查询
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getStationListByType()
     {
         $type = Input::get('type', 1);

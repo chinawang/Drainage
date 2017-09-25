@@ -102,7 +102,7 @@
 
                                 <div class="col-md-6">
                                     @if(empty($station['assignEmployees']))
-                                        无
+                                        <span>无</span>
                                     @else
                                         @foreach($station['assignEmployees'] as $assignEmployee)
                                             <a href="/employee/info/{{ $assignEmployee['id'] }}" class="btn btn-default btn-xs">{{ $assignEmployee['name'] }}</a>

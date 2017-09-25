@@ -40,6 +40,39 @@
                         </div>
                     </div>
                     <div class="panel-body custom-panel-body">
+                        <form class="form-horizontal" role="form" method="GET" action="/station/search"
+                              style="margin-bottom: 10px">
+                            {{ csrf_field() }}
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="station" class="col-md-4 control-label">泵站类型:</label>
+
+                                        <div class="col-md-8">
+                                            <select class="form-control" id="select" name="type">
+                                                <option value="全部" selected="selected">全部</option>
+                                                <option value="雨水" {{$selectType == '雨水' ? 'selected=selected' :''}}>
+                                                    雨水
+                                                </option>
+                                                <option value="污水" {{$selectType == '污水' ? 'selected=selected' :''}}>
+                                                    污水
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <button type="submit" class="btn btn-primary ">
+                                                查询
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
 
                         @if (!empty($stations[0]))
                             <table class="table table-hover table-bordered ">
