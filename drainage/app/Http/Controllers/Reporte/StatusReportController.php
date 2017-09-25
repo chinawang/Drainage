@@ -1030,7 +1030,7 @@ class StatusReportController extends Controller
                     ];
 
                     $row2 = [
-                        '连前累计',
+                        '累计',
                         $rowData['totalTimeBefore1'],
                         $rowData['totalFluxBefore1'],
                         $rowData['totalTimeBefore2'],
@@ -1047,14 +1047,6 @@ class StatusReportController extends Controller
                     //行高
                     $sheet->setHeight($i, 25);
                     $sheet->setHeight($i+1, 25);
-
-                    $sheet->cells('A'.($i+1), function($cells) {
-                        $cells->setFontFamily('Hei');
-                        $cells->setFontSize(14);
-                        $cells->setAlignment('center');
-                        $cells->setValignment('center');
-
-                    });
 
                     $i++;
                     $i++;
@@ -1204,7 +1196,7 @@ class StatusReportController extends Controller
 
                 $sheet->row(1, [$strMonth.'泵站月生产报表']);
                 $sheet->row(2, ['单位名称: 市政工程管理处泵站管理所','','','','',$today]);
-                $sheet->row(3, ['序号','泵站名称','泵组运行时间(小时)','连前累计(小时)','泵组抽升量(万吨)','连前累计(万吨)','备注']);
+                $sheet->row(3, ['序号','泵站名称','泵组运行时间(小时)','累计(小时)','泵组抽升量(万吨)','累计(万吨)','备注']);
 
                 if (empty($excelData)) {
 
