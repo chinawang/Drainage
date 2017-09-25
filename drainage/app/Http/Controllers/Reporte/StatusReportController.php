@@ -626,7 +626,7 @@ class StatusReportController extends Controller
             $excel->sheet('泵站运行日志', function ($sheet) use ($excelData,$startTime) {
 
                 $sheet->row(1, ['郑州市市政工程管理处泵站所泵站运行日志']);
-                $sheet->row(2, [date('Y年m月d日',$startTime)]);
+                $sheet->row(2, [$startTime]);
                 $sheet->row(3, ['总电流(A)','电压(V)','进水池位(M)','1号泵','2号泵','3号泵','4号泵','变压器','总电度表度数(度)']);
                 $sheet->row(4, ['开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
                     '开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
