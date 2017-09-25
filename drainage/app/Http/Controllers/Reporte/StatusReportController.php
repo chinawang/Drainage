@@ -625,8 +625,10 @@ class StatusReportController extends Controller
 
             $excel->sheet('泵站运行日志', function ($sheet) use ($excelData,$startTime) {
 
+                $station = $excelData['stationSelect'];
+
                 $sheet->row(1, ['郑州市市政工程管理处泵站所泵站运行日志']);
-                $sheet->row(2, [$startTime]);
+                $sheet->row(2, ['泵站:'.$station['name'],'','','','','','','','','','',$startTime]);
                 $sheet->row(3, ['总电流(A)','电压(V)','进水池位(M)','1号泵','','','','2号泵','','','','3号泵','','','','4号泵','','',''
                     ,'变压器','','总电度表度数(度)','','']);
                 $sheet->row(4, ['开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
@@ -835,7 +837,8 @@ class StatusReportController extends Controller
                 }
 
                 $rowMax = $this->get_max($i,$j,$k,$h);
-                $rowMax = 20;
+
+                printf($rowMax);
 
                 //运行合计
                 $sheet->row($rowMax, ['运行合计','','',$excelData['totalTimeDay1'],'','','分',$excelData['totalTimeDay2'],'','','分',
@@ -988,9 +991,18 @@ class StatusReportController extends Controller
                 });
 
                 //日期样式
-                $sheet->mergeCells('A2:X2');
+                $sheet->mergeCells('A2:K2');
+                $sheet->mergeCells('L2:X2');
                 $sheet->setHeight(2, 20);
                 $sheet->cells('A2', function($cells) {
+                    $cells->setFontFamily('Hei');
+                    $cells->setFontSize(14);
+                    $cells->setAlignment('left');
+                    $cells->setValignment('center');
+
+                });
+
+                $sheet->cells('B2', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(14);
                     $cells->setAlignment('right');
