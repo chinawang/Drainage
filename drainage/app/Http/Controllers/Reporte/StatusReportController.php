@@ -1004,7 +1004,7 @@ class StatusReportController extends Controller
 
                 $sheet->row(1, [$strMonth.'单机运行抽升情况报表']);
                 $sheet->row(2, [$today]);
-                $sheet->row(3, ['泵站名称','1号泵','','2号泵','','3号泵','4号泵','']);
+                $sheet->row(3, ['泵站名称','1号泵','','2号泵','','3号泵','','4号泵']);
                 $sheet->row(4, ['','运行(小时)','抽升量(万吨)','运行(小时)','抽升量(万吨)','运行(小时)','抽升量(万吨)','运行(小时)','抽升量(万吨)',]);
 
                 if (empty($excelData)) {
@@ -1048,6 +1048,14 @@ class StatusReportController extends Controller
                     $sheet->setHeight($i, 25);
                     $sheet->setHeight($i+1, 25);
 
+                    $sheet->cells('A'.($i+1), function($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(14);
+                        $cells->setAlignment('center');
+                        $cells->setValignment('center');
+
+                    });
+
                     $i++;
                     $i++;
                 }
@@ -1060,15 +1068,15 @@ class StatusReportController extends Controller
                 $sheet->setBorder('A3:I'.($i-2), 'thin');
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
-                    'A'     =>  20,
-                    'B'     =>  15,
-                    'C'     =>  15,
-                    'D'     =>  15,
-                    'E'     =>  12,
-                    'F'     =>  12,
-                    'G'     =>  12,
-                    'H'     =>  12,
-                    'I'     =>  12,
+                    'A'     =>  30,
+                    'B'     =>  20,
+                    'C'     =>  20,
+                    'D'     =>  20,
+                    'E'     =>  20,
+                    'F'     =>  20,
+                    'G'     =>  20,
+                    'H'     =>  20,
+                    'I'     =>  20,
                 ));
                 $sheet->cells('A4:I'.($i-2), function($cells) {
                     $cells->setFontSize(14);
@@ -1195,7 +1203,7 @@ class StatusReportController extends Controller
                 $today = date('Y-m-d');
 
                 $sheet->row(1, [$strMonth.'泵站月生产报表']);
-                $sheet->row(2, ['单位名称:市政工程管理处泵站管理所','','','','',$today]);
+                $sheet->row(2, ['单位名称: 市政工程管理处泵站管理所','','','','',$today]);
                 $sheet->row(3, ['序号','泵站名称','泵组运行时间(小时)','连前累计(小时)','泵组抽升量(万吨)','连前累计(万吨)','备注']);
 
                 if (empty($excelData)) {
@@ -1231,6 +1239,8 @@ class StatusReportController extends Controller
 
                 //表体样式
 
+                $sheet->mergeCells('A'.($i).':B'.($i));
+
                 $sheet->setBorder('A3:G'.($i), 'thin');
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
@@ -1249,8 +1259,6 @@ class StatusReportController extends Controller
                     $cells->setValignment('center');
 
                 });
-
-                $sheet->mergeCells('A'.($i).':B'.($i));
 
                 $sheet->mergeCells('A'.($i+1).':D'.($i+1));
                 $sheet->mergeCells('E'.($i+1).':G'.($i+1));
@@ -1289,9 +1297,13 @@ class StatusReportController extends Controller
                 $sheet->mergeCells('F2:G2');
                 $sheet->setHeight(2, 25);
                 $sheet->cells('A2', function($cells) {
-                    $cells->setFontFamily('Hei');
                     $cells->setFontSize(14);
                     $cells->setAlignment('left');
+                    $cells->setValignment('center');
+                });
+                $sheet->cells('F2', function($cells) {
+                    $cells->setFontSize(14);
+                    $cells->setAlignment('right');
                     $cells->setValignment('center');
                 });
             });
