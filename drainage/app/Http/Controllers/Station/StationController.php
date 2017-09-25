@@ -124,7 +124,9 @@ class StationController extends Controller
             $station['assignEmployees'] = $assignEmployees;
         }
 
-        $param = ['stations' => $stationPaginate];
+        $type = '全部';
+
+        $param = ['stations' => $stationPaginate,'selectType' => $type];
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站信息']);
@@ -158,7 +160,7 @@ class StationController extends Controller
             $station['assignEmployees'] = $assignEmployees;
         }
 
-        $param = ['stations' => $stationPaginate];
+        $param = ['stations' => $stationPaginate,'selectType' => $type,];
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站信息']);
