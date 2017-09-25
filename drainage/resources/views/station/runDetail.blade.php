@@ -160,7 +160,7 @@
                                     <div class="panel-heading">
                                         1号格栅除污机运行状态
                                     </div>
-                                    <div class="panel-body custom-panel-body" style="text-align: center">
+                                    <div class="panel-body custom-panel-body" style="text-align: center;min-width:400px;height:400px">
                                         <img class="status-icon" id="remover1Status" src="/img/status/checking.png">
                                     </div>
                                 </div>
@@ -172,7 +172,7 @@
                                     <div class="panel-heading">
                                         2号格栅除污机运行状态
                                     </div>
-                                    <div class="panel-body custom-panel-body" style="text-align: center">
+                                    <div class="panel-body custom-panel-body" style="text-align: center;min-width:400px;height:400px">
                                         <img class="status-icon" id="remover2Status" src="/img/status/checking.png">
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                                     <div class="panel-heading">
                                         绞笼运行状态
                                     </div>
-                                    <div class="panel-body custom-panel-body" style="text-align: center">
+                                    <div class="panel-body custom-panel-body" style="text-align: center;min-width:400px;height:400px">
                                         <img class="status-icon" id="augerStatus" src="/img/status/checking.png">
                                     </div>
                                 </div>
