@@ -918,30 +918,30 @@ class StatusReportController extends Controller
                 $sheet->setBorder('A3:X'.($rowMax+6), 'thin');
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
-                    'A'     =>  10,
-                    'B'     =>  10,
-                    'C'     =>  10,
-                    'D'     =>  10,
-                    'E'     =>  10,
-                    'F'     =>  10,
-                    'G'     =>  10,
-                    'H'     =>  10,
-                    'I'     =>  10,
-                    'J'     =>  10,
-                    'K'     =>  10,
-                    'L'     =>  10,
-                    'M'     =>  10,
-                    'N'     =>  10,
-                    'O'     =>  10,
-                    'P'     =>  10,
-                    'Q'     =>  10,
-                    'R'     =>  10,
-                    'S'     =>  10,
-                    'T'     =>  10,
-                    'U'     =>  10,
-                    'V'     =>  10,
-                    'W'     =>  10,
-                    'X'     =>  10
+                    'A'     =>  15,
+                    'B'     =>  15,
+                    'C'     =>  15,
+                    'D'     =>  15,
+                    'E'     =>  15,
+                    'F'     =>  15,
+                    'G'     =>  15,
+                    'H'     =>  15,
+                    'I'     =>  15,
+                    'J'     =>  15,
+                    'K'     =>  15,
+                    'L'     =>  15,
+                    'M'     =>  15,
+                    'N'     =>  15,
+                    'O'     =>  15,
+                    'P'     =>  15,
+                    'Q'     =>  15,
+                    'R'     =>  15,
+                    'S'     =>  15,
+                    'T'     =>  15,
+                    'U'     =>  15,
+                    'V'     =>  15,
+                    'W'     =>  15,
+                    'X'     =>  15
                 ));
                 $sheet->cells('A3:J'.($rowMax+7), function($cells) {
                     $cells->setFontSize(14);
@@ -964,11 +964,10 @@ class StatusReportController extends Controller
                 $sheet->mergeCells('T3:U3');
                 $sheet->mergeCells('V3:X3');
 
-                $sheet->setHeight(2, 30);
+                $sheet->setHeight(2, 60);
                 $sheet->cells('A3:X4', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(16);
-                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
                     $cells->setValignment('center');
 
@@ -980,7 +979,6 @@ class StatusReportController extends Controller
                 $sheet->cells('A1', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(22);
-                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
                     $cells->setValignment('center');
 
@@ -992,8 +990,7 @@ class StatusReportController extends Controller
                 $sheet->cells('A2', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(14);
-                    $cells->setFontWeight('bold');
-                    $cells->setAlignment('left');
+                    $cells->setAlignment('right');
                     $cells->setValignment('center');
 
                 });
