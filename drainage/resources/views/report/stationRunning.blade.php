@@ -32,14 +32,14 @@
                     {{--</div>--}}
                     <div class="panel-body custom-panel-body">
                         {{--<div class="row" style="margin-top: -10px">--}}
-                            {{--<ul class="nav nav-tabs">--}}
-                                {{--<li class=""><a href="/report/stationWater">泵站水位统计</a></li>--}}
-                                {{--<li class="active"><a href="/report/stationRunning">设备运行统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationStatus">设备启停统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationFailure">设备故障统计</a></li>--}}
-                                {{--<li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>--}}
+                        {{--<ul class="nav nav-tabs">--}}
+                        {{--<li class=""><a href="/report/stationWater">泵站水位统计</a></li>--}}
+                        {{--<li class="active"><a href="/report/stationRunning">设备运行统计</a></li>--}}
+                        {{--<li class=""><a href="/report/stationStatus">设备启停统计</a></li>--}}
+                        {{--<li class=""><a href="/report/stationFailure">设备故障统计</a></li>--}}
+                        {{--<li class=""><a href="/report/stationMaintenance">设备维修统计</a></li>--}}
 
-                            {{--</ul>--}}
+                        {{--</ul>--}}
                         {{--</div>--}}
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
                             <form class="form-horizontal" role="form" method="GET" action="/report/stationRunning"
@@ -125,7 +125,9 @@
                                         <th>2号泵电流</th>
                                         <th>3号泵电流</th>
                                         <th>4号泵电流</th>
-                                        <th>5号泵电流</th>
+                                        @if($stationSelect['station_number'] == '33')
+                                            <th>5号泵电流</th>
+                                        @endif
                                         <th>A相电压</th>
                                         <th>B相电压</th>
                                         <th>C相电压</th>
@@ -149,7 +151,9 @@
                                             <td>{{ $run->ib2 }}</td>
                                             <td>{{ $run->ib3 }}</td>
                                             <td>{{ $run->ib4 }}</td>
-                                            <td>{{ $run->ib5 }}</td>
+                                            @if($stationSelect['station_number'] == '33')
+                                                <td>{{ $run->ib5 }}</td>
+                                            @endif
                                             <td>{{ $run->uab }}</td>
                                             <td>{{ $run->ubc }}</td>
                                             <td>{{ $run->uca }}</td>
@@ -315,10 +319,14 @@
             }, {
                 name: '4号泵电流',
                 data: datas4
-            }, {
-                name: '5号泵电流',
-                data: datas5
             },
+                    @if($stationSelect['station_number'] == '33')
+                {
+                    name: '5号泵电流',
+                    data: datas5
+                },
+                @endif
+
 
             ]
         });
@@ -371,29 +379,29 @@
 
     <!--Loading-->
     {{--<script>--}}
-        {{--//获取浏览器页面可见高度和宽度--}}
-        {{--var _PageHeight = document.documentElement.clientHeight,--}}
-                {{--_PageWidth = document.documentElement.clientWidth;--}}
-        {{--//计算loading框距离顶部和左部的距离（loading框的宽度为215px，高度为61px）--}}
-        {{--var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,--}}
-                {{--_LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;--}}
-        {{--//在页面未加载完毕之前显示的loading Html自定义内容--}}
-        {{--var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background:#aaa;opacity:0.8;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: auto; height: 57px; line-height: 57px; padding-left: 50px; padding-right: 20px; background: #ffffff url(/img/loading.gif) no-repeat scroll 20px 20px; color: #696969; font-family:\'Microsoft YaHei\';box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);    border: 2px solid transparent;border-radius: 4px;">页面加载中，请等待...</div></div>';--}}
-        {{--//呈现loading效果--}}
-        {{--document.write(_LoadingHtml);--}}
-        {{--//window.onload = function () {--}}
-        {{--//  var loadingMask = document.getElementById('loadingDiv');--}}
-        {{--//  loadingMask.parentNode.removeChild(loadingMask);--}}
-        {{--//};--}}
-        {{--//监听加载状态改变--}}
-        {{--document.onreadystatechange = completeLoading;--}}
-        {{--//加载状态为complete时移除loading效果--}}
-        {{--function completeLoading() {--}}
-            {{--if (document.readyState == "complete") {--}}
-                {{--var loadingMask = document.getElementById('loadingDiv');--}}
-                {{--loadingMask.parentNode.removeChild(loadingMask);--}}
-            {{--}--}}
-        {{--}--}}
+    {{--//获取浏览器页面可见高度和宽度--}}
+    {{--var _PageHeight = document.documentElement.clientHeight,--}}
+    {{--_PageWidth = document.documentElement.clientWidth;--}}
+    {{--//计算loading框距离顶部和左部的距离（loading框的宽度为215px，高度为61px）--}}
+    {{--var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,--}}
+    {{--_LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;--}}
+    {{--//在页面未加载完毕之前显示的loading Html自定义内容--}}
+    {{--var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background:#aaa;opacity:0.8;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: auto; height: 57px; line-height: 57px; padding-left: 50px; padding-right: 20px; background: #ffffff url(/img/loading.gif) no-repeat scroll 20px 20px; color: #696969; font-family:\'Microsoft YaHei\';box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);    border: 2px solid transparent;border-radius: 4px;">页面加载中，请等待...</div></div>';--}}
+    {{--//呈现loading效果--}}
+    {{--document.write(_LoadingHtml);--}}
+    {{--//window.onload = function () {--}}
+    {{--//  var loadingMask = document.getElementById('loadingDiv');--}}
+    {{--//  loadingMask.parentNode.removeChild(loadingMask);--}}
+    {{--//};--}}
+    {{--//监听加载状态改变--}}
+    {{--document.onreadystatechange = completeLoading;--}}
+    {{--//加载状态为complete时移除loading效果--}}
+    {{--function completeLoading() {--}}
+    {{--if (document.readyState == "complete") {--}}
+    {{--var loadingMask = document.getElementById('loadingDiv');--}}
+    {{--loadingMask.parentNode.removeChild(loadingMask);--}}
+    {{--}--}}
+    {{--}--}}
     {{--</script>--}}
 @endsection
 
