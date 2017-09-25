@@ -121,7 +121,7 @@
     bottom: 20px;
     right: 10px;
     z-index: 100;">
-        <a onclick="toggleFullScreen();" class="icon-full"
+        <a onclick="toggleFullScreen();" class="btn"
            style="width: 40px;
     height: 40px;
     line-height: 40px;
