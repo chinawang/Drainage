@@ -99,14 +99,117 @@
             var infoWindow = new SimpleInfoWindow({offset: new AMap.Pixel(0, -40)});
 
                     @foreach ($stations as $station)
-            var marker = new SimpleMarker({
+
+            @if($station['type'] == '雨水')
+
+            var  marker = new SimpleMarker({
+                //使用内置的iconStyle
+                iconStyle: selectedIconStyle,
+
+                //图标文字
+                iconLabel: {
+                    //A,B,C.....
+                    innerHTML: '雨',
+                    style: {
+                        //颜色, #333, red等等，这里仅作示例，取iconStyle中首尾相对的颜色
+                        color: '#ffffff'
+                    }
+                },
+
+                //显示定位点
+                //showPositionPoint:true,
+
+                map: map,
+                position: [{{ $station['lng'] }},{{ $station['lat'] }}],
+
+                //Marker的label(见http://lbs.amap.com/api/javascript-api/reference/overlay/#Marker)
+                {{--label: {--}}
+                        {{--content: '{{ $station['station_number'] }}.{{ $station['name'] }}',--}}
+                        {{--offset: new AMap.Pixel(27, 25)--}}
+                        {{--}--}}
+                label: {
+                    content: '{{ $station['type'] }}',
+                    offset: new AMap.Pixel(27, 25)
+                }
+            });
+
+            marker.emit('mouseout', {target: marker});
+
+            marker.on('mouseout', function (e) {
+                e.target.setIconStyle(defaultIconStyle);
+            });
+
+            marker.emit('mouseover', {target: marker});
+
+            marker.on('mouseover', function (e) {
+                e.target.setIconStyle(hoverIconStyle);
+                infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}({{ $station['type'] }})</strong>');
+                var contentHtml = '<div class="row" style="width: 360px;margin: 10px 0;padding-top: 20px;">' +
+                        '<div class="col-md-3 col-md-offset-0" style="height: 60px;line-height: 60px">' +
+                        '<img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 32px;height: 32px;">' +
+                        '</div>' +
+                        '<div class="col-md-6 col-md-offset-0" style="margin-left: -5px">' +
+                        '<div style="font-size: 14px;color:#4a4a4a">已启动泵组: {{ $station['runPump'] }}组</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">未启动泵组: {{ $station['stopPump'] }}组</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: {{ $station['culvertWater'] }}米</div>' +
+                        '</div>' +
+                        '<div class="col-md-3 col-md-offset-0">' +
+                        '<a href="/station/runDetail/{{ $station['id'] }}" target="_blank" class="btn-link" style="font-size: 14px;height: 60px;line-height: 60px">运行详情</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row" style="width: 360px;margin: 10px 0;padding-top: 20px;">' +
+                        '<div class="col-md-12 col-md-offset-0">' +
+                        '<div class="panel panel-default custom-panel">' +
+                        '<div class="panel-body custom-panel-body">' +
+                        '<ul class="main-menu">' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/station/info/{{ $station['id'] }}" target="_blank" class="menu-item">' +
+                        '<span>泵站信息</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/equipment/search?station_id={{ $station['id'] }}" target="_blank" class="menu-item">' +
+                        '<span>设备信息</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/warning/warningDetail/{{ $station['id'] }}" target="_blank" class="menu-item">' +
+                        '<span>报警信息</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/report/stationStatusDay?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
+                        '<span>运行统计</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/report/stationRunning?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}&timeEnd={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
+                        '<span>电流统计</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/report/stationWater?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}&timeEnd={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
+                        '<span>水位统计</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '</ul>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                infoWindow.setInfoBody(contentHtml);
+                infoWindow.open(map, e.target.getPosition());
+            });
+
+            @elseif($station['type'] == '污水')
+            var  marker = new SimpleMarker({
                         //使用内置的iconStyle
                         iconStyle: defaultIconStyle,
 
                         //图标文字
                         iconLabel: {
                             //A,B,C.....
-                            innerHTML: '泵',
+                            innerHTML: '污',
                             style: {
                                 //颜色, #333, red等等，这里仅作示例，取iconStyle中首尾相对的颜色
                                 color: '#ffffff'
@@ -121,9 +224,9 @@
 
                         //Marker的label(见http://lbs.amap.com/api/javascript-api/reference/overlay/#Marker)
                         {{--label: {--}}
-                            {{--content: '{{ $station['station_number'] }}.{{ $station['name'] }}',--}}
-                            {{--offset: new AMap.Pixel(27, 25)--}}
-                        {{--}--}}
+                                {{--content: '{{ $station['station_number'] }}.{{ $station['name'] }}',--}}
+                                {{--offset: new AMap.Pixel(27, 25)--}}
+                                {{--}--}}
                         label: {
                             content: '{{ $station['type'] }}',
                             offset: new AMap.Pixel(27, 25)
@@ -198,6 +301,107 @@
                 infoWindow.open(map, e.target.getPosition());
             });
 
+            @else
+            var  marker = new SimpleMarker({
+                        //使用内置的iconStyle
+                        iconStyle: hoverIconStyle,
+
+                        //图标文字
+                        iconLabel: {
+                            //A,B,C.....
+                            innerHTML: '泵',
+                            style: {
+                                //颜色, #333, red等等，这里仅作示例，取iconStyle中首尾相对的颜色
+                                color: '#ffffff'
+                            }
+                        },
+
+                        //显示定位点
+                        //showPositionPoint:true,
+
+                        map: map,
+                        position: [{{ $station['lng'] }},{{ $station['lat'] }}],
+
+                        //Marker的label(见http://lbs.amap.com/api/javascript-api/reference/overlay/#Marker)
+                        {{--label: {--}}
+                                {{--content: '{{ $station['station_number'] }}.{{ $station['name'] }}',--}}
+                                {{--offset: new AMap.Pixel(27, 25)--}}
+                                {{--}--}}
+                        label: {
+                            content: '{{ $station['type'] }}',
+                            offset: new AMap.Pixel(27, 25)
+                        }
+                    });
+
+            marker.emit('mouseout', {target: marker});
+
+            marker.on('mouseout', function (e) {
+                e.target.setIconStyle(defaultIconStyle);
+            });
+
+            marker.emit('mouseover', {target: marker});
+
+            marker.on('mouseover', function (e) {
+                e.target.setIconStyle(hoverIconStyle);
+                infoWindow.setInfoTitle('<strong style="margin: 10px;">{{ $station['station_number'] }}.{{ $station['name'] }}({{ $station['type'] }})</strong>');
+                var contentHtml = '<div class="row" style="width: 360px;margin: 10px 0;padding-top: 20px;">' +
+                        '<div class="col-md-3 col-md-offset-0" style="height: 60px;line-height: 60px">' +
+                        '<img src="/img/map/dot_{{ $station['status'] }}.png" style="width: 32px;height: 32px;">' +
+                        '</div>' +
+                        '<div class="col-md-6 col-md-offset-0" style="margin-left: -5px">' +
+                        '<div style="font-size: 14px;color:#4a4a4a">已启动泵组: {{ $station['runPump'] }}组</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">未启动泵组: {{ $station['stopPump'] }}组</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: {{ $station['culvertWater'] }}米</div>' +
+                        '</div>' +
+                        '<div class="col-md-3 col-md-offset-0">' +
+                        '<a href="/station/runDetail/{{ $station['id'] }}" target="_blank" class="btn-link" style="font-size: 14px;height: 60px;line-height: 60px">运行详情</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row" style="width: 360px;margin: 10px 0;padding-top: 20px;">' +
+                        '<div class="col-md-12 col-md-offset-0">' +
+                        '<div class="panel panel-default custom-panel">' +
+                        '<div class="panel-body custom-panel-body">' +
+                        '<ul class="main-menu">' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/station/info/{{ $station['id'] }}" target="_blank" class="menu-item">' +
+                        '<span>泵站信息</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/equipment/search?station_id={{ $station['id'] }}" target="_blank" class="menu-item">' +
+                        '<span>设备信息</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/warning/warningDetail/{{ $station['id'] }}" target="_blank" class="menu-item">' +
+                        '<span>报警信息</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/report/stationStatusDay?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
+                        '<span>运行统计</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/report/stationRunning?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}&timeEnd={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
+                        '<span>电流统计</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style="font-size: 14px;height: 40px;line-height: 40px;width: 33.33%;">' +
+                        '<a href="/report/stationWater?station_id={{$station['id']}}&timeStart={{ date('Y-m-d') }}&timeEnd={{ date('Y-m-d') }}" target="_blank" class="menu-item">' +
+                        '<span>水位统计</span>' +
+                        '</a>' +
+                        '</li>' +
+                        '</ul>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                infoWindow.setInfoBody(contentHtml);
+                infoWindow.open(map, e.target.getPosition());
+            });
+            @endif
+
             @endforeach
 
         });
@@ -221,7 +425,7 @@
             });
         }
 
-        function setMapData(data){
+        function setMapData(data) {
             setInterval("getStations()", 10000);
         }
 
