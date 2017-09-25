@@ -181,7 +181,7 @@
                         '</li>' +
                         '<li>' +
                         '<a href="" class="menu-item">' +
-                        '<span>电流/电压统计</span>' +
+                        '<span>电流统计</span>' +
                         '</a>' +
                         '</li>' +
                         '<li>' +
