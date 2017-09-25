@@ -842,8 +842,8 @@ class StatusReportController extends Controller
                 $sheet->mergeCells('Q'.($rowMax+6).':S'.($rowMax+6));
                 $sheet->mergeCells('U'.($rowMax+6).':Y'.($rowMax+6));
 
-                $sheet->mergeCells('A'.($rowMax+7).':G'.($rowMax+7));
-                $sheet->mergeCells('H'.($rowMax+7).':O'.($rowMax+7));
+                $sheet->mergeCells('A'.($rowMax+7).':H'.($rowMax+7));
+                $sheet->mergeCells('I'.($rowMax+7).':O'.($rowMax+7));
 
                 $sheet->setBorder('A3:Y'.($rowMax+6), 'thin');
                 $sheet->setAutoSize(true);
@@ -851,7 +851,7 @@ class StatusReportController extends Controller
                     'A'     =>  10,
                     'B'     =>  15,
                     'C'     =>  15,
-                    'D'     =>  12,
+                    'D'     =>  15,
                     'E'     =>  12,
                     'F'     =>  12,
                     'G'     =>  12,
@@ -867,8 +867,8 @@ class StatusReportController extends Controller
                     'Q'     =>  12,
                     'R'     =>  12,
                     'S'     =>  12,
-                    'T'     =>  15,
-                    'U'     =>  12,
+                    'T'     =>  12,
+                    'U'     =>  15,
                     'V'     =>  12,
                     'W'     =>  12,
                     'X'     =>  12,
@@ -891,7 +891,7 @@ class StatusReportController extends Controller
                 $sheet->mergeCells('E3:H3');
                 $sheet->mergeCells('I3:L3');
                 $sheet->mergeCells('M3:P3');
-                $sheet->mergeCells('Q3:U3');
+                $sheet->mergeCells('Q3:T3');
 
                 $sheet->mergeCells('U3:V3');
                 $sheet->mergeCells('W3:Y3');
