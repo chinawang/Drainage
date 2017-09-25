@@ -154,7 +154,7 @@
                         '<a href="/station/runDetail/{{ $station['id'] }}" class="btn-link" style="font-size: 12px;height: 60px;line-height: 60px">运行详情</a>' +
                         '</div>' +
                         '</div>' +
-                        '<div class="row" style="width: 360px;margin: 10px 0;">' +
+                        '<div class="row" style="width: 360px;margin-top: 10px ;">' +
                         '<div class="col-md-12 col-md-offset-0">' +
                         '<div class="panel panel-default custom-panel">' +
                         '<div class="panel-body custom-panel-body">' +
