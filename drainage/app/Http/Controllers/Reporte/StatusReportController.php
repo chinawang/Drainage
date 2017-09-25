@@ -631,7 +631,7 @@ class StatusReportController extends Controller
                 $sheet->row(2, ['泵站: '.$station['name'],'','','','','','','','','','',$startTime]);
                 $sheet->row(3, ['总电流(A)','电压(V)','进水池位(M)','1号泵','','','','2号泵','','','','3号泵','','','','4号泵','','',''
                     ,'变压器','','总电度表度数(度)','','']);
-                $sheet->row(4, ['开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
+                $sheet->row(4, ['','','','开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
                     '开泵时分','停泵时分','运行(分)','电流(A)','开泵时分','停泵时分','运行(分)','电流(A)',
                     '环境温度(℃)','油温(℃)','有功读数','无功读数','功率读数']);
 
@@ -645,10 +645,6 @@ class StatusReportController extends Controller
                 $j = 5;
                 $k = 5;
                 $h = 5;
-                $rowTmp1 = [];
-                $rowTmp2 = [];
-                $rowTmp3 = [];
-                $rowTmp4 = [];
 
                 // 循环写入数据(1号泵)
                 foreach ($excelData['stationStatusList1'] as $rowData1){
@@ -750,192 +746,6 @@ class StatusReportController extends Controller
                     $h++;
                 }
 
-//                // 循环写入数据
-//                foreach ($excelData['stationStatusList1'] as $rowData1) {
-//
-//                    $row1 = [
-//                        substr($rowData1['timeStart'],10),
-//                        substr($rowData1['timeEnd'],10),
-//                        $rowData1['timeGap'],
-//                        $rowData1['current'],
-//                    ];
-//
-//                    $sheet->row($i, $row1);
-//
-//                    //行高
-//                    $sheet->setHeight($i, 25);
-//
-//                    $rowTmp1[$i] = $row1;
-//                    $rowTmp2[$i] = $row1;
-//                    $rowTmp3[$i] = $row1;
-//                    $rowTmp4[$i] = $row1;
-//
-//                    $i++;
-//                }
-//
-//                // 循环写入数据
-//                foreach ($excelData['stationStatusList2'] as $rowData2) {
-//
-//                    $dataColumn1 = '';
-//                    $dataColumn2 = '';
-//                    $dataColumn3 = '';
-//                    $dataColumn4 = '';
-//
-//                    if(!($i < $j)){
-//                        $dataColumn1 = $rowTmp1[$j];
-//                        $dataColumn2 = $rowTmp1[$j];
-//                        $dataColumn3 = $rowTmp1[$j];
-//                        $dataColumn4 = $rowTmp1[$j];
-//                    }
-//
-//                    $row2 = [
-//                        $dataColumn1,
-//                        $dataColumn2,
-//                        $dataColumn3,
-//                        $dataColumn4,
-//                        substr($rowData2['timeStart'],10),
-//                        substr($rowData2['timeEnd'],10),
-//                        $rowData2['timeGap'],
-//                        $rowData2['current'],
-//                    ];
-//
-//                    $sheet->row($j, $row2);
-//
-//                    //行高
-//                    $sheet->setHeight($j, 25);
-//
-//                    $rowTmp1[$j] = $row2;
-//                    $rowTmp2[$j] = $row2;
-//                    $rowTmp3[$j] = $row2;
-//                    $rowTmp4[$j] = $row2;
-//
-//                    $j++;
-//                }
-//
-//                // 循环写入数据
-//                foreach ($excelData['stationStatusList3'] as $rowData3) {
-//
-//                    $dataColumn1 = '';
-//                    $dataColumn2 = '';
-//                    $dataColumn3 = '';
-//                    $dataColumn4 = '';
-//
-//                    if(!($i < $k)){
-//                        $dataColumn1 = $rowTmp1[$k];
-//                        $dataColumn2 = $rowTmp1[$k];
-//                        $dataColumn3 = $rowTmp1[$k];
-//                        $dataColumn4 = $rowTmp1[$k];
-//                    }
-//
-//                    $dataColumn5 = '';
-//                    $dataColumn6 = '';
-//                    $dataColumn7 = '';
-//                    $dataColumn8 = '';
-//
-//                    if(!($j < $k)){
-//                        $dataColumn5 = $rowTmp2[$k];
-//                        $dataColumn6 = $rowTmp2[$k];
-//                        $dataColumn7 = $rowTmp2[$k];
-//                        $dataColumn8 = $rowTmp2[$k];
-//                    }
-//
-//                    $row3 = [
-//                        $dataColumn1,
-//                        $dataColumn2,
-//                        $dataColumn3,
-//                        $dataColumn4,
-//                        $dataColumn5,
-//                        $dataColumn6,
-//                        $dataColumn7,
-//                        $dataColumn8,
-//                        substr($rowData3['timeStart'],10),
-//                        substr($rowData3['timeEnd'],10),
-//                        $rowData3['timeGap'],
-//                        $rowData3['current'],
-//                    ];
-//
-//                    $sheet->row($k, $row3);
-//
-//                    //行高
-//                    $sheet->setHeight($k, 25);
-//                    $rowTmp1[$k] = $row3;
-//                    $rowTmp2[$k] = $row3;
-//                    $rowTmp3[$k] = $row3;
-//                    $rowTmp4[$k] = $row3;
-//
-//                    $k++;
-//                }
-//
-//                // 循环写入数据
-//                foreach ($excelData['stationStatusList4'] as $rowData4) {
-//
-//                    $dataColumn1 = '';
-//                    $dataColumn2 = '';
-//                    $dataColumn3 = '';
-//                    $dataColumn4 = '';
-//
-//                    if(!($i < $h)){
-//                        $dataColumn1 = $rowTmp1[$h];
-//                        $dataColumn2 = $rowTmp1[$h];
-//                        $dataColumn3 = $rowTmp1[$h];
-//                        $dataColumn4 = $rowTmp1[$h];
-//                    }
-//
-//                    $dataColumn5 = '';
-//                    $dataColumn6 = '';
-//                    $dataColumn7 = '';
-//                    $dataColumn8 = '';
-//
-//                    if(!($j < $h)){
-//                        $dataColumn5 = $rowTmp2[$h];
-//                        $dataColumn6 = $rowTmp2[$h];
-//                        $dataColumn7 = $rowTmp2[$h];
-//                        $dataColumn8 = $rowTmp2[$h];
-//                    }
-//
-//                    $dataColumn9 = '';
-//                    $dataColumn10 = '';
-//                    $dataColumn11 = '';
-//                    $dataColumn12 = '';
-//
-//                    if(!($k < $h)){
-//                        $dataColumn9 = $rowTmp3[$h];
-//                        $dataColumn10 = $rowTmp3[$h];
-//                        $dataColumn11 = $rowTmp3[$h];
-//                        $dataColumn12 = $rowTmp3[$h];
-//                    }
-//
-//                    $row4 = [
-//                        $dataColumn1,
-//                        $dataColumn2,
-//                        $dataColumn3,
-//                        $dataColumn4,
-//                        $dataColumn5,
-//                        $dataColumn6,
-//                        $dataColumn7,
-//                        $dataColumn8,
-//                        $dataColumn9,
-//                        $dataColumn10,
-//                        $dataColumn11,
-//                        $dataColumn12,
-//                        substr($rowData4['timeStart'],10),
-//                        substr($rowData4['timeEnd'],10),
-//                        $rowData4['timeGap'],
-//                        $rowData4['current'],
-//                    ];
-//
-//                    $sheet->row($h, $row4);
-//
-//                    //行高
-//                    $sheet->setHeight($h, 25);
-//                    $rowTmp1[$h] = $row4;
-//                    $rowTmp2[$h] = $row4;
-//                    $rowTmp3[$h] = $row4;
-//                    $rowTmp4[$h] = $row4;
-//
-//                    $h++;
-//                }
-
                 $rowMax = $this->get_max($i,$j,$k,$h);
 
                 //运行合计
@@ -1033,27 +843,27 @@ class StatusReportController extends Controller
                     'A'     =>  15,
                     'B'     =>  15,
                     'C'     =>  15,
-                    'D'     =>  10,
-                    'E'     =>  10,
-                    'F'     =>  10,
-                    'G'     =>  10,
-                    'H'     =>  10,
-                    'I'     =>  10,
-                    'J'     =>  10,
-                    'K'     =>  10,
-                    'L'     =>  10,
-                    'M'     =>  10,
-                    'N'     =>  10,
-                    'O'     =>  10,
-                    'P'     =>  10,
-                    'Q'     =>  10,
-                    'R'     =>  10,
-                    'S'     =>  10,
-                    'T'     =>  10,
-                    'U'     =>  10,
-                    'V'     =>  10,
-                    'W'     =>  10,
-                    'X'     =>  10
+                    'D'     =>  12,
+                    'E'     =>  12,
+                    'F'     =>  12,
+                    'G'     =>  12,
+                    'H'     =>  12,
+                    'I'     =>  12,
+                    'J'     =>  12,
+                    'K'     =>  12,
+                    'L'     =>  12,
+                    'M'     =>  12,
+                    'N'     =>  12,
+                    'O'     =>  12,
+                    'P'     =>  12,
+                    'Q'     =>  12,
+                    'R'     =>  12,
+                    'S'     =>  12,
+                    'T'     =>  12,
+                    'U'     =>  12,
+                    'V'     =>  12,
+                    'W'     =>  12,
+                    'X'     =>  12
                 ));
                 $sheet->cells('A3:X'.($rowMax+7), function($cells) {
                     $cells->setFontSize(14);
