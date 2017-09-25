@@ -81,7 +81,7 @@ class ReportController extends Controller
         $endTime = Input::get('timeEnd', '');
 
         if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-01");
+            $startTime = date("Y-m-d");
             $endTime = date("Y-m-d");
         }
 
@@ -118,7 +118,7 @@ class ReportController extends Controller
         $endTime = Input::get('timeEnd', '');
 
         if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-01");
+            $startTime = date("Y-m-d");
             $endTime = date("Y-m-d");
         }
 
@@ -153,7 +153,7 @@ class ReportController extends Controller
         $endTime = Input::get('timeEnd', '');
 
         if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-01");
+            $startTime = date("Y-m-d");
             $endTime = date("Y-m-d");
         }
 
@@ -188,7 +188,7 @@ class ReportController extends Controller
         $endTime = Input::get('timeEnd', '');
 
         if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-01");
+            $startTime = date("Y-m-d");
             $endTime = date("Y-m-d");
         }
 
@@ -240,7 +240,7 @@ class ReportController extends Controller
         $endTime = Input::get('timeEnd', '');
 
         if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-01");
+            $startTime = date("Y-m-d");
             $endTime = date("Y-m-d");
         }
 
