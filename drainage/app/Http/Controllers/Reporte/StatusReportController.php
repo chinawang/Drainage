@@ -767,7 +767,7 @@ class StatusReportController extends Controller
 
                 $sheet->row($rowMax+6, ['连前累计总抽升量','','',$excelData['totalFluxBefore'],'','','万吨','签名','','黑','','','','','','','','','','','','','','']);
 
-                $sheet->row($rowMax+7, [$rowMax,'','','','','','','校核:']);
+                $sheet->row($rowMax+7, ['记录:','','','','','','','校核:']);
 
 
 
@@ -859,7 +859,7 @@ class StatusReportController extends Controller
                     'Q'     =>  12,
                     'R'     =>  12,
                     'S'     =>  12,
-                    'T'     =>  12,
+                    'T'     =>  15,
                     'U'     =>  12,
                     'V'     =>  12,
                     'W'     =>  12,
