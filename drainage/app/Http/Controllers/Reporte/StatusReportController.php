@@ -835,6 +835,7 @@ class StatusReportController extends Controller
                 }
 
                 $rowMax = $this->get_max($i,$j,$k,$h);
+                $rowMax = 20;
 
                 //运行合计
                 $sheet->row($rowMax, ['运行合计','','',$excelData['totalTimeDay1'],'','','分',$excelData['totalTimeDay2'],'','','分',
@@ -855,7 +856,7 @@ class StatusReportController extends Controller
 
                 $sheet->row($rowMax+6, ['连前累计总抽升量','','',$excelData['totalFluxBefore'],'','','万吨','签名','','黑','','','','','','','','','','','','','','']);
 
-                $sheet->row($rowMax+7, ['记录:','校核:']);
+                $sheet->row($rowMax+7, ['记录:','','','','','','','校核:']);
 
 
 
@@ -944,7 +945,7 @@ class StatusReportController extends Controller
                     'W'     =>  15,
                     'X'     =>  15
                 ));
-                $sheet->cells('A3:J'.($rowMax+7), function($cells) {
+                $sheet->cells('A3:X'.($rowMax+7), function($cells) {
                     $cells->setFontSize(14);
                     $cells->setFontWeight('normal');
                     $cells->setAlignment('center');
