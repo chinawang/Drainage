@@ -225,6 +225,9 @@
         });
 
         var chart = new Highcharts.Chart('waterContainer', {
+            chart: {
+                type: 'areaspline'
+            },
             title: {
                 text: '泵站水位趋势',
                 x: -20
