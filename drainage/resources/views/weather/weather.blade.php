@@ -35,7 +35,7 @@
                             <div class="col-md-12 col-md-offset-0">
                                 <div class="text-city">
                                     郑州
-                                    <a href="/weather/view" class="btn"  style="float: right"><i class="icon-refresh"></i>刷新</a>
+                                    <a href="/weather/view" class="btn-link"  style="float: right"><span class="glyphicon glyphicon-refresh"></span>刷新</a>
                                 </div>
                                 <div class="text-updatetime">
                                     {{ $nowWeather['last_update'] }}发布

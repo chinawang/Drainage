@@ -29,7 +29,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         设备实时报警状态列表
-                        <a href="/warning/warningList" class="btn-link">刷新</a>
+                        <a href="/warning/warningList" class="btn-link"><span class="glyphicon glyphicon-refresh"></span>刷新</a>
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($stations[0]))
