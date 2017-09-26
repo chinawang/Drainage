@@ -10,7 +10,17 @@
 
 @section('content')
     <div class="container">
-        <div class="row" style="margin-top: 180px">
+        <div class="row" style="margin-top: 160px" >
+            <div class="col-md-4 col-md-offset-4">
+                <img src="/img/header/logo.png" alt="logo">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-md-4 col-md-offset-4">
+                <span>{{ config('app.name', 'Laravel') }}</span>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 60px">
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">登录</div>--}}

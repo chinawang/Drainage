@@ -8,8 +8,9 @@ body {
 
 #app {
     background: rgba(255, 255, 255, 0.15);
-    width:100vh;
-    height:100vh;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .navbar-default {
@@ -33,7 +34,7 @@ body {
     float: right;
 }
 
-.panel-heading .btn-link{
+.panel-heading .btn-link {
     float: right;
 }
 
