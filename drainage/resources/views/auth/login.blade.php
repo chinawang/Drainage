@@ -22,11 +22,9 @@
                                 {{--<label for="name" class="col-md-4 control-label">账号</label>--}}
 
                                 <div class="col-md-12">
-                                    <div class="input-group" >
-                                        <span class="glyphicon glyphicon-user"></span>
-                                        <input id="name" type="name" class="form-control" name="name"
-                                                                                       value="{{ old('name') }}" required autofocus placeholder="登录账号">
-                                    </div>
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <input id="name" type="name" class="form-control" name="name"
+                                           value="{{ old('name') }}" required autofocus placeholder="登录账号">
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -39,11 +37,10 @@
                                 {{--<label for="password" class="col-md-4 control-label">密码</label>--}}
 
                                 <div class="col-md-12">
-                                    <div class="input-group">
-                                        <span class="glyphicon glyphicon-lock"></span>
-                                        <input id="password" type="password" class="form-control" name="password"
-                                               required placeholder="登录密码">
-                                    </div>
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                    <input id="password" type="password" class="form-control" name="password"
+                                           required placeholder="登录密码">
+
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -54,19 +51,20 @@
                             </div>
 
                             {{--<div class="form-group">--}}
-                                {{--<div class="col-md-6 col-md-offset-4">--}}
-                                    {{--<div class="checkbox">--}}
-                                        {{--<label>--}}
-                                            {{--<input type="checkbox"--}}
-                                                   {{--name="remember" {{ old('remember') ? 'checked' : '' }}> 记住我--}}
-                                        {{--</label>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
+                            {{--<div class="col-md-6 col-md-offset-4">--}}
+                            {{--<div class="checkbox">--}}
+                            {{--<label>--}}
+                            {{--<input type="checkbox"--}}
+                            {{--name="remember" {{ old('remember') ? 'checked' : '' }}> 记住我--}}
+                            {{--</label>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
                             {{--</div>--}}
 
                             <div class="form-group">
                                 <div class="col-md-12 col-md-offset-0">
-                                    <button id="login" type="submit" class="btn btn-primary btn-custom" style="padding: 10px 106px;"
+                                    <button id="login" type="submit" class="btn btn-primary btn-custom"
+                                            style="padding: 10px 106px;"
                                             data-loading-text="加载中..." autocomplete="off">
                                         登录
                                     </button>
@@ -89,7 +87,9 @@
         $('.btn').on('click', function () {
             var btn = $(this).button('loading');
             // business logic...
-            setTimeout(function () { btn.button('reset'); },2000);
+            setTimeout(function () {
+                btn.button('reset');
+            }, 2000);
         })
     </script>
 @endsection
