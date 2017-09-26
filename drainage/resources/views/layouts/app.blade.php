@@ -20,7 +20,8 @@
     {{--<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">--}}
     {{--<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">--}}
     {{--<link href="http://cdn.bootcss.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">--}}
-    <link href="{{ asset('css/bootstrap-flatly.min.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/bootstrap-flatly.min.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('css/bootstrap-cerulean.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
@@ -120,7 +121,7 @@
     position: fixed;
     bottom: 20px;
     right: 10px;
-    z-index: 100;" >
+    z-index: 100;" data-toggle="tooltip" data-placement="left" title="" data-original-title="全屏">
         <a onclick="toggleFullScreen();" 
            style="width: 40px;
     height: 40px;
@@ -128,7 +129,7 @@
     text-align: center;
     display: inline-block;
     background-color: #fafafa;
-    margin-bottom: 2px;cursor: pointer"  data-toggle="tooltip" data-placement="left" title="" data-original-title="全屏">
+    margin-bottom: 2px;cursor: pointer" >
             <span class="glyphicon glyphicon-fullscreen" style="color: #cccccc"></span>
         </a>
     </div>
