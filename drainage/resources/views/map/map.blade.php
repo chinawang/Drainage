@@ -90,7 +90,7 @@
 
         var darkIconStyle = 'darkblue', //深色图标样式
                 lightIconStyle = 'blue', //浅色图标样式
-                hoverIconStyle = 'lightblue' //鼠标hover的图标样式
+                hoverIconStyle = 'green' //鼠标hover的图标样式
                 ;
 
         //加载SimpleMarker
@@ -105,6 +105,8 @@
             var  marker = new SimpleMarker({
                 //使用内置的iconStyle
                 iconStyle: lightIconStyle,
+                        //图标主题
+                        iconTheme: 'fresh',
 
                 //图标文字
                 iconLabel: {
@@ -202,6 +204,8 @@
             var  marker = new SimpleMarker({
                         //使用内置的iconStyle
                         iconStyle: darkIconStyle,
+                        //图标主题
+                        iconTheme: 'fresh',
 
                         //图标文字
                         iconLabel: {
@@ -299,6 +303,8 @@
             var  marker = new SimpleMarker({
                         //使用内置的iconStyle
                         iconStyle: lightIconStyle,
+                        //图标主题
+                        iconTheme: 'fresh',
 
                         //图标文字
                         iconLabel: {
