@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row" style="margin-top: 160px" >
+        <div class="row" style="margin-top: 120px" >
             <div class="col-md-4 col-md-offset-4">
                 <img src="/img/header/logo.png" alt="logo" class="logo">
             </div>
