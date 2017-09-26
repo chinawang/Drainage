@@ -297,7 +297,7 @@ class ReportController extends Controller
 //            SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From `stationRT_1`, (Select (@rowNum :=0) ) b order by `Time` asc) as a where mod(a.rowNo, 60) = 1
 
             $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 60) = 1')
-                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                ;
 
         }
         else
