@@ -10,8 +10,8 @@
 
 @section('content')
     <div class="container">
-        <div class="row" style="margin-top: 120px">
-            <div class="col-md-6 col-md-offset-3">
+        <div class="row" style="margin-top: 180px">
+            <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">登录</div>--}}
                     <div class="panel-body">
