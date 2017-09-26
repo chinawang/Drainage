@@ -22,7 +22,7 @@
                                 {{--<label for="name" class="col-md-4 control-label">账号</label>--}}
 
                                 <div class="col-md-12">
-                                    <div class="input-group col-md-12 col-md-offset-0" >
+                                    <div class="input-group" >
                                         <span class="glyphicon glyphicon-user"></span>
                                         <input id="name" type="name" class="form-control" name="name"
                                                                                        value="{{ old('name') }}" required autofocus placeholder="登录账号">
@@ -39,7 +39,7 @@
                                 {{--<label for="password" class="col-md-4 control-label">密码</label>--}}
 
                                 <div class="col-md-12">
-                                    <div class="input-group col-md-12 col-md-offset-0">
+                                    <div class="input-group">
                                         <span class="glyphicon glyphicon-lock"></span>
                                         <input id="password" type="password" class="form-control" name="password"
                                                required placeholder="登录密码">
