@@ -88,7 +88,7 @@
     position: fixed;
     bottom: 20px;
     right: 10px;
-    z-index: 100;">
+    z-index: 100;" data-toggle="tooltip" data-placement="left" title="" data-original-title="全屏">
         <a onclick="toggleFullScreen();" 
            style="width: 40px;
     height: 40px;
@@ -96,7 +96,7 @@
     text-align: center;
     display: inline-block;
     background-color: #fafafa;
-    margin-bottom: 2px;cursor: pointer" data-toggle="tooltip" data-placement="left" title="" data-original-title="全屏">
+    margin-bottom: 2px;cursor: pointer" >
             <span class="glyphicon glyphicon-fullscreen" style="color: #cccccc"></span>
         </a>
     </div>
