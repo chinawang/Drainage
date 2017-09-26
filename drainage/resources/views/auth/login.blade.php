@@ -11,7 +11,7 @@
 @section('content')
     <div class="container">
         <div class="row" style="margin-top: 120px">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">登录</div>--}}
                     <div class="panel-body">
@@ -21,7 +21,7 @@
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 {{--<label for="name" class="col-md-4 control-label">账号</label>--}}
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="glyphicon glyphicon-user"></span>
                                         <input id="name" type="name" class="form-control" name="name"
@@ -38,7 +38,7 @@
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 {{--<label for="password" class="col-md-4 control-label">密码</label>--}}
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="glyphicon glyphicon-lock"></span>
                                         <input id="password" type="password" class="form-control" name="password"
@@ -53,19 +53,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"
-                                                   name="remember" {{ old('remember') ? 'checked' : '' }}> 记住我
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--<div class="col-md-6 col-md-offset-4">--}}
+                                    {{--<div class="checkbox">--}}
+                                        {{--<label>--}}
+                                            {{--<input type="checkbox"--}}
+                                                   {{--name="remember" {{ old('remember') ? 'checked' : '' }}> 记住我--}}
+                                        {{--</label>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
+                                <div class="col-md-12 col-md-offset-0">
                                     <button id="login" type="submit" class="btn btn-primary btn-custom" style="padding: 10px 106px;"
                                             data-loading-text="加载中..." autocomplete="off">
                                         登录
