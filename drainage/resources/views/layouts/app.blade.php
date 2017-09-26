@@ -128,7 +128,7 @@
     text-align: center;
     display: inline-block;
     background-color: #fafafa;
-    margin-bottom: 2px;cursor: pointer"  title="全屏">
+    margin-bottom: 2px;cursor: pointer"  data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom">
             <span class="glyphicon glyphicon-fullscreen" style="color: #cccccc"></span>
         </a>
     </div>
