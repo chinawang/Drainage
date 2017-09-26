@@ -27,7 +27,7 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         泵站工作状态列表
-                        <a href="/station/runList" class="btn"><i class="icon-refresh"></i>刷新</a>
+                        <a href="/station/runList" class="btn"><span class="glyphicon glyphicon-refresh"></span>刷新</a>
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($stations[0]))
