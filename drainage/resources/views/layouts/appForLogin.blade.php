@@ -96,7 +96,7 @@
     text-align: center;
     display: inline-block;
     background-color: #fafafa;
-    margin-bottom: 2px;cursor: pointer" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="全屏">
+    margin-bottom: 2px;cursor: pointer" data-toggle="tooltip" data-placement="left" title="" data-original-title="全屏">
             <span class="glyphicon glyphicon-fullscreen" style="color: #cccccc"></span>
         </a>
     </div>
@@ -124,6 +124,10 @@
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <script src="{{ asset('js/select2.full.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+
+<script>
+    $("[data-toggle='tooltip']").tooltip();
+</script>
 
 <script type="text/javascript">
 
