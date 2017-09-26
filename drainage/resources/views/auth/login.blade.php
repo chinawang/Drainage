@@ -21,10 +21,10 @@
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 {{--<label for="name" class="col-md-4 control-label">账号</label>--}}
 
-                                <div class="col-md-12">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    <input id="name" type="name" class="form-control" name="name"
-                                           value="{{ old('name') }}" required autofocus placeholder="登录账号">
+                                <div class="col-md-9 col-md-offset-2">
+                                    <span class="glyphicon glyphicon-user" style="position: absolute;margin: 12px;font-size: 18px;"></span>
+                                    <input id="name" type="name" class="form-control" name="name" style="padding-left: 40px"
+                                           value="{{ old('name') }}" required autofocus placeholder="账号">
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -36,10 +36,10 @@
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 {{--<label for="password" class="col-md-4 control-label">密码</label>--}}
 
-                                <div class="col-md-12">
-                                    <span class="glyphicon glyphicon-lock"></span>
-                                    <input id="password" type="password" class="form-control" name="password"
-                                           required placeholder="登录密码">
+                                <div class="col-md-9 col-md-offset-2">
+                                    <span class="glyphicon glyphicon-lock" style="position: absolute;margin: 12px;font-size: 18px;"></span>
+                                    <input id="password" type="password" class="form-control" name="password" style="padding-left: 40px"
+                                           required placeholder="密码">
 
 
                                     @if ($errors->has('password'))
@@ -62,9 +62,9 @@
                             {{--</div>--}}
 
                             <div class="form-group">
-                                <div class="col-md-12 col-md-offset-0">
+                                <div class="col-md-9 col-md-offset-2">
                                     <button id="login" type="submit" class="btn btn-primary btn-custom"
-                                            style="padding: 10px 106px;"
+                                            style="padding: 10px 100px;"
                                             data-loading-text="加载中..." autocomplete="off">
                                         登录
                                     </button>
