@@ -291,13 +291,8 @@ class ReportController extends Controller
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-//            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
-//                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
-
-//            SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From `stationRT_1`, (Select (@rowNum :=0) ) b order by `Time` asc) as a where mod(a.rowNo, 60) = 1
-
-            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 60) = 1')
-                ;
+            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
 
         }
         else
@@ -435,14 +430,21 @@ class ReportController extends Controller
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
-                ->get();
+//            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+//                ->get();
+            //            SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From `stationRT_1`, (Select (@rowNum :=0) ) b order by `Time` asc) as a where mod(a.rowNo, 60) = 1
+
+            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 60) = 1',[$searchStartTime,$searchEndTime])
+                ;
 
         }
         else
         {
-            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
-                ->get();
+//            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+//                ->get();
+
+            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 60) = 1')
+            ;
         }
 
         return response()->json(array('stationRTHistory'=> $stationRTList), 200);

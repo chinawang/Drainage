@@ -161,9 +161,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                {{--<div class="table-pagination">--}}
-                                    {{--{!! $runList->appends(['station_id' => $stationSelect['id'],'timeStart' => $startTime,'timeEnd' => $endTime])->render() !!}--}}
-                                {{--</div>--}}
+                                <div class="table-pagination">
+                                    {!! $runList->appends(['station_id' => $stationSelect['id'],'timeStart' => $startTime,'timeEnd' => $endTime])->render() !!}
+                                </div>
                             @else
                                 <div class="well" style="text-align: center; padding: 100px;">
                                     暂无内容
