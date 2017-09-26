@@ -1108,6 +1108,7 @@ class StatusReportController extends Controller
                 //标题样式
                 $sheet->mergeCells('A1:I1');
                 $sheet->setHeight(1, 60);
+                $sheet->setHeight(2, 25);
                 $sheet->cells('A1', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(22);
@@ -1225,7 +1226,7 @@ class StatusReportController extends Controller
                 }
 
                 $sheet->row($i, ['合计:','',$excelData['totalTimeDayAll'],$excelData['totalTimeBeforeAll'],$excelData['totalFluxDayAll'],$excelData['totalFluxBeforeAll']]);
-//行高
+                //行高
                 $sheet->setHeight($i, 25);
 
                 $sheet->row($i+1, ['主管:','','','','制表:']);
@@ -1278,6 +1279,7 @@ class StatusReportController extends Controller
                 //标题样式
                 $sheet->mergeCells('A1:G1');
                 $sheet->setHeight(1, 60);
+                $sheet->setHeight(2, 25);
                 $sheet->cells('A1', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(22);
