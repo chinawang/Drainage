@@ -277,9 +277,6 @@
         });
 
         var chart1 = new Highcharts.Chart('currentContainer', {
-            chart: {
-                type: 'areaspline'
-            },
             title: {
                 text: '',
                 x: -20
@@ -335,9 +332,6 @@
         });
 
         var chart2 = new Highcharts.Chart('voltageContainer', {
-            chart: {
-                type: 'areaspline'
-            },
             title: {
                 text: '',
                 x: -20
