@@ -1225,6 +1225,8 @@ class StatusReportController extends Controller
                 }
 
                 $sheet->row($i, ['合计:','',$excelData['totalTimeDayAll'],$excelData['totalTimeBeforeAll'],$excelData['totalFluxDayAll'],$excelData['totalFluxBeforeAll']]);
+//行高
+                $sheet->setHeight($i, 25);
 
                 $sheet->row($i+1, ['主管:','','','','制表:']);
 
