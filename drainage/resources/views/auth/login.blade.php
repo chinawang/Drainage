@@ -74,7 +74,7 @@
                             <div class="form-group" style="margin-top: 40px;margin-bottom: 40px">
                                 <div class="col-md-10 col-md-offset-1">
                                     <button id="login" type="submit" class="btn btn-primary btn-custom"
-                                            style="width: 100%;border-radius: 50px"
+                                            style="width: 100%;border-radius: 50px;box-shadow: 0px 6px 20px 0px rgba(44, 62, 80, 0.38);"
                                             data-loading-text="加载中..." autocomplete="off">
                                         登录
                                     </button>
