@@ -81,14 +81,14 @@
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">登录</a></li>
+                        <li><a href="{{ route('login') }}" class="navbar-btn">登录</a></li>
                         {{--<li><a href="{{ route('register') }}">注册</a></li>--}}
                     @else
                         {{--<li class="back-to-home"><a href="{{ url('/') }}">返回首页</a></li>--}}
 
                         <li class="sayhello"><span>你好,</span></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            <a href="#" class="dropdown-toggle navbar-btn" data-toggle="dropdown" role="button"
                                aria-expanded="false">
                                 {{ Auth::user()->realname }} <span class="caret"></span>
                             </a>
