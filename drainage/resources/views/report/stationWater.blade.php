@@ -81,6 +81,7 @@
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-4">
                                                 <button type="submit" class="btn btn-primary btn-custom">
+                                                    <span class="glyphicon glyphicon-search"></span>
                                                     查询
                                                 </button>
                                             </div>

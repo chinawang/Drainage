@@ -32,7 +32,9 @@
                             </div>
                             @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-add'))
                                 <div class="col-md-6 col-btn">
-                                    <a href="/failure/add" class="btn btn-primary btn-sm">故障报修</a>
+                                    <a href="/failure/add" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        故障报修</a>
                                 </div>
                             @endif
                         </div>

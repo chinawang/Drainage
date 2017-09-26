@@ -34,7 +34,9 @@
                             </div>
                             @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-add'))
                                 <div class="col-md-6 col-btn">
-                                    <a href="/equipment/add" class="btn btn-primary btn-sm">添加设备</a>
+                                    <a href="/equipment/add" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        添加设备</a>
                                 </div>
                             @endif
                         </div>
@@ -65,6 +67,7 @@
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-4">
                                             <button type="submit" class="btn btn-primary ">
+                                                <span class="glyphicon glyphicon-search"></span>
                                                 查询
                                             </button>
                                         </div>
@@ -135,7 +138,9 @@
                                 {!! $equipments->appends(['station_id' => $stationSelect['id']])->render() !!}
                             </div>
                             <div class="col-md-6 col-btn">
-                                <a href="/equipment/export" class="btn btn-default btn-sm">导出Excel</a>
+                                <a href="/equipment/export" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-export"></span>
+                                    导出Excel</a>
                             </div>
                         @else
                             <div class="well" style="text-align: center; padding: 100px;">

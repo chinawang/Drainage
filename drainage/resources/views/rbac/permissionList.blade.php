@@ -34,7 +34,9 @@
                             </div>
                             @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'action-add'))
                                 <div class="col-md-6 col-btn">
-                                    <a href="/permission/add" class="btn btn-primary btn-sm">添加权限</a>
+                                    <a href="/permission/add" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        添加权限</a>
                                 </div>
                             @endif
                         </div>

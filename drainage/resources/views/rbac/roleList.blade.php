@@ -34,7 +34,9 @@
                             </div>
                             @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'role-add'))
                                 <div class="col-md-6 col-btn">
-                                    <a href="/role/add" class="btn btn-primary btn-sm">添加角色</a>
+                                    <a href="/role/add" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        添加角色</a>
                                 </div>
                             @endif
                         </div>

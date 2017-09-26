@@ -95,7 +95,10 @@
                                     @endif
                                 </div>
                                 <div>
-                                    <a href="javascript:geocoder();" class="btn btn-primary btn-sm">搜索坐标</a>
+                                    <a href="javascript:geocoder();" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-map-marker"></span>
+                                        搜索坐标
+                                    </a>
                                 </div>
                             </div>
 
@@ -126,6 +129,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary btn-custom">
+                                        <span class="glyphicon glyphicon-ok-sign"></span>
                                         保存
                                     </button>
                                 </div>

@@ -34,7 +34,9 @@
                             </div>
                             @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'pump-add'))
                                 <div class="col-md-6 col-btn">
-                                    <a href="/pump/add" class="btn btn-primary btn-sm">添加泵组抽水量</a>
+                                    <a href="/pump/add" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        添加泵组抽水量</a>
                                 </div>
                             @endif
                         </div>

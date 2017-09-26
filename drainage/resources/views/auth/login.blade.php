@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appForLogin')
 
 @section('stylesheet')
     <link href="{{ asset('css/common/login.css') }}" rel="stylesheet">
@@ -13,18 +13,20 @@
         <div class="row" style="margin-top: 100px">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default custom-panel">
-                    <div class="panel-heading">登录</div>
+                    {{--<div class="panel-heading">登录</div>--}}
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">账号</label>
+                                {{--<label for="name" class="col-md-4 control-label">账号</label>--}}
 
                                 <div class="col-md-6">
-                                    <input id="name" type="name" class="form-control" name="name"
-                                           value="{{ old('name') }}" required autofocus placeholder="请输入登录账号">
-
+                                    <div class="input-group">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <input id="name" type="name" class="form-control" name="name"
+                                                                                       value="{{ old('name') }}" required autofocus placeholder="登录账号">
+                                    </div>
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -34,11 +36,14 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">密码</label>
+                                {{--<label for="password" class="col-md-4 control-label">密码</label>--}}
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password"
-                                           required placeholder="请输入密码">
+                                    <div class="input-group">
+                                        <span class="glyphicon glyphicon-lock"></span>
+                                        <input id="password" type="password" class="form-control" name="password"
+                                               required placeholder="登录密码">
+                                    </div>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -61,7 +66,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
-                                    <button id="login" type="submit" class="btn btn-primary btn-custom"
+                                    <button id="login" type="submit" class="btn btn-primary btn-custom" style="padding: 10px 106px;"
                                             data-loading-text="加载中..." autocomplete="off">
                                         登录
                                     </button>

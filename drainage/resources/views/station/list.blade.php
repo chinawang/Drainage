@@ -34,7 +34,10 @@
                             </div>
                             @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'station-add'))
                                 <div class="col-md-6 col-btn">
-                                    <a href="/station/add" class="btn btn-primary btn-sm">添加泵站</a>
+                                    <a href="/station/add" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        添加泵站
+                                    </a>
                                 </div>
                             @endif
                         </div>
@@ -66,6 +69,7 @@
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-4">
                                             <button type="submit" class="btn btn-primary ">
+                                                <span class="glyphicon glyphicon-search"></span>
                                                 查询
                                             </button>
                                         </div>

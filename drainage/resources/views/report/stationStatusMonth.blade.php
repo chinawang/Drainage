@@ -82,11 +82,15 @@
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-1">
                                                 <button type="submit" class="btn btn-primary btn-custom">
+                                                    <span class="glyphicon glyphicon-search"></span>
                                                     查询
                                                 </button>
                                             </div>
                                             <div class="col-md-3 col-md-offset-1">
-                                                <a href="/report/exporStatustMonth?type={{ $selectType }}&timeStart={{ $startTime }}" class="btn btn-default btn-custom">导出报表</a>
+                                                <a href="/report/exporStatustMonth?type={{ $selectType }}&timeStart={{ $startTime }}" class="btn btn-default btn-custom">
+                                                    <span class="glyphicon glyphicon-export"></span>
+                                                    导出报表
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

@@ -36,7 +36,9 @@
                                 <div class="col-md-6 col-btn">
                                     {{--<a href="/failure/lists" class="btn-link">返回</a>--}}
                                     <a href="/maintenance/add/{{ $failureID }}" style="margin-right: 20px"
-                                       class="btn btn-primary btn-sm">添加维修记录</a>
+                                       class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        添加维修记录</a>
                                 </div>
                             @endif
                         </div>

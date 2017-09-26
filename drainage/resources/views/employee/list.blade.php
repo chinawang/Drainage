@@ -34,7 +34,9 @@
                             </div>
                             @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'employee-add'))
                                 <div class="col-md-6 col-btn">
-                                    <a href="/employee/add" class="btn btn-primary btn-sm">添加工作人员</a>
+                                    <a href="/employee/add" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        添加工作人员</a>
                                 </div>
                             @endif
                         </div>
@@ -90,7 +92,9 @@
                                 {!! $employees->render() !!}
                             </div>
                             <div class="col-md-6 col-btn">
-                                <a href="/employee/export" class="btn btn-default btn-sm">导出Excel</a>
+                                <a href="/employee/export" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-export"></span>
+                                    导出Excel</a>
                             </div>
                         @else
                             <div class="well" style="text-align: center; padding: 100px;">

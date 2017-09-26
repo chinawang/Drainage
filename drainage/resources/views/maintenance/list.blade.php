@@ -177,7 +177,9 @@
                                 {!! $maintenances->render() !!}
                             </div>
                             <div class="col-md-6 col-btn">
-                                <a href="/maintenance/export" class="btn btn-default btn-sm">导出Excel</a>
+                                <a href="/maintenance/export" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-export"></span>
+                                    导出Excel</a>
                             </div>
                         @else
                             <div class="well" style="text-align: center; padding: 100px;">
