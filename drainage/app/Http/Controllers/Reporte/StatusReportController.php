@@ -909,6 +909,7 @@ class StatusReportController extends Controller
                 //标题样式
                 $sheet->mergeCells('A1:Y1');
                 $sheet->setHeight(1, 60);
+                $sheet->setHeight(2, 25);
                 $sheet->cells('A1', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(22);
