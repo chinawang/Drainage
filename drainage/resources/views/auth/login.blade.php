@@ -20,7 +20,7 @@
                 {{--<span class="brand">{{ config('app.name', 'Laravel') }}</span>--}}
             {{--</div>--}}
         {{--</div>--}}
-        <div class="row" style="margin-top: 40px">
+        <div class="row" style="margin-top: 160px">
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">登录</div>--}}
@@ -74,7 +74,7 @@
                             <div class="form-group">
                                 <div class="col-md-10 col-md-offset-1">
                                     <button id="login" type="submit" class="btn btn-primary btn-custom"
-                                            style="padding: 10px 100px;"
+                                            style="width: 100%"
                                             data-loading-text="加载中..." autocomplete="off">
                                         登录
                                     </button>
