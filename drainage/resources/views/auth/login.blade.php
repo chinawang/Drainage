@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row" style="margin-top: 100px">
+        <div class="row" style="margin-top: 120px">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">登录</div>--}}
