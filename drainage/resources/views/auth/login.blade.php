@@ -20,7 +20,7 @@
                 {{--<span class="brand">{{ config('app.name', 'Laravel') }}</span>--}}
             {{--</div>--}}
         {{--</div>--}}
-        <div class="row" style="margin-top: 160px">
+        <div class="row" style="margin-top: 120px">
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">登录</div>--}}
@@ -28,7 +28,7 @@
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}" style="margin-top: 20px">
                                 {{--<label for="name" class="col-md-4 control-label">账号</label>--}}
 
                                 <div class="col-md-10 col-md-offset-1">
@@ -71,7 +71,7 @@
                             {{--</div>--}}
                             {{--</div>--}}
 
-                            <div class="form-group">
+                            <div class="form-group" style="margin-top: 20px;margin-bottom: 20px">
                                 <div class="col-md-10 col-md-offset-1">
                                     <button id="login" type="submit" class="btn btn-primary btn-custom"
                                             style="width: 100%"
