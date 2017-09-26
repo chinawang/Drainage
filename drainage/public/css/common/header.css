@@ -16,18 +16,10 @@
     font-size: 20px;
 }
 
-.navbar-brand:hover{
-    color: #FFFFFF;
-}
-
 .navbar-brand > img {
     display: inline;
     margin: 0 10px;
     height: 100%;
-}
-
-.navbar-button:hover{
-    color: #FFFFFF;
 }
 
 .navbar-line {

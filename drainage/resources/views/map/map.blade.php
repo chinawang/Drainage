@@ -88,7 +88,7 @@
 
         });
 
-        var darkIconStyle = 'darkblue', //深色图标样式
+        var darkIconStyle = 'purple', //深色图标样式
                 lightIconStyle = 'blue', //浅色图标样式
                 hoverIconStyle = 'green' //鼠标hover的图标样式
                 ;
