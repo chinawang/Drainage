@@ -19,10 +19,11 @@ body {
     display: block;
     text-align: center;
     font-size: 20px;
+    color: #ffffff;
 }
 
 .logo {
-    display: inline;
+    text-align: center;
     margin: 0 10px;
     height: 100%;
 }
