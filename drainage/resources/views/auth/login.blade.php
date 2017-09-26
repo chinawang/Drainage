@@ -11,7 +11,7 @@
 @section('content')
     <div class="container">
         <div class="row" style="margin-top: 120px">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">登录</div>--}}
                     <div class="panel-body">
@@ -21,7 +21,7 @@
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 {{--<label for="name" class="col-md-4 control-label">账号</label>--}}
 
-                                <div class="col-md-9 col-md-offset-2">
+                                <div class="col-md-10 col-md-offset-1">
                                     <span class="glyphicon glyphicon-user" style="position: absolute;margin: 12px;font-size: 18px;"></span>
                                     <input id="name" type="name" class="form-control" name="name" style="padding-left: 40px"
                                            value="{{ old('name') }}" required autofocus placeholder="账号">
@@ -36,7 +36,7 @@
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 {{--<label for="password" class="col-md-4 control-label">密码</label>--}}
 
-                                <div class="col-md-9 col-md-offset-2">
+                                <div class="col-md-10 col-md-offset-1">
                                     <span class="glyphicon glyphicon-lock" style="position: absolute;margin: 12px;font-size: 18px;"></span>
                                     <input id="password" type="password" class="form-control" name="password" style="padding-left: 40px"
                                            required placeholder="密码">
@@ -62,7 +62,7 @@
                             {{--</div>--}}
 
                             <div class="form-group">
-                                <div class="col-md-9 col-md-offset-2">
+                                <div class="col-md-10 col-md-offset-1">
                                     <button id="login" type="submit" class="btn btn-primary btn-custom"
                                             style="padding: 10px 100px;"
                                             data-loading-text="加载中..." autocomplete="off">
