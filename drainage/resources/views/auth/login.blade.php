@@ -71,10 +71,10 @@
                             {{--</div>--}}
                             {{--</div>--}}
 
-                            <div class="form-group" style="margin-top: 20px;margin-bottom: 20px">
+                            <div class="form-group" style="margin-top: 40px;margin-bottom: 40px">
                                 <div class="col-md-10 col-md-offset-1">
                                     <button id="login" type="submit" class="btn btn-primary btn-custom"
-                                            style="width: 100%"
+                                            style="width: 100%;border-radius: 50px"
                                             data-loading-text="加载中..." autocomplete="off">
                                         登录
                                     </button>

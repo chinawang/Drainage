@@ -120,7 +120,7 @@
     position: fixed;
     bottom: 20px;
     right: 10px;
-    z-index: 100;">
+    z-index: 100;" >
         <a onclick="toggleFullScreen();" 
            style="width: 40px;
     height: 40px;
@@ -128,7 +128,7 @@
     text-align: center;
     display: inline-block;
     background-color: #fafafa;
-    margin-bottom: 2px;cursor: pointer" >
+    margin-bottom: 2px;cursor: pointer"  title="全屏">
             <span class="glyphicon glyphicon-fullscreen" style="color: #cccccc"></span>
         </a>
     </div>
