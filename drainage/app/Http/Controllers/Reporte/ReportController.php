@@ -170,7 +170,7 @@ class ReportController extends Controller
         $stationWarningList = [];
 
         $condition1 = ['bj_b1' => 1];
-        $warningListPump1 = $this->getStationRTListByConditions($stationNum,$condition1, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListPump1 = $this->getStationRTListByConditions($stationNum,$condition1,$searchStartTime,$searchEndTime);
         if(count($warningListPump1) > 0)
         {
             foreach ($warningListPump1 as $wainingPump1)
@@ -181,7 +181,7 @@ class ReportController extends Controller
         }
 
         $condition2 = ['bj_b2' => 1];
-        $warningListPump2 = $this->getStationRTListByConditions($stationNum,$condition2, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListPump2 = $this->getStationRTListByConditions($stationNum,$condition2,$searchStartTime,$searchEndTime);
         if(count($warningListPump2) > 0)
         {
             foreach ($warningListPump2 as $wainingPump2)
@@ -673,38 +673,38 @@ class ReportController extends Controller
         $stationWarningCountList = [];
 
         $condition1 = ['bj_b1' => 1];
-        $warningListPump1 = $this->getStationRTListByConditions($stationNum,$condition1, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListPump1 = $this->getStationRTListByConditions($stationNum,$condition1,$searchStartTime,$searchEndTime);
         $warningCount1 = ['alarmEquipment' => '1号泵','alarmCount' => count($warningListPump1)];
         array_push($stationWarningCountList,$warningCount1);
 
 
         $condition2 = ['bj_b2' => 1];
-        $warningListPump2 = $this->getStationRTListByConditions($stationNum,$condition2, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListPump2 = $this->getStationRTListByConditions($stationNum,$condition2,$searchStartTime,$searchEndTime);
         $warningCount2 = ['alarmEquipment' => '2号泵','alarmCount' => count($warningListPump2)];
         array_push($stationWarningCountList,$warningCount2);
 
         $condition3 = ['bj_b3' => 1];
-        $warningListPump3 = $this->getStationRTListByConditions($stationNum,$condition3, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListPump3 = $this->getStationRTListByConditions($stationNum,$condition3,$searchStartTime,$searchEndTime);
         $warningCount3 = ['alarmEquipment' => '3号泵','alarmCount' => count($warningListPump3)];
         array_push($stationWarningCountList,$warningCount3);
 
         $condition4 = ['bj_b4' => 1];
-        $warningListPump4 = $this->getStationRTListByConditions($stationNum,$condition4, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListPump4 = $this->getStationRTListByConditions($stationNum,$condition4,$searchStartTime,$searchEndTime);
         $warningCount4 = ['alarmEquipment' => '4号泵','alarmCount' => count($warningListPump4)];
         array_push($stationWarningCountList,$warningCount4);
 
         $condition5 = ['bj_gs1' => 1];
-        $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5,$searchStartTime,$searchEndTime);
         $warningCount5 = ['alarmEquipment' => '1号格栅','alarmCount' => count($warningListGS1)];
         array_push($stationWarningCountList,$warningCount5);
 
         $condition6 = ['bj_gs2' => 1];
-        $warningListGS2 = $this->getStationRTListByConditions($stationNum,$condition6, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListGS2 = $this->getStationRTListByConditions($stationNum,$condition6,$searchStartTime,$searchEndTime);
         $warningCount6 = ['alarmEquipment' => '2号格栅','alarmCount' => count($warningListGS2)];
         array_push($stationWarningCountList,$warningCount6);
 
         $condition7 = ['bj_jl' => 1];
-        $warningListJL = $this->getStationRTListByConditions($stationNum,$condition7, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListJL = $this->getStationRTListByConditions($stationNum,$condition7,$searchStartTime,$searchEndTime);
         $warningCount7 = ['alarmEquipment' => '绞笼','alarmCount' => count($warningListJL)];
         array_push($stationWarningCountList,$warningCount7);
 
