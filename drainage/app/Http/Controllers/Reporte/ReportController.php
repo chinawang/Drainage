@@ -164,9 +164,6 @@ class ReportController extends Controller
         $stationNum = $stationTemp['station_number'];
         $stations = $this->stationList();
 
-        $cursorPage = null;
-        $pageSize = 20;
-
         $stationWarningList = [];
 
         $condition1 = ['bj_b1' => 1];
@@ -175,7 +172,7 @@ class ReportController extends Controller
         {
             foreach ($warningListPump1 as $wainingPump1)
             {
-                $wainingPump1['alarmEquipment'] = '1号泵';
+                $wainingPump1->alarmEquipment = '1号泵';
             }
             array_push($stationWarningList,$warningListPump1);
         }
