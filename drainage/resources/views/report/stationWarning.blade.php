@@ -98,7 +98,7 @@
 
                                     @foreach ($warningList as $warning)
                                         <tr>
-                                            <td>{{ $warning->Time }}</td>
+                                            <td>{{ $warning->alarmEquipment }}</td>
                                             <td>{{ $warning->alarmEquipment }}</td>
                                         </tr>
                                     @endforeach
