@@ -168,78 +168,64 @@ class ReportController extends Controller
 
         $condition1 = ['bj_b1' => 1];
         $warningListPump1 = $this->getStationRTListByConditions($stationNum,$condition1,$searchStartTime,$searchEndTime);
-        if(count($warningListPump1) > 0)
+        for($i = 0 ; $i < count($warningListPump1);$i++)
         {
-            foreach ($warningListPump1 as $wainingPump1)
-            {
-                $wainingPump1->alarmEquipment = '1号泵';
-            }
+            $wainingPump1['Time'] = $warningListPump1[$i]->Time;
+            $wainingPump1['alarmEquipment'] = '1号泵';
             array_push($stationWarningList,$warningListPump1);
         }
 
         $condition2 = ['bj_b2' => 1];
         $warningListPump2 = $this->getStationRTListByConditions($stationNum,$condition2,$searchStartTime,$searchEndTime);
-        if(count($warningListPump2) > 0)
+        for($i = 0 ; $i < count($warningListPump2);$i++)
         {
-            foreach ($warningListPump2 as $wainingPump2)
-            {
-                $wainingPump2->alarmEquipment = '2号泵';
-            }
+            $wainingPump2['Time'] = $warningListPump2[$i]->Time;
+            $wainingPump2['alarmEquipment'] = '2号泵';
             array_push($stationWarningList,$warningListPump2);
         }
 
         $condition3 = ['bj_b3' => 1];
         $warningListPump3 = $this->getStationRTListByConditions($stationNum,$condition3,$searchStartTime,$searchEndTime);
-        if(count($warningListPump3) > 0)
+        for($i = 0 ; $i < count($warningListPump3);$i++)
         {
-            foreach ($warningListPump3 as $wainingPump3)
-            {
-                $wainingPump3->alarmEquipment = '3号泵';
-            }
+            $wainingPump3['Time'] = $warningListPump3[$i]->Time;
+            $wainingPump3['alarmEquipment'] = '3号泵';
             array_push($stationWarningList,$warningListPump3);
         }
 
         $condition4 = ['bj_b4' => 1];
         $warningListPump4 = $this->getStationRTListByConditions($stationNum,$condition4,$searchStartTime,$searchEndTime);
-        if(count($warningListPump4) > 0)
+        for($i = 0 ; $i < count($warningListPump4);$i++)
         {
-            foreach ($warningListPump4 as $wainingPump4)
-            {
-                $wainingPump4->alarmEquipment = '4号泵';
-            }
+            $wainingPump4['Time'] = $warningListPump4[$i]->Time;
+            $wainingPump4['alarmEquipment'] = '4号泵';
             array_push($stationWarningList,$warningListPump4);
         }
 
         $condition5 = ['bj_gs1' => 1];
         $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5,$searchStartTime,$searchEndTime);
-        if(count($warningListGS1) > 0)
+        for($i = 0 ; $i < count($warningListGS1);$i++)
         {
-            foreach ($warningListGS1 as $wainingGS1)
-            {
-                $wainingGS1->alarmEquipment = '1号格栅';
-            }
+            $wainingGS1['Time'] = $warningListGS1[$i]->Time;
+            $wainingGS1['alarmEquipment'] = '1号格栅';
             array_push($stationWarningList,$warningListGS1);
         }
 
         $condition6 = ['bj_gs2' => 1];
         $warningListGS2 = $this->getStationRTListByConditions($stationNum,$condition6,$searchStartTime,$searchEndTime);
-        if(count($warningListGS2) > 0)
+        for($i = 0 ; $i < count($warningListGS2);$i++)
         {
-            foreach ($warningListGS2 as $wainingGS2)
-            {
-                $wainingGS2->alarmEquipment = '2号格栅';
-            }
+            $wainingGS2['Time'] = $warningListGS2[$i]->Time;
+            $wainingGS2['alarmEquipment'] = '2号格栅';
             array_push($stationWarningList,$warningListGS2);
         }
 
         $condition7 = ['bj_jl' => 1];
         $warningListJL = $this->getStationRTListByConditions($stationNum,$condition7,$searchStartTime,$searchEndTime);
-        if(count($warningListJL) > 0)
+        for($i = 0 ; $i < count($warningListJL);$i++)
         {
-            foreach ($warningListJL as $wainingJL)
-            {
-                $wainingJL->alarmEquipment = '绞笼';
-            }
+            $wainingJL['Time'] = $warningListJL[$i]->Time;
+            $wainingJL['alarmEquipment'] = '绞笼';
             array_push($stationWarningList,$warningListJL);
         }
 
