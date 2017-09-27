@@ -175,7 +175,7 @@ class ReportController extends Controller
         {
             foreach ($warningListPump1 as $wainingPump1)
             {
-                $wainingPump1->alarmEquipment = '1号泵';
+                $wainingPump1['alarmEquipment'] = '1号泵';
             }
             array_push($stationWarningList,$warningListPump1);
         }
@@ -186,7 +186,7 @@ class ReportController extends Controller
         {
             foreach ($warningListPump2 as $wainingPump2)
             {
-                $wainingPump2->alarmEquipment = '2号泵';
+                $wainingPump2['alarmEquipment'] = '2号泵';
             }
             array_push($stationWarningList,$warningListPump2);
         }
@@ -197,7 +197,7 @@ class ReportController extends Controller
         {
             foreach ($warningListPump3 as $wainingPump3)
             {
-                $wainingPump3->alarmEquipment = '3号泵';
+                $wainingPump3['alarmEquipment'] = '3号泵';
             }
             array_push($stationWarningList,$warningListPump3);
         }
@@ -208,7 +208,7 @@ class ReportController extends Controller
         {
             foreach ($warningListPump4 as $wainingPump4)
             {
-                $wainingPump4->alarmEquipment = '4号泵';
+                $wainingPump4['alarmEquipment'] = '4号泵';
             }
             array_push($stationWarningList,$warningListPump4);
         }
@@ -219,7 +219,7 @@ class ReportController extends Controller
         {
             foreach ($warningListGS1 as $wainingGS1)
             {
-                $wainingGS1->alarmEquipment = '1号格栅';
+                $wainingGS1['alarmEquipment'] = '1号格栅';
             }
             array_push($stationWarningList,$warningListGS1);
         }
@@ -230,7 +230,7 @@ class ReportController extends Controller
         {
             foreach ($warningListGS2 as $wainingGS2)
             {
-                $wainingGS2->alarmEquipment = '2号格栅';
+                $wainingGS2['alarmEquipment'] = '2号格栅';
             }
             array_push($stationWarningList,$warningListGS2);
         }
@@ -241,7 +241,7 @@ class ReportController extends Controller
         {
             foreach ($warningListJL as $wainingJL)
             {
-                $wainingJL->alarmEquipment = '绞笼';
+                $wainingJL['alarmEquipment'] = '绞笼';
             }
             array_push($stationWarningList,$warningListJL);
         }
