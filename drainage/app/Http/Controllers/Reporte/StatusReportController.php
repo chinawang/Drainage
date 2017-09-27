@@ -836,7 +836,7 @@ class StatusReportController extends Controller
                 $sheet->mergeCells('U'.($rowMax+5).':Y'.($rowMax+5));
 
                 $sheet->mergeCells('A'.($rowMax+6).':D'.($rowMax+6));
-                $sheet->mergeCells('E'.($rowMax+6).':E'.($rowMax+6));
+                $sheet->mergeCells('E'.($rowMax+6).':G'.($rowMax+6));
                 $sheet->mergeCells('I'.($rowMax+6).':J'.($rowMax+6));
                 $sheet->mergeCells('M'.($rowMax+6).':O'.($rowMax+6));
                 $sheet->mergeCells('Q'.($rowMax+6).':S'.($rowMax+6));
@@ -1053,12 +1053,12 @@ class StatusReportController extends Controller
                     $i++;
                 }
 
-                $sheet->row($i-1, ['主管:','','','','','','制表:']);
+                $sheet->row($i, ['主管:','','','','','','制表:']);
 
 
                 //表体样式
 
-                $sheet->setBorder('A3:I'.($i-2), 'thin');
+                $sheet->setBorder('A3:I'.($i-1), 'thin');
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
                     'A'     =>  30,
@@ -1071,7 +1071,7 @@ class StatusReportController extends Controller
                     'H'     =>  20,
                     'I'     =>  20,
                 ));
-                $sheet->cells('A4:I'.($i-2), function($cells) {
+                $sheet->cells('A4:I'.($i-1), function($cells) {
                     $cells->setFontSize(14);
                     $cells->setFontWeight('normal');
                     $cells->setAlignment('center');
@@ -1079,9 +1079,9 @@ class StatusReportController extends Controller
 
                 });
 
-                $sheet->mergeCells('A'.($i-1).':F'.($i-1));
-                $sheet->mergeCells('G'.($i-1).':I'.($i-1));
-                $sheet->cells('A'.($i-1).':I'.($i-1), function($cells) {
+                $sheet->mergeCells('A'.($i).':F'.($i));
+                $sheet->mergeCells('G'.($i).':I'.($i));
+                $sheet->cells('A'.($i).':I'.($i), function($cells) {
                     $cells->setFontSize(14);
                     $cells->setFontWeight('normal');
                     $cells->setAlignment('left');
