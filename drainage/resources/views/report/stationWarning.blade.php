@@ -208,7 +208,7 @@
             plotOptions: {
                 series: {
                     'colorByPoint': true,
-                    'animation': false
+                    'animation': true
                 }
             },
             title: {
