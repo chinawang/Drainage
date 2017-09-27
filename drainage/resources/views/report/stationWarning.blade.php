@@ -223,7 +223,13 @@
                 x: -20
             },
             xAxis: {
-                categories: categories
+                categories: categories,
+                labels: {
+                    style: {
+                        fontSize: '14px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
             },
             yAxis: {
                 title: {
