@@ -146,6 +146,116 @@ class ReportController extends Controller
         return view('report.stationRunning', $param);
     }
 
+    public function showWarningReport()
+    {
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
+        $stations = $this->stationList();
+
+        $cursorPage = null;
+        $pageSize = 20;
+
+        $stationWarningList = [];
+
+        $condition1 = ['bj_b1' => 1];
+        $warningListPump1 = $this->getStationRTListByConditions($stationNum,$condition1, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        if(count($warningListPump1) > 0)
+        {
+            foreach ($warningListPump1 as $wainingPump1)
+            {
+                $wainingPump1['alarmEquipment'] = '1号泵';
+            }
+            array_push($stationWarningList,$warningListPump1);
+        }
+
+        $condition2 = ['bj_b2' => 1];
+        $warningListPump2 = $this->getStationRTListByConditions($stationNum,$condition2, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        if(count($warningListPump2) > 0)
+        {
+            foreach ($warningListPump2 as $wainingPump2)
+            {
+                $wainingPump2['alarmEquipment'] = '2号泵';
+            }
+            array_push($stationWarningList,$warningListPump2);
+        }
+
+        $condition3 = ['bj_b3' => 1];
+        $warningListPump3 = $this->getStationRTListByConditions($stationNum,$condition3, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        if(count($warningListPump3) > 0)
+        {
+            foreach ($warningListPump3 as $wainingPump3)
+            {
+                $wainingPump3['alarmEquipment'] = '3号泵';
+            }
+            array_push($stationWarningList,$warningListPump3);
+        }
+
+        $condition4 = ['bj_b4' => 1];
+        $warningListPump4 = $this->getStationRTListByConditions($stationNum,$condition4, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        if(count($warningListPump4) > 0)
+        {
+            foreach ($warningListPump4 as $wainingPump4)
+            {
+                $wainingPump4['alarmEquipment'] = '4号泵';
+            }
+            array_push($stationWarningList,$warningListPump4);
+        }
+
+        $condition5 = ['bj_gs1' => 1];
+        $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        if(count($warningListGS1) > 0)
+        {
+            foreach ($warningListGS1 as $wainingGS1)
+            {
+                $wainingGS1['alarmEquipment'] = '1号格栅';
+            }
+            array_push($stationWarningList,$warningListGS1);
+        }
+
+        $condition6 = ['bj_gs2' => 1];
+        $warningListGS2 = $this->getStationRTListByConditions($stationNum,$condition6, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        if(count($warningListGS2) > 0)
+        {
+            foreach ($warningListGS2 as $wainingGS2)
+            {
+                $wainingGS2['alarmEquipment'] = '2号格栅';
+            }
+            array_push($stationWarningList,$warningListGS2);
+        }
+
+        $condition7 = ['bj_jl' => 1];
+        $warningListJL = $this->getStationRTListByConditions($stationNum,$condition7, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        if(count($warningListJL) > 0)
+        {
+            foreach ($warningListJL as $wainingJL)
+            {
+                $wainingJL['alarmEquipment'] = '绞笼';
+            }
+            array_push($stationWarningList,$warningListJL);
+        }
+
+        $param = ['stations' => $stations, 'warningList' => $stationWarningList,
+            'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
+//        return $param;
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站报警统计']);
+
+        return view('report.stationWarning', $param);
+    }
+
     public function showStatusReport()
     {
         $stationID = Input::get('station_id', 1);
@@ -298,6 +408,26 @@ class ReportController extends Controller
         else
         {
             $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+        }
+
+        return $stationRTList;
+    }
+
+    public function getStationRTListByConditions($stationNum,$conditions, $size, $cursorPage,$searchStartTime,$searchEndTime)
+    {
+        $stationTable = "stationRT_" . $stationNum;
+//        $stationRTList = DB::select('select * from '.$stationTable.' order by Time asc')->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+
+        if(!empty($searchStartTime) && !empty($searchEndTime))
+        {
+            $stationRTList = DB::table($stationTable)->where($conditions)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+
+        }
+        else
+        {
+            $stationRTList = DB::table($stationTable)->where($conditions)->orderBy('Time', 'asc')
                 ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
         }
 
@@ -524,6 +654,63 @@ class ReportController extends Controller
         }
 
         return $stationStatusList;
+    }
+
+    public function getWaningCountAjax($stationID,$startTime,$endTime)
+    {
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
+
+        $cursorPage = null;
+        $pageSize = 20;
+
+        $stationWarningCountList = [];
+
+        $condition1 = ['bj_b1' => 1];
+        $warningListPump1 = $this->getStationRTListByConditions($stationNum,$condition1, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningCount1 = ['alarmEquipment' => '1号泵','alarmCount' => count($warningListPump1)];
+        array_push($stationWarningCountList,$warningCount1);
+
+
+        $condition2 = ['bj_b2' => 1];
+        $warningListPump2 = $this->getStationRTListByConditions($stationNum,$condition2, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningCount2 = ['alarmEquipment' => '2号泵','alarmCount' => count($warningListPump2)];
+        array_push($stationWarningCountList,$warningCount2);
+
+        $condition3 = ['bj_b3' => 1];
+        $warningListPump3 = $this->getStationRTListByConditions($stationNum,$condition3, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningCount3 = ['alarmEquipment' => '3号泵','alarmCount' => count($warningListPump3)];
+        array_push($stationWarningCountList,$warningCount3);
+
+        $condition4 = ['bj_b4' => 1];
+        $warningListPump4 = $this->getStationRTListByConditions($stationNum,$condition4, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningCount4 = ['alarmEquipment' => '4号泵','alarmCount' => count($warningListPump4)];
+        array_push($stationWarningCountList,$warningCount4);
+
+        $condition5 = ['bj_gs1' => 1];
+        $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningCount5 = ['alarmEquipment' => '1号格栅','alarmCount' => count($warningListGS1)];
+        array_push($stationWarningCountList,$warningCount5);
+
+        $condition6 = ['bj_gs2' => 1];
+        $warningListGS2 = $this->getStationRTListByConditions($stationNum,$condition6, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningCount6 = ['alarmEquipment' => '2号格栅','alarmCount' => count($warningListGS2)];
+        array_push($stationWarningCountList,$warningCount6);
+
+        $condition7 = ['bj_jl' => 1];
+        $warningListJL = $this->getStationRTListByConditions($stationNum,$condition7, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningCount7 = ['alarmEquipment' => '绞笼','alarmCount' => count($warningListJL)];
+        array_push($stationWarningCountList,$warningCount7);
+
+        return response()->json(array('stationWarningCountList'=> $stationWarningCountList,'startTime' => $startTime, 'endTime' => $endTime), 200);
     }
 
 }
