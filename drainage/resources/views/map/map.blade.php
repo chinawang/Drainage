@@ -71,7 +71,7 @@
         var map = new AMap.Map('map-container', {
             zoom: 12,
             center: [113.658578, 34.746427],
-            mapStyle: 'grey',
+            mapStyle: 'amap://styles/grey',
             resizeEnable: true
         });
 
