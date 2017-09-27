@@ -203,7 +203,10 @@
 
         var chart = new Highcharts.Chart('warningContainer', {
             chart: {
-                type: 'column'
+                type: 'column',
+                style: {
+                    "fontSize": "14px",
+                }
             },
             plotOptions: {
                 series: {
