@@ -98,15 +98,12 @@
 
                                     @foreach ($warningList as $warning)
                                         <tr>
-                                            <td>{{ $warning['alarmEquipment'] }}</td>
+                                            <td>{{ $warning['Time'] }}</td>
                                             <td>{{ $warning['alarmEquipment'] }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
-                                <div class="table-pagination">
-                                    {!! $warningList->appends(['station_id' => $stationSelect['id'],'timeStart' => $startTime,'timeEnd' => $endTime])->render() !!}
-                                </div>
                             @else
                                 <div class="well" style="text-align: center; padding: 100px;">
                                     暂无内容

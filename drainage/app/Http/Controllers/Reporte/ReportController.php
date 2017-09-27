@@ -192,7 +192,7 @@ class ReportController extends Controller
         }
 
         $condition3 = ['bj_b3' => 1];
-        $warningListPump3 = $this->getStationRTListByConditions($stationNum,$condition3, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListPump3 = $this->getStationRTListByConditions($stationNum,$condition3,$searchStartTime,$searchEndTime);
         if(count($warningListPump3) > 0)
         {
             foreach ($warningListPump3 as $wainingPump3)
@@ -203,7 +203,7 @@ class ReportController extends Controller
         }
 
         $condition4 = ['bj_b4' => 1];
-        $warningListPump4 = $this->getStationRTListByConditions($stationNum,$condition4, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListPump4 = $this->getStationRTListByConditions($stationNum,$condition4,$searchStartTime,$searchEndTime);
         if(count($warningListPump4) > 0)
         {
             foreach ($warningListPump4 as $wainingPump4)
@@ -214,7 +214,7 @@ class ReportController extends Controller
         }
 
         $condition5 = ['bj_gs1' => 1];
-        $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5,$searchStartTime,$searchEndTime);
         if(count($warningListGS1) > 0)
         {
             foreach ($warningListGS1 as $wainingGS1)
@@ -225,7 +225,7 @@ class ReportController extends Controller
         }
 
         $condition6 = ['bj_gs2' => 1];
-        $warningListGS2 = $this->getStationRTListByConditions($stationNum,$condition6, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListGS2 = $this->getStationRTListByConditions($stationNum,$condition6,$searchStartTime,$searchEndTime);
         if(count($warningListGS2) > 0)
         {
             foreach ($warningListGS2 as $wainingGS2)
@@ -236,7 +236,7 @@ class ReportController extends Controller
         }
 
         $condition7 = ['bj_jl' => 1];
-        $warningListJL = $this->getStationRTListByConditions($stationNum,$condition7, $pageSize, $cursorPage,$searchStartTime,$searchEndTime);
+        $warningListJL = $this->getStationRTListByConditions($stationNum,$condition7,$searchStartTime,$searchEndTime);
         if(count($warningListJL) > 0)
         {
             foreach ($warningListJL as $wainingJL)
@@ -414,21 +414,19 @@ class ReportController extends Controller
         return $stationRTList;
     }
 
-    public function getStationRTListByConditions($stationNum,$conditions, $size, $cursorPage,$searchStartTime,$searchEndTime)
+    public function getStationRTListByConditions($stationNum,$conditions, $searchStartTime,$searchEndTime)
     {
         $stationTable = "stationRT_" . $stationNum;
 //        $stationRTList = DB::select('select * from '.$stationTable.' order by Time asc')->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-            $stationRTList = DB::table($stationTable)->where($conditions)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
-                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            $stationRTList = DB::table($stationTable)->where($conditions)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc');
 
         }
         else
         {
-            $stationRTList = DB::table($stationTable)->where($conditions)->orderBy('Time', 'asc')
-                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            $stationRTList = DB::table($stationTable)->where($conditions)->orderBy('Time', 'asc');
         }
 
         return $stationRTList;
