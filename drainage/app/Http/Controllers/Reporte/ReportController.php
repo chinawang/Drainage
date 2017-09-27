@@ -172,7 +172,7 @@ class ReportController extends Controller
         {
             $wainingPump1['Time'] = $warningListPump1[$i]->Time;
             $wainingPump1['alarmEquipment'] = '1号泵';
-            array_push($stationWarningList,$warningListPump1);
+            array_push($stationWarningList,$wainingPump1);
         }
 
         $condition2 = ['bj_b2' => 1];
@@ -181,7 +181,7 @@ class ReportController extends Controller
         {
             $wainingPump2['Time'] = $warningListPump2[$i]->Time;
             $wainingPump2['alarmEquipment'] = '2号泵';
-            array_push($stationWarningList,$warningListPump2);
+            array_push($stationWarningList,$wainingPump2);
         }
 
         $condition3 = ['bj_b3' => 1];
@@ -190,7 +190,7 @@ class ReportController extends Controller
         {
             $wainingPump3['Time'] = $warningListPump3[$i]->Time;
             $wainingPump3['alarmEquipment'] = '3号泵';
-            array_push($stationWarningList,$warningListPump3);
+            array_push($stationWarningList,$wainingPump3);
         }
 
         $condition4 = ['bj_b4' => 1];
@@ -199,7 +199,7 @@ class ReportController extends Controller
         {
             $wainingPump4['Time'] = $warningListPump4[$i]->Time;
             $wainingPump4['alarmEquipment'] = '4号泵';
-            array_push($stationWarningList,$warningListPump4);
+            array_push($stationWarningList,$wainingPump4);
         }
 
         $condition5 = ['bj_gs1' => 1];
@@ -208,7 +208,7 @@ class ReportController extends Controller
         {
             $wainingGS1['Time'] = $warningListGS1[$i]->Time;
             $wainingGS1['alarmEquipment'] = '1号格栅';
-            array_push($stationWarningList,$warningListGS1);
+            array_push($stationWarningList,$wainingGS1);
         }
 
         $condition6 = ['bj_gs2' => 1];
@@ -217,7 +217,7 @@ class ReportController extends Controller
         {
             $wainingGS2['Time'] = $warningListGS2[$i]->Time;
             $wainingGS2['alarmEquipment'] = '2号格栅';
-            array_push($stationWarningList,$warningListGS2);
+            array_push($stationWarningList,$wainingGS2);
         }
 
         $condition7 = ['bj_jl' => 1];
@@ -226,7 +226,7 @@ class ReportController extends Controller
         {
             $wainingJL['Time'] = $warningListJL[$i]->Time;
             $wainingJL['alarmEquipment'] = '绞笼';
-            array_push($stationWarningList,$warningListJL);
+            array_push($stationWarningList,$wainingJL);
         }
 
         $param = ['stations' => $stations, 'warningList' => $stationWarningList,
