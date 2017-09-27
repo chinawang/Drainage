@@ -421,12 +421,12 @@ class ReportController extends Controller
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-            $stationRTList = DB::table($stationTable)->where($conditions)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc');
+            $stationRTList = DB::table($stationTable)->where($conditions)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')->get();;
 
         }
         else
         {
-            $stationRTList = DB::table($stationTable)->where($conditions)->orderBy('Time', 'asc');
+            $stationRTList = DB::table($stationTable)->where($conditions)->orderBy('Time', 'asc')->get();;
         }
 
         return $stationRTList;
