@@ -374,6 +374,18 @@ class StationController extends Controller
                 $stopCount ++;
             }
 
+            if($stationNum == 33)
+            {
+                if($stationRT[0]->yx_b5 == '1')
+                {
+                    $runCount ++;
+                }
+                else
+                {
+                    $stopCount ++;
+                }
+            }
+
             if($runCount == 0)
             {
                 $station['status'] = 'grey';
