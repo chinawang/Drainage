@@ -202,6 +202,18 @@ class ReportController extends Controller
             array_push($stationWarningList,$wainingPump4);
         }
 
+        if($stationNum == 33)
+        {
+            $conditionPlus = ['bj_b5' => 1];
+            $warningListPump5 = $this->getStationRTListByConditions($stationNum,$conditionPlus,$searchStartTime,$searchEndTime);
+            for($i = 0 ; $i < count($warningListPump5);$i++)
+            {
+                $wainingPump5['Time'] = $warningListPump5[$i]->Time;
+                $wainingPump5['alarmEquipment'] = '5号泵';
+                array_push($stationWarningList,$wainingPump5);
+            }
+        }
+
         $condition5 = ['bj_gs1' => 1];
         $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5,$searchStartTime,$searchEndTime);
         for($i = 0 ; $i < count($warningListGS1);$i++)
@@ -650,9 +662,6 @@ class ReportController extends Controller
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
 
-        $cursorPage = null;
-        $pageSize = 20;
-
         $stationWarningCountList = [];
 
         $condition1 = ['bj_b1' => 1];
@@ -676,6 +685,13 @@ class ReportController extends Controller
         $warningCount4 = ['alarmEquipment' => '4号泵','alarmCount' => count($warningListPump4)];
         array_push($stationWarningCountList,$warningCount4);
 
+        if($stationNum == 33)
+        {
+            $conditionPlus = ['bj_b5' => 1];
+            $warningListPump5 = $this->getStationRTListByConditions($stationNum,$conditionPlus,$searchStartTime,$searchEndTime);
+            $warningCountPlus = ['alarmEquipment' => '5号泵','alarmCount' => count($warningListPump5)];
+            array_push($stationWarningCountList,$warningCountPlus);
+        }
         $condition5 = ['bj_gs1' => 1];
         $warningListGS1 = $this->getStationRTListByConditions($stationNum,$condition5,$searchStartTime,$searchEndTime);
         $warningCount5 = ['alarmEquipment' => '1号格栅','alarmCount' => count($warningListGS1)];
