@@ -115,6 +115,7 @@ class PumpController extends Controller
         foreach ($pumpPaginate as $pump) {
             $station = $this->stationInfo($pump['station_id']);
             $pump['station_name'] = $station['name'];
+            $pump['station_number'] = $station['station_number'];
         }
 
         $stations = $this->stationLogic->getAllStations();

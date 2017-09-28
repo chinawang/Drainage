@@ -74,7 +74,8 @@
                                             <div class="col-md-8">
                                                 <input type="text" class="form-control pick-event-date" id="start-time"
                                                        name="timeStart"
-                                                       value="{{ substr($startTime , 0 , 7) }}" placeholder="日期" data-data="yyyy-mm">
+                                                       value="{{ substr($startTime , 0 , 7) }}" placeholder="日期"
+                                                       data-data="yyyy-mm">
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +88,8 @@
                                                 </button>
                                             </div>
                                             <div class="col-md-3 col-md-offset-1">
-                                                <a href="/report/exporStatustMonth?type={{ $selectType }}&timeStart={{ $startTime }}" class="btn btn-default btn-custom">
+                                                <a href="/report/exporStatustMonth?type={{ $selectType }}&timeStart={{ $startTime }}"
+                                                   class="btn btn-default btn-custom">
                                                     <span class="glyphicon glyphicon-export"></span>
                                                     导出报表
                                                 </a>
@@ -111,8 +113,14 @@
                                         <th colspan="4">2号泵</th>
                                         <th colspan="4">3号泵</th>
                                         <th colspan="4">4号泵</th>
+                                        <th colspan="4">5号泵</th>
                                     </tr>
                                     <tr>
+                                        <th>运行(小时)</th>
+                                        <th>连前累计(小时)</th>
+                                        <th>抽升量(万吨)</th>
+                                        <th>连前累计(万吨)</th>
+
                                         <th>运行(小时)</th>
                                         <th>连前累计(小时)</th>
                                         <th>抽升量(万吨)</th>
@@ -159,6 +167,11 @@
                                                 <td>{{ $station['totalTimeBefore4'] }}</td>
                                                 <td>{{ $station['totalFluxDay4'] }}</td>
                                                 <td>{{ $station['totalFluxBefore4'] }}</td>
+
+                                                <td>{{ $station['totalTimeDay5'] }}</td>
+                                                <td>{{ $station['totalTimeBefore5'] }}</td>
+                                                <td>{{ $station['totalFluxDay5'] }}</td>
+                                                <td>{{ $station['totalFluxBefore5'] }}</td>
                                             </tr>
                                         @endforeach
 
@@ -257,6 +270,7 @@
         var datas2 = [];
         var datas3 = [];
         var datas4 = [];
+        var datas5 = [];
 
         $.each(statusRTList, function (i, n) {
             categories[i] = n["name"];
@@ -264,6 +278,7 @@
             datas2[i] = n["totalTimeDay2"];
             datas3[i] = n["totalTimeDay3"];
             datas4[i] = n["totalTimeDay4"];
+            datas5[i] = n["totalTimeDay5"];
         });
 
         var chart1 = new Highcharts.Chart('statusContainer', {
@@ -303,16 +318,20 @@
             series: [{
                 name: '1号泵运行时长',
                 data: datas1
-            },{
+            }, {
                 name: '2号泵运行时长',
                 data: datas2
-            },{
+            }, {
                 name: '3号泵运行时长',
                 data: datas3
-            },{
+            }, {
                 name: '4号泵运行时长',
                 data: datas4
             },
+                {
+                    name: '5号泵运行时长',
+                    data: datas5
+                },
             ]
         });
     </script>

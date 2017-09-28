@@ -67,7 +67,11 @@
                                         <td>{{ $pump['flux2'] }}</td>
                                         <td>{{ $pump['flux3'] }}</td>
                                         <td>{{ $pump['flux4'] }}</td>
+                                        @if($pump['station_number'] == 33)
                                         <td>{{ $pump['flux5'] }}</td>
+                                        @else
+                                            <td>-</td>
+                                        @endif
 
                                         @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'pump-edit'))
                                             <td>
