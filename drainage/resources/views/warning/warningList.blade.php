@@ -29,7 +29,8 @@
                 <div class="panel panel-default custom-panel">
                     <div class="panel-heading">
                         设备实时报警状态列表
-                        <a href="/warning/warningList" class="btn-link"><span class="glyphicon glyphicon-refresh"></span>刷新</a>
+                        <a href="/warning/warningList" class="btn-link"><span
+                                    class="glyphicon glyphicon-refresh"></span>刷新</a>
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($stations[0]))
@@ -43,6 +44,7 @@
                                     <th>2号泵报警</th>
                                     <th>3号泵报警</th>
                                     <th>4号泵报警</th>
+                                    <th>5号泵报警</th>
                                     <th>绞笼报警</th>
                                     <th>1号格栅报警</th>
                                     <th>2号格栅报警</th>
@@ -76,6 +78,15 @@
                                         @else
                                             <td>无</td>
                                         @endif
+
+                                        @if($station['station_number'] !=33)
+                                            <td>-</td>
+                                        @elseif($station['alarmPump5'] == 1)
+                                            <td style="color: red;">报警</td>
+                                        @else
+                                            <td>无</td>
+                                        @endif
+
                                         @if($station['alarmAuger'] == 1)
                                             <td style="color: red;">报警</td>
                                         @else
