@@ -1006,7 +1006,7 @@ class StatusReportController extends Controller
                     $sheet->mergeCells('I3:L3');
                     $sheet->mergeCells('M3:P3');
                     $sheet->mergeCells('Q3:T3');
-                    $sheet->mergeCells('Y3:X3');
+                    $sheet->mergeCells('U3:X3');
 
                     $sheet->mergeCells('Y3:Z3');
                     $sheet->mergeCells('AA3:AC3');
@@ -1107,7 +1107,7 @@ class StatusReportController extends Controller
                     $sheet->mergeCells('A'.($rowMax+5).':D'.($rowMax+5));
                     $sheet->mergeCells('E'.($rowMax+5).':G'.($rowMax+5));
                     $sheet->mergeCells('I'.($rowMax+5).':J'.($rowMax+5));
-                    $sheet->mergeCells('L'.($rowMax+6).':Y'.($rowMax+6));
+                    $sheet->mergeCells('L'.($rowMax+5).':Y'.($rowMax+5));
 
                     $sheet->mergeCells('A'.($rowMax+6).':D'.($rowMax+6));
                     $sheet->mergeCells('E'.($rowMax+6).':G'.($rowMax+6));
