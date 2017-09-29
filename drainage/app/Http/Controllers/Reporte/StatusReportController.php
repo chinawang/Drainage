@@ -248,7 +248,7 @@ class StatusReportController extends Controller
         $totalFluxDay = $totalFluxDay1 + $totalFluxDay2 + $totalFluxDay3 + $totalFluxDay4 + $totalFluxDay5;
 
         //连前累计
-        $beforeTime = date("2017-9-28");
+        $beforeTime = date("2017-9-27");
         $beforeStatusRT = $this->statusRTHistory($stationID,$beforeTime,$endTime);
 
         //连前累计运行(小时)
