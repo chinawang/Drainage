@@ -470,6 +470,23 @@ class StatusReportController extends Controller
 
             }
 
+            //当泵组一直在运行未停止时
+            if($i == (count($stationRTList)-2) && $stationRTList[$i]->$equipmentCode == 1)
+            {
+                $sRunning['timeEnd'] = $stationRTList[$i+1]->Time;
+                if($index > 1)
+                {
+                    $sRunning['timeGap'] = abs(strtotime($sRunning['timeEnd']) - strtotime($stationStatusList[$index -2]['timeStart']))/60;
+                    $sRunning['timeGap'] = round($sRunning['timeGap']);
+                    $sRunning['current'] = $stationRTList[$i+1]->$currentCode;
+                    $stationStatusList[$index -2]['timeEnd'] = $sRunning['timeEnd'];
+                    $stationStatusList[$index -2]['timeGap'] = $sRunning['timeGap'];
+                    $stationStatusList[$index -2]['flux'] = $sRunning['timeGap'] * $pumpFlux;
+                    $stationStatusList[$index -2]['current'] = $sRunning['current'];
+                    $stationStatusList[$index -2]['index'] = $index -1;
+                }
+            }
+
         }
 
         return $stationStatusList;
