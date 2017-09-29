@@ -557,7 +557,7 @@ class ReportController extends Controller
 //                ->get();
             //            SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From `stationRT_1`, (Select (@rowNum :=0) ) b order by `Time` asc) as a where mod(a.rowNo, 60) = 1
 
-            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 60) = 1',[$searchStartTime,$searchEndTime])
+            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 20) = 1',[$searchStartTime,$searchEndTime])
                 ;
 
         }
