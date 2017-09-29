@@ -65,6 +65,8 @@ class StatusReportController extends Controller
 
         $param = $this->getStatusReport($stationID,$startTime,$endTime);
 
+        return $param;
+
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
 
