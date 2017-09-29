@@ -205,6 +205,9 @@ class StatusReportController extends Controller
      */
     public function getStatusReport($stationID,$startTime,$endTime)
     {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
         $stationTemp = $this->stationInfo($stationID);
 
         $stations = $this->stationList();
@@ -427,6 +430,9 @@ class StatusReportController extends Controller
      */
     public function getStationStatusList($stationRTList,$equipmentCode,$currentCode,$pumpFlux)
     {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
         $stationStatusList = [];
         $index = 1;
 
