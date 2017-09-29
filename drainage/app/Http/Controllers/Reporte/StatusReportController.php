@@ -404,18 +404,20 @@ class StatusReportController extends Controller
         $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
         $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
-        DB::connection()->disableQueryLog();
-
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
-                ->get();
+//            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+//                ->get();
+            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 20) = 1',[$searchStartTime,$searchEndTime])
+            ;
 
         }
         else
         {
-            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
-                ->get();
+//            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+//                ->get();
+            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 20) = 1')
+            ;
         }
 
         return $stationRTList;
