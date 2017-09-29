@@ -63,7 +63,7 @@ class StatusReportController extends Controller
             $endTime = date("Y-m-d");
         }
 
-        $param = $this->getStatusReport($stationID,$startTime,$endTime);
+//        $param = $this->getStatusReport($stationID,$startTime,$endTime);
 
         return $param;
 
