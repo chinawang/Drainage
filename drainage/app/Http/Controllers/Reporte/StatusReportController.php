@@ -404,6 +404,7 @@ class StatusReportController extends Controller
         $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
         $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
+        DB::connection()->disableQueryLog();
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
