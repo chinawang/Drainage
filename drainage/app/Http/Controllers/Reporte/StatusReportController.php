@@ -756,13 +756,6 @@ class StatusReportController extends Controller
             $station['totalFluxDay'] = $param['totalFluxDay'];
             $station['totalTimeBefore'] = round(($paramBefore['totalTimeDay'])/60,2);
             $station['totalFluxBefore'] = $paramBefore['totalFluxDay'];
-            $totalTimeDayAll += $station['totalTimeDay'];
-            $totalTimeBeforeAll += $station['totalTimeBefore'];
-            $totalFluxDayAll += $station['totalFluxDay'];
-            $totalFluxBeforeAll += $station['totalFluxBefore'];
-
-            $station['index'] = $index;
-            $index ++;
         }
 //        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
         return response()->json(array('stations'=> $stations), 200);
