@@ -782,15 +782,20 @@ class StatusReportController extends Controller
 
         $title = '泵站运行日志-'.$startTime;
 
+        //连前累计
+        $beforeTime = date("2017-09-01");
+
         $excelData = $this->getStatusReport($stationID,$startTime,$endTime);
 
-        Excel::create($title, function ($excel) use ($excelData, $title,$startTime) {
+        $excelDataBefore = $this->getStatusReport($stationID,$beforeTime,$endTime);
+
+        Excel::create($title, function ($excel) use ($excelData, $excelDataBefore,$title,$startTime) {
 
             $excel->setTitle($title);
 
             $excel->setCreator('Eason')->setCompany('LegendX');
 
-            $excel->sheet('泵站运行日志', function ($sheet) use ($excelData,$startTime) {
+            $excel->sheet('泵站运行日志', function ($sheet) use ($excelData,$excelDataBefore,$startTime) {
 
                 $station = $excelData['stationSelect'];
 
@@ -970,20 +975,20 @@ class StatusReportController extends Controller
                     $sheet->row($rowMax, ['运行合计','','','',$excelData['totalTimeDay1'],'','','分',$excelData['totalTimeDay2'],'','','分',
                         $excelData['totalTimeDay3'],'','','分',$excelData['totalTimeDay4'],'','','分',$excelData['totalTimeDay5'],'','','分','总耗电量(度)','','','','']);
 
-                    $sheet->row($rowMax+1, ['连前累计运行','','','',$excelData['totalTimeBefore1'],'','','小时',$excelData['totalTimeBefore2'],'','','小时',
-                        $excelData['totalTimeBefore3'],'','','小时',$excelData['totalTimeBefore4'],'','','小时',$excelData['totalTimeBefore5'],'','','小时','电表指数差','','','','']);
+                    $sheet->row($rowMax+1, ['连前累计运行','','','',round(($excelDataBefore['totalTimeDay1'])/60,2),'','','小时',round(($excelDataBefore['totalTimeDay2'])/60,2),'','','小时',
+                        round(($excelDataBefore['totalTimeDay3'])/60,2),'','','小时',round(($excelDataBefore['totalTimeDay4'])/60,2),'','','小时',round(($excelDataBefore['totalTimeDay5'])/60,2),'','','小时','电表指数差','','','','']);
 
                     $sheet->row($rowMax+2, ['抽升量','','','',$excelData['totalFluxDay1'],'','','万吨',$excelData['totalFluxDay2'],'','','万吨',
                         $excelData['totalFluxDay3'],'','','万吨',$excelData['totalFluxDay4'],'','','万吨',$excelData['totalFluxDay5'],'','','万吨','倍率','','','','']);
 
-                    $sheet->row($rowMax+3, ['连前累计抽升量','','','',$excelData['totalFluxBefore1'],'','','万吨',$excelData['totalFluxBefore2'],'','','万吨',
-                        $excelData['totalFluxBefore3'],'','','万吨',$excelData['totalFluxBefore4'],'','','万吨',$excelData['totalFluxBefore5'],'','','万吨','今日电量','','','','']);
+                    $sheet->row($rowMax+3, ['连前累计抽升量','','','',$excelDataBefore['totalFluxDay1'],'','','万吨',$excelDataBefore['totalFluxDay2'],'','','万吨',
+                        $excelDataBefore['totalFluxDay3'],'','','万吨',$excelDataBefore['totalFluxDay4'],'','','万吨',$excelDataBefore['totalFluxDay5'],'','','万吨','今日电量','','','','']);
 
                     $sheet->row($rowMax+4, ['电度表读数','','','','','','','度','','','','度','','','','度','','','','度','','','','度','连前累计','','','','']);
 
                     $sheet->row($rowMax+5, ['今日总抽升量','','','',$excelData['totalFluxDay'],'','','万吨','值班人员','','白','','','','','','','','','','','','','','','','','']);
 
-                    $sheet->row($rowMax+6, ['连前累计总抽升量','','','',$excelData['totalFluxBefore'],'','','万吨','签名','','黑','','','','','','','','','','','','','','','','','','']);
+                    $sheet->row($rowMax+6, ['连前累计总抽升量','','','',$excelDataBefore['totalFluxDay'],'','','万吨','签名','','黑','','','','','','','','','','','','','','','','','','']);
 
                     $sheet->row($rowMax+7, ['记录:','','','','','','','','校核:']);
                 }
@@ -992,20 +997,20 @@ class StatusReportController extends Controller
                     $sheet->row($rowMax, ['运行合计','','','',$excelData['totalTimeDay1'],'','','分',$excelData['totalTimeDay2'],'','','分',
                         $excelData['totalTimeDay3'],'','','分',$excelData['totalTimeDay4'],'','','分','总耗电量(度)','','','','']);
 
-                    $sheet->row($rowMax+1, ['连前累计运行','','','',$excelData['totalTimeBefore1'],'','','小时',$excelData['totalTimeBefore2'],'','','小时',
-                        $excelData['totalTimeBefore3'],'','','小时',$excelData['totalTimeBefore4'],'','','小时','电表指数差','','','','']);
+                    $sheet->row($rowMax+1, ['连前累计运行','','','',round(($excelDataBefore['totalTimeDay1'])/60,2),'','','小时',round(($excelDataBefore['totalTimeDay2'])/60,2),'','','小时',
+                        round(($excelDataBefore['totalTimeDay3'])/60,2),'','','小时',round(($excelDataBefore['totalTimeDay4'])/60,2),'','','小时','电表指数差','','','','']);
 
                     $sheet->row($rowMax+2, ['抽升量','','','',$excelData['totalFluxDay1'],'','','万吨',$excelData['totalFluxDay2'],'','','万吨',
                         $excelData['totalFluxDay3'],'','','万吨',$excelData['totalFluxDay4'],'','','万吨','倍率','','','','']);
 
-                    $sheet->row($rowMax+3, ['连前累计抽升量','','','',$excelData['totalFluxBefore1'],'','','万吨',$excelData['totalFluxBefore2'],'','','万吨',
-                        $excelData['totalFluxBefore3'],'','','万吨',$excelData['totalFluxBefore4'],'','','万吨','今日电量','','','','']);
+                    $sheet->row($rowMax+3, ['连前累计抽升量','','','',$excelDataBefore['totalFluxDay1'],'','','万吨',$excelDataBefore['totalFluxDay2'],'','','万吨',
+                        $excelDataBefore['totalFluxDay3'],'','','万吨',$excelDataBefore['totalFluxDay4'],'','','万吨','今日电量','','','','']);
 
                     $sheet->row($rowMax+4, ['电度表读数','','','','','','','度','','','','度','','','','度','','','','度','连前累计','','','','']);
 
                     $sheet->row($rowMax+5, ['今日总抽升量','','','',$excelData['totalFluxDay'],'','','万吨','值班人员','','白','','','','','','','','','','','','','']);
 
-                    $sheet->row($rowMax+6, ['连前累计总抽升量','','','',$excelData['totalFluxBefore'],'','','万吨','签名','','黑','','','','','','','','','','','','','','']);
+                    $sheet->row($rowMax+6, ['连前累计总抽升量','','','',$excelDataBefore['totalFluxDay1'],'','','万吨','签名','','黑','','','','','','','','','','','','','','']);
 
                     $sheet->row($rowMax+7, ['记录:','','','','','','','','校核:']);
                 }
