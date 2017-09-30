@@ -27,7 +27,7 @@
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/pace/themes/white/pace-theme-loading-bar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pace/themes/silver/pace-theme-loading-bar.css') }}" rel="stylesheet">
 
 {{--    <link href="{{ asset('css/pace/themes/black/pace-theme-flash.css') }}" rel="stylesheet">--}}
 
