@@ -27,6 +27,8 @@
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('css/pace/themes/green/pace-theme-mac-osx.css') }}" rel="stylesheet">
+
 @yield('stylesheet')
 
 <!-- Scripts -->
@@ -157,6 +159,8 @@
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <script src="{{ asset('js/select2.full.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+
+<script src="{{ asset('js/pace.min.js') }}"></script>
 
 <script>
     $("[data-toggle='tooltip']").tooltip();
