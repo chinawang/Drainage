@@ -1365,6 +1365,11 @@ class StatusReportController extends Controller
         foreach ($stations as $station)
         {
             $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+
+            //连前累计
+            $beforeTime = date("2017-09-01");
+            $paramBefore = $this->getStatusReport($station['id'],$beforeTime,$endTime);
+
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1'])/60,2);
             $station['totalTimeDay2'] = round(($param['totalTimeDay2'])/60,2);
@@ -1378,17 +1383,17 @@ class StatusReportController extends Controller
             $station['totalFluxDay4'] = $param['totalFluxDay4'];
             $station['totalFluxDay5'] = $param['totalFluxDay5'];
 
-            $station['totalTimeBefore1'] = $param['totalTimeBefore1'];
-            $station['totalTimeBefore2'] = $param['totalTimeBefore2'];
-            $station['totalTimeBefore3'] = $param['totalTimeBefore3'];
-            $station['totalTimeBefore4'] = $param['totalTimeBefore4'];
-            $station['totalTimeBefore5'] = $param['totalTimeBefore5'];
+            $station['totalTimeBefore1'] = round(($paramBefore['totalTimeDay1'])/60,2);
+            $station['totalTimeBefore2'] = round(($paramBefore['totalTimeDay2'])/60,2);
+            $station['totalTimeBefore3'] = round(($paramBefore['totalTimeDay3'])/60,2);
+            $station['totalTimeBefore4'] = round(($paramBefore['totalTimeDay4'])/60,2);
+            $station['totalTimeBefore5'] = round(($paramBefore['totalTimeDay5'])/60,2);
 
-            $station['totalFluxBefore1'] = $param['totalFluxBefore1'];
-            $station['totalFluxBefore2'] = $param['totalFluxBefore2'];
-            $station['totalFluxBefore3'] = $param['totalFluxBefore3'];
-            $station['totalFluxBefore4'] = $param['totalFluxBefore4'];
-            $station['totalFluxBefore5'] = $param['totalFluxBefore5'];
+            $station['totalFluxBefore1'] = $paramBefore['totalFluxDay1'];
+            $station['totalFluxBefore2'] = $paramBefore['totalFluxDay2'];
+            $station['totalFluxBefore3'] = $paramBefore['totalFluxDay3'];
+            $station['totalFluxBefore4'] = $paramBefore['totalFluxDay4'];
+            $station['totalFluxBefore5'] = $paramBefore['totalFluxDay5'];
         }
 
         $title = '单机运行情况月报表-'.$startTime;
@@ -1574,11 +1579,16 @@ class StatusReportController extends Controller
         foreach ($stations as $station)
         {
             $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+
+            //连前累计
+            $beforeTime = date("2017-09-01");
+            $paramBefore = $this->getStatusReport($station['id'],$beforeTime,$endTime);
+
             //单位小时
             $station['totalTimeDay'] = round(($param['totalTimeDay'])/60,2);
             $station['totalFluxDay'] = $param['totalFluxDay'];
-            $station['totalTimeBefore'] = $param['totalTimeBefore'];
-            $station['totalFluxBefore'] = $param['totalFluxBefore'];
+            $station['totalTimeBefore'] = round(($paramBefore['totalTimeDay'])/60,2);
+            $station['totalFluxBefore'] = $paramBefore['totalFluxDay'];
             $totalTimeDayAll += $station['totalTimeDay'];
             $totalTimeBeforeAll += $station['totalTimeBefore'];
             $totalFluxDayAll += $station['totalFluxDay'];
