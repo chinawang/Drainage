@@ -27,7 +27,7 @@
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/pace/themes/red/pace-theme-loading-bar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pace/themes/yellow/pace-theme-minimal.css') }}" rel="stylesheet">
 
 @yield('stylesheet')
 
