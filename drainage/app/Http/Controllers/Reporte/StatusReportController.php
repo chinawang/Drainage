@@ -64,7 +64,7 @@ class StatusReportController extends Controller
         }
 
         //连前累计
-        $beforeTime = date("2017-04-01");
+        $beforeTime = date("2017-09-01");
 
         return $this->getStationRTAll($stationID,$beforeTime,$endTime);
 
