@@ -80,7 +80,7 @@ class StatusReportController extends Controller
             'totalTimeBefore' => round(($statusReportBefore['totalTimeDay'])/60,2),'totalFluxBefore' => $statusReportBefore['totalFluxDay'],
         ];
 
-        return $param;
+//        return $param;
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
 
@@ -440,39 +440,6 @@ class StatusReportController extends Controller
         //当日泵站总抽升量(万吨)
         $totalFluxDay = $totalFluxDay1 + $totalFluxDay2 + $totalFluxDay3 + $totalFluxDay4 + $totalFluxDay5;
 
-//        //连前累计
-//        $beforeTime = date("2017-9-27");
-//        $beforeStatusRTList = $this->getStationRTAll($stationID,$beforeTime,$endTime);
-//
-//        //连前累计运行(小时)
-//        $totalTimeBefore1 = round(($this->sumTime($beforeStatusRT['pump1']))/60,2);
-//        $totalTimeBefore2 = round(($this->sumTime($beforeStatusRT['pump2']))/60,2);
-//        $totalTimeBefore3 = round(($this->sumTime($beforeStatusRT['pump3']))/60,2);
-//        $totalTimeBefore4 = round(($this->sumTime($beforeStatusRT['pump4']))/60,2);
-//        if($stationTemp['station_number'] == 33){
-//            $totalTimeBefore5 = round(($this->sumTime($beforeStatusRT['pump5']))/60,2);
-//        }
-//        else{
-//            $totalTimeBefore5 = 0;
-//        }
-//
-//        //连前累计泵站总运行时间(小时)
-//        $totalTimeBefore = $totalTimeBefore1 + $totalTimeBefore2 + $totalTimeBefore3 + $totalTimeBefore4 + $totalTimeBefore5;
-//
-//        //连前累计抽水量(万吨)
-//        $totalFluxBefore1 = ($this->sumFlux($beforeStatusRT['pump1']))/10000;
-//        $totalFluxBefore2 = ($this->sumFlux($beforeStatusRT['pump2']))/10000;
-//        $totalFluxBefore3 = ($this->sumFlux($beforeStatusRT['pump3']))/10000;
-//        $totalFluxBefore4 = ($this->sumFlux($beforeStatusRT['pump4']))/10000;
-//        if($stationTemp['station_number'] == 33){
-//            $totalFluxBefore5 = ($this->sumFlux($beforeStatusRT['pump5']))/10000;
-//        }
-//        else{
-//            $totalFluxBefore5 = 0;
-//        }
-//
-//        //连前累计泵站总抽升量(万吨)
-//        $totalFluxBefore = $totalFluxBefore1 + $totalFluxBefore2 + $totalFluxBefore3 + $totalFluxBefore4 + $totalFluxBefore5;
 
         $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime,
             'stationStatusList1'=> $stationStatusList1,'stationStatusList2'=> $stationStatusList2,
