@@ -68,7 +68,7 @@ class StatusReportController extends Controller
 
         return $this->getStationRTAll($stationID,$beforeTime,$endTime);
 
-        $statusReportDay = $this->getStatusReport($stationID,$startTime,$endTime);
+//        $statusReportDay = $this->getStatusReport($stationID,$startTime,$endTime);
 
         $statusReportBefore = $this->getStatusReport($stationID,$beforeTime,$endTime);
 
