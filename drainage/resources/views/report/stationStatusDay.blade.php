@@ -704,10 +704,10 @@
     var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background:#aaa;opacity:0.8;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: auto; height: 57px; line-height: 57px; padding-left: 50px; padding-right: 20px; background: #ffffff url(/img/loading.gif) no-repeat scroll 20px 20px; color: #696969; font-family:\'Microsoft YaHei\';box-shadow: 0px 0px 20px rgba(0, 0, 0, .08);    border: 2px solid transparent;border-radius: 4px;">页面加载中，请等待...</div></div>';
     //呈现loading效果
     document.write(_LoadingHtml);
-    //window.onload = function () {
-    //  var loadingMask = document.getElementById('loadingDiv');
-    //  loadingMask.parentNode.removeChild(loadingMask);
-    //};
+    window.onload = function () {
+      var loadingMask = document.getElementById('loadingDiv');
+      loadingMask.parentNode.removeChild(loadingMask);
+    };
     //监听加载状态改变
     document.onreadystatechange = completeLoading;
     //加载状态为complete时移除loading效果
