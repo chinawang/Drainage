@@ -75,11 +75,12 @@ class StatusReportController extends Controller
             'totalTimeDay1' => $statusReportDay['totalTimeDay1'],'totalTimeDay2' => $statusReportDay['totalTimeDay2'],'totalTimeDay3' => $statusReportDay['totalTimeDay3'],'totalTimeDay4' => $statusReportDay['totalTimeDay4'],'totalTimeDay5' => $statusReportDay['totalTimeDay5'],
             'totalFluxDay1' => $statusReportDay['totalFluxDay1'],'totalFluxDay2' => $statusReportDay['totalFluxDay2'],'totalFluxDay3' => $statusReportDay['totalFluxDay3'],'totalFluxDay4' => $statusReportDay['totalFluxDay4'],'totalFluxDay5' => $statusReportDay['totalFluxDay5'],
             'totalTimeDay' => $statusReportDay['totalTimeDay'],'totalFluxDay' => $statusReportDay['totalFluxDay'],
-            'totalTimeBefore1' => $statusReportBefore['totalTimeDay1'],'totalTimeBefore2' => $statusReportBefore['totalTimeDay2'],'totalTimeBefore3' => $statusReportBefore['totalTimeDay3'],'totalTimeBefore4' => $statusReportBefore['totalTimeDay4'],'totalTimeBefore5' => $statusReportBefore['totalTimeDay5'],
+            'totalTimeBefore1' => round(($statusReportBefore['totalTimeDay1'])/60,2),'totalTimeBefore2' => round(($statusReportBefore['totalTimeDay2'])/60,2),'totalTimeBefore3' => round(($statusReportBefore['totalTimeDay3'])/60,2),'totalTimeBefore4' => round(($statusReportBefore['totalTimeDay4'])/60,2),'totalTimeBefore5' => round(($statusReportBefore['totalTimeDay5'])/60,2),
             'totalFluxBefore1' => $statusReportBefore['totalFluxDay1'],'totalFluxBefore2' => $statusReportBefore['totalFluxDay2'],'totalFluxBefore3' => $statusReportBefore['totalFluxDay3'],'totalFluxBefore4' => $statusReportBefore['totalFluxDay4'],'totalFluxBefore5' => $statusReportBefore['totalFluxDay5'],
-            'totalTimeBefore' => $statusReportBefore['totalTimeDay'],'totalFluxBefore' => $statusReportBefore['totalFluxDay'],
+            'totalTimeBefore' => round(($statusReportBefore['totalTimeDay'])/60,2),'totalFluxBefore' => $statusReportBefore['totalFluxDay'],
         ];
 
+        return $param;
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
 
