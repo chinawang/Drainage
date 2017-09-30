@@ -275,7 +275,7 @@ class StatusReportController extends Controller
         $totalFluxDay = 0.00;
 
         // 遍历实时运行数据表,找出起泵时刻与停泵时刻
-        for($i = 0 ; $i < count($stationRTList)-1;$i++)
+        for($i = 0 ; $i < count($stationRTList);$i++)
         {
             $sRunning1 = [];
             $sRunning2 = [];
@@ -311,6 +311,7 @@ class StatusReportController extends Controller
                 }
 
             }
+
 
             //2号泵
             if($stationRTList[$i]->$equipmentCode2 - $stationRTList[$i+1]->$equipmentCode2 == -1)
