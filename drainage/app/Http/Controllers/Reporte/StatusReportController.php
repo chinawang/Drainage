@@ -340,7 +340,7 @@ class StatusReportController extends Controller
                 array_push($stationStatusList2,$sRunning2);
             }
             elseif(($stationRTList[$i]->$equipmentCode2 - $stationRTList[$i+1]->$equipmentCode2 == 1)
-                || ($i == (count($stationRTList)-1) && $stationRTList[$i]->$equipmentCode2 == 1))
+                || ($i == (count($stationRTList)-2) && $stationRTList[$i]->$equipmentCode2 == 1))
             {
                 $sRunning2['timeEnd'] = $stationRTList[$i+1]->Time;
                 if($index2 > 1)
@@ -369,7 +369,7 @@ class StatusReportController extends Controller
                 array_push($stationStatusList3,$sRunning3);
             }
             elseif(($stationRTList[$i]->$equipmentCode3 - $stationRTList[$i+1]->$equipmentCode3 == 1)
-                || ($i == (count($stationRTList)-1) && $stationRTList[$i]->$equipmentCode3 == 1))
+                || ($i == (count($stationRTList)-2) && $stationRTList[$i]->$equipmentCode3 == 1))
             {
                 $sRunning3['timeEnd'] = $stationRTList[$i+1]->Time;
                 if($index3 > 1)
@@ -390,15 +390,15 @@ class StatusReportController extends Controller
             }
 
             //4号泵
-            if(($stationRTList[$i]->$equipmentCode4 - $stationRTList[$i+1]->$equipmentCode4 == -1)
-                || ($i == (count($stationRTList)-1) && $stationRTList[$i]->$equipmentCode4 == 1))
+            if($stationRTList[$i]->$equipmentCode4 - $stationRTList[$i+1]->$equipmentCode4 == -1)
             {
                 $sRunning4['timeStart'] = $stationRTList[$i+1]->Time;
                 $sRunning4['current'] = $stationRTList[$i+1]->$currentCode4;
                 $index4 ++;
                 array_push($stationStatusList4,$sRunning4);
             }
-            elseif($stationRTList[$i]->$equipmentCode4 - $stationRTList[$i+1]->$equipmentCode4 == 1)
+            elseif($stationRTList[$i]->$equipmentCode4 - $stationRTList[$i+1]->$equipmentCode4 == 1
+                || ($i == (count($stationRTList)-2) && $stationRTList[$i]->$equipmentCode4 == 1))
             {
                 $sRunning4['timeEnd'] = $stationRTList[$i+1]->Time;
                 if($index4 > 1)
@@ -421,15 +421,15 @@ class StatusReportController extends Controller
             //5号泵
             if($stationTemp['station_number'] == 33)
             {
-                if(($stationRTList[$i]->$equipmentCode5 - $stationRTList[$i+1]->$equipmentCode5 == -1)
-                    || ($i == (count($stationRTList)-1) && $stationRTList[$i]->$equipmentCode5 == 1))
+                if($stationRTList[$i]->$equipmentCode5 - $stationRTList[$i+1]->$equipmentCode5 == -1)
                 {
                     $sRunning5['timeStart'] = $stationRTList[$i+1]->Time;
                     $sRunning5['current'] = $stationRTList[$i+1]->$currentCode5;
                     $index5 ++;
                     array_push($stationStatusList5,$sRunning5);
                 }
-                elseif($stationRTList[$i]->$equipmentCode5 - $stationRTList[$i+1]->$equipmentCode5 == 1)
+                elseif($stationRTList[$i]->$equipmentCode5 - $stationRTList[$i+1]->$equipmentCode5 == 1
+                    || ($i == (count($stationRTList)-2) && $stationRTList[$i]->$equipmentCode5 == 1))
                 {
                     $sRunning5['timeEnd'] = $stationRTList[$i+1]->Time;
                     if($index5 > 1)
