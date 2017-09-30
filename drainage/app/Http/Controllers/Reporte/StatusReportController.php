@@ -597,13 +597,13 @@ class StatusReportController extends Controller
         {
 //            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
 //                ->get();
-            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 10) = 1',[$searchStartTime,$searchEndTime])
-            ;
+//            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 10) = 1',[$searchStartTime,$searchEndTime])
+//            ;
 
 //            select * from (select rank() over(order by HTAH01A060) as rank_sort,* from table) as a where a.rank_sort%4 = 0
 
-//            $stationRTList = DB::select('SELECT * from (Select rank() over( order by Time) as rank_sort,* From '.$stationTable.' where Time > ? and Time < ?) as a where a.rank_sort%4 = 0',[$searchStartTime,$searchEndTime])
-//            ;
+            $stationRTList = DB::select('SELECT * from (Select rank() over( order by Time) as rank_sort,* From '.$stationTable.' where Time > ? and Time < ?) as a where a.rank_sort%4 = 0',[$searchStartTime,$searchEndTime])
+            ;
 
         }
         else
