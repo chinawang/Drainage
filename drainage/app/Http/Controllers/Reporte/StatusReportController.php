@@ -309,7 +309,7 @@ class StatusReportController extends Controller
                     $totalFluxDay1 += ($sRunning1['timeGap'] * $pump['flux1'])/10000;
                 }
 
-            }elseif (($i == (count($stationRTList)-1) && $stationRTList[$i]->$equipmentCode1 == 1))
+            }elseif (($i == (count($stationRTList)-2) && $stationRTList[$i]->$equipmentCode1 == 1))
             {
                 $sRunning1['timeEnd'] = $stationRTList[$i]->Time;
                 if($index1 > 1)
