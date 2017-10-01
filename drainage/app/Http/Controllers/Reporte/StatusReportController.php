@@ -64,7 +64,7 @@ class StatusReportController extends Controller
         }
 
         //连前累计
-        $beforeTime = date("2017-09-01");
+        $beforeTime = date("2017-10-01");
 
 //        return $this->getStationRTAll($stationID,$beforeTime,$endTime);
 
@@ -595,20 +595,20 @@ class StatusReportController extends Controller
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-//            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
-//                ->get();
-            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 60) = 1',[$searchStartTime,$searchEndTime])
-            ;
+            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+                ->get();
+//            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 60) = 1',[$searchStartTime,$searchEndTime])
+//            ;
 
 //            select * from (select rank() over(order by HTAH01A060) as rank_sort,* from table) as a where a.rank_sort%4 = 0
 
         }
         else
         {
-//            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
-//                ->get();
-            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 60) = 1')
-            ;
+            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+                ->get();
+//            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 60) = 1')
+//            ;
         }
 
         return $stationRTList;
@@ -787,7 +787,7 @@ class StatusReportController extends Controller
         $title = '泵站运行日志-'.$startTime;
 
         //连前累计
-        $beforeTime = date("2017-09-01");
+        $beforeTime = date("2017-10-01");
 
         $excelData = $this->getStatusReport($stationID,$startTime,$endTime);
 
