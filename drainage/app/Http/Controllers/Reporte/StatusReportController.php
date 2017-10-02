@@ -605,10 +605,10 @@ class StatusReportController extends Controller
         }
         else
         {
-            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
-                ->get();
-//            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 60) = 1')
-//            ;
+//            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+//                ->get();
+            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 60) = 1')
+            ;
         }
 
         return $stationRTList;
