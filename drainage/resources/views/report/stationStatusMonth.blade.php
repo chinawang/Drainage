@@ -243,97 +243,97 @@
         }
     </script>
 
-    {{--<script type="text/javascript">--}}
+    <script type="text/javascript">
 
-        {{--function getStationStatusList() {--}}
-            {{--var resultValue = [];--}}
-            {{--$.ajax({--}}
-                {{--type: 'get',--}}
-                {{--url: '/report/realTimeStatusMonth/{{ $selectType }}/{{ $startTime }}',--}}
-                {{--data: '_token = <?php echo csrf_token() ?>',--}}
-                {{--async: false,//同步--}}
-                {{--success: function (data) {--}}
-                    {{--resultValue = data.stations;--}}
-                {{--}--}}
-            {{--});--}}
-            {{--return resultValue;--}}
-        {{--}--}}
+        function getStationStatusList() {
+            var resultValue = [];
+            $.ajax({
+                type: 'get',
+                url: '/report/realTimeStatusMonth/{{ $selectType }}/{{ $startTime }}',
+                data: '_token = <?php echo csrf_token() ?>',
+                async: false,//同步
+                success: function (data) {
+                    resultValue = data.stations;
+                }
+            });
+            return resultValue;
+        }
 
-        {{--var statusRTList = getStationStatusList();--}}
+        var statusRTList = getStationStatusList();
 
-    {{--</script>--}}
+    </script>
 
-    {{--<script>--}}
+    <script>
 
-        {{--var categories = [];--}}
-        {{--var datas1 = [];--}}
-        {{--var datas2 = [];--}}
-        {{--var datas3 = [];--}}
-        {{--var datas4 = [];--}}
-        {{--var datas5 = [];--}}
+        var categories = [];
+        var datas1 = [];
+        var datas2 = [];
+        var datas3 = [];
+        var datas4 = [];
+        var datas5 = [];
 
-        {{--$.each(statusRTList, function (i, n) {--}}
-            {{--categories[i] = n["name"];--}}
-            {{--datas1[i] = n["totalTimeDay1"];--}}
-            {{--datas2[i] = n["totalTimeDay2"];--}}
-            {{--datas3[i] = n["totalTimeDay3"];--}}
-            {{--datas4[i] = n["totalTimeDay4"];--}}
-            {{--datas5[i] = n["totalTimeDay5"];--}}
-        {{--});--}}
+        $.each(statusRTList, function (i, n) {
+            categories[i] = n["name"];
+            datas1[i] = n["totalTimeDay1"];
+            datas2[i] = n["totalTimeDay2"];
+            datas3[i] = n["totalTimeDay3"];
+            datas4[i] = n["totalTimeDay4"];
+            datas5[i] = n["totalTimeDay5"];
+        });
 
-        {{--var chart1 = new Highcharts.Chart('statusContainer', {--}}
-            {{--chart: {--}}
-                {{--type: 'areaspline'--}}
-            {{--},--}}
-            {{--title: {--}}
-                {{--text: '',--}}
-                {{--x: -20--}}
-            {{--},--}}
-            {{--subtitle: {--}}
-                {{--text: '',--}}
-                {{--x: -20--}}
-            {{--},--}}
-            {{--xAxis: {--}}
-                {{--categories: categories--}}
-            {{--},--}}
-            {{--yAxis: {--}}
-                {{--title: {--}}
-                    {{--text: '时长 (小时)'--}}
-                {{--},--}}
-                {{--plotLines: [{--}}
-                    {{--value: 0,--}}
-                    {{--width: 1,--}}
-                    {{--color: '#808080'--}}
-                {{--}]--}}
-            {{--},--}}
-            {{--tooltip: {--}}
-                {{--valueSuffix: '小时'--}}
-            {{--},--}}
-            {{--legend: {--}}
-                {{--layout: 'vertical',--}}
-                {{--align: 'right',--}}
-                {{--verticalAlign: 'middle',--}}
-                {{--borderWidth: 0--}}
-            {{--},--}}
-            {{--series: [{--}}
-                {{--name: '1号泵运行时长',--}}
-                {{--data: datas1--}}
-            {{--}, {--}}
-                {{--name: '2号泵运行时长',--}}
-                {{--data: datas2--}}
-            {{--}, {--}}
-                {{--name: '3号泵运行时长',--}}
-                {{--data: datas3--}}
-            {{--}, {--}}
-                {{--name: '4号泵运行时长',--}}
-                {{--data: datas4--}}
-            {{--},--}}
-                {{--{--}}
-                    {{--name: '5号泵运行时长',--}}
-                    {{--data: datas5--}}
-                {{--},--}}
-            {{--]--}}
-        {{--});--}}
-    {{--</script>--}}
+        var chart1 = new Highcharts.Chart('statusContainer', {
+            chart: {
+                type: 'areaspline'
+            },
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories: categories
+            },
+            yAxis: {
+                title: {
+                    text: '时长 (小时)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '小时'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '1号泵运行时长',
+                data: datas1
+            }, {
+                name: '2号泵运行时长',
+                data: datas2
+            }, {
+                name: '3号泵运行时长',
+                data: datas3
+            }, {
+                name: '4号泵运行时长',
+                data: datas4
+            },
+                {
+                    name: '5号泵运行时长',
+                    data: datas5
+                },
+            ]
+        });
+    </script>
 @endsection
 
