@@ -98,15 +98,26 @@ class StatusReportController extends Controller
     {
 //        $stationID = Input::get('station_id', 1);
         $type = Input::get('type', '全部');
-        $selectDay = Input::get('timeStart', '');
+//        $selectDay = Input::get('timeStart', '');
+//
+//        if ($selectDay == '')
+//        {
+//            $selectDay = date("Y-m-d");
+//        }
+//        $days = $this->getTheMonthDay($selectDay);
+//        $startTime = $days[0];
+//        $endTime = $days[1];
 
-        if ($selectDay == '')
-        {
-            $selectDay = date("Y-m-d");
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
         }
-        $days = $this->getTheMonthDay($selectDay);
-        $startTime = $days[0];
-        $endTime = $days[1];
+
+        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stations = $this->stationListByType($type);
 
@@ -158,15 +169,26 @@ class StatusReportController extends Controller
     public function showStatusReportMonthAll()
     {
         $type = Input::get('type', '全部');
-        $selectDay = Input::get('timeStart', '');
+//        $selectDay = Input::get('timeStart', '');
+//
+//        if ($selectDay == '')
+//        {
+//            $selectDay = date("Y-m-d");
+//        }
+//        $days = $this->getTheMonthDay($selectDay);
+//        $startTime = $days[0];
+//        $endTime = $days[1];
 
-        if ($selectDay == '')
-        {
-            $selectDay = date("Y-m-d");
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
         }
-        $days = $this->getTheMonthDay($selectDay);
-        $startTime = $days[0];
-        $endTime = $days[1];
+
+        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stations = $this->stationListByType($type);
 
@@ -919,19 +941,29 @@ class StatusReportController extends Controller
 
     /**
      * 按月查询单机运行时间Ajax
+     *
      * @param $type
-     * @param $selectDay
+     * @param $startTime
+     * @param $endTime
      * @return \Illuminate\Http\JsonResponse
      */
-    public function statusRTMonthAjax($type,$selectDay)
+    public function statusRTMonthAjax($type,$startTime,$endTime)
     {
-        if ($selectDay == '')
-        {
-            $selectDay = date("Y-m-d");
+//        if ($selectDay == '')
+//        {
+//            $selectDay = date("Y-m-d");
+//        }
+//        $days = $this->getTheMonthDay($selectDay);
+//        $startTime = $days[0];
+//        $endTime = $days[1];
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
         }
-        $days = $this->getTheMonthDay($selectDay);
-        $startTime = $days[0];
-        $endTime = $days[1];
+
+        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stations = $this->stationListByType($type);
 
@@ -974,19 +1006,29 @@ class StatusReportController extends Controller
 
     /**
      * 按月查询泵站所有泵组运行时间Ajax
+     *
      * @param $type
-     * @param $selectDay
+     * @param $startTime
+     * @param $endTime
      * @return \Illuminate\Http\JsonResponse
      */
-    public function statusRTMonthAllAjax($type,$selectDay)
+    public function statusRTMonthAllAjax($type,$startTime,$endTime)
     {
-        if ($selectDay == '')
-        {
-            $selectDay = date("Y-m-d");
+//        if ($selectDay == '')
+//        {
+//            $selectDay = date("Y-m-d");
+//        }
+//        $days = $this->getTheMonthDay($selectDay);
+//        $startTime = $days[0];
+//        $endTime = $days[1];
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
         }
-        $days = $this->getTheMonthDay($selectDay);
-        $startTime = $days[0];
-        $endTime = $days[1];
+
+        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stations = $this->stationListByType($type);
 
@@ -1602,15 +1644,25 @@ class StatusReportController extends Controller
     public function exportToExcelStatusMonth()
     {
         $type = Input::get('type', '全部');
-        $selectDay = Input::get('timeStart', '');
+//        $selectDay = Input::get('timeStart', '');
+//
+//        if ($selectDay == '')
+//        {
+//            $selectDay = date("Y-m-d");
+//        }
+//        $days = $this->getTheMonthDay($selectDay);
+//        $startTime = $days[0];
+//        $endTime = $days[1];
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
 
-        if ($selectDay == '')
-        {
-            $selectDay = date("Y-m-d");
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
         }
-        $days = $this->getTheMonthDay($selectDay);
-        $startTime = $days[0];
-        $endTime = $days[1];
+
+        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stations = $this->stationListByType($type);
 
@@ -1808,15 +1860,26 @@ class StatusReportController extends Controller
     public function exportToExcelStatusMonthAll()
     {
         $type = Input::get('type', '全部');
-        $selectDay = Input::get('timeStart', '');
+//        $selectDay = Input::get('timeStart', '');
+//
+//        if ($selectDay == '')
+//        {
+//            $selectDay = date("Y-m-d");
+//        }
+//        $days = $this->getTheMonthDay($selectDay);
+//        $startTime = $days[0];
+//        $endTime = $days[1];
 
-        if ($selectDay == '')
-        {
-            $selectDay = date("Y-m-d");
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
         }
-        $days = $this->getTheMonthDay($selectDay);
-        $startTime = $days[0];
-        $endTime = $days[1];
+
+        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stations = $this->stationListByType($type);
 
