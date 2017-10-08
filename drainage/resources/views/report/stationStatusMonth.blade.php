@@ -96,14 +96,14 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <div class="col-md-6 col-md-offset-1">
+                                            <div class="col-md-5 col-md-offset-0">
                                                 <button type="submit" class="btn btn-primary btn-custom">
                                                     <span class="glyphicon glyphicon-search"></span>
                                                     查询
                                                 </button>
                                             </div>
-                                            <div class="col-md-3 col-md-offset-1">
-                                                <a href="/report/exporStatustMonth?type={{ $selectType }}&timeStart={{ $startTime }}"
+                                            <div class="col-md-7 col-md-offset-0">
+                                                <a href="/report/exporStatustMonth?type={{ $selectType }}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}"
                                                    class="btn btn-default btn-custom">
                                                     <span class="glyphicon glyphicon-export"></span>
                                                     导出报表
@@ -264,7 +264,7 @@
             var resultValue = [];
             $.ajax({
                 type: 'get',
-                url: '/report/realTimeStatusMonth/{{ $selectType }}/{{ $startTime }}',
+                url: '/report/realTimeStatusMonth/{{ $selectType }}/{{ $startTime }}/{{ $endTime }}',
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
