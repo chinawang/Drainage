@@ -260,21 +260,21 @@
 
     <script type="text/javascript">
 
-        function getStationStatusList() {
-            var resultValue = [];
-            $.ajax({
-                type: 'get',
-                url: '/report/realTimeStatusMonth/{{ $selectType }}/{{ $startTime }}/{{ $endTime }}',
-                data: '_token = <?php echo csrf_token() ?>',
-                async: false,//同步
-                success: function (data) {
-                    resultValue = data.stations;
-                }
-            });
-            return resultValue;
-        }
+        {{--function getStationStatusList() {--}}
+            {{--var resultValue = [];--}}
+            {{--$.ajax({--}}
+                {{--type: 'get',--}}
+                {{--url: '/report/realTimeStatusMonth/{{ $selectType }}/{{ $startTime }}/{{ $endTime }}',--}}
+                {{--data: '_token = <?php echo csrf_token() ?>',--}}
+                {{--async: false,//同步--}}
+                {{--success: function (data) {--}}
+                    {{--resultValue = data.stations;--}}
+                {{--}--}}
+            {{--});--}}
+            {{--return resultValue;--}}
+        {{--}--}}
 
-        var statusRTList = getStationStatusList();
+        {{--var statusRTList = getStationStatusList();--}}
 
     </script>
 
