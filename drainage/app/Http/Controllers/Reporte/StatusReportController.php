@@ -66,6 +66,10 @@ class StatusReportController extends Controller
         //连前累计
         $beforeTime = date("2017-10-01");
 
+        $stationTemp = $this->stationInfo($stationID);
+        $stationNum = $stationTemp['station_number'];
+        return $this->getStatusMergeList($stationNum,'1',$startTime,$endTime);
+
 //        return $this->getStationRTAll($stationID,$beforeTime,$endTime);
 
         $statusReportDay = $this->getStatusReport($stationID,$startTime,$endTime);
@@ -595,21 +599,38 @@ class StatusReportController extends Controller
 
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-//            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
-//                ->get();
-            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 10) = 1',[$searchStartTime,$searchEndTime])
-            ;
+            $stationRTList = DB::table($stationTable)->whereBetween('Time',[$searchStartTime,$searchEndTime])->orderBy('Time', 'asc')
+                ->get();
+//            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b where Time > ? and Time < ?) as a where mod(a.rowNo, 10) = 1',[$searchStartTime,$searchEndTime])
+//            ;
 
 //            select * from (select rank() over(order by HTAH01A060) as rank_sort,* from table) as a where a.rank_sort%4 = 0
 
         }
         else
         {
-//            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
-//                ->get();
-            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 10) = 1')
-            ;
+            $stationRTList = DB::table($stationTable)->orderBy('Time', 'asc')
+                ->get();
+//            $stationRTList = DB::select('SELECT * from (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.', (Select (@rowNum :=0) ) b ) as a where mod(a.rowNo, 10) = 1')
+//            ;
         }
+
+        return $stationRTList;
+    }
+
+    public function getStatusMergeList($stationNum,$pumpNum,$startTime,$endTime)
+    {
+        $stationTable = "stationRT_" . $stationNum;
+        $statusCode = "yx_b".$pumpNum;
+        $currentCode = "ib".$pumpNum;
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $stationRTList = DB::select('SELECT a.Time,a.'.$statusCode.',a.'.$currentCode.',a.rowNo,a1.Time AS Time_tmp,a1.'.$statusCode.' AS '.$statusCode.'_tmp,
+        a1.'.$currentCode.' AS '.$currentCode.'_tmp,a1.rowNo1 From (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.' , (Select (@rowNum :=0) ) b WHERE Time > ? and Time < ?) as a 
+         LEFT JOIN (SELECT a1.Time,a1.'.$statusCode.',a1.'.$currentCode.',a1.rowNo1 From (Select *,(@rowNum1:=@rowNum1+1) as rowNo1 From '.$stationTable.' , 
+         (Select (@rowNum1 :=0) ) b1 WHERE Time > ? and Time < ?)AS a1)AS a1  on a.rowNo +1 = a1.rowNo1 WHERE (a.'.$statusCode.' - a1.'.$statusCode.') = 1 || (a.'.$statusCode.' - a1.'.$statusCode.') = -1',[$searchStartTime,$searchEndTime,$searchStartTime,$searchEndTime]);
 
         return $stationRTList;
     }
