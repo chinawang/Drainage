@@ -870,8 +870,8 @@ class StatusReportController extends Controller
         $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stationRTList = DB::select('SELECT a.Time,a.'.$statusCode.',a.'.$currentCode.',a.rowNo,a1.Time AS Time_tmp,a1.'.$statusCode.' AS '.$statusCode.'_tmp,
-        a1.'.$currentCode.' AS '.$currentCode.'_tmp,a1.rowNo1 From (Select *,(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.' , (Select (@rowNum :=0) ) b WHERE Time > ? and Time < ?) as a 
-         LEFT JOIN (SELECT a1.Time,a1.'.$statusCode.',a1.'.$currentCode.',a1.rowNo1 From (Select *,(@rowNum1:=@rowNum1+1) as rowNo1 From '.$stationTable.' , 
+        a1.'.$currentCode.' AS '.$currentCode.'_tmp,a1.rowNo1 From (Select Time,'.$statusCode.','.$currentCode.',(@rowNum:=@rowNum+1) as rowNo From '.$stationTable.' , (Select (@rowNum :=0) ) b WHERE Time > ? and Time < ?) as a 
+         LEFT JOIN (SELECT a1.Time,a1.'.$statusCode.',a1.'.$currentCode.',a1.rowNo1 From (Select Time,'.$statusCode.','.$currentCode.',(@rowNum1:=@rowNum1+1) as rowNo1 From '.$stationTable.' , 
          (Select (@rowNum1 :=0) ) b1 WHERE Time > ? and Time < ?)AS a1)AS a1  on a.rowNo +1 = a1.rowNo1 WHERE (a.'.$statusCode.' - a1.'.$statusCode.') = 1 || (a.'.$statusCode.' - a1.'.$statusCode.') = -1',[$searchStartTime,$searchEndTime,$searchStartTime,$searchEndTime]);
 
         return $stationRTList;
