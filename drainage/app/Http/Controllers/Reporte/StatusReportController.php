@@ -68,9 +68,9 @@ class StatusReportController extends Controller
 
 //        return $this->getStatusReportV2($stationID,$startTime,$endTime);
 
-        $statusReportDay = $this->getStatusReport($stationID,$startTime,$endTime);
+        $statusReportDay = $this->getStatusReportV2($stationID,$startTime,$endTime);
 
-        $statusReportBefore = $this->getStatusReport($stationID,$beforeTime,$endTime);
+        $statusReportBefore = $this->getStatusReportV2($stationID,$beforeTime,$endTime);
 
         $param = ['stations' => $statusReportDay['stations'], 'stationSelect' => $statusReportDay['stationSelect'], 'startTime' => $statusReportDay['startTime'], 'endTime' => $statusReportDay['endTime'],
             'stationStatusList1'=> $statusReportDay['stationStatusList1'],'stationStatusList2'=> $statusReportDay['stationStatusList2'], 'stationStatusList3'=> $statusReportDay['stationStatusList3'],'stationStatusList4'=> $statusReportDay['stationStatusList4'],'stationStatusList5'=> $statusReportDay['stationStatusList5'],
