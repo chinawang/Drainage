@@ -562,7 +562,7 @@ class StatusReportController extends Controller
             $sRunning1['timeGap'] = abs(strtotime($sRunning1['timeEnd']) - strtotime($sRunning1['timeStart']))/60;
             $sRunning1['timeGap'] = round($sRunning1['timeGap']);
             $sRunning1['flux'] = $sRunning1['timeGap'] * $pump['flux1'];
-            $sRunning1['index'] = $i1+1;
+            $sRunning1['index'] = ($i1+2)/2;
 
             array_push($stationStatusList1,$sRunning1);
 
@@ -592,7 +592,7 @@ class StatusReportController extends Controller
             $sRunning2['timeGap'] = abs(strtotime($sRunning2['timeEnd']) - strtotime($sRunning2['timeStart']))/60;
             $sRunning2['timeGap'] = round($sRunning2['timeGap']);
             $sRunning2['flux'] = $sRunning2['timeGap'] * $pump['flux2'];
-            $sRunning2['index'] = $i2+1;
+            $sRunning2['index'] = ($i2+2)/2;
 
             array_push($stationStatusList2,$sRunning2);
 
@@ -621,7 +621,7 @@ class StatusReportController extends Controller
             $sRunning3['timeGap'] = abs(strtotime($sRunning3['timeEnd']) - strtotime($sRunning3['timeStart']))/60;
             $sRunning3['timeGap'] = round($sRunning3['timeGap']);
             $sRunning3['flux'] = $sRunning3['timeGap'] * $pump['flux3'];
-            $sRunning3['index'] = $i3+1;
+            $sRunning3['index'] = ($i3+2)/2;
 
             array_push($stationStatusList3,$sRunning3);
 
@@ -650,7 +650,7 @@ class StatusReportController extends Controller
             $sRunning4['timeGap'] = abs(strtotime($sRunning4['timeEnd']) - strtotime($sRunning4['timeStart']))/60;
             $sRunning4['timeGap'] = round($sRunning4['timeGap']);
             $sRunning4['flux'] = $sRunning4['timeGap'] * $pump['flux4'];
-            $sRunning4['index'] = $i4+1;
+            $sRunning4['index'] = ($i4+2)/2;
 
             array_push($stationStatusList4,$sRunning4);
 
@@ -682,7 +682,7 @@ class StatusReportController extends Controller
                 $sRunning5['timeGap'] = abs(strtotime($sRunning5['timeEnd']) - strtotime($sRunning5['timeStart']))/60;
                 $sRunning5['timeGap'] = round($sRunning5['timeGap']);
                 $sRunning5['flux'] = $sRunning5['timeGap'] * $pump['flux5'];
-                $sRunning5['index'] = $i5+1;
+                $sRunning5['index'] = ($i5+2)/2;
 
                 array_push($stationStatusList5,$sRunning5);
 
