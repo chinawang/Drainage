@@ -68,7 +68,7 @@ class StatusReportController extends Controller
 
         $stationTemp = $this->stationInfo($stationID);
         $stationNum = $stationTemp['station_number'];
-        return $this->getStatusMergeList($stationNum,'1',$startTime,$endTime);
+//        return $this->getStatusMergeList($stationNum,'1',$startTime,$endTime);
 
 //        return $this->getStationRTAll($stationID,$beforeTime,$endTime);
 
