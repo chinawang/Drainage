@@ -64,13 +64,13 @@ class StatusReportController extends Controller
         }
 
         //连前累计
-        $beforeTime = date("2017-10-01");
+        $beforeTime = date("2017-04-01");
 
-        $stationTemp = $this->stationInfo($stationID);
-        $stationNum = $stationTemp['station_number'];
-        return $this->getStatusMergeList($stationNum,'1',$startTime,$endTime);
+//        $stationTemp = $this->stationInfo($stationID);
+//        $stationNum = $stationTemp['station_number'];
+//        return $this->getStatusMergeList($stationNum,'1',$startTime,$endTime);
 
-//        return $this->getStationRTAll($stationID,$beforeTime,$endTime);
+        return $this->getStatusReportV2($stationID,$startTime,$endTime);
 
         $statusReportDay = $this->getStatusReport($stationID,$startTime,$endTime);
 
@@ -119,7 +119,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReport($station['id'],$startTime,$endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
+            $beforeTime = date("2017-04-01");
             $paramBefore = $this->getStatusReport($station['id'],$beforeTime,$endTime);
 
             //单位小时
@@ -187,7 +187,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReport($station['id'],$startTime,$endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
+            $beforeTime = date("2017-04-01");
             $paramBefore = $this->getStatusReport($station['id'],$beforeTime,$endTime);
 
             //单位小时
@@ -468,6 +468,232 @@ class StatusReportController extends Controller
 
         }
         //********
+
+        //当日泵站运行合计(分钟)
+        $totalTimeDay = $totalTimeDay1 + $totalTimeDay2 + $totalTimeDay3 + $totalTimeDay4 + $totalTimeDay5;
+
+        //当日泵站总抽升量(万吨)
+        $totalFluxDay = $totalFluxDay1 + $totalFluxDay2 + $totalFluxDay3 + $totalFluxDay4 + $totalFluxDay5;
+
+
+        $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime,
+            'stationStatusList1'=> $stationStatusList1,'stationStatusList2'=> $stationStatusList2,
+            'stationStatusList3'=> $stationStatusList3,'stationStatusList4'=> $stationStatusList4,'stationStatusList5'=> $stationStatusList5,
+            'totalTimeDay1' => $totalTimeDay1,'totalTimeDay2' => $totalTimeDay2,'totalTimeDay3' => $totalTimeDay3,'totalTimeDay4' => $totalTimeDay4,'totalTimeDay5' => $totalTimeDay5,
+            'totalFluxDay1' => $totalFluxDay1,'totalFluxDay2' => $totalFluxDay2,'totalFluxDay3' => $totalFluxDay3,'totalFluxDay4' => $totalFluxDay4,'totalFluxDay5' => $totalFluxDay5,
+            'totalTimeDay' => $totalTimeDay,'totalFluxDay' => $totalFluxDay,
+        ];
+
+        return $param;
+    }
+
+    /**
+     * 运行状态统计(版本2:优化了数据源查询效率)
+     *
+     * @param $stationID
+     * @param $startTime
+     * @param $endTime
+     * @return array
+     */
+    public function getStatusReportV2($stationID,$startTime,$endTime){
+
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+        $pump = $this->pumpInfo($stationID);    // 泵组抽水量信息
+        $stationNum = $stationTemp['station_number'];    // 泵站编号
+
+        // 1号泵运行实时信息
+        $statusListOfPump1 = $this->getStatusMergeList($stationNum,'1',$startTime,$endTime);
+        // 2号泵运行实时信息
+        $statusListOfPump2 = $this->getStatusMergeList($stationNum,'2',$startTime,$endTime);
+        // 3号泵运行实时信息
+        $statusListOfPump3 = $this->getStatusMergeList($stationNum,'3',$startTime,$endTime);
+        // 4号泵运行实时信息
+        $statusListOfPump4 = $this->getStatusMergeList($stationNum,'4',$startTime,$endTime);
+        $statusListOfPump5 = [];
+        if($stationTemp['station_number'] == 33)
+        {
+            // 5号泵运行实时信息
+            $statusListOfPump5 = $this->getStatusMergeList($stationNum,'5',$startTime,$endTime);
+        }
+
+        $stationStatusList1 = [];
+        $stationStatusList2 = [];
+        $stationStatusList3 = [];
+        $stationStatusList4 = [];
+        $stationStatusList5 = [];
+
+        //当日每个泵运行时间合计(分钟)
+        $totalTimeDay1 = 0;
+        $totalTimeDay2 = 0;
+        $totalTimeDay3 = 0;
+        $totalTimeDay4 = 0;
+        $totalTimeDay5 = 0;
+        //当日所有泵运行时间合计(分钟)
+        $totalTimeDay = 0;
+
+        //当日每个泵抽升量合计(万吨)
+        $totalFluxDay1 = 0.00;
+        $totalFluxDay2 = 0.00;
+        $totalFluxDay3 = 0.00;
+        $totalFluxDay4 = 0.00;
+        $totalFluxDay5 = 0.00;
+        //当日所有泵抽升量合计(万吨)
+        $totalFluxDay = 0.00;
+
+
+        /** 遍历1号泵实时数据,并转化为启停数据 **/
+        if(count($statusListOfPump1)%2 == 0){
+            $countList1 = count($statusListOfPump1);
+        }
+        else{
+            $countList1 = count($statusListOfPump1)-1;
+        }
+
+        for($i1 = 0 ; $i1 < $countList1 ; $i1++)
+        {
+            $sRunning1 = [];
+            $sRunning1['timeStart'] = $statusListOfPump1[$i1]->Time_tmp;
+            $sRunning1['timeEnd'] = $statusListOfPump1[$i1+1]->Time_tmp;
+            $sRunning1['current'] = $statusListOfPump1[$i1+1]->ib1;
+            $sRunning1['timeGap'] = abs(strtotime($sRunning1['timeEnd']) - strtotime($sRunning1['timeStart']))/60;
+            $sRunning1['timeGap'] = round($sRunning1['timeGap']);
+            $sRunning1['flux'] = $sRunning1['timeGap'] * $pump['flux1'];
+            $sRunning1['index'] = $i1+1;
+
+            array_push($stationStatusList1,$sRunning1);
+
+            //运行时间求和
+            $totalTimeDay1 += $sRunning1['timeGap'];
+            //抽升量求和
+            $totalFluxDay1 += ($sRunning1['timeGap'] * $pump['flux1'])/10000;
+
+            $i1++;
+        }
+
+
+        /** 遍历2号泵实时数据,并转化为启停数据 **/
+        if(count($statusListOfPump2)%2 == 0){
+            $countList2 = count($statusListOfPump2);
+        }
+        else{
+            $countList2 = count($statusListOfPump2)-1;
+        }
+
+        for($i2 = 0 ; $i2 < $countList2 ; $i2++)
+        {
+            $sRunning2 = [];
+            $sRunning2['timeStart'] = $statusListOfPump2[$i2]->Time_tmp;
+            $sRunning2['timeEnd'] = $statusListOfPump2[$i2+1]->Time_tmp;
+            $sRunning2['current'] = $statusListOfPump2[$i2+1]->ib2;
+            $sRunning2['timeGap'] = abs(strtotime($sRunning2['timeEnd']) - strtotime($sRunning2['timeStart']))/60;
+            $sRunning2['timeGap'] = round($sRunning2['timeGap']);
+            $sRunning2['flux'] = $sRunning2['timeGap'] * $pump['flux2'];
+            $sRunning2['index'] = $i2+1;
+
+            array_push($stationStatusList2,$sRunning2);
+
+            //运行时间求和
+            $totalTimeDay2 += $sRunning2['timeGap'];
+            //抽升量求和
+            $totalFluxDay2 += ($sRunning2['timeGap'] * $pump['flux2'])/10000;
+
+            $i2++;
+        }
+
+        /** 遍历3号泵实时数据,并转化为启停数据 **/
+        if(count($statusListOfPump3)%2 == 0){
+            $countList3 = count($statusListOfPump3);
+        }
+        else{
+            $countList3 = count($statusListOfPump3)-1;
+        }
+
+        for($i3 = 0 ; $i3 < $countList3 ; $i3++)
+        {
+            $sRunning3 = [];
+            $sRunning3['timeStart'] = $statusListOfPump3[$i3]->Time_tmp;
+            $sRunning3['timeEnd'] = $statusListOfPump3[$i3+1]->Time_tmp;
+            $sRunning3['current'] = $statusListOfPump3[$i3+1]->ib3;
+            $sRunning3['timeGap'] = abs(strtotime($sRunning3['timeEnd']) - strtotime($sRunning3['timeStart']))/60;
+            $sRunning3['timeGap'] = round($sRunning3['timeGap']);
+            $sRunning3['flux'] = $sRunning3['timeGap'] * $pump['flux3'];
+            $sRunning3['index'] = $i3+1;
+
+            array_push($stationStatusList3,$sRunning3);
+
+            //运行时间求和
+            $totalTimeDay3 += $sRunning3['timeGap'];
+            //抽升量求和
+            $totalFluxDay3 += ($sRunning3['timeGap'] * $pump['flux3'])/10000;
+
+            $i3++;
+        }
+
+        /** 遍历4号泵实时数据,并转化为启停数据 **/
+        if(count($statusListOfPump4)%2 == 0){
+            $countList4 = count($statusListOfPump4);
+        }
+        else{
+            $countList4 = count($statusListOfPump4)-1;
+        }
+
+        for($i4 = 0 ; $i4 < $countList4 ; $i4++)
+        {
+            $sRunning4 = [];
+            $sRunning4['timeStart'] = $statusListOfPump4[$i4]->Time_tmp;
+            $sRunning4['timeEnd'] = $statusListOfPump4[$i4+1]->Time_tmp;
+            $sRunning4['current'] = $statusListOfPump4[$i4+1]->ib4;
+            $sRunning4['timeGap'] = abs(strtotime($sRunning4['timeEnd']) - strtotime($sRunning4['timeStart']))/60;
+            $sRunning4['timeGap'] = round($sRunning4['timeGap']);
+            $sRunning4['flux'] = $sRunning4['timeGap'] * $pump['flux4'];
+            $sRunning4['index'] = $i4+1;
+
+            array_push($stationStatusList4,$sRunning4);
+
+            //运行时间求和
+            $totalTimeDay4 += $sRunning4['timeGap'];
+            //抽升量求和
+            $totalFluxDay4 += ($sRunning4['timeGap'] * $pump['flux4'])/10000;
+
+            $i4++;
+        }
+
+        /** 遍历5号泵实时数据,并转化为启停数据 **/
+        if($stationTemp['station_number'] == 33)
+        {
+            /** 遍历5号泵实时数据,并转化为启停数据 **/
+            if(count($statusListOfPump5)%2 == 0){
+                $countList5 = count($statusListOfPump5);
+            }
+            else{
+                $countList5 = count($statusListOfPump5)-1;
+            }
+
+            for($i5 = 0 ; $i5 < $countList5 ; $i5++)
+            {
+                $sRunning5 = [];
+                $sRunning5['timeStart'] = $statusListOfPump5[$i5]->Time_tmp;
+                $sRunning5['timeEnd'] = $statusListOfPump5[$i5+1]->Time_tmp;
+                $sRunning5['current'] = $statusListOfPump5[$i5+1]->ib5;
+                $sRunning5['timeGap'] = abs(strtotime($sRunning5['timeEnd']) - strtotime($sRunning5['timeStart']))/60;
+                $sRunning5['timeGap'] = round($sRunning5['timeGap']);
+                $sRunning5['flux'] = $sRunning5['timeGap'] * $pump['flux5'];
+                $sRunning5['index'] = $i5+1;
+
+                array_push($stationStatusList5,$sRunning5);
+
+                //运行时间求和
+                $totalTimeDay5 += $sRunning5['timeGap'];
+                //抽升量求和
+                $totalFluxDay5 += ($sRunning5['timeGap'] * $pump['flux5'])/10000;
+
+                $i5++;
+            }
+        }
 
         //当日泵站运行合计(分钟)
         $totalTimeDay = $totalTimeDay1 + $totalTimeDay2 + $totalTimeDay3 + $totalTimeDay4 + $totalTimeDay5;
