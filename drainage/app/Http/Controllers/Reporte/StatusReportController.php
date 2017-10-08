@@ -72,7 +72,7 @@ class StatusReportController extends Controller
 
         $statusReportBefore = $this->getStatusReportV2($stationID,$beforeTime,$endTime);
 
-        $param = ['stations' => $statusReportDay['stations'], 'stationSelect' => $statusReportDay['stationSelect'], 'startTime' => $statusReportDay['startTime'], 'endTime' => $statusReportDay['endTime'],
+        $param = ['stations' => $statusReportDay['stations'], 'stationSelect' => $statusReportDay['stationSelect'], 'startTime' => $startTime, 'endTime' => $endTime,
             'stationStatusList1'=> $statusReportDay['stationStatusList1'],'stationStatusList2'=> $statusReportDay['stationStatusList2'], 'stationStatusList3'=> $statusReportDay['stationStatusList3'],'stationStatusList4'=> $statusReportDay['stationStatusList4'],'stationStatusList5'=> $statusReportDay['stationStatusList5'],
             'totalTimeDay1' => $statusReportDay['totalTimeDay1'],'totalTimeDay2' => $statusReportDay['totalTimeDay2'],'totalTimeDay3' => $statusReportDay['totalTimeDay3'],'totalTimeDay4' => $statusReportDay['totalTimeDay4'],'totalTimeDay5' => $statusReportDay['totalTimeDay5'],
             'totalFluxDay1' => $statusReportDay['totalFluxDay1'],'totalFluxDay2' => $statusReportDay['totalFluxDay2'],'totalFluxDay3' => $statusReportDay['totalFluxDay3'],'totalFluxDay4' => $statusReportDay['totalFluxDay4'],'totalFluxDay5' => $statusReportDay['totalFluxDay5'],
