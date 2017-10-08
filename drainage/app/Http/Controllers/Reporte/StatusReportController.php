@@ -121,11 +121,11 @@ class StatusReportController extends Controller
 
         foreach ($stations as $station)
         {
-            $param = $this->getStatusReportV2($station['id'],$startTime,$endTime);
+            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
 
             //连前累计
             $beforeTime = date("2017-09-01");
-            $paramBefore = $this->getStatusReportV2($station['id'],$beforeTime,$endTime);
+            $paramBefore = $this->getStatusReport($station['id'],$beforeTime,$endTime);
 
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1'])/60,2);
@@ -967,7 +967,7 @@ class StatusReportController extends Controller
 
         foreach ($stations as $station)
         {
-            $param = $this->getStatusReportV2($station['id'],$startTime,$endTime);
+            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
 
             //连前累计
 //            $beforeTime = date("2017-09-01");
