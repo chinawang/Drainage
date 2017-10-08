@@ -154,7 +154,7 @@ class StatusReportController extends Controller
             $station['totalFluxBefore4'] = $paramBefore['totalFluxDay4'];
             $station['totalFluxBefore5'] = $paramBefore['totalFluxDay5'];
         }
-        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
+        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime,'endTime' => $endTime];
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
 
@@ -223,7 +223,7 @@ class StatusReportController extends Controller
         }
         $paramMonthAll = ['stations' => $stations,'totalTimeDayAll'=>$totalTimeDayAll,
             'totalTimeBeforeAll'=>$totalTimeBeforeAll,'totalFluxDayAll'=>$totalFluxDayAll,
-            'totalFluxBeforeAll'=>$totalFluxBeforeAll, 'selectType' => $type, 'startTime' => $startTime];
+            'totalFluxBeforeAll'=>$totalFluxBeforeAll, 'selectType' => $type, 'startTime' => $startTime,'endTime' => $endTime];
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站启动状态统计']);
