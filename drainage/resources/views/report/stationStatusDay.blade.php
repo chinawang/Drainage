@@ -37,10 +37,10 @@
                                             href="/report/stationStatusDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">每日运行统计</a>
                                 </li>
                                 <li class=""><a
-                                            href="/report/stationStatusMonth?timeStart={{ $startTime }}">每月运行统计</a>
+                                            href="/report/stationStatusMonth?timeStart={{ $startTime }}&timeEnd={{ $endTime }}">每月运行统计</a>
                                 </li>
                                 <li class=""><a
-                                            href="/report/stationStatusMonthAll?timeStart={{ $startTime }}">泵站月生产报表</a>
+                                            href="/report/stationStatusMonthAll?timeStart={{ $startTime }}&timeEnd={{ $endTime }}">泵站月生产报表</a>
                                 </li>
 
                             </ul>
