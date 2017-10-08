@@ -66,11 +66,7 @@ class StatusReportController extends Controller
         //连前累计
         $beforeTime = date("2017-04-01");
 
-//        $stationTemp = $this->stationInfo($stationID);
-//        $stationNum = $stationTemp['station_number'];
-//        return $this->getStatusMergeList($stationNum,'1',$startTime,$endTime);
-
-        return $this->getStatusReportV2($stationID,$startTime,$endTime);
+//        return $this->getStatusReportV2($stationID,$startTime,$endTime);
 
         $statusReportDay = $this->getStatusReport($stationID,$startTime,$endTime);
 
