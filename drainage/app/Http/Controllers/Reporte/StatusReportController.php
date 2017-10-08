@@ -116,8 +116,8 @@ class StatusReportController extends Controller
             $endTime = date("Y-m-d");
         }
 
-        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
-        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+//        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+//        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stations = $this->stationListByType($type);
 
@@ -187,8 +187,8 @@ class StatusReportController extends Controller
             $endTime = date("Y-m-d");
         }
 
-        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
-        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+//        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+//        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
         $stations = $this->stationListByType($type);
 
