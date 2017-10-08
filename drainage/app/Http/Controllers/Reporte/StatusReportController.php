@@ -972,8 +972,8 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV2($station['id'],$startTime,$endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
-            $paramBefore = $this->getStatusReportV2($station['id'],$beforeTime,$endTime);
+//            $beforeTime = date("2017-09-01");
+//            $paramBefore = $this->getStatusReportV2($station['id'],$beforeTime,$endTime);
 
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1'])/60,2);
@@ -988,17 +988,17 @@ class StatusReportController extends Controller
             $station['totalFluxDay4'] = $param['totalFluxDay4'];
             $station['totalFluxDay5'] = $param['totalFluxDay5'];
 
-            $station['totalTimeBefore1'] = round(($paramBefore['totalTimeDay1'])/60,2);
-            $station['totalTimeBefore2'] = round(($paramBefore['totalTimeDay2'])/60,2);
-            $station['totalTimeBefore3'] = round(($paramBefore['totalTimeDay3'])/60,2);
-            $station['totalTimeBefore4'] = round(($paramBefore['totalTimeDay4'])/60,2);
-            $station['totalTimeBefore5'] = round(($paramBefore['totalTimeDay5'])/60,2);
+//            $station['totalTimeBefore1'] = round(($paramBefore['totalTimeDay1'])/60,2);
+//            $station['totalTimeBefore2'] = round(($paramBefore['totalTimeDay2'])/60,2);
+//            $station['totalTimeBefore3'] = round(($paramBefore['totalTimeDay3'])/60,2);
+//            $station['totalTimeBefore4'] = round(($paramBefore['totalTimeDay4'])/60,2);
+//            $station['totalTimeBefore5'] = round(($paramBefore['totalTimeDay5'])/60,2);
 
-            $station['totalFluxBefore1'] = $paramBefore['totalFluxDay1'];
-            $station['totalFluxBefore2'] = $paramBefore['totalFluxDay2'];
-            $station['totalFluxBefore3'] = $paramBefore['totalFluxDay3'];
-            $station['totalFluxBefore4'] = $paramBefore['totalFluxDay4'];
-            $station['totalFluxBefore5'] = $paramBefore['totalFluxDay5'];
+//            $station['totalFluxBefore1'] = $paramBefore['totalFluxDay1'];
+//            $station['totalFluxBefore2'] = $paramBefore['totalFluxDay2'];
+//            $station['totalFluxBefore3'] = $paramBefore['totalFluxDay3'];
+//            $station['totalFluxBefore4'] = $paramBefore['totalFluxDay4'];
+//            $station['totalFluxBefore5'] = $paramBefore['totalFluxDay5'];
         }
 //        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
         return response()->json(array('stations'=> $stations), 200);
@@ -1037,14 +1037,14 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV2($station['id'],$startTime,$endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
-            $paramBefore = $this->getStatusReportV2($station['id'],$beforeTime,$endTime);
+//            $beforeTime = date("2017-09-01");
+//            $paramBefore = $this->getStatusReportV2($station['id'],$beforeTime,$endTime);
 
             //单位小时
             $station['totalTimeDay'] = round(($param['totalTimeDay'])/60,2);
             $station['totalFluxDay'] = $param['totalFluxDay'];
-            $station['totalTimeBefore'] = round(($paramBefore['totalTimeDay'])/60,2);
-            $station['totalFluxBefore'] = $paramBefore['totalFluxDay'];
+//            $station['totalTimeBefore'] = round(($paramBefore['totalTimeDay'])/60,2);
+//            $station['totalFluxBefore'] = $paramBefore['totalFluxDay'];
         }
 //        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
         return response()->json(array('stations'=> $stations), 200);
