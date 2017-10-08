@@ -68,7 +68,8 @@ class StatusReportController extends Controller
 
         $statusReportDay = $this->getStatusReportV2($stationID,$startTime,$endTime);
 
-        $statusReportBefore = $this->getStatusReportV2($stationID,$beforeTime,$endTime);
+//        $statusReportBefore = $this->getStatusReportV2($stationID,$beforeTime,$endTime);
+        $statusReportBefore = $statusReportDay;
 
         $param = ['stations' => $statusReportDay['stations'], 'stationSelect' => $statusReportDay['stationSelect'], 'startTime' => $startTime, 'endTime' => $endTime,
             'stationStatusList1'=> $statusReportDay['stationStatusList1'],'stationStatusList2'=> $statusReportDay['stationStatusList2'], 'stationStatusList3'=> $statusReportDay['stationStatusList3'],'stationStatusList4'=> $statusReportDay['stationStatusList4'],'stationStatusList5'=> $statusReportDay['stationStatusList5'],
@@ -121,11 +122,12 @@ class StatusReportController extends Controller
 
         foreach ($stations as $station)
         {
-            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+            $param = $this->getStatusReportV2($station['id'],$startTime,$endTime);
 
             //连前累计
             $beforeTime = date("2017-09-01");
-            $paramBefore = $this->getStatusReport($station['id'],$beforeTime,$endTime);
+//            $paramBefore = $this->getStatusReportV2($station['id'],$beforeTime,$endTime);
+            $paramBefore = $param;
 
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1'])/60,2);
@@ -200,11 +202,12 @@ class StatusReportController extends Controller
 
         foreach ($stations as $station)
         {
-            $param = $this->getStatusReport($station['id'],$startTime,$endTime);
+            $param = $this->getStatusReportV2($station['id'],$startTime,$endTime);
 
             //连前累计
             $beforeTime = date("2017-09-01");
-            $paramBefore = $this->getStatusReport($station['id'],$beforeTime,$endTime);
+//            $paramBefore = $this->getStatusReportV2($station['id'],$beforeTime,$endTime);
+            $paramBefore = $param;
 
             //单位小时
             $station['totalTimeDay'] = round(($param['totalTimeDay'])/60,2);
