@@ -70,8 +70,8 @@ class StatusReportController extends Controller
 
         $statusReportBefore = $this->getStatusReportV2($stationID, $beforeTime, $endTime);
 
-        $days = $this->getTheMonthDay($startTime);
-        $startTime = $days[0];
+//        $days = $this->getTheMonthDay($startTime);
+//        $startTime = $days[0];
 
         $param = ['stations' => $statusReportDay['stations'], 'stationSelect' => $statusReportDay['stationSelect'], 'startTime' => $startTime, 'endTime' => $endTime,
             'stationStatusList1' => $statusReportDay['stationStatusList1'], 'stationStatusList2' => $statusReportDay['stationStatusList2'], 'stationStatusList3' => $statusReportDay['stationStatusList3'], 'stationStatusList4' => $statusReportDay['stationStatusList4'], 'stationStatusList5' => $statusReportDay['stationStatusList5'],
@@ -155,8 +155,8 @@ class StatusReportController extends Controller
             $station['totalFluxBefore5'] = $paramBefore['totalFluxDay5'];
         }
 
-        $days = $this->getTheMonthDay($startTime);
-        $startTime = $days[0];
+//        $days = $this->getTheMonthDay($startTime);
+//        $startTime = $days[0];
 
         $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime, 'endTime' => $endTime];
         //记录Log
@@ -225,8 +225,8 @@ class StatusReportController extends Controller
             $index++;
         }
 
-        $days = $this->getTheMonthDay($startTime);
-        $startTime = $days[0];
+//        $days = $this->getTheMonthDay($startTime);
+//        $startTime = $days[0];
 
         $paramMonthAll = ['stations' => $stations, 'totalTimeDayAll' => $totalTimeDayAll,
             'totalTimeBeforeAll' => $totalTimeBeforeAll, 'totalFluxDayAll' => $totalFluxDayAll,
