@@ -526,18 +526,23 @@ class StatusReportController extends Controller
 
         // 1号泵运行实时信息
         $statusListOfPump1 = $this->getStatusMergeList($stationNum,'1',$startTime,$endTime);
-        // 2号泵运行实时信息
-        $statusListOfPump2 = $this->getStatusMergeList($stationNum,'2',$startTime,$endTime);
-        // 3号泵运行实时信息
-        $statusListOfPump3 = $this->getStatusMergeList($stationNum,'3',$startTime,$endTime);
-        // 4号泵运行实时信息
-        $statusListOfPump4 = $this->getStatusMergeList($stationNum,'4',$startTime,$endTime);
-        $statusListOfPump5 = [];
-        if($stationTemp['station_number'] == 33)
-        {
-            // 5号泵运行实时信息
-            $statusListOfPump5 = $this->getStatusMergeList($stationNum,'5',$startTime,$endTime);
-        }
+//        // 2号泵运行实时信息
+//        $statusListOfPump2 = $this->getStatusMergeList($stationNum,'2',$startTime,$endTime);
+//        // 3号泵运行实时信息
+//        $statusListOfPump3 = $this->getStatusMergeList($stationNum,'3',$startTime,$endTime);
+//        // 4号泵运行实时信息
+//        $statusListOfPump4 = $this->getStatusMergeList($stationNum,'4',$startTime,$endTime);
+//        $statusListOfPump5 = [];
+//        if($stationTemp['station_number'] == 33)
+//        {
+//            // 5号泵运行实时信息
+//            $statusListOfPump5 = $this->getStatusMergeList($stationNum,'5',$startTime,$endTime);
+//        }
+
+        $statusListOfPump2 = $statusListOfPump1;
+        $statusListOfPump3 = $statusListOfPump1;
+        $statusListOfPump4 = $statusListOfPump1;
+        $statusListOfPump5 = $statusListOfPump1;
 
         $stationStatusList1 = [];
         $stationStatusList2 = [];
