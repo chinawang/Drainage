@@ -38,7 +38,7 @@
                                 <label for="employee_number" class="col-md-4 control-label">编号</label>
 
                                 <div class="col-md-6">
-                                    <input id="employee_number" type="text" class="form-control" name="employee_number" value="{{ $user['employee_number'] }}" placeholder="" disabled="disabled" required >
+                                    <input id="employee_number" type="text" class="form-control" name="employee_number" value="{{ $user['employee_number'] }}" placeholder="" readonly="readonly" required >
 
                                     @if ($errors->has('employee_number'))
                                         <span class="help-block">

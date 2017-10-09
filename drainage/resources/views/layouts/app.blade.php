@@ -97,7 +97,7 @@
                                 {{ Auth::user()->realname }} <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">id
+                            <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="/user/profile/{{ Auth::user()->id }}">
                                         个人信息

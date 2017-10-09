@@ -32,76 +32,77 @@
                         {{--<a href="/user/lists" class="btn-link">返回</a>--}}
                     </div>
                     <div class="panel-body custom-panel-body">
-                        {{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('employee_number') ? ' has-error' : '' }}">
-                            <label for="employee_number" class="col-md-4 control-label">编号</label>
+                        <form class="form-horizontal" role="form" method="POST" action="">
+                            {{ csrf_field() }}
+                            <div class="form-group{{ $errors->has('employee_number') ? ' has-error' : '' }}">
+                                <label for="employee_number" class="col-md-4 control-label">编号</label>
 
-                            <div class="col-md-6">
-                                <input id="employee_number" type="text" class="form-control" name="employee_number"
-                                       value="{{ $user['employee_number'] }}" disabled="disabled" required>
+                                <div class="col-md-6">
+                                    <input id="employee_number" type="text" class="form-control" name="employee_number"
+                                           value="{{ $user['employee_number'] }}" disabled="disabled" required>
 
-                                @if ($errors->has('employee_number'))
-                                    <span class="help-block">
+                                    @if ($errors->has('employee_number'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('employee_number') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group{{ $errors->has('realname') ? ' has-error' : '' }}">
-                            <label for="realname" class="col-md-4 control-label">姓名</label>
+                            <div class="form-group{{ $errors->has('realname') ? ' has-error' : '' }}">
+                                <label for="realname" class="col-md-4 control-label">姓名</label>
 
-                            <div class="col-md-6">
-                                <input id="realname" type="text" class="form-control" name="realname"
-                                       value="{{ $user['realname'] }}" placeholder="" disabled="disabled" required>
+                                <div class="col-md-6">
+                                    <input id="realname" type="text" class="form-control" name="realname"
+                                           value="{{ $user['realname'] }}" placeholder="" disabled="disabled" required>
 
-                                @if ($errors->has('realname'))
-                                    <span class="help-block">
+                                    @if ($errors->has('realname'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('realname') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group{{ $errors->has('office') ? ' has-error' : '' }}">
-                            <label for="office" class="col-md-4 control-label">职务</label>
+                            <div class="form-group{{ $errors->has('office') ? ' has-error' : '' }}">
+                                <label for="office" class="col-md-4 control-label">职务</label>
 
-                            <div class="col-md-6">
-                                <input id="office" type="text" class="form-control" name="office"
-                                       value="{{ $user['office'] }}" placeholder="" disabled="disabled" required>
+                                <div class="col-md-6">
+                                    <input id="office" type="text" class="form-control" name="office"
+                                           value="{{ $user['office'] }}" placeholder="" disabled="disabled" required>
 
-                                @if ($errors->has('office'))
-                                    <span class="help-block">
+                                    @if ($errors->has('office'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('office') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group{{ $errors->has('contact') ? ' has-error' : '' }}">
-                            <label for="contact" class="col-md-4 control-label">联系方式</label>
+                            <div class="form-group{{ $errors->has('contact') ? ' has-error' : '' }}">
+                                <label for="contact" class="col-md-4 control-label">联系方式</label>
 
-                            <div class="col-md-6">
-                                <input id="contact" type="text" class="form-control" name="contact"
-                                       value="{{ $user['contact'] }}" placeholder="" disabled="disabled" required>
+                                <div class="col-md-6">
+                                    <input id="contact" type="text" class="form-control" name="contact"
+                                           value="{{ $user['contact'] }}" placeholder="" disabled="disabled" required>
 
-                                @if ($errors->has('contact'))
-                                    <span class="help-block">
+                                    @if ($errors->has('contact'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('contact') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a class="btn btn-primary btn-custom" href="/user/editProfile/{{ $user['id'] }}">
-                                    <span class="glyphicon glyphicon-ok-sign"></span>
-                                    编辑
-                                </a>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <a class="btn btn-primary btn-custom" href="/user/editProfile/{{ $user['id'] }}">
+                                        <span class="glyphicon glyphicon-ok-sign"></span>
+                                        编辑
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
