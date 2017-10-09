@@ -42,6 +42,11 @@ Route::post('/user/password/store/{user_id}','User\UserController@resetUserPassw
 //删除用户
 Route::post('/user/delete/{user_id}','User\UserController@deleteUser');
 
+//用户个人信息管理
+Route::get('/user/profile/{user_id}','User\UserController@userProfile');
+Route::get('/user/editProfile/{user_id}','User\UserController@showUpdateUserProfile');
+Route::post('/user/updateProfile/{user_id}','User\UserController@saveUserProfile');
+
 
 /**
  *泵站相关

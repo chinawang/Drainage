@@ -87,7 +87,7 @@ class UserController extends Controller
     }
 
     /**
-     * 显示用户信息
+     * 显示用户个人信息页面
      *
      * @param $userID
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -97,6 +97,54 @@ class UserController extends Controller
         $userInfo = $this->userLogic->findUser($userID);
         $param = ['user' => $userInfo];
         return view('user.userProfile',$param);
+    }
+
+    /**
+     * 显示编辑个人信息页面
+     *
+     * @param $userID
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showUpdateUserProfile($userID)
+    {
+        $userInfo = $this->userLogic->findUser($userID);
+        $param = ['user' => $userInfo];
+        return view('user.updateUserProfile',$param);
+    }
+
+    /**
+     * 更新个人信息
+     *
+     * @param $userID
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function saveUserProfile($userID)
+    {
+        $input = $this->userValidation->updateUser($userID);
+        $result = $this->userLogic->updateUser($userID,$input);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '编辑了个人信息']);
+
+            return redirect('/user/profile/'.$userID);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
     }
 
     /**

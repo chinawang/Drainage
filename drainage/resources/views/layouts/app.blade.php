@@ -97,7 +97,12 @@
                                 {{ Auth::user()->realname }} <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu" role="menu">id
+                                <li>
+                                    <a href="/user/profile/{{ Auth::user()->id }}">
+                                        个人信息
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
