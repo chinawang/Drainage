@@ -149,7 +149,7 @@
                         '<div class="col-md-6 col-md-offset-0" style="margin-left: -5px">' +
                         '<div style="font-size: 14px;color:#4a4a4a">已启动泵组: {{ $station['runPump'] }}组</div>' +
                         '<div style="font-size: 14px;color:#4a4a4a">未启动泵组: {{ $station['stopPump'] }}组</div>' +
-                        '<div style="font-size: 14px;color:#4a4a4a">涵洞水位: {{ $station['tankWater'] }}米</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">集水池水位: {{ $station['tankWater'] }}米</div>' +
                         '</div>' +
                         '<div class="col-md-3 col-md-offset-0">' +
                         '<a href="/station/runDetail/{{ $station['id'] }}" target="_blank" class="btn-link" style="font-size: 14px;height: 60px;line-height: 60px">运行详情</a>' +
@@ -348,7 +348,7 @@
                         '<div class="col-md-6 col-md-offset-0" style="margin-left: -5px">' +
                         '<div style="font-size: 14px;color:#4a4a4a">已启动泵组: {{ $station['runPump'] }}组</div>' +
                         '<div style="font-size: 14px;color:#4a4a4a">未启动泵组: {{ $station['stopPump'] }}组</div>' +
-                        '<div style="font-size: 14px;color:#4a4a4a">集水池水位: {{ $station['culvertWater'] }}米</div>' +
+                        '<div style="font-size: 14px;color:#4a4a4a">集水池水位: {{ $station['tankWater'] }}米</div>' +
                         '</div>' +
                         '<div class="col-md-3 col-md-offset-0">' +
                         '<a href="/station/runDetail/{{ $station['id'] }}" target="_blank" class="btn-link" style="font-size: 14px;height: 60px;line-height: 60px">运行详情</a>' +
