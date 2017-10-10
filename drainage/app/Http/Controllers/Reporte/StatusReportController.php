@@ -802,7 +802,7 @@ class StatusReportController extends Controller
                     array_push($stationStatusList1, $sRunning1);
                 }
             } else {
-                if ($statusYXList[$i]->$currentCode1 > 10 && $statusYXList[$i - 1]->$currentCode1 < 10 && $statusYXList[(count($statusYXList)-1)]->$currentCode5 < 10) {
+                if ($statusYXList[$i]->$currentCode1 > 10 && $statusYXList[$i - 1]->$currentCode1 < 10 && $statusYXList[(count($statusYXList)-1)]->$currentCode1 < 10) {
                     $sRunning1['timeStart'] = $statusYXList[$i]->Time;
                     $index1++;
                     array_push($stationStatusList1, $sRunning1);
@@ -836,7 +836,7 @@ class StatusReportController extends Controller
                     array_push($stationStatusList2, $sRunning2);
                 }
             } else {
-                if ($statusYXList[$i]->$currentCode2 > 10 && $statusYXList[$i - 1]->$currentCode2 < 10 && $statusYXList[(count($statusYXList)-1)]->$currentCode5 < 10) {
+                if ($statusYXList[$i]->$currentCode2 > 10 && $statusYXList[$i - 1]->$currentCode2 < 10 && $statusYXList[(count($statusYXList)-1)]->$currentCode2 < 10) {
                     $sRunning2['timeStart'] = $statusYXList[$i]->Time;
                     $index2++;
                     array_push($stationStatusList2, $sRunning2);
@@ -871,7 +871,7 @@ class StatusReportController extends Controller
                         array_push($stationStatusList3, $sRunning3);
                     }
                 } else {
-                    if ($statusYXList[$i]->$currentCode3 > 10 && $statusYXList[$i - 1]->$currentCode3 < 10 && $statusYXList[(count($statusYXList)-1)]->$currentCode5 < 10) {
+                    if ($statusYXList[$i]->$currentCode3 > 10 && $statusYXList[$i - 1]->$currentCode3 < 10 && $statusYXList[(count($statusYXList)-1)]->$currentCode3 < 10) {
                         $sRunning3['timeStart'] = $statusYXList[$i]->Time;
                         $index3++;
                         array_push($stationStatusList3, $sRunning3);
@@ -907,7 +907,7 @@ class StatusReportController extends Controller
                         array_push($stationStatusList4, $sRunning4);
                     }
                 } else {
-                    if ($statusYXList[$i]->$currentCode4 > 10 && $statusYXList[$i - 1]->$currentCode4 < 10 && $statusYXList[(count($statusYXList)-1)]->$currentCode5 < 10) {
+                    if ($statusYXList[$i]->$currentCode4 > 10 && $statusYXList[$i - 1]->$currentCode4 < 10 && $statusYXList[(count($statusYXList)-1)]->$currentCode4 < 10) {
                         $sRunning4['timeStart'] = $statusYXList[$i]->Time;
                         $index4++;
                         array_push($stationStatusList4, $sRunning4);
