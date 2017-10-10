@@ -66,7 +66,7 @@ class StatusReportController extends Controller
         //连前累计
         $beforeTime = date("2017-09-01");
 
-        $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
+        return $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
         $statusReportBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
 
