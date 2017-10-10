@@ -88,6 +88,10 @@ class MapController extends Controller
                     }
                 }
 
+                $station['culvertWater'] = $stationRT[0]->ywhandong;
+                $station['tankWater'] = $stationRT[0]->ywjishui;
+                $station['Time'] = $stationRT[0]->Time;
+
             }
 
 
@@ -111,9 +115,6 @@ class MapController extends Controller
 
             $station['runPump'] = $runCount;
             $station['stopPump'] = $stopCount;
-            $station['culvertWater'] = $stationRT[0]->ywhandong;
-            $station['tankWater'] = $stationRT[0]->ywjishui;
-            $station['Time'] = $stationRT[0]->Time;
         }
 
         $param = ['stations' => $stationList];
