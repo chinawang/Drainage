@@ -66,9 +66,11 @@ class StatusReportController extends Controller
         //连前累计
         $beforeTime = date("2017-09-01");
 
-        $statusReportDay = $this->getStatusReport($stationID, $startTime, $endTime);
+        $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
-        $statusReportBefore = $this->getStatusReport($stationID, $beforeTime, $endTime);
+        return $statusReportDay;
+
+        $statusReportBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
 
 //        $days = $this->getTheMonthDay($startTime);
 //        $startTime = $days[0];
@@ -710,6 +712,284 @@ class StatusReportController extends Controller
     }
 
     /**
+     * 运行状态统计(版本3:读取拆分的运行表数据stationRTYX)
+     *
+     * @param $stationID
+     * @param $startTime
+     * @param $endTime
+     * @return array
+     */
+    public function getStatusReportV3($stationID, $startTime, $endTime)
+    {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+        $pump = $this->pumpInfo($stationID);    // 泵组抽水量信息
+        $stationNum = $stationTemp['station_number'];    // 泵站编号
+
+        $statusYXList = $this->getStatusYXList($stationNum, $startTime, $endTime);
+
+        $has2Pump = false;
+        $has3Pump = false;
+        $has4Pump = false;
+        $has5Pump = false;
+
+        $pump2List = ['18', '31', '34'];
+        $pump3List = ['1', '2', '3', '4', '5', '6', '8', '9', '11', '12', '13', '16', '17', '20', '23', '24', '25', '26', '27', '28', '30', '32', '35', '37', '38'];
+        $pump4List = ['7', '10', '14', '15', '19', '21', '22', '29', '36'];
+        $pump5List = ['33'];
+
+        if (in_array($stationNum, $pump2List)) {
+            $has2Pump = true;
+        } elseif (in_array($stationNum, $pump3List)) {
+            $has3Pump = true;
+        } elseif (in_array($stationNum, $pump4List)) {
+            $has4Pump = true;
+        } elseif (in_array($stationNum, $pump5List)) {
+            $has5Pump = true;
+        }
+
+        $currentCode1 = 'ib1';
+        $currentCode2 = 'ib2';
+        $currentCode3 = 'ib3';
+        $currentCode4 = 'ib4';
+        $currentCode5 = 'ib5';
+
+        $stationStatusList1 = [];
+        $stationStatusList2 = [];
+        $stationStatusList3 = [];
+        $stationStatusList4 = [];
+        $stationStatusList5 = [];
+        $index1 = 0;
+        $index2 = 0;
+        $index3 = 0;
+        $index4 = 0;
+        $index5 = 0;
+
+        //当日每个泵运行时间合计(分钟)
+        $totalTimeDay1 = 0;
+        $totalTimeDay2 = 0;
+        $totalTimeDay3 = 0;
+        $totalTimeDay4 = 0;
+        $totalTimeDay5 = 0;
+        //当日所有泵运行时间合计(分钟)
+        $totalTimeDay = 0;
+
+        //当日每个泵抽升量合计(万吨)
+        $totalFluxDay1 = 0.00;
+        $totalFluxDay2 = 0.00;
+        $totalFluxDay3 = 0.00;
+        $totalFluxDay4 = 0.00;
+        $totalFluxDay5 = 0.00;
+        //当日所有泵抽升量合计(万吨)
+        $totalFluxDay = 0.00;
+
+        // 遍历实时运行数据表,找出起泵时刻与停泵时刻
+        for ($i = 0; $i < count($statusYXList); $i++) {
+            $sRunning1 = [];
+            $sRunning2 = [];
+            $sRunning3 = [];
+            $sRunning4 = [];
+            $sRunning5 = [];
+
+            //1号泵
+            if ($i == 0) {
+                if ($statusYXList[$i]->$currentCode1 > 10) {
+                    $sRunning1['timeStart'] = $statusYXList[$i]->Time;
+                    $index1++;
+                    array_push($stationStatusList1, $sRunning1);
+                }
+            } else {
+                if ($statusYXList[$i]->$currentCode1 > 10 && $statusYXList[$i - 1]->$currentCode1 < 10) {
+                    $sRunning1['timeStart'] = $statusYXList[$i]->Time;
+                    $index1++;
+                    array_push($stationStatusList1, $sRunning1);
+                } elseif ($statusYXList[$i]->$currentCode1 < 10 && $statusYXList[$i - 1]->$currentCode1 > 10) {
+                    $sRunning1['timeEnd'] = $statusYXList[$i]->Time;
+                    $sRunning1['current'] = $statusYXList[$i - 1]->$currentCode1;
+
+                    if ($index1 > 0) {
+                        $sRunning1['timeGap'] = abs(strtotime($sRunning1['timeEnd']) - strtotime($stationStatusList1[$index1 - 1]['timeStart'])) / 60;
+                        $sRunning1['timeGap'] = round($sRunning1['timeGap']);
+                        $stationStatusList1[$index1 - 1]['timeEnd'] = $sRunning1['timeEnd'];
+                        $stationStatusList1[$index1 - 1]['timeGap'] = $sRunning1['timeGap'];
+                        $stationStatusList1[$index1 - 1]['current'] = $sRunning1['current'];
+                        $stationStatusList1[$index1 - 1]['flux'] = $sRunning1['timeGap'] * $pump['flux1'];
+                        $stationStatusList1[$index1 - 1]['index'] = $index1;
+
+                        //运行时间求和
+                        $totalTimeDay1 += $sRunning1['timeGap'];
+                        //抽升量求和
+                        $totalFluxDay1 += ($sRunning1['timeGap'] * $pump['flux1']) / 10000;
+                    }
+
+                }
+            }
+
+            //2号泵
+            if ($i == 0) {
+                if ($statusYXList[$i]->$currentCode2 > 10) {
+                    $sRunning2['timeStart'] = $statusYXList[$i]->Time;
+                    $index2++;
+                    array_push($stationStatusList2, $sRunning2);
+                }
+            } else {
+                if ($statusYXList[$i]->$currentCode2 > 10 && $statusYXList[$i - 1]->$currentCode2 < 10) {
+                    $sRunning2['timeStart'] = $statusYXList[$i]->Time;
+                    $index2++;
+                    array_push($stationStatusList2, $sRunning2);
+                } elseif ($statusYXList[$i]->$currentCode2 < 10 && $statusYXList[$i - 1]->$currentCode2 > 10) {
+                    $sRunning2['timeEnd'] = $statusYXList[$i]->Time;
+                    $sRunning2['current'] = $statusYXList[$i - 1]->$currentCode2;
+
+                    if ($index2 > 0) {
+                        $sRunning2['timeGap'] = abs(strtotime($sRunning2['timeEnd']) - strtotime($stationStatusList2[$index2 - 1]['timeStart'])) / 60;
+                        $sRunning2['timeGap'] = round($sRunning2['timeGap']);
+                        $stationStatusList2[$index2 - 1]['timeEnd'] = $sRunning2['timeEnd'];
+                        $stationStatusList2[$index2 - 1]['timeGap'] = $sRunning2['timeGap'];
+                        $stationStatusList2[$index2 - 1]['current'] = $sRunning2['current'];
+                        $stationStatusList2[$index2 - 1]['flux'] = $sRunning2['timeGap'] * $pump['flux2'];
+                        $stationStatusList2[$index2 - 1]['index'] = $index2;
+
+                        //运行时间求和
+                        $totalTimeDay2 += $sRunning2['timeGap'];
+                        //抽升量求和
+                        $totalFluxDay2 += ($sRunning2['timeGap'] * $pump['flux2']) / 10000;
+                    }
+
+                }
+            }
+
+            if ($has3Pump || $has4Pump || $has5Pump) {
+                //3号泵
+                if ($i == 0) {
+                    if ($statusYXList[$i]->$currentCode3 > 10) {
+                        $sRunning3['timeStart'] = $statusYXList[$i]->Time;
+                        $index3++;
+                        array_push($stationStatusList3, $sRunning3);
+                    }
+                } else {
+                    if ($statusYXList[$i]->$currentCode3 > 10 && $statusYXList[$i - 1]->$currentCode3 < 10) {
+                        $sRunning3['timeStart'] = $statusYXList[$i]->Time;
+                        $index3++;
+                        array_push($stationStatusList3, $sRunning3);
+                    } elseif ($statusYXList[$i]->$currentCode3 < 10 && $statusYXList[$i - 1]->$currentCode3 > 10) {
+                        $sRunning3['timeEnd'] = $statusYXList[$i]->Time;
+                        $sRunning3['current'] = $statusYXList[$i - 1]->$currentCode3;
+
+                        if ($index3 > 0) {
+                            $sRunning3['timeGap'] = abs(strtotime($sRunning3['timeEnd']) - strtotime($stationStatusList3[$index3 - 1]['timeStart'])) / 60;
+                            $sRunning3['timeGap'] = round($sRunning3['timeGap']);
+                            $stationStatusList3[$index3 - 1]['timeEnd'] = $sRunning3['timeEnd'];
+                            $stationStatusList3[$index3 - 1]['timeGap'] = $sRunning3['timeGap'];
+                            $stationStatusList3[$index3 - 1]['current'] = $sRunning3['current'];
+                            $stationStatusList3[$index3 - 1]['flux'] = $sRunning3['timeGap'] * $pump['flux3'];
+                            $stationStatusList3[$index3 - 1]['index'] = $index3;
+
+                            //运行时间求和
+                            $totalTimeDay3 += $sRunning3['timeGap'];
+                            //抽升量求和
+                            $totalFluxDay3 += ($sRunning3['timeGap'] * $pump['flux3']) / 10000;
+                        }
+
+                    }
+                }
+            }
+
+            if ($has4Pump || $has5Pump) {
+                //4号泵
+                if ($i == 0) {
+                    if ($statusYXList[$i]->$currentCode4 > 10) {
+                        $sRunning4['timeStart'] = $statusYXList[$i]->Time;
+                        $index4++;
+                        array_push($stationStatusList4, $sRunning4);
+                    }
+                } else {
+                    if ($statusYXList[$i]->$currentCode4 > 10 && $statusYXList[$i - 1]->$currentCode4 < 10) {
+                        $sRunning4['timeStart'] = $statusYXList[$i]->Time;
+                        $index4++;
+                        array_push($stationStatusList4, $sRunning4);
+                    } elseif ($statusYXList[$i]->$currentCode4 < 10 && $statusYXList[$i - 1]->$currentCode4 > 10) {
+                        $sRunning4['timeEnd'] = $statusYXList[$i]->Time;
+                        $sRunning4['current'] = $statusYXList[$i - 1]->$currentCode4;
+
+                        if ($index4 > 0) {
+                            $sRunning4['timeGap'] = abs(strtotime($sRunning4['timeEnd']) - strtotime($stationStatusList4[$index4 - 1]['timeStart'])) / 60;
+                            $sRunning4['timeGap'] = round($sRunning4['timeGap']);
+                            $stationStatusList4[$index4 - 1]['timeEnd'] = $sRunning4['timeEnd'];
+                            $stationStatusList4[$index4 - 1]['timeGap'] = $sRunning4['timeGap'];
+                            $stationStatusList4[$index4 - 1]['current'] = $sRunning4['current'];
+                            $stationStatusList4[$index4 - 1]['flux'] = $sRunning4['timeGap'] * $pump['flux4'];
+                            $stationStatusList4[$index4 - 1]['index'] = $index4;
+
+                            //运行时间求和
+                            $totalTimeDay4 += $sRunning4['timeGap'];
+                            //抽升量求和
+                            $totalFluxDay4 += ($sRunning4['timeGap'] * $pump['flux4']) / 10000;
+                        }
+
+                    }
+                }
+            }
+
+            if ($has5Pump) {
+                //5号泵
+                if ($i == 0) {
+                    if ($statusYXList[$i]->$currentCode5 > 10) {
+                        $sRunning5['timeStart'] = $statusYXList[$i]->Time;
+                        $index5++;
+                        array_push($stationStatusList5, $sRunning5);
+                    }
+                } else {
+                    if ($statusYXList[$i]->$currentCode5 > 10 && $statusYXList[$i - 1]->$currentCode5 < 10) {
+                        $sRunning5['timeStart'] = $statusYXList[$i]->Time;
+                        $index5++;
+                        array_push($stationStatusList5, $sRunning5);
+                    } elseif ($statusYXList[$i]->$currentCode5 < 10 && $statusYXList[$i - 1]->$currentCode5 > 10) {
+                        $sRunning5['timeEnd'] = $statusYXList[$i]->Time;
+                        $sRunning5['current'] = $statusYXList[$i - 1]->$currentCode5;
+
+                        if ($index5 > 0) {
+                            $sRunning5['timeGap'] = abs(strtotime($sRunning5['timeEnd']) - strtotime($stationStatusList5[$index5 - 1]['timeStart'])) / 60;
+                            $sRunning5['timeGap'] = round($sRunning5['timeGap']);
+                            $stationStatusList5[$index5 - 1]['timeEnd'] = $sRunning5['timeEnd'];
+                            $stationStatusList5[$index5 - 1]['timeGap'] = $sRunning5['timeGap'];
+                            $stationStatusList5[$index5 - 1]['current'] = $sRunning5['current'];
+                            $stationStatusList5[$index5 - 1]['flux'] = $sRunning5['timeGap'] * $pump['flux5'];
+                            $stationStatusList5[$index5 - 1]['index'] = $index5;
+
+                            //运行时间求和
+                            $totalTimeDay5 += $sRunning5['timeGap'];
+                            //抽升量求和
+                            $totalFluxDay5 += ($sRunning5['timeGap'] * $pump['flux5']) / 10000;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        //当日泵站运行合计(分钟)
+        $totalTimeDay = $totalTimeDay1 + $totalTimeDay2 + $totalTimeDay3 + $totalTimeDay4 + $totalTimeDay5;
+
+        //当日泵站总抽升量(万吨)
+        $totalFluxDay = $totalFluxDay1 + $totalFluxDay2 + $totalFluxDay3 + $totalFluxDay4 + $totalFluxDay5;
+
+
+        $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime,
+            'stationStatusList1' => $stationStatusList1, 'stationStatusList2' => $stationStatusList2,
+            'stationStatusList3' => $stationStatusList3, 'stationStatusList4' => $stationStatusList4, 'stationStatusList5' => $stationStatusList5,
+            'totalTimeDay1' => $totalTimeDay1, 'totalTimeDay2' => $totalTimeDay2, 'totalTimeDay3' => $totalTimeDay3, 'totalTimeDay4' => $totalTimeDay4, 'totalTimeDay5' => $totalTimeDay5,
+            'totalFluxDay1' => $totalFluxDay1, 'totalFluxDay2' => $totalFluxDay2, 'totalFluxDay3' => $totalFluxDay3, 'totalFluxDay4' => $totalFluxDay4, 'totalFluxDay5' => $totalFluxDay5,
+            'totalTimeDay' => $totalTimeDay, 'totalFluxDay' => $totalFluxDay,
+        ];
+
+        return $param;
+    }
+
+    /**
      * 运行时间求和
      *
      * @param $statusList
@@ -847,6 +1127,19 @@ class StatusReportController extends Controller
          (Select (@rowNum1 :=0) ) b1 WHERE Time > ? and Time < ?)AS a1)AS a1  on a.rowNo +1 = a1.rowNo1 WHERE (a.' . $statusCode . ' - a1.' . $statusCode . ') = 1 || (a.' . $statusCode . ' - a1.' . $statusCode . ') = -1', [$searchStartTime, $searchEndTime, $searchStartTime, $searchEndTime]);
 
         return $stationRTList;
+    }
+
+    public function getStatusYXList($stationNum, $startTime, $endTime)
+    {
+        $statusTable = "stationRTYX_" . $stationNum;
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $stationRTYXList = DB::table($statusTable)->whereBetween('Time', [$searchStartTime, $searchEndTime])->orderBy('Time', 'asc')
+            ->get();
+
+        return $stationRTYXList;
     }
 
     /**
