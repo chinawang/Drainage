@@ -47,6 +47,10 @@ Route::get('/user/profile/{user_id}','User\UserController@userProfile');
 Route::get('/user/editProfile/{user_id}','User\UserController@showUpdateUserProfile');
 Route::post('/user/updateProfile/{user_id}','User\UserController@saveUserProfile');
 
+//修改个人密码
+Route::get('/user/resetSelfPasswordForm/{user_id}','User\UserController@showResetSelfPasswordForm');
+Route::post('/user/selfPassword/store/{user_id}','User\UserController@resetSelfPassword');
+
 
 /**
  *泵站相关

@@ -313,4 +313,40 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
+
+    public function showResetSelfPasswordForm($userID)
+    {
+        $userInfo = $this->userLogic->findUser($userID);
+        $param = ['user' => $userInfo];
+        return view('user.resetSelfPassword',$param);
+    }
+
+    public function resetSelfPassword($userID)
+    {
+        $data = $this->userValidation->resetPassword($userID);
+        $result = $this->userLogic->resetPassword($userID,$data['newPassword']);
+
+        if($result)
+        {
+            session()->flash('flash_message', [
+                'title'     => '保存成功!',
+                'message'   => '',
+                'level'     => 'success'
+            ]);
+
+            //记录Log
+            app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '修改了账户密码']);
+
+            return redirect('/user/profile/'.$userID);
+        }
+        else
+        {
+            session()->flash('flash_message_overlay', [
+                'title'     => '保存失败!',
+                'message'   => '数据未保存成功,请稍后重试!',
+                'level'     => 'error'
+            ]);
+            return redirect()->back();
+        }
+    }
 }

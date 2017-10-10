@@ -107,5 +107,57 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default custom-panel">
+                    <div class="panel-heading">
+                        账户信息
+                        {{--<a href="/user/lists" class="btn-link">返回</a>--}}
+                    </div>
+                    <div class="panel-body custom-panel-body">
+                        <form class="form-horizontal" role="form" method="POST" action="">
+                            {{ csrf_field() }}
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="employee_number" class="col-md-4 control-label">登录账号</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="name" readonly="readonly" value="{{ $user['name'] }}" required >
+
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                <label for="password" class="col-md-4 control-label">密码</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="newPassword" readonly="readonly" value="{{ $user['password'] }}" placeholder="" required>
+
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <a class="btn btn-primary btn-custom" href="/user/resetSelfPasswordForm/{{ $user['id'] }}">
+                                        <span class="glyphicon glyphicon-ok-sign"></span>
+                                        修改密码
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
