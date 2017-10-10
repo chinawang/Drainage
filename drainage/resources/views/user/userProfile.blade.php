@@ -136,7 +136,7 @@
                                 <label for="password" class="col-md-4 control-label">密码</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="newPassword" readonly="readonly" value="{{ $user['password'] }}" placeholder="" required>
+                                    <input id="password" type="password" class="form-control" name="newPassword" readonly="readonly" value="888888" placeholder="" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
