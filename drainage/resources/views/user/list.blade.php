@@ -60,7 +60,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($users as $user)
-                                    @if($user['id'] != 1 || $user['id'] != 5)
+                                    @if($user['id'] == 1 || $user['id'] == 5)
                                     <tr>
                                         <td>{{ $user['employee_number'] }}</td>
                                         <td>{{ $user['realname'] }}</td>
