@@ -75,6 +75,8 @@
             resizeEnable: true
         });
 
+        map.setFeatures(['road','point','bg','building']);
+
         //设置DomLibrary，jQuery或者Zepto
         AMapUI.setDomLibrary($);
 
