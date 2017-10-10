@@ -138,7 +138,7 @@ class MapController extends Controller
     {
         $stationTable = "stationRT_".$stationNum;
 //        $stationRTs = DB::select('select * from '.$stationTable.' order by Time desc limit 1');
-        $stationRTs = DB::select('select *,max(Time) from '.$stationTable.' group by max(Time)');
+        $stationRTs = DB::select('SELECT * FROM  '.$stationTable.' WHERE Time = (select max(Time) AS maxTime from  '.$stationTable.' )');
         return $stationRTs;
     }
 
