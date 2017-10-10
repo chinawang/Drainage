@@ -38,45 +38,9 @@ class MapController extends Controller
             $runCount = 0;
             $stopCount = 0;
 
-            if($stationRT[0]->yx_b1 == '1')
+            if(count($stationRT)>0)
             {
-                $runCount ++;
-            }
-            else
-            {
-                $stopCount ++;
-            }
-
-            if($stationRT[0]->yx_b2 == '1')
-            {
-                $runCount ++;
-            }
-            else
-            {
-                $stopCount ++;
-            }
-
-            if($stationRT[0]->yx_b3 == '1')
-            {
-                $runCount ++;
-            }
-            else
-            {
-                $stopCount ++;
-            }
-
-            if($stationRT[0]->yx_b4 == '1')
-            {
-                $runCount ++;
-            }
-            else
-            {
-                $stopCount ++;
-            }
-
-            if($stationNum == 33)
-            {
-                if($stationRT[0]->yx_b5 == '1')
+                if($stationRT[0]->yx_b1 == '1')
                 {
                     $runCount ++;
                 }
@@ -84,6 +48,46 @@ class MapController extends Controller
                 {
                     $stopCount ++;
                 }
+
+                if($stationRT[0]->yx_b2 == '1')
+                {
+                    $runCount ++;
+                }
+                else
+                {
+                    $stopCount ++;
+                }
+
+                if($stationRT[0]->yx_b3 == '1')
+                {
+                    $runCount ++;
+                }
+                else
+                {
+                    $stopCount ++;
+                }
+
+                if($stationRT[0]->yx_b4 == '1')
+                {
+                    $runCount ++;
+                }
+                else
+                {
+                    $stopCount ++;
+                }
+
+                if($stationNum == 33)
+                {
+                    if($stationRT[0]->yx_b5 == '1')
+                    {
+                        $runCount ++;
+                    }
+                    else
+                    {
+                        $stopCount ++;
+                    }
+                }
+
             }
 
 
