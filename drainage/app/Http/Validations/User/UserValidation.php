@@ -140,7 +140,7 @@ class UserValidation extends Validation
         $input = $this->filterRequest(['newPassword']);
 
         $rules = [
-            'newPassword' => ['required', 'string', 'min:6'],
+            'newPassword' => ['required', 'string', 'min:1'],
         ];
 
         $validator = Validator::make($input, $rules);
