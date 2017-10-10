@@ -141,11 +141,11 @@ class MapController extends Controller
 
     public function getStationRTs($stationNum)
     {
-        $nowTime = date("Y-m-d H:i:s",strtotime("-1 Hour"));
+        $nowTime = date("Y-m-d H:i:s",strtotime("-10 Minute"));
 
         $stationTable = "stationRT_".$stationNum;
-//        $stationRTs = DB::select('select * from '.$stationTable.' WHERE Time > ? order by Time desc limit 1', [$nowTime]);
-        $stationRTs = DB::select('SELECT * FROM  '.$stationTable.' WHERE Time = (select max(Time) AS maxTime from  '.$stationTable.' WHERE Time > ?)',[$nowTime]);
+        $stationRTs = DB::select('select * from '.$stationTable.' WHERE Time > ? order by Time desc limit 1', [$nowTime]);
+//        $stationRTs = DB::select('SELECT * FROM  '.$stationTable.' WHERE Time = (select max(Time) AS maxTime from  '.$stationTable.' WHERE Time > ?)',[$nowTime]);
         return $stationRTs;
     }
 
