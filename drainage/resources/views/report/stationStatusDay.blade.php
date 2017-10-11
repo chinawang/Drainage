@@ -581,7 +581,7 @@
                 x: -20
             },
             xAxis: {
-                categories: categories1
+                categories: categories3
             },
             yAxis: {
                 title: {
