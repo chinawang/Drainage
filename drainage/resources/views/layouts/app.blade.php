@@ -29,7 +29,7 @@
 
 {{--    <link href="{{ asset('css/pace/themes/silver/pace-theme-loading-bar.css') }}" rel="stylesheet">--}}
 
-    <link href="{{ asset('css/pace/themes/orange/pace-theme-flat-top.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pace/themes/orange/pace-theme-minimal.css') }}" rel="stylesheet">
 
 @yield('stylesheet')
 
