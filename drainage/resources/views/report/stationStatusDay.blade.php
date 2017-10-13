@@ -709,7 +709,7 @@
         });
 
 
-        var chartAll = new Highcharts.Chart('pumpAllContainer', {
+        Highcharts.chart('pumpAllContainer', {
             chart: {
                 type: 'xrange'
             },
