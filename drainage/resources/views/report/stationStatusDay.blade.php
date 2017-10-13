@@ -479,7 +479,7 @@
         $.each(statusRTList.stationStatusList1, function (i, n) {
             categories1[i] = dateStrFormat(n["timeEnd"]);
             datas1[i] = n["timeGap"];
-            var dataTmp = {x:n["timeStart"],x2:n["timeEnd"],y:0};
+            var dataTmp = {x:new Date(n["timeStart"]),x2:new Date(n["timeEnd"]),y:0};
             dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList2, function (i, n) {
