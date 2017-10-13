@@ -688,8 +688,8 @@
             xAxis: {
                 type: 'datetime',
                 dateTimeLabelFormats: {
-                    week: '%Y/%m/%d'
-                }
+                    day: '%Y/%m/%d',
+                    time: '%h:%m:%s'
             },
             yAxis: {
                 title: {
@@ -699,7 +699,9 @@
                 reversed: true
             },
             tooltip: {
-                valueSuffix: '分钟'
+                dateTimeLabelFormats: {
+                    day: '%Y/%m/%d',
+                    time: '%h:%m:%s'
             },
             legend: {
                 layout: 'vertical',
