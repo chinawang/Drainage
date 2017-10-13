@@ -716,9 +716,9 @@
 //                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
 //                    {x: (new Date("2017-10-12")).getTime(), x2: (new Date("2017-10-15")).getTime(), y: 0}
 //                    ],
-                dataLabels: {
-                    enabled: true
-                }
+//                dataLabels: {
+//                    enabled: true
+//                }
             },
             ]
         });
