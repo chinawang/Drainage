@@ -712,8 +712,8 @@
                 borderColor: 'gray',
                 pointWidth: 20,
                 data: [
-                        {x: new Date("2017-10-10 07:08:12"), x2: new Date("2017-10-10 07:50:12"), y: 0},
-                    {x: new Date("2017-10-10 09:18:12"), x2: new Date("2017-10-10 09:58:12"), y: 0}
+                        {x: new Date("2017-10-10"), x2: new Date("2017-10-11"), y: 0},
+                    {x: new Date("2017-10-12"), x2: new Date("2017-10-15"), y: 0}
 //                    {
 //                        x: Date.UTC(2014, 11, 2),
 //                        x2: Date.UTC(2014, 11, 5),
