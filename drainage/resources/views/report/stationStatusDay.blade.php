@@ -142,7 +142,7 @@
                                     @endif
 
                                     <div class="tab-pane fade" id="pumpAll">
-                                        <div class="panel-body custom-panel-body" id="pumpAllContainer"
+                                        <div class="panel-body custom-panel-body" id="container"
                                              style="min-width:400px;height:400px">
                                         </div>
                                     </div>
@@ -768,6 +768,65 @@
                 }],
             },
             ]
+        });
+
+        Highcharts.chart('container', {
+            chart: {
+                type: 'xrange'
+            },
+            title: {
+                text: '简易甘特图'
+            },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    week: '%Y/%m/%d'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                categories: ['制作产品原型', '开发', '测试'],
+                reversed: true
+            },
+            tooltip: {
+                dateTimeLabelFormats: {
+                    day: '%Y/%m/%d'
+                }
+            },
+            series: [{
+                name: '项目1',
+                // pointPadding: 0,
+                // groupPadding: 0,
+                borderColor: 'gray',
+                pointWidth: 20,
+                data: [{
+                    x: Date.UTC(2014, 10, 21),
+                    x2: Date.UTC(2014, 11, 2),
+                    y: 0,
+                    partialFill: 0.25
+                }, {
+                    x: Date.UTC(2014, 11, 2),
+                    x2: Date.UTC(2014, 11, 5),
+                    y: 1
+                }, {
+                    x: Date.UTC(2014, 11, 8),
+                    x2: Date.UTC(2014, 11, 9),
+                    y: 2
+                }, {
+                    x: Date.UTC(2014, 11, 9),
+                    x2: Date.UTC(2014, 11, 19),
+                    y: 1
+                }, {
+                    x: Date.UTC(2014, 11, 10),
+                    x2: Date.UTC(2014, 11, 23),
+                    y: 2
+                }],
+                dataLabels: {
+                    enabled: true
+                }
+            }]
         });
     </script>
 
