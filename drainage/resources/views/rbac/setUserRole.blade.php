@@ -14,7 +14,7 @@
             <h2>
                 <a href="{{ url('/') }}">首页</a>
                 <em>›</em>
-                <a href="/role/lists">角色管理</a>
+                <a href="/user/lists">账户管理</a>
                 <em>›</em>
                 <span>设置用户角色</span>
             </h2>
