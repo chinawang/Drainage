@@ -99,14 +99,17 @@
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#pump1" data-toggle="tab">1号泵运行趋势</a></li>
+
+                                            <li class="active"><a href="#pumpAll" data-toggle="tab">泵组整体运行图</a></li>
+
+                                            <li><a href="#pump1" data-toggle="tab">1号泵运行趋势</a></li>
                                             <li><a href="#pump2" data-toggle="tab">2号泵运行趋势</a></li>
                                             <li><a href="#pump3" data-toggle="tab">3号泵运行趋势</a></li>
                                             <li><a href="#pump4" data-toggle="tab">4号泵运行趋势</a></li>
                                             @if($stationSelect['station_number'] == 33)
                                                 <li><a href="#pump5" data-toggle="tab">5号泵运行趋势</a></li>
                                             @endif
-                                            <li><a href="#pumpAll" data-toggle="tab">泵组整体运行图</a></li>
+
                                         </ul>
                                     </div>
 
