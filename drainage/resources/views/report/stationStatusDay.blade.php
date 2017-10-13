@@ -712,8 +712,8 @@
                 borderColor: 'gray',
                 pointWidth: 20,
                 data: [
-                        {x: StringToDate("2017-10-10 07:08:12"), x2: StringToDate("2017-10-10 07:50:12"), y: 0},
-                    {x: StringToDate("2017-10-10 09:18:12"), x2: StringToDate("2017-10-10 09:58:12"), y: 0}
+                        {x: new Date("2017-10-10 07:08:12"), x2: new Date("2017-10-10 07:50:12"), y: 0},
+                    {x: new Date("2017-10-10 09:18:12"), x2: new Date("2017-10-10 09:58:12"), y: 0}
 //                    {
 //                        x: Date.UTC(2014, 11, 2),
 //                        x2: Date.UTC(2014, 11, 5),
