@@ -686,7 +686,10 @@
                 x: -20
             },
             xAxis: {
-
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    week: '%Y/%m/%d'
+                }
             },
             yAxis: {
                 title: {
