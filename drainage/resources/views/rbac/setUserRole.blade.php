@@ -56,10 +56,12 @@
 
                                 <div class="col-md-6">
                                     @foreach ($roles as $role)
+                                        @if(!(in_array($role['id'],[1])))
                                         <label class="checkbox-inline">
                                             <input name="roles[]" type="checkbox" id="inlineCheckbox{{$role['id']}}"
                                                    value="{{$role['id']}}" {{!in_array($role['id'], $assignRoleIDs)?:' checked'}}>{{$role['name']}}
                                         </label>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
