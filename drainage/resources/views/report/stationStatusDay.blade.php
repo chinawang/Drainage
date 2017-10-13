@@ -97,7 +97,7 @@
 
                             <div class="panel panel-default custom-panel">
                                 <div class="row">
-                                    <div class="col-md-6 col-md-offset-3">
+                                    <div class="col-md-8 col-md-offset-2">
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#pump1" data-toggle="tab">1号泵运行趋势</a></li>
                                             <li><a href="#pump2" data-toggle="tab">2号泵运行趋势</a></li>
