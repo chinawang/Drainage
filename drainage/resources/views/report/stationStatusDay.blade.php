@@ -507,8 +507,6 @@
             dataAll.push(dataTmp);
         });
 
-        alert(dataAll);
-
 
         var chart1 = new Highcharts.Chart('pump1Container', {
             chart: {
@@ -688,7 +686,7 @@
                 x: -20
             },
             xAxis: {
-                type: 'datetime',
+
             },
             yAxis: {
                 title: {
@@ -711,6 +709,9 @@
                 borderColor: 'gray',
                 pointWidth: 20,
                 data: dataAll,
+                dataLabels: {
+                    enabled: true
+                }
             },
             ]
         });
