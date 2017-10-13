@@ -709,96 +709,39 @@
 //        });
 
 
-//        var chartAll = new Highcharts.Chart('pumpAllContainer', {
-//            chart: {
-//                type: 'xrange'
-//            },
-//            title: {
-//                text: '',
-//                x: -20
-//            },
-//            subtitle: {
-//                text: '',
-//                x: -20
-//            },
-//            xAxis: {
-//                type: 'datetime',
-//            },
-//            yAxis: {
-//                title: {
-//                    text: ''
-//                },
-//                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
-//                reversed: true
-//            },
-//            tooltip: {
-//                valueSuffix: '分钟'
-//            },
-//            legend: {
-//                layout: 'vertical',
-//                align: 'right',
-//                verticalAlign: 'middle',
-//                borderWidth: 0
-//            },
-//            series: [{
-//                name: '泵组运行时间',
-//                borderColor: 'gray',
-//                pointWidth: 20,
-//                data: [{
-//                    x: Date.UTC(2014, 10, 21),
-//                    x2: Date.UTC(2014, 11, 2),
-//                    y: 0,
-//                    partialFill: 0.25
-//                }, {
-//                    x: Date.UTC(2014, 11, 2),
-//                    x2: Date.UTC(2014, 11, 5),
-//                    y: 1
-//                }, {
-//                    x: Date.UTC(2014, 11, 8),
-//                    x2: Date.UTC(2014, 11, 9),
-//                    y: 2
-//                }, {
-//                    x: Date.UTC(2014, 11, 9),
-//                    x2: Date.UTC(2014, 11, 19),
-//                    y: 1
-//                }, {
-//                    x: Date.UTC(2014, 11, 10),
-//                    x2: Date.UTC(2014, 11, 23),
-//                    y: 2
-//                }],
-//            },
-//            ]
-//        });
-
-        Highcharts.chart('container', {
+        var chartAll = new Highcharts.Chart('container', {
             chart: {
                 type: 'xrange'
             },
             title: {
-                text: '简易甘特图'
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
             },
             xAxis: {
                 type: 'datetime',
-                dateTimeLabelFormats: {
-                    week: '%Y/%m/%d'
-                }
             },
             yAxis: {
                 title: {
                     text: ''
                 },
-                categories: ['制作产品原型', '开发', '测试'],
+                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
                 reversed: true
             },
             tooltip: {
-                dateTimeLabelFormats: {
-                    day: '%Y/%m/%d'
-                }
+                valueSuffix: '分钟'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
             },
             series: [{
-                name: '项目1',
-                // pointPadding: 0,
-                // groupPadding: 0,
+                name: '泵组运行时间',
                 borderColor: 'gray',
                 pointWidth: 20,
                 data: [{
@@ -823,11 +766,68 @@
                     x2: Date.UTC(2014, 11, 23),
                     y: 2
                 }],
-                dataLabels: {
-                    enabled: true
-                }
-            }]
+            },
+            ]
         });
+
+//        Highcharts.chart('container', {
+//            chart: {
+//                type: 'xrange'
+//            },
+//            title: {
+//                text: '简易甘特图'
+//            },
+//            xAxis: {
+//                type: 'datetime',
+//                dateTimeLabelFormats: {
+//                    week: '%Y/%m/%d'
+//                }
+//            },
+//            yAxis: {
+//                title: {
+//                    text: ''
+//                },
+//                categories: ['制作产品原型', '开发', '测试'],
+//                reversed: true
+//            },
+//            tooltip: {
+//                dateTimeLabelFormats: {
+//                    day: '%Y/%m/%d'
+//                }
+//            },
+//            series: [{
+//                name: '项目1',
+//                // pointPadding: 0,
+//                // groupPadding: 0,
+//                borderColor: 'gray',
+//                pointWidth: 20,
+//                data: [{
+//                    x: Date.UTC(2014, 10, 21),
+//                    x2: Date.UTC(2014, 11, 2),
+//                    y: 0,
+//                    partialFill: 0.25
+//                }, {
+//                    x: Date.UTC(2014, 11, 2),
+//                    x2: Date.UTC(2014, 11, 5),
+//                    y: 1
+//                }, {
+//                    x: Date.UTC(2014, 11, 8),
+//                    x2: Date.UTC(2014, 11, 9),
+//                    y: 2
+//                }, {
+//                    x: Date.UTC(2014, 11, 9),
+//                    x2: Date.UTC(2014, 11, 19),
+//                    y: 1
+//                }, {
+//                    x: Date.UTC(2014, 11, 10),
+//                    x2: Date.UTC(2014, 11, 23),
+//                    y: 2
+//                }],
+//                dataLabels: {
+//                    enabled: true
+//                }
+//            }]
+//        });
     </script>
 
     {{--<!--Loading-->--}}
