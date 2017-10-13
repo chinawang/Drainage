@@ -57,7 +57,7 @@
                                     @foreach ($permissions as $permission)
                                         <label class="checkbox-inline">
                                             <input name="permissions[]" type="checkbox" id="inlineCheckbox{{$permission['id']}}"
-                                                   value="{{$permission['id']}}" {{!in_array($permission['id'], $assignPermissionIDs)?:' checked'}}>{{$permission['name']}}
+                                                   value="{{$permission['id']}}" {{!in_array($permission['id'], $assignPermissionIDs)?:' checked'}}>{{$permission['slug']}}
                                         </label>
                                     @endforeach
                                 </div>

@@ -64,7 +64,7 @@
                                                 暂无
                                             @else
                                                 @foreach($role['assignPermissions'] as $assignPermission)
-                                                    <span class="label label-default">{{ $assignPermission['name'] }}</span>
+                                                    <span class="label label-default">{{ $assignPermission['slug'] }}</span>
                                                 @endforeach
                                             @endif
                                         </td>
