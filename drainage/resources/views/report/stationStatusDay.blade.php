@@ -711,7 +711,10 @@
                 name: '泵组运行时间',
                 borderColor: 'gray',
                 pointWidth: 20,
-                data: dataAll,
+                data: [
+                        {x: "2017-10-10 07:08:12", x2: "2017-10-10 07:50:12", y: 0},
+                    {x: "2017-10-10 09:18:12", x2: "2017-10-10 09:58:12", y: 0}
+                    ],
                 dataLabels: {
                     enabled: true
                 }
