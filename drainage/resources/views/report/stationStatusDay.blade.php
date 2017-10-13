@@ -667,46 +667,46 @@
             ]
         });
 
-        var chart5 = new Highcharts.Chart('pump5Container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '',
-                x: -20
-            },
-            subtitle: {
-                text: '',
-                x: -20
-            },
-            xAxis: {
-                categories: categories5
-            },
-            yAxis: {
-                title: {
-                    text: '时间 (分钟)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '分钟'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: '5号泵运行时长',
-                data: datas5
-            },
-            ]
-        });
+//        var chart5 = new Highcharts.Chart('pump5Container', {
+//            chart: {
+//                type: 'column'
+//            },
+//            title: {
+//                text: '',
+//                x: -20
+//            },
+//            subtitle: {
+//                text: '',
+//                x: -20
+//            },
+//            xAxis: {
+//                categories: categories5
+//            },
+//            yAxis: {
+//                title: {
+//                    text: '时间 (分钟)'
+//                },
+//                plotLines: [{
+//                    value: 0,
+//                    width: 1,
+//                    color: '#808080'
+//                }]
+//            },
+//            tooltip: {
+//                valueSuffix: '分钟'
+//            },
+//            legend: {
+//                layout: 'vertical',
+//                align: 'right',
+//                verticalAlign: 'middle',
+//                borderWidth: 0
+//            },
+//            series: [{
+//                name: '5号泵运行时长',
+//                data: datas5
+//            },
+//            ]
+//        });
 
 
         var chartAll = new Highcharts.Chart('pumpAllContainer', {
