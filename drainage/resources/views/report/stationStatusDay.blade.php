@@ -690,6 +690,7 @@
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
+                }
             },
             yAxis: {
                 title: {
@@ -702,6 +703,7 @@
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
+                }
             },
             legend: {
                 layout: 'vertical',
