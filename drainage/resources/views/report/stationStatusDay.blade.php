@@ -502,6 +502,8 @@
             dataAll.push({x:n["timeStart"],x2:n["timeEnd"],y:4});
         });
 
+        alert(dataAll);
+
 
         var chart1 = new Highcharts.Chart('pump1Container', {
             chart: {
