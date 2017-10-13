@@ -479,32 +479,32 @@
         $.each(statusRTList.stationStatusList1, function (i, n) {
             categories1[i] = dateStrFormat(n["timeEnd"]);
             datas1[i] = n["timeGap"];
-            var dataTmp = {x:new Date(n["timeStart"]),x2:new Date(n["timeEnd"]),y:0};
+            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:0};
             dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList2, function (i, n) {
             categories2[i] = dateStrFormat(n["timeEnd"]);
             datas2[i] = n["timeGap"];
-            var dataTmp = {x:n["timeStart"],x2:n["timeEnd"],y:1};
-//            dataAll.push(dataTmp);
+            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:1};
+            dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList3, function (i, n) {
             categories3[i] = dateStrFormat(n["timeEnd"]);
             datas3[i] = n["timeGap"];
-            var dataTmp = {x:n["timeStart"],x2:n["timeEnd"],y:2};
-//            dataAll.push(dataTmp);
+            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:2};
+            dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList4, function (i, n) {
             categories4[i] = dateStrFormat(n["timeEnd"]);
             datas4[i] = n["timeGap"];
-            var dataTmp = {x:n["timeStart"],x2:n["timeEnd"],y:3};
-//            dataAll.push(dataTmp);
+            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:3};
+            dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList5, function (i, n) {
             categories5[i] = dateStrFormat(n["timeEnd"]);
             datas5[i] = n["timeGap"];
-            var dataTmp = {x:n["timeStart"],x2:n["timeEnd"],y:4};
-//            dataAll.push(dataTmp);
+            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:4};
+            dataAll.push(dataTmp);
         });
 
 
@@ -711,19 +711,11 @@
                 name: '泵组运行时间',
                 borderColor: 'gray',
                 pointWidth: 20,
-                data: [
-                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
-                    {x: (new Date("2017-10-12")).getTime(), x2: (new Date("2017-10-15")).getTime(), y: 0}
-//                    {
-//                        x: Date.UTC(2014, 11, 2),
-//                        x2: Date.UTC(2014, 11, 5),
-//                        y: 1
-//                    }, {
-//                        x: Date.UTC(2014, 11, 8),
-//                        x2: Date.UTC(2014, 11, 9),
-//                        y: 2
-//                    }
-                    ],
+                data: dataAll,
+//                data: [
+//                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
+//                    {x: (new Date("2017-10-12")).getTime(), x2: (new Date("2017-10-15")).getTime(), y: 0}
+//                    ],
                 dataLabels: {
                     enabled: true
                 }
