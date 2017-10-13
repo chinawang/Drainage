@@ -106,6 +106,7 @@
                                             @if($stationSelect['station_number'] == 33)
                                                 <li><a href="#pump5" data-toggle="tab">5号泵运行趋势</a></li>
                                             @endif
+                                            <li><a href="#pumpAll" data-toggle="tab">泵组整体运行图</a></li>
                                         </ul>
                                     </div>
 
@@ -139,6 +140,12 @@
                                             </div>
                                         </div>
                                     @endif
+
+                                    <div class="tab-pane fade" id="pumpAll">
+                                        <div class="panel-body custom-panel-body" id="pumpAllContainer"
+                                             style="min-width:400px;height:400px">
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -383,6 +390,10 @@
 
     <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
 
+    <script src="https://img.hcharts.cn/highcharts/modules/xrange.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>
+
+
     <script>
         $(document).ready(function () {
 
@@ -463,26 +474,32 @@
         var datas3 = [];
         var datas4 = [];
         var datas5 = [];
+        var dataAll = [];
 
         $.each(statusRTList.stationStatusList1, function (i, n) {
             categories1[i] = dateStrFormat(n["timeEnd"]);
             datas1[i] = n["timeGap"];
+            dataAll.push({x:n["timeStart"],x2:n["timeEnd"],y:0});
         });
         $.each(statusRTList.stationStatusList2, function (i, n) {
             categories2[i] = dateStrFormat(n["timeEnd"]);
             datas2[i] = n["timeGap"];
+            dataAll.push({x:n["timeStart"],x2:n["timeEnd"],y:1});
         });
         $.each(statusRTList.stationStatusList3, function (i, n) {
             categories3[i] = dateStrFormat(n["timeEnd"]);
             datas3[i] = n["timeGap"];
+            dataAll.push({x:n["timeStart"],x2:n["timeEnd"],y:2});
         });
         $.each(statusRTList.stationStatusList4, function (i, n) {
             categories4[i] = dateStrFormat(n["timeEnd"]);
             datas4[i] = n["timeGap"];
+            dataAll.push({x:n["timeStart"],x2:n["timeEnd"],y:3});
         });
         $.each(statusRTList.stationStatusList5, function (i, n) {
             categories5[i] = dateStrFormat(n["timeEnd"]);
             datas5[i] = n["timeGap"];
+            dataAll.push({x:n["timeStart"],x2:n["timeEnd"],y:4});
         });
 
 
@@ -687,6 +704,47 @@
             series: [{
                 name: '5号泵运行时长',
                 data: datas5
+            },
+            ]
+        });
+
+
+        var chartAll = new Highcharts.Chart('pumpAllContainer', {
+            chart: {
+                type: 'xrange'
+            },
+            title: {
+                text: '',
+                x: -20
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                type: 'datetime',
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
+                reversed: true
+            },
+            tooltip: {
+                valueSuffix: '分钟'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '泵组运行时间',
+                borderColor: 'gray',
+                pointWidth: 20,
+                data: dataAll
             },
             ]
         });
