@@ -56,6 +56,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($roles as $role)
+                                    @if(!(in_array($role['id'],[1])))
                                     <tr>
                                         <td>{{ $role['id'] }}</td>
                                         <td>{{ $role['name'] }}</td>
@@ -85,6 +86,7 @@
                                         @endif
 
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
