@@ -482,31 +482,31 @@
         $.each(statusRTList.stationStatusList1, function (i, n) {
             categories1[i] = dateStrFormat(n["timeEnd"]);
             datas1[i] = n["timeGap"];
-            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:0};
+            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime(),x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime(),y:0};
             dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList2, function (i, n) {
             categories2[i] = dateStrFormat(n["timeEnd"]);
             datas2[i] = n["timeGap"];
-            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:1};
+            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime(),x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime(),y:1};
             dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList3, function (i, n) {
             categories3[i] = dateStrFormat(n["timeEnd"]);
             datas3[i] = n["timeGap"];
-            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:2};
+            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime(),x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime(),y:2};
             dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList4, function (i, n) {
             categories4[i] = dateStrFormat(n["timeEnd"]);
             datas4[i] = n["timeGap"];
-            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:3};
+            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime(),x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime(),y:3};
             dataAll.push(dataTmp);
         });
         $.each(statusRTList.stationStatusList5, function (i, n) {
             categories5[i] = dateStrFormat(n["timeEnd"]);
             datas5[i] = n["timeGap"];
-            var dataTmp = {x:(new Date(n["timeStart"])).getTime(),x2:(new Date(n["timeEnd"])).getTime(),y:4};
+            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime(),x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime(),y:4};
             dataAll.push(dataTmp);
         });
 
