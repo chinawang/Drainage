@@ -682,7 +682,6 @@
         var chartAll = new Highcharts.Chart('container', {
             chart: {
                 type: 'xrange',
-                width: 1800
             },
             title: {
                 text: '',
