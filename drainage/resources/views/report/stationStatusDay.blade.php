@@ -691,7 +691,7 @@
                 x: -20
             },
             xAxis: {
-//                type: 'datetime',
+                type: 'datetime',
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
@@ -705,6 +705,7 @@
                 reversed: true
             },
             tooltip: {
+                type: 'datetime',
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
