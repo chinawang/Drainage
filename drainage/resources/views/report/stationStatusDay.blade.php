@@ -720,8 +720,8 @@
             },
             series: [{
                 name: '泵组运行间隔',
-//                borderColor: 'gray',
-//                pointWidth: 20,
+                borderColor: 'gray',
+                pointWidth: 10,
                 data: dataAll,
 //                data: [
 //                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
