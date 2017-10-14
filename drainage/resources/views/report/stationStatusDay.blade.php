@@ -479,7 +479,7 @@
         var datas5 = [];
         var dataAll = [];
 
-        var dateGMT = new Date(2017,0,1,8).getTime();
+        var dateGMT = new Date(1970,0,1,8).getTime();
 
         $.each(statusRTList.stationStatusList1, function (i, n) {
             categories1[i] = dateStrFormat(n["timeEnd"]);
