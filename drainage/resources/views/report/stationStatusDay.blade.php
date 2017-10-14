@@ -479,6 +479,7 @@
         var datas5 = [];
         var dataAll = [];
 
+        //东八区时间差
         var dateGMT = new Date(1970,0,1,16).getTime();
 
         $.each(statusRTList.stationStatusList1, function (i, n) {
@@ -691,7 +692,7 @@
                 x: -20
             },
             xAxis: {
-                type: 'time',
+                type: 'datetime',
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
@@ -705,7 +706,7 @@
                 reversed: true
             },
             tooltip: {
-                type: 'time',
+                type: 'datetime',
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
