@@ -108,7 +108,7 @@
                                                 <li><a href="#pump5" data-toggle="tab">5号泵运行趋势</a></li>
                                             @endif
 
-                                            {{--<li><a href="#pumpAll" data-toggle="tab">泵组整体运行图</a></li>--}}
+                                            <li><a href="#pumpAll" data-toggle="tab">泵组整体运行图</a></li>
 
                                         </ul>
                                     </div>
@@ -681,7 +681,8 @@
 
         var chartAll = new Highcharts.Chart('container', {
             chart: {
-                type: 'xrange'
+                type: 'xrange',
+                width: 800
             },
             title: {
                 text: '',
