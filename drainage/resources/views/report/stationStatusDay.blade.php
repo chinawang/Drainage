@@ -719,9 +719,9 @@
                 borderWidth: 0
             },
             series: [{
-                name: '泵组运行时间',
-                borderColor: 'gray',
-                pointWidth: 20,
+                name: '泵组运行间隔',
+//                borderColor: 'gray',
+//                pointWidth: 20,
                 data: dataAll,
 //                data: [
 //                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
