@@ -784,6 +784,8 @@ class StatusReportController extends Controller
         //当日所有泵抽升量合计(万吨)
         $totalFluxDay = 0.00;
 
+        $initialCurrent = 5;
+
         // 遍历实时运行数据表,找出起泵时刻与停泵时刻
         for ($i = 0; $i < count($statusYXList); $i++) {
             $sRunning1 = [];
@@ -794,20 +796,20 @@ class StatusReportController extends Controller
 
             //1号泵
             if ($i == 0) {
-                if ($statusYXList[$i]->$currentCode1 > 10) {
+                if ($statusYXList[$i]->$currentCode1 > $initialCurrent) {
                     $sRunning1['timeStart'] = $statusYXList[$i]->Time;
                     $index1++;
                     array_push($stationStatusList1, $sRunning1);
                 }
             } else {
-                if ($statusYXList[$i]->$currentCode1 > 10 && $statusYXList[$i - 1]->$currentCode1 <= 10) {
+                if ($statusYXList[$i]->$currentCode1 > $initialCurrent && $statusYXList[$i - 1]->$currentCode1 <= $initialCurrent) {
                     $sRunning1['timeStart'] = $statusYXList[$i]->Time;
                     $index1++;
                     array_push($stationStatusList1, $sRunning1);
 
-                } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode1 > 10) {
+                } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode1 > $initialCurrent) {
                     array_pop($stationStatusList1);
-                } elseif ($statusYXList[$i]->$currentCode1 <= 10 && $statusYXList[$i - 1]->$currentCode1 > 10) {
+                } elseif ($statusYXList[$i]->$currentCode1 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode1 > $initialCurrent) {
                     $sRunning1['timeEnd'] = $statusYXList[$i]->Time;
                     $sRunning1['current'] = $statusYXList[$i - 1]->$currentCode1;
 
@@ -831,21 +833,21 @@ class StatusReportController extends Controller
 
             //2号泵
             if ($i == 0) {
-                if ($statusYXList[$i]->$currentCode2 > 10) {
+                if ($statusYXList[$i]->$currentCode2 > $initialCurrent) {
                     $sRunning2['timeStart'] = $statusYXList[$i]->Time;
                     $index2++;
                     array_push($stationStatusList2, $sRunning2);
                 }
             } else {
-                if ($statusYXList[$i]->$currentCode2 > 10 && $statusYXList[$i - 1]->$currentCode2 <= 10) {
+                if ($statusYXList[$i]->$currentCode2 > $initialCurrent && $statusYXList[$i - 1]->$currentCode2 <= $initialCurrent) {
 
                     $sRunning2['timeStart'] = $statusYXList[$i]->Time;
                     $index2++;
                     array_push($stationStatusList2, $sRunning2);
 
-                } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode2 > 10) {
+                } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode2 > $initialCurrent) {
                     array_pop($stationStatusList2);
-                } elseif ($statusYXList[$i]->$currentCode2 <= 10 && $statusYXList[$i - 1]->$currentCode2 > 10) {
+                } elseif ($statusYXList[$i]->$currentCode2 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode2 > $initialCurrent) {
                     $sRunning2['timeEnd'] = $statusYXList[$i]->Time;
                     $sRunning2['current'] = $statusYXList[$i - 1]->$currentCode2;
 
@@ -870,20 +872,20 @@ class StatusReportController extends Controller
             if ($has3Pump || $has4Pump || $has5Pump) {
                 //3号泵
                 if ($i == 0) {
-                    if ($statusYXList[$i]->$currentCode3 > 10) {
+                    if ($statusYXList[$i]->$currentCode3 > $initialCurrent) {
                         $sRunning3['timeStart'] = $statusYXList[$i]->Time;
                         $index3++;
                         array_push($stationStatusList3, $sRunning3);
                     }
                 } else {
-                    if ($statusYXList[$i]->$currentCode3 > 10 && $statusYXList[$i - 1]->$currentCode3 <= 10) {
+                    if ($statusYXList[$i]->$currentCode3 > $initialCurrent && $statusYXList[$i - 1]->$currentCode3 <= $initialCurrent) {
                         $sRunning3['timeStart'] = $statusYXList[$i]->Time;
                         $index3++;
                         array_push($stationStatusList3, $sRunning3);
 
-                    } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode3 > 10) {
+                    } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode3 > $initialCurrent) {
                         array_pop($stationStatusList3);
-                    } elseif ($statusYXList[$i]->$currentCode3 <= 10 && $statusYXList[$i - 1]->$currentCode3 > 10) {
+                    } elseif ($statusYXList[$i]->$currentCode3 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode3 > $initialCurrent) {
                         $sRunning3['timeEnd'] = $statusYXList[$i]->Time;
                         $sRunning3['current'] = $statusYXList[$i - 1]->$currentCode3;
 
@@ -909,20 +911,20 @@ class StatusReportController extends Controller
             if ($has4Pump || $has5Pump) {
                 //4号泵
                 if ($i == 0) {
-                    if ($statusYXList[$i]->$currentCode4 > 10) {
+                    if ($statusYXList[$i]->$currentCode4 > $initialCurrent) {
                         $sRunning4['timeStart'] = $statusYXList[$i]->Time;
                         $index4++;
                         array_push($stationStatusList4, $sRunning4);
                     }
                 } else {
-                    if ($statusYXList[$i]->$currentCode4 > 10 && $statusYXList[$i - 1]->$currentCode4 <= 10) {
+                    if ($statusYXList[$i]->$currentCode4 > $initialCurrent && $statusYXList[$i - 1]->$currentCode4 <= $initialCurrent) {
                         $sRunning4['timeStart'] = $statusYXList[$i]->Time;
                         $index4++;
                         array_push($stationStatusList4, $sRunning4);
 
                     } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode4 > 10) {
                         array_pop($stationStatusList4);
-                    } elseif ($statusYXList[$i]->$currentCode4 <= 10 && $statusYXList[$i - 1]->$currentCode4 > 10) {
+                    } elseif ($statusYXList[$i]->$currentCode4 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode4 > $initialCurrent) {
                         $sRunning4['timeEnd'] = $statusYXList[$i]->Time;
                         $sRunning4['current'] = $statusYXList[$i - 1]->$currentCode4;
 
@@ -948,19 +950,19 @@ class StatusReportController extends Controller
             if ($has5Pump) {
                 //5号泵
                 if ($i == 0) {
-                    if ($statusYXList[$i]->$currentCode5 > 10) {
+                    if ($statusYXList[$i]->$currentCode5 > $initialCurrent) {
                         $sRunning5['timeStart'] = $statusYXList[$i]->Time;
                         $index5++;
                         array_push($stationStatusList5, $sRunning5);
                     }
                 } else {
-                    if ($statusYXList[$i]->$currentCode5 > 10 && $statusYXList[$i - 1]->$currentCode5 <= 10) {
+                    if ($statusYXList[$i]->$currentCode5 > $initialCurrent && $statusYXList[$i - 1]->$currentCode5 <= $initialCurrent) {
                         $sRunning5['timeStart'] = $statusYXList[$i]->Time;
                         $index5++;
                         array_push($stationStatusList5, $sRunning5);
-                    } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode5 > 10) {
+                    } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode5 > $initialCurrent) {
                         array_pop($stationStatusList5);
-                    } elseif ($statusYXList[$i]->$currentCode5 <= 10 && $statusYXList[$i - 1]->$currentCode5 > 10) {
+                    } elseif ($statusYXList[$i]->$currentCode5 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode5 > $initialCurrent) {
 
                         $sRunning5['timeEnd'] = $statusYXList[$i]->Time;
                         $sRunning5['current'] = $statusYXList[$i - 1]->$currentCode5;
