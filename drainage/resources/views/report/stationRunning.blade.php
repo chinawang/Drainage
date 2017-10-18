@@ -291,7 +291,7 @@
             },
             yAxis: {
                 title: {
-                    text: '电流 (毫安)'
+                    text: '电流 (安)'
                 },
                 plotLines: [{
                     value: 0,
@@ -300,7 +300,7 @@
                 }]
             },
             tooltip: {
-                valueSuffix: '毫安'
+                valueSuffix: '安'
             },
             legend: {
                 layout: 'vertical',
