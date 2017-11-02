@@ -64,7 +64,7 @@ class StatusReportController extends Controller
         }
 
         //连前累计
-        $beforeTime = date("2017-09-01");
+        $beforeTime = date("2017-10-01");
 
         $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
@@ -126,7 +126,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
+            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
@@ -208,7 +208,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
+            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
@@ -1247,7 +1247,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
+            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
@@ -1311,7 +1311,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
+            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
@@ -1346,7 +1346,7 @@ class StatusReportController extends Controller
         $title = '泵站运行日志-' . $startTime;
 
         //连前累计
-        $beforeTime = date("2017-09-01");
+        $beforeTime = date("2017-10-01");
 
         $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
@@ -1933,7 +1933,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
+            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
@@ -2157,7 +2157,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-09-01");
+            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
