@@ -34,7 +34,7 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($stations[0]))
-                            <table class="table table-hover table-bordered ">
+                            <table class="table table-hover table-bordered table-responsive">
                                 <thead>
                                 <tr>
                                     <th style="width: 80px">编号</th>
