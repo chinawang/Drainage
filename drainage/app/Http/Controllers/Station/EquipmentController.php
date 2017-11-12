@@ -325,7 +325,7 @@ class EquipmentController extends Controller
 
                 $sheet->row(1, ['泵站所管辖泵站设备汇总表']);
 
-                $sheet->row(2, ['所属泵站', '设备名称', '型号', '容量', '流量(m³/h)', '扬程(m)','数量','负责人', '设备管理员', '备注']);
+                $sheet->row(2, ['所属泵站', '设备名称', '型号', '容量', '流量(m³/h)', '扬程(m)','数量','购置时间','负责人', '设备管理员', '备注']);
 
                 if (empty($excelData)) {
 
@@ -345,6 +345,7 @@ class EquipmentController extends Controller
                         $rowData['flux'],
                         $rowData['range'],
                         $rowData['quantity'],
+                        $rowData['purchase_time'],
                         $rowData['leader_name'],
                         $rowData['custodian_name'],
                         $rowData['alteration'],
@@ -372,9 +373,10 @@ class EquipmentController extends Controller
                     'G'     =>  20,
                     'H'     =>  20,
                     'I'     =>  20,
-                    'J'     =>  20
+                    'J'     =>  20,
+                    'K'     =>  20
                 ));
-                $sheet->cells('A2:J'.$i, function($cells) {
+                $sheet->cells('A2:K'.$i, function($cells) {
                     $cells->setFontSize(14);
                     $cells->setFontWeight('normal');
                     $cells->setAlignment('center');
@@ -384,7 +386,7 @@ class EquipmentController extends Controller
 
                 //表头样式
                 $sheet->setHeight(2, 40);
-                $sheet->cells('A2:J2', function($cells) {
+                $sheet->cells('A2:K2', function($cells) {
                     $cells->setFontFamily('Hei');
                     $cells->setFontSize(16);
                     $cells->setFontWeight('bold');
@@ -394,7 +396,7 @@ class EquipmentController extends Controller
                 });
 
                 //标题样式
-                $sheet->mergeCells('A1:J1');
+                $sheet->mergeCells('A1:K1');
                 $sheet->setHeight(1, 60);
                 $sheet->cells('A1', function($cells) {
                     $cells->setFontFamily('Hei');

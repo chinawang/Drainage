@@ -155,6 +155,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('purchase_time') ? ' has-error' : '' }}">
+                                <label for="purchase_time" class="col-md-4 control-label">购置时间</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="datepicker" name="purchase_time" value="{{ $equipment['purchase_time'] }}" placeholder="请选择购置时间" required >
+
+                                    @if ($errors->has('purchase_time'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('purchase_time') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             {{--<div class="form-group{{ $errors->has('producer') ? ' has-error' : '' }}">--}}
                                 {{--<label for="producer" class="col-md-4 control-label">制造单位</label>--}}
 

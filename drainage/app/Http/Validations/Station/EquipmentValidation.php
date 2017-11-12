@@ -42,7 +42,7 @@ class EquipmentValidation extends Validation
         $input = $this->filterRequest([
             'station_id','equipment_number','name','type','producer',
             'department','leader_id','custodian_id','quantity','alteration',
-            'capacity','flux','range'
+            'capacity','flux','range','purchase_time'
         ]);
 
         $rules = [
@@ -59,6 +59,7 @@ class EquipmentValidation extends Validation
             'capacity' => ['string'],
             'flux' => ['string'],
             'range' => ['string'],
+            'purchase_time' => ['string'],
         ];
 
         $validator = Validator::make($input,$rules);
@@ -78,7 +79,7 @@ class EquipmentValidation extends Validation
         $input = $this->filterRequest([
             'station_id','equipment_number','name','type','producer',
             'department','leader_id','custodian_id','quantity','alteration',
-            'capacity','flux','range'
+            'capacity','flux','range','purchase_time'
         ]);
 
         $rules = [
@@ -95,6 +96,7 @@ class EquipmentValidation extends Validation
             'capacity' => ['string'],
             'flux' => ['string'],
             'range' => ['string'],
+            'purchase_time' => ['string'],
         ];
 
         $validator = Validator::make($input,$rules);

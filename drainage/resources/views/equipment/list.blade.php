@@ -88,6 +88,7 @@
                                     <th>流量(m³/h)</th>
                                     <th>扬程(m)</th>
                                     <th>数量</th>
+                                    <th>购置时间</th>
                                     {{--<th>制造单位</th>--}}
                                     {{--<th>使用部门</th>--}}
                                     <th>负责人</th>
@@ -109,6 +110,7 @@
                                         <td>{{ $equipment['flux'] }}</td>
                                         <td>{{ $equipment['range'] }}</td>
                                         <td>{{ $equipment['quantity'] }}</td>
+                                        <td>{{ $equipment['purchase_time'] }}</td>
                                         {{--<td>{{ $equipment['producer'] }}</td>--}}
                                         {{--<td>{{ $equipment['department'] }}</td>--}}
                                         <td>{{ $equipment['leader_name'] }}</td>

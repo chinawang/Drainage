@@ -175,7 +175,7 @@
 
 <script type="text/javascript">
 
-    <!-- 日期选择 -->
+    <!-- 日期时间选择 -->
     $("#datetimepicker").datetimepicker({
         format: "yyyy-mm-dd hh:ii",
         autoclose: true,
@@ -190,6 +190,23 @@
         language: 'zh-CN',//中文，需要引用zh-CN.js包
         startView: 2,//月视图
         minView: 0//日期时间选择器所能够提供的最精确的时间选择视图
+    });
+
+    <!-- 日期选择 -->
+    $("#datepicker").datetimepicker({
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        todayBtn: false,
+        todayHighlight: true,
+        showMeridian: true,
+        keyboardNavigation: true,
+        forceParse: true,
+        weekStart: 1,
+        bootcssVer: 3,
+        pickerPosition: "bottom-right",
+        language: 'zh-CN',//中文，需要引用zh-CN.js包
+        startView: 2,//月视图
+        minView: 1//日期时间选择器所能够提供的最精确的时间选择视图
     });
 
 </script>
