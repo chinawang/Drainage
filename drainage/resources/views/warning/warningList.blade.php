@@ -32,8 +32,9 @@
                         <a href="/warning/warningList" class="btn-link"><span
                                     class="glyphicon glyphicon-refresh"></span>刷新</a>
                     </div>
-                    <div class="panel-body custom-panel-body table-responsive">
+                    <div class="panel-body custom-panel-body">
                         @if (!empty($stations[0]))
+                            <div class="table-responsive">
                             <table class="table table-hover table-bordered">
                                 <thead>
                                 <tr>
@@ -144,6 +145,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            </div>
                             <div class="table-pagination">
                                 {!! $stations->render() !!}
                             </div>
