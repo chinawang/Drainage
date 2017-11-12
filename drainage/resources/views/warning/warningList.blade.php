@@ -34,7 +34,7 @@
                     </div>
                     <div class="panel-body custom-panel-body">
                         @if (!empty($stations[0]))
-                            <div class="table-responsive">
+                            <div style="overflow:scroll;">
                             <table class="table table-hover table-bordered">
                                 <thead>
                                 <tr>
