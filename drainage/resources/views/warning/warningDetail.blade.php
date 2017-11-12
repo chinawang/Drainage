@@ -38,7 +38,7 @@
                                 <div class="col-md-4 col-md-offset-0">
                                     <div class="panel panel-danger custom-panel">
                                         <div class="panel-heading">
-                                            1号泵报警
+                                            1号泵电机报警
                                         </div>
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
@@ -50,9 +50,9 @@
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
                                                 {{--<div class="media-right">--}}
-                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
-                                                       {{--class="btn btn-info btn-sm"--}}
-                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
                                                 {{--</div>--}}
                                             </div>
                                         </div>
@@ -63,7 +63,7 @@
                                 <div class="col-md-4 col-md-offset-0">
                                     <div class="panel panel-danger custom-panel">
                                         <div class="panel-heading">
-                                            2号泵报警
+                                            2号泵电机报警
                                         </div>
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
@@ -75,9 +75,9 @@
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
                                                 {{--<div class="media-right">--}}
-                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
-                                                       {{--class="btn btn-info btn-sm"--}}
-                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
                                                 {{--</div>--}}
                                             </div>
                                         </div>
@@ -88,7 +88,7 @@
                                 <div class="col-md-4 col-md-offset-0">
                                     <div class="panel panel-danger custom-panel">
                                         <div class="panel-heading">
-                                            3号泵报警
+                                            3号泵电机报警
                                         </div>
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
@@ -100,9 +100,9 @@
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
                                                 {{--<div class="media-right">--}}
-                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
-                                                       {{--class="btn btn-info btn-sm"--}}
-                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
                                                 {{--</div>--}}
                                             </div>
                                         </div>
@@ -113,7 +113,7 @@
                                 <div class="col-md-4 col-md-offset-0">
                                     <div class="panel panel-danger custom-panel">
                                         <div class="panel-heading">
-                                            4号泵报警
+                                            4号泵电机报警
                                         </div>
                                         <div class="panel-body custom-panel-body">
                                             <div class="media">
@@ -125,40 +125,167 @@
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
                                                 {{--<div class="media-right">--}}
-                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
-                                                       {{--class="btn btn-info btn-sm"--}}
-                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
                                                 {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @endif
-                                @if($station['alarmPump5'] == 1)
-                                    <div class="col-md-4 col-md-offset-0">
-                                        <div class="panel panel-danger custom-panel">
-                                            <div class="panel-heading">
-                                                5号泵报警
-                                            </div>
-                                            <div class="panel-body custom-panel-body">
-                                                <div class="media">
-                                                    <div class="media-left">
-                                                        <img class="media-object" src="/img/warning/alarm.gif"
-                                                             style="width: 64px;height: 64px;">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
-                                                    </div>
-                                                    {{--<div class="media-right">--}}
-                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
-                                                    {{--class="btn btn-info btn-sm"--}}
-                                                    {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
-                                                    {{--</div>--}}
+                            @if($station['alarmPump5'] == 1)
+                                <div class="col-md-4 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            5号泵电机报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
+                                                         style="width: 64px;height: 64px;">
                                                 </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
+                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
-                                @endif
+                                </div>
+                            @endif
+
+                            @if($station['alarmPump1RQ'] == 1)
+                                <div class="col-md-4 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            1号泵软启动器报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
+                                                         style="width: 64px;height: 64px;">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
+                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($station['alarmPump2RQ'] == 1)
+                                <div class="col-md-4 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            2号泵软启动器报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
+                                                         style="width: 64px;height: 64px;">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
+                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($station['alarmPump3RQ'] == 1)
+                                <div class="col-md-4 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            3号泵软启动器报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
+                                                         style="width: 64px;height: 64px;">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
+                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($station['alarmPump4RQ'] == 1)
+                                <div class="col-md-4 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            4号泵软启动器报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
+                                                         style="width: 64px;height: 64px;">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
+                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($station['alarmPump5RQ'] == 1)
+                                <div class="col-md-4 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            5号泵软启动器报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
+                                                         style="width: 64px;height: 64px;">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
+                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
                             @if($station['alarmAuger'] == 1)
                                 <div class="col-md-4 col-md-offset-0">
                                     <div class="panel panel-danger custom-panel">
@@ -175,9 +302,9 @@
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
                                                 {{--<div class="media-right">--}}
-                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
-                                                       {{--class="btn btn-info btn-sm"--}}
-                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
                                                 {{--</div>--}}
                                             </div>
                                         </div>
@@ -200,9 +327,9 @@
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
                                                 {{--<div class="media-right">--}}
-                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
-                                                       {{--class="btn btn-info btn-sm"--}}
-                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
                                                 {{--</div>--}}
                                             </div>
                                         </div>
@@ -225,9 +352,9 @@
                                                     <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
                                                 </div>
                                                 {{--<div class="media-right">--}}
-                                                    {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
-                                                       {{--class="btn btn-info btn-sm"--}}
-                                                       {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
                                                 {{--</div>--}}
                                             </div>
                                         </div>
@@ -279,7 +406,7 @@
                                 </tbody>
                             </table>
                             {{--<div class="table-pagination">--}}
-                                {{--{!! $stations->render() !!}--}}
+                            {{--{!! $stations->render() !!}--}}
                             {{--</div>--}}
                         @else
                             <div class="well" style="text-align: center; padding: 100px;">

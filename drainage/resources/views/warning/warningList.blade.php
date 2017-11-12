@@ -40,14 +40,19 @@
                                     <th style="width: 80px">编号</th>
                                     <th>泵站名称</th>
                                     <th style="width: 100px">时间</th>
-                                    <th>1号泵报警</th>
-                                    <th>2号泵报警</th>
-                                    <th>3号泵报警</th>
-                                    <th>4号泵报警</th>
-                                    <th>5号泵报警</th>
-                                    <th>绞笼报警</th>
-                                    <th>1号格栅报警</th>
-                                    <th>2号格栅报警</th>
+                                    <th>1号泵电机</th>
+                                    <th>2号泵电机</th>
+                                    <th>3号泵电机</th>
+                                    <th>4号泵电机</th>
+                                    <th>5号泵电机</th>
+                                    <th>1号泵软启动器</th>
+                                    <th>2号泵软启动器</th>
+                                    <th>3号泵软启动器</th>
+                                    <th>4号泵软启动器</th>
+                                    <th>5号泵软启动器</th>
+                                    <th>绞笼</th>
+                                    <th>1号格栅</th>
+                                    <th>2号格栅</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -82,6 +87,35 @@
                                         @if($station['station_number'] !=33)
                                             <td>-</td>
                                         @elseif($station['alarmPump5'] == 1)
+                                            <td style="color: red;">报警</td>
+                                        @else
+                                            <td>无</td>
+                                        @endif
+
+                                        @if($station['alarmPump1RQ'] == 1)
+                                            <td style="color: red;">报警</td>
+                                        @else
+                                            <td>无</td>
+                                        @endif
+                                        @if($station['alarmPump2RQ'] == 1)
+                                            <td style="color: red;">报警</td>
+                                        @else
+                                            <td>无</td>
+                                        @endif
+                                        @if($station['alarmPump3RQ'] == 1)
+                                            <td style="color: red;">报警</td>
+                                        @else
+                                            <td>无</td>
+                                        @endif
+                                        @if($station['alarmPump4RQ'] == 1)
+                                            <td style="color: red;">报警</td>
+                                        @else
+                                            <td>无</td>
+                                        @endif
+
+                                        @if($station['station_number'] !=33)
+                                            <td>-</td>
+                                        @elseif($station['alarmPump5RQ'] == 1)
                                             <td style="color: red;">报警</td>
                                         @else
                                             <td>无</td>
