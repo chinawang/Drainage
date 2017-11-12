@@ -32,9 +32,9 @@
                         <a href="/warning/warningList" class="btn-link"><span
                                     class="glyphicon glyphicon-refresh"></span>刷新</a>
                     </div>
-                    <div class="panel-body custom-panel-body">
+                    <div class="panel-body custom-panel-body table-responsive">
                         @if (!empty($stations[0]))
-                            <table class="table table-hover table-bordered table-responsive">
+                            <table class="table table-hover table-bordered">
                                 <thead>
                                 <tr>
                                     <th style="width: 80px">编号</th>
