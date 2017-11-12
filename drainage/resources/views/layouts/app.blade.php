@@ -26,6 +26,7 @@
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/common/layout.css') }}" rel="stylesheet">
 
 {{--    <link href="{{ asset('css/pace/themes/silver/pace-theme-loading-bar.css') }}" rel="stylesheet">--}}
 
@@ -43,7 +44,7 @@
 <body>
 <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
-        <div class="container" style="width: 1280px">
+        <div class="container">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
