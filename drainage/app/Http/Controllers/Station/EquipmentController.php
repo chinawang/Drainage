@@ -361,7 +361,7 @@ class EquipmentController extends Controller
 
                 $i--;
                 //表体样式
-                $sheet->setBorder('A2:J'.$i, 'thin');
+                $sheet->setBorder('A2:K'.$i, 'thin');
                 $sheet->setAutoSize(true);
                 $sheet->setWidth(array(
                     'A'     =>  30,
