@@ -139,7 +139,7 @@
                                         @else
                                             <td>无</td>
                                         @endif
-                                        @if($station['alarmCity'] == 1)
+                                        @if($station['alarmCity'] == 0)
                                             <td style="color: red;">报警</td>
                                         @else
                                             <td>无</td>
