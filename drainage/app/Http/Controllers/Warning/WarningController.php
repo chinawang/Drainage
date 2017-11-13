@@ -97,6 +97,9 @@ class WarningController extends Controller
         $station['alarmPump3RQ'] = $stationRT[0]->rqbj_b3;
         $station['alarmPump4RQ'] = $stationRT[0]->rqbj_b4;
 
+        $station['alarmPump5'] = 0;
+        $station['alarmPump5RQ'] = 0;
+
         if($stationNum == 33){
             $station['alarmPump5'] = $stationRT[0]->bj_b5;
             $station['alarmPump5RQ'] = $stationRT[0]->rqbj_b5;
