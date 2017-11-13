@@ -83,6 +83,9 @@ class WarningController extends Controller
 
     public function warningDetail($stationID)
     {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
         $station = $this->stationInfo($stationID);
         $stationNum = $station['station_number'];
         $stationRT = $this->findStationRT($stationNum);
