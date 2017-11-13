@@ -246,13 +246,13 @@ class ReportController extends Controller
             for($i = 0 ; $i < count($warningListPump5);$i++)
             {
                 $wainingPump5['Time'] = $warningListPump5[$i]->Time;
-                $wainingPump5['alarmEquipment'] = '5号泵软启动器';
+                $wainingPump5['alarmEquipment'] = '5号泵电机';
                 array_push($stationWarningList,$wainingPump5);
             }
 
             $conditionPlusRQ = ['rqbj_b5' => 1];
             $warningListPump5RQ = $this->getStationRTListByConditions($stationNum,$conditionPlusRQ,$searchStartTime,$searchEndTime);
-            for($i = 0 ; $i < count($warningListPump5);$i++)
+            for($i = 0 ; $i < count($warningListPump5RQ);$i++)
             {
                 $wainingPump5RQ['Time'] = $warningListPump5RQ[$i]->Time;
                 $wainingPump5RQ['alarmEquipment'] = '5号泵软启动器';
@@ -285,6 +285,24 @@ class ReportController extends Controller
             $wainingJL['Time'] = $warningListJL[$i]->Time;
             $wainingJL['alarmEquipment'] = '绞笼';
             array_push($stationWarningList,$wainingJL);
+        }
+
+        $condition8 = ['water_v' => 1];
+        $warningListSD = $this->getStationRTListByConditions($stationNum,$condition8,$searchStartTime,$searchEndTime);
+        for($i = 0 ; $i < count($warningListSD);$i++)
+        {
+            $wainingSD['Time'] = $warningListSD[$i]->Time;
+            $wainingSD['alarmEquipment'] = '市电停电';
+            array_push($stationWarningList,$wainingSD);
+        }
+
+        $condition9 = ['flow_v' => 1];
+        $warningListJT = $this->getStationRTListByConditions($stationNum,$condition9,$searchStartTime,$searchEndTime);
+        for($i = 0 ; $i < count($warningListJT);$i++)
+        {
+            $wainingJT['Time'] = $warningListJT[$i]->Time;
+            $wainingJT['alarmEquipment'] = '手动急停';
+            array_push($stationWarningList,$wainingJT);
         }
 
         $param = ['stations' => $stations, 'warningList' => $stationWarningList,
@@ -781,6 +799,16 @@ class ReportController extends Controller
         $warningListJL = $this->getStationRTListByConditions($stationNum,$condition7,$searchStartTime,$searchEndTime);
         $warningCount7 = ['alarmEquipment' => '绞笼','alarmCount' => count($warningListJL)];
         array_push($stationWarningCountList,$warningCount7);
+
+        $condition8 = ['water_v' => 1];
+        $warningListSD = $this->getStationRTListByConditions($stationNum,$condition8,$searchStartTime,$searchEndTime);
+        $warningCount8 = ['alarmEquipment' => '市电停电','alarmCount' => count($warningListSD)];
+        array_push($stationWarningCountList,$warningCount8);
+
+        $condition9 = ['flow_v' => 1];
+        $warningListJT = $this->getStationRTListByConditions($stationNum,$condition9,$searchStartTime,$searchEndTime);
+        $warningCount9 = ['alarmEquipment' => '手动急停','alarmCount' => count($warningListJT)];
+        array_push($stationWarningCountList,$warningCount9);
 
         return response()->json(array('stationWarningCountList'=> $stationWarningCountList,'startTime' => $startTime, 'endTime' => $endTime), 200);
     }

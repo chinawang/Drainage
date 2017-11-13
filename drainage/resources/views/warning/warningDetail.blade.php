@@ -361,11 +361,65 @@
                                     </div>
                                 </div>
                             @endif
-                            @if($station['alarmPump1'] == 0 && $station['alarmPump2'] == 0 && $station['alarmPump3'] == 0 && $station['alarmPump4'] == 0 && $station['alarmAuger'] == 0 && $station['alarmCleaner1'] == 0 && $station['alarmCleaner2'] == 0)
-                                <div style="text-align: center; padding: 50px;">
-                                    无报警
+
+                            @if($station['alarmCity'] == 1)
+                                <div class="col-md-4 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            市电停电报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
+                                                         style="width: 64px;height: 64px;">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
+                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             @endif
+
+
+                            @if($station['alarmManual'] == 1)
+                                <div class="col-md-4 col-md-offset-0">
+                                    <div class="panel panel-danger custom-panel">
+                                        <div class="panel-heading">
+                                            手动急停报警
+                                        </div>
+                                        <div class="panel-body custom-panel-body">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="/img/warning/alarm.gif"
+                                                         style="width: 64px;height: 64px;">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading" style="margin-top: 25px">有新的报警,请及时处理!</h5>
+                                                </div>
+                                                {{--<div class="media-right">--}}
+                                                {{--<a href="/station/runDetail/{{ $station['id'] }}"--}}
+                                                {{--class="btn btn-info btn-sm"--}}
+                                                {{--style="font-size: 12px;margin-top: 18px">接警</a>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
+                            {{--@if($station['alarmPump1'] == 0 && $station['alarmPump2'] == 0 && $station['alarmPump3'] == 0 && $station['alarmPump4'] == 0 && $station['alarmAuger'] == 0 && $station['alarmCleaner1'] == 0 && $station['alarmCleaner2'] == 0)--}}
+                                {{--<div style="text-align: center; padding: 50px;">--}}
+                                    {{--无报警--}}
+                                {{--</div>--}}
+                            {{--@endif--}}
                         </div>
                     </div>
                 </div>

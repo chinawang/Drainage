@@ -67,6 +67,10 @@ class WarningController extends Controller
             $station['alarmAuger'] = $stationRT[0]->bj_jl;
             $station['alarmCleaner1'] = $stationRT[0]->bj_gs1;
             $station['alarmCleaner2'] = $stationRT[0]->bj_gs2;
+
+            $station['alarmCity'] = $stationRT[0]->water_v;//市电停电报警
+            $station['alarmManual'] = $stationRT[0]->flow_v;//手动急停报警
+
             $station['Time'] = $stationRT[0]->Time;
         }
         $param = ['stations' => $stationPaginate];
@@ -101,6 +105,9 @@ class WarningController extends Controller
         $station['alarmAuger'] = $stationRT[0]->bj_jl;
         $station['alarmCleaner1'] = $stationRT[0]->bj_gs1;
         $station['alarmCleaner2'] = $stationRT[0]->bj_gs2;
+
+        $station['alarmCity'] = $stationRT[0]->water_v;//市电停电报警
+        $station['alarmManual'] = $stationRT[0]->flow_v;//手动急停报警
 
         $stationWarningList = $this->getStationRTList($stationNum);
 
@@ -367,6 +374,40 @@ class WarningController extends Controller
             {
                 $sWarning['Time'] = $stationRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "2号格栅";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+
+            if($stationRTList[$i]->water_v == 0 && $stationRTList[$i+1]->water_v == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "市电停电";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "市电停电";
+                $sWarning['alarmStatus'] = 0;
+
+                array_push($stationWarningList,$sWarning);
+            }
+
+            if($stationRTList[$i]->flow_v == 0 && $stationRTList[$i+1]->flow_v == 1 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "手动急停";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($stationWarningList,$sWarning);
+            }
+            if($stationRTList[$i]->flow_v == 1 && $stationRTList[$i+1]->flow_v == 0 )
+            {
+                $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "手动急停";
                 $sWarning['alarmStatus'] = 0;
 
                 array_push($stationWarningList,$sWarning);

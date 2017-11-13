@@ -54,6 +54,8 @@
                                     <th>绞笼</th>
                                     <th>1号格栅</th>
                                     <th>2号格栅</th>
+                                    <th>市电停电</th>
+                                    <th>手动急停</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -133,6 +135,16 @@
                                             <td>无</td>
                                         @endif
                                         @if($station['alarmCleaner2'] == 1)
+                                            <td style="color: red;">报警</td>
+                                        @else
+                                            <td>无</td>
+                                        @endif
+                                        @if($station['alarmCity'] == 1)
+                                            <td style="color: red;">报警</td>
+                                        @else
+                                            <td>无</td>
+                                        @endif
+                                        @if($station['alarmManual'] == 1)
                                             <td style="color: red;">报警</td>
                                         @else
                                             <td>无</td>
