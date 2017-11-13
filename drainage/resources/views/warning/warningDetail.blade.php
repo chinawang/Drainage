@@ -415,11 +415,13 @@
                                 </div>
                             @endif
 
-                            {{--@if($station['alarmPump1'] == 0 && $station['alarmPump2'] == 0 && $station['alarmPump3'] == 0 && $station['alarmPump4'] == 0 && $station['alarmAuger'] == 0 && $station['alarmCleaner1'] == 0 && $station['alarmCleaner2'] == 0)--}}
-                                {{--<div style="text-align: center; padding: 50px;">--}}
-                                    {{--无报警--}}
-                                {{--</div>--}}
-                            {{--@endif--}}
+                            @if($station['alarmPump1'] == 0 && $station['alarmPump2'] == 0 && $station['alarmPump3'] == 0 && $station['alarmPump4'] == 0 && $station['alarmPump5'] == 0 &&
+                            $station['alarmPump1RQ'] == 0 && $station['alarmPump2RQ'] == 0 && $station['alarmPump3RQ'] == 0 && $station['alarmPump4RQ'] == 0 && $station['alarmPump5RQ'] == 0 &&
+                             $station['alarmAuger'] == 0 && $station['alarmCleaner1'] == 0 && $station['alarmCleaner2'] == 0 && $station['alarmCity'] == 0 && $station['alarmManual'] == 0)
+                                <div style="text-align: center; padding: 50px;">
+                                    无报警
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

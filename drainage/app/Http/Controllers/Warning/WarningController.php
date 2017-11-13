@@ -379,7 +379,7 @@ class WarningController extends Controller
                 array_push($stationWarningList,$sWarning);
             }
 
-            if($stationRTList[$i]->water_v == 0 && $stationRTList[$i+1]->water_v == 1 )
+            if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
             {
                 $sWarning['Time'] = $stationRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "市电停电";
@@ -387,7 +387,7 @@ class WarningController extends Controller
 
                 array_push($stationWarningList,$sWarning);
             }
-            if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
+            if($stationRTList[$i]->water_v == 0 && $stationRTList[$i+1]->water_v == 1 )
             {
                 $sWarning['Time'] = $stationRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "市电停电";

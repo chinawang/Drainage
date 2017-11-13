@@ -287,7 +287,7 @@ class ReportController extends Controller
             array_push($stationWarningList,$wainingJL);
         }
 
-        $condition8 = ['water_v' => 1];
+        $condition8 = ['water_v' => 0];
         $warningListSD = $this->getStationRTListByConditions($stationNum,$condition8,$searchStartTime,$searchEndTime);
         for($i = 0 ; $i < count($warningListSD);$i++)
         {
@@ -800,7 +800,7 @@ class ReportController extends Controller
         $warningCount7 = ['alarmEquipment' => '绞笼','alarmCount' => count($warningListJL)];
         array_push($stationWarningCountList,$warningCount7);
 
-        $condition8 = ['water_v' => 1];
+        $condition8 = ['water_v' => 0];
         $warningListSD = $this->getStationRTListByConditions($stationNum,$condition8,$searchStartTime,$searchEndTime);
         $warningCount8 = ['alarmEquipment' => '市电停电','alarmCount' => count($warningListSD)];
         array_push($stationWarningCountList,$warningCount8);
