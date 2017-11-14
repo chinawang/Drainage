@@ -68,7 +68,14 @@ class WarningController extends Controller
             $station['alarmCleaner1'] = $stationRT[0]->bj_gs1;
             $station['alarmCleaner2'] = $stationRT[0]->bj_gs2;
 
-            $station['alarmCity'] = $stationRT[0]->water_v;//市电停电报警
+            //部分泵站通讯中断,没有数据,不做市电的报警
+            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            if(in_array($stationNum, $stationNoWorking))
+            {
+                $station['alarmCity'] = 1;//市电停电报警
+            }else{
+                $station['alarmCity'] = $stationRT[0]->water_v;//市电停电报警
+            }
             $station['alarmManual'] = $stationRT[0]->flow_v;//手动急停报警
 
             $station['Time'] = $stationRT[0]->Time;
@@ -112,7 +119,15 @@ class WarningController extends Controller
         $station['alarmCleaner1'] = $stationRT[0]->bj_gs1;
         $station['alarmCleaner2'] = $stationRT[0]->bj_gs2;
 
-        $station['alarmCity'] = $stationRT[0]->water_v;//市电停电报警
+        //部分泵站通讯中断,没有数据,不做市电的报警
+        $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+        if(in_array($stationNum, $stationNoWorking))
+        {
+            $station['alarmCity'] = 1;//市电停电报警
+        }else{
+            $station['alarmCity'] = $stationRT[0]->water_v;//市电停电报警
+        }
+
         $station['alarmManual'] = $stationRT[0]->flow_v;//手动急停报警
 
         $stationWarningList = $this->getStationRTList($stationNum);

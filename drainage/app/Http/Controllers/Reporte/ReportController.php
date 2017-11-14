@@ -294,14 +294,23 @@ class ReportController extends Controller
                 array_push($stationWarningList,$sWarning);
             }
 
-            if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
+            //部分泵站通讯中断,没有数据,不做市电的报警
+            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            if(in_array($stationNum, $stationNoWorking))
             {
-                $sWarning['Time'] = $stationRTList[$i+1]->Time;
-                $sWarning['alarmEquipment'] = "市电停电";
-                $sWarning['alarmStatus'] = 1;
 
-                array_push($stationWarningList,$sWarning);
+            }else{
+                if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
+                {
+                    $sWarning['Time'] = $stationRTList[$i+1]->Time;
+                    $sWarning['alarmEquipment'] = "市电停电";
+                    $sWarning['alarmStatus'] = 1;
+
+                    array_push($stationWarningList,$sWarning);
+                }
             }
+
+
 
             if($stationRTList[$i]->flow_v == 0 && $stationRTList[$i+1]->flow_v == 1 )
             {
@@ -1115,10 +1124,18 @@ class ReportController extends Controller
                 $countGS2 ++;
             }
 
-            if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
+            //部分泵站通讯中断,没有数据,不做市电的报警
+            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            if(in_array($stationNum, $stationNoWorking))
             {
-                $countSD ++;
+
+            }else{
+                if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
+                {
+                    $countSD ++;
+                }
             }
+
 
             if($stationRTList[$i]->flow_v == 0 && $stationRTList[$i+1]->flow_v == 1 )
             {
