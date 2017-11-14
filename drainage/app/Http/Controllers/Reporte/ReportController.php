@@ -1139,7 +1139,7 @@ class ReportController extends Controller
         $warningCount2RQ = ['alarmEquipment' => '2号泵软启动器','alarmCount' => $countB2RQ];
         array_push($stationWarningCountList,$warningCount2RQ);
 
-        $warningCount3RQ = ['alarmEquipment' => '3号泵软启动器','alarmCount' => $countB3RQ;
+        $warningCount3RQ = ['alarmEquipment' => '3号泵软启动器','alarmCount' => $countB3RQ];
         array_push($stationWarningCountList,$warningCount3RQ);
 
         $warningCount4RQ = ['alarmEquipment' => '4号泵软启动器','alarmCount' => $countB4RQ];
