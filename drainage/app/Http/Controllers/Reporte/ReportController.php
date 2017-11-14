@@ -148,6 +148,9 @@ class ReportController extends Controller
 
     public function showWarningReportV2()
     {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
         $stationID = Input::get('station_id', 1);
         $startTime = Input::get('timeStart', '');
         $endTime = Input::get('timeEnd', '');
@@ -1007,6 +1010,9 @@ class ReportController extends Controller
 
     public function getWaningCountAjaxV2($stationID,$startTime,$endTime)
     {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
         if ($startTime == '' || $endTime == '') {
             $startTime = date("Y-m-d");
             $endTime = date("Y-m-d");
