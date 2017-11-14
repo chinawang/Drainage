@@ -329,10 +329,16 @@ Route::get('/report/stationStatus', 'Reporte\ReportController@showStatusReport')
 Route::get('/report/stationFailure', 'Reporte\ReportController@showFailureReport');
 //维修统计
 Route::get('/report/stationMaintenance', 'Reporte\ReportController@showMaintenanceReport');
+////报警统计
+//Route::get('/report/stationWarning', 'Reporte\ReportController@showWarningReport');
+////报警数量统计Ajax
+//Route::get('/report/stationWarningCount/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@getWaningCountAjax');
+
 //报警统计
-Route::get('/report/stationWarning', 'Reporte\ReportController@showWarningReport');
+Route::get('/report/stationWarning', 'Reporte\ReportController@showWarningReportV2');
 //报警数量统计Ajax
-Route::get('/report/stationWarningCount/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@getWaningCountAjax');
+Route::get('/report/stationWarningCount/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@getWaningCountAjaxV2');
+
 
 //泵站历史实时信息Ajax
 Route::get('/report/realTimeHistory/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@stationRTHistory');
