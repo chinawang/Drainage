@@ -276,7 +276,7 @@
 
     <script type="text/javascript">
 
-        function getStationWarningList() {
+        function getStationWarningInfo() {
             var resultValue = [];
             $.ajax({
                 type: 'get',
@@ -284,13 +284,13 @@
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
-                    resultValue = data.stations;
+                    resultValue = data;
                 }
             });
             return resultValue;
         }
 
-        var stationWarningList = getStationWarningList();
+        var stationWarningInfo = getStationWarningInfo();
 
     </script>
 
@@ -316,7 +316,7 @@
 
         var timeGap = stationWarningInfo.startTime + ' 至 ' + stationWarningInfo.endTime;
 
-        $.each(getStationWarningList, function (i, n) {
+        $.each(stationWarningInfo.stations, function (i, n) {
             categories[i] = n["name"];
             datas1[i] = n["alarmPump1"];
             datas2[i] = n["alarmPump2"];
