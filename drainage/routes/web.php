@@ -340,6 +340,8 @@ Route::get('/report/stationWarning', 'Reporte\ReportController@showWarningReport
 Route::get('/report/stationWarningAll', 'Reporte\ReportController@showWarningReportV2');
 //报警数量统计Ajax
 Route::get('/report/stationWarningCount/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@getWaningCountAjaxV2');
+//报警数量统计Ajax-全部
+Route::get('/report/stationWarningCountAll/{start_time}/{end_time}', 'Reporte\ReportController@getWaningCountAllAjaxV2');
 
 
 //泵站历史实时信息Ajax

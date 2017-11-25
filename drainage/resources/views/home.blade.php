@@ -92,7 +92,7 @@
                                 @endif
                                     @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'report-view'))
                                         <li class="report">
-                                            <a href="/report/stationWarning" class="menu-item">
+                                            <a href="/report/stationWarningAll" class="menu-item">
                                                 <img class="menu-icon" src="/img/home/report_warning_blue.png">
                                                 <h4>泵站报警统计</h4>
                                             </a>

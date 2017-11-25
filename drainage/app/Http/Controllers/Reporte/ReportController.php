@@ -332,6 +332,176 @@ class ReportController extends Controller
         return view('report.stationWarning', $param);
     }
 
+    public function showWarningAllReportV2()
+    {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
+
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+        $stations = $this->stationList();
+        foreach ($stations as $station)
+        {
+            $stationNum = $station['station_number'];
+
+            $stationRTList = $this->getStationRTListByTime($stationNum,$searchStartTime,$searchEndTime);
+
+            $countB1 = 0;
+            $countB2 = 0;
+            $countB3 = 0;
+            $countB4 = 0;
+            $countB5 = 0;
+            $countB1RQ = 0;
+            $countB2RQ = 0;
+            $countB3RQ = 0;
+            $countB4RQ = 0;
+            $countB5RQ = 0;
+            $countGS1 = 0;
+            $countGS2 = 0;
+            $countJL = 0;
+            $countSD = 0;
+            $countJT = 0;
+
+            for($i = 0 ; $i < count($stationRTList)-1;$i++)
+            {
+                if($stationRTList[$i]->bj_b1 == 0 && $stationRTList[$i+1]->bj_b1 == 1 )
+                {
+                    $countB1 ++;
+                }
+
+                if($stationRTList[$i]->bj_b2 == 0 && $stationRTList[$i+1]->bj_b2 == 1 )
+                {
+                    $countB2 ++;
+                }
+
+                if($stationRTList[$i]->bj_b3 == 0 && $stationRTList[$i+1]->bj_b3 == 1 )
+                {
+                    $countB3 ++;
+                }
+
+                if($stationRTList[$i]->bj_b4 == 0 && $stationRTList[$i+1]->bj_b4 == 1 )
+                {
+                    $countB4 ++;
+                }
+
+
+                if($stationRTList[$i]->rqbj_b1 == 0 && $stationRTList[$i+1]->rqbj_b1 == 1 )
+                {
+                    $countB1RQ ++;
+                }
+
+                if($stationRTList[$i]->rqbj_b2 == 0 && $stationRTList[$i+1]->rqbj_b2 == 1 )
+                {
+                    $countB2RQ ++;
+                }
+
+                if($stationRTList[$i]->rqbj_b3 == 0 && $stationRTList[$i+1]->rqbj_b3 == 1 )
+                {
+                    $countB3RQ ++;
+                }
+
+                if($stationRTList[$i]->rqbj_b4 == 0 && $stationRTList[$i+1]->rqbj_b4 == 1 )
+                {
+                    $countB4RQ ++;
+                }
+
+                if($stationNum == 33)
+                {
+                    if($stationRTList[$i]->bj_b5 == 0 && $stationRTList[$i+1]->bj_b5 == 1 )
+                    {
+                        $countB5 ++;
+                    }
+
+                    if($stationRTList[$i]->rqbj_b5 == 0 && $stationRTList[$i+1]->rqbj_b5 == 1 )
+                    {
+                        $countB5RQ ++;
+                    }
+                }
+
+                if($stationRTList[$i]->bj_jl == 0 && $stationRTList[$i+1]->bj_jl == 1 )
+                {
+                    $countJL ++;
+                }
+
+                if($stationRTList[$i]->bj_gs1 == 0 && $stationRTList[$i+1]->bj_gs1 == 1 )
+                {
+                    $countGS1 ++;
+                }
+
+                if($stationRTList[$i]->bj_gs2 == 0 && $stationRTList[$i+1]->bj_gs2 == 1 )
+                {
+                    $countGS2 ++;
+                }
+
+                //部分泵站通讯中断,没有数据,不做市电的报警
+                $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+                if(in_array($stationNum, $stationNoWorking))
+                {
+
+                }else{
+                    if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
+                    {
+                        $countSD ++;
+                    }
+                }
+
+
+                if($stationRTList[$i]->flow_v == 0 && $stationRTList[$i+1]->flow_v == 1 )
+                {
+                    $countJT ++;
+                }
+            }
+
+            $station['alarmPump1'] = $countB1;
+            $station['alarmPump2'] = $countB2;
+            $station['alarmPump3'] = $countB3;
+            $station['alarmPump4'] = $countB4;
+
+            $station['alarmPump1RQ'] = $countB1RQ;
+            $station['alarmPump2RQ'] = $countB2RQ;
+            $station['alarmPump3RQ'] = $countB3RQ;
+            $station['alarmPump4RQ'] = $countB4RQ;
+
+            if($stationNum == 33){
+                $station['alarmPump5'] = $countB5;
+                $station['alarmPump5RQ'] = $countB5RQ;
+            }
+
+            $station['alarmAuger'] = $countJL;
+            $station['alarmCleaner1'] = $countGS1;
+            $station['alarmCleaner2'] = $countGS2;
+
+            //部分泵站通讯中断,没有数据,不做市电的报警
+            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            if(in_array($stationNum, $stationNoWorking))
+            {
+                $station['alarmCity'] = 0;//市电停电报警
+            }else{
+                $station['alarmCity'] = $countSD;//市电停电报警
+            }
+            $station['alarmManual'] = $countJT;//手动急停报警
+
+        }
+
+
+        $param = ['stations' => $stations, 'startTime' => $startTime, 'endTime' => $endTime];
+//        return $param;
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了泵站报警统计']);
+
+        return view('report.stationWarningAll', $param);
+    }
+
     public function showWarningReport()
     {
         $stationID = Input::get('station_id', 1);
@@ -1194,6 +1364,166 @@ class ReportController extends Controller
         array_push($stationWarningCountList,$warningCount9);
 
         return response()->json(array('stationWarningCountList'=> $stationWarningCountList,'startTime' => $startTime, 'endTime' => $endTime), 200);
+    }
+
+    public function getWaningCountAllAjaxV2($startTime,$endTime)
+    {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $stations = $this->stationList();
+        foreach ($stations as $station)
+        {
+            $stationNum = $station['station_number'];
+
+            $stationRTList = $this->getStationRTListByTime($stationNum,$searchStartTime,$searchEndTime);
+
+            $countB1 = 0;
+            $countB2 = 0;
+            $countB3 = 0;
+            $countB4 = 0;
+            $countB5 = 0;
+            $countB1RQ = 0;
+            $countB2RQ = 0;
+            $countB3RQ = 0;
+            $countB4RQ = 0;
+            $countB5RQ = 0;
+            $countGS1 = 0;
+            $countGS2 = 0;
+            $countJL = 0;
+            $countSD = 0;
+            $countJT = 0;
+
+            for($i = 0 ; $i < count($stationRTList)-1;$i++)
+            {
+                if($stationRTList[$i]->bj_b1 == 0 && $stationRTList[$i+1]->bj_b1 == 1 )
+                {
+                    $countB1 ++;
+                }
+
+                if($stationRTList[$i]->bj_b2 == 0 && $stationRTList[$i+1]->bj_b2 == 1 )
+                {
+                    $countB2 ++;
+                }
+
+                if($stationRTList[$i]->bj_b3 == 0 && $stationRTList[$i+1]->bj_b3 == 1 )
+                {
+                    $countB3 ++;
+                }
+
+                if($stationRTList[$i]->bj_b4 == 0 && $stationRTList[$i+1]->bj_b4 == 1 )
+                {
+                    $countB4 ++;
+                }
+
+
+                if($stationRTList[$i]->rqbj_b1 == 0 && $stationRTList[$i+1]->rqbj_b1 == 1 )
+                {
+                    $countB1RQ ++;
+                }
+
+                if($stationRTList[$i]->rqbj_b2 == 0 && $stationRTList[$i+1]->rqbj_b2 == 1 )
+                {
+                    $countB2RQ ++;
+                }
+
+                if($stationRTList[$i]->rqbj_b3 == 0 && $stationRTList[$i+1]->rqbj_b3 == 1 )
+                {
+                    $countB3RQ ++;
+                }
+
+                if($stationRTList[$i]->rqbj_b4 == 0 && $stationRTList[$i+1]->rqbj_b4 == 1 )
+                {
+                    $countB4RQ ++;
+                }
+
+                if($stationNum == 33)
+                {
+                    if($stationRTList[$i]->bj_b5 == 0 && $stationRTList[$i+1]->bj_b5 == 1 )
+                    {
+                        $countB5 ++;
+                    }
+
+                    if($stationRTList[$i]->rqbj_b5 == 0 && $stationRTList[$i+1]->rqbj_b5 == 1 )
+                    {
+                        $countB5RQ ++;
+                    }
+                }
+
+                if($stationRTList[$i]->bj_jl == 0 && $stationRTList[$i+1]->bj_jl == 1 )
+                {
+                    $countJL ++;
+                }
+
+                if($stationRTList[$i]->bj_gs1 == 0 && $stationRTList[$i+1]->bj_gs1 == 1 )
+                {
+                    $countGS1 ++;
+                }
+
+                if($stationRTList[$i]->bj_gs2 == 0 && $stationRTList[$i+1]->bj_gs2 == 1 )
+                {
+                    $countGS2 ++;
+                }
+
+                //部分泵站通讯中断,没有数据,不做市电的报警
+                $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+                if(in_array($stationNum, $stationNoWorking))
+                {
+
+                }else{
+                    if($stationRTList[$i]->water_v == 1 && $stationRTList[$i+1]->water_v == 0 )
+                    {
+                        $countSD ++;
+                    }
+                }
+
+
+                if($stationRTList[$i]->flow_v == 0 && $stationRTList[$i+1]->flow_v == 1 )
+                {
+                    $countJT ++;
+                }
+            }
+
+            $station['alarmPump1'] = $countB1;
+            $station['alarmPump2'] = $countB2;
+            $station['alarmPump3'] = $countB3;
+            $station['alarmPump4'] = $countB4;
+
+            $station['alarmPump1RQ'] = $countB1RQ;
+            $station['alarmPump2RQ'] = $countB2RQ;
+            $station['alarmPump3RQ'] = $countB3RQ;
+            $station['alarmPump4RQ'] = $countB4RQ;
+
+            if($stationNum == 33){
+                $station['alarmPump5'] = $countB5;
+                $station['alarmPump5RQ'] = $countB5RQ;
+            }
+
+            $station['alarmAuger'] = $countJL;
+            $station['alarmCleaner1'] = $countGS1;
+            $station['alarmCleaner2'] = $countGS2;
+
+            //部分泵站通讯中断,没有数据,不做市电的报警
+            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            if(in_array($stationNum, $stationNoWorking))
+            {
+                $station['alarmCity'] = 0;//市电停电报警
+            }else{
+                $station['alarmCity'] = $countSD;//市电停电报警
+            }
+            $station['alarmManual'] = $countJT;//手动急停报警
+
+        }
+
+        return response()->json(array('stations'=> $stations,'startTime' => $startTime, 'endTime' => $endTime), 200);
     }
 
 }
