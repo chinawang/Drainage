@@ -337,7 +337,7 @@ Route::get('/report/stationMaintenance', 'Reporte\ReportController@showMaintenan
 //报警统计
 Route::get('/report/stationWarning', 'Reporte\ReportController@showWarningReportV2');
 //报警统计-全部
-Route::get('/report/stationWarningAll', 'Reporte\ReportController@showWarningReportV2');
+Route::get('/report/stationWarningAll', 'Reporte\ReportController@showWarningAllReportV2');
 //报警数量统计Ajax
 Route::get('/report/stationWarningCount/{station_id}/{start_time}/{end_time}', 'Reporte\ReportController@getWaningCountAjaxV2');
 //报警数量统计Ajax-全部
