@@ -297,6 +297,7 @@
     <script>
 
         var categories = [];
+        var datas = [];
         var datas1 = [];
         var datas2 = [];
         var datas3 = [];
@@ -333,6 +334,8 @@
             datasJL[i] = n["alarmAuger"];
             datasSD[i] = n["alarmCity"];
             datasJT[i] = n["alarmManual"];
+
+            datas[i] = n["alarmSum"];
         });
 
         var chart = new Highcharts.Chart('warningContainer', {
@@ -384,52 +387,57 @@
                 verticalAlign: 'middle',
                 borderWidth: 0
             },
-            series: [{
-                name: '1号泵电机',
-                data: datas1
-            }, {
-                name: '2号泵电机',
-                data: datas2
-            }, {
-                name: '3号泵电机',
-                data: datas3
-            }, {
-                name: '4号泵电机',
-                data: datas4
-            }, {
-                name: '5号泵电机',
-                data: datas5
-            },{
-                name: '1号泵软启动器',
-                data: datas1RQ
-            }, {
-                name: '2号泵软启动器',
-                data: datas2RQ
-            }, {
-                name: '3号泵软启动器',
-                data: datas3RQ
-            }, {
-                name: '4号泵软启动器',
-                data: datas4RQ
-            }, {
-                name: '5号泵软启动器',
-                data: datas5RQ
-            },{
-                name: '绞笼',
-                data: datasJL
-            }, {
-                name: '1号格栅',
-                data: datasGS1
-            }, {
-                name: '2号格栅',
-                data: datasGS2
-            }, {
-                name: '市电停电',
-                data: datasSD
-            }, {
-                name: '手动急停',
-                data: datasJT
-            },
+            series: [
+                {
+                    name: '泵站报警总数',
+                    data: datas
+                },
+//                {
+//                    name: '1号泵电机',
+//                    data: datas1
+//                }, {
+//                    name: '2号泵电机',
+//                    data: datas2
+//                }, {
+//                    name: '3号泵电机',
+//                    data: datas3
+//                }, {
+//                    name: '4号泵电机',
+//                    data: datas4
+//                }, {
+//                    name: '5号泵电机',
+//                    data: datas5
+//                }, {
+//                    name: '1号泵软启动器',
+//                    data: datas1RQ
+//                }, {
+//                    name: '2号泵软启动器',
+//                    data: datas2RQ
+//                }, {
+//                    name: '3号泵软启动器',
+//                    data: datas3RQ
+//                }, {
+//                    name: '4号泵软启动器',
+//                    data: datas4RQ
+//                }, {
+//                    name: '5号泵软启动器',
+//                    data: datas5RQ
+//                }, {
+//                    name: '绞笼',
+//                    data: datasJL
+//                }, {
+//                    name: '1号格栅',
+//                    data: datasGS1
+//                }, {
+//                    name: '2号格栅',
+//                    data: datasGS2
+//                }, {
+//                    name: '市电停电',
+//                    data: datasSD
+//                }, {
+//                    name: '手动急停',
+//                    data: datasJT
+//                },
             ],
         });
 

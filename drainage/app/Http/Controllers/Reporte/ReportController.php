@@ -1521,6 +1521,10 @@ class ReportController extends Controller
             }
             $station['alarmManual'] = $countJT;//手动急停报警
 
+            $station['alarmSum'] = $countB1 + $countB2 + $countB3 + $countB4 + $countB5
+                + $countB1RQ + $countB2RQ + $countB3RQ + $countB4RQ + $countB5RQ
+                + $countJL + $countGS1 + $countGS2 + $countSD + $countJT;
+
         }
 
         return response()->json(array('stations'=> $stations,'startTime' => $startTime, 'endTime' => $endTime), 200);
