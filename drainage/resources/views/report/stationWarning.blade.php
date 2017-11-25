@@ -30,6 +30,18 @@
 
                     <div class="panel-body custom-panel-body">
 
+                        <div class="row" style="margin-top: -10px">
+                            <ul class="nav nav-tabs">
+                                <li class=""><a
+                                            href="/report/stationWarningAll?timeStart={{ $startTime }}&timeEnd={{ $endTime }}">所有泵站</a>
+                                </li>
+                                <li class="active"><a
+                                            href="/report/stationWarning?timeStart={{ $startTime }}&timeEnd={{ $endTime }}">单个泵站</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
                         <div id="myTabContent" class="tab-content" style="margin-top: 20px">
                             <form class="form-horizontal" role="form" method="GET" action="/report/stationWarning"
                                   style="margin-bottom: 10px">
