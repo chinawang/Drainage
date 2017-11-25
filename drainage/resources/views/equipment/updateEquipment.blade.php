@@ -234,15 +234,45 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('alteration') ? ' has-error' : '' }}">
-                                <label for="alteration" class="col-md-4 control-label">备注(选填)</label>
+                                <label for="alteration" class="col-md-4 control-label">备注一</label>
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="alteration"
-                                           value="{{ $equipment['alteration'] }}" placeholder="请输入备注" >
+                                           value="{{ $equipment['alteration'] }}" placeholder="请输入备注一" >
 
                                     @if ($errors->has('alteration'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('alteration') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('remark2') ? ' has-error' : '' }}">
+                                <label for="remark2" class="col-md-4 control-label">备注二</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="remark2"
+                                           value="{{ $equipment['remark2'] }}" placeholder="请输入备注二" >
+
+                                    @if ($errors->has('remark2'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('remark2') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('remark3') ? ' has-error' : '' }}">
+                                <label for="remark3" class="col-md-4 control-label">备注三</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="remark3"
+                                           value="{{ $equipment['remark3'] }}" placeholder="请输入备注三" >
+
+                                    @if ($errors->has('remark3'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('remark3') }}</strong>
                                     </span>
                                     @endif
                                 </div>

@@ -99,7 +99,9 @@
                                         <th>故障设备</th>
                                         <th>故障原因</th>
                                         <th>解决办法</th>
+                                        <th>维修结果</th>
                                         <th>维修人</th>
+                                        <th>备注</th>
 
                                     </tr>
                                     </thead>
@@ -111,7 +113,9 @@
                                             <td>{{ $maintenance->equipment_name }}</td>
                                             <td>{{ $maintenance->failure_reason }}</td>
                                             <td>{{ $maintenance->repair_solution }}</td>
+                                            <td>{{ $maintenance->result }}</td>
                                             <td>{{ $maintenance->repairer_name }}</td>
+                                            <td>{{ $maintenance->remark }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

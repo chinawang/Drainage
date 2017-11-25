@@ -99,6 +99,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('result') ? ' has-error' : '' }}">
+                                <label for="result" class="col-md-4 control-label">维修结果</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="result" value="{{ old('result') }}" placeholder="请输入维修结果"  >
+
+                                    @if ($errors->has('result'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('result') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('repairer') ? ' has-error' : '' }}">
                                 <label for="repairer" class="col-md-4 control-label">维修人</label>
 
@@ -126,6 +140,20 @@
                                     @if ($errors->has('repair_at'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('repair_at') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('remark') ? ' has-error' : '' }}">
+                                <label for="remark" class="col-md-4 control-label">备注</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="remark" value="{{ old('remark') }}" placeholder="请输入备注"  >
+
+                                    @if ($errors->has('remark'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('remark') }}</strong>
                                     </span>
                                     @endif
                                 </div>

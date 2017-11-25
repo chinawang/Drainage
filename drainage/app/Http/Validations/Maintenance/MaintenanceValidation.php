@@ -41,7 +41,7 @@ class MaintenanceValidation extends Validation
     {
         $input = $this->filterRequest([
             'failure_id','station_id','equipment_id','repairer_id','failure_reason',
-            'repair_solution','repair_process','repair_at'
+            'repair_solution','result','repair_process','repair_at','remark'
         ]);
 
         $rules = [
@@ -51,8 +51,11 @@ class MaintenanceValidation extends Validation
             'repairer_id' => ['integer', 'min:0'],
             'failure_reason' => ['string'],
             'repair_solution' => ['string'],
+            'result' => ['string'],
             'repair_process' => ['integer'],
             'repair_at' => ['string'],
+            'remark' => ['string'],
+
         ];
 
         $validator = Validator::make($input,$rules);
@@ -71,7 +74,7 @@ class MaintenanceValidation extends Validation
     {
         $input = $this->filterRequest([
             'failure_id','station_id','equipment_id','repairer_id','failure_reason',
-            'repair_solution','repair_process','repair_at'
+            'repair_solution','result','repair_process','repair_at','remark'
         ]);
 
         $rules = [
@@ -81,8 +84,10 @@ class MaintenanceValidation extends Validation
             'repairer_id' => ['integer', 'min:0'],
             'failure_reason' => ['string'],
             'repair_solution' => ['string'],
+            'result' => ['string'],
             'repair_process' => ['integer'],
             'repair_at' => ['string'],
+            'remark' => ['string'],
         ];
 
         $validator = Validator::make($input,$rules);

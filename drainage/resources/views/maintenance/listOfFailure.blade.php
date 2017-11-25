@@ -53,8 +53,10 @@
                                     <th>故障设备</th>
                                     <th>故障原因</th>
                                     <th>解决办法</th>
+                                    <th>维修结果</th>
                                     <th>维修人</th>
                                     <th>维修时间</th>
+                                    <th>备注</th>
                                     @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
                                         <th>操作</th>
                                     @endif
@@ -68,8 +70,10 @@
                                         <td>{{ $maintenance['equipment_name'] }}</td>
                                         <td>{{ $maintenance['failure_reason'] }}</td>
                                         <td>{{ $maintenance['repair_solution'] }}</td>
+                                        <td>{{ $maintenance['result'] }}</td>
                                         <td>{{ $maintenance['repairer_name'] }}</td>
                                         <td>{{ $maintenance['repair_at'] }}</td>
+                                        <td>{{ $maintenance['remark'] }}</td>
 
                                         @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'maintenance-edit'))
                                             <td>

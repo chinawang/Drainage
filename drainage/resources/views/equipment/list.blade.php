@@ -93,7 +93,9 @@
                                     {{--<th>使用部门</th>--}}
                                     <th>负责人</th>
                                     <th>设备管理员</th>
-                                    <th>备注</th>
+                                    <th>备注一</th>
+                                    <th>备注二</th>
+                                    <th>备注三</th>
                                     @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-edit'))
                                         <th>操作</th>
                                     @endif
@@ -116,6 +118,8 @@
                                         <td>{{ $equipment['leader_name'] }}</td>
                                         <td>{{ $equipment['custodian_name'] }}</td>
                                         <td>{{ $equipment['alteration'] }}</td>
+                                        <td>{{ $equipment['remark2'] }}</td>
+                                        <td>{{ $equipment['remark3'] }}</td>
 
                                         @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'equip-edit'))
                                             <td>

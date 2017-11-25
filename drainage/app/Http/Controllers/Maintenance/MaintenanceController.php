@@ -421,7 +421,7 @@ class MaintenanceController extends Controller
 
             $excel->sheet('维修记录', function ($sheet) use ($excelData) {
 
-                $sheet->row(1, ['所属泵站', '故障设备', '故障原因', '解决办法', '维修人	', '维修时间']);
+                $sheet->row(1, ['所属泵站', '故障设备', '故障原因', '解决办法','维修结果',  '维修人	', '维修时间','备注']);
 
                 if (empty($excelData)) {
 
@@ -438,8 +438,10 @@ class MaintenanceController extends Controller
                         $rowData['equipment_name'],
                         $rowData['failure_reason'],
                         $rowData['repair_solution'],
+                        $rowData['result'],
                         $rowData['repairer_name'],
                         $rowData['repair_at'],
+                        $rowData['remark'],
                     ];
 
                     $sheet->row($i, $row);
