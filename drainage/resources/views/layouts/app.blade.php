@@ -28,7 +28,7 @@
     <link href="{{ asset('css/common/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common/layout.css') }}" rel="stylesheet">
 
-{{--    <link href="{{ asset('css/pace/themes/silver/pace-theme-loading-bar.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('css/pace/themes/silver/pace-theme-loading-bar.css') }}" rel="stylesheet">--}}
 
     <link href="{{ asset('css/pace/themes/blue/pace-theme-flash.css') }}" rel="stylesheet">
 
@@ -132,14 +132,14 @@
     bottom: 20px;
     right: 10px;
     z-index: 100;" data-toggle="tooltip" data-placement="left" title="" data-original-title="全屏">
-        <a onclick="toggleFullScreen();" 
+        <a onclick="toggleFullScreen();"
            style="width: 40px;
     height: 40px;
     line-height: 40px;
     text-align: center;
     display: inline-block;
     background-color: #fafafa;
-    margin-bottom: 2px;cursor: pointer" >
+    margin-bottom: 2px;cursor: pointer">
             <span class="glyphicon glyphicon-fullscreen" style="color: #cccccc"></span>
         </a>
     </div>
@@ -152,7 +152,7 @@
         </div>
         <div style="color: darkgrey;text-align: center;margin-bottom: 20px;">
             <img src="/img/header/logo-blue.png" style="height: 24px" alt="logo" title="郑州欣昌科技有限公司">
-            郑州欣昌科技有限公司  提供技术支持
+            郑州欣昌科技有限公司 提供技术支持
         </div>
     </footer>
 </div>
@@ -180,7 +180,8 @@
 
 <script type="text/javascript">
 
-    <!-- 日期时间选择 -->
+    <!--
+    日期时间选择 -->
     $("#datetimepicker").datetimepicker({
         format: "yyyy-mm-dd hh:ii",
         autoclose: true,
@@ -268,9 +269,9 @@
         "container": "tp-weather-widget",
         "bubble": "enabled",
         "alarmType": "badge",
-        "color": "#1296db",
+        "color": "#C6C6C6",
         "uid": "U4954D65B6",
-        "hash": "45ac23d099f73c1ab7a6f95c18371794"
+        "hash": "59143c660a039c6c14bafea5b44a6b3b"
     });
     tpwidget("show");
 </script>
