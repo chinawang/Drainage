@@ -16,7 +16,12 @@
     display: block;
     text-align: center;
     font-size: 22px;
+    font-weight: bold;
     font-family: 'Heiti SC';
+    color: #3498db;
+}
+
+.navbar-nav > li > a {
     color: #3498db;
 }
 
