@@ -58,7 +58,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/img/header/logo.png" alt="logo" title="郑州欣昌科技有限公司">
+                    <img src="/img/header/logo-name.png" alt="logo" title="郑州欣昌科技有限公司">
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
@@ -268,7 +268,7 @@
         "container": "tp-weather-widget",
         "bubble": "enabled",
         "alarmType": "badge",
-        "color": "#FFFFFF",
+        "color": "#1296db",
         "uid": "U4954D65B6",
         "hash": "45ac23d099f73c1ab7a6f95c18371794"
     });

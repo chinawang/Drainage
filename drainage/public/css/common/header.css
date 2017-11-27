@@ -2,10 +2,12 @@
     /*style="background-color: #1296db;"*/
     /*background-color: #1296db;*/
 
-    background-image: -webkit-linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
-    background-image: -o-linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#54b4eb), color-stop(60%, #2fa4e7), to(#1d9ce5));
-    background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+    /*background-image: -webkit-linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);*/
+    /*background-image: -o-linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);*/
+    /*background-image: -webkit-gradient(linear, left top, left bottom, from(#54b4eb), color-stop(60%, #2fa4e7), to(#1d9ce5));*/
+    /*background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);*/
+    background-color: #ffffff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .10);
 }
 
 .navbar-brand {
@@ -36,14 +38,14 @@
     padding-top: 19px;
     padding-bottom: 19px;
     float: left;
-    color: #ffffff;
+    color: #3498db;;
     font-size: 16px;
     font-weight: 200;
 }
 
 .back-to-home {
     margin: 0px 10px;
-    color: #ffffff;
+    color: #3498db;
     float: left;
     display: block;
 }
@@ -52,7 +54,7 @@
     margin: 0px 10px;
     padding-top: 19.5px;
     padding-bottom: 19.5px;
-    color: #ffffff;
+    color: #3498db;
     float: left;
     display: block;
 }
@@ -61,7 +63,7 @@
     margin: 0px 10px;
     padding-top: 19.5px;
     padding-bottom: 19.5px;
-    color: #ffffff;
+    color: #3498db;
     float: left;
     display: block;
 }
