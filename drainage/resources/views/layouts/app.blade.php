@@ -152,7 +152,7 @@
         </div>
         <div style="color: darkgrey;text-align: center;margin-bottom: 20px;">
             <img src="/img/header/logo-blue.png" style="height: 24px" alt="logo" title="郑州欣昌科技有限公司">
-            郑州欣昌科技有限公司
+            郑州欣昌科技有限公司  提供技术支持
         </div>
     </footer>
 </div>
