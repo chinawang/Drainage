@@ -197,7 +197,7 @@ class StatusReportController extends Controller
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name, 'log' => '查看了泵站启动状态统计']);
 
-        return view('report.stationStatusMonthAll', $paramOverAll);
+        return view('report.stationStatusOverAll', $paramOverAll);
     }
 
     /**
