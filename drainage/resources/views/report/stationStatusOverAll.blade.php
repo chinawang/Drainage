@@ -146,60 +146,9 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-md-8 col-md-offset-2">--}}
-                                        {{--<ul class="nav nav-tabs">--}}
 
-                                            {{--<li class="active"><a href="#pump1" data-toggle="tab">1号泵运行趋势</a></li>--}}
-                                            {{--<li><a href="#pump2" data-toggle="tab">2号泵运行趋势</a></li>--}}
-                                            {{--<li><a href="#pump3" data-toggle="tab">3号泵运行趋势</a></li>--}}
-                                            {{--<li><a href="#pump4" data-toggle="tab">4号泵运行趋势</a></li>--}}
-                                            {{--@if($stationSelect['station_number'] == 33)--}}
-                                                {{--<li><a href="#pump5" data-toggle="tab">5号泵运行趋势</a></li>--}}
-                                            {{--@endif--}}
-
-                                            {{--<li><a href="#pumpAll" data-toggle="tab">泵组整体运行图</a></li>--}}
-
-                                        {{--</ul>--}}
-                                    {{--</div>--}}
-
-                                {{--</div>--}}
-
-                                <div id="myTabContent" class="tab-content">
-                                    {{--<div class="tab-pane fade active in" id="pump1">--}}
-                                        {{--<div class="panel-body custom-panel-body" id="pump1Container"--}}
-                                             {{--style="min-width:400px;height:400px">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="tab-pane fade" id="pump2">--}}
-                                        {{--<div class="panel-body custom-panel-body" id="pump2Container"--}}
-                                             {{--style="min-width:400px;height:400px">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="tab-pane fade" id="pump3">--}}
-                                        {{--<div class="panel-body custom-panel-body" id="pump3Container"--}}
-                                             {{--style="min-width:400px;height:400px">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="tab-pane fade" id="pump4">--}}
-                                        {{--<div class="panel-body custom-panel-body" id="pump4Container"--}}
-                                             {{--style="min-width:400px;height:400px">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--@if($stationSelect['station_number'] == 33)--}}
-                                        {{--<div class="tab-pane fade" id="pump5">--}}
-                                            {{--<div class="panel-body custom-panel-body" id="pump5Container"--}}
-                                                 {{--style="min-width:400px;height:400px">--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--@endif--}}
-
-                                    <div class="tab-pane fade" id="pumpAll">
-                                        <div class="panel-body custom-panel-body" id="container"
-                                             style="min-width:400px;height:1200px">
-                                        </div>
-                                    </div>
-
+                                <div class="panel-body custom-panel-body" id="container"
+                                     style="min-width:400px;height:400px">
                                 </div>
                             </div>
                         </div>
