@@ -166,6 +166,41 @@ class StatusReportController extends Controller
     }
 
     /**
+     * 总计泵站总体运行统计
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showStatusReportOverAll()
+    {
+//        $type = Input::get('type', '全部');
+
+        $stationID = Input::get('station_id', 1);
+
+        $stationSelect = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+//        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+//        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+
+
+        $paramOverAll = ['stations' => $stations, 'stationSelect' => $stationSelect,'startTime' => $startTime, 'endTime' => $endTime];
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name, 'log' => '查看了泵站启动状态统计']);
+
+        return view('report.stationStatusMonthAll', $paramOverAll);
+    }
+
+    /**
      * 获取当前月泵站所有泵组运行总计
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

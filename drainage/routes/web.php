@@ -311,6 +311,9 @@ Route::get('/report/realTimeStatusMonth/{type}/{start_time}/{end_time}', 'Report
 //泵站所有泵组按月统计Ajax
 Route::get('/report/realTimeStatusMonthAll/{type}/{start_time}/{end_time}', 'Reporte\StatusReportController@statusRTMonthAllAjax');
 
+//泵站整体运行统计
+Route::get('/report/stationStatusOverAll', 'Reporte\StatusReportController@showStatusReportOverAll');
+
 //导出EXCEL 按日单机运行时间统计
 Route::get('/report/exporStatustDay', 'Reporte\StatusReportController@exportToExcelStatusDay');
 //导出EXCEL 按月单机运行时间统计
