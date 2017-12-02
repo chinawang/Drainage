@@ -43,7 +43,7 @@
                                             href="/report/stationStatusMonthAll?timeStart={{ $startTime }}&timeEnd={{ $endTime }}">泵站月生产报表</a>
                                 </li>
                                 <li class="active"><a
-                                            href="/report/stationStatusOverAll?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}">泵站整体运行图</a>
+                                            href="/report/stationStatusOverAll?timeStart={{ $startTime }}&timeEnd={{ $startTime }}">泵站整体运行图</a>
                                 </li>
 
                             </ul>
@@ -149,13 +149,6 @@
                                                     <span class="glyphicon glyphicon-search"></span>
                                                     查询
                                                 </button>
-                                            </div>
-                                            <div class="col-md-3 col-md-offset-1">
-                                                <a href="/report/exporStatustDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}"
-                                                   class="btn btn-default btn-custom">
-                                                    <span class="glyphicon glyphicon-export"></span>
-                                                    导出报表
-                                                </a>
                                             </div>
                                         </div>
                                     </div>

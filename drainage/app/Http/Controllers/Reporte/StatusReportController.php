@@ -172,12 +172,12 @@ class StatusReportController extends Controller
      */
     public function showStatusReportOverAll()
     {
-//        $type = Input::get('type', '全部');
+        $type = Input::get('type', '全部');
 
-        $stationID = Input::get('station_id', 1);
+//        $stationID = Input::get('station_id', 1);
 
-        $stationSelect = $this->stationInfo($stationID);
-        $stations = $this->stationList();
+//        $stationSelect = $this->stationInfo($stationID);
+//        $stations = $this->stationList();
 
         $startTime = Input::get('timeStart', '');
         $endTime = Input::get('timeEnd', '');
@@ -196,7 +196,7 @@ class StatusReportController extends Controller
 
 
 
-        $paramOverAll = ['stations' => $stations, 'stationSelect' => $stationSelect,'startTime' => $startTime, 'endTime' => $endTime];
+        $paramOverAll = ['selectType' => $type, 'startTime' => $startTime, 'endTime' => $endTime];
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name, 'log' => '查看了泵站启动状态统计']);
