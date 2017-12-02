@@ -364,7 +364,7 @@
                 borderWidth: 0
             },
             series: [{
-                name: '泵组运行间隔',
+                name: '运行时间',
 //                borderColor: 'gray',
                 pointWidth: 6,
                 data: dataAll,
