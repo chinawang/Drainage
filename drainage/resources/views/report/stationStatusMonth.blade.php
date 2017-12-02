@@ -43,7 +43,7 @@
                                             href="/report/stationStatusMonthAll?type={{ $selectType }}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}">泵站月生产报表</a>
                                 </li>
                                 <li class=""><a
-                                            href="/report/stationStatusOverAll?timeStart={{ $startTime }}&timeEnd={{ $endTime }}">泵站整体运行图</a>
+                                            href="/report/stationStatusOverAll?type={{ $selectType }}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}">泵站整体运行图</a>
                                 </li>
 
                             </ul>

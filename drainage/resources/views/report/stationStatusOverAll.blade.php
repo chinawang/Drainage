@@ -34,7 +34,7 @@
                         <div class="row" style="margin-top: -10px">
                             <ul class="nav nav-tabs">
                                 <li class=""><a
-                                            href="/report/stationStatusDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}">每日运行统计</a>
+                                            href="/report/stationStatusDay?timeStart={{ $startTime }}">每日运行统计</a>
                                 </li>
                                 <li class=""><a
                                             href="/report/stationStatusMonth?timeStart={{ $startTime }}&timeEnd={{ $endTime }}">每月运行统计</a>
