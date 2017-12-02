@@ -266,24 +266,26 @@
             var categorieTmp5 = m["name"] + " 5号泵";
             categories.push(categorieTmp5);
 
+            var yNumber = j*5;
+
             $.each(m["stationStatusList1"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 0)};
                 dataAll.push(dataTmp);
             });
             $.each(m["stationStatusList2"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 1)};
                 dataAll.push(dataTmp);
             });
             $.each(m["stationStatusList3"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 2)};
                 dataAll.push(dataTmp);
             });
             $.each(m["stationStatusList4"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 3)};
                 dataAll.push(dataTmp);
             });
             $.each(m["stationStatusList5"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 4)};
                 dataAll.push(dataTmp);
             });
         });
