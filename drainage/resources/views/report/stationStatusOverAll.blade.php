@@ -256,29 +256,34 @@
 
         $.each(statusRTList, function (j, m) {
             $.each(m["stationStatusList1"], function (i, n) {
-                categories[i] = m["name"] + " 1号泵";
+                var categorieTmp = m["name"] + " 1号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
+                categories.push(categorieTmp);
             });
             $.each(m["stationStatusList2"], function (i, n) {
-                categories[i] = m["name"] + " 2号泵";
+                var categorieTmp = m["name"] + " 2号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
+                categories.push(categorieTmp);
             });
             $.each(m["stationStatusList3"], function (i, n) {
-                categories[i] = m["name"] + " 3号泵";
+                var categorieTmp = m["name"] + " 3号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
+                categories.push(categorieTmp);
             });
             $.each(m["stationStatusList4"], function (i, n) {
-                categories[i] = m["name"] + " 4号泵";
+                var categorieTmp = m["name"] + " 4号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
+                categories.push(categorieTmp);
             });
             $.each(m["stationStatusList5"], function (i, n) {
-                categories[i] = m["name"] + " 5号泵";
+                var categorieTmp = m["name"] + " 5号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
+                categories.push(categorieTmp);
             });
         });
 
