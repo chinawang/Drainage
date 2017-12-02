@@ -158,7 +158,7 @@
                             <div class="panel panel-default custom-panel">
 
                                 <div class="panel-body custom-panel-body" id="container"
-                                     style="min-width:400px;height:3000px">
+                                     style="min-width:400px;height:5000px">
                                 </div>
                             </div>
                         </div>
@@ -366,7 +366,7 @@
             series: [{
                 name: '运行时间',
 //                borderColor: 'gray',
-                pointWidth: 6,
+                pointWidth: 10,
                 data: dataAll,
 //                data: [
 //                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
