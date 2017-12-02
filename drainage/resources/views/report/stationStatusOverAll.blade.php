@@ -364,7 +364,7 @@
                 borderWidth: 0
             },
             series: [{
-                name: '运行时间',
+                name: '',
 //                borderColor: 'gray',
                 pointWidth: 10,
                 data: dataAll,
