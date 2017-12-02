@@ -366,7 +366,7 @@
             series: [{
                 name: '时间',
 //                borderColor: 'gray',
-                pointWidth: 10,
+                pointWidth: 8,
                 data: dataAll,
 //                data: [
 //                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
