@@ -364,7 +364,7 @@
                 borderWidth: 0
             },
             series: [{
-//                name: '',
+                name: '时间',
 //                borderColor: 'gray',
                 pointWidth: 10,
                 data: dataAll,
