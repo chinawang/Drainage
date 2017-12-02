@@ -255,35 +255,36 @@
         var dateGMT = new Date(1970,0,1,16).getTime();
 
         $.each(statusRTList, function (j, m) {
+            var categorieTmp1 = m["name"] + " 1号泵";
+            categories.push(categorieTmp1);
+            var categorieTmp2 = m["name"] + " 2号泵";
+            categories.push(categorieTmp2);
+            var categorieTmp3 = m["name"] + " 3号泵";
+            categories.push(categorieTmp3);
+            var categorieTmp4 = m["name"] + " 4号泵";
+            categories.push(categorieTmp4);
+            var categorieTmp5 = m["name"] + " 5号泵";
+            categories.push(categorieTmp5);
+
             $.each(m["stationStatusList1"], function (i, n) {
-                var categorieTmp = m["name"] + " 1号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
-                categories.push(categorieTmp);
             });
             $.each(m["stationStatusList2"], function (i, n) {
-                var categorieTmp = m["name"] + " 2号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
-                categories.push(categorieTmp);
             });
             $.each(m["stationStatusList3"], function (i, n) {
-                var categorieTmp = m["name"] + " 3号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
-                categories.push(categorieTmp);
             });
             $.each(m["stationStatusList4"], function (i, n) {
-                var categorieTmp = m["name"] + " 4号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
-                categories.push(categorieTmp);
             });
             $.each(m["stationStatusList5"], function (i, n) {
-                var categorieTmp = m["name"] + " 5号泵";
                 var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
                 dataAll.push(dataTmp);
-                categories.push(categorieTmp);
             });
         });
 
