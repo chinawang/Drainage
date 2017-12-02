@@ -310,6 +310,8 @@ Route::get('/report/realTimeStatusHistory/{station_id}/{start_time}', 'Reporte\S
 Route::get('/report/realTimeStatusMonth/{type}/{start_time}/{end_time}', 'Reporte\StatusReportController@statusRTMonthAjax');
 //泵站所有泵组按月统计Ajax
 Route::get('/report/realTimeStatusMonthAll/{type}/{start_time}/{end_time}', 'Reporte\StatusReportController@statusRTMonthAllAjax');
+//泵站所有泵组整体统计Ajax
+Route::get('/report/realTimeStatusOverAll/{type}/{start_time}/{end_time}', 'Reporte\StatusReportController@statusRTOverAllAjax');
 
 //泵站整体运行统计
 Route::get('/report/stationStatusOverAll', 'Reporte\StatusReportController@showStatusReportOverAll');

@@ -101,16 +101,33 @@
                                 {{--</div>--}}
 
                                 <div class="row">
+                                    {{--<div class="col-md-3">--}}
+                                        {{--<div class="form-group">--}}
+                                            {{--<label for="station" class="col-md-4 control-label">选择泵站:</label>--}}
+
+                                            {{--<div class="col-md-8">--}}
+                                                {{--<select class="form-control" id="select" name="station_id">--}}
+                                                    {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
+                                                    {{--@foreach ($stations as $station)--}}
+                                                        {{--<option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>--}}
+                                                    {{--@endforeach--}}
+                                                {{--</select>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="station" class="col-md-4 control-label">选择泵站:</label>
+                                            <label for="station" class="col-md-4 control-label">泵站类型:</label>
 
                                             <div class="col-md-8">
-                                                <select class="form-control" id="select" name="station_id">
-                                                    {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
-                                                    @foreach ($stations as $station)
-                                                        <option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>
-                                                    @endforeach
+                                                <select class="form-control" id="select" name="type">
+                                                    <option value="全部" selected="selected">全部</option>
+                                                    <option value="雨水" {{$selectType == '雨水' ? 'selected=selected' :''}}>
+                                                        雨水
+                                                    </option>
+                                                    <option value="污水" {{$selectType == '污水' ? 'selected=selected' :''}}>
+                                                        污水
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -148,7 +165,7 @@
                             <div class="panel panel-default custom-panel">
 
                                 <div class="panel-body custom-panel-body" id="container"
-                                     style="min-width:400px;height:400px">
+                                     style="min-width:400px;height:1200px">
                                 </div>
                             </div>
                         </div>
@@ -222,7 +239,7 @@
             var resultValue = [];
             $.ajax({
                 type: 'get',
-                url: '/report/realTimeStatusHistory/{{ $stationSelect['id'] }}/{{ $startTime }}',
+                url: '/report/realTimeStatusOverAll/{{ $selectType }}/{{ $startTime }}/{{ $startTime }}',
                 data: '_token = <?php echo csrf_token() ?>',
                 async: false,//同步
                 success: function (data) {
@@ -238,51 +255,71 @@
 
     <script>
 
-        var categories1 = [];
-        var categories2 = [];
-        var categories3 = [];
-        var categories4 = [];
-        var categories5 = [];
-        var datas1 = [];
-        var datas2 = [];
-        var datas3 = [];
-        var datas4 = [];
-        var datas5 = [];
+        var categories = [];
         var dataAll = [];
 
         //东八区时间差
         var dateGMT = new Date(1970,0,1,16).getTime();
 
-        $.each(statusRTList.stationStatusList1, function (i, n) {
-            categories1[i] = dateStrFormat(n["timeEnd"]);
-            datas1[i] = n["timeGap"];
-            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
-            dataAll.push(dataTmp);
+        $.each(statusRTList, function (j, m) {
+            $.each(m["stationStatusList1"], function (i, n) {
+                categories[i] = m["name"] + " 1号泵";
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                dataAll.push(dataTmp);
+            });
+            $.each(m["stationStatusList2"], function (i, n) {
+                categories[i] = m["name"] + " 2号泵";
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                dataAll.push(dataTmp);
+            });
+            $.each(m["stationStatusList3"], function (i, n) {
+                categories[i] = m["name"] + " 3号泵";
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                dataAll.push(dataTmp);
+            });
+            $.each(m["stationStatusList4"], function (i, n) {
+                categories[i] = m["name"] + " 4号泵";
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                dataAll.push(dataTmp);
+            });
+            $.each(m["stationStatusList5"], function (i, n) {
+                categories[i] = m["name"] + " 5号泵";
+                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+                dataAll.push(dataTmp);
+            });
         });
-        $.each(statusRTList.stationStatusList2, function (i, n) {
-            categories2[i] = dateStrFormat(n["timeEnd"]);
-            datas2[i] = n["timeGap"];
-            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:1};
-            dataAll.push(dataTmp);
-        });
-        $.each(statusRTList.stationStatusList3, function (i, n) {
-            categories3[i] = dateStrFormat(n["timeEnd"]);
-            datas3[i] = n["timeGap"];
-            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:2};
-            dataAll.push(dataTmp);
-        });
-        $.each(statusRTList.stationStatusList4, function (i, n) {
-            categories4[i] = dateStrFormat(n["timeEnd"]);
-            datas4[i] = n["timeGap"];
-            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:3};
-            dataAll.push(dataTmp);
-        });
-        $.each(statusRTList.stationStatusList5, function (i, n) {
-            categories5[i] = dateStrFormat(n["timeEnd"]);
-            datas5[i] = n["timeGap"];
-            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:4};
-            dataAll.push(dataTmp);
-        });
+
+
+//        $.each(statusRTList.stationStatusList1, function (i, n) {
+//            categories1[i] = dateStrFormat(n["timeEnd"]);
+//            datas1[i] = n["timeGap"];
+//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+//            dataAll.push(dataTmp);
+//        });
+//        $.each(statusRTList.stationStatusList2, function (i, n) {
+//            categories2[i] = dateStrFormat(n["timeEnd"]);
+//            datas2[i] = n["timeGap"];
+//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:1};
+//            dataAll.push(dataTmp);
+//        });
+//        $.each(statusRTList.stationStatusList3, function (i, n) {
+//            categories3[i] = dateStrFormat(n["timeEnd"]);
+//            datas3[i] = n["timeGap"];
+//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:2};
+//            dataAll.push(dataTmp);
+//        });
+//        $.each(statusRTList.stationStatusList4, function (i, n) {
+//            categories4[i] = dateStrFormat(n["timeEnd"]);
+//            datas4[i] = n["timeGap"];
+//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:3};
+//            dataAll.push(dataTmp);
+//        });
+//        $.each(statusRTList.stationStatusList5, function (i, n) {
+//            categories5[i] = dateStrFormat(n["timeEnd"]);
+//            datas5[i] = n["timeGap"];
+//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:4};
+//            dataAll.push(dataTmp);
+//        });
 
 
         var chartAll = new Highcharts.Chart('container', {
@@ -308,7 +345,8 @@
                 title: {
                     text: ''
                 },
-                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
+//                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
+                categories:categories,
                 reversed: true
             },
             tooltip: {

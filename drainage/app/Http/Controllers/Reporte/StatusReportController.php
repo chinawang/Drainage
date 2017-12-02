@@ -182,9 +182,13 @@ class StatusReportController extends Controller
         $startTime = Input::get('timeStart', '');
         $endTime = Input::get('timeEnd', '');
 
-        if ($startTime == '' || $endTime == '') {
+//        if ($startTime == '' || $endTime == '') {
+//            $startTime = date("Y-m-d");
+//            $endTime = date("Y-m-d");
+//        }
+
+        if ($startTime == '') {
             $startTime = date("Y-m-d");
-            $endTime = date("Y-m-d");
         }
 
 //        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
@@ -1358,6 +1362,48 @@ class StatusReportController extends Controller
 //        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime];
         return response()->json(array('stations' => $stations), 200);
     }
+
+    /**
+     * 查询泵站所有泵组整体运行时间Ajax
+     *
+     * @param $type
+     * @param $startTime
+     * @param $endTime
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function statusRTOverAllAjax($type, $startTime, $endTime)
+    {
+//        if ($selectDay == '')
+//        {
+//            $selectDay = date("Y-m-d");
+//        }
+//        $days = $this->getTheMonthDay($selectDay);
+//        $startTime = $days[0];
+//        $endTime = $days[1];
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+//        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+//        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $stations = $this->stationListByType($type);
+
+        foreach ($stations as $station) {
+            $statusReportDay = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+
+            $station['stationStatusList1'] = $statusReportDay['stationStatusList1'];
+            $station['stationStatusList2'] = $statusReportDay['stationStatusList2'];
+            $station['stationStatusList3'] = $statusReportDay['stationStatusList3'];
+            $station['stationStatusList4'] = $statusReportDay['stationStatusList4'];
+            $station['stationStatusList5'] = $statusReportDay['stationStatusList5'];
+        }
+        return response()->json(array('stations' => $stations), 200);
+    }
+
+
 
     function get_max($a, $b, $c, $d)
     {
