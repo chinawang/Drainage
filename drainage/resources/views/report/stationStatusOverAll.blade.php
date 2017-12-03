@@ -185,6 +185,7 @@
     <script src="https://img.hcharts.cn/highcharts/modules/xrange.js"></script>
     <script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>
     <script src="https://img.hcharts.cn/highcharts/themes/grid-light.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
 
 
     <script>
@@ -365,7 +366,8 @@
                 x: -20
             },
             subtitle: {
-                text: '',
+                text: document.ontouchstart === undefined ?
+                        '鼠标拖动可以进行缩放' : '手势操作进行缩放',
                 x: -20
             },
             xAxis: {
