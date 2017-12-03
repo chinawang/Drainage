@@ -156,6 +156,8 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
+                                <div style="text-align: center">泵站整体运行图</div>
+                                <div style="text-align: center">鼠标拖动可以进行横向缩放</div>
                                 @if($selectType == '雨水')
                                     <div class="panel-body custom-panel-body" id="container"
                                          style="min-width:1240px;height:5400px;margin-left: -10px;">
@@ -363,12 +365,12 @@
                 zoomType: 'x'
             },
             title: {
-                text: '泵站整体运行图',
+//                text: '泵站整体运行图',
                 x: -20
             },
             subtitle: {
-                text: document.ontouchstart === undefined ?
-                        '鼠标拖动可以进行缩放' : '手势操作进行缩放',
+//                text: document.ontouchstart === undefined ?
+//                        '鼠标拖动可以进行缩放' : '手势操作进行缩放',
                 x: -20
             },
             xAxis: {
