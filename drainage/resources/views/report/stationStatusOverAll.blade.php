@@ -268,17 +268,43 @@
         //东八区时间差
         var dateGMT = new Date(1970, 0, 1, 16).getTime();
 
+        var pump2List = ['18', '31', '34'];
+        var pump3List = ['1', '2', '3', '4', '5', '6', '8', '9', '11', '12', '13', '16', '17', '20', '23', '24', '25', '26', '27', '28', '30', '32', '35', '37', '38'];
+        var pump4List = ['7', '10', '14', '15', '19', '21', '22', '29', '36'];
+        var pump5List = ['33'];
+
+        function in_array(search,array){
+            for(var index_tmp in array){
+                if(array[index_tmp]==search){
+                    return true;
+                }
+            }
+            return false;
+        }
+
         $.each(statusRTList, function (j, m) {
             var categorieTmp1 = m["name"] + " 1号泵";
             categories.push(categorieTmp1);
-            var categorieTmp2 = m["name"] + " 2号泵";
-            categories.push(categorieTmp2);
-            var categorieTmp3 = m["name"] + " 3号泵";
-            categories.push(categorieTmp3);
-            var categorieTmp4 = m["name"] + " 4号泵";
-            categories.push(categorieTmp4);
-            var categorieTmp5 = m["name"] + " 5号泵";
-            categories.push(categorieTmp5);
+            if(in_array(m["station_number"],pump2List))
+            {
+                var categorieTmp2 = m["name"] + " 2号泵";
+                categories.push(categorieTmp2);
+            }
+            if(in_array(m["station_number"],pump3List))
+            {
+                var categorieTmp3 = m["name"] + " 3号泵";
+                categories.push(categorieTmp3);
+            }
+            if(in_array(m["station_number"],pump4List))
+            {
+                var categorieTmp4 = m["name"] + " 4号泵";
+                categories.push(categorieTmp4);
+            }
+            if(in_array(m["station_number"],pump5List))
+            {
+                var categorieTmp5 = m["name"] + " 5号泵";
+                categories.push(categorieTmp5);
+            }
 
             var yNumber = j * 5;
 
