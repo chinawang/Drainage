@@ -158,15 +158,15 @@
                             <div class="panel panel-default custom-panel">
                                 @if($selectType == '雨水')
                                     <div class="panel-body custom-panel-body" id="container"
-                                         style="min-width:400px;height:5000px">
+                                         style="min-width:400px;height:5400px">
                                     </div>
                                 @elseif($selectType == '污水')
                                     <div class="panel-body custom-panel-body" id="container"
-                                         style="min-width:400px;height:2000px">
+                                         style="min-width:400px;height:2400px">
                                     </div>
                                 @else
                                     <div class="panel-body custom-panel-body" id="container"
-                                         style="min-width:400px;height:6600px">
+                                         style="min-width:400px;height:7000px">
                                     </div>
                                 @endif
                             </div>
