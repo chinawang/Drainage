@@ -386,7 +386,7 @@
 //                type: 'datetime',
 //                xDateFormat: '%Y-%m-%d %H:%M:%S',
                 useHTML: true,
-                headerFormat: '<h5>运行区间: {point.x} <span>-</span>{point.x2} </h5>',
+                headerFormat: '<h5>运行区间: {point.x} <span>-</span> {point.x2}</h5>',
                 xDateFormat: '%H:%M',
 //                dateTimeLabelFormats: {
 //                    day: '%Y-%m-%d',
