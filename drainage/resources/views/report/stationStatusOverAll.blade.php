@@ -54,66 +54,66 @@
                                 {{ csrf_field() }}
 
                                 {{--<div class="row">--}}
-                                    {{--<div class="col-md-3">--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<label for="station" class="col-md-4 control-label">泵站类型:</label>--}}
+                                {{--<div class="col-md-3">--}}
+                                {{--<div class="form-group">--}}
+                                {{--<label for="station" class="col-md-4 control-label">泵站类型:</label>--}}
 
-                                            {{--<div class="col-md-8">--}}
-                                                {{--<select class="form-control" id="select" name="type">--}}
-                                                    {{--<option value="全部" selected="selected">全部</option>--}}
-                                                    {{--<option value="雨水" {{$selectType == '雨水' ? 'selected=selected' :''}}>--}}
-                                                        {{--雨水--}}
-                                                    {{--</option>--}}
-                                                    {{--<option value="污水" {{$selectType == '污水' ? 'selected=selected' :''}}>--}}
-                                                        {{--污水--}}
-                                                    {{--</option>--}}
-                                                {{--</select>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-6">--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<label for="repair_at" class="col-md-3 control-label">时间范围:</label>--}}
-                                            {{--<div class="col-md-4">--}}
-                                                {{--<input type="text" class="form-control pick-event-date" id="start-time"--}}
-                                                       {{--name="timeStart"--}}
-                                                       {{--value="{{ $startTime }}" placeholder="起始时间"--}}
-                                                       {{--data-data="yyyy-mm-dd">--}}
-                                            {{--</div>--}}
-                                            {{--<label for="time" class="col-md-1 control-label">—</label>--}}
-                                            {{--<div class="col-md-4">--}}
-                                                {{--<input type="text" class="form-control pick-event-date" id="end-time"--}}
-                                                       {{--name="timeEnd"--}}
-                                                       {{--value="{{ $endTime }}" placeholder="截止时间" data-data="yyyy-mm-dd">--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-3">--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<div class="col-md-5 col-md-offset-0">--}}
-                                                {{--<button type="submit" class="btn btn-primary btn-custom">--}}
-                                                    {{--<span class="glyphicon glyphicon-search"></span>--}}
-                                                    {{--查询--}}
-                                                {{--</button>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
+                                {{--<div class="col-md-8">--}}
+                                {{--<select class="form-control" id="select" name="type">--}}
+                                {{--<option value="全部" selected="selected">全部</option>--}}
+                                {{--<option value="雨水" {{$selectType == '雨水' ? 'selected=selected' :''}}>--}}
+                                {{--雨水--}}
+                                {{--</option>--}}
+                                {{--<option value="污水" {{$selectType == '污水' ? 'selected=selected' :''}}>--}}
+                                {{--污水--}}
+                                {{--</option>--}}
+                                {{--</select>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-6">--}}
+                                {{--<div class="form-group">--}}
+                                {{--<label for="repair_at" class="col-md-3 control-label">时间范围:</label>--}}
+                                {{--<div class="col-md-4">--}}
+                                {{--<input type="text" class="form-control pick-event-date" id="start-time"--}}
+                                {{--name="timeStart"--}}
+                                {{--value="{{ $startTime }}" placeholder="起始时间"--}}
+                                {{--data-data="yyyy-mm-dd">--}}
+                                {{--</div>--}}
+                                {{--<label for="time" class="col-md-1 control-label">—</label>--}}
+                                {{--<div class="col-md-4">--}}
+                                {{--<input type="text" class="form-control pick-event-date" id="end-time"--}}
+                                {{--name="timeEnd"--}}
+                                {{--value="{{ $endTime }}" placeholder="截止时间" data-data="yyyy-mm-dd">--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-3">--}}
+                                {{--<div class="form-group">--}}
+                                {{--<div class="col-md-5 col-md-offset-0">--}}
+                                {{--<button type="submit" class="btn btn-primary btn-custom">--}}
+                                {{--<span class="glyphicon glyphicon-search"></span>--}}
+                                {{--查询--}}
+                                {{--</button>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
                                 {{--</div>--}}
 
                                 <div class="row">
                                     {{--<div class="col-md-3">--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<label for="station" class="col-md-4 control-label">选择泵站:</label>--}}
+                                    {{--<div class="form-group">--}}
+                                    {{--<label for="station" class="col-md-4 control-label">选择泵站:</label>--}}
 
-                                            {{--<div class="col-md-8">--}}
-                                                {{--<select class="form-control" id="select" name="station_id">--}}
-                                                    {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
-                                                    {{--@foreach ($stations as $station)--}}
-                                                        {{--<option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>--}}
-                                                    {{--@endforeach--}}
-                                                {{--</select>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
+                                    {{--<div class="col-md-8">--}}
+                                    {{--<select class="form-control" id="select" name="station_id">--}}
+                                    {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
+                                    {{--@foreach ($stations as $station)--}}
+                                    {{--<option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>--}}
+                                    {{--@endforeach--}}
+                                    {{--</select>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
                                     {{--</div>--}}
                                     <div class="col-md-3">
                                         <div class="form-group">
@@ -156,10 +156,19 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-
-                                <div class="panel-body custom-panel-body" id="container"
-                                     style="min-width:400px;min-height:3000px">
-                                </div>
+                                @if($selectType == '雨水')
+                                    <div class="panel-body custom-panel-body" id="container"
+                                         style="min-width:400px;height:5000px">
+                                    </div>
+                                @elseif($selectType == '污水')
+                                    <div class="panel-body custom-panel-body" id="container"
+                                         style="min-width:400px;height:3000px">
+                                    </div>
+                                @else
+                                    <div class="panel-body custom-panel-body" id="container"
+                                         style="min-width:400px;height:6000px">
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -252,7 +261,7 @@
         var dataAll = [];
 
         //东八区时间差
-        var dateGMT = new Date(1970,0,1,16).getTime();
+        var dateGMT = new Date(1970, 0, 1, 16).getTime();
 
         $.each(statusRTList, function (j, m) {
             var categorieTmp1 = m["name"] + " 1号泵";
@@ -266,61 +275,81 @@
             var categorieTmp5 = m["name"] + " 5号泵";
             categories.push(categorieTmp5);
 
-            var yNumber = j*5;
+            var yNumber = j * 5;
 
             $.each(m["stationStatusList1"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 0)};
+                var dataTmp = {
+                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    y: (yNumber + 0)
+                };
                 dataAll.push(dataTmp);
             });
             $.each(m["stationStatusList2"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 1)};
+                var dataTmp = {
+                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    y: (yNumber + 1)
+                };
                 dataAll.push(dataTmp);
             });
             $.each(m["stationStatusList3"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 2)};
+                var dataTmp = {
+                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    y: (yNumber + 2)
+                };
                 dataAll.push(dataTmp);
             });
             $.each(m["stationStatusList4"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 3)};
+                var dataTmp = {
+                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    y: (yNumber + 3)
+                };
                 dataAll.push(dataTmp);
             });
             $.each(m["stationStatusList5"], function (i, n) {
-                var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:(yNumber + 4)};
+                var dataTmp = {
+                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    y: (yNumber + 4)
+                };
                 dataAll.push(dataTmp);
             });
         });
 
 
-//        $.each(statusRTList.stationStatusList1, function (i, n) {
-//            categories1[i] = dateStrFormat(n["timeEnd"]);
-//            datas1[i] = n["timeGap"];
-//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
-//            dataAll.push(dataTmp);
-//        });
-//        $.each(statusRTList.stationStatusList2, function (i, n) {
-//            categories2[i] = dateStrFormat(n["timeEnd"]);
-//            datas2[i] = n["timeGap"];
-//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:1};
-//            dataAll.push(dataTmp);
-//        });
-//        $.each(statusRTList.stationStatusList3, function (i, n) {
-//            categories3[i] = dateStrFormat(n["timeEnd"]);
-//            datas3[i] = n["timeGap"];
-//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:2};
-//            dataAll.push(dataTmp);
-//        });
-//        $.each(statusRTList.stationStatusList4, function (i, n) {
-//            categories4[i] = dateStrFormat(n["timeEnd"]);
-//            datas4[i] = n["timeGap"];
-//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:3};
-//            dataAll.push(dataTmp);
-//        });
-//        $.each(statusRTList.stationStatusList5, function (i, n) {
-//            categories5[i] = dateStrFormat(n["timeEnd"]);
-//            datas5[i] = n["timeGap"];
-//            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:4};
-//            dataAll.push(dataTmp);
-//        });
+        //        $.each(statusRTList.stationStatusList1, function (i, n) {
+        //            categories1[i] = dateStrFormat(n["timeEnd"]);
+        //            datas1[i] = n["timeGap"];
+        //            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:0};
+        //            dataAll.push(dataTmp);
+        //        });
+        //        $.each(statusRTList.stationStatusList2, function (i, n) {
+        //            categories2[i] = dateStrFormat(n["timeEnd"]);
+        //            datas2[i] = n["timeGap"];
+        //            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:1};
+        //            dataAll.push(dataTmp);
+        //        });
+        //        $.each(statusRTList.stationStatusList3, function (i, n) {
+        //            categories3[i] = dateStrFormat(n["timeEnd"]);
+        //            datas3[i] = n["timeGap"];
+        //            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:2};
+        //            dataAll.push(dataTmp);
+        //        });
+        //        $.each(statusRTList.stationStatusList4, function (i, n) {
+        //            categories4[i] = dateStrFormat(n["timeEnd"]);
+        //            datas4[i] = n["timeGap"];
+        //            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:3};
+        //            dataAll.push(dataTmp);
+        //        });
+        //        $.each(statusRTList.stationStatusList5, function (i, n) {
+        //            categories5[i] = dateStrFormat(n["timeEnd"]);
+        //            datas5[i] = n["timeGap"];
+        //            var dataTmp = {x:(new Date((n["timeStart"]).replace(/-/g,'/'))).getTime()+dateGMT,x2:(new Date((n["timeEnd"]).replace(/-/g,'/'))).getTime()+dateGMT,y:4};
+        //            dataAll.push(dataTmp);
+        //        });
 
 
         var chartAll = new Highcharts.Chart('container', {
@@ -347,7 +376,7 @@
                     text: ''
                 },
 //                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
-                categories:categories,
+                categories: categories,
                 reversed: true
             },
             tooltip: {
