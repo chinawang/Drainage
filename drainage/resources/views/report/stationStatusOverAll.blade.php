@@ -166,7 +166,7 @@
                                     </div>
                                 @else
                                     <div class="panel-body custom-panel-body" id="container"
-                                         style="min-width:400px;height:7000px">
+                                         style="min-width:400px;height:7200px">
                                     </div>
                                 @endif
                             </div>
