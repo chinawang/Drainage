@@ -367,6 +367,12 @@
                 text: '',
                 x: -20
             },
+            plotOptions: {
+                series: {
+//                    pointStart: Date.UTC(2010, 0, 1), // 开始值
+                    pointInterval: 60 *1000 // 间隔一分钟
+                }
+            },
             xAxis: {
                 type: 'datetime',
                 dateTimeLabelFormats: {
