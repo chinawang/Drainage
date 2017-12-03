@@ -358,6 +358,7 @@
         var chartAll = new Highcharts.Chart('container', {
             chart: {
                 type: 'xrange',
+                zoomType: 'x'
             },
             title: {
                 text: '泵站整体运行图',
