@@ -165,7 +165,7 @@
                                          style="min-width:1240px;height:2400px;margin-left: -10px;">
                                     </div>
                                 @else
-                                    <div class="panel-body custom-panel-body pre-scrollable" id="container"
+                                    <div class="panel-body custom-panel-body " id="container"
                                          style="min-width:1240px;height:7200px;margin-left: -10px;">
                                     </div>
                                 @endif
