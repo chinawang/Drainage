@@ -385,12 +385,13 @@
             tooltip: {
 //                type: 'datetime',
 //                xDateFormat: '%Y-%m-%d %H:%M:%S',
-                xDateFormat: '%H:%M:%S',
-                dateTimeLabelFormats: {
-                    day: '%Y-%m-%d',
-                    time: '%h:%m:%s'
-                },
-                shared: true
+                headerFormat: '运行区间: {point.x - point.x2} <br>',
+                pointFormat: '时间：{point.y} 分钟 ',
+//                xDateFormat: '%H:%M:%S',
+//                dateTimeLabelFormats: {
+//                    day: '%Y-%m-%d',
+//                    time: '%h:%m:%s'
+//                },
             },
             legend: {
                 layout: 'vertical',
