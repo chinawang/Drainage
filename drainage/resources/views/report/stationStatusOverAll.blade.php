@@ -389,7 +389,8 @@
                 dateTimeLabelFormats: {
                     day: '%Y-%m-%d',
                     time: '%h:%m:%s'
-                }
+                },
+                shared: true
             },
             legend: {
                 layout: 'vertical',
@@ -398,7 +399,7 @@
                 borderWidth: 0
             },
             series: [{
-                name: '时间',
+                name: '运行时间',
 //                borderColor: 'gray',
                 pointWidth: 8,
                 data: dataAll,
