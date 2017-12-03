@@ -352,7 +352,7 @@
         //        });
 
         new Highcharts.setOptions({
-            colors: ['#18BC9C']
+            colors: ['#3498db']
         });
 
         var chartAll = new Highcharts.Chart('container', {
