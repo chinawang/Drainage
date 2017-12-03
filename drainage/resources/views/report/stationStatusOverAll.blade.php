@@ -387,7 +387,7 @@
 //                xDateFormat: '%Y-%m-%d %H:%M:%S',
                 useHTML: true,
                 headerFormat: '<h5>运行区间: {point.x} <span>-</span>{point.x2} </h5>',
-                xDateFormat: '%H:%M:%S',
+                xDateFormat: '%H:%M',
 //                dateTimeLabelFormats: {
 //                    day: '%Y-%m-%d',
 //                    time: '%h:%m:%s'
@@ -400,7 +400,7 @@
                 borderWidth: 0
             },
             series: [{
-                name: '运行时间',
+                name: '泵站',
 //                borderColor: 'gray',
                 pointWidth: 8,
                 data: dataAll,
