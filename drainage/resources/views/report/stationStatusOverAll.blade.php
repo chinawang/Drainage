@@ -158,7 +158,7 @@
                             <div class="panel panel-default custom-panel">
 
                                 <div class="panel-body custom-panel-body" id="container"
-                                     style="min-width:400px;height:5000px">
+                                     style="min-width:400px;min-height:3000px">
                                 </div>
                             </div>
                         </div>
