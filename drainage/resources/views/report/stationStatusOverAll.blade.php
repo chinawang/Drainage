@@ -162,11 +162,11 @@
                                     </div>
                                 @elseif($selectType == '污水')
                                     <div class="panel-body custom-panel-body" id="container"
-                                         style="min-width:400px;height:3000px">
+                                         style="min-width:400px;height:2000px">
                                     </div>
                                 @else
                                     <div class="panel-body custom-panel-body" id="container"
-                                         style="min-width:400px;height:6000px">
+                                         style="min-width:400px;height:6600px">
                                     </div>
                                 @endif
                             </div>
