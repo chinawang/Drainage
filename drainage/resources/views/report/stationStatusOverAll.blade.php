@@ -386,8 +386,8 @@
 //                type: 'datetime',
 //                xDateFormat: '%Y-%m-%d %H:%M:%S',
                 useHTML: true,
-                headerFormat: '<h4></h4> <br> <h5>运行区间: {point.x} <span>-</span>{point.x2} </h5>',
-                pointFormat: '<h5>运行时间：{point.key} 分钟 </h5>',
+                headerFormat: '<h4>point.y.value</h4> <br> <h5>运行区间: {point.x} <span>-</span>{point.x2} </h5>',
+                pointFormat: '<h5>运行时间：{point.x2 - point.x} 分钟 </h5>',
                 xDateFormat: '%H:%M:%S',
 //                dateTimeLabelFormats: {
 //                    day: '%Y-%m-%d',
