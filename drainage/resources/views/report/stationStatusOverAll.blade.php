@@ -384,7 +384,7 @@
             },
             tooltip: {
 //                type: 'datetime',
-                xDateFormat: '%Y-%m-%d',
+                xDateFormat: '%Y-%m-%d %h:%m:%s',
                 dateTimeLabelFormats: {
                     day: '%Y-%m-%d',
                     time: '%h:%m:%s'
