@@ -283,7 +283,7 @@
         }
 
         $.each(statusRTList, function (j, m) {
-            var yNumber = j * 5;
+            var yNumber = 0;
 
             var categorieTmp1 = m["name"] + " 1号泵";
             categories.push(categorieTmp1);
@@ -310,6 +310,8 @@
                     };
                     dataAll.push(dataTmp);
                 });
+
+                yNumber ++;
             }
             if(in_array(m["station_number"],pump3List))
             {
@@ -327,14 +329,16 @@
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 2)
+                        y: (yNumber + 1)
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
             }
             if(in_array(m["station_number"],pump4List))
             {
@@ -355,22 +359,25 @@
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 2)
+                        y: (yNumber + 1)
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
                 $.each(m["stationStatusList4"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 3)
+                        y: (yNumber + 1)
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
             }
             if(in_array(m["station_number"],pump5List))
             {
@@ -394,30 +401,34 @@
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 2)
+                        y: (yNumber + 1)
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
                 $.each(m["stationStatusList4"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 3)
+                        y: (yNumber + 1)
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
                 $.each(m["stationStatusList5"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 4)
+                        y: (yNumber + 1)
                     };
                     dataAll.push(dataTmp);
                 });
+                yNumber ++;
             }
         });
 
