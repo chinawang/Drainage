@@ -292,16 +292,34 @@
             }
             if(in_array(m["station_number"],pump3List))
             {
+                var categorieTmp2 = m["name"] + " 2号泵";
+                categories.push(categorieTmp2);
+
                 var categorieTmp3 = m["name"] + " 3号泵";
                 categories.push(categorieTmp3);
             }
             if(in_array(m["station_number"],pump4List))
             {
+                var categorieTmp2 = m["name"] + " 2号泵";
+                categories.push(categorieTmp2);
+
+                var categorieTmp3 = m["name"] + " 3号泵";
+                categories.push(categorieTmp3);
+
                 var categorieTmp4 = m["name"] + " 4号泵";
                 categories.push(categorieTmp4);
             }
             if(in_array(m["station_number"],pump5List))
             {
+                var categorieTmp2 = m["name"] + " 2号泵";
+                categories.push(categorieTmp2);
+
+                var categorieTmp3 = m["name"] + " 3号泵";
+                categories.push(categorieTmp3);
+
+                var categorieTmp4 = m["name"] + " 4号泵";
+                categories.push(categorieTmp4);
+
                 var categorieTmp5 = m["name"] + " 5号泵";
                 categories.push(categorieTmp5);
             }
