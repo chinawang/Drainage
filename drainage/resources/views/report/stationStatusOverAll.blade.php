@@ -282,8 +282,8 @@
             return false;
         }
 
+        var yNumber = 0;
         $.each(statusRTList, function (j, m) {
-            var yNumber = 0;
 
             var categorieTmp1 = m["name"] + " 1号泵";
             categories.push(categorieTmp1);
