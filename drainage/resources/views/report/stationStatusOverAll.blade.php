@@ -368,11 +368,13 @@
             },
             title: {
 //                text: '泵站整体运行图',
+                text: '',
                 x: -20
             },
             subtitle: {
 //                text: document.ontouchstart === undefined ?
 //                        '鼠标拖动可以进行缩放' : '手势操作进行缩放',
+                text:'',
                 x: -20
             },
             xAxis: {
