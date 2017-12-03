@@ -297,6 +297,8 @@
                 dataAll.push(dataTmp);
             });
 
+            yNumber ++;
+
             if(in_array(m["station_number"],pump2List))
             {
                 var categorieTmp2 = m["name"] + " 2号泵";
@@ -306,7 +308,7 @@
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
@@ -325,16 +327,17 @@
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
                 yNumber ++;
+
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
@@ -355,25 +358,27 @@
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
                 yNumber ++;
+
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
                 yNumber ++;
+
                 $.each(m["stationStatusList4"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
@@ -397,29 +402,32 @@
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
                 yNumber ++;
+
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
                 yNumber ++;
+
                 $.each(m["stationStatusList4"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
                         x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                        y: (yNumber + 1)
+                        y: (yNumber + 0)
                     };
                     dataAll.push(dataTmp);
                 });
                 yNumber ++;
+
                 $.each(m["stationStatusList5"], function (i, n) {
                     var dataTmp = {
                         x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
