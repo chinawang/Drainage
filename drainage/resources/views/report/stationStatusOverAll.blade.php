@@ -479,7 +479,7 @@
         var chartAll = new Highcharts.Chart('container', {
             chart: {
                 type: 'xrange',
-                width: 2000,
+//                width: 2000,
                 zoomType: 'x'
             },
             title: {
