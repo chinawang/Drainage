@@ -283,12 +283,33 @@
         }
 
         $.each(statusRTList, function (j, m) {
+            var yNumber = j * 5;
+
             var categorieTmp1 = m["name"] + " 1号泵";
             categories.push(categorieTmp1);
+
+            $.each(m["stationStatusList1"], function (i, n) {
+                var dataTmp = {
+                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                    y: (yNumber + 0)
+                };
+                dataAll.push(dataTmp);
+            });
+
             if(in_array(m["station_number"],pump2List))
             {
                 var categorieTmp2 = m["name"] + " 2号泵";
                 categories.push(categorieTmp2);
+
+                $.each(m["stationStatusList2"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 1)
+                    };
+                    dataAll.push(dataTmp);
+                });
             }
             if(in_array(m["station_number"],pump3List))
             {
@@ -297,6 +318,23 @@
 
                 var categorieTmp3 = m["name"] + " 3号泵";
                 categories.push(categorieTmp3);
+
+                $.each(m["stationStatusList2"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 1)
+                    };
+                    dataAll.push(dataTmp);
+                });
+                $.each(m["stationStatusList3"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 2)
+                    };
+                    dataAll.push(dataTmp);
+                });
             }
             if(in_array(m["station_number"],pump4List))
             {
@@ -308,6 +346,31 @@
 
                 var categorieTmp4 = m["name"] + " 4号泵";
                 categories.push(categorieTmp4);
+
+                $.each(m["stationStatusList2"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 1)
+                    };
+                    dataAll.push(dataTmp);
+                });
+                $.each(m["stationStatusList3"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 2)
+                    };
+                    dataAll.push(dataTmp);
+                });
+                $.each(m["stationStatusList4"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 3)
+                    };
+                    dataAll.push(dataTmp);
+                });
             }
             if(in_array(m["station_number"],pump5List))
             {
@@ -322,50 +385,40 @@
 
                 var categorieTmp5 = m["name"] + " 5号泵";
                 categories.push(categorieTmp5);
+
+                $.each(m["stationStatusList2"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 1)
+                    };
+                    dataAll.push(dataTmp);
+                });
+                $.each(m["stationStatusList3"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 2)
+                    };
+                    dataAll.push(dataTmp);
+                });
+                $.each(m["stationStatusList4"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 3)
+                    };
+                    dataAll.push(dataTmp);
+                });
+                $.each(m["stationStatusList5"], function (i, n) {
+                    var dataTmp = {
+                        x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
+                        y: (yNumber + 4)
+                    };
+                    dataAll.push(dataTmp);
+                });
             }
-
-            var yNumber = j * 5;
-
-            $.each(m["stationStatusList1"], function (i, n) {
-                var dataTmp = {
-                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    y: (yNumber + 0)
-                };
-                dataAll.push(dataTmp);
-            });
-            $.each(m["stationStatusList2"], function (i, n) {
-                var dataTmp = {
-                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    y: (yNumber + 1)
-                };
-                dataAll.push(dataTmp);
-            });
-            $.each(m["stationStatusList3"], function (i, n) {
-                var dataTmp = {
-                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    y: (yNumber + 2)
-                };
-                dataAll.push(dataTmp);
-            });
-            $.each(m["stationStatusList4"], function (i, n) {
-                var dataTmp = {
-                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    y: (yNumber + 3)
-                };
-                dataAll.push(dataTmp);
-            });
-            $.each(m["stationStatusList5"], function (i, n) {
-                var dataTmp = {
-                    x: (new Date((n["timeStart"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    x2: (new Date((n["timeEnd"]).replace(/-/g, '/'))).getTime() + dateGMT,
-                    y: (yNumber + 4)
-                };
-                dataAll.push(dataTmp);
-            });
         });
 
 
