@@ -360,7 +360,7 @@
                 type: 'xrange',
             },
             title: {
-                text: '',
+                text: '泵站整体运行图',
                 x: -20
             },
             subtitle: {
@@ -384,7 +384,8 @@
             },
             tooltip: {
 //                type: 'datetime',
-                xDateFormat: '%Y-%m-%d %h:%m:%s',
+//                xDateFormat: '%Y-%m-%d %H:%M:%S',
+                xDateFormat: '%H:%M:%S',
                 dateTimeLabelFormats: {
                     day: '%Y-%m-%d',
                     time: '%h:%m:%s'

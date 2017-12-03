@@ -1400,7 +1400,7 @@ class StatusReportController extends Controller
             $station['stationStatusList4'] = $statusReportDay['stationStatusList4'];
             $station['stationStatusList5'] = $statusReportDay['stationStatusList5'];
         }
-        return response()->json(array('stations' => $stations), 200);
+        return response()->json(array('stations' => $stations,'selectDate' => $startTime), 200);
     }
 
 
