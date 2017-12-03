@@ -351,6 +351,9 @@
         //            dataAll.push(dataTmp);
         //        });
 
+        new Highcharts.setOptions({
+            colors: ['#000000']
+        });
 
         var chartAll = new Highcharts.Chart('container', {
             chart: {
