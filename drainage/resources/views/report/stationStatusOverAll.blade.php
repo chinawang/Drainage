@@ -157,7 +157,7 @@
 
                             <div class="panel panel-default custom-panel">
                                 <div style="text-align: center;font-size: 18px;font-weight: bold;margin-top: 20px;">泵站整体运行图</div>
-                                <div style="text-align: center;font-size: 14px;color: gray;margin-top: 5px;margin-bottom: -40px;">鼠标拖动可以进行横向缩放</div>
+                                <div style="text-align: center;font-size: 14px;color: gray;margin-top: 5px;">鼠标拖动可以进行横向缩放</div>
                                 <div style="overflow: auto">
                                 @if($selectType == '雨水')
                                     <div class="panel-body custom-panel-body" id="container"
