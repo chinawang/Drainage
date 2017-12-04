@@ -99,7 +99,7 @@
                                     泵站整体运行图
                                 </div>
                                 <div style="text-align: center;font-size: 14px;color: gray;margin-top: 5px;">
-                                    鼠标拖动可以进行横向缩放
+                                    {{--鼠标拖动可以进行横向缩放--}}
                                 </div>
 
                                 <div>
