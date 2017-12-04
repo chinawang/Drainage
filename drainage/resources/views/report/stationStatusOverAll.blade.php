@@ -496,6 +496,13 @@
             },
             xAxis: {
                 type: 'datetime',
+                crosshair: true,
+                minRange: 60,
+                labels: {
+                    style: {
+                        color: 'black',
+                        fontSize:'14px',
+                    },
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
@@ -505,6 +512,7 @@
                 title: {
                     text: ''
                 },
+                crosshair: true,
 //                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
                 categories: categories,
                 reversed: true
