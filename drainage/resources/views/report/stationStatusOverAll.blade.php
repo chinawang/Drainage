@@ -102,9 +102,20 @@
                                     鼠标拖动可以进行横向缩放
                                 </div>
 
-                                <div id="containerTmp" class="panel-body custom-panel-body"
-                                     style="min-width:1240px;height:65px;margin-left: -10px;">
-
+                                <div>
+                                    @if($selectType == '雨水')
+                                        <div class="panel-body custom-panel-body" id="containerTmp"
+                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                        </div>
+                                    @elseif($selectType == '污水')
+                                        <div class="panel-body custom-panel-body" id="containerTmp"
+                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                        </div>
+                                    @else
+                                        <div class="panel-body custom-panel-body " id="containerTmp"
+                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                        </div>
+                                    @endif
                                 </div>
 
                                 <div style="height: 300px;overflow: auto">
