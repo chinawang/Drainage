@@ -102,6 +102,11 @@
                                     鼠标拖动可以进行横向缩放
                                 </div>
 
+                                <div id="containerTmp"
+                                     style="min-width:1240px;height:10px;margin-left: -10px;">
+
+                                </div>
+
                                 <div style="height: 400px;overflow: auto">
                                     @if($selectType == '雨水')
                                         <div class="panel-body custom-panel-body" id="container"
@@ -455,7 +460,7 @@
                 text: '',
                 x: -20
             },
-            xAxis: [{
+            xAxis: {
                 type: 'datetime',
                 lineWidth: 2,
 //                minRange: 60,
@@ -470,23 +475,23 @@
                     time: '%h:%m:%s'
                 }
             },
-                {
-                    type: 'datetime',
-                    lineWidth: 2,
-                    linkedTo: 0,
-                    opposite: true,
-                    labels: {
-                        style: {
-                            color: 'black',
-                            fontSize: '14px',
-                        }
-                    },
-                    dateTimeLabelFormats: {
-                        day: '%Y/%m/%d',
-                        time: '%h:%m:%s'
-                    }
-                }
-            ],
+//                {
+//                    type: 'datetime',
+//                    lineWidth: 2,
+//                    linkedTo: 0,
+//                    opposite: true,
+//                    labels: {
+//                        style: {
+//                            color: 'black',
+//                            fontSize: '14px',
+//                        }
+//                    },
+//                    dateTimeLabelFormats: {
+//                        day: '%Y/%m/%d',
+//                        time: '%h:%m:%s'
+//                    }
+//                }
+//            ],
             yAxis: {
                 title: {
                     text: ''
@@ -495,6 +500,82 @@
                 crosshair: true,
 //                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
                 categories: categories,
+                reversed: true
+            },
+            tooltip: {
+//                type: 'datetime',
+//                xDateFormat: '%Y-%m-%d %H:%M:%S',
+                useHTML: true,
+                headerFormat: '<h5>运行区间: {point.x} <span>-</span> {point.x2}</h5>',
+                xDateFormat: '%H:%M',
+//                dateTimeLabelFormats: {
+//                    day: '%Y-%m-%d',
+//                    time: '%h:%m:%s'
+//                },
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '泵站',
+//                borderColor: 'gray',
+                pointWidth: 6,
+                data: dataAll,
+//                data: [
+//                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
+//                    {x: (new Date("2017-10-12")).getTime(), x2: (new Date("2017-10-15")).getTime(), y: 0}
+//                    ],
+//                dataLabels: {
+//                    enabled: true
+//                }
+            },
+            ]
+        });
+
+
+        var chartTmp = new Highcharts.Chart('containerTmp', {
+            chart: {
+                type: 'xrange',
+//                width: 2000,
+                zoomType: 'x'
+            },
+            title: {
+//                text: '泵站整体运行图',
+                text: '',
+                x: -20
+            },
+            subtitle: {
+//                text: document.ontouchstart === undefined ?
+//                        '鼠标拖动可以进行缩放' : '手势操作进行缩放',
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                type: 'datetime',
+                lineWidth: 2,
+//                minRange: 60,
+                labels: {
+                    style: {
+                        color: 'black',
+                        fontSize: '14px',
+                    }
+                },
+                dateTimeLabelFormats: {
+                    day: '%Y/%m/%d',
+                    time: '%h:%m:%s'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                lineWidth: 2,
+                crosshair: true,
+//                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
+                categories: categoriesTmp,
                 reversed: true
             },
             tooltip: {
