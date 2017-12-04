@@ -9,7 +9,7 @@
 @endsection
 
 @section('location')
-    <div class="location">
+    <div class="location" style="position: fixed;">
         <div class="container">
             <h2>
                 <a href="{{ url('/') }}">首页</a>
@@ -24,7 +24,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row" style="position: fixed; padding-top: 40px">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">--}}
@@ -53,68 +53,7 @@
                                   style="margin-bottom: 10px">
                                 {{ csrf_field() }}
 
-                                {{--<div class="row">--}}
-                                {{--<div class="col-md-3">--}}
-                                {{--<div class="form-group">--}}
-                                {{--<label for="station" class="col-md-4 control-label">泵站类型:</label>--}}
-
-                                {{--<div class="col-md-8">--}}
-                                {{--<select class="form-control" id="select" name="type">--}}
-                                {{--<option value="全部" selected="selected">全部</option>--}}
-                                {{--<option value="雨水" {{$selectType == '雨水' ? 'selected=selected' :''}}>--}}
-                                {{--雨水--}}
-                                {{--</option>--}}
-                                {{--<option value="污水" {{$selectType == '污水' ? 'selected=selected' :''}}>--}}
-                                {{--污水--}}
-                                {{--</option>--}}
-                                {{--</select>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-md-6">--}}
-                                {{--<div class="form-group">--}}
-                                {{--<label for="repair_at" class="col-md-3 control-label">时间范围:</label>--}}
-                                {{--<div class="col-md-4">--}}
-                                {{--<input type="text" class="form-control pick-event-date" id="start-time"--}}
-                                {{--name="timeStart"--}}
-                                {{--value="{{ $startTime }}" placeholder="起始时间"--}}
-                                {{--data-data="yyyy-mm-dd">--}}
-                                {{--</div>--}}
-                                {{--<label for="time" class="col-md-1 control-label">—</label>--}}
-                                {{--<div class="col-md-4">--}}
-                                {{--<input type="text" class="form-control pick-event-date" id="end-time"--}}
-                                {{--name="timeEnd"--}}
-                                {{--value="{{ $endTime }}" placeholder="截止时间" data-data="yyyy-mm-dd">--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-md-3">--}}
-                                {{--<div class="form-group">--}}
-                                {{--<div class="col-md-5 col-md-offset-0">--}}
-                                {{--<button type="submit" class="btn btn-primary btn-custom">--}}
-                                {{--<span class="glyphicon glyphicon-search"></span>--}}
-                                {{--查询--}}
-                                {{--</button>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-
                                 <div class="row">
-                                    {{--<div class="col-md-3">--}}
-                                    {{--<div class="form-group">--}}
-                                    {{--<label for="station" class="col-md-4 control-label">选择泵站:</label>--}}
-
-                                    {{--<div class="col-md-8">--}}
-                                    {{--<select class="form-control" id="select" name="station_id">--}}
-                                    {{--<option value="" selected="selected" style="display: none">选择泵站</option>--}}
-                                    {{--@foreach ($stations as $station)--}}
-                                    {{--<option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>--}}
-                                    {{--@endforeach--}}
-                                    {{--</select>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="station" class="col-md-4 control-label">泵站类型:</label>
@@ -162,25 +101,42 @@
                                 <div style="text-align: center;font-size: 14px;color: gray;margin-top: 5px;">
                                     鼠标拖动可以进行横向缩放
                                 </div>
-                                <div style="overflow: auto">
-                                    @if($selectType == '雨水')
-                                        <div class="panel-body custom-panel-body" id="container"
-                                             style="min-width:1240px;height:5100px;margin-left: -10px;">
-                                        </div>
-                                    @elseif($selectType == '污水')
-                                        <div class="panel-body custom-panel-body" id="container"
-                                             style="min-width:1240px;height:2000px;margin-left: -10px;">
-                                        </div>
-                                    @else
-                                        <div class="panel-body custom-panel-body " id="container"
-                                             style="min-width:1240px;height:7000px;margin-left: -10px;">
-                                        </div>
-                                    @endif
-                                </div>
+                                {{--<div style="overflow: auto">--}}
+                                    {{--@if($selectType == '雨水')--}}
+                                        {{--<div class="panel-body custom-panel-body" id="container"--}}
+                                             {{--style="min-width:1240px;height:5100px;margin-left: -10px;">--}}
+                                        {{--</div>--}}
+                                    {{--@elseif($selectType == '污水')--}}
+                                        {{--<div class="panel-body custom-panel-body" id="container"--}}
+                                             {{--style="min-width:1240px;height:2000px;margin-left: -10px;">--}}
+                                        {{--</div>--}}
+                                    {{--@else--}}
+                                        {{--<div class="panel-body custom-panel-body " id="container"--}}
+                                             {{--style="min-width:1240px;height:7000px;margin-left: -10px;">--}}
+                                        {{--</div>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div style="overflow: auto">
+                @if($selectType == '雨水')
+                    <div class="panel-body custom-panel-body" id="container"
+                         style="min-width:1240px;height:5100px;margin-left: -10px;">
+                    </div>
+                @elseif($selectType == '污水')
+                    <div class="panel-body custom-panel-body" id="container"
+                         style="min-width:1240px;height:2000px;margin-left: -10px;">
+                    </div>
+                @else
+                    <div class="panel-body custom-panel-body " id="container"
+                         style="min-width:1240px;height:7000px;margin-left: -10px;">
+                    </div>
+                @endif
             </div>
         </div>
     </div>
