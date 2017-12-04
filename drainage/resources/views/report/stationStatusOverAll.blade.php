@@ -529,7 +529,7 @@
             series: [{
                 name: '泵站',
 //                borderColor: 'gray',
-                pointWidth: 8,
+                pointWidth: 6,
                 data: dataAll,
 //                data: [
 //                        {x: (new Date("2017-10-10")).getTime(), x2: (new Date("2017-10-11")).getTime(), y: 0},
