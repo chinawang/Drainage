@@ -101,7 +101,8 @@
                                 <div style="text-align: center;font-size: 14px;color: gray;margin-top: 5px;">
                                     鼠标拖动可以进行横向缩放
                                 </div>
-                                <div style="opacity: 100">
+                                <iframe height="400px" >
+                                <div style="opacity: 0">
                                     @if($selectType == '雨水')
                                         <div class="panel-body custom-panel-body" id="container1"
                                              style="min-width:1240px;height:5100px;margin-left: -10px;">
@@ -116,33 +117,34 @@
                                         </div>
                                     @endif
                                 </div>
+                                </iframe>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <iframe height="400px">
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-default custom-panel" style="overflow: auto">
-                    @if($selectType == '雨水')
-                        <div class="panel-body custom-panel-body" id="container"
-                             style="min-width:1240px;height:5100px;margin-left: -10px;">
-                        </div>
-                    @elseif($selectType == '污水')
-                        <div class="panel-body custom-panel-body" id="container"
-                             style="min-width:1240px;height:2000px;margin-left: -10px;">
-                        </div>
-                    @else
-                        <div class="panel-body custom-panel-body " id="container"
-                             style="min-width:1240px;height:7000px;margin-left: -10px;">
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-        </iframe>
+        {{--<iframe height="400px">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-md-12 col-md-offset-0">--}}
+                {{--<div class="panel panel-default custom-panel" style="overflow: auto">--}}
+                    {{--@if($selectType == '雨水')--}}
+                        {{--<div class="panel-body custom-panel-body" id="container"--}}
+                             {{--style="min-width:1240px;height:5100px;margin-left: -10px;">--}}
+                        {{--</div>--}}
+                    {{--@elseif($selectType == '污水')--}}
+                        {{--<div class="panel-body custom-panel-body" id="container"--}}
+                             {{--style="min-width:1240px;height:2000px;margin-left: -10px;">--}}
+                        {{--</div>--}}
+                    {{--@else--}}
+                        {{--<div class="panel-body custom-panel-body " id="container"--}}
+                             {{--style="min-width:1240px;height:7000px;margin-left: -10px;">--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--</iframe>--}}
     </div>
 @endsection
 
