@@ -49,7 +49,7 @@
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     <div class="panel-body custom-panel-body">
-                        <div id="map-container" style="width: 100%; height: 600px;"></div>
+                        <div id="map-container" style="width: 100%; height: 900px;"></div>
                     </div>
                 </div>
             </div>

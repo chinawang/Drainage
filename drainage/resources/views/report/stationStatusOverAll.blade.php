@@ -9,7 +9,7 @@
 @endsection
 
 @section('location')
-    <div class="location" style="position: fixed;">
+    <div class="location" style="">
         <div class="container">
             <h2>
                 <a href="{{ url('/') }}">首页</a>
@@ -24,7 +24,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row" style="position: fixed; padding-top: 40px">
+        <div class="row" style="padding-top: 40px">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">--}}

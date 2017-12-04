@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
-                <div class="panel panel-default custom-panel" style="background: {{ $backgroundStyle }}" id="content-weather">
+                <div class="panel panel-default custom-panel" style="background: {{ $backgroundStyle }};height: 900px" id="content-weather">
                     {{--<div class="panel-heading">--}}
                         {{--天气--}}
                     {{--</div>--}}
