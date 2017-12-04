@@ -103,11 +103,11 @@
                                 </div>
 
                                 <div id="containerTmp" class="panel-body custom-panel-body"
-                                     style="min-width:1240px;height:35px;margin-left: -10px;">
+                                     style="min-width:1240px;height:60px;margin-left: -10px;">
 
                                 </div>
 
-                                <div style="height: 400px;overflow: auto">
+                                <div style="height: 300px;overflow: auto">
                                     @if($selectType == '雨水')
                                         <div class="panel-body custom-panel-body" id="container"
                                              style="min-width:1240px;height:5100px;margin-left: -10px;">
@@ -577,7 +577,7 @@
 //                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
                 categories: categories,
                 reversed: true,
-                visible: false
+//                visible: false
             },
             tooltip: {
 //                type: 'datetime',
