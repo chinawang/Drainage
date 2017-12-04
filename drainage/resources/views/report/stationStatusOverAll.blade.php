@@ -122,6 +122,7 @@
                 </div>
             </div>
         </div>
+        <iframe height="100px">
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel" style="overflow: auto">
@@ -141,6 +142,7 @@
                 </div>
             </div>
         </div>
+        </iframe>
     </div>
 @endsection
 
