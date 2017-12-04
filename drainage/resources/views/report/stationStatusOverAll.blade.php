@@ -105,15 +105,15 @@
                                 <div>
                                     @if($selectType == '雨水')
                                         <div class="panel-body custom-panel-body" id="containerTmp"
-                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                             style="min-width:1240px;height:65px;margin-left: -10px;padding-right: 20px;padding-left: 160px;">
                                         </div>
                                     @elseif($selectType == '污水')
                                         <div class="panel-body custom-panel-body" id="containerTmp"
-                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                             style="min-width:1240px;height:65px;margin-left: -10px;padding-right: 20px;padding-left: 160px;">
                                         </div>
                                     @else
                                         <div class="panel-body custom-panel-body " id="containerTmp"
-                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                             style="min-width:1240px;height:65px;margin-left: -10px;padding-right: 20px;padding-left: 160px;">
                                         </div>
                                     @endif
                                 </div>
