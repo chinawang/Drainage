@@ -576,7 +576,7 @@
                 labels: {
                     style: {
                         color: 'black',
-                        fontSize: '14px',
+                        fontSize: '16px',
                     }
                 },
                 dateTimeLabelFormats: {
