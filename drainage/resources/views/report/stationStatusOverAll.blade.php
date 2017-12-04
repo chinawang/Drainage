@@ -102,8 +102,8 @@
                                     鼠标拖动可以进行横向缩放
                                 </div>
 
-                                <div id="containerTmp"
-                                     style="min-width:1240px;height:10px;margin-left: -10px;">
+                                <div id="containerTmp" class="panel-body custom-panel-body"
+                                     style="min-width:1240px;height:35px;margin-left: -10px;">
 
                                 </div>
 
