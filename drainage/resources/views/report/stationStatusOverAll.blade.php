@@ -572,7 +572,7 @@
                 type: 'datetime',
                 lineWidth: 2,
 //                minRange: 60,
-                offset: 60,
+                offset: 10,
                 labels: {
                     style: {
                         color: 'black',
