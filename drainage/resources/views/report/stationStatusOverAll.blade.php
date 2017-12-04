@@ -572,7 +572,7 @@
                 type: 'datetime',
                 lineWidth: 2,
 //                minRange: 60,
-                offset: 30,
+                offset: 0,
                 labels: {
                     style: {
                         color: 'black',
@@ -594,7 +594,7 @@
 //                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
                 categories: categories,
                 reversed: true,
-//                visible: false
+                visible: false
             },
             tooltip: {
 //                type: 'datetime',
