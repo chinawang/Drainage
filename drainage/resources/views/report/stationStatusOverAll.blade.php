@@ -105,15 +105,15 @@
                                 <div>
                                     @if($selectType == '雨水')
                                         <div class="panel-body custom-panel-body" id="containerTmp"
-                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                             style="min-width:1240px;height:20px;margin-left: -10px;">
                                         </div>
                                     @elseif($selectType == '污水')
                                         <div class="panel-body custom-panel-body" id="containerTmp"
-                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                             style="min-width:1240px;height:20px;margin-left: -10px;">
                                         </div>
                                     @else
                                         <div class="panel-body custom-panel-body " id="containerTmp"
-                                             style="min-width:1240px;height:65px;margin-left: -10px;">
+                                             style="min-width:1240px;height:20px;margin-left: -10px;">
                                         </div>
                                     @endif
                                 </div>
@@ -554,6 +554,9 @@
 //                width: 2000,
                 zoomType: 'x'
             },
+            credits:{
+                enabled: false // 禁用版权信息
+            },
             title: {
 //                text: '泵站整体运行图',
                 text: '',
@@ -569,6 +572,7 @@
                 type: 'datetime',
                 lineWidth: 2,
 //                minRange: 60,
+                offset: 60,
                 labels: {
                     style: {
                         color: 'black',
@@ -590,7 +594,7 @@
 //                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
                 categories: categories,
                 reversed: true,
-                visible: false
+//                visible: false
             },
             tooltip: {
 //                type: 'datetime',
