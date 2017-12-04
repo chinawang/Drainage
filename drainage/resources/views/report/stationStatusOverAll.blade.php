@@ -156,22 +156,26 @@
                             </form>
 
                             <div class="panel panel-default custom-panel">
-                                <div style="text-align: center;font-size: 18px;font-weight: bold;margin-top: 20px;">泵站整体运行图</div>
-                                <div style="text-align: center;font-size: 14px;color: gray;margin-top: 5px;">鼠标拖动可以进行横向缩放</div>
+                                <div style="text-align: center;font-size: 18px;font-weight: bold;margin-top: 20px;">
+                                    泵站整体运行图
+                                </div>
+                                <div style="text-align: center;font-size: 14px;color: gray;margin-top: 5px;">
+                                    鼠标拖动可以进行横向缩放
+                                </div>
                                 <div style="overflow: auto">
-                                @if($selectType == '雨水')
-                                    <div class="panel-body custom-panel-body" id="container"
-                                         style="min-width:1240px;height:5100px;margin-left: -10px;">
-                                    </div>
-                                @elseif($selectType == '污水')
-                                    <div class="panel-body custom-panel-body" id="container"
-                                         style="min-width:1240px;height:2000px;margin-left: -10px;">
-                                    </div>
-                                @else
-                                    <div class="panel-body custom-panel-body " id="container"
-                                         style="min-width:1240px;height:7000px;margin-left: -10px;">
-                                    </div>
-                                @endif
+                                    @if($selectType == '雨水')
+                                        <div class="panel-body custom-panel-body" id="container"
+                                             style="min-width:1240px;height:5100px;margin-left: -10px;">
+                                        </div>
+                                    @elseif($selectType == '污水')
+                                        <div class="panel-body custom-panel-body" id="container"
+                                             style="min-width:1240px;height:2000px;margin-left: -10px;">
+                                        </div>
+                                    @else
+                                        <div class="panel-body custom-panel-body " id="container"
+                                             style="min-width:1240px;height:7000px;margin-left: -10px;">
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -273,9 +277,9 @@
         var pump4List = ['7', '10', '14', '15', '19', '21', '22', '29', '36'];
         var pump5List = ['33'];
 
-        function in_array(search,array){
-            for(var index_tmp in array){
-                if(array[index_tmp]==search){
+        function in_array(search, array) {
+            for (var index_tmp in array) {
+                if (array[index_tmp] == search) {
                     return true;
                 }
             }
@@ -297,10 +301,9 @@
                 dataAll.push(dataTmp);
             });
 
-            yNumber ++;
+            yNumber++;
 
-            if(in_array(m["station_number"],pump2List))
-            {
+            if (in_array(m["station_number"], pump2List)) {
                 var categorieTmp2 = m["name"] + " 2号泵";
                 categories.push(categorieTmp2);
 
@@ -313,10 +316,9 @@
                     dataAll.push(dataTmp);
                 });
 
-                yNumber ++;
+                yNumber++;
             }
-            if(in_array(m["station_number"],pump3List))
-            {
+            if (in_array(m["station_number"], pump3List)) {
                 var categorieTmp2 = m["name"] + " 2号泵";
                 categories.push(categorieTmp2);
 
@@ -331,7 +333,7 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
 
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
@@ -341,10 +343,9 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
             }
-            if(in_array(m["station_number"],pump4List))
-            {
+            if (in_array(m["station_number"], pump4List)) {
                 var categorieTmp2 = m["name"] + " 2号泵";
                 categories.push(categorieTmp2);
 
@@ -362,7 +363,7 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
 
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
@@ -372,7 +373,7 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
 
                 $.each(m["stationStatusList4"], function (i, n) {
                     var dataTmp = {
@@ -382,10 +383,9 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
             }
-            if(in_array(m["station_number"],pump5List))
-            {
+            if (in_array(m["station_number"], pump5List)) {
                 var categorieTmp2 = m["name"] + " 2号泵";
                 categories.push(categorieTmp2);
 
@@ -406,7 +406,7 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
 
                 $.each(m["stationStatusList3"], function (i, n) {
                     var dataTmp = {
@@ -416,7 +416,7 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
 
                 $.each(m["stationStatusList4"], function (i, n) {
                     var dataTmp = {
@@ -426,7 +426,7 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
 
                 $.each(m["stationStatusList5"], function (i, n) {
                     var dataTmp = {
@@ -436,7 +436,7 @@
                     };
                     dataAll.push(dataTmp);
                 });
-                yNumber ++;
+                yNumber++;
             }
         });
 
@@ -491,23 +491,39 @@
             subtitle: {
 //                text: document.ontouchstart === undefined ?
 //                        '鼠标拖动可以进行缩放' : '手势操作进行缩放',
-                text:'',
+                text: '',
                 x: -20
             },
-            xAxis: {
+            xAxis: [{
                 type: 'datetime',
-                crosshair: true,
-                minRange: 60,
+//                minRange: 60,
                 labels: {
                     style: {
                         color: 'black',
-                        fontSize:'14px',
-                    }},
+                        fontSize: '14px',
+                    }
+                },
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
                 }
             },
+                {
+                    type: 'datetime',
+                    linkedTo: 0,
+                    opposite: true,
+                    labels: {
+                        style: {
+                            color: 'black',
+                            fontSize: '14px',
+                        }
+                    },
+                    dateTimeLabelFormats: {
+                        day: '%Y/%m/%d',
+                        time: '%h:%m:%s'
+                    }
+                }
+            ],
             yAxis: {
                 title: {
                     text: ''
