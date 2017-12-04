@@ -123,7 +123,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default custom-panel" style="overflow: auto">
+            <div class="col-md-12 col-md-offset-0">
+                <div class="panel panel-default custom-panel" style="overflow: auto">
                     @if($selectType == '雨水')
                         <div class="panel-body custom-panel-body" id="container"
                              style="min-width:1240px;height:5100px;margin-left: -10px;">
@@ -137,6 +138,7 @@
                              style="min-width:1240px;height:7000px;margin-left: -10px;">
                         </div>
                     @endif
+                </div>
             </div>
         </div>
     </div>
