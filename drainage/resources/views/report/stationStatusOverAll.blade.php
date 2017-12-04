@@ -484,7 +484,8 @@
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
-                }
+                },
+                visible: false
             },
 //                {
 //                    type: 'datetime',
@@ -578,7 +579,7 @@
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
                 },
-                visible: false
+
             },
             yAxis: {
                 title: {
