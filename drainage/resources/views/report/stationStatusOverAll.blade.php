@@ -101,8 +101,8 @@
                                 <div style="text-align: center;font-size: 14px;color: gray;margin-top: 5px;">
                                     鼠标拖动可以进行横向缩放
                                 </div>
-                                <iframe height="400px" >
-                                <div style="opacity: 0">
+
+                                <div style="height: 400px;overflow: auto">
                                     @if($selectType == '雨水')
                                         <div class="panel-body custom-panel-body" id="container1"
                                              style="min-width:1240px;height:5100px;margin-left: -10px;">
@@ -117,7 +117,7 @@
                                         </div>
                                     @endif
                                 </div>
-                                </iframe>
+
                             </div>
                         </div>
                     </div>
