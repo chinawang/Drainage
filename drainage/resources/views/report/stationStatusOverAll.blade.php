@@ -502,7 +502,7 @@
                     style: {
                         color: 'black',
                         fontSize:'14px',
-                    },
+                    }},
                 dateTimeLabelFormats: {
                     day: '%Y/%m/%d',
                     time: '%h:%m:%s'
