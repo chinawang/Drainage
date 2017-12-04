@@ -123,20 +123,22 @@
             </div>
         </div>
         <div class="row">
-            <div style="overflow: auto">
-                @if($selectType == '雨水')
-                    <div class="panel-body custom-panel-body" id="container"
-                         style="min-width:1240px;height:5100px;margin-left: -10px;">
-                    </div>
-                @elseif($selectType == '污水')
-                    <div class="panel-body custom-panel-body" id="container"
-                         style="min-width:1240px;height:2000px;margin-left: -10px;">
-                    </div>
-                @else
-                    <div class="panel-body custom-panel-body " id="container"
-                         style="min-width:1240px;height:7000px;margin-left: -10px;">
-                    </div>
-                @endif
+            <div class="panel panel-default custom-panel" style="overflow: auto">
+                <div >
+                    @if($selectType == '雨水')
+                        <div class="panel-body custom-panel-body" id="container"
+                             style="min-width:1240px;height:5100px;margin-left: -10px;">
+                        </div>
+                    @elseif($selectType == '污水')
+                        <div class="panel-body custom-panel-body" id="container"
+                             style="min-width:1240px;height:2000px;margin-left: -10px;">
+                        </div>
+                    @else
+                        <div class="panel-body custom-panel-body " id="container"
+                             style="min-width:1240px;height:7000px;margin-left: -10px;">
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
