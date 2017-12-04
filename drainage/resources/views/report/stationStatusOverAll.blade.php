@@ -103,7 +103,7 @@
                                 </div>
 
                                 <div id="containerTmp" class="panel-body custom-panel-body"
-                                     style="min-width:1240px;height:60px;margin-left: -10px;">
+                                     style="min-width:1240px;height:65px;margin-left: -10px;">
 
                                 </div>
 
@@ -577,7 +577,7 @@
 //                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
                 categories: categories,
                 reversed: true,
-//                visible: false
+                visible: false
             },
             tooltip: {
 //                type: 'datetime',
