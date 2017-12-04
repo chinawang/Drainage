@@ -496,6 +496,7 @@
             },
             xAxis: [{
                 type: 'datetime',
+                lineWidth: 2,
 //                minRange: 60,
                 labels: {
                     style: {
@@ -510,6 +511,7 @@
             },
                 {
                     type: 'datetime',
+                    lineWidth: 2,
                     linkedTo: 0,
                     opposite: true,
                     labels: {
@@ -528,6 +530,7 @@
                 title: {
                     text: ''
                 },
+                lineWidth: 2,
                 crosshair: true,
 //                categories: ['1号泵', '2号泵', '3号泵', '4号泵', '5号泵'],
                 categories: categories,
