@@ -24,7 +24,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row" style="padding-top: 40px">
+        <div class="row" style="">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default custom-panel">
                     {{--<div class="panel-heading">--}}
@@ -118,7 +118,7 @@
                                     @endif
                                 </div>
 
-                                <div style="height: 300px;overflow: auto">
+                                <div style="height: 600px;overflow: auto">
                                     @if($selectType == '雨水')
                                         <div class="panel-body custom-panel-body" id="container"
                                              style="min-width:1240px;height:5100px;margin-left: -10px;">
