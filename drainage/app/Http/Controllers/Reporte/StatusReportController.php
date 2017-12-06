@@ -766,7 +766,7 @@ class StatusReportController extends Controller
         $pump = $this->pumpInfo($stationID);    // 泵组抽水量信息
         $stationNum = $stationTemp['station_number'];    // 泵站编号
 
-        $todayTime = date("Y-m-d h:i:s");
+        $todayTime = date("Y-m-d H:i:s");
 
         $statusYXList = $this->getStatusYXList($stationNum, $startTime, $endTime);
 
