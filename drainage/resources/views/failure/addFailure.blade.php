@@ -56,7 +56,7 @@
                                 <label for="equipment" class="col-md-4 control-label">故障设备</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="equipment_id" >
+                                    <select class="form-control" id="select" name="equipment_id" required>
                                         <option value="" selected="selected" style="display: none">选择设备</option>
                                         @foreach ($equipments as $equipment)
                                             <option value="{{ $equipment['id'] }}">{{ $equipment['name'] }}</option>
@@ -118,7 +118,7 @@
                                 <label for="reporter" class="col-md-4 control-label">报修人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="reporter_id">
+                                    <select class="form-control" id="select" name="reporter_id" required>
                                         <option value="" selected="selected" style="display: none">选择报修人</option>
                                         @foreach ($employees as $employee)
                                             <option value="{{ $employee['id'] }}">{{ $employee['name'] }}</option>

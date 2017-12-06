@@ -39,7 +39,7 @@
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="station_id">
+                                    <select class="form-control" id="select" name="station_id" required>
                                         @foreach ($stations as $station)
                                             <option value="{{ $station['id'] }}" {{$maintenance['station_id'] == $station['id'] ? 'selected="selected"' : ''}}>{{ $station['name'] }}</option>
                                         @endforeach
@@ -56,7 +56,7 @@
                                 <label for="equipment" class="col-md-4 control-label">故障设备</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="equipment_id">
+                                    <select class="form-control" id="select" name="equipment_id" required>
                                         @foreach ($equipments as $equipment)
                                             <option value="{{ $equipment['id'] }}" {{$maintenance['equipment_id'] == $equipment['id'] ? 'selected="selected"' : ''}}>{{ $equipment['name'] }}</option>
                                         @endforeach
@@ -115,7 +115,7 @@
                                 <label for="repairer" class="col-md-4 control-label">维修人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="repairer_id">
+                                    <select class="form-control" id="select" name="repairer_id" required>
                                         @foreach ($employees as $employee)
                                             <option value="{{ $employee['id'] }}" {{$maintenance['repairer_id'] == $employee['id'] ? 'selected="selected"' : ''}}>{{ $employee['name'] }}</option>
                                         @endforeach

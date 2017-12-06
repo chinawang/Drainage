@@ -38,7 +38,7 @@
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="station_id">
+                                    <select class="form-control" id="select" name="station_id" required>
                                         <option value="" selected="selected" style="display: none">选择泵站</option>
                                         @foreach ($stations as $station)
                                             <option value="{{ $station['id'] }}">{{ $station['name'] }}</option>
@@ -199,7 +199,7 @@
                                 <label for="leader" class="col-md-4 control-label">负责人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="leader_id">
+                                    <select class="form-control" id="select" name="leader_id" required>
                                         <option value="" selected="selected" style="display: none">选择负责人</option>
                                         @foreach ($employees as $employee)
                                             <option value="{{ $employee['id'] }}">{{ $employee['name'] }}</option>
@@ -217,7 +217,7 @@
                                 <label for="custodian" class="col-md-4 control-label">设备管理员</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="custodian_id">
+                                    <select class="form-control" id="select" name="custodian_id" required>
                                         <option value="" selected="selected" style="display: none">选择管理员</option>
                                         @foreach ($employees as $employee)
                                             <option value="{{ $employee['id'] }}">{{ $employee['name'] }}</option>

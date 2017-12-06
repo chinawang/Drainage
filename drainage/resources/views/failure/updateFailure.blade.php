@@ -38,7 +38,7 @@
                                 <label for="station" class="col-md-4 control-label">所属泵站</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="station_id">
+                                    <select class="form-control" id="select" name="station_id" required>
                                         @foreach ($stations as $station)
                                             <option value="{{ $station['id'] }}" {{$failure['station_id'] == $station['id'] ? 'selected="selected"' : ''}}>{{ $station['name'] }}</option>
                                         @endforeach
@@ -55,7 +55,7 @@
                                 <label for="equipment" class="col-md-4 control-label">故障设备</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="equipment_id">
+                                    <select class="form-control" id="select" name="equipment_id" required>
                                         @foreach ($equipments as $equipment)
                                             <option value="{{ $equipment['id'] }}" {{$failure['equipment_id'] == $equipment['id'] ? 'selected="selected"' : ''}}>{{ $equipment['name'] }}</option>
                                         @endforeach
@@ -116,7 +116,7 @@
                                 <label for="reporter" class="col-md-4 control-label">报修人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="reporter_id">
+                                    <select class="form-control" id="select" name="reporter_id" required>
                                         @foreach ($employees as $employee)
                                             <option value="{{ $employee['id'] }}" {{$failure['reporter_id'] == $employee['id'] ? 'selected="selected"' : ''}}>{{ $employee['name'] }}</option>
                                         @endforeach
