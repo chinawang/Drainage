@@ -190,3 +190,39 @@
         </div>
     </div>
 @endsection
+
+@section('javascript')
+    <script>
+        $(document).ready(function () {
+
+            // 日期
+            var datePickerConfig = {
+                format: 'yyyy-mm-dd',
+                language: "zh-CN",
+                autoclose: true,
+                todayHighlight: true,
+                minView: 'month',
+                maxView: "year",
+                showMeridian: true,
+                setStartDate: '-1M'
+            };
+            // 选择查询日期
+            $('.pick-event-date').datetimepicker(datePickerConfig);
+
+
+            var timePickerConfig = {
+                language: "zh-CN",
+                autoclose: true,
+                todayHighlight: true,
+                minuteStep: 30,
+                maxView: "year",
+                showMeridian: true
+
+            };
+            // 选择查询时间
+            $('.pick-event-time').datetimepicker(timePickerConfig);
+
+
+        });
+    </script>
+@endsection

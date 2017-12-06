@@ -180,8 +180,7 @@
 
 <script type="text/javascript">
 
-    <!--
-    日期时间选择 -->
+//    日期时间选择
     $("#datetimepicker").datetimepicker({
         format: "yyyy-mm-dd hh:ii",
         autoclose: true,
