@@ -1046,6 +1046,15 @@ class StatusReportController extends Controller
             $stationStatusList1[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList1[$indexEnd]['current'] = 57;
             $stationStatusList1[$indexEnd]['flux'] = $endTimeGap * $pump['flux1'];
+
+            if($indexEnd == 0)
+            {
+                $stationStatusList1[$indexEnd]['index'] = 1;
+            }
+            else
+            {
+                $stationStatusList1[$indexEnd]['index'] = $stationStatusList1[$indexEnd-1]['index'] + 1;
+            }
         }
 
         if(count($stationStatusList2) > 0 && !isset(end($stationStatusList2)['timeEnd']))
@@ -1065,6 +1074,15 @@ class StatusReportController extends Controller
             $stationStatusList2[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList2[$indexEnd]['current'] = 57;
             $stationStatusList2[$indexEnd]['flux'] = $endTimeGap * $pump['flux2'];
+
+            if($indexEnd == 0)
+            {
+                $stationStatusList2[$indexEnd]['index'] = 1;
+            }
+            else
+            {
+                $stationStatusList2[$indexEnd]['index'] = $stationStatusList2[$indexEnd-1]['index'] + 1;
+            }
         }
 
         if(count($stationStatusList3) > 0 && !isset(end($stationStatusList3)['timeEnd']))
@@ -1084,6 +1102,15 @@ class StatusReportController extends Controller
             $stationStatusList3[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList3[$indexEnd]['current'] = 57;
             $stationStatusList3[$indexEnd]['flux'] = $endTimeGap * $pump['flux3'];
+
+            if($indexEnd == 0)
+            {
+                $stationStatusList3[$indexEnd]['index'] = 1;
+            }
+            else
+            {
+                $stationStatusList3[$indexEnd]['index'] = $stationStatusList3[$indexEnd-1]['index'] + 1;
+            }
         }
 
         if(count($stationStatusList4) > 0 && !isset(end($stationStatusList4)['timeEnd']))
@@ -1103,6 +1130,15 @@ class StatusReportController extends Controller
             $stationStatusList4[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList4[$indexEnd]['current'] = 57;
             $stationStatusList4[$indexEnd]['flux'] = $endTimeGap * $pump['flux4'];
+
+            if($indexEnd == 0)
+            {
+                $stationStatusList4[$indexEnd]['index'] = 1;
+            }
+            else
+            {
+                $stationStatusList4[$indexEnd]['index'] = $stationStatusList4[$indexEnd-1]['index'] + 1;
+            }
         }
 
         if(count($stationStatusList5) > 0 && !isset(end($stationStatusList5)['timeEnd']))
@@ -1122,6 +1158,15 @@ class StatusReportController extends Controller
             $stationStatusList5[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList5[$indexEnd]['current'] = 57;
             $stationStatusList5[$indexEnd]['flux'] = $endTimeGap * $pump['flux5'];
+
+            if($indexEnd == 0)
+            {
+                $stationStatusList5[$indexEnd]['index'] = 1;
+            }
+            else
+            {
+                $stationStatusList5[$indexEnd]['index'] = $stationStatusList5[$indexEnd-1]['index'] + 1;
+            }
         }
 
         //当日泵站运行合计(分钟)
