@@ -766,6 +766,8 @@ class StatusReportController extends Controller
         $pump = $this->pumpInfo($stationID);    // 泵组抽水量信息
         $stationNum = $stationTemp['station_number'];    // 泵站编号
 
+        $todayTime = date("Y-m-d h:i:s");
+
         $statusYXList = $this->getStatusYXList($stationNum, $startTime, $endTime);
 
         $has2Pump = false;
@@ -1026,6 +1028,102 @@ class StatusReportController extends Controller
             }
         }
 
+        //当泵组正在运行中或者跨天运行时的逻辑
+        if(count($stationStatusList1) > 0 && !isset(end($stationStatusList1)['timeEnd']))
+        {
+            $indexEnd = count($stationStatusList1) -1;
+            if($this->isSameDay($endTime,$todayTime))
+            {
+                $stationStatusList1[$indexEnd]['timeEnd'] = $todayTime;
+            }
+            else
+            {
+                $stationStatusList1[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+            }
+
+            $endTimeGap = abs(strtotime($stationStatusList1[$indexEnd]['timeEnd']) - strtotime($stationStatusList1[$indexEnd]['timeStart'])) / 60;
+            $endTimeGap = round($endTimeGap);
+            $stationStatusList1[$indexEnd]['timeGap'] = $endTimeGap;
+            $stationStatusList1[$indexEnd]['current'] = 57;
+            $stationStatusList1[$indexEnd]['flux'] = $endTimeGap * $pump['flux1'];
+        }
+
+        if(count($stationStatusList2) > 0 && !isset(end($stationStatusList2)['timeEnd']))
+        {
+            $indexEnd = count($stationStatusList2) -1;
+            if($this->isSameDay($endTime,$todayTime))
+            {
+                $stationStatusList2[$indexEnd]['timeEnd'] = $todayTime;
+            }
+            else
+            {
+                $stationStatusList2[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+            }
+
+            $endTimeGap = abs(strtotime($stationStatusList2[$indexEnd]['timeEnd']) - strtotime($stationStatusList2[$indexEnd]['timeStart'])) / 60;
+            $endTimeGap = round($endTimeGap);
+            $stationStatusList2[$indexEnd]['timeGap'] = $endTimeGap;
+            $stationStatusList2[$indexEnd]['current'] = 57;
+            $stationStatusList2[$indexEnd]['flux'] = $endTimeGap * $pump['flux2'];
+        }
+
+        if(count($stationStatusList3) > 0 && !isset(end($stationStatusList3)['timeEnd']))
+        {
+            $indexEnd = count($stationStatusList3) -1;
+            if($this->isSameDay($endTime,$todayTime))
+            {
+                $stationStatusList3[$indexEnd]['timeEnd'] = $todayTime;
+            }
+            else
+            {
+                $stationStatusList3[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+            }
+
+            $endTimeGap = abs(strtotime($stationStatusList3[$indexEnd]['timeEnd']) - strtotime($stationStatusList3[$indexEnd]['timeStart'])) / 60;
+            $endTimeGap = round($endTimeGap);
+            $stationStatusList3[$indexEnd]['timeGap'] = $endTimeGap;
+            $stationStatusList3[$indexEnd]['current'] = 57;
+            $stationStatusList3[$indexEnd]['flux'] = $endTimeGap * $pump['flux3'];
+        }
+
+        if(count($stationStatusList4) > 0 && !isset(end($stationStatusList4)['timeEnd']))
+        {
+            $indexEnd = count($stationStatusList4) -1;
+            if($this->isSameDay($endTime,$todayTime))
+            {
+                $stationStatusList4[$indexEnd]['timeEnd'] = $todayTime;
+            }
+            else
+            {
+                $stationStatusList4[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+            }
+
+            $endTimeGap = abs(strtotime($stationStatusList4[$indexEnd]['timeEnd']) - strtotime($stationStatusList4[$indexEnd]['timeStart'])) / 60;
+            $endTimeGap = round($endTimeGap);
+            $stationStatusList4[$indexEnd]['timeGap'] = $endTimeGap;
+            $stationStatusList4[$indexEnd]['current'] = 57;
+            $stationStatusList4[$indexEnd]['flux'] = $endTimeGap * $pump['flux4'];
+        }
+
+        if(count($stationStatusList5) > 0 && !isset(end($stationStatusList5)['timeEnd']))
+        {
+            $indexEnd = count($stationStatusList5) -1;
+            if($this->isSameDay($endTime,$todayTime))
+            {
+                $stationStatusList5[$indexEnd]['timeEnd'] = $todayTime;
+            }
+            else
+            {
+                $stationStatusList5[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+            }
+
+            $endTimeGap = abs(strtotime($stationStatusList5[$indexEnd]['timeEnd']) - strtotime($stationStatusList5[$indexEnd]['timeStart'])) / 60;
+            $endTimeGap = round($endTimeGap);
+            $stationStatusList5[$indexEnd]['timeGap'] = $endTimeGap;
+            $stationStatusList5[$indexEnd]['current'] = 57;
+            $stationStatusList5[$indexEnd]['flux'] = $endTimeGap * $pump['flux5'];
+        }
+
         //当日泵站运行合计(分钟)
         $totalTimeDay = $totalTimeDay1 + $totalTimeDay2 + $totalTimeDay3 + $totalTimeDay4 + $totalTimeDay5;
 
@@ -1042,6 +1140,18 @@ class StatusReportController extends Controller
         ];
 
         return $param;
+    }
+
+    public function isSameDay($firstTime,$secondTime)
+    {
+        if(date('m', strtotime($firstTime)) == date('m', strtotime($secondTime)) && date('d', strtotime($firstTime)) == date('d', strtotime($secondTime)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
