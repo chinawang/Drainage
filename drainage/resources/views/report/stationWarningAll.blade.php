@@ -369,6 +369,7 @@
                 }
             },
             yAxis: {
+                allowDecimals: false,
                 title: {
                     text: '次数'
                 },
