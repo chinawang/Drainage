@@ -2198,7 +2198,9 @@ class StatusReportController extends Controller
             $station['totalFluxBefore5'] = $paramBefore['totalFluxDay5'];
         }
 
-        $title = '单机运行情况月报表-' . $startTime;
+        $titleTime = "(".$startTime. " 至 " .$endTime.")";
+
+        $title = '单机运行情况月报表-' . $titleTime;
 
         $excelData = $stations;
 
@@ -2213,7 +2215,7 @@ class StatusReportController extends Controller
                 $strMonth = substr($startTime, 0, 4) . '年' . substr($startTime, 5, 2) . '月';
                 $today = date('Y-m-d');
 
-                $displayTime = $startTime + " 至 " + $endTime;
+                $displayTime = $startTime. " 至 " .$endTime;
 
                 $sheet->row(1, [$strMonth . '单机运行抽升情况报表']);
                 $sheet->row(2, [$displayTime]);
@@ -2415,7 +2417,8 @@ class StatusReportController extends Controller
             'totalTimeBeforeAll' => $totalTimeBeforeAll, 'totalFluxDayAll' => $totalFluxDayAll,
             'totalFluxBeforeAll' => $totalFluxBeforeAll, 'selectType' => $type, 'startTime' => $startTime];
 
-        $title = '泵站月生产报表-' . $startTime;
+        $titleTime = "(".$startTime. " 至 " .$endTime.")";
+        $title = '泵站月生产报表-' . $titleTime;
 
         $excelData = $paramMonthAll;
 
@@ -2429,7 +2432,7 @@ class StatusReportController extends Controller
 
                 $strMonth = substr($startTime, 0, 4) . '年' . substr($startTime, 5, 2) . '月';
                 $today = date('Y-m-d');
-                $displayTime = $startTime + " 至 " + $endTime;
+                $displayTime = $startTime. " 至 " .$endTime;
 
                 $sheet->row(1, [$strMonth . '泵站月生产报表']);
                 $sheet->row(2, ['单位名称: 市政工程管理处泵站管理所', '', '', '', '', $displayTime]);
