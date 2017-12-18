@@ -155,7 +155,7 @@
             app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'report-view'))
                     <div class="panel panel-default custom-panel">
                         <div class="panel-heading" style="color:#6f7c85;font-size:18px;background-color:#fafafa">
-                            <h3 class="panel-title" style="line-height: 30px;margin-left: 10px;">故障与维修</h3>
+                            <h3 class="panel-title" style="line-height: 30px;margin-left: 10px;">故障维修管理</h3>
                         </div>
                         <div class="panel-body custom-panel-body">
                             <ul class="main-menu">
