@@ -827,6 +827,12 @@ class StatusReportController extends Controller
 
         $initialCurrent = 5;
 
+        //8号泵(化工路立交)
+        if($stationID == 8)
+        {
+            $initialCurrent = 10;
+        }
+
         // 遍历实时运行数据表,找出起泵时刻与停泵时刻
         for ($i = 0; $i < count($statusYXList); $i++) {
             $sRunning1 = [];
