@@ -317,7 +317,8 @@ Route::get('/report/realTimeStatusOverAll/{type}/{start_time}/{end_time}', 'Repo
 Route::get('/report/stationStatusOverAll', 'Reporte\StatusReportController@showStatusReportOverAll');
 
 //导出EXCEL 按日单机运行时间统计
-Route::get('/report/exporStatustDay', 'Reporte\StatusReportController@exportToExcelStatusDay');
+//Route::get('/report/exporStatustDay', 'Reporte\StatusReportController@exportToExcelStatusDay');
+Route::get('/report/exporStatustDay', 'Reporte\StatusReportController@exportToExcelStatusDayV2');
 //导出EXCEL 按月单机运行时间统计
 Route::get('/report/exporStatustMonth', 'Reporte\StatusReportController@exportToExcelStatusMonth');
 //导出EXCEL 按月泵站泵组运行时间合计

@@ -2163,6 +2163,519 @@ class StatusReportController extends Controller
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name, 'log' => '导出了统计信息']);
     }
 
+    public function exportToExcelStatusDayV2()
+    {
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = $startTime;
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+        $title = '泵站运行日志-' . $startTime;
+
+        //连前累计
+        $beforeTime = date("2017-10-01");
+
+        $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
+
+        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
+
+        Excel::create($title, function ($excel) use ($excelData, $excelDataBefore, $title, $startTime) {
+
+            $excel->setTitle($title);
+
+            $excel->setCreator('Eason')->setCompany('LegendX');
+
+            $excel->sheet('泵站运行日志', function ($sheet) use ($excelData, $excelDataBefore, $startTime) {
+
+                $station = $excelData['stationSelect'];
+
+                $sheet->row(1, ['郑州市市政工程管理处泵站所泵站运行日志']);
+                if ($station['station_number'] == 33) {
+                    $sheet->row(2, ['泵站: ' . $station['name'], '', '', '', '', '', '', '', '', '', '', '', '', '', '', $startTime]);
+                    $sheet->row(3, ['序号', '1号泵', '', '', '', '', '','2号泵', '', '', '', '', '','3号泵', '', '', '', '', '','4号泵', '', '', '', '', '','5号泵', '', '', ''
+                        , '', '']);
+                    $sheet->row(4, ['', '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)', '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)',
+                        '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)', '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)', '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)'
+                        ]);
+
+                } else {
+                    $sheet->row(2, ['泵站: ' . $station['name'], '', '', '', '', '', '', '', '', '', '', $startTime]);
+                    $sheet->row(3, ['序号', '1号泵', '', '', '','', '', '2号泵', '', '', '','', '', '3号泵', '', '', '', '', '','4号泵', '', '', '', '',''
+                        ]);
+                    $sheet->row(4, ['', '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)', '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)',
+                        '开泵时分','开泵水位', '停泵时分','停泵水位','运行(分)', '电流(A)', '开泵时分','开泵水位', '停泵时分','停泵水位','运行(分)', '电流(A)'
+                        ]);
+                }
+
+                if (empty($excelData)) {
+
+                    $sheet->row(5, ['']);
+                    return;
+                }
+
+                $i = 5;
+                $j = 5;
+                $k = 5;
+                $h = 5;
+
+                // 循环写入数据(1号泵)
+                foreach ($excelData['stationStatusList1'] as $rowData1) {
+                    $sheet->cell('B' . $i, function ($cell) use ($rowData1) {
+                        $cell->setValue(substr($rowData1['timeStart'], 10));
+
+                    });
+                    $sheet->cell('D' . $i, function ($cell) use ($rowData1) {
+                        $cell->setValue(substr($rowData1['timeEnd'], 10));
+
+                    });
+                    $sheet->cell('F' . $i, function ($cell) use ($rowData1) {
+                        $cell->setValue($rowData1['timeGap']);
+
+                    });
+                    $sheet->cell('G' . $i, function ($cell) use ($rowData1) {
+                        $cell->setValue($rowData1['current']);
+
+                    });
+
+                    //行高
+                    $sheet->setHeight($i, 25);
+
+                    $i++;
+                }
+
+                // 循环写入数据(2号泵)
+                foreach ($excelData['stationStatusList2'] as $rowData2) {
+                    $sheet->cell('H' . $j, function ($cell) use ($rowData2) {
+                        $cell->setValue(substr($rowData2['timeStart'], 10));
+
+                    });
+                    $sheet->cell('J' . $j, function ($cell) use ($rowData2) {
+                        $cell->setValue(substr($rowData2['timeEnd'], 10));
+
+                    });
+                    $sheet->cell('L' . $j, function ($cell) use ($rowData2) {
+                        $cell->setValue($rowData2['timeGap']);
+
+                    });
+                    $sheet->cell('M' . $j, function ($cell) use ($rowData2) {
+                        $cell->setValue($rowData2['current']);
+
+                    });
+
+                    //行高
+                    $sheet->setHeight($j, 25);
+
+                    $j++;
+                }
+
+                // 循环写入数据(3号泵)
+                foreach ($excelData['stationStatusList3'] as $rowData3) {
+                    $sheet->cell('N' . $k, function ($cell) use ($rowData3) {
+                        $cell->setValue(substr($rowData3['timeStart'], 10));
+
+                    });
+                    $sheet->cell('P' . $k, function ($cell) use ($rowData3) {
+                        $cell->setValue(substr($rowData3['timeEnd'], 10));
+
+                    });
+                    $sheet->cell('R' . $k, function ($cell) use ($rowData3) {
+                        $cell->setValue($rowData3['timeGap']);
+
+                    });
+                    $sheet->cell('S' . $k, function ($cell) use ($rowData3) {
+                        $cell->setValue($rowData3['current']);
+
+                    });
+
+                    //行高
+                    $sheet->setHeight($k, 25);
+
+                    $k++;
+                }
+
+                // 循环写入数据(4号泵)
+                foreach ($excelData['stationStatusList4'] as $rowData4) {
+                    $sheet->cell('T' . $h, function ($cell) use ($rowData4) {
+                        $cell->setValue(substr($rowData4['timeStart'], 10));
+
+                    });
+                    $sheet->cell('V' . $h, function ($cell) use ($rowData4) {
+                        $cell->setValue(substr($rowData4['timeEnd'], 10));
+
+                    });
+                    $sheet->cell('X' . $h, function ($cell) use ($rowData4) {
+                        $cell->setValue($rowData4['timeGap']);
+
+                    });
+                    $sheet->cell('Y' . $h, function ($cell) use ($rowData4) {
+                        $cell->setValue($rowData4['current']);
+
+                    });
+
+                    //行高
+                    $sheet->setHeight($h, 25);
+
+                    $h++;
+                }
+
+                if ($station['station_number'] == 33) {
+                    // 循环写入数据(5号泵)
+                    foreach ($excelData['stationStatusList5'] as $rowData5) {
+                        $sheet->cell('Z' . $h, function ($cell) use ($rowData5) {
+                            $cell->setValue(substr($rowData5['timeStart'], 10));
+
+                        });
+                        $sheet->cell('AB' . $h, function ($cell) use ($rowData5) {
+                            $cell->setValue(substr($rowData5['timeEnd'], 10));
+
+                        });
+                        $sheet->cell('AD' . $h, function ($cell) use ($rowData5) {
+                            $cell->setValue($rowData5['timeGap']);
+
+                        });
+                        $sheet->cell('AE' . $h, function ($cell) use ($rowData5) {
+                            $cell->setValue($rowData5['current']);
+
+                        });
+
+                        //行高
+                        $sheet->setHeight($h, 25);
+
+                        $h++;
+                    }
+                }
+
+                $rowMax = $this->get_max($i, $j, $k, $h);
+
+                for ($index = 5; $index <= $rowMax; $index++) {
+                    $sheet->cell('A' . $index, function ($cell) use ($index) {
+                        $cell->setValue($index - 4);
+
+                    });
+                }
+
+                //运行合计
+                if ($station['station_number'] == 33) {
+                    $sheet->row($rowMax, ['运行合计',  $excelData['totalTimeDay1'], '', '', '', '','分', $excelData['totalTimeDay2'], '', '', '', '','分',
+                        $excelData['totalTimeDay3'], '', '','', '', '分', $excelData['totalTimeDay4'], '', '','', '', '分', $excelData['totalTimeDay5'], '', '', '', '','分']);
+
+                    $sheet->row($rowMax + 1, ['连前累计运行', round(($excelDataBefore['totalTimeDay1']) / 60, 2), '', '','', '', '小时', round(($excelDataBefore['totalTimeDay2']) / 60, 2), '', '','', '', '小时',
+                        round(($excelDataBefore['totalTimeDay3']) / 60, 2), '', '','', '', '小时', round(($excelDataBefore['totalTimeDay4']) / 60, 2), '', '', '', '','小时', round(($excelDataBefore['totalTimeDay5']) / 60, 2), '', '', '', '','小时']);
+
+                    $sheet->row($rowMax + 2, ['抽升量', $excelData['totalFluxDay1'], '', '','', '', '万吨', $excelData['totalFluxDay2'], '', '', '', '','万吨',
+                        $excelData['totalFluxDay3'], '', '','', '', '万吨', $excelData['totalFluxDay4'], '', '', '', '','万吨', $excelData['totalFluxDay5'], '', '', '', '','万吨']);
+
+                    $sheet->row($rowMax + 3, ['连前累计抽升量', $excelDataBefore['totalFluxDay1'], '', '','', '', '万吨', $excelDataBefore['totalFluxDay2'], '', '','', '', '万吨',
+                        $excelDataBefore['totalFluxDay3'], '', '', '', '','万吨', $excelDataBefore['totalFluxDay4'], '', '', '', '','万吨', $excelDataBefore['totalFluxDay5'], '', '','', '', '万吨']);
+
+                    $sheet->row($rowMax + 4, ['今日总抽升量', $excelData['totalFluxDay'], '', '','', '', '万吨', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+
+                    $sheet->row($rowMax + 5, ['连前累计总抽升量', $excelDataBefore['totalFluxDay'], '', '','', '', '万吨', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+
+                    $sheet->row($rowMax + 6, ['记录:', '', '', '', '', '', '', '', '校核:']);
+                } else {
+                    $sheet->row($rowMax, ['运行合计',  $excelData['totalTimeDay1'], '', '', '', '','分', $excelData['totalTimeDay2'], '', '', '', '','分',
+                        $excelData['totalTimeDay3'], '', '','', '', '分', $excelData['totalTimeDay4'], '', '','', '', '分']);
+
+                    $sheet->row($rowMax + 1, ['连前累计运行', round(($excelDataBefore['totalTimeDay1']) / 60, 2), '', '','', '', '小时', round(($excelDataBefore['totalTimeDay2']) / 60, 2), '', '','', '', '小时',
+                        round(($excelDataBefore['totalTimeDay3']) / 60, 2), '', '','', '', '小时', round(($excelDataBefore['totalTimeDay4']) / 60, 2), '', '', '', '','小时']);
+
+                    $sheet->row($rowMax + 2, ['抽升量', $excelData['totalFluxDay1'], '', '','', '', '万吨', $excelData['totalFluxDay2'], '', '', '', '','万吨',
+                        $excelData['totalFluxDay3'], '', '','', '', '万吨', $excelData['totalFluxDay4'], '', '', '', '','万吨']);
+
+                    $sheet->row($rowMax + 3, ['连前累计抽升量', $excelDataBefore['totalFluxDay1'], '', '','', '', '万吨', $excelDataBefore['totalFluxDay2'], '', '','', '', '万吨',
+                        $excelDataBefore['totalFluxDay3'], '', '', '', '','万吨', $excelDataBefore['totalFluxDay4'], '', '', '', '','万吨']);
+
+                    $sheet->row($rowMax + 4, ['今日总抽升量', $excelData['totalFluxDay'], '', '','', '', '万吨', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+
+                    $sheet->row($rowMax + 5, ['连前累计总抽升量', $excelDataBefore['totalFluxDay'], '', '','', '', '万吨', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+
+                    $sheet->row($rowMax + 6, ['记录:', '', '', '', '', '', '', '', '校核:']);
+                }
+
+
+                if ($station['station_number'] == 33) {
+                    //表体样式
+                    $sheet->setHeight($rowMax, 25);
+                    $sheet->setHeight($rowMax + 1, 25);
+                    $sheet->setHeight($rowMax + 2, 25);
+                    $sheet->setHeight($rowMax + 3, 25);
+                    $sheet->setHeight($rowMax + 4, 25);
+                    $sheet->setHeight($rowMax + 5, 25);
+                    $sheet->setHeight($rowMax + 6, 25);
+
+                    $sheet->mergeCells('B' . $rowMax . ':F' . $rowMax);
+                    $sheet->mergeCells('H' . $rowMax . ':L' . $rowMax);
+                    $sheet->mergeCells('N' . $rowMax . ':R' . $rowMax);
+                    $sheet->mergeCells('T' . $rowMax . ':X' . $rowMax);
+                    $sheet->mergeCells('Z' . $rowMax . ':AD' . $rowMax);
+
+                    $sheet->mergeCells('B' . ($rowMax + 1) . ':F' . ($rowMax + 1));
+                    $sheet->mergeCells('H' . ($rowMax + 1) . ':L' . ($rowMax + 1));
+                    $sheet->mergeCells('N' . ($rowMax + 1) . ':R' . ($rowMax + 1));
+                    $sheet->mergeCells('T' . ($rowMax + 1) . ':X' . ($rowMax + 1));
+                    $sheet->mergeCells('Z' . ($rowMax + 1) . ':AD' . ($rowMax + 1));
+
+                    $sheet->mergeCells('B' . ($rowMax + 2) . ':F' . ($rowMax + 2));
+                    $sheet->mergeCells('H' . ($rowMax + 2) . ':L' . ($rowMax + 2));
+                    $sheet->mergeCells('N' . ($rowMax + 2) . ':R' . ($rowMax + 2));
+                    $sheet->mergeCells('T' . ($rowMax + 2) . ':X' . ($rowMax + 2));
+                    $sheet->mergeCells('Z' . ($rowMax + 2) . ':AD' . ($rowMax + 2));
+
+                    $sheet->mergeCells('B' . ($rowMax + 3) . ':F' . ($rowMax + 3));
+                    $sheet->mergeCells('H' . ($rowMax + 3) . ':L' . ($rowMax + 3));
+                    $sheet->mergeCells('N' . ($rowMax + 3) . ':R' . ($rowMax + 3));
+                    $sheet->mergeCells('T' . ($rowMax + 3) . ':X' . ($rowMax + 3));
+                    $sheet->mergeCells('Z' . ($rowMax + 3) . ':AD' . ($rowMax + 3));
+
+                    $sheet->mergeCells('B' . ($rowMax + 4) . ':F' . ($rowMax + 4));
+                    $sheet->mergeCells('H' . ($rowMax + 4) . ':AE' . ($rowMax + 4));
+
+                    $sheet->mergeCells('B' . ($rowMax + 5) . ':F' . ($rowMax + 5));
+                    $sheet->mergeCells('H' . ($rowMax + 5) . ':AE' . ($rowMax + 5));
+
+                    $sheet->mergeCells('A' . ($rowMax + 6) . ':G' . ($rowMax + 6));
+                    $sheet->mergeCells('H' . ($rowMax + 6) . ':S' . ($rowMax + 6));
+
+
+                    $sheet->setBorder('A3:AE' . ($rowMax + 5), 'thin');
+                    $sheet->setAutoSize(true);
+                    $sheet->setWidth(array(
+                        'A' => 35,
+                        'B' => 15,
+                        'C' => 15,
+                        'D' => 15,
+                        'E' => 12,
+                        'F' => 12,
+                        'G' => 12,
+                        'H' => 12,
+                        'I' => 12,
+                        'J' => 12,
+                        'K' => 12,
+                        'L' => 12,
+                        'M' => 12,
+                        'N' => 12,
+                        'O' => 12,
+                        'P' => 12,
+                        'Q' => 12,
+                        'R' => 12,
+                        'S' => 12,
+                        'T' => 12,
+                        'U' => 15,
+                        'V' => 12,
+                        'W' => 12,
+                        'X' => 12,
+                        'Y' => 12,
+                        'Z' => 12,
+                        'AA' => 12,
+                        'AB' => 12,
+                        'AC' => 12,
+                        'AD' => 12,
+                        'AE' => 12
+                    ));
+                    $sheet->cells('A3:AE' . ($rowMax + 6), function ($cells) {
+                        $cells->setFontSize(14);
+                        $cells->setFontWeight('normal');
+                        $cells->setAlignment('center');
+                        $cells->setValignment('center');
+
+                    });
+
+                    //表头样式
+                    $sheet->mergeCells('A3:A4');
+
+                    $sheet->mergeCells('B3:G3');
+                    $sheet->mergeCells('H3:M4');
+                    $sheet->mergeCells('N3:S4');
+                    $sheet->mergeCells('T3:Y3');
+                    $sheet->mergeCells('Z3:AE3');
+
+                    $sheet->setHeight(3, 30);
+                    $sheet->setHeight(4, 30);
+                    $sheet->cells('A3:AE4', function ($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(14);
+                        $cells->setAlignment('center');
+                        $cells->setValignment('center');
+
+                    });
+
+                    //标题样式
+                    $sheet->mergeCells('A1:AE1');
+                    $sheet->setHeight(1, 60);
+                    $sheet->setHeight(2, 25);
+                    $sheet->cells('A1', function ($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(22);
+                        $cells->setAlignment('center');
+                        $cells->setValignment('center');
+
+                    });
+
+                    //日期样式
+                    $sheet->mergeCells('A2:K2');
+                    $sheet->mergeCells('L2:AE2');
+                    $sheet->setHeight(2, 25);
+                    $sheet->cells('A2', function ($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(14);
+                        $cells->setAlignment('left');
+                        $cells->setValignment('center');
+
+                    });
+
+                    $sheet->cells('L2', function ($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(14);
+                        $cells->setAlignment('right');
+                        $cells->setValignment('center');
+
+                    });
+                } else {
+                    //表体样式
+                    $sheet->setHeight($rowMax, 25);
+                    $sheet->setHeight($rowMax + 1, 25);
+                    $sheet->setHeight($rowMax + 2, 25);
+                    $sheet->setHeight($rowMax + 3, 25);
+                    $sheet->setHeight($rowMax + 4, 25);
+                    $sheet->setHeight($rowMax + 5, 25);
+                    $sheet->setHeight($rowMax + 6, 25);
+
+                    $sheet->mergeCells('B' . $rowMax . ':F' . $rowMax);
+                    $sheet->mergeCells('H' . $rowMax . ':L' . $rowMax);
+                    $sheet->mergeCells('N' . $rowMax . ':R' . $rowMax);
+                    $sheet->mergeCells('T' . $rowMax . ':X' . $rowMax);
+//                    $sheet->mergeCells('Z' . $rowMax . ':AD' . $rowMax);
+
+                    $sheet->mergeCells('B' . ($rowMax + 1) . ':F' . ($rowMax + 1));
+                    $sheet->mergeCells('H' . ($rowMax + 1) . ':L' . ($rowMax + 1));
+                    $sheet->mergeCells('N' . ($rowMax + 1) . ':R' . ($rowMax + 1));
+                    $sheet->mergeCells('T' . ($rowMax + 1) . ':X' . ($rowMax + 1));
+//                    $sheet->mergeCells('Z' . ($rowMax + 1) . ':AD' . ($rowMax + 1));
+
+                    $sheet->mergeCells('B' . ($rowMax + 2) . ':F' . ($rowMax + 2));
+                    $sheet->mergeCells('H' . ($rowMax + 2) . ':L' . ($rowMax + 2));
+                    $sheet->mergeCells('N' . ($rowMax + 2) . ':R' . ($rowMax + 2));
+                    $sheet->mergeCells('T' . ($rowMax + 2) . ':X' . ($rowMax + 2));
+//                    $sheet->mergeCells('Z' . ($rowMax + 2) . ':AD' . ($rowMax + 2));
+
+                    $sheet->mergeCells('B' . ($rowMax + 3) . ':F' . ($rowMax + 3));
+                    $sheet->mergeCells('H' . ($rowMax + 3) . ':L' . ($rowMax + 3));
+                    $sheet->mergeCells('N' . ($rowMax + 3) . ':R' . ($rowMax + 3));
+                    $sheet->mergeCells('T' . ($rowMax + 3) . ':X' . ($rowMax + 3));
+//                    $sheet->mergeCells('Z' . ($rowMax + 3) . ':AD' . ($rowMax + 3));
+
+                    $sheet->mergeCells('B' . ($rowMax + 4) . ':F' . ($rowMax + 4));
+                    $sheet->mergeCells('H' . ($rowMax + 4) . ':Y' . ($rowMax + 4));
+
+                    $sheet->mergeCells('B' . ($rowMax + 5) . ':F' . ($rowMax + 5));
+                    $sheet->mergeCells('H' . ($rowMax + 5) . ':Y' . ($rowMax + 5));
+
+                    $sheet->mergeCells('A' . ($rowMax + 6) . ':G' . ($rowMax + 6));
+                    $sheet->mergeCells('H' . ($rowMax + 6) . ':S' . ($rowMax + 6));
+
+
+                    $sheet->setBorder('A3:Y' . ($rowMax + 5), 'thin');
+                    $sheet->setAutoSize(true);
+                    $sheet->setWidth(array(
+                        'A' => 35,
+                        'B' => 15,
+                        'C' => 15,
+                        'D' => 15,
+                        'E' => 12,
+                        'F' => 12,
+                        'G' => 12,
+                        'H' => 12,
+                        'I' => 12,
+                        'J' => 12,
+                        'K' => 12,
+                        'L' => 12,
+                        'M' => 12,
+                        'N' => 12,
+                        'O' => 12,
+                        'P' => 12,
+                        'Q' => 12,
+                        'R' => 12,
+                        'S' => 12,
+                        'T' => 12,
+                        'U' => 15,
+                        'V' => 12,
+                        'W' => 12,
+                        'X' => 12,
+                        'Y' => 12
+                    ));
+                    $sheet->cells('A3:Y' . ($rowMax + 6), function ($cells) {
+                        $cells->setFontSize(14);
+                        $cells->setFontWeight('normal');
+                        $cells->setAlignment('center');
+                        $cells->setValignment('center');
+
+                    });
+
+                    //表头样式
+                    $sheet->mergeCells('A3:A4');
+
+                    $sheet->mergeCells('B3:G3');
+                    $sheet->mergeCells('H3:M4');
+                    $sheet->mergeCells('N3:S4');
+                    $sheet->mergeCells('T3:Y3');
+//                    $sheet->mergeCells('Z3:AE3');
+
+                    $sheet->setHeight(3, 30);
+                    $sheet->setHeight(4, 30);
+                    $sheet->cells('A3:Y4', function ($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(14);
+                        $cells->setAlignment('center');
+                        $cells->setValignment('center');
+
+                    });
+
+                    //标题样式
+                    $sheet->mergeCells('A1:Y1');
+                    $sheet->setHeight(1, 60);
+                    $sheet->setHeight(2, 25);
+                    $sheet->cells('A1', function ($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(22);
+                        $cells->setAlignment('center');
+                        $cells->setValignment('center');
+
+                    });
+
+                    //日期样式
+                    $sheet->mergeCells('A2:K2');
+                    $sheet->mergeCells('L2:Y2');
+                    $sheet->setHeight(2, 25);
+                    $sheet->cells('A2', function ($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(14);
+                        $cells->setAlignment('left');
+                        $cells->setValignment('center');
+
+                    });
+
+                    $sheet->cells('L2', function ($cells) {
+                        $cells->setFontFamily('Hei');
+                        $cells->setFontSize(14);
+                        $cells->setAlignment('right');
+                        $cells->setValignment('center');
+
+                    });
+                }
+
+            });
+
+        })->export('xls');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name, 'log' => '导出了统计信息']);
+    }
+
     /**
      * 导出单机当月运行报表
      */
