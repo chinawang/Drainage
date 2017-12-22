@@ -373,7 +373,7 @@ class StatusReportController extends Controller
                 $sRunning1['timeEnd'] = $stationRTList[$i + 1]->Time;
                 if ($index1 > 1) {
                     $sRunning1['timeGap'] = abs(strtotime($sRunning1['timeEnd']) - strtotime($stationStatusList1[$index1 - 2]['timeStart'])) / 60;
-                    $sRunning1['timeGap'] = round($sRunning1['timeGap']);
+                    $sRunning1['timeGap'] = round($sRunning1['timeGap'],2);
                     $stationStatusList1[$index1 - 2]['timeEnd'] = $sRunning1['timeEnd'];
                     $stationStatusList1[$index1 - 2]['timeGap'] = $sRunning1['timeGap'];
                     $stationStatusList1[$index1 - 2]['flux'] = $sRunning1['timeGap'] * $pump['flux1'];
@@ -418,7 +418,7 @@ class StatusReportController extends Controller
                 $sRunning2['timeEnd'] = $stationRTList[$i + 1]->Time;
                 if ($index2 > 1) {
                     $sRunning2['timeGap'] = abs(strtotime($sRunning2['timeEnd']) - strtotime($stationStatusList2[$index2 - 2]['timeStart'])) / 60;
-                    $sRunning2['timeGap'] = round($sRunning2['timeGap']);
+                    $sRunning2['timeGap'] = round($sRunning2['timeGap'],2);
                     $stationStatusList2[$index2 - 2]['timeEnd'] = $sRunning2['timeEnd'];
                     $stationStatusList2[$index2 - 2]['timeGap'] = $sRunning2['timeGap'];
                     $stationStatusList2[$index2 - 2]['flux'] = $sRunning2['timeGap'] * $pump['flux2'];
@@ -444,7 +444,7 @@ class StatusReportController extends Controller
                 $sRunning3['timeEnd'] = $stationRTList[$i + 1]->Time;
                 if ($index3 > 1) {
                     $sRunning3['timeGap'] = abs(strtotime($sRunning3['timeEnd']) - strtotime($stationStatusList3[$index3 - 2]['timeStart'])) / 60;
-                    $sRunning3['timeGap'] = round($sRunning3['timeGap']);
+                    $sRunning3['timeGap'] = round($sRunning3['timeGap'],2);
                     $stationStatusList3[$index3 - 2]['timeEnd'] = $sRunning3['timeEnd'];
                     $stationStatusList3[$index3 - 2]['timeGap'] = $sRunning3['timeGap'];
                     $stationStatusList3[$index3 - 2]['flux'] = $sRunning3['timeGap'] * $pump['flux3'];
@@ -470,7 +470,7 @@ class StatusReportController extends Controller
                 $sRunning4['timeEnd'] = $stationRTList[$i + 1]->Time;
                 if ($index4 > 1) {
                     $sRunning4['timeGap'] = abs(strtotime($sRunning4['timeEnd']) - strtotime($stationStatusList4[$index4 - 2]['timeStart'])) / 60;
-                    $sRunning4['timeGap'] = round($sRunning4['timeGap']);
+                    $sRunning4['timeGap'] = round($sRunning4['timeGap'],2);
                     $stationStatusList4[$index4 - 2]['timeEnd'] = $sRunning4['timeEnd'];
                     $stationStatusList4[$index4 - 2]['timeGap'] = $sRunning4['timeGap'];
                     $stationStatusList4[$index4 - 2]['flux'] = $sRunning4['timeGap'] * $pump['flux4'];
@@ -497,7 +497,7 @@ class StatusReportController extends Controller
                     $sRunning5['timeEnd'] = $stationRTList[$i + 1]->Time;
                     if ($index5 > 1) {
                         $sRunning5['timeGap'] = abs(strtotime($sRunning5['timeEnd']) - strtotime($stationStatusList5[$index5 - 2]['timeStart'])) / 60;
-                        $sRunning5['timeGap'] = round($sRunning5['timeGap']);
+                        $sRunning5['timeGap'] = round($sRunning5['timeGap'],2);
                         $stationStatusList5[$index5 - 2]['timeEnd'] = $sRunning5['timeEnd'];
                         $stationStatusList5[$index5 - 2]['timeGap'] = $sRunning5['timeGap'];
                         $stationStatusList5[$index5 - 2]['flux'] = $sRunning5['timeGap'] * $pump['flux5'];
@@ -604,7 +604,7 @@ class StatusReportController extends Controller
             $sRunning1['timeEnd'] = $statusListOfPump1[$i1 + 1]->Time_tmp;
             $sRunning1['current'] = $statusListOfPump1[$i1 + 1]->ib1;
             $sRunning1['timeGap'] = abs(strtotime($sRunning1['timeEnd']) - strtotime($sRunning1['timeStart'])) / 60;
-            $sRunning1['timeGap'] = round($sRunning1['timeGap']);
+            $sRunning1['timeGap'] = round($sRunning1['timeGap'],2);
             $sRunning1['flux'] = $sRunning1['timeGap'] * $pump['flux1'];
             $sRunning1['index'] = ($i1 + 2) / 2;
 
@@ -632,7 +632,7 @@ class StatusReportController extends Controller
             $sRunning2['timeEnd'] = $statusListOfPump2[$i2 + 1]->Time_tmp;
             $sRunning2['current'] = $statusListOfPump2[$i2 + 1]->ib2;
             $sRunning2['timeGap'] = abs(strtotime($sRunning2['timeEnd']) - strtotime($sRunning2['timeStart'])) / 60;
-            $sRunning2['timeGap'] = round($sRunning2['timeGap']);
+            $sRunning2['timeGap'] = round($sRunning2['timeGap'],2);
             $sRunning2['flux'] = $sRunning2['timeGap'] * $pump['flux2'];
             $sRunning2['index'] = ($i2 + 2) / 2;
 
@@ -659,7 +659,7 @@ class StatusReportController extends Controller
             $sRunning3['timeEnd'] = $statusListOfPump3[$i3 + 1]->Time_tmp;
             $sRunning3['current'] = $statusListOfPump3[$i3 + 1]->ib3;
             $sRunning3['timeGap'] = abs(strtotime($sRunning3['timeEnd']) - strtotime($sRunning3['timeStart'])) / 60;
-            $sRunning3['timeGap'] = round($sRunning3['timeGap']);
+            $sRunning3['timeGap'] = round($sRunning3['timeGap'],2);
             $sRunning3['flux'] = $sRunning3['timeGap'] * $pump['flux3'];
             $sRunning3['index'] = ($i3 + 2) / 2;
 
@@ -686,7 +686,7 @@ class StatusReportController extends Controller
             $sRunning4['timeEnd'] = $statusListOfPump4[$i4 + 1]->Time_tmp;
             $sRunning4['current'] = $statusListOfPump4[$i4 + 1]->ib4;
             $sRunning4['timeGap'] = abs(strtotime($sRunning4['timeEnd']) - strtotime($sRunning4['timeStart'])) / 60;
-            $sRunning4['timeGap'] = round($sRunning4['timeGap']);
+            $sRunning4['timeGap'] = round($sRunning4['timeGap'],2);
             $sRunning4['flux'] = $sRunning4['timeGap'] * $pump['flux4'];
             $sRunning4['index'] = ($i4 + 2) / 2;
 
@@ -715,7 +715,7 @@ class StatusReportController extends Controller
                 $sRunning5['timeEnd'] = $statusListOfPump5[$i5 + 1]->Time_tmp;
                 $sRunning5['current'] = $statusListOfPump5[$i5 + 1]->ib5;
                 $sRunning5['timeGap'] = abs(strtotime($sRunning5['timeEnd']) - strtotime($sRunning5['timeStart'])) / 60;
-                $sRunning5['timeGap'] = round($sRunning5['timeGap']);
+                $sRunning5['timeGap'] = round($sRunning5['timeGap'],2);
                 $sRunning5['flux'] = $sRunning5['timeGap'] * $pump['flux5'];
                 $sRunning5['index'] = ($i5 + 2) / 2;
 
@@ -862,7 +862,7 @@ class StatusReportController extends Controller
 
                     if ($index1 > 0) {
                         $sRunning1['timeGap'] = abs(strtotime($sRunning1['timeEnd']) - strtotime($stationStatusList1[$index1 - 1]['timeStart'])) / 60;
-                        $sRunning1['timeGap'] = round($sRunning1['timeGap']);
+                        $sRunning1['timeGap'] = round($sRunning1['timeGap'],2);
                         $stationStatusList1[$index1 - 1]['timeEnd'] = $sRunning1['timeEnd'];
                         $stationStatusList1[$index1 - 1]['timeGap'] = $sRunning1['timeGap'];
                         $stationStatusList1[$index1 - 1]['current'] = $sRunning1['current'];
@@ -900,7 +900,7 @@ class StatusReportController extends Controller
 
                     if ($index2 > 0) {
                         $sRunning2['timeGap'] = abs(strtotime($sRunning2['timeEnd']) - strtotime($stationStatusList2[$index2 - 1]['timeStart'])) / 60;
-                        $sRunning2['timeGap'] = round($sRunning2['timeGap']);
+                        $sRunning2['timeGap'] = round($sRunning2['timeGap'],2);
                         $stationStatusList2[$index2 - 1]['timeEnd'] = $sRunning2['timeEnd'];
                         $stationStatusList2[$index2 - 1]['timeGap'] = $sRunning2['timeGap'];
                         $stationStatusList2[$index2 - 1]['current'] = $sRunning2['current'];
@@ -938,7 +938,7 @@ class StatusReportController extends Controller
 
                         if ($index3 > 0) {
                             $sRunning3['timeGap'] = abs(strtotime($sRunning3['timeEnd']) - strtotime($stationStatusList3[$index3 - 1]['timeStart'])) / 60;
-                            $sRunning3['timeGap'] = round($sRunning3['timeGap']);
+                            $sRunning3['timeGap'] = round($sRunning3['timeGap'],2);
                             $stationStatusList3[$index3 - 1]['timeEnd'] = $sRunning3['timeEnd'];
                             $stationStatusList3[$index3 - 1]['timeGap'] = $sRunning3['timeGap'];
                             $stationStatusList3[$index3 - 1]['current'] = $sRunning3['current'];
@@ -977,7 +977,7 @@ class StatusReportController extends Controller
 
                         if ($index4 > 0) {
                             $sRunning4['timeGap'] = abs(strtotime($sRunning4['timeEnd']) - strtotime($stationStatusList4[$index4 - 1]['timeStart'])) / 60;
-                            $sRunning4['timeGap'] = round($sRunning4['timeGap']);
+                            $sRunning4['timeGap'] = round($sRunning4['timeGap'],2);
                             $stationStatusList4[$index4 - 1]['timeEnd'] = $sRunning4['timeEnd'];
                             $stationStatusList4[$index4 - 1]['timeGap'] = $sRunning4['timeGap'];
                             $stationStatusList4[$index4 - 1]['current'] = $sRunning4['current'];
@@ -1016,7 +1016,7 @@ class StatusReportController extends Controller
 
                         if ($index5 > 0) {
                             $sRunning5['timeGap'] = abs(strtotime($sRunning5['timeEnd']) - strtotime($stationStatusList5[$index5 - 1]['timeStart'])) / 60;
-                            $sRunning5['timeGap'] = round($sRunning5['timeGap']);
+                            $sRunning5['timeGap'] = round($sRunning5['timeGap'],2);
                             $stationStatusList5[$index5 - 1]['timeEnd'] = $sRunning5['timeEnd'];
                             $stationStatusList5[$index5 - 1]['timeGap'] = $sRunning5['timeGap'];
                             $stationStatusList5[$index5 - 1]['current'] = $sRunning5['current'];
@@ -1048,7 +1048,7 @@ class StatusReportController extends Controller
             }
 
             $endTimeGap = abs(strtotime($stationStatusList1[$indexEnd]['timeEnd']) - strtotime($stationStatusList1[$indexEnd]['timeStart'])) / 60;
-            $endTimeGap = round($endTimeGap);
+            $endTimeGap = round($endTimeGap,2);
             $stationStatusList1[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList1[$indexEnd]['current'] = 57;
             $stationStatusList1[$indexEnd]['flux'] = $endTimeGap * $pump['flux1'];
@@ -1076,7 +1076,7 @@ class StatusReportController extends Controller
             }
 
             $endTimeGap = abs(strtotime($stationStatusList2[$indexEnd]['timeEnd']) - strtotime($stationStatusList2[$indexEnd]['timeStart'])) / 60;
-            $endTimeGap = round($endTimeGap);
+            $endTimeGap = round($endTimeGap,2);
             $stationStatusList2[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList2[$indexEnd]['current'] = 57;
             $stationStatusList2[$indexEnd]['flux'] = $endTimeGap * $pump['flux2'];
@@ -1104,7 +1104,7 @@ class StatusReportController extends Controller
             }
 
             $endTimeGap = abs(strtotime($stationStatusList3[$indexEnd]['timeEnd']) - strtotime($stationStatusList3[$indexEnd]['timeStart'])) / 60;
-            $endTimeGap = round($endTimeGap);
+            $endTimeGap = round($endTimeGap,2);
             $stationStatusList3[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList3[$indexEnd]['current'] = 57;
             $stationStatusList3[$indexEnd]['flux'] = $endTimeGap * $pump['flux3'];
@@ -1132,7 +1132,7 @@ class StatusReportController extends Controller
             }
 
             $endTimeGap = abs(strtotime($stationStatusList4[$indexEnd]['timeEnd']) - strtotime($stationStatusList4[$indexEnd]['timeStart'])) / 60;
-            $endTimeGap = round($endTimeGap);
+            $endTimeGap = round($endTimeGap,2);
             $stationStatusList4[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList4[$indexEnd]['current'] = 57;
             $stationStatusList4[$indexEnd]['flux'] = $endTimeGap * $pump['flux4'];
@@ -1160,7 +1160,7 @@ class StatusReportController extends Controller
             }
 
             $endTimeGap = abs(strtotime($stationStatusList5[$indexEnd]['timeEnd']) - strtotime($stationStatusList5[$indexEnd]['timeStart'])) / 60;
-            $endTimeGap = round($endTimeGap);
+            $endTimeGap = round($endTimeGap,2);
             $stationStatusList5[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList5[$indexEnd]['current'] = 57;
             $stationStatusList5[$indexEnd]['flux'] = $endTimeGap * $pump['flux5'];
