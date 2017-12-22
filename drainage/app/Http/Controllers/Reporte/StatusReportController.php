@@ -2195,7 +2195,7 @@ class StatusReportController extends Controller
 
                 $sheet->row(1, ['郑州市市政工程管理处泵站所泵站运行日志']);
                 if ($station['station_number'] == 33) {
-                    $sheet->row(2, ['泵站: ' . $station['name'], '', '', '', '', '', '', '', '', '', '', '', '', '', '', $startTime]);
+                    $sheet->row(2, ['泵站: ' . $station['name'], '', '', '', '', '', '', '', '', '', '', $startTime]);
                     $sheet->row(3, ['序号', '1号泵', '', '', '', '', '','2号泵', '', '', '', '', '','3号泵', '', '', '', '', '','4号泵', '', '', '', '', '','5号泵', '', '', ''
                         , '', '']);
                     $sheet->row(4, ['', '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)', '开泵时分','开泵水位', '停泵时分','停泵水位', '运行(分)', '电流(A)',
@@ -2376,7 +2376,7 @@ class StatusReportController extends Controller
 
                     $sheet->row($rowMax + 5, ['连前累计总抽升量', $excelDataBefore['totalFluxDay'], '', '','', '', '万吨', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
 
-                    $sheet->row($rowMax + 6, ['记录:', '', '', '', '', '', '', '', '校核:']);
+                    $sheet->row($rowMax + 6, ['记录:', '', '', '', '', '', '', '校核:']);
                 } else {
                     $sheet->row($rowMax, ['运行合计',  $excelData['totalTimeDay1'], '', '', '', '','分', $excelData['totalTimeDay2'], '', '', '', '','分',
                         $excelData['totalTimeDay3'], '', '','', '', '分', $excelData['totalTimeDay4'], '', '','', '', '分']);
@@ -2394,7 +2394,7 @@ class StatusReportController extends Controller
 
                     $sheet->row($rowMax + 5, ['连前累计总抽升量', $excelDataBefore['totalFluxDay'], '', '','', '', '万吨', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
 
-                    $sheet->row($rowMax + 6, ['记录:', '', '', '', '', '', '', '', '校核:']);
+                    $sheet->row($rowMax + 6, ['记录:', '', '', '', '', '', '', '校核:']);
                 }
 
 
@@ -2489,8 +2489,8 @@ class StatusReportController extends Controller
                     $sheet->mergeCells('A3:A4');
 
                     $sheet->mergeCells('B3:G3');
-                    $sheet->mergeCells('H3:M4');
-                    $sheet->mergeCells('N3:S4');
+                    $sheet->mergeCells('H3:M3');
+                    $sheet->mergeCells('N3:S3');
                     $sheet->mergeCells('T3:Y3');
                     $sheet->mergeCells('Z3:AE3');
 
@@ -2620,8 +2620,8 @@ class StatusReportController extends Controller
                     $sheet->mergeCells('A3:A4');
 
                     $sheet->mergeCells('B3:G3');
-                    $sheet->mergeCells('H3:M4');
-                    $sheet->mergeCells('N3:S4');
+                    $sheet->mergeCells('H3:M3');
+                    $sheet->mergeCells('N3:S3');
                     $sheet->mergeCells('T3:Y3');
 //                    $sheet->mergeCells('Z3:AE3');
 
