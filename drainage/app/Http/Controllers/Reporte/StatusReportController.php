@@ -2253,6 +2253,7 @@ class StatusReportController extends Controller
                 $j = 5;
                 $k = 5;
                 $h = 5;
+                $g = 5;
 
                 // 循环写入数据(1号泵)
                 foreach ($excelData['stationStatusList1'] as $rowData1) {
@@ -2293,15 +2294,15 @@ class StatusReportController extends Controller
                         $cell->setValue(substr($rowData2['timeStart'], 10));
 
                     });
-                    $sheet->cell('I' . $i, function ($cell) use ($rowData2) {
+                    $sheet->cell('I' . $j, function ($cell) use ($rowData2) {
                         $cell->setValue($rowData2['waterStart']);
 
                     });
-                    $sheet->cell('J' . $i, function ($cell) use ($rowData2) {
+                    $sheet->cell('J' . $j, function ($cell) use ($rowData2) {
                         $cell->setValue(substr($rowData2['timeEnd'], 10));
 
                     });
-                    $sheet->cell('K' . $i, function ($cell) use ($rowData2) {
+                    $sheet->cell('K' . $j, function ($cell) use ($rowData2) {
                         $cell->setValue($rowData2['waterEnd']);
 
                     });
@@ -2326,15 +2327,15 @@ class StatusReportController extends Controller
                         $cell->setValue(substr($rowData3['timeStart'], 10));
 
                     });
-                    $sheet->cell('O' . $i, function ($cell) use ($rowData3) {
+                    $sheet->cell('O' . $k, function ($cell) use ($rowData3) {
                         $cell->setValue($rowData3['waterStart']);
 
                     });
-                    $sheet->cell('P' . $i, function ($cell) use ($rowData3) {
+                    $sheet->cell('P' . $k, function ($cell) use ($rowData3) {
                         $cell->setValue(substr($rowData3['timeEnd'], 10));
 
                     });
-                    $sheet->cell('Q' . $i, function ($cell) use ($rowData3) {
+                    $sheet->cell('Q' . $k, function ($cell) use ($rowData3) {
                         $cell->setValue($rowData3['waterEnd']);
 
                     });
@@ -2359,15 +2360,15 @@ class StatusReportController extends Controller
                         $cell->setValue(substr($rowData4['timeStart'], 10));
 
                     });
-                    $sheet->cell('U' . $i, function ($cell) use ($rowData4) {
+                    $sheet->cell('U' . $h, function ($cell) use ($rowData4) {
                         $cell->setValue($rowData4['waterStart']);
 
                     });
-                    $sheet->cell('V' . $i, function ($cell) use ($rowData4) {
+                    $sheet->cell('V' . $h, function ($cell) use ($rowData4) {
                         $cell->setValue(substr($rowData4['timeEnd'], 10));
 
                     });
-                    $sheet->cell('W' . $i, function ($cell) use ($rowData4) {
+                    $sheet->cell('W' . $h, function ($cell) use ($rowData4) {
                         $cell->setValue($rowData4['waterEnd']);
 
                     });
@@ -2389,35 +2390,35 @@ class StatusReportController extends Controller
                 if ($station['station_number'] == 33) {
                     // 循环写入数据(5号泵)
                     foreach ($excelData['stationStatusList5'] as $rowData5) {
-                        $sheet->cell('Z' . $h, function ($cell) use ($rowData5) {
+                        $sheet->cell('Z' . $g, function ($cell) use ($rowData5) {
                             $cell->setValue(substr($rowData5['timeStart'], 10));
 
                         });
-                        $sheet->cell('AA' . $i, function ($cell) use ($rowData5) {
+                        $sheet->cell('AA' . $g, function ($cell) use ($rowData5) {
                             $cell->setValue($rowData5['waterStart']);
 
                         });
-                        $sheet->cell('AB' . $i, function ($cell) use ($rowData5) {
+                        $sheet->cell('AB' . $g, function ($cell) use ($rowData5) {
                             $cell->setValue(substr($rowData5['timeEnd'], 10));
 
                         });
-                        $sheet->cell('AC' . $i, function ($cell) use ($rowData5) {
+                        $sheet->cell('AC' . $g, function ($cell) use ($rowData5) {
                             $cell->setValue($rowData5['waterEnd']);
 
                         });
-                        $sheet->cell('AD' . $h, function ($cell) use ($rowData5) {
+                        $sheet->cell('AD' . $g, function ($cell) use ($rowData5) {
                             $cell->setValue($rowData5['timeGap']);
 
                         });
-                        $sheet->cell('AE' . $h, function ($cell) use ($rowData5) {
+                        $sheet->cell('AE' . $g, function ($cell) use ($rowData5) {
                             $cell->setValue($rowData5['current']);
 
                         });
 
                         //行高
-                        $sheet->setHeight($h, 25);
+                        $sheet->setHeight($g, 25);
 
-                        $h++;
+                        $g++;
                     }
                 }
 
