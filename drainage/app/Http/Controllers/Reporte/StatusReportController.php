@@ -845,12 +845,14 @@ class StatusReportController extends Controller
             if ($i == 0) {
                 if ($statusYXList[$i]->$currentCode1 > $initialCurrent) {
                     $sRunning1['timeStart'] = $statusYXList[$i]->Time;
+                    $sRunning1['waterStart'] = $statusYXList[$i]->ywjishui;
                     $index1++;
                     array_push($stationStatusList1, $sRunning1);
                 }
             } else {
                 if ($statusYXList[$i]->$currentCode1 > $initialCurrent && $statusYXList[$i - 1]->$currentCode1 <= $initialCurrent) {
                     $sRunning1['timeStart'] = $statusYXList[$i]->Time;
+                    $sRunning1['waterStart'] = $statusYXList[$i]->ywjishui;
                     $index1++;
                     array_push($stationStatusList1, $sRunning1);
 
@@ -858,6 +860,7 @@ class StatusReportController extends Controller
 //                    array_pop($stationStatusList1);
                 } elseif ($statusYXList[$i]->$currentCode1 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode1 > $initialCurrent) {
                     $sRunning1['timeEnd'] = $statusYXList[$i]->Time;
+                    $sRunning1['waterEnd'] = $statusYXList[$i]->ywjishui;
                     $sRunning1['current'] = $statusYXList[$i - 1]->$currentCode1;
 
                     if ($index1 > 0) {
@@ -865,6 +868,7 @@ class StatusReportController extends Controller
                         $sRunning1['timeGap'] = round($sRunning1['timeGap'],2);
                         $stationStatusList1[$index1 - 1]['timeEnd'] = $sRunning1['timeEnd'];
                         $stationStatusList1[$index1 - 1]['timeGap'] = $sRunning1['timeGap'];
+                        $stationStatusList1[$index1 - 1]['waterEnd'] = $sRunning1['waterEnd'];
                         if($sRunning1['current'] > 1000)
                         {
                             $sRunning1['current'] = 30;
@@ -886,6 +890,7 @@ class StatusReportController extends Controller
             if ($i == 0) {
                 if ($statusYXList[$i]->$currentCode2 > $initialCurrent) {
                     $sRunning2['timeStart'] = $statusYXList[$i]->Time;
+                    $sRunning2['waterStart'] = $statusYXList[$i]->ywjishui;
                     $index2++;
                     array_push($stationStatusList2, $sRunning2);
                 }
@@ -893,6 +898,7 @@ class StatusReportController extends Controller
                 if ($statusYXList[$i]->$currentCode2 > $initialCurrent && $statusYXList[$i - 1]->$currentCode2 <= $initialCurrent) {
 
                     $sRunning2['timeStart'] = $statusYXList[$i]->Time;
+                    $sRunning2['waterStart'] = $statusYXList[$i]->ywjishui;
                     $index2++;
                     array_push($stationStatusList2, $sRunning2);
 
@@ -900,12 +906,14 @@ class StatusReportController extends Controller
 //                    array_pop($stationStatusList2);
                 } elseif ($statusYXList[$i]->$currentCode2 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode2 > $initialCurrent) {
                     $sRunning2['timeEnd'] = $statusYXList[$i]->Time;
+                    $sRunning2['waterEnd'] = $statusYXList[$i]->ywjishui;
                     $sRunning2['current'] = $statusYXList[$i - 1]->$currentCode2;
 
                     if ($index2 > 0) {
                         $sRunning2['timeGap'] = abs(strtotime($sRunning2['timeEnd']) - strtotime($stationStatusList2[$index2 - 1]['timeStart'])) / 60;
                         $sRunning2['timeGap'] = round($sRunning2['timeGap'],2);
                         $stationStatusList2[$index2 - 1]['timeEnd'] = $sRunning2['timeEnd'];
+                        $stationStatusList2[$index2 - 1]['waterEnd'] = $sRunning2['waterEnd'];
                         $stationStatusList2[$index2 - 1]['timeGap'] = $sRunning2['timeGap'];
                         if($sRunning2['current'] > 1000)
                         {
@@ -929,12 +937,14 @@ class StatusReportController extends Controller
                 if ($i == 0) {
                     if ($statusYXList[$i]->$currentCode3 > $initialCurrent) {
                         $sRunning3['timeStart'] = $statusYXList[$i]->Time;
+                        $sRunning3['waterStart'] = $statusYXList[$i]->ywjishui;
                         $index3++;
                         array_push($stationStatusList3, $sRunning3);
                     }
                 } else {
                     if ($statusYXList[$i]->$currentCode3 > $initialCurrent && $statusYXList[$i - 1]->$currentCode3 <= $initialCurrent) {
                         $sRunning3['timeStart'] = $statusYXList[$i]->Time;
+                        $sRunning3['waterStart'] = $statusYXList[$i]->ywjishui;
                         $index3++;
                         array_push($stationStatusList3, $sRunning3);
 
@@ -942,6 +952,7 @@ class StatusReportController extends Controller
 //                        array_pop($stationStatusList3);
                     } elseif ($statusYXList[$i]->$currentCode3 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode3 > $initialCurrent) {
                         $sRunning3['timeEnd'] = $statusYXList[$i]->Time;
+                        $sRunning3['waterEnd'] = $statusYXList[$i]->ywjishui;
                         $sRunning3['current'] = $statusYXList[$i - 1]->$currentCode3;
 
                         if ($index3 > 0) {
@@ -949,6 +960,7 @@ class StatusReportController extends Controller
                             $sRunning3['timeGap'] = round($sRunning3['timeGap'],2);
                             $stationStatusList3[$index3 - 1]['timeEnd'] = $sRunning3['timeEnd'];
                             $stationStatusList3[$index3 - 1]['timeGap'] = $sRunning3['timeGap'];
+                            $stationStatusList3[$index3 - 1]['waterEnd'] = $sRunning3['waterEnd'];
                             if($sRunning3['current'] > 1000)
                             {
                                 $sRunning3['current'] = 30;
@@ -972,12 +984,14 @@ class StatusReportController extends Controller
                 if ($i == 0) {
                     if ($statusYXList[$i]->$currentCode4 > $initialCurrent) {
                         $sRunning4['timeStart'] = $statusYXList[$i]->Time;
+                        $sRunning4['waterStart'] = $statusYXList[$i]->ywjishui;
                         $index4++;
                         array_push($stationStatusList4, $sRunning4);
                     }
                 } else {
                     if ($statusYXList[$i]->$currentCode4 > $initialCurrent && $statusYXList[$i - 1]->$currentCode4 <= $initialCurrent) {
                         $sRunning4['timeStart'] = $statusYXList[$i]->Time;
+                        $sRunning4['waterStart'] = $statusYXList[$i]->ywjishui;
                         $index4++;
                         array_push($stationStatusList4, $sRunning4);
 
@@ -985,6 +999,7 @@ class StatusReportController extends Controller
 //                        array_pop($stationStatusList4);
                     } elseif ($statusYXList[$i]->$currentCode4 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode4 > $initialCurrent) {
                         $sRunning4['timeEnd'] = $statusYXList[$i]->Time;
+                        $sRunning4['waterEnd'] = $statusYXList[$i]->ywjishui;
                         $sRunning4['current'] = $statusYXList[$i - 1]->$currentCode4;
 
                         if ($index4 > 0) {
@@ -992,6 +1007,7 @@ class StatusReportController extends Controller
                             $sRunning4['timeGap'] = round($sRunning4['timeGap'],2);
                             $stationStatusList4[$index4 - 1]['timeEnd'] = $sRunning4['timeEnd'];
                             $stationStatusList4[$index4 - 1]['timeGap'] = $sRunning4['timeGap'];
+                            $stationStatusList4[$index4 - 1]['waterEnd'] = $sRunning4['waterEnd'];
                             if($sRunning4['current'] > 1000)
                             {
                                 $sRunning4['current'] = 30;
@@ -1015,12 +1031,14 @@ class StatusReportController extends Controller
                 if ($i == 0) {
                     if ($statusYXList[$i]->$currentCode5 > $initialCurrent) {
                         $sRunning5['timeStart'] = $statusYXList[$i]->Time;
+                        $sRunning5['waterStart'] = $statusYXList[$i]->ywjishui;
                         $index5++;
                         array_push($stationStatusList5, $sRunning5);
                     }
                 } else {
                     if ($statusYXList[$i]->$currentCode5 > $initialCurrent && $statusYXList[$i - 1]->$currentCode5 <= $initialCurrent) {
                         $sRunning5['timeStart'] = $statusYXList[$i]->Time;
+                        $sRunning5['waterStart'] = $statusYXList[$i]->ywjishui;
                         $index5++;
                         array_push($stationStatusList5, $sRunning5);
                     } elseif ($i == (count($statusYXList) - 1) && $statusYXList[$i]->$currentCode5 > $initialCurrent) {
@@ -1028,6 +1046,7 @@ class StatusReportController extends Controller
                     } elseif ($statusYXList[$i]->$currentCode5 <= $initialCurrent && $statusYXList[$i - 1]->$currentCode5 > $initialCurrent) {
 
                         $sRunning5['timeEnd'] = $statusYXList[$i]->Time;
+                        $sRunning5['waterEnd'] = $statusYXList[$i]->ywjishui;
                         $sRunning5['current'] = $statusYXList[$i - 1]->$currentCode5;
 
                         if ($index5 > 0) {
@@ -1035,6 +1054,7 @@ class StatusReportController extends Controller
                             $sRunning5['timeGap'] = round($sRunning5['timeGap'],2);
                             $stationStatusList5[$index5 - 1]['timeEnd'] = $sRunning5['timeEnd'];
                             $stationStatusList5[$index5 - 1]['timeGap'] = $sRunning5['timeGap'];
+                            $stationStatusList5[$index5 - 1]['waterEnd'] = $sRunning5['waterEnd'];
                             if($sRunning5['current'] > 1000)
                             {
                                 $sRunning5['current'] = 30;
@@ -1061,10 +1081,13 @@ class StatusReportController extends Controller
             if($this->isSameDay($endTime,$todayTime))
             {
                 $stationStatusList1[$indexEnd]['timeEnd'] = $todayTime;
+                $stationStatusList1[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
+
             }
             else
             {
                 $stationStatusList1[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+                $stationStatusList1[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
 
             $endTimeGap = abs(strtotime($stationStatusList1[$indexEnd]['timeEnd']) - strtotime($stationStatusList1[$indexEnd]['timeStart'])) / 60;
@@ -1089,10 +1112,13 @@ class StatusReportController extends Controller
             if($this->isSameDay($endTime,$todayTime))
             {
                 $stationStatusList2[$indexEnd]['timeEnd'] = $todayTime;
+
+                $stationStatusList2[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
             else
             {
                 $stationStatusList2[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+                $stationStatusList2[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
 
             $endTimeGap = abs(strtotime($stationStatusList2[$indexEnd]['timeEnd']) - strtotime($stationStatusList2[$indexEnd]['timeStart'])) / 60;
@@ -1117,10 +1143,12 @@ class StatusReportController extends Controller
             if($this->isSameDay($endTime,$todayTime))
             {
                 $stationStatusList3[$indexEnd]['timeEnd'] = $todayTime;
+                $stationStatusList3[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
             else
             {
                 $stationStatusList3[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+                $stationStatusList3[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
 
             $endTimeGap = abs(strtotime($stationStatusList3[$indexEnd]['timeEnd']) - strtotime($stationStatusList3[$indexEnd]['timeStart'])) / 60;
@@ -1145,10 +1173,12 @@ class StatusReportController extends Controller
             if($this->isSameDay($endTime,$todayTime))
             {
                 $stationStatusList4[$indexEnd]['timeEnd'] = $todayTime;
+                $stationStatusList4[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
             else
             {
                 $stationStatusList4[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+                $stationStatusList4[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
 
             $endTimeGap = abs(strtotime($stationStatusList4[$indexEnd]['timeEnd']) - strtotime($stationStatusList4[$indexEnd]['timeStart'])) / 60;
@@ -1173,10 +1203,12 @@ class StatusReportController extends Controller
             if($this->isSameDay($endTime,$todayTime))
             {
                 $stationStatusList5[$indexEnd]['timeEnd'] = $todayTime;
+                $stationStatusList5[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
             else
             {
                 $stationStatusList5[$indexEnd]['timeEnd'] = date('Y-m-d 23:59:59', strtotime($endTime));
+                $stationStatusList5[$indexEnd]['waterEnd'] = $statusYXList[count($statusYXList) - 1]->ywjishui;;
             }
 
             $endTimeGap = abs(strtotime($stationStatusList5[$indexEnd]['timeEnd']) - strtotime($stationStatusList5[$indexEnd]['timeStart'])) / 60;
@@ -2228,8 +2260,16 @@ class StatusReportController extends Controller
                         $cell->setValue(substr($rowData1['timeStart'], 10));
 
                     });
+                    $sheet->cell('C' . $i, function ($cell) use ($rowData1) {
+                        $cell->setValue($rowData1['waterStart']);
+
+                    });
                     $sheet->cell('D' . $i, function ($cell) use ($rowData1) {
                         $cell->setValue(substr($rowData1['timeEnd'], 10));
+
+                    });
+                    $sheet->cell('E' . $i, function ($cell) use ($rowData1) {
+                        $cell->setValue($rowData1['waterEnd']);
 
                     });
                     $sheet->cell('F' . $i, function ($cell) use ($rowData1) {
@@ -2253,8 +2293,16 @@ class StatusReportController extends Controller
                         $cell->setValue(substr($rowData2['timeStart'], 10));
 
                     });
-                    $sheet->cell('J' . $j, function ($cell) use ($rowData2) {
+                    $sheet->cell('I' . $i, function ($cell) use ($rowData2) {
+                        $cell->setValue($rowData2['waterStart']);
+
+                    });
+                    $sheet->cell('J' . $i, function ($cell) use ($rowData2) {
                         $cell->setValue(substr($rowData2['timeEnd'], 10));
+
+                    });
+                    $sheet->cell('K' . $i, function ($cell) use ($rowData2) {
+                        $cell->setValue($rowData2['waterEnd']);
 
                     });
                     $sheet->cell('L' . $j, function ($cell) use ($rowData2) {
@@ -2278,8 +2326,16 @@ class StatusReportController extends Controller
                         $cell->setValue(substr($rowData3['timeStart'], 10));
 
                     });
-                    $sheet->cell('P' . $k, function ($cell) use ($rowData3) {
+                    $sheet->cell('O' . $i, function ($cell) use ($rowData3) {
+                        $cell->setValue($rowData3['waterStart']);
+
+                    });
+                    $sheet->cell('P' . $i, function ($cell) use ($rowData3) {
                         $cell->setValue(substr($rowData3['timeEnd'], 10));
+
+                    });
+                    $sheet->cell('Q' . $i, function ($cell) use ($rowData3) {
+                        $cell->setValue($rowData3['waterEnd']);
 
                     });
                     $sheet->cell('R' . $k, function ($cell) use ($rowData3) {
@@ -2303,8 +2359,16 @@ class StatusReportController extends Controller
                         $cell->setValue(substr($rowData4['timeStart'], 10));
 
                     });
-                    $sheet->cell('V' . $h, function ($cell) use ($rowData4) {
+                    $sheet->cell('U' . $i, function ($cell) use ($rowData4) {
+                        $cell->setValue($rowData4['waterStart']);
+
+                    });
+                    $sheet->cell('V' . $i, function ($cell) use ($rowData4) {
                         $cell->setValue(substr($rowData4['timeEnd'], 10));
+
+                    });
+                    $sheet->cell('W' . $i, function ($cell) use ($rowData4) {
+                        $cell->setValue($rowData4['waterEnd']);
 
                     });
                     $sheet->cell('X' . $h, function ($cell) use ($rowData4) {
@@ -2329,8 +2393,16 @@ class StatusReportController extends Controller
                             $cell->setValue(substr($rowData5['timeStart'], 10));
 
                         });
-                        $sheet->cell('AB' . $h, function ($cell) use ($rowData5) {
+                        $sheet->cell('AA' . $i, function ($cell) use ($rowData5) {
+                            $cell->setValue($rowData5['waterStart']);
+
+                        });
+                        $sheet->cell('AB' . $i, function ($cell) use ($rowData5) {
                             $cell->setValue(substr($rowData5['timeEnd'], 10));
+
+                        });
+                        $sheet->cell('AC' . $i, function ($cell) use ($rowData5) {
+                            $cell->setValue($rowData5['waterEnd']);
 
                         });
                         $sheet->cell('AD' . $h, function ($cell) use ($rowData5) {

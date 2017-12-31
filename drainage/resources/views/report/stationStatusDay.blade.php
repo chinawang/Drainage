@@ -158,12 +158,14 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th colspan="5">1号泵</th>
+                                    <th colspan="7">1号泵</th>
                                 </tr>
                                 <tr>
                                     <th>序号</th>
                                     <th>开泵时分</th>
+                                    <th>开泵水位</th>
                                     <th>停泵时分</th>
+                                    <th>停泵水位</th>
                                     <th>运行(分)</th>
                                     <th>电流(A)</th>
                                 </tr>
@@ -174,27 +176,29 @@
                                         <tr>
                                             <td>{{ $status['index'] }}</td>
                                             <td>{{ substr($status['timeStart'],10) }}</td>
+                                            <td>{{ $status['waterStart'] }}</td>
                                             <td>{{ substr($status['timeEnd'],10) }}</td>
+                                            <td>{{ $status['waterEnd'] }}</td>
                                             <td>{{ $status['timeGap'] }}</td>
                                             <td>{{ $status['current'] }}</td>
                                         </tr>
                                     @endforeach
                                     <tr style="background-color: #f9f9f9">
                                         <td rowspan="2">今日合计</td>
-                                        <td>运行合计(分)</td>
-                                        <td>{{ $totalTimeDay1 }}</td>
+                                        <td colspan="2">运行合计(分)</td>
+                                        <td colspan="2">{{ $totalTimeDay1 }}</td>
                                         <td>连前累计运行(小时)</td>
                                         <td>{{ $totalTimeBefore1 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(万吨)</td>
-                                        <td>{{ $totalFluxDay1 }}</td>
+                                        <td colspan="2">抽升量(万吨)</td>
+                                        <td colspan="2">{{ $totalFluxDay1 }}</td>
                                         <td>连前累计抽升量(万吨)</td>
                                         <td>{{ $totalFluxBefore1 }}</td>
                                     </tr>
                                 @else
                                     <tr>
-                                        <td style="height: 80px" colspan="5">暂无数据</td>
+                                        <td style="height: 80px" colspan="7">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -203,12 +207,14 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th colspan="5">2号泵</th>
+                                    <th colspan="7">2号泵</th>
                                 </tr>
                                 <tr>
                                     <th>序号</th>
                                     <th>开泵时分</th>
+                                    <th>开泵水位</th>
                                     <th>停泵时分</th>
+                                    <th>停泵水位</th>
                                     <th>运行(分)</th>
                                     <th>电流(A)</th>
                                 </tr>
@@ -219,27 +225,29 @@
                                         <tr>
                                             <td>{{ $status['index'] }}</td>
                                             <td>{{ substr($status['timeStart'],10) }}</td>
+                                            <td>{{ $status['waterStart'] }}</td>
                                             <td>{{ substr($status['timeEnd'],10) }}</td>
+                                            <td>{{ $status['waterEnd'] }}</td>
                                             <td>{{ $status['timeGap'] }}</td>
                                             <td>{{ $status['current'] }}</td>
                                         </tr>
                                     @endforeach
                                     <tr style="background-color: #f9f9f9">
                                         <td rowspan="2">今日合计</td>
-                                        <td>运行合计(分)</td>
-                                        <td>{{ $totalTimeDay2 }}</td>
+                                        <td colspan="2">运行合计(分)</td>
+                                        <td colspan="2">{{ $totalTimeDay2 }}</td>
                                         <td>连前累计运行(小时)</td>
                                         <td>{{ $totalTimeBefore2 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(万吨)</td>
-                                        <td>{{ $totalFluxDay2 }}</td>
+                                        <td colspan="2">抽升量(万吨)</td>
+                                        <td colspan="2">{{ $totalFluxDay2 }}</td>
                                         <td>连前累计抽升量(万吨)</td>
                                         <td>{{ $totalFluxBefore2 }}</td>
                                     </tr>
                                 @else
                                     <tr>
-                                        <td style="height: 80px" colspan="5">暂无数据</td>
+                                        <td style="height: 80px" colspan="7">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -248,12 +256,14 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th colspan="5">3号泵</th>
+                                    <th colspan="7">3号泵</th>
                                 </tr>
                                 <tr>
                                     <th>序号</th>
                                     <th>开泵时分</th>
+                                    <th>开泵水位</th>
                                     <th>停泵时分</th>
+                                    <th>停泵水位</th>
                                     <th>运行(分)</th>
                                     <th>电流(A)</th>
                                 </tr>
@@ -265,27 +275,29 @@
                                         <tr>
                                             <td>{{ $status['index'] }}</td>
                                             <td>{{ substr($status['timeStart'],10) }}</td>
+                                            <td>{{ $status['waterStart'] }}</td>
                                             <td>{{ substr($status['timeEnd'],10) }}</td>
+                                            <td>{{ $status['waterEnd'] }}</td>
                                             <td>{{ $status['timeGap'] }}</td>
                                             <td>{{ $status['current'] }}</td>
                                         </tr>
                                     @endforeach
                                     <tr style="background-color: #f9f9f9">
                                         <td rowspan="2">今日合计</td>
-                                        <td>运行合计(分)</td>
-                                        <td>{{ $totalTimeDay3 }}</td>
+                                        <td colspan="2">运行合计(分)</td>
+                                        <td colspan="2">{{ $totalTimeDay3 }}</td>
                                         <td>连前累计运行(小时)</td>
                                         <td>{{ $totalTimeBefore3 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(万吨)</td>
-                                        <td>{{ $totalFluxDay3 }}</td>
+                                        <td colspan="2">抽升量(万吨)</td>
+                                        <td colspan="2">{{ $totalFluxDay3 }}</td>
                                         <td>连前累计抽升量(万吨)</td>
                                         <td>{{ $totalFluxBefore3 }}</td>
                                     </tr>
                                 @else
                                     <tr>
-                                        <td style="height: 80px" colspan="5">暂无数据</td>
+                                        <td style="height: 80px" colspan="7">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -294,12 +306,14 @@
                             <table class="table table-hover table-bordered ">
                                 <thead>
                                 <tr>
-                                    <th colspan="5">4号泵</th>
+                                    <th colspan="7">4号泵</th>
                                 </tr>
                                 <tr>
                                     <th>序号</th>
                                     <th>开泵时分</th>
+                                    <th>开泵水位</th>
                                     <th>停泵时分</th>
+                                    <th>停泵水位</th>
                                     <th>运行(分)</th>
                                     <th>电流(A)</th>
                                 </tr>
@@ -311,27 +325,29 @@
                                         <tr>
                                             <td>{{ $status['index'] }}</td>
                                             <td>{{ substr($status['timeStart'],10) }}</td>
+                                            <td>{{ $status['waterStart'] }}</td>
                                             <td>{{ substr($status['timeEnd'],10) }}</td>
+                                            <td>{{ $status['waterEnd'] }}</td>
                                             <td>{{ $status['timeGap'] }}</td>
                                             <td>{{ $status['current'] }}</td>
                                         </tr>
                                     @endforeach
                                     <tr style="background-color: #f9f9f9">
                                         <td rowspan="2">今日合计</td>
-                                        <td>运行合计(分)</td>
-                                        <td>{{ $totalTimeDay4 }}</td>
+                                        <td colspan="2">运行合计(分)</td>
+                                        <td colspan="2">{{ $totalTimeDay4 }}</td>
                                         <td>连前累计运行(小时)</td>
                                         <td>{{ $totalTimeBefore4 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
-                                        <td>抽升量(万吨)</td>
-                                        <td>{{ $totalFluxDay4 }}</td>
+                                        <td colspan="2">抽升量(万吨)</td>
+                                        <td colspan="2">{{ $totalFluxDay4 }}</td>
                                         <td>连前累计抽升量(万吨)</td>
                                         <td>{{ $totalFluxBefore4 }}</td>
                                     </tr>
                                 @else
                                     <tr>
-                                        <td style="height: 80px" colspan="5">暂无数据</td>
+                                        <td style="height: 80px" colspan="7">暂无数据</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -341,12 +357,14 @@
                                 <table class="table table-hover table-bordered ">
                                     <thead>
                                     <tr>
-                                        <th colspan="5">5号泵</th>
+                                        <th colspan="7">5号泵</th>
                                     </tr>
                                     <tr>
                                         <th>序号</th>
                                         <th>开泵时分</th>
+                                        <th>开泵水位</th>
                                         <th>停泵时分</th>
+                                        <th>停泵水位</th>
                                         <th>运行(分)</th>
                                         <th>电流(A)</th>
                                     </tr>
@@ -358,27 +376,29 @@
                                             <tr>
                                                 <td>{{ $status['index'] }}</td>
                                                 <td>{{ substr($status['timeStart'],10) }}</td>
+                                                <td>{{ $status['waterStart'] }}</td>
                                                 <td>{{ substr($status['timeEnd'],10) }}</td>
+                                                <td>{{ $status['waterEnd'] }}</td>
                                                 <td>{{ $status['timeGap'] }}</td>
                                                 <td>{{ $status['current'] }}</td>
                                             </tr>
                                         @endforeach
                                         <tr style="background-color: #f9f9f9">
                                             <td rowspan="2">今日合计</td>
-                                            <td>运行合计(分)</td>
-                                            <td>{{ $totalTimeDay5 }}</td>
+                                            <td colspan="2">运行合计(分)</td>
+                                            <td colspan="2">{{ $totalTimeDay5 }}</td>
                                             <td>连前累计运行(小时)</td>
                                             <td>{{ $totalTimeBefore5 }}</td>
                                         </tr>
                                         <tr style="background-color: #f9f9f9">
-                                            <td>抽升量(万吨)</td>
-                                            <td>{{ $totalFluxDay5 }}</td>
+                                            <td colspan="2">抽升量(万吨)</td>
+                                            <td colspan="2">{{ $totalFluxDay5 }}</td>
                                             <td>连前累计抽升量(万吨)</td>
                                             <td>{{ $totalFluxBefore5 }}</td>
                                         </tr>
                                     @else
                                         <tr>
-                                            <td style="height: 80px" colspan="5">暂无数据</td>
+                                            <td style="height: 80px" colspan="7">暂无数据</td>
                                         </tr>
                                     @endif
                                     </tbody>
