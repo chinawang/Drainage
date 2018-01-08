@@ -295,7 +295,7 @@ class ReportController extends Controller
             }
 
             //部分泵站通讯中断,没有数据,不做市电的报警
-            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            $stationNoWorking = ['11','12','20','34'];
             if(in_array($stationNum, $stationNoWorking))
             {
 
@@ -443,7 +443,7 @@ class ReportController extends Controller
                 }
 
                 //部分泵站通讯中断,没有数据,不做市电的报警
-                $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+                $stationNoWorking = ['11','12','20','34'];
                 if(in_array($stationNum, $stationNoWorking))
                 {
 
@@ -481,7 +481,7 @@ class ReportController extends Controller
             $station['alarmCleaner2'] = $countGS2;
 
             //部分泵站通讯中断,没有数据,不做市电的报警
-            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            $stationNoWorking = ['11','12','20','34'];
             if(in_array($stationNum, $stationNoWorking))
             {
                 $station['alarmCity'] = 0;//市电停电报警
@@ -1295,7 +1295,7 @@ class ReportController extends Controller
             }
 
             //部分泵站通讯中断,没有数据,不做市电的报警
-            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            $stationNoWorking = ['11','12','20','34'];
             if(in_array($stationNum, $stationNoWorking))
             {
 
@@ -1474,7 +1474,7 @@ class ReportController extends Controller
                 }
 
                 //部分泵站通讯中断,没有数据,不做市电的报警
-                $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+                $stationNoWorking = ['11','12','20','34'];
                 if(in_array($stationNum, $stationNoWorking))
                 {
 
@@ -1512,7 +1512,7 @@ class ReportController extends Controller
             $station['alarmCleaner2'] = $countGS2;
 
             //部分泵站通讯中断,没有数据,不做市电的报警
-            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            $stationNoWorking = ['11','12','20','34'];
             if(in_array($stationNum, $stationNoWorking))
             {
                 $station['alarmCity'] = 0;//市电停电报警
