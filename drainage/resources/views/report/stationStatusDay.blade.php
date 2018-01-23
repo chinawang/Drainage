@@ -78,7 +78,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="type" class="col-md-4 control-label">累计运行统计:</label>
+
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline">
+                                                    <input name="type" type="radio" id="radio1"
+                                                           value="本年"  checked>  本年度
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input name="type" type="radio" id="radio1"
+                                                           value="全部"  >  历史全部
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-1">
                                                 <button type="submit" class="btn btn-primary btn-custom">
