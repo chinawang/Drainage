@@ -2891,24 +2891,24 @@ class StatusReportController extends Controller
 
         $titleTime = "(".$startTime. " 至 " .$endTime.")";
 
-        $title = '单机运行情况月报表-' . $titleTime;
+        $title = $type.'泵站单机运行情况月报表-' . $titleTime;
 
         $excelData = $stations;
 
-        Excel::create($title, function ($excel) use ($excelData, $title, $startTime,$endTime) {
+        Excel::create($title, function ($excel) use ($excelData, $title,$type, $startTime,$endTime) {
 
             $excel->setTitle($title);
 
             $excel->setCreator('Eason')->setCompany('LegendX');
 
-            $excel->sheet('单机运行情况月报表', function ($sheet) use ($excelData, $startTime,$endTime) {
+            $excel->sheet('单机运行情况月报表', function ($sheet) use ($excelData, $type,$startTime,$endTime) {
 
                 $strMonth = substr($startTime, 0, 4) . '年' . substr($startTime, 5, 2) . '月';
                 $today = date('Y-m-d');
 
                 $displayTime = $startTime. " 至 " .$endTime;
 
-                $sheet->row(1, [$strMonth . '单机运行抽升情况报表']);
+                $sheet->row(1, [$strMonth . $type . '泵站单机运行抽升情况报表']);
                 $sheet->row(2, [$displayTime]);
                 $sheet->row(3, ['泵站名称', '1号泵', '', '2号泵', '', '3号泵', '', '4号泵', '', '5号泵']);
                 $sheet->row(4, ['', '运行(小时)', '抽升量(万吨)', '运行(小时)', '抽升量(万吨)', '运行(小时)', '抽升量(万吨)', '运行(小时)', '抽升量(万吨)', '运行(小时)', '抽升量(万吨)']);
@@ -3120,23 +3120,23 @@ class StatusReportController extends Controller
             'totalFluxBeforeAll' => $totalFluxBeforeAll, 'selectType' => $type, 'startTime' => $startTime];
 
         $titleTime = "(".$startTime. " 至 " .$endTime.")";
-        $title = '泵站月生产报表-' . $titleTime;
+        $title = $type.'泵站月生产报表-' . $titleTime;
 
         $excelData = $paramMonthAll;
 
-        Excel::create($title, function ($excel) use ($excelData, $title, $startTime,$endTime) {
+        Excel::create($title, function ($excel) use ($excelData, $title,$type, $startTime,$endTime) {
 
             $excel->setTitle($title);
 
             $excel->setCreator('Eason')->setCompany('LegendX');
 
-            $excel->sheet('泵站月生产报表', function ($sheet) use ($excelData, $startTime,$endTime) {
+            $excel->sheet('泵站月生产报表', function ($sheet) use ($excelData,$type, $startTime,$endTime) {
 
                 $strMonth = substr($startTime, 0, 4) . '年' . substr($startTime, 5, 2) . '月';
                 $today = date('Y-m-d');
                 $displayTime = $startTime. " 至 " .$endTime;
 
-                $sheet->row(1, [$strMonth . '泵站月生产报表']);
+                $sheet->row(1, [$strMonth . $type . '泵站月生产报表']);
                 $sheet->row(2, ['单位名称: 市政工程管理处泵站管理所', '', '', '', '', $displayTime]);
                 $sheet->row(3, ['序号', '泵站名称', '泵组运行时间(小时)', '累计(小时)', '泵组抽升量(万吨)', '累计(万吨)', '备注']);
 
