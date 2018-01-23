@@ -59,13 +59,6 @@ class StatusReportController extends Controller
 
         $totalType = Input::get('totalType', '本年'); // 连前累计类型(本年度、历史全部)
 
-        $endTime = $startTime;
-
-//        if ($startTime == '' || $endTime == '') {
-//            $startTime = date("Y-m-d");
-//            $endTime = date("Y-m-d");
-//        }
-
         if($totalType == '本年')
         {
             $thisYear = date("Y",strtotime($startTime));
@@ -75,6 +68,13 @@ class StatusReportController extends Controller
             //连前累计
             $beforeTime = date("2017-10-01");
         }
+
+        $endTime = $startTime;
+
+//        if ($startTime == '' || $endTime == '') {
+//            $startTime = date("Y-m-d");
+//            $endTime = date("Y-m-d");
+//        }
 
         $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
@@ -119,13 +119,25 @@ class StatusReportController extends Controller
 //        $startTime = $days[0];
 //        $endTime = $days[1];
 
-        $startTime = Input::get('timeStart', '');
-        $endTime = Input::get('timeEnd', '');
+        $startTime = Input::get('timeStart', date("Y-m-d"));
+        $endTime = Input::get('timeEnd', date("Y-m-d"));
 
-        if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-d");
-            $endTime = date("Y-m-d");
+        $totalType = Input::get('totalType', '本年'); // 连前累计类型(本年度、历史全部)
+
+        if($totalType == '本年')
+        {
+            $thisYear = date("Y",strtotime($startTime));
+            $beforeTime = date($thisYear."-01-01");
+
+        }else{
+            //连前累计
+            $beforeTime = date("2017-10-01");
         }
+
+//        if ($startTime == '' || $endTime == '') {
+//            $startTime = date("Y-m-d");
+//            $endTime = date("Y-m-d");
+//        }
 
 //        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
 //        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
@@ -136,7 +148,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-10-01");
+//            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
@@ -168,7 +180,7 @@ class StatusReportController extends Controller
 //        $days = $this->getTheMonthDay($startTime);
 //        $startTime = $days[0];
 
-        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime, 'endTime' => $endTime];
+        $paramMonth = ['stations' => $stations, 'selectType' => $type, 'startTime' => $startTime, 'endTime' => $endTime,'totalType' => $totalType,];
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name, 'log' => '查看了泵站启动状态统计']);
 
@@ -232,13 +244,25 @@ class StatusReportController extends Controller
 //        $startTime = $days[0];
 //        $endTime = $days[1];
 
-        $startTime = Input::get('timeStart', '');
-        $endTime = Input::get('timeEnd', '');
+        $startTime = Input::get('timeStart', date("Y-m-d"));
+        $endTime = Input::get('timeEnd', date("Y-m-d"));
 
-        if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-d");
-            $endTime = date("Y-m-d");
+        $totalType = Input::get('totalType', '本年'); // 连前累计类型(本年度、历史全部)
+
+        if($totalType == '本年')
+        {
+            $thisYear = date("Y",strtotime($startTime));
+            $beforeTime = date($thisYear."-01-01");
+
+        }else{
+            //连前累计
+            $beforeTime = date("2017-10-01");
         }
+
+//        if ($startTime == '' || $endTime == '') {
+//            $startTime = date("Y-m-d");
+//            $endTime = date("Y-m-d");
+//        }
 
 //        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
 //        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
@@ -257,7 +281,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-10-01");
+//            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
@@ -279,7 +303,7 @@ class StatusReportController extends Controller
 
         $paramMonthAll = ['stations' => $stations, 'totalTimeDayAll' => $totalTimeDayAll,
             'totalTimeBeforeAll' => $totalTimeBeforeAll, 'totalFluxDayAll' => $totalFluxDayAll,
-            'totalFluxBeforeAll' => $totalFluxBeforeAll, 'selectType' => $type, 'startTime' => $startTime, 'endTime' => $endTime];
+            'totalFluxBeforeAll' => $totalFluxBeforeAll, 'selectType' => $type, 'startTime' => $startTime, 'endTime' => $endTime,'totalType' => $totalType,];
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name, 'log' => '查看了泵站启动状态统计']);
@@ -2230,18 +2254,30 @@ class StatusReportController extends Controller
     public function exportToExcelStatusDayV2()
     {
         $stationID = Input::get('station_id', 1);
-        $startTime = Input::get('timeStart', '');
+        $startTime = Input::get('timeStart', date("Y-m-d"));
+        $totalType = Input::get('totalType', '本年'); // 连前累计类型(本年度、历史全部)
+
+        if($totalType == '本年')
+        {
+            $thisYear = date("Y",strtotime($startTime));
+            $beforeTime = date($thisYear."-01-01");
+
+        }else{
+            //连前累计
+            $beforeTime = date("2017-10-01");
+        }
+
         $endTime = $startTime;
 
-        if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-d");
-            $endTime = date("Y-m-d");
-        }
+//        if ($startTime == '' || $endTime == '') {
+//            $startTime = date("Y-m-d");
+//            $endTime = date("Y-m-d");
+//        }
 
         $title = '泵站运行日志-' . $startTime;
 
         //连前累计
-        $beforeTime = date("2017-10-01");
+//        $beforeTime = date("2017-10-01");
 
         $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
@@ -2796,13 +2832,24 @@ class StatusReportController extends Controller
 //        $days = $this->getTheMonthDay($selectDay);
 //        $startTime = $days[0];
 //        $endTime = $days[1];
-        $startTime = Input::get('timeStart', '');
-        $endTime = Input::get('timeEnd', '');
+        $startTime = Input::get('timeStart', date("Y-m-d"));
+        $endTime = Input::get('timeEnd', date("Y-m-d"));
+        $totalType = Input::get('totalType', '本年'); // 连前累计类型(本年度、历史全部)
 
-        if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-d");
-            $endTime = date("Y-m-d");
+        if($totalType == '本年')
+        {
+            $thisYear = date("Y",strtotime($startTime));
+            $beforeTime = date($thisYear."-01-01");
+
+        }else{
+            //连前累计
+            $beforeTime = date("2017-10-01");
         }
+
+//        if ($startTime == '' || $endTime == '') {
+//            $startTime = date("Y-m-d");
+//            $endTime = date("Y-m-d");
+//        }
 
 //        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
 //        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
@@ -2813,7 +2860,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-10-01");
+//            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时
@@ -3016,13 +3063,24 @@ class StatusReportController extends Controller
 //        $startTime = $days[0];
 //        $endTime = $days[1];
 
-        $startTime = Input::get('timeStart', '');
-        $endTime = Input::get('timeEnd', '');
+        $startTime = Input::get('timeStart', date("Y-m-d"));
+        $endTime = Input::get('timeEnd', date("Y-m-d"));
+        $totalType = Input::get('totalType', '本年'); // 连前累计类型(本年度、历史全部)
 
-        if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-d");
-            $endTime = date("Y-m-d");
+        if($totalType == '本年')
+        {
+            $thisYear = date("Y",strtotime($startTime));
+            $beforeTime = date($thisYear."-01-01");
+
+        }else{
+            //连前累计
+            $beforeTime = date("2017-10-01");
         }
+
+//        if ($startTime == '' || $endTime == '') {
+//            $startTime = date("Y-m-d");
+//            $endTime = date("Y-m-d");
+//        }
 
 //        $startTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
 //        $endTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
@@ -3041,7 +3099,7 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-            $beforeTime = date("2017-10-01");
+//            $beforeTime = date("2017-10-01");
             $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
             //单位小时

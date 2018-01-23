@@ -105,7 +105,7 @@
                                                 </button>
                                             </div>
                                             <div class="col-md-4 col-md-offset-1">
-                                                <a href="/report/exporStatustDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}"
+                                                <a href="/report/exporStatustDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}&totalType={{ $totalType }}"
                                                    class="btn btn-default btn-custom">
                                                     <span class="glyphicon glyphicon-export"></span>
                                                     导出报表

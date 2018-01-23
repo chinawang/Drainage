@@ -71,7 +71,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         {{--<div class="form-group">--}}
                                             {{--<label for="repair_at" class="col-md-4 control-label">选择月份:</label>--}}
                                             {{--<div class="col-md-8">--}}
@@ -99,14 +99,32 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <div class="col-md-5 col-md-offset-0">
+                                            <label for="type" class="col-md-6 control-label">累计运行统计:</label>
+
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline">
+                                                    <input name="totalType" type="radio" id="radio1"
+                                                           value="本年" {{$totalType != '本年'?:' checked'}} >  本年度
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input name="totalType" type="radio" id="radio1"
+                                                           value="全部"  {{$totalType != '全部'?:' checked'}}>  历史全部
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="col-md-4 col-md-offset-1">
                                                 <button type="submit" class="btn btn-primary btn-custom">
                                                     <span class="glyphicon glyphicon-search"></span>
                                                     查询
                                                 </button>
                                             </div>
-                                            <div class="col-md-7 col-md-offset-0">
-                                                <a href="/report/exporStatustMonth?type={{ $selectType }}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}"
+                                            <div class="col-md-4 col-md-offset-1">
+                                                <a href="/report/exporStatustMonth?type={{ $selectType }}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}&totalType={{ $totalType }}"
                                                    class="btn btn-default btn-custom">
                                                     <span class="glyphicon glyphicon-export"></span>
                                                     导出报表
