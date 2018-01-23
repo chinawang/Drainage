@@ -56,6 +56,9 @@ class StatusReportController extends Controller
     {
         $stationID = Input::get('station_id', 1);
         $startTime = Input::get('timeStart', '');
+
+        $totalType = Input::get('totalType', ''); // 连前累计类型(本年度、历史全部)
+
         $endTime = $startTime;
 
         if ($startTime == '' || $endTime == '') {
@@ -63,8 +66,17 @@ class StatusReportController extends Controller
             $endTime = date("Y-m-d");
         }
 
-        //连前累计
-        $beforeTime = date("2017-10-01");
+        if($totalType == '本年')
+        {
+            $thisYear = date("Y",$startTime);
+            $beforeTime = date($thisYear."-01-01");
+            return $beforeTime;
+
+        }else{
+            //连前累计
+            $beforeTime = date("2017-10-01");
+            return $beforeTime;
+        }
 
         $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
