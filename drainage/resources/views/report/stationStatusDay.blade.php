@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="type" class="col-md-4 control-label">累计运行统计:</label>
+                                            <label for="type" class="col-md-6 control-label">累计运行统计:</label>
 
                                             <div class="col-md-6">
                                                 <label class="checkbox-inline">
@@ -98,13 +98,13 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <div class="col-md-6 col-md-offset-1">
+                                            <div class="col-md-4 col-md-offset-1">
                                                 <button type="submit" class="btn btn-primary btn-custom">
                                                     <span class="glyphicon glyphicon-search"></span>
                                                     查询
                                                 </button>
                                             </div>
-                                            <div class="col-md-3 col-md-offset-1">
+                                            <div class="col-md-4 col-md-offset-1">
                                                 <a href="/report/exporStatustDay?station_id={{$stationSelect['id']}}&timeStart={{ $startTime }}"
                                                    class="btn btn-default btn-custom">
                                                     <span class="glyphicon glyphicon-export"></span>
