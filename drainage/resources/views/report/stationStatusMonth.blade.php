@@ -117,11 +117,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6 col-md-offset-3">
                                         <div class="form-group">
-                                            <label for="type" class="col-md-6 control-label">累计运行统计:</label>
+                                            <label for="type" class="col-md-5 control-label">累计运行统计:</label>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-7">
                                                 <label class="checkbox-inline">
                                                     <input name="totalType" type="radio" id="radio1"
                                                            value="本年" {{$totalType != '本年'?:' checked'}} >  本年度
