@@ -55,16 +55,16 @@ class StatusReportController extends Controller
     public function showStatusReportDay()
     {
         $stationID = Input::get('station_id', 1);
-        $startTime = Input::get('timeStart', '');
+        $startTime = Input::get('timeStart', date("Y-m-d"));
 
-        $totalType = Input::get('totalType', ''); // 连前累计类型(本年度、历史全部)
+        $totalType = Input::get('totalType', '本年'); // 连前累计类型(本年度、历史全部)
 
         $endTime = $startTime;
 
-        if ($startTime == '' || $endTime == '') {
-            $startTime = date("Y-m-d");
-            $endTime = date("Y-m-d");
-        }
+//        if ($startTime == '' || $endTime == '') {
+//            $startTime = date("Y-m-d");
+//            $endTime = date("Y-m-d");
+//        }
 
         if($totalType == '本年')
         {
