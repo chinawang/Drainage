@@ -85,11 +85,11 @@
                                             <div class="col-md-6">
                                                 <label class="checkbox-inline">
                                                     <input name="totalType" type="radio" id="radio1"
-                                                           value="本年"  checked>  本年度
+                                                           value="本年" {{$totalType != '本年'?:' checked'}} >  本年度
                                                 </label>
                                                 <label class="checkbox-inline">
                                                     <input name="totalType" type="radio" id="radio1"
-                                                           value="全部"  >  历史全部
+                                                           value="全部"  {{$totalType != '全部'?:' checked'}}>  历史全部
                                                 </label>
 
                                             </div>
