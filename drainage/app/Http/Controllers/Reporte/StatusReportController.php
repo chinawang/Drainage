@@ -874,7 +874,7 @@ class StatusReportController extends Controller
                             $sRunning1['current'] = 30;
                         }
                         $stationStatusList1[$index1 - 1]['current'] = $sRunning1['current'];
-                        $stationStatusList1[$index1 - 1]['flux'] = $sRunning1['timeGap'] * $pump['flux1'] / 600000;
+                        $stationStatusList1[$index1 - 1]['flux'] = round($sRunning1['timeGap'] * $pump['flux1'] / 600000,4);
                         $stationStatusList1[$index1 - 1]['index'] = $index1;
 
                         //运行时间求和
@@ -920,7 +920,7 @@ class StatusReportController extends Controller
                             $sRunning2['current'] = 30;
                         }
                         $stationStatusList2[$index2 - 1]['current'] = $sRunning2['current'];
-                        $stationStatusList2[$index2 - 1]['flux'] = $sRunning2['timeGap'] * $pump['flux2'] / 600000;
+                        $stationStatusList2[$index2 - 1]['flux'] = round($sRunning2['timeGap'] * $pump['flux2'] / 600000,4);
                         $stationStatusList2[$index2 - 1]['index'] = $index2;
 
                         //运行时间求和
@@ -966,7 +966,7 @@ class StatusReportController extends Controller
                                 $sRunning3['current'] = 30;
                             }
                             $stationStatusList3[$index3 - 1]['current'] = $sRunning3['current'];
-                            $stationStatusList3[$index3 - 1]['flux'] = $sRunning3['timeGap'] * $pump['flux3'] / 600000;
+                            $stationStatusList3[$index3 - 1]['flux'] = round($sRunning3['timeGap'] * $pump['flux3'] / 600000,4);
                             $stationStatusList3[$index3 - 1]['index'] = $index3;
 
                             //运行时间求和
@@ -1013,7 +1013,7 @@ class StatusReportController extends Controller
                                 $sRunning4['current'] = 30;
                             }
                             $stationStatusList4[$index4 - 1]['current'] = $sRunning4['current'];
-                            $stationStatusList4[$index4 - 1]['flux'] = $sRunning4['timeGap'] * $pump['flux4'] / 600000;
+                            $stationStatusList4[$index4 - 1]['flux'] = round($sRunning4['timeGap'] * $pump['flux4'] / 600000,4);
                             $stationStatusList4[$index4 - 1]['index'] = $index4;
 
                             //运行时间求和
@@ -1060,7 +1060,7 @@ class StatusReportController extends Controller
                                 $sRunning5['current'] = 30;
                             }
                             $stationStatusList5[$index5 - 1]['current'] = $sRunning5['current'];
-                            $stationStatusList5[$index5 - 1]['flux'] = $sRunning5['timeGap'] * $pump['flux5'] / 600000;
+                            $stationStatusList5[$index5 - 1]['flux'] = round($sRunning5['timeGap'] * $pump['flux5'] / 600000,4);
                             $stationStatusList5[$index5 - 1]['index'] = $index5;
 
                             //运行时间求和
@@ -1077,23 +1077,23 @@ class StatusReportController extends Controller
         //抽升量合计
         if($totalTimeDay1 != 0)
         {
-            $totalFluxDay1 = ($pump['flux1'] * ($totalTimeDay1/60)) / 10000;
+            $totalFluxDay1 = round(($pump['flux1'] * round($totalTimeDay1/60,2)) / 10000,4);
         }
         if($totalTimeDay2 != 0)
         {
-            $totalFluxDay2 = ($pump['flux2'] * ($totalTimeDay2/60)) / 10000;
+            $totalFluxDay2 = round(($pump['flux2'] * round($totalTimeDay2/60,2)) / 10000,4);
         }
         if($totalTimeDay3 != 0)
         {
-            $totalFluxDay3 = ($pump['flux3'] * ($totalTimeDay3/60)) / 10000;
+            $totalFluxDay3 = round(($pump['flux3'] * round($totalTimeDay3/60,2)) / 10000,4);
         }
         if($totalTimeDay4 != 0)
         {
-            $totalFluxDay4 = ($pump['flux4'] * ($totalTimeDay4/60)) / 10000;
+            $totalFluxDay4 = round(($pump['flux4'] * round($totalTimeDay4/60,2)) / 10000,4);
         }
         if($totalTimeDay5 != 0)
         {
-            $totalFluxDay5 = ($pump['flux1'] * ($totalTimeDay5/60)) / 10000;
+            $totalFluxDay5 = round(($pump['flux5'] * round($totalTimeDay5/60,2)) / 10000,4);
         }
 
         //当泵组正在运行中或者跨天运行时的逻辑
@@ -1116,7 +1116,7 @@ class StatusReportController extends Controller
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList1[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList1[$indexEnd]['current'] = 57;
-            $stationStatusList1[$indexEnd]['flux'] = $endTimeGap * $pump['flux1'] / 600000;
+            $stationStatusList1[$indexEnd]['flux'] = round($endTimeGap * $pump['flux1'] / 600000,4);
 
             if($indexEnd == 0)
             {
@@ -1147,7 +1147,7 @@ class StatusReportController extends Controller
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList2[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList2[$indexEnd]['current'] = 57;
-            $stationStatusList2[$indexEnd]['flux'] = $endTimeGap * $pump['flux2'] / 600000;
+            $stationStatusList2[$indexEnd]['flux'] = round($endTimeGap * $pump['flux2'] / 600000,4);
 
             if($indexEnd == 0)
             {
@@ -1177,7 +1177,7 @@ class StatusReportController extends Controller
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList3[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList3[$indexEnd]['current'] = 57;
-            $stationStatusList3[$indexEnd]['flux'] = $endTimeGap * $pump['flux3'] / 600000;
+            $stationStatusList3[$indexEnd]['flux'] = round($endTimeGap * $pump['flux3'] / 600000,4);
 
             if($indexEnd == 0)
             {
@@ -1207,7 +1207,7 @@ class StatusReportController extends Controller
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList4[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList4[$indexEnd]['current'] = 57;
-            $stationStatusList4[$indexEnd]['flux'] = $endTimeGap * $pump['flux4'] / 600000;
+            $stationStatusList4[$indexEnd]['flux'] = round($endTimeGap * $pump['flux4'] / 600000,4);
 
             if($indexEnd == 0)
             {
@@ -1237,7 +1237,7 @@ class StatusReportController extends Controller
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList5[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList5[$indexEnd]['current'] = 57;
-            $stationStatusList5[$indexEnd]['flux'] = $endTimeGap * $pump['flux5'] / 600000;
+            $stationStatusList5[$indexEnd]['flux'] = round($endTimeGap * $pump['flux5'] / 600000,4);
 
             if($indexEnd == 0)
             {
