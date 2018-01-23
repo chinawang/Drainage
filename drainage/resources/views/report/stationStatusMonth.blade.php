@@ -71,7 +71,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         {{--<div class="form-group">--}}
                                             {{--<label for="repair_at" class="col-md-4 control-label">选择月份:</label>--}}
                                             {{--<div class="col-md-8">--}}
@@ -97,24 +97,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="type" class="col-md-6 control-label">累计运行统计:</label>
 
-                                            <div class="col-md-6">
-                                                <label class="checkbox-inline">
-                                                    <input name="totalType" type="radio" id="radio1"
-                                                           value="本年" {{$totalType != '本年'?:' checked'}} >  本年度
-                                                </label>
-                                                <label class="checkbox-inline">
-                                                    <input name="totalType" type="radio" id="radio1"
-                                                           value="全部"  {{$totalType != '全部'?:' checked'}}>  历史全部
-                                                </label>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="col-md-4 col-md-offset-1">
@@ -130,6 +113,26 @@
                                                     导出报表
                                                 </a>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="type" class="col-md-6 control-label">累计运行统计:</label>
+
+                                            <div class="col-md-6">
+                                                <label class="checkbox-inline">
+                                                    <input name="totalType" type="radio" id="radio1"
+                                                           value="本年" {{$totalType != '本年'?:' checked'}} >  本年度
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input name="totalType" type="radio" id="radio1"
+                                                           value="全部"  {{$totalType != '全部'?:' checked'}}>  历史全部
+                                                </label>
+
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
