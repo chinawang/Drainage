@@ -1228,26 +1228,26 @@ class StatusReportController extends Controller
         }
 
         //抽升量合计
-//        if($totalTimeDay1 != 0)
-//        {
-//            $totalFluxDay1 = round(($pump['flux1'] * round($totalTimeDay1/60,2)) / 10000,4);
-//        }
-//        if($totalTimeDay2 != 0)
-//        {
-//            $totalFluxDay2 = round(($pump['flux2'] * round($totalTimeDay2/60,2)) / 10000,4);
-//        }
-//        if($totalTimeDay3 != 0)
-//        {
-//            $totalFluxDay3 = round(($pump['flux3'] * round($totalTimeDay3/60,2)) / 10000,4);
-//        }
-//        if($totalTimeDay4 != 0)
-//        {
-//            $totalFluxDay4 = round(($pump['flux4'] * round($totalTimeDay4/60,2)) / 10000,4);
-//        }
-//        if($totalTimeDay5 != 0)
-//        {
-//            $totalFluxDay5 = round(($pump['flux5'] * round($totalTimeDay5/60,2)) / 10000,4);
-//        }
+        if($totalTimeDay1 != 0)
+        {
+            $totalFluxDay1 = round(($pump['flux1'] * round($totalTimeDay1/60,2)) / 10000,4);
+        }
+        if($totalTimeDay2 != 0)
+        {
+            $totalFluxDay2 = round(($pump['flux2'] * round($totalTimeDay2/60,2)) / 10000,4);
+        }
+        if($totalTimeDay3 != 0)
+        {
+            $totalFluxDay3 = round(($pump['flux3'] * round($totalTimeDay3/60,2)) / 10000,4);
+        }
+        if($totalTimeDay4 != 0)
+        {
+            $totalFluxDay4 = round(($pump['flux4'] * round($totalTimeDay4/60,2)) / 10000,4);
+        }
+        if($totalTimeDay5 != 0)
+        {
+            $totalFluxDay5 = round(($pump['flux5'] * round($totalTimeDay5/60,2)) / 10000,4);
+        }
 
         //当日泵站运行合计(分钟)
         $totalTimeDay = $totalTimeDay1 + $totalTimeDay2 + $totalTimeDay3 + $totalTimeDay4 + $totalTimeDay5;
