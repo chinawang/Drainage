@@ -70,7 +70,7 @@ class StatusReportController extends Controller
         {
             $thisYear = date("Y",$startTime);
             $beforeTime = date($thisYear."-01-01");
-            return $beforeTime;
+            return "本年";
 
         }else{
             //连前累计
