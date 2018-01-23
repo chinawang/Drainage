@@ -69,8 +69,8 @@ class StatusReportController extends Controller
         if($totalType == '本年')
         {
             $thisYear = date("Y",$startTime);
-            $beforeTime = date($thisYear."-01-01");
-            return $beforeTime;
+//            $beforeTime = date($thisYear."-01-01");
+            return $thisYear;
 
         }else{
             //连前累计
