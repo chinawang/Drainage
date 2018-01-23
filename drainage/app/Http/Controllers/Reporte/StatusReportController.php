@@ -70,12 +70,10 @@ class StatusReportController extends Controller
         {
             $thisYear = date("Y",strtotime($startTime));
             $beforeTime = date($thisYear."-01-01");
-            return $beforeTime;
 
         }else{
             //连前累计
             $beforeTime = date("2017-10-01");
-            return $beforeTime;
         }
 
         $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
