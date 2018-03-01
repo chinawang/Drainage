@@ -50,7 +50,7 @@
                                 <tr>
                                     <th style="width: 80px">序号</th>
                                     <th>所属泵站</th>
-                                    <th>故障设备</th>
+                                    <th>故障设备及其他</th>
                                     <th>故障原因</th>
                                     <th>解决办法</th>
                                     <th>维修结果</th>
@@ -67,11 +67,11 @@
                                     <tr>
                                         <td>{{ $maintenance['id'] }}</td>
                                         <td>{{ $maintenance['station_name'] }}</td>
-                                        <td>{{ $maintenance['equipment_name'] }}</td>
+                                        <td>{{ $maintenance['equipment'] }}</td>
                                         <td>{{ $maintenance['failure_reason'] }}</td>
                                         <td>{{ $maintenance['repair_solution'] }}</td>
                                         <td>{{ $maintenance['result'] }}</td>
-                                        <td>{{ $maintenance['repairer_name'] }}</td>
+                                        <td>{{ $maintenance['repairer'] }}</td>
                                         <td>{{ $maintenance['repair_at'] }}</td>
                                         <td>{{ $maintenance['remark'] }}</td>
 

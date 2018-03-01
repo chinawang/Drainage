@@ -42,7 +42,7 @@
                                 <tr>
                                     <th style="width: 80px">序号</th>
                                     <th>所属泵站</th>
-                                    <th>故障设备</th>
+                                    <th>故障设备及其他</th>
                                     <th>故障类型</th>
                                     <th>故障描述</th>
                                     <th>设备状态</th>
@@ -61,22 +61,22 @@
                                     <tr>
                                         <td>{{ $failure['id'] }}</td>
                                         <td>{{ $failure['station_name'] }}</td>
-                                        <td>{{ $failure['equipment_name'] }}</td>
+                                        <td>{{ $failure['equipment'] }}</td>
                                         <td>{{ $failure['failure_type'] }}</td>
                                         <td>{{ $failure['failure_description'] }}</td>
                                         <td>{{ $failure['equipment_status'] }}</td>
-                                        <td>{{ $failure['reporter_name'] }}</td>
+                                        <td>{{ $failure['reporter'] }}</td>
                                         <td>{{ $failure['report_at'] }}</td>
                                         <td>
                                             @if($failure['repair_process'] == 0)
-                                                未维修
+                                                报修
                                             @elseif($failure['repair_process'] == 1)
                                                 维修中
                                             @elseif($failure['repair_process'] == 2)
                                                 维修完成
                                             @endif
                                         </td>
-                                        <td hidden="hidden">{{ $failure['repairer_name'] }}</td>
+                                        <td hidden="hidden">{{ $failure['repairer'] }}</td>
                                         <td hidden="hidden">{{ $failure['repair_at'] }}</td>
 
                                         @if (app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-add-maintenance') && app('App\Http\Logic\Rbac\RbacLogic')->check(Auth::user()->id, 'failure-view-maintenance'))
@@ -132,7 +132,7 @@
                                 <tr>
                                     <th style="width: 80px">序号</th>
                                     <th>所属泵站</th>
-                                    <th>故障设备</th>
+                                    <th>故障设备及其他</th>
                                     <th>故障原因</th>
                                     <th>解决办法</th>
                                     <th>维修结果</th>
@@ -149,11 +149,11 @@
                                     <tr>
                                         <td>{{ $maintenance['id'] }}</td>
                                         <td>{{ $maintenance['station_name'] }}</td>
-                                        <td>{{ $maintenance['equipment_name'] }}</td>
+                                        <td>{{ $maintenance['equipment'] }}</td>
                                         <td>{{ $maintenance['failure_reason'] }}</td>
                                         <td>{{ $maintenance['repair_solution'] }}</td>
                                         <td>{{ $maintenance['result'] }}</td>
-                                        <td>{{ $maintenance['repairer_name'] }}</td>
+                                        <td>{{ $maintenance['repairer'] }}</td>
                                         <td>{{ $maintenance['repair_at'] }}</td>
                                         <td>{{ $maintenance['remark'] }}</td>
 
