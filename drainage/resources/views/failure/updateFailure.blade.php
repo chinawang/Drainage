@@ -55,17 +55,27 @@
                                 <label for="equipment" class="col-md-4 control-label">故障设备</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="equipment_id" required>
-                                        @foreach ($equipments as $equipment)
-                                            <option value="{{ $equipment['id'] }}" {{$failure['equipment_id'] == $equipment['id'] ? 'selected="selected"' : ''}}>{{ $equipment['name'] }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="equipment" value="{{ $failure['equipment'] }}" placeholder="请输入故障设备" required >
+
                                     @if ($errors->has('equipment'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('equipment') }}</strong>
                                     </span>
                                     @endif
                                 </div>
+
+                                {{--<div class="col-md-6">--}}
+                                    {{--<select class="form-control" id="select" name="equipment_id" required>--}}
+                                        {{--@foreach ($equipments as $equipment)--}}
+                                            {{--<option value="{{ $equipment['id'] }}" {{$failure['equipment_id'] == $equipment['id'] ? 'selected="selected"' : ''}}>{{ $equipment['name'] }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                    {{--@if ($errors->has('equipment'))--}}
+                                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('equipment') }}</strong>--}}
+                                    {{--</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
                             </div>
 
                             <div class="form-group{{ $errors->has('failure_type') ? ' has-error' : '' }}">
@@ -116,17 +126,27 @@
                                 <label for="reporter" class="col-md-4 control-label">报修人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="reporter_id" required>
-                                        @foreach ($employees as $employee)
-                                            <option value="{{ $employee['id'] }}" {{$failure['reporter_id'] == $employee['id'] ? 'selected="selected"' : ''}}>{{ $employee['name'] }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="reporter" value="{{ $failure['reporter'] }}" placeholder="请输入报修人" required >
+
                                     @if ($errors->has('reporter'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('reporter') }}</strong>
                                     </span>
                                     @endif
                                 </div>
+
+                                {{--<div class="col-md-6">--}}
+                                    {{--<select class="form-control" id="select" name="reporter_id" required>--}}
+                                        {{--@foreach ($employees as $employee)--}}
+                                            {{--<option value="{{ $employee['id'] }}" {{$failure['reporter_id'] == $employee['id'] ? 'selected="selected"' : ''}}>{{ $employee['name'] }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                    {{--@if ($errors->has('reporter'))--}}
+                                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('reporter') }}</strong>--}}
+                                    {{--</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
                             </div>
 
                             <div class="form-group{{ $errors->has('report_at') ? ' has-error' : '' }}">

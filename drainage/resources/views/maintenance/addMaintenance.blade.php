@@ -57,18 +57,28 @@
                                 <label for="equipment" class="col-md-4 control-label">故障设备</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="equipment_id" required>
-                                        <option value="" selected="selected" style="display: none">选择设备</option>
-                                        @foreach ($equipments as $equipment)
-                                            <option value="{{ $equipment['id'] }}">{{ $equipment['name'] }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="equipment" value="{{ old('equipment') }}" placeholder="请输入故障设备" required >
+
                                     @if ($errors->has('equipment'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('equipment') }}</strong>
                                     </span>
                                     @endif
                                 </div>
+
+                                {{--<div class="col-md-6">--}}
+                                    {{--<select class="form-control" id="select" name="equipment_id" required>--}}
+                                        {{--<option value="" selected="selected" style="display: none">选择设备</option>--}}
+                                        {{--@foreach ($equipments as $equipment)--}}
+                                            {{--<option value="{{ $equipment['id'] }}">{{ $equipment['name'] }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                    {{--@if ($errors->has('equipment'))--}}
+                                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('equipment') }}</strong>--}}
+                                    {{--</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
                             </div>
 
                             <div class="form-group{{ $errors->has('failure_reason') ? ' has-error' : '' }}">
@@ -117,18 +127,28 @@
                                 <label for="repairer" class="col-md-4 control-label">维修人</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select" name="repairer_id" required>
-                                        <option value="" selected="selected" style="display: none">选择维修人</option>
-                                        @foreach ($employees as $employee)
-                                            <option value="{{ $employee['id'] }}">{{ $employee['name'] }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="repairer" value="{{ old('repairer') }}" placeholder="请输入维修人" required >
+
                                     @if ($errors->has('repairer'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('repairer') }}</strong>
                                     </span>
                                     @endif
                                 </div>
+
+                                {{--<div class="col-md-6">--}}
+                                    {{--<select class="form-control" id="select" name="repairer_id" required>--}}
+                                        {{--<option value="" selected="selected" style="display: none">选择维修人</option>--}}
+                                        {{--@foreach ($employees as $employee)--}}
+                                            {{--<option value="{{ $employee['id'] }}">{{ $employee['name'] }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                    {{--@if ($errors->has('repairer'))--}}
+                                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('repairer') }}</strong>--}}
+                                    {{--</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
                             </div>
 
                             <div class="form-group{{ $errors->has('repair_at') ? ' has-error' : '' }}">
@@ -164,6 +184,7 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" id="select" name="repair_process">
+                                        <option value="0">报修</option>
                                         <option value="1">维修中</option>
                                         <option value="2">维修完成</option>
                                     </select>

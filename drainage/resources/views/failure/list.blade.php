@@ -78,7 +78,7 @@
                                 <tr>
                                     <th style="width: 80px">序号</th>
                                     <th>所属泵站</th>
-                                    <th>故障设备</th>
+                                    <th>故障设备及其他</th>
                                     <th>故障类型</th>
                                     <th>故障描述</th>
                                     <th>设备状态</th>
