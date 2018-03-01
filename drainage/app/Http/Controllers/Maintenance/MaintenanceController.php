@@ -183,7 +183,7 @@ class MaintenanceController extends Controller
         $input = $this->failureValidation->failurePaginate();
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $orderDirection  = array_get($input, 'order_direction', 'desc');
         $pageSize        = array_get($input, 'page_size', 20);
         $failurePaginate = $this->failureLogic->getFailures($pageSize,$orderColumn,$orderDirection,$cursorPage);
 
@@ -211,7 +211,7 @@ class MaintenanceController extends Controller
         $input = $this->maintenanceValidation->maintenancePaginate();
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $orderDirection  = array_get($input, 'order_direction', 'desc');
         $pageSize        = array_get($input, 'page_size', 20);
         $maintenancePaginate = $this->maintenanceLogic->getMaintenances($pageSize,$orderColumn,$orderDirection,$cursorPage);
 
@@ -244,7 +244,7 @@ class MaintenanceController extends Controller
         $input = $this->maintenanceValidation->maintenancePaginate();
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $orderDirection  = array_get($input, 'order_direction', 'desc');
         $pageSize        = array_get($input, 'page_size', 20);
         $maintenancePaginate = $this->maintenanceLogic->getMaintenancesByStation($stationID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
 
@@ -272,7 +272,7 @@ class MaintenanceController extends Controller
         $input = $this->maintenanceValidation->maintenancePaginate();
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $orderDirection  = array_get($input, 'order_direction', 'desc');
         $pageSize        = array_get($input, 'page_size', 20);
         $maintenancePaginate = $this->maintenanceLogic->getMaintenancesByFailure($failureID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
 

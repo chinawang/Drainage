@@ -163,7 +163,7 @@ class FailureController extends Controller
         $input = $this->failureValidation->failurePaginate();
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $orderDirection  = array_get($input, 'order_direction', 'desc');
         $pageSize        = array_get($input, 'page_size', 20);
 
         if($stationID == 0)
@@ -220,7 +220,7 @@ class FailureController extends Controller
         $input = $this->failureValidation->failurePaginate();
         $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
-        $orderDirection  = array_get($input, 'order_direction', 'asc');
+        $orderDirection  = array_get($input, 'order_direction', 'desc');
         $pageSize        = array_get($input, 'page_size', 20);
         $failurePaginate = $this->failureLogic->getFailuresByStation($stationID,$pageSize,$orderColumn,$orderDirection,$cursorPage);
 
