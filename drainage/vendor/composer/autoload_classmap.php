@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddCapacityToEquipmentsTable' => $baseDir . '/database/migrations/2017_09_21_023451_add_capacity_to_equipments_table.php',
+    'AddEauipmentToFailuresTable' => $baseDir . '/database/migrations/2018_03_04_050723_add_eauipment_to_failures_table.php',
+    'AddEauipmentToMaintenancesTable' => $baseDir . '/database/migrations/2018_03_04_051031_add_eauipment_to_maintenances_table.php',
     'AddPurchaseTimeToEquipmentsTable' => $baseDir . '/database/migrations/2017_11_12_061520_add_purchase_time_to_equipments_table.php',
     'AddRemarksToEquipmentsTable' => $baseDir . '/database/migrations/2017_11_25_123746_add_remarks_to_equipments_table.php',
     'AddResultsToMaintenancesTable' => $baseDir . '/database/migrations/2017_11_25_123240_add_results_to_maintenances_table.php',

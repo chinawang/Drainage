@@ -113,7 +113,8 @@ class MaintenanceLogic extends Logic
     public function createMaintenance($attributes)
     {
         $failure = ['id' =>$attributes['failure_id'],'repair_process' => $attributes['repair_process'],
-            'repair_at' => $attributes['repair_at'],'repairer_id' => $attributes['repairer_id']];
+            'repair_at' => $attributes['repair_at'],'repairer_id' => $attributes['repairer_id'],
+            'repairer' => $attributes['repairer']];
         $maintenanceResult = $this->maintenanceRepository->create($attributes);
         $failureResult = $this->failureRepository->update($failure['id'],$failure);
 
@@ -128,7 +129,8 @@ class MaintenanceLogic extends Logic
     public function updateMaintenance($maintenanceId,$input)
     {
         $failure = ['id' =>$input['failure_id'],'repair_process' => $input['repair_process'],
-            'repair_at' => $input['repair_at'],'repairer_id' => $input['repairer_id']];
+            'repair_at' => $input['repair_at'],'repairer_id' => $input['repairer_id'],
+            'repairer' => $input['repairer']];
         $maintenanceResult = $this->maintenanceRepository->update($maintenanceId,$input);
         $failureResult = $this->failureRepository->update($failure['id'],$failure);
         return $maintenanceResult && $failureResult;

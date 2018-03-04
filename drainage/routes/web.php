@@ -335,6 +335,13 @@ Route::get('/report/stationStatus', 'Reporte\ReportController@showStatusReport')
 Route::get('/report/stationFailure', 'Reporte\ReportController@showFailureReport');
 //维修统计
 Route::get('/report/stationMaintenance', 'Reporte\ReportController@showMaintenanceReport');
+
+//导出EXCEL 故障统计
+Route::get('/report/exportFailure', 'Reporte\StatusReportController@exportToExcelFailure');
+//导出EXCEL 维修统计
+Route::get('/report/exportMaintenance', 'Reporte\StatusReportController@exportToExcelMaintenance');
+
+
 ////报警统计
 //Route::get('/report/stationWarning', 'Reporte\ReportController@showWarningReport');
 ////报警数量统计Ajax

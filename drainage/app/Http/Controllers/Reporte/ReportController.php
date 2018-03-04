@@ -711,6 +711,7 @@ class ReportController extends Controller
         $stationID = Input::get('station_id', 1);
         $startTime = Input::get('timeStart', '');
         $endTime = Input::get('timeEnd', '');
+        $repairProcess = Input::get('repairProcess', '99');//全部
 
         if ($startTime == '' || $endTime == '') {
             $startTime = date("Y-m-d");
@@ -734,22 +735,22 @@ class ReportController extends Controller
 
 //        $failurePaginate = $this->failureLogic->getFailures($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
-        $failurePaginate = $this->getFailureListByStationID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
+        $failurePaginate = $this->getFailureListByStationID($stationID,$repairProcess,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
 
         foreach ($failurePaginate as $failure) {
-            $equipment = $this->equipmentInfo($failure->equipment_id);
+//            $equipment = $this->equipmentInfo($failure->equipment_id);
             $station = $this->stationInfo($failure->station_id);
-            $reporter = $this->employeeInfo($failure->reporter_id);
-            $repairer = $this->employeeInfo($failure->repairer_id);
+//            $reporter = $this->employeeInfo($failure->reporter_id);
+//            $repairer = $this->employeeInfo($failure->repairer_id);
 
-            $failure->equipment_name = $equipment['name'];
+//            $failure->equipment_name = $equipment['name'];
             $failure->station_name = $station['name'];
-            $failure->reporter_name = $reporter['name'];
-            $failure->repairer_name = $repairer['name'];
+//            $failure->reporter_name = $reporter['name'];
+//            $failure->repairer_name = $repairer['name'];
         }
 
         $param = ['stations' => $stations, 'failures' => $failurePaginate,
-            'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
+            'stationSelect' => $stationTemp,'selectProcess' => $repairProcess, 'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
         //记录Log
@@ -763,6 +764,7 @@ class ReportController extends Controller
         $stationID = Input::get('station_id', 1);
         $startTime = Input::get('timeStart', '');
         $endTime = Input::get('timeEnd', '');
+        $repairProcess = Input::get('repairProcess', '99');//全部
 
         if ($startTime == '' || $endTime == '') {
             $startTime = date("Y-m-d");
@@ -786,20 +788,20 @@ class ReportController extends Controller
 
 //        $maintenancePaginate = $this->maintenanceLogic->getMaintenances($pageSize, $orderColumn, $orderDirection, $cursorPage);
 
-        $maintenancePaginate = $this->getMaintenanceListByStationID($stationID,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
+        $maintenancePaginate = $this->getMaintenanceListByStationID($stationID,$repairProcess,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
 
         foreach ($maintenancePaginate as $maintenance) {
-            $equipment = $this->equipmentInfo($maintenance->equipment_id);
+//            $equipment = $this->equipmentInfo($maintenance->equipment_id);
             $station = $this->stationInfo($maintenance->station_id);
-            $repairer = $this->employeeInfo($maintenance->repairer_id);
+//            $repairer = $this->employeeInfo($maintenance->repairer_id);
 
-            $maintenance->equipment_name = $equipment['name'];
+//            $maintenance->equipment_name = $equipment['name'];
             $maintenance->station_name = $station['name'];
-            $maintenance->repairer_name = $repairer['name'];
+//            $maintenance->repairer_name = $repairer['name'];
         }
 
         $param = ['stations' => $stations, 'maintenances' => $maintenancePaginate,
-            'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime];
+            'stationSelect' => $stationTemp, 'selectProcess' => $repairProcess,'startTime' => $startTime, 'endTime' => $endTime];
 //        return $param;
 
         //记录Log
@@ -865,35 +867,71 @@ class ReportController extends Controller
         return $stationRTList;
     }
 
-    public function getFailureListByStationID($stationID, $size, $cursorPage,$searchStartTime,$searchEndTime)
+    public function getFailureListByStationID($stationID,$repairProcess, $size, $cursorPage,$searchStartTime,$searchEndTime)
     {
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-            $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'asc')
-                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            // 全部
+            if($repairProcess == 99)
+            {
+                $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            }
+            else
+            {
+                $failureList = DB::table('failures')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            }
 
         }
         else
         {
-            $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'asc')
-                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            if($repairProcess == 99)
+            {
+                $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'desc')
+                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            }
+            else
+            {
+                $failureList = DB::table('failures')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->orderBy('created_at', 'desc')
+                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            }
+
         }
 
         return $failureList;
     }
 
-    public function getMaintenanceListByStationID($stationID, $size, $cursorPage,$searchStartTime,$searchEndTime)
+    public function getMaintenanceListByStationID($stationID,$repairProcess, $size, $cursorPage,$searchStartTime,$searchEndTime)
     {
         if(!empty($searchStartTime) && !empty($searchEndTime))
         {
-            $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'asc')
-                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            // 全部
+            if($repairProcess == 99)
+            {
+                $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            }
+            else
+            {
+                $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            }
+
 
         }
         else
         {
-            $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'asc')
-                ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            if($repairProcess == 99)
+            {
+                $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'desc')
+                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            }
+            else
+            {
+                $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->orderBy('created_at', 'desc')
+                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+            }
         }
 
         return $MaintenanceList;
@@ -1528,6 +1566,223 @@ class ReportController extends Controller
         }
 
         return response()->json(array('stations'=> $stations,'startTime' => $startTime, 'endTime' => $endTime), 200);
+    }
+
+    public function exportToExcelFailure()
+    {
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+        $repairProcess = Input::get('repairProcess', '99');//全部
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+
+        //        $input = $this->stationValidation->stationPaginate();
+
+        $cursorPage = null;
+        $pageSize = 10000;
+//        $orderColumn = 'created_at';
+//        $orderDirection = 'asc';
+
+        // 故障统计
+
+//        $failurePaginate = $this->failureLogic->getFailures($pageSize, $orderColumn, $orderDirection, $cursorPage);
+
+        $failurePaginate = $this->getFailureListByStationID($stationID,$repairProcess,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
+
+        foreach ($failurePaginate as $failure) {
+//            $equipment = $this->equipmentInfo($failure->equipment_id);
+            $station = $this->stationInfo($failure->station_id);
+//            $reporter = $this->employeeInfo($failure->reporter_id);
+//            $repairer = $this->employeeInfo($failure->repairer_id);
+
+//            $failure->equipment_name = $equipment['name'];
+            $failure->station_name = $station['name'];
+//            $failure->reporter_name = $reporter['name'];
+//            $failure->repairer_name = $repairer['name'];
+        }
+
+        $titleTime = "(".$startTime. " 至 " .$endTime.")";
+
+        $title = '泵站故障统计报表-' . $titleTime;
+
+        $excelData = $failurePaginate;
+
+        Excel::create($title, function ($excel) use ($excelData, $title) {
+
+            $excel->setTitle($title);
+
+            $excel->setCreator('Eason')->setCompany('LegendX');
+
+            $excel->sheet('故障统计记录', function ($sheet) use ($excelData) {
+
+                $sheet->row(1, ['报修时间','所属泵站', '故障设备及其他', '故障类型','故障描述', '设备状态','报修人',  '维修进度', '维修人','维修时间']);
+
+                if (empty($excelData)) {
+
+                    $sheet->row(2, ['空']);
+                    return;
+                }
+
+                $i = 2;
+                // 循环写入数据
+                foreach ($excelData as $rowData) {
+
+                    $repairProcess = '未知';
+                    if($rowData['repair_process'] == 0)
+                    {
+                        $repairProcess = '报修';
+                    }
+                    elseif ($rowData['repair_process'] == 1)
+                    {
+                        $repairProcess = '维修中';
+                    }
+                    elseif ($rowData['repair_process'] == 2)
+                    {
+                        $repairProcess = '维修完成';
+                    }
+                    $row = [
+                        $rowData['report_at'],
+                        $rowData['station_name'],
+                        $rowData['equipment'],
+                        $rowData['failure_type'],
+                        $rowData['failure_description'],
+                        $rowData['equipment_status'],
+                        $rowData['reporter'],
+                        $repairProcess,
+                        $rowData['repairer'],
+                        $rowData['repair_at'],
+                    ];
+
+                    $sheet->row($i, $row);
+                    $i++;
+                }
+
+                $sheet->setAllBorders('thin');
+                $sheet->setAutoSize(true);
+
+            });
+
+        })->export('xls');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '导出了故障统计记录']);
+    }
+
+    public function exportToExcelMaintenance()
+    {
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('timeStart', '');
+        $endTime = Input::get('timeEnd', '');
+        $repairProcess = Input::get('repairProcess', '99');//全部
+
+        if ($startTime == '' || $endTime == '') {
+            $startTime = date("Y-m-d");
+            $endTime = date("Y-m-d");
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+
+        //        $input = $this->stationValidation->stationPaginate();
+
+        $cursorPage = null;
+        $pageSize = 10000;
+//        $orderColumn = 'created_at';
+//        $orderDirection = 'asc';
+
+        // 维修统计
+
+//        $maintenancePaginate = $this->maintenanceLogic->getMaintenances($pageSize, $orderColumn, $orderDirection, $cursorPage);
+
+        $maintenancePaginate = $this->getMaintenanceListByStationID($stationID,$repairProcess,$pageSize,$cursorPage,$searchStartTime,$searchEndTime);
+
+        foreach ($maintenancePaginate as $maintenance) {
+//            $equipment = $this->equipmentInfo($maintenance->equipment_id);
+            $station = $this->stationInfo($maintenance->station_id);
+//            $repairer = $this->employeeInfo($maintenance->repairer_id);
+
+//            $maintenance->equipment_name = $equipment['name'];
+            $maintenance->station_name = $station['name'];
+//            $maintenance->repairer_name = $repairer['name'];
+        }
+
+        $titleTime = "(".$startTime. " 至 " .$endTime.")";
+
+        $title = '泵站维修统计报表-' . $titleTime;
+
+        $excelData = $maintenancePaginate;
+
+        Excel::create($title, function ($excel) use ($excelData, $title) {
+
+            $excel->setTitle($title);
+
+            $excel->setCreator('Eason')->setCompany('LegendX');
+
+            $excel->sheet('维修统计记录', function ($sheet) use ($excelData) {
+
+                $sheet->row(1, ['维修时间','所属泵站', '故障设备及其他', '故障原因','解决办法','维修进度', '维修结果', '维修人','备注']);
+
+                if (empty($excelData)) {
+
+                    $sheet->row(2, ['空']);
+                    return;
+                }
+
+                $i = 2;
+                // 循环写入数据
+                foreach ($excelData as $rowData) {
+
+                    $repairProcess = '未知';
+                    if($rowData['repair_process'] == 0)
+                    {
+                        $repairProcess = '报修';
+                    }
+                    elseif ($rowData['repair_process'] == 1)
+                    {
+                        $repairProcess = '维修中';
+                    }
+                    elseif ($rowData['repair_process'] == 2)
+                    {
+                        $repairProcess = '维修完成';
+                    }
+                    $row = [
+                        $rowData['repair_at'],
+                        $rowData['station_name'],
+                        $rowData['equipment'],
+                        $rowData['failure_reason'],
+                        $rowData['repair_solution'],
+                        $repairProcess,
+                        $rowData['result'],
+                        $rowData['repairer'],
+                        $rowData['remark'],
+                    ];
+
+                    $sheet->row($i, $row);
+                    $i++;
+                }
+
+                $sheet->setAllBorders('thin');
+                $sheet->setAutoSize(true);
+
+            });
+
+        })->export('xls');
+
+        //记录Log
+        app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '导出了维修统计记录']);
     }
 
 }

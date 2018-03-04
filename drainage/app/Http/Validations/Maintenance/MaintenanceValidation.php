@@ -40,8 +40,8 @@ class MaintenanceValidation extends Validation
     public function storeNewMaintenance()
     {
         $input = $this->filterRequest([
-            'failure_id','station_id','equipment_id','repairer_id','failure_reason',
-            'repair_solution','result','repair_process','repair_at','remark'
+            'failure_id','station_id','failure_reason',
+            'repair_solution','result','repair_process','repair_at','remark','equipment','reporter','repairer'
         ]);
 
         $rules = [
@@ -55,6 +55,9 @@ class MaintenanceValidation extends Validation
             'repair_process' => ['integer'],
             'repair_at' => ['string'],
             'remark' => ['string'],
+            'equipment' => ['string'],
+            'reporter' => ['string'],
+            'repairer' => ['string'],
 
         ];
 
@@ -73,8 +76,8 @@ class MaintenanceValidation extends Validation
     public function updateMaintenance($maintenanceID)
     {
         $input = $this->filterRequest([
-            'failure_id','station_id','equipment_id','repairer_id','failure_reason',
-            'repair_solution','result','repair_process','repair_at','remark'
+            'failure_id','station_id','failure_reason',
+            'repair_solution','result','repair_process','repair_at','remark','equipment','reporter','repairer'
         ]);
 
         $rules = [
@@ -88,6 +91,9 @@ class MaintenanceValidation extends Validation
             'repair_process' => ['integer'],
             'repair_at' => ['string'],
             'remark' => ['string'],
+            'equipment' => ['string'],
+            'reporter' => ['string'],
+            'repairer' => ['string'],
         ];
 
         $validator = Validator::make($input,$rules);

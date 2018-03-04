@@ -47,7 +47,7 @@
                                 {{ csrf_field() }}
 
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="station" class="col-md-4 control-label">选择泵站:</label>
 
@@ -57,6 +57,26 @@
                                                     @foreach ($stations as $station)
                                                         <option value="{{ $station['id'] }}" {{$station['id'] == $stationSelect['id'] ? 'selected=selected' :''}}>{{ $station['name'] }}</option>
                                                     @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="station" class="col-md-4 control-label">维修进度:</label>
+
+                                            <div class="col-md-8">
+                                                <select class="form-control" id="select" name="repairProcess">
+                                                    <option value="全部" selected="selected">全部</option>
+                                                    <option value="0" {{$selectProcess == '0' ? 'selected=selected' :''}}>
+                                                        报修
+                                                    </option>
+                                                    <option value="1" {{$selectProcess == '1' ? 'selected=selected' :''}}>
+                                                        维修中
+                                                    </option>
+                                                    <option value="2" {{$selectProcess == '2' ? 'selected=selected' :''}}>
+                                                        维修完成
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -77,13 +97,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-4">
                                                 <button type="submit" class="btn btn-primary btn-custom">
                                                     <span class="glyphicon glyphicon-search"></span>
                                                     查询
                                                 </button>
+                                            </div>
+                                            <div class="col-md-4 col-md-offset-1">
+                                                <a href="/report/exportFailure?station_id={{$stationSelect['id']}}&repairProcess={{ $selectProcess }}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}"
+                                                   class="btn btn-default btn-custom">
+                                                    <span class="glyphicon glyphicon-export"></span>
+                                                    导出报表
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -96,14 +123,14 @@
                                     <tr>
                                         <th>报修时间</th>
                                         <th>所属泵站</th>
-                                        <th>故障设备</th>
+                                        <th>故障设备及其他</th>
                                         <th>故障类型</th>
                                         <th>故障描述</th>
                                         <th>设备状态</th>
                                         <th>报修人</th>
                                         <th>维修进度</th>
-                                        <th hidden="hidden">维修人</th>
-                                        <th hidden="hidden">维修时间</th>
+                                        <th>维修人</th>
+                                        <th>维修时间</th>
 
                                     </tr>
                                     </thead>
@@ -112,22 +139,22 @@
                                         <tr>
                                             <td>{{ $failure->report_at }}</td>
                                             <td>{{ $failure->station_name }}</td>
-                                            <td>{{ $failure->equipment_name }}</td>
+                                            <td>{{ $failure->equipment }}</td>
                                             <td>{{ $failure->failure_type }}</td>
                                             <td>{{ $failure->failure_description }}</td>
                                             <td>{{ $failure->equipment_status }}</td>
-                                            <td>{{ $failure->reporter_name }}</td>
+                                            <td>{{ $failure->reporter }}</td>
                                             <td>
                                                 @if($failure->repair_process == 0)
-                                                    未维修
+                                                    报修
                                                 @elseif($failure->repair_process == 1)
                                                     维修中
                                                 @elseif($failure->repair_process == 2)
                                                     维修完成
                                                 @endif
                                             </td>
-                                            <td hidden="hidden">{{ $failure->repairer_name }}</td>
-                                            <td hidden="hidden">{{ $failure->repair_at }}</td>
+                                            <td>{{ $failure->repairer }}</td>
+                                            <td>{{ $failure->repair_at }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -40,8 +40,8 @@ class FailureValidation extends Validation
     public function storeNewFailure()
     {
         $input = $this->filterRequest([
-            'station_id','equipment_id','failure_type','failure_description','equipment_status',
-            'reporter_id','report_at'
+            'station_id','failure_type','failure_description','equipment_status',
+            'report_at','equipment','reporter','repairer'
         ]);
 
         $rules = [
@@ -55,6 +55,9 @@ class FailureValidation extends Validation
             'repair_process' => ['integer'],
             'repair_at' => ['string'],
             'repairer_id' => ['integer', 'min:0'],
+            'equipment' => ['string'],
+            'reporter' => ['string'],
+            'repairer' => ['string'],
         ];
 
         $validator = Validator::make($input,$rules);
@@ -72,8 +75,8 @@ class FailureValidation extends Validation
     public function updateFailure($failureID)
     {
         $input = $this->filterRequest([
-            'station_id','equipment_id','failure_type','failure_description','equipment_status',
-            'reporter_id','report_at'
+            'station_id','failure_type','failure_description','equipment_status',
+            'report_at','equipment','reporter','repairer'
         ]);
 
         $rules = [
@@ -87,6 +90,9 @@ class FailureValidation extends Validation
             'repair_process' => ['integer'],
             'repair_at' => ['string'],
             'repairer_id' => ['integer', 'min:0'],
+            'equipment' => ['string'],
+            'reporter' => ['string'],
+            'repairer' => ['string'],
         ];
 
         $validator = Validator::make($input,$rules);

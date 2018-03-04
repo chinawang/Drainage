@@ -101,20 +101,19 @@ class MaintenanceController extends Controller
     {
         $maintenance = $this->maintenanceLogic->findMaintenance($maintenanceID);
 
-        $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+//        $equipment = $this->equipmentInfo($maintenance['equipment_id']);
         $station = $this->stationInfo($maintenance['station_id']);
-        $repairer = $this->employeeInfo($maintenance['repairer_id']);
+//        $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
-        $maintenance['equipment_name'] = $equipment['name'];
+//        $maintenance['equipment_name'] = $equipment['name'];
         $maintenance['station_name'] = $station['name'];
-        $maintenance['repairer_name'] = $repairer['name'];
+//        $maintenance['repairer_name'] = $repairer['name'];
 
-        $equipments = $this->equipmentLogic->getAllEquipments();
+//        $equipments = $this->equipmentLogic->getAllEquipments();
         $stations = $this->stationLogic->getAllStations();
-        $employees = $this->employeeLogic->getAllEmployees();
+//        $employees = $this->employeeLogic->getAllEmployees();
 
-        $param = ['maintenance' => $maintenance,'equipments' => $equipments,
-            'stations' => $stations,'employees' => $employees];
+        $param = ['maintenance' => $maintenance, 'stations' => $stations];
 
         return view('maintenance.updateMaintenance',$param);
     }
@@ -189,15 +188,15 @@ class MaintenanceController extends Controller
 
         foreach($failurePaginate as $failure)
         {
-            $equipment = $this->equipmentInfo($failure['equipment_id']);
+//            $equipment = $this->equipmentInfo($failure['equipment_id']);
             $station = $this->stationInfo($failure['station_id']);
-            $reporter = $this->employeeInfo($failure['reporter_id']);
-            $repairer = $this->employeeInfo($failure['repairer_id']);
+//            $reporter = $this->employeeInfo($failure['reporter_id']);
+//            $repairer = $this->employeeInfo($failure['repairer_id']);
 
-            $failure['equipment_name'] = $equipment['name'];
+//            $failure['equipment_name'] = $equipment['name'];
             $failure['station_name'] = $station['name'];
-            $failure['reporter_name'] = $reporter['name'];
-            $failure['repairer_name'] = $repairer['name'];
+//            $failure['reporter_name'] = $reporter['name'];
+//            $failure['repairer_name'] = $repairer['name'];
         }
 
         return $failurePaginate;
@@ -217,13 +216,13 @@ class MaintenanceController extends Controller
 
         foreach($maintenancePaginate as $maintenance)
         {
-            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+//            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->employeeInfo($maintenance['repairer_id']);
+//            $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
-            $maintenance['equipment_name'] = $equipment['name'];
+//            $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['name'];
+//            $maintenance['repairer_name'] = $repairer['name'];
         }
 
         $failurePaginate = $this->failureList();
@@ -250,13 +249,13 @@ class MaintenanceController extends Controller
 
         foreach($maintenancePaginate as $maintenance)
         {
-            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+//            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->employeeInfo($maintenance['repairer_id']);
+//            $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
-            $maintenance['equipment_name'] = $equipment['name'];
+//            $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['name'];
+//            $maintenance['repairer_name'] = $repairer['name'];
         }
 
         $param = ['maintenances' => $maintenancePaginate];
@@ -278,13 +277,13 @@ class MaintenanceController extends Controller
 
         foreach($maintenancePaginate as $maintenance)
         {
-            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+//            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->employeeInfo($maintenance['repairer_id']);
+//            $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
-            $maintenance['equipment_name'] = $equipment['name'];
+//            $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['name'];
+//            $maintenance['repairer_name'] = $repairer['name'];
         }
 
         //记录Log
@@ -396,13 +395,13 @@ class MaintenanceController extends Controller
 
         foreach($maintenanceList as $maintenance)
         {
-            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
+//            $equipment = $this->equipmentInfo($maintenance['equipment_id']);
             $station = $this->stationInfo($maintenance['station_id']);
-            $repairer = $this->employeeInfo($maintenance['repairer_id']);
+//            $repairer = $this->employeeInfo($maintenance['repairer_id']);
 
-            $maintenance['equipment_name'] = $equipment['name'];
+//            $maintenance['equipment_name'] = $equipment['name'];
             $maintenance['station_name'] = $station['name'];
-            $maintenance['repairer_name'] = $repairer['name'];
+//            $maintenance['repairer_name'] = $repairer['name'];
         }
 
         return $maintenanceList;
