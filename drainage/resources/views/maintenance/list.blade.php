@@ -102,9 +102,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="table-pagination">
-                                {!! $failures->render() !!}
-                            </div>
+                            {{--<div class="table-pagination">--}}
+                                {{--{!! $failures->render() !!}--}}
+                            {{--</div>--}}
                         @else
                             <div class="well" style="text-align: center; padding: 100px;">
                                 暂无内容
