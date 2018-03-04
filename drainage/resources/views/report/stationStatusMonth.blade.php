@@ -107,7 +107,7 @@
                                                 </button>
                                             </div>
                                             <div class="col-md-4 col-md-offset-1">
-                                                <a href="/report/exportMaintenance?station_id={{$stationSelect['id']}}&repairProcess={{ $selectProcess }}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}"
+                                                <a href="/report/exporStatustMonth?type={{$selectType}}&totalType={{ $totalType }}&timeStart={{ $startTime }}&timeEnd={{ $endTime }}"
                                                    class="btn btn-default btn-custom">
                                                     <span class="glyphicon glyphicon-export"></span>
                                                     导出报表
