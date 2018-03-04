@@ -1639,29 +1639,29 @@ class ReportController extends Controller
                 foreach ($excelData as $rowData) {
 
                     $repairProcess = '未知';
-                    if($rowData['repair_process'] == 0)
+                    if($rowData->repair_process == 0)
                     {
                         $repairProcess = '报修';
                     }
-                    elseif ($rowData['repair_process'] == 1)
+                    elseif ($rowData->repair_process == 1)
                     {
                         $repairProcess = '维修中';
                     }
-                    elseif ($rowData['repair_process'] == 2)
+                    elseif ($rowData->repair_process == 2)
                     {
                         $repairProcess = '维修完成';
                     }
                     $row = [
-                        $rowData['report_at'],
-                        $rowData['station_name'],
-                        $rowData['equipment'],
-                        $rowData['failure_type'],
-                        $rowData['failure_description'],
-                        $rowData['equipment_status'],
-                        $rowData['reporter'],
+                        $rowData->report_at,
+                        $rowData->station_name,
+                        $rowData->equipment,
+                        $rowData->failure_type,
+                        $rowData->failure_description,
+                        $rowData->equipment_status,
+                        $rowData->reporter,
                         $repairProcess,
-                        $rowData['repairer'],
-                        $rowData['repair_at'],
+                        $rowData->repairer,
+                        $rowData->repair_at,
                     ];
 
                     $sheet->row($i, $row);
