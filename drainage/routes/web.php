@@ -337,9 +337,9 @@ Route::get('/report/stationFailure', 'Reporte\ReportController@showFailureReport
 Route::get('/report/stationMaintenance', 'Reporte\ReportController@showMaintenanceReport');
 
 //导出EXCEL 故障统计
-Route::get('/report/exportFailure', 'Reporte\StatusReportController@exportToExcelFailure');
+Route::get('/report/exportFailure', 'Reporte\ReportController@exportToExcelFailure');
 //导出EXCEL 维修统计
-Route::get('/report/exportMaintenance', 'Reporte\StatusReportController@exportToExcelMaintenance');
+Route::get('/report/exportMaintenance', 'Reporte\ReportController@exportToExcelMaintenance');
 
 
 ////报警统计
