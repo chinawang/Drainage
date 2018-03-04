@@ -180,7 +180,7 @@ class MaintenanceController extends Controller
     public function failureList()
     {
         $input = $this->failureValidation->failurePaginate();
-        $cursorPage      = array_get($input, 1, null);
+        $cursorPage      = array_get($input, 'cursor_page', null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'desc');
         $pageSize        = array_get($input, 'page_size', 20);
@@ -200,6 +200,30 @@ class MaintenanceController extends Controller
         }
 
         return $failurePaginate;
+    }
+
+    public function failureListAll()
+    {
+        $input = $this->failureValidation->failurePaginate();
+
+        $orderColumn     = array_get($input, 'order_column', 'created_at');
+        $orderDirection  = array_get($input, 'order_direction', 'desc');
+        $failureList = $this->failureLogic->getAllFailureOrderBy($orderColumn,$orderDirection);
+
+        foreach($failureList as $failure)
+        {
+//            $equipment = $this->equipmentInfo($failure['equipment_id']);
+            $station = $this->stationInfo($failure['station_id']);
+//            $reporter = $this->employeeInfo($failure['reporter_id']);
+//            $repairer = $this->employeeInfo($failure['repairer_id']);
+
+//            $failure['equipment_name'] = $equipment['name'];
+            $failure['station_name'] = $station['name'];
+//            $failure['reporter_name'] = $reporter['name'];
+//            $failure['repairer_name'] = $repairer['name'];
+        }
+
+        return $failureList;
     }
 
     /**
@@ -225,12 +249,12 @@ class MaintenanceController extends Controller
 //            $maintenance['repairer_name'] = $repairer['name'];
         }
 
-        $failurePaginate = $this->failureList();
+        $failureList = $this->failureListAll();
 
         //记录Log
         app('App\Http\Logic\Log\LogLogic')->createLog(['name' => Auth::user()->name,'log' => '查看了维修记录']);
 
-        $param = ['maintenances' => $maintenancePaginate,'failures' => $failurePaginate];
+        $param = ['maintenances' => $maintenancePaginate,'failures' => $failureList];
         return view('maintenance.list',$param);
     }
 

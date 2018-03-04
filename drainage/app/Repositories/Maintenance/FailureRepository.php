@@ -59,6 +59,13 @@ class FailureRepository extends Repository
             ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
     }
 
+    public function getOrderBy($conditions, $orderColumn, $orderDirection,array $with = [], array $fields = ['*'])
+    {
+        return $this->model->where($conditions)
+            ->orderBy($orderColumn, $orderDirection)
+            ->with($with)->get($fields);
+    }
+
     /**
      * 逻辑删除
      *

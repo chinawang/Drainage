@@ -68,6 +68,15 @@ class FailureLogic extends Logic
         return $failureList;
     }
 
+    public function getAllFailureOrderBy($orderColumn, $orderDirection)
+    {
+        $conditions = [
+            'delete_process' => 0
+        ];
+        $failureList = $this->failureRepository->getOrderBy($conditions,$orderColumn,$orderDirection);
+        return $failureList;
+    }
+
     /**
      * @param $stationId
      * @param $pageSize
