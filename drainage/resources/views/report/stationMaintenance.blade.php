@@ -100,9 +100,9 @@
                                         <div class="form-group">
                                             <label for="station" class="col-md-4 control-label">维修进度:</label>
 
-                                            <div class="col-md-8">
+                                            <div class="col-md-6">
                                                 <select class="form-control" id="select" name="repairProcess">
-                                                    <option value="全部" selected="selected">全部</option>
+                                                    <option value="99" selected="selected">全部</option>
                                                     <option value="0" {{$selectProcess == '0' ? 'selected=selected' :''}}>
                                                         报修
                                                     </option>
