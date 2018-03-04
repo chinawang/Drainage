@@ -180,7 +180,7 @@ class MaintenanceController extends Controller
     public function failureList()
     {
         $input = $this->failureValidation->failurePaginate();
-        $cursorPage      = array_get($input, null, null);
+        $cursorPage      = array_get($input, 1, null);
         $orderColumn     = array_get($input, 'order_column', 'created_at');
         $orderDirection  = array_get($input, 'order_direction', 'desc');
         $pageSize        = array_get($input, 'page_size', 20);
