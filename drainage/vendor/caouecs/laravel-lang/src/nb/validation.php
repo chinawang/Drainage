@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -9,84 +8,85 @@ return [
     |
     | The following language lines contain the default error messages used by
     | the validator class. Some of these rules have multiple versions such
-    | such as the size rules. Feel free to tweak each of these messages.
+    | as the size rules. Feel free to tweak each of these messages.
     |
     */
 
-    'accepted'             => ':attribute må aksepteres.',
-    'active_url'           => ':attribute er ikke en gyldig URL.',
-    'after'                => ':attribute må være en dato etter :date.',
-    'after_or_equal'       => 'The :attribute must be a date after or equal to :date.',
-    'alpha'                => ':attribute må kun bestå av bokstaver.',
-    'alpha_dash'           => ':attribute må kun bestå av bokstaver, tall og bindestreker.',
-    'alpha_num'            => ':attribute må kun bestå av bokstaver og tall.',
-    'array'                => ':attribute må være en matrise.',
-    'before'               => ':attribute må være en dato før :date.',
-    'before_or_equal'      => 'The :attribute must be a date before or equal to :date.',
-    'between'              => [
-        'numeric' => ':attribute skal være mellom :min - :max.',
-        'file'    => ':attribute skal være mellom :min - :max kilobytes.',
-        'string'  => ':attribute skal være mellom :min - :max tegn.',
-        'array'   => ':attribute må ha mellom :min - :max elementer.',
+    'accepted' => ':attribute må aksepteres.',
+    'active_url' => ':attribute er ikke en gyldig URL.',
+    'after' => ':attribute må være en dato etter :date.',
+    'after_or_equal' => ':attribute må være en dato etter eller lik :date.',
+    'alpha' => ':attribute må kun bestå av bokstaver.',
+    'alpha_dash' => ':attribute må kun bestå av bokstaver, tall og bindestreker.',
+    'alpha_num' => ':attribute må kun bestå av bokstaver og tall.',
+    'array' => ':attribute må være en matrise.',
+    'before' => ':attribute må være en dato før :date.',
+    'before_or_equal' => ':attribute må være en dato før eller lik :date.',
+    'between' => [
+        'numeric' => ':attribute må være mellom :min - :max.',
+        'file' => ':attribute må være mellom :min - :max kilobytes.',
+        'string' => ':attribute må være mellom :min - :max tegn.',
+        'array' => ':attribute må ha mellom :min - :max elementer.',
     ],
-    'boolean'              => 'The :attribute field must be true or false',
-    'confirmed'            => ':attribute er ikke likt bekreftelsesfeltet.',
-    'date'                 => ':attribute er ikke en gyldig dato.',
-    'date_format'          => ':attribute matcher ikke formatet :format.',
-    'different'            => ':attribute og :other skal være forskellige.',
-    'digits'               => ':attribute skal ha :digits siffer.',
-    'digits_between'       => ':attribute skal være mellom :min og :max siffer.',
-    'dimensions'           => 'The :attribute has invalid image dimensions.',
-    'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => ':attribute format er ugyldig.',
-    'exists'               => 'Det valgte :attribute er ugyldig.',
-    'file'                 => 'The :attribute must be a file.',
-    'filled'               => ':attribute må fylles ut.',
-    'image'                => ':attribute skal være et bilde.',
-    'in'                   => 'Det valgte :attribute er ugyldig.',
-    'in_array'             => 'The :attribute field does not exist in :other.',
-    'integer'              => ':attribute skal være et heltall.',
-    'ip'                   => ':attribute skal være en gyldig IP adresse.',
-    'ipv4'                 => 'The :attribute must be a valid IPv4 address.',
-    'ipv6'                 => 'The :attribute must be a valid IPv6 address.',
-    'json'                 => ':attribute må være på JSON-format.',
-    'max'                  => [
-        'numeric' => ':attribute skal være mindre enn :max.',
-        'file'    => ':attribute skal være mindre enn :max kilobytes.',
-        'string'  => ':attribute skal være kortere enn :max tegn.',
-        'array'   => ':attribute skal ikke ha fler enn :max elementer.',
+    'boolean' => ':attribute må være sann eller usann',
+    'confirmed' => ':attribute er ikke likt bekreftelsesfeltet.',
+    'date' => ':attribute er ikke en gyldig dato.',
+    'date_format' => ':attribute samsvarer ikke med formatet :format.',
+    'different' => ':attribute og :other må være forskellige.',
+    'digits' => ':attribute må ha :digits siffer.',
+    'digits_between' => ':attribute må være mellom :min og :max siffer.',
+    'dimensions' => ':attribute har ugyldige bildedimensjoner.',
+    'distinct' => ':attribute har en duplisert verdi.',
+    'email' => ':attribute må være en gyldig e-postadresse.',
+    'exists' => 'Det valgte :attribute er ugyldig.',
+    'file' => ':attribute må være en fil.',
+    'filled' => ':attribute må fylles ut.',
+    'image' => ':attribute må være et bilde.',
+    'in' => 'Det valgte :attribute er ugyldig.',
+    'in_array' => 'Det valgte :attribute eksisterer ikke i :other.',
+    'integer' => ':attribute må være et heltall.',
+    'ip' => ':attribute må være en gyldig IP-adresse.',
+    'ipv4' => ':attribute må være en gyldig IPv4-adresse.',
+    'ipv6' => ':attribute må være en gyldig IPv6-addresse.',
+    'json' => ':attribute må være på JSON-format.',
+    'max' => [
+        'numeric' => ':attribute må ikke være større enn :max.',
+        'file' => ':attribute må ikke være større enn :max kilobytes.',
+        'string' => ':attribute må ikke være kortere enn :max tegn.',
+        'array' => ':attribute må ikke ha flere enn :max elementer.',
     ],
-    'mimes'                => ':attribute skal være en fil av typen: :values.',
-    'mimetypes'            => ':attribute skal være en fil av typen: :values.',
-    'min'                  => [
-        'numeric' => ':attribute skal være større enn :min.',
-        'file'    => ':attribute skal være større enn :min kilobytes.',
-        'string'  => ':attribute skal være lengre enn :min tegn.',
-        'array'   => ':attribute må være minst :min elementer.',
+    'mimes' => ':attribute må være en fil av typen: :values.',
+    'mimetypes' => ':attribute må være en fil av typen: :values.',
+    'min' => [
+        'numeric' => ':attribute må være minst :min.',
+        'file' => ':attribute må være minst :min kilobytes.',
+        'string' => ':attribute må være minst :min tegn.',
+        'array' => ':attribute må ha minst :min elementer.',
     ],
-    'not_in'               => 'Den valgte :attribute er ugyldig.',
-    'numeric'              => ':attribute skal være et tall.',
-    'present'              => 'The :attribute field must be present.',
-    'regex'                => 'Formatet på :attribute er ugyldig.',
-    'required'             => ':attribute må fylles ut.',
-    'required_if'          => ':attribute må fylles ut når :other er :value.',
-    'required_unless'      => ':attribute er påkrevd med mindre :other finnes blant verdiene :values.',
-    'required_with'        => ':attribute må fylles ut når :values er utfylt.',
-    'required_with_all'    => ':attribute er påkrevd når :values er oppgitt.',
-    'required_without'     => ':attribute må fylles ut når :values ikke er utfylt.',
+    'not_in' => 'Den valgte :attribute er ugyldig.',
+    'not_regex' => 'The :attribute format is invalid.',
+    'numeric' => ':attribute må være et tall.',
+    'present' => ':attribute må eksistere.',
+    'regex' => 'Formatet på :attribute er ugyldig.',
+    'required' => ':attribute må fylles ut.',
+    'required_if' => ':attribute må fylles ut når :other er :value.',
+    'required_unless' => ':attribute er påkrevd med mindre :other finnes blant verdiene :values.',
+    'required_with' => ':attribute må fylles ut når :values er utfylt.',
+    'required_with_all' => ':attribute er påkrevd når :values er oppgitt.',
+    'required_without' => ':attribute må fylles ut når :values ikke er utfylt.',
     'required_without_all' => ':attribute er påkrevd når ingen av :values er oppgitt.',
-    'same'                 => ':attribute og :other må være like.',
-    'size'                 => [
+    'same' => ':attribute og :other må være like.',
+    'size' => [
         'numeric' => ':attribute må være :size.',
-        'file'    => ':attribute må være :size kilobytes.',
-        'string'  => ':attribute må være :size tegn lang.',
-        'array'   => ':attribute må inneholde :size elementer.',
+        'file' => ':attribute må være :size kilobytes.',
+        'string' => ':attribute må være :size tegn lang.',
+        'array' => ':attribute må inneholde :size elementer.',
     ],
-    'string'               => ':attribute må være en tekststreng.',
-    'timezone'             => ':attribute må være en gyldig tidssone.',
-    'unique'               => ':attribute er allerede i bruk.',
-    'uploaded'             => 'The :attribute failed to upload.',
-    'url'                  => 'Formatet på :attribute er ugyldig.',
+    'string' => ':attribute må være en tekststreng.',
+    'timezone' => ':attribute må være en gyldig tidssone.',
+    'unique' => ':attribute er allerede i bruk.',
+    'uploaded' => ':attribute kunne ikke lastes opp.',
+    'url' => 'Formatet på :attribute er ugyldig.',
 
     /*
     |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ return [
     |
     */
 
-    'custom'               => [
+    'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
@@ -116,8 +116,6 @@ return [
     |
     */
 
-    'attributes'           => [
-        //
+    'attributes' => [
     ],
-
 ];

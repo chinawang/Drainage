@@ -2,6 +2,7 @@
 
 
  * ar:
+    * validation : not_regex
 
  * be:
     * validation : after_or_equal
@@ -12,21 +13,15 @@
     * validation : in_array
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
     * validation : present
     * validation : uploaded
 
  * bg:
-    * validation : file
-    * validation : in_array
-    * validation : ipv4
-    * validation : ipv6
-    * validation : required_unless
+    * validation : not_regex
 
  * bn:
-    * validation : after_or_equal
-    * validation : before_or_equal
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * bs:
     * auth : failed
@@ -40,21 +35,20 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : uploaded
 
  * ca:
-    * validation : after_or_equal
-    * validation : before_or_equal
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * cs:
     * validation : after_or_equal
     * validation : before_or_equal
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
 
  * cy:
     * auth : failed
@@ -68,26 +62,32 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : string
     * validation : uploaded
 
  * da:
+    * validation : not_regex
 
  * de:
+    * validation : not_regex
 
  * el:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * es:
+    * validation : not_regex
 
  * et:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
+
+ * eu:
+    * validation : not_regex
 
  * fa:
+    * validation : not_regex
 
  * fi:
     * validation : after_or_equal
@@ -97,6 +97,7 @@
     * validation : exists
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
 
  * fr:
 
@@ -109,26 +110,23 @@
     * validation : in_array
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
     * validation : present
     * validation : uploaded
 
  * he:
+    * validation : not_regex
+
+ * hi:
     * validation : after_or_equal
     * validation : before_or_equal
+    * validation : dimensions
     * validation : file
     * validation : ipv4
     * validation : ipv6
+    * validation : mimetypes
+    * validation : not_regex
     * validation : uploaded
-
- * hi:
-    * validation : after_or_equal : not present
-    * validation : before_or_equal : not present
-    * validation : dimensions : not present
-    * validation : file : not present
-    * validation : ipv4
-    * validation : ipv6
-    * validation : mimetypes : not present
-    * validation : uploaded : not present
 
  * hr:
     * validation : after_or_equal
@@ -136,21 +134,21 @@
     * validation : dimensions
     * validation : distinct
     * validation : file
-    * validation : filled
     * validation : in_array
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : string
     * validation : uploaded
 
  * hu:
+    * validation : not_regex
 
  * id:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * is:
     * auth : failed
@@ -164,6 +162,7 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : required_with
@@ -174,24 +173,24 @@
     * validation : uploaded
 
  * it:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * ja:
+    * validation : not_regex
 
  * ka:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * kk:
-    * validation : after_or_equal : not present
-    * validation : before_or_equal : not present
-    * validation : dimensions : not present
-    * validation : file : not present
+    * validation : after_or_equal
+    * validation : before_or_equal
+    * validation : dimensions
+    * validation : file
     * validation : ipv4
     * validation : ipv6
-    * validation : mimetypes : not present
-    * validation : uploaded : not present
+    * validation : mimetypes
+    * validation : not_regex
+    * validation : uploaded
 
  * km:
     * auth : failed
@@ -205,6 +204,7 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : required_with_all
@@ -213,6 +213,7 @@
     * validation : uploaded
 
  * ko:
+    * validation : not_regex
 
  * lt:
     * validation : after_or_equal
@@ -220,7 +221,13 @@
     * validation : file
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
     * validation : uploaded
+
+ * lv:
+    * validation : ipv4
+    * validation : ipv6
+    * validation : not_regex
 
  * me:
     * validation : after_or_equal
@@ -229,6 +236,7 @@
     * validation : file
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
     * validation : timezone
     * validation : uploaded
 
@@ -244,6 +252,7 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : required_with_all
@@ -252,23 +261,19 @@
     * validation : timezone
     * validation : uploaded
 
- * ms:
-    * validation : after_or_equal
-    * validation : before_or_equal
+ * mn:
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
+    * validation : required_without
+    * validation : required_without_all
+    * validation : same
+
+ * ms:
+    * validation : not_regex
 
  * nb:
-    * validation : after_or_equal
-    * validation : before_or_equal
-    * validation : dimensions
-    * validation : distinct
-    * validation : file
-    * validation : in_array
-    * validation : ipv4
-    * validation : ipv6
-    * validation : present
-    * validation : uploaded
+    * validation : not_regex
 
  * ne:
     * validation : after_or_equal
@@ -279,10 +284,12 @@
     * validation : in_array
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
     * validation : present
     * validation : uploaded
 
  * nl:
+    * validation : not_regex
 
  * nn:
     * validation : after_or_equal
@@ -291,25 +298,25 @@
     * validation : file
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
     * validation : uploaded
 
  * pl:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * pt:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * pt-BR:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * ro:
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
 
  * ru:
+    * validation : not_regex
 
  * sc:
     * auth : failed
@@ -323,33 +330,17 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : string
     * validation : uploaded
 
  * sk:
-    * validation : ipv4
-    * validation : ipv6
+    * validation : not_regex
 
  * sl:
-    * auth : failed
-    * auth : throttle
-    * validation : after_or_equal
-    * validation : before_or_equal
-    * validation : dimensions
-    * validation : distinct
-    * validation : file
-    * validation : filled
-    * validation : in_array
-    * validation : ipv4
-    * validation : ipv6
-    * validation : json
-    * validation : present
-    * validation : required_unless
-    * validation : string
-    * validation : timezone
-    * validation : uploaded
+    * validation : not_regex
 
  * sq:
     * auth : failed
@@ -363,6 +354,7 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : uploaded
@@ -377,6 +369,7 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : uploaded
@@ -384,20 +377,23 @@
  * sv:
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
 
  * sw:
-    * validation : after_or_equal : not present
-    * validation : before_or_equal : not present
-    * validation : dimensions : not present
-    * validation : file : not present
+    * validation : after_or_equal
+    * validation : before_or_equal
+    * validation : dimensions
+    * validation : file
     * validation : ipv4
     * validation : ipv6
-    * validation : mimetypes : not present
-    * validation : uploaded : not present
+    * validation : mimetypes
+    * validation : not_regex
+    * validation : uploaded
 
  * tg:
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
 
  * th:
     * validation : after_or_equal
@@ -406,6 +402,7 @@
     * validation : file
     * validation : ipv4
     * validation : ipv6
+    * validation : not_regex
     * validation : uploaded
 
  * tk:
@@ -420,50 +417,57 @@
     * validation : ipv4
     * validation : ipv6
     * validation : json
+    * validation : not_regex
     * validation : present
     * validation : required_unless
     * validation : string
     * validation : uploaded
 
  * tl:
-    * validation : after_or_equal : not present
-    * validation : before_or_equal : not present
-    * validation : dimensions : not present
-    * validation : file : not present
-    * validation : ipv4
-    * validation : ipv6
-    * validation : mimetypes : not present
-    * validation : uploaded : not present
-
- * tr:
     * validation : after_or_equal
     * validation : before_or_equal
+    * validation : dimensions
+    * validation : file
     * validation : ipv4
     * validation : ipv6
-    * validation : present
-    * validation : required_unless
+    * validation : mimetypes
+    * validation : not_regex
     * validation : uploaded
 
+ * tr:
+    * validation : not_regex
+
+ * ug:
+    * validation : not_regex
+
  * uk:
+    * validation : not_regex
 
  * ur:
-    * validation : after_or_equal : not present
-    * validation : before_or_equal : not present
-    * validation : dimensions : not present
-    * validation : file : not present
-    * validation : ipv4
-    * validation : ipv6
-    * validation : mimetypes : not present
-    * validation : uploaded : not present
-
- * vi:
     * validation : after_or_equal
     * validation : before_or_equal
+    * validation : dimensions
+    * validation : file
     * validation : ipv4
     * validation : ipv6
+    * validation : mimetypes
+    * validation : not_regex
+    * validation : uploaded
+
+ * uz-cyrillic:
+    * validation : not_regex
+
+ * uz-latin:
+    * validation : not_regex
+
+ * vi:
+    * validation : not_regex
 
  * zh-CN:
+    * validation : not_regex
 
  * zh-HK:
+    * validation : not_regex
 
  * zh-TW:
+    * validation : not_regex

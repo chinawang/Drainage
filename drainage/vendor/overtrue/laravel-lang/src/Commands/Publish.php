@@ -16,12 +16,21 @@ use Symfony\Component\Process\Process;
 
 class Publish extends Command
 {
+    /**
+     * @var string
+     */
     protected $signature = 'lang:publish
                             {locales=all : Comma-separated list of, eg: zh_CN,tk,th}
                             {--force : override existing files.}';
 
+    /**
+     * @var string
+     */
     protected $description = 'publish language files to resources directory.';
 
+    /**
+     * Publish constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -40,22 +49,31 @@ class Publish extends Command
         $sourcePath = base_path('vendor/caouecs/laravel-lang/src');
         $targetPath = base_path('resources/lang/');
 
-        if (!is_dir($targetPath) || !is_writable($targetPath)) {
+        if (!is_dir($targetPath) && !mkdir($targetPath)) {
             return $this->error('The lang path "resources/lang/" does not exist or not writable.');
         }
 
         $files = [];
         $published = [];
+        $copyEnFiles = false;
+        $inLumen = $this->laravel instanceof \Laravel\Lumen\Application;
 
         if ($locale == 'all') {
-            $files = $sourcePath.'/*';
+            $files = [$sourcePath.'/*'];
             $message = 'all';
+            $copyEnFiles = true;
         } else {
             foreach (explode(',', $locale) as $filename) {
+                if ($locale === 'en') {
+                    $copyEnFiles = true;
+
+                    continue;
+                }
                 $file = $sourcePath.'/'.trim($filename);
 
                 if (!file_exists($file)) {
                     $this->error("lang '$filename' not found.");
+
                     continue;
                 }
 
@@ -67,10 +85,14 @@ class Publish extends Command
                 return;
             }
 
-            $files = implode(' ', $files);
             $message = json_encode($published);
         }
 
+        if ($inLumen && $copyEnFiles) {
+            $files[] = base_path('vendor/laravel/lumen-framework/resources/lang/en');
+        }
+
+        $files = implode(' ', $files);
         $process = new Process("cp -r{$force} $files $targetPath");
 
         $process->run(function ($type, $buffer) {
