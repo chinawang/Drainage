@@ -709,7 +709,7 @@ class ReportController extends Controller
 
     public function showFailureReport()
     {
-        $stationID = Input::get('station_id', 1);
+        $stationID = Input::get('station_id', 0);
         $startTime = Input::get('timeStart', '');
         $endTime = Input::get('timeEnd', '');
         $repairProcess = Input::get('repairProcess', '99');//全部
@@ -762,7 +762,7 @@ class ReportController extends Controller
 
     public function showMaintenanceReport()
     {
-        $stationID = Input::get('station_id', 1);
+        $stationID = Input::get('station_id', 0);
         $startTime = Input::get('timeStart', '');
         $endTime = Input::get('timeEnd', '');
         $repairProcess = Input::get('repairProcess', '99');//全部
@@ -875,13 +875,31 @@ class ReportController extends Controller
             // 全部
             if($repairProcess == 99)
             {
-                $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
-                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                if($stationID == 0)
+                {
+                    $failureList = DB::table('failures')->where(['delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+                else
+                {
+                    $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+
             }
             else
             {
-                $failureList = DB::table('failures')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
-                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                if($stationID == 0)
+                {
+                    $failureList = DB::table('failures')->where(['repair_process'=>$repairProcess,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+                else
+                {
+                    $failureList = DB::table('failures')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+
             }
 
         }
@@ -889,13 +907,31 @@ class ReportController extends Controller
         {
             if($repairProcess == 99)
             {
-                $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'desc')
-                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                if($stationID == 0)
+                {
+                    $failureList = DB::table('failures')->where(['delete_process'=>0])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+                else
+                {
+                    $failureList = DB::table('failures')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+
             }
             else
             {
-                $failureList = DB::table('failures')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->orderBy('created_at', 'desc')
-                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                if($stationID == 0)
+                {
+                    $failureList = DB::table('failures')->where(['repair_process'=>$repairProcess,'delete_process'=>0])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+                else
+                {
+                    $failureList = DB::table('failures')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+
             }
 
         }
@@ -910,13 +946,31 @@ class ReportController extends Controller
             // 全部
             if($repairProcess == 99)
             {
-                $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
-                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                if($stationID == 0)
+                {
+                    $MaintenanceList = DB::table('maintenances')->where(['delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+                else
+                {
+                    $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+
             }
             else
             {
-                $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
-                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                if($stationID == 0)
+                {
+                    $MaintenanceList = DB::table('maintenances')->where(['repair_process'=>$repairProcess,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+                else
+                {
+                    $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->whereBetween('created_at',[$searchStartTime,$searchEndTime])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+
             }
 
 
@@ -925,13 +979,30 @@ class ReportController extends Controller
         {
             if($repairProcess == 99)
             {
-                $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'desc')
-                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                if($stationID == 0)
+                {
+                    $MaintenanceList = DB::table('maintenances')->where(['delete_process'=>0])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+                else
+                {
+                    $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'delete_process'=>0])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
             }
             else
             {
-                $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->orderBy('created_at', 'desc')
-                    ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                if($stationID == 0)
+                {
+                    $MaintenanceList = DB::table('maintenances')->where(['repair_process'=>$repairProcess,'delete_process'=>0])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+                else
+                {
+                    $MaintenanceList = DB::table('maintenances')->where(['station_id'=>$stationID,'repair_process'=>$repairProcess,'delete_process'=>0])->orderBy('created_at', 'desc')
+                        ->paginate($size, $columns = ['*'], $pageName = 'page', $cursorPage);
+                }
+
             }
         }
 

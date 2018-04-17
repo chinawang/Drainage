@@ -35,11 +35,32 @@ class MapController extends Controller
             $stationNum = $station['station_number'];
             $stationRT = $this->getStationRTs($stationNum);
 
+            $has2Pump = false;
+            $has3Pump = false;
+            $has4Pump = false;
+            $has5Pump = false;
+
+            $pump2List = ['18', '31', '34'];
+            $pump3List = ['1', '2', '3', '4', '5', '6', '8', '9', '11', '12', '13', '16', '17', '20', '23', '24', '25', '26', '27', '28', '30', '32', '35', '37', '38'];
+            $pump4List = ['7', '10', '14', '15', '19', '21', '22', '29', '36'];
+            $pump5List = ['33'];
+
+            if (in_array($stationNum, $pump2List)) {
+                $has2Pump = true;
+            } elseif (in_array($stationNum, $pump3List)) {
+                $has3Pump = true;
+            } elseif (in_array($stationNum, $pump4List)) {
+                $has4Pump = true;
+            } elseif (in_array($stationNum, $pump5List)) {
+                $has5Pump = true;
+            }
+
             $runCount = 0;
             $stopCount = 0;
 
             if(count($stationRT)>0)
             {
+                //1号泵
                 if($stationRT[0]->yx_b1 == '1')
                 {
                     $runCount ++;
@@ -49,6 +70,7 @@ class MapController extends Controller
                     $stopCount ++;
                 }
 
+                //2号泵
                 if($stationRT[0]->yx_b2 == '1')
                 {
                     $runCount ++;
@@ -58,25 +80,34 @@ class MapController extends Controller
                     $stopCount ++;
                 }
 
-                if($stationRT[0]->yx_b3 == '1')
-                {
-                    $runCount ++;
-                }
-                else
-                {
-                    $stopCount ++;
-                }
-
-                if($stationRT[0]->yx_b4 == '1')
-                {
-                    $runCount ++;
-                }
-                else
-                {
-                    $stopCount ++;
+                if ($has3Pump || $has4Pump || $has5Pump){
+                    //3号泵
+                    if($stationRT[0]->yx_b3 == '1')
+                    {
+                        $runCount ++;
+                    }
+                    else
+                    {
+                        $stopCount ++;
+                    }
                 }
 
-                if($stationNum == 33)
+
+                if ($has4Pump || $has5Pump){
+                    //4号泵
+                    if($stationRT[0]->yx_b4 == '1')
+                    {
+                        $runCount ++;
+                    }
+                    else
+                    {
+                        $stopCount ++;
+                    }
+                }
+
+
+                //5号泵
+                if($has5Pump)
                 {
                     if($stationRT[0]->yx_b5 == '1')
                     {
