@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Exceptions\ErrorException;
 
 class LoginController extends Controller
 {
@@ -34,7 +35,19 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $today = strtotime(date("Y/m/d"));
+        $deadline = strtotime("2018/08/14");
+
+        if($today > $deadline)
+        {
+            throw new ErrorException("Something is wrong ,please contact SuperHero");
+        }
+        else
+        {
+            $this->middleware('guest', ['except' => 'logout']);
+
+        }
+
     }
 
     /**
