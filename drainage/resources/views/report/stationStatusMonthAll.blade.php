@@ -113,7 +113,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="margin-left: -60px">
+                                <div class="row" style="margin-left: -60px;display: none">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="type" class="col-md-5 control-label">累计运行统计:</label>
@@ -161,17 +161,17 @@
                                                 <td>{{ $station['name'] }}</td>
 
                                                 <td>{{ $station['totalTimeDay'] }}</td>
-                                                <td>{{ $station['totalTimeBefore'] }}</td>
+                                                <td>-</td>
                                                 <td>{{ $station['totalFluxDay'] }}</td>
-                                                <td>{{ $station['totalFluxBefore'] }}</td>
+                                                <td>-</td>
                                             </tr>
                                         @endforeach
                                         <tr style="background-color: #f9f9f9">
                                             <td colspan="2">合计</td>
                                             <td>{{ $totalTimeDayAll }}</td>
-                                            <td>{{ $totalTimeBeforeAll }}</td>
+                                            <td>-</td>
                                             <td>{{ $totalFluxDayAll }}</td>
-                                            <td>{{ $totalFluxBeforeAll }}</td>
+                                            <td>-</td>
                                         </tr>
 
                                     @else
