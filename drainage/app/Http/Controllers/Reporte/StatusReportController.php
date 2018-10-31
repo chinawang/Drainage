@@ -1061,6 +1061,15 @@ class StatusReportController extends Controller
 //                            $stationStatusList4[$index4 - 1]['flux'] = $sRunning4['timeGap'] * $pump['flux4'] / 600000;
                             $stationStatusList4[$index4 - 1]['index'] = $index4;
 
+                            if($index4 == 1)
+                            {
+                                //运行时间求和
+                                $totalTimeDay4 = $sRunning4['timeGap'];
+
+                            }else{
+
+                            }
+
                             //运行时间求和
                             $totalTimeDay4 = $totalTimeDay4 + $sRunning4['timeGap'];
                             //抽升量求和
