@@ -870,16 +870,16 @@ class StatusReportController extends Controller
         //当日所有泵抽升量合计(万吨)
         $totalFluxDay = 0.00;
 
-        $initialCurrent = 5;
+        $initialCurrent = 10;
 
         //8号泵(化工路立交)
         if($stationID == 8)
         {
-            $initialCurrent = 10;
+            $initialCurrent = 15;
         }
 
         // 遍历实时运行数据表,找出起泵时刻与停泵时刻
-        for ($i = 0; $i < count($statusYXList); $i++) {
+        for ($i = 0; $i <= count($statusYXList); $i++) {
             $sRunning1 = [];
             $sRunning2 = [];
             $sRunning3 = [];
