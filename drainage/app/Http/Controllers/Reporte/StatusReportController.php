@@ -879,7 +879,7 @@ class StatusReportController extends Controller
         }
 
         // 遍历实时运行数据表,找出起泵时刻与停泵时刻
-        for ($i = 0; $i <= count($statusYXList); $i++) {
+        for ($i = 0; $i < count($statusYXList); $i++) {
             $sRunning1 = [];
             $sRunning2 = [];
             $sRunning3 = [];
@@ -1062,7 +1062,7 @@ class StatusReportController extends Controller
                             $stationStatusList4[$index4 - 1]['index'] = $index4;
 
                             //运行时间求和
-                            $totalTimeDay4 += $sRunning4['timeGap'];
+                            $totalTimeDay4 = $totalTimeDay4 + $sRunning4['timeGap'];
                             //抽升量求和
 //                            $totalFluxDay4 += ($sRunning4['timeGap'] * $pump['flux4']) / 10000;
                         }
