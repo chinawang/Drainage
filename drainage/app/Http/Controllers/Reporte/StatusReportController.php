@@ -85,7 +85,7 @@ class StatusReportController extends Controller
             'totalTimeDay' => 0, 'totalFluxDay' => 0,];
 
 
-        $param =
+        //$param =
 
 //        $days = $this->getTheMonthDay($startTime);
 //        $startTime = $days[0];
