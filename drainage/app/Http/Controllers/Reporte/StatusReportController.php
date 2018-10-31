@@ -878,15 +878,15 @@ class StatusReportController extends Controller
             $initialCurrent = 15;
         }
 
-        $sRunning1 = [];
-        $sRunning2 = [];
-        $sRunning3 = [];
-        $sRunning4 = [];
-        $sRunning5 = [];
+
 
         // 遍历实时运行数据表,找出起泵时刻与停泵时刻
         for ($i = 0; $i < count($statusYXList); $i++) {
-
+            $sRunning1 = [];
+            $sRunning2 = [];
+            $sRunning3 = [];
+            $sRunning4 = [];
+            $sRunning5 = [];
 
             //1号泵
             if ($i == 0) {
@@ -1120,38 +1120,40 @@ class StatusReportController extends Controller
                     }
                 }
             }
+
+            if($index1 == 1)
+            {
+                //运行时间求和
+                $totalTimeDay1 = $sRunning1['timeGap'];
+
+            }
+            if($index2 == 1)
+            {
+                //运行时间求和
+                $totalTimeDay2 = $sRunning2['timeGap'];
+
+            }
+            if($index3 == 1)
+            {
+                //运行时间求和
+                $totalTimeDay3 = $sRunning3['timeGap'];
+
+            }
+            if($index4 == 1)
+            {
+                //运行时间求和
+                $totalTimeDay4 = $sRunning4['timeGap'];
+
+            }
+            if($index5 == 1)
+            {
+                //运行时间求和
+                $totalTimeDay5 = $sRunning5['timeGap'];
+
+            }
         }
 
-        if($index1 == 1)
-        {
-            //运行时间求和
-            $totalTimeDay1 = $sRunning1['timeGap'];
 
-        }
-        if($index2 == 1)
-        {
-            //运行时间求和
-            $totalTimeDay2 = $sRunning2['timeGap'];
-
-        }
-        if($index3 == 1)
-        {
-            //运行时间求和
-            $totalTimeDay3 = $sRunning3['timeGap'];
-
-        }
-        if($index4 == 1)
-        {
-            //运行时间求和
-            $totalTimeDay4 = $sRunning4['timeGap'];
-
-        }
-        if($index5 == 1)
-        {
-            //运行时间求和
-            $totalTimeDay5 = $sRunning5['timeGap'];
-
-        }
 
 
         //当泵组正在运行中或者跨天运行时的逻辑
