@@ -1067,11 +1067,11 @@ class StatusReportController extends Controller
                                 $totalTimeDay4 = $sRunning4['timeGap'];
 
                             }else{
+                                //运行时间求和
+                                $totalTimeDay4 = $totalTimeDay4 + $sRunning4['timeGap'];
 
                             }
 
-                            //运行时间求和
-                            $totalTimeDay4 = $totalTimeDay4 + $sRunning4['timeGap'];
                             //抽升量求和
 //                            $totalFluxDay4 += ($sRunning4['timeGap'] * $pump['flux4']) / 10000;
                         }
