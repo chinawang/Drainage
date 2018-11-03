@@ -1189,6 +1189,8 @@ class StatusReportController extends Controller
             {
                 $stationStatusList1[$indexEnd]['index'] = $stationStatusList1[$indexEnd-1]['index'] + 1;
             }
+
+            $totalTimeDay1 += $stationStatusList1[$indexEnd]['timeGap'];
         }
 
         if(count($stationStatusList2) > 0 && !isset(end($stationStatusList2)['timeEnd']))
@@ -1220,6 +1222,8 @@ class StatusReportController extends Controller
             {
                 $stationStatusList2[$indexEnd]['index'] = $stationStatusList2[$indexEnd-1]['index'] + 1;
             }
+
+            $totalTimeDay2 += $stationStatusList2[$indexEnd]['timeGap'];
         }
 
         if(count($stationStatusList3) > 0 && !isset(end($stationStatusList3)['timeEnd']))
@@ -1250,6 +1254,8 @@ class StatusReportController extends Controller
             {
                 $stationStatusList3[$indexEnd]['index'] = $stationStatusList3[$indexEnd-1]['index'] + 1;
             }
+
+            $totalTimeDay3 += $stationStatusList3[$indexEnd]['timeGap'];
         }
 
         if(count($stationStatusList4) > 0 && !isset(end($stationStatusList4)['timeEnd']))
@@ -1280,6 +1286,8 @@ class StatusReportController extends Controller
             {
                 $stationStatusList4[$indexEnd]['index'] = $stationStatusList4[$indexEnd-1]['index'] + 1;
             }
+
+            $totalTimeDay4 += $stationStatusList4[$indexEnd]['timeGap'];
         }
 
         if(count($stationStatusList5) > 0 && !isset(end($stationStatusList5)['timeEnd']))
@@ -1310,6 +1318,8 @@ class StatusReportController extends Controller
             {
                 $stationStatusList5[$indexEnd]['index'] = $stationStatusList5[$indexEnd-1]['index'] + 1;
             }
+
+            $totalTimeDay5 += $stationStatusList5[$indexEnd]['timeGap'];
         }
 
 
