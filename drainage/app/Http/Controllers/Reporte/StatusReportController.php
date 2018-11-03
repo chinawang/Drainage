@@ -974,7 +974,7 @@ class StatusReportController extends Controller
                         if($index2 == 1)
                         {
                             //运行时间求和
-                            $totalTimeDay2 = $sRunning2['timeGap'];
+                            //$totalTimeDay2 = $sRunning2['timeGap'];
 
                         }
 
@@ -1027,7 +1027,7 @@ class StatusReportController extends Controller
                             if($index3 == 1)
                             {
                                 //运行时间求和
-                                $totalTimeDay3 = $sRunning3['timeGap'];
+                                //$totalTimeDay3 = $sRunning3['timeGap'];
 
                             }
 
@@ -1082,7 +1082,7 @@ class StatusReportController extends Controller
                             if($index4 == 1)
                             {
                                 //运行时间求和
-                                $totalTimeDay4 = $sRunning4['timeGap'];
+                                //$totalTimeDay4 = $sRunning4['timeGap'];
 
                             }
 
@@ -1139,7 +1139,7 @@ class StatusReportController extends Controller
                             if($index5 == 1)
                             {
                                 //运行时间求和
-                                $totalTimeDay5 = $sRunning5['timeGap'];
+                                //$totalTimeDay5 = $sRunning5['timeGap'];
 
                             }
 
