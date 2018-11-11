@@ -206,13 +206,13 @@
                                         <td colspan="2">运行合计(分)</td>
                                         <td colspan="2">{{ $totalTimeDay1 }}</td>
                                         <td>连前累计运行(小时)</td>
-                                        <td>-</td>
+                                        <td>{{ $totalTimeBefore1 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
                                         <td colspan="2">抽升量(万吨)</td>
                                         <td colspan="2">{{ $totalFluxDay1 }}</td>
                                         <td>连前累计抽升量(万吨)</td>
-                                        <td>-</td>
+                                        <td>{{ $totalFluxBefore1 }}</td>
                                     </tr>
                                 @else
                                     <tr>
@@ -255,13 +255,13 @@
                                         <td colspan="2">运行合计(分)</td>
                                         <td colspan="2">{{ $totalTimeDay2 }}</td>
                                         <td>连前累计运行(小时)</td>
-                                        <td>-</td>
+                                        <td>{{ $totalTimeBefore2 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
                                         <td colspan="2">抽升量(万吨)</td>
                                         <td colspan="2">{{ $totalFluxDay2 }}</td>
                                         <td>连前累计抽升量(万吨)</td>
-                                        <td>-</td>
+                                        <td>{{ $totalFluxBefore2 }}</td>
                                     </tr>
                                 @else
                                     <tr>
@@ -305,13 +305,13 @@
                                         <td colspan="2">运行合计(分)</td>
                                         <td colspan="2">{{ $totalTimeDay3 }}</td>
                                         <td>连前累计运行(小时)</td>
-                                        <td>-</td>
+                                        <td>{{ $totalTimeBefore3 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
                                         <td colspan="2">抽升量(万吨)</td>
                                         <td colspan="2">{{ $totalFluxDay3 }}</td>
                                         <td>连前累计抽升量(万吨)</td>
-                                        <td>-</td>
+                                        <td>{{ $totalFluxBefore3 }}</td>
                                     </tr>
                                 @else
                                     <tr>
@@ -355,13 +355,13 @@
                                         <td colspan="2">运行合计(分)</td>
                                         <td colspan="2">{{ $totalTimeDay4 }}</td>
                                         <td>连前累计运行(小时)</td>
-                                        <td>-</td>
+                                        <td>{{ $totalTimeBefore4 }}</td>
                                     </tr>
                                     <tr style="background-color: #f9f9f9">
                                         <td colspan="2">抽升量(万吨)</td>
                                         <td colspan="2">{{ $totalFluxDay4 }}</td>
                                         <td>连前累计抽升量(万吨)</td>
-                                        <td>-</td>
+                                        <td>{{ $totalFluxBefore4 }}</td>
                                     </tr>
                                 @else
                                     <tr>
@@ -406,13 +406,13 @@
                                             <td colspan="2">运行合计(分)</td>
                                             <td colspan="2">{{ $totalTimeDay5 }}</td>
                                             <td>连前累计运行(小时)</td>
-                                            <td>-</td>
+                                            <td>{{ $totalTimeBefore5 }}</td>
                                         </tr>
                                         <tr style="background-color: #f9f9f9">
                                             <td colspan="2">抽升量(万吨)</td>
                                             <td colspan="2">{{ $totalFluxDay5 }}</td>
                                             <td>连前累计抽升量(万吨)</td>
-                                            <td>-</td>
+                                            <td>{{ $totalFluxBefore5 }}</td>
                                         </tr>
                                     @else
                                         <tr>

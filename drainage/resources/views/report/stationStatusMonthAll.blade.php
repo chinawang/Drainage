@@ -161,17 +161,17 @@
                                                 <td>{{ $station['name'] }}</td>
 
                                                 <td>{{ $station['totalTimeDay'] }}</td>
-                                                <td>-</td>
+                                                <td>{{ $station['totalTimeBefore'] }}</td>
                                                 <td>{{ $station['totalFluxDay'] }}</td>
-                                                <td>-</td>
+                                                <td>{{ $station['totalFluxBefore'] }}</td>
                                             </tr>
                                         @endforeach
                                         <tr style="background-color: #f9f9f9">
                                             <td colspan="2">合计</td>
                                             <td>{{ $totalTimeDayAll }}</td>
-                                            <td>-</td>
+                                            <td>{{ $totalTimeBeforeAll }}</td>
                                             <td>{{ $totalFluxDayAll }}</td>
-                                            <td>-</td>
+                                            <td>{{ $totalFluxBeforeAll }}</td>
                                         </tr>
 
                                     @else

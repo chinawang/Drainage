@@ -79,10 +79,10 @@ class StatusReportController extends Controller
         $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
         // 1028临时注释掉
-//        $statusReportBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
-        $statusReportBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+        $statusReportBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
+//        $statusReportBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
+//            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
+//            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
 
 
         //$param =
@@ -155,10 +155,10 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
-            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+//            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
+//                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
+//                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
 
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1']) / 60, 2);
@@ -290,10 +290,10 @@ class StatusReportController extends Controller
             $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
             //连前累计
-//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
-            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+//            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
+//                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
+//                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
 
             //单位小时
             $station['totalTimeDay'] = round(($param['totalTimeDay']) / 60, 2);
@@ -1763,10 +1763,10 @@ class StatusReportController extends Controller
         $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
         //连前累计
-//        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
-        $excelDataBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
+//        $excelDataBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
+//            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
+//            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
 
         Excel::create($title, function ($excel) use ($excelData, $excelDataBefore, $title, $startTime) {
 
@@ -2347,10 +2347,10 @@ class StatusReportController extends Controller
 
         $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
-//        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
-        $excelDataBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
+//        $excelDataBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
+//            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
+//            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
 
         Excel::create($title, function ($excel) use ($excelData, $excelDataBefore, $title, $startTime) {
 
@@ -2930,10 +2930,10 @@ class StatusReportController extends Controller
 
             //连前累计
 //            $beforeTime = date("2017-10-01");
-//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
-            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+//            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
+//                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
+//                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
 
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1']) / 60, 2);
@@ -3172,10 +3172,10 @@ class StatusReportController extends Controller
 
             //连前累计
 //            $beforeTime = date("2017-10-01");
-//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
-            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+//            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
+//                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
+//                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
 
             //单位小时
             $station['totalTimeDay'] = round(($param['totalTimeDay']) / 60, 2);
