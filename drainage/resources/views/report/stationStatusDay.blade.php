@@ -78,7 +78,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3" style="display: none">
+                                    <div class="col-md-3" >
                                         <div class="form-group">
                                             <label for="type" class="col-md-6 control-label">累计运行统计:</label>
 

@@ -113,7 +113,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="margin-left: -60px;display: none">
+                                <div class="row" style="margin-left: -60px;">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="type" class="col-md-5 control-label">累计运行统计:</label>
