@@ -25,11 +25,11 @@ class StationRecord extends Job
      */
     public function run()
     {
-        DB::transaction(function () {
-            $records = $this->getRecords();
-
-            $this->saveRecords($records);
-        });
+//        DB::transaction(function () {
+//            $records = $this->getRecords();
+//
+//            $this->saveRecords($records);
+//        });
     }
 
     /**
