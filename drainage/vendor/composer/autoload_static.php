@@ -327,6 +327,7 @@ class ComposerStaticInit669c95193cab03cd306c11c2feb1a31f
         'CreateEmployeesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_17_085330_create_employees_table.php',
         'CreateEquipmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_29_111641_create_equipments_table.php',
         'CreateFailuresTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_29_111827_create_failures_table.php',
+        'CreateJobsTable' => __DIR__ . '/../..' . '/database/migrations/2019_02_23_150432_create_jobs_table.php',
         'CreateLogsTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_04_042933_create_logs_table.php',
         'CreateMaintenancesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_29_112139_create_maintenances_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

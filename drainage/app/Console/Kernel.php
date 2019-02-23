@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Jobs\StationRecord;
+use App\Jobs\RecordClean;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -26,6 +28,14 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        // 导出运行记录
+//        $schedule->job(new StationRecord)->everyMinute()->runInBackground();
+        $schedule->job(new StationRecord)->dailyAt('00:10')->runInBackground();
+
+        // 清除实时记录
+//        $schedule->job(new RecordClean)->monthly()->runInBackground();
+        $schedule->job(new RecordClean)->monthlyOn(1, '23:00')->runInBackground();
     }
 
     /**
