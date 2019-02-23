@@ -432,10 +432,10 @@
 
 @section('javascript')
 
-    <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    {{--<script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>--}}
 
-    <script src="https://img.hcharts.cn/highcharts/modules/xrange.js"></script>
-    <script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>
+    {{--<script src="https://img.hcharts.cn/highcharts/modules/xrange.js"></script>--}}
+    {{--<script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>--}}
 
 
     <script>

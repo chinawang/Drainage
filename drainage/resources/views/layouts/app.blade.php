@@ -174,6 +174,13 @@
 
 <script src="{{ asset('js/pace.min.js') }}"></script>
 
+<script src="{{ asset('js/hightcharts/hightcharts.js') }}"></script>
+<script src="{{ asset('js/hightcharts/moduls/oldie.js') }}"></script>
+<script src="{{ asset('js/hightcharts/moduls/xrange.js') }}"></script>
+<script src="{{ asset('js/hightcharts/themes/dark-unica.js') }}"></script>
+<script src="{{ asset('js/hightcharts/themes/gray.js') }}"></script>
+<script src="{{ asset('js/hightcharts/themes/grid-light.js') }}"></script>
+
 <script>
     $("[data-toggle='tooltip']").tooltip();
 </script>

@@ -132,7 +132,7 @@
 
 @section('javascript')
 
-    <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    {{--<script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>--}}
 
     <script>
         $(document).ready(function () {
