@@ -176,6 +176,10 @@
     <script>
         $(document).ready(function () {
 
+            var dateTime=new Date();
+            dateTime=dateTime.setDate(dateTime.getDate()-1);
+            dateTime=new Date(dateTime);
+
             // 日期
             var datePickerConfig = {
                 format: 'yyyy-mm-dd',
@@ -185,7 +189,8 @@
                 minView: 'month',
                 maxView: "year",
                 showMeridian: true,
-                setStartDate: '-1M'
+                setStartDate: '-1M',
+                endDate : dateTime
             };
             // 选择查询日期
             $('.pick-event-date').datetimepicker(datePickerConfig);
