@@ -1405,51 +1405,51 @@ class StatusReportController extends Controller
         {
             $stationStatusList1[$i]['index'] = $i+1;
             $stationStatusList1[$i]['timeStart'] = $recordList1[$i]->start_at;
-            $stationStatusList1[$i]['timeEnd'] = $recordList1[$i]['stop_at'];
-            $stationStatusList1[$i]['waterStart'] = $recordList1[$i]['start_value'];
-            $stationStatusList1[$i]['waterEnd'] = $recordList1[$i]['stop_value'];
-            $stationStatusList1[$i]['timeGap'] = $recordList1[$i]['run_time'];
-            $stationStatusList1[$i]['current'] = $recordList1[$i]['run_current'];
+            $stationStatusList1[$i]['timeEnd'] = $recordList1[$i]->stop_at;
+            $stationStatusList1[$i]['waterStart'] = $recordList1[$i]->start_value;
+            $stationStatusList1[$i]['waterEnd'] = $recordList1[$i]->stop_value;
+            $stationStatusList1[$i]['timeGap'] = $recordList1[$i]->run_time;
+            $stationStatusList1[$i]['current'] = $recordList1[$i]->run_current;
         }
         for($i = 0; $i < count($recordList2); $i ++)
         {
             $stationStatusList2[$i]['index'] = $i+1;
-            $stationStatusList2[$i]['timeStart'] = $recordList2[$i]['start_at'];
-            $stationStatusList2[$i]['timeEnd'] = $recordList2[$i]['stop_at'];
-            $stationStatusList2[$i]['waterStart'] = $recordList2[$i]['start_value'];
-            $stationStatusList2[$i]['waterEnd'] = $recordList2[$i]['stop_value'];
-            $stationStatusList2[$i]['timeGap'] = $recordList2[$i]['run_time'];
-            $stationStatusList2[$i]['current'] = $recordList2[$i]['run_current'];
+            $stationStatusList2[$i]['timeStart'] = $recordList2[$i]->start_at;
+            $stationStatusList2[$i]['timeEnd'] = $recordList2[$i]->stop_at;
+            $stationStatusList2[$i]['waterStart'] = $recordList2[$i]->start_value;
+            $stationStatusList2[$i]['waterEnd'] = $recordList2[$i]->stop_value;
+            $stationStatusList2[$i]['timeGap'] = $recordList2[$i]->run_time;
+            $stationStatusList2[$i]['current'] = $recordList2[$i]->run_current;
         }
         for($i = 0; $i < count($recordList3); $i ++)
         {
             $stationStatusList3[$i]['index'] = $i+1;
-            $stationStatusList3[$i]['timeStart'] = $recordList3[$i]['start_at'];
-            $stationStatusList3[$i]['timeEnd'] = $recordList3[$i]['stop_at'];
-            $stationStatusList3[$i]['waterStart'] = $recordList3[$i]['start_value'];
-            $stationStatusList3[$i]['waterEnd'] = $recordList3[$i]['stop_value'];
-            $stationStatusList3[$i]['timeGap'] = $recordList3[$i]['run_time'];
-            $stationStatusList3[$i]['current'] = $recordList3[$i]['run_current'];
+            $stationStatusList3[$i]['timeStart'] = $recordList3[$i]->start_at;
+            $stationStatusList3[$i]['timeEnd'] = $recordList3[$i]->stop_at;
+            $stationStatusList3[$i]['waterStart'] = $recordList3[$i]->start_value;
+            $stationStatusList3[$i]['waterEnd'] = $recordList3[$i]->stop_value;
+            $stationStatusList3[$i]['timeGap'] = $recordList3[$i]->run_time;
+            $stationStatusList3[$i]['current'] = $recordList3[$i]->run_current;
         }
         for($i = 0; $i < count($recordList4); $i ++)
         {
             $stationStatusList4[$i]['index'] = $i+1;
-            $stationStatusList4[$i]['timeStart'] = $recordList4[$i]['start_at'];
-            $stationStatusList4[$i]['timeEnd'] = $recordList4[$i]['stop_at'];
-            $stationStatusList4[$i]['waterStart'] = $recordList4[$i]['start_value'];
-            $stationStatusList4[$i]['waterEnd'] = $recordList4[$i]['stop_value'];
-            $stationStatusList4[$i]['timeGap'] = $recordList4[$i]['run_time'];
-            $stationStatusList4[$i]['current'] = $recordList4[$i]['run_current'];
+            $stationStatusList4[$i]['timeStart'] = $recordList4[$i]->start_at;
+            $stationStatusList4[$i]['timeEnd'] = $recordList4[$i]->stop_at;
+            $stationStatusList4[$i]['waterStart'] = $recordList4[$i]->start_value;
+            $stationStatusList4[$i]['waterEnd'] = $recordList4[$i]->stop_value;
+            $stationStatusList4[$i]['timeGap'] = $recordList4[$i]->run_time;
+            $stationStatusList4[$i]['current'] = $recordList4[$i]->run_current;
         }
         for($i = 0; $i < count($recordList5); $i ++)
         {
             $stationStatusList5[$i]['index'] = $i+1;
-            $stationStatusList5[$i]['timeStart'] = $recordList5[$i]['start_at'];
-            $stationStatusList5[$i]['timeEnd'] = $recordList5[$i]['stop_at'];
-            $stationStatusList5[$i]['waterStart'] = $recordList5[$i]['start_value'];
-            $stationStatusList5[$i]['waterEnd'] = $recordList5[$i]['stop_value'];
-            $stationStatusList5[$i]['timeGap'] = $recordList5[$i]['run_time'];
-            $stationStatusList5[$i]['current'] = $recordList5[$i]['run_current'];
+            $stationStatusList5[$i]['timeStart'] = $recordList5[$i]->start_at;
+            $stationStatusList5[$i]['timeEnd'] = $recordList5[$i]->stop_at;
+            $stationStatusList5[$i]['waterStart'] = $recordList5[$i]->start_value;
+            $stationStatusList5[$i]['waterEnd'] = $recordList5[$i]->stop_value;
+            $stationStatusList5[$i]['timeGap'] = $recordList5[$i]->run_time;
+            $stationStatusList5[$i]['current'] = $recordList5[$i]->run_current;
         }
 
 
