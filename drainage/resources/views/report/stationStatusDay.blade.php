@@ -455,14 +455,14 @@
             // 选择查询日期
             $('.pick-event-date').datetimepicker(datePickerConfig);
 
-
             var timePickerConfig = {
                 language: "zh-CN",
                 autoclose: true,
                 todayHighlight: true,
                 minuteStep: 30,
                 maxView: "year",
-                showMeridian: true
+                showMeridian: true,
+                endDate:new Date()
 
             };
             // 选择查询时间
