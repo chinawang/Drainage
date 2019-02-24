@@ -31,8 +31,8 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         // 导出运行记录
-//        $schedule->job(new StationRecord)->everyMinute()->runInBackground();
-        $schedule->job(new StationRecord)->dailyAt('19:20')->runInBackground();
+        $schedule->job(new StationRecord)->everyMinute()->runInBackground();
+//        $schedule->job(new StationRecord)->dailyAt('19:20')->runInBackground();
 
         // 清除实时记录
 //        $schedule->job(new RecordClean)->everyMinute()->runInBackground();

@@ -89,11 +89,11 @@ class StationRecord extends Job
 //        Rank::insert($ranks);
 //
 //        Rank::forgetCache();
-        $pumpRecordList1 = $records->stationStatusList1;
-        $pumpRecordList2 = $records->stationStatusList2;
-        $pumpRecordList3 = $records->stationStatusList3;
-        $pumpRecordList4 = $records->stationStatusList4;
-        $pumpRecordList5 = $records->stationStatusList5;
+        $pumpRecordList1 = $records['stationStatusList1'];
+        $pumpRecordList2 = $records['stationStatusList2'];
+        $pumpRecordList3 = $records['stationStatusList3'];
+        $pumpRecordList4 = $records['stationStatusList4'];
+        $pumpRecordList5 = $records['stationStatusList5'];
 
         $attributes = [];
 
