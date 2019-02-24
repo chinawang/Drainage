@@ -9,6 +9,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+
     /**
      * The Artisan commands provided by your application.
      *
@@ -31,7 +32,7 @@ class Kernel extends ConsoleKernel
 
         // 导出运行记录
 //        $schedule->job(new StationRecord)->everyMinute()->runInBackground();
-        $schedule->job(new StationRecord)->dailyAt('18:20')->runInBackground();
+        $schedule->job(new StationRecord)->dailyAt('19:20')->runInBackground();
 
         // 清除实时记录
 //        $schedule->job(new RecordClean)->everyMinute()->runInBackground();
