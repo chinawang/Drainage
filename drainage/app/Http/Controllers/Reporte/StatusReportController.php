@@ -80,7 +80,7 @@ class StatusReportController extends Controller
         //2019-02更改
         if($startTime > date('2019-01-01 00:00:00'))
         {
-            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
             $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
             $beforeTime = date("2019-01-01 00:00:00");
