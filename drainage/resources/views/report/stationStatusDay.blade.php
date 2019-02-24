@@ -451,7 +451,7 @@
                 maxView: "year",
                 showMeridian: true,
                 setStartDate: '-1M',
-                endDate : new Date()
+                endDate : new Date().setDate(new Date().getDate()-1)
             };
             // 选择查询日期
             $('.pick-event-date').datetimepicker(datePickerConfig).on("click",function(ev){
