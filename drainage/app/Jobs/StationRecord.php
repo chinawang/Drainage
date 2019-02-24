@@ -184,8 +184,8 @@ class StationRecord extends Job
         $pump2List = ['18', '31', '34'];
         $pump3List = ['1', '2', '3', '4', '5', '6', '8', '9', '11', '12', '13', '16', '17', '20', '23', '24', '25', '26', '27', '28', '30', '32', '35', '37', '38'];
         $pump4List = ['7', '10', '14', '15', '19', '21', '22', '29', '36'];
-//        $pump5List = ['33'];
-        $pump5List = [];
+        $pump5List = ['33'];
+//        $pump5List = [];
 
         if (in_array($stationNum, $pump2List)) {
             $has2Pump = true;
