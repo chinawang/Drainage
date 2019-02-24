@@ -77,6 +77,7 @@ class StatusReportController extends Controller
 //        }
 
 
+        //2019-02更改
         if($startTime > date('2019-01-01 00:00:00'))
         {
             $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
@@ -158,13 +159,29 @@ class StatusReportController extends Controller
         $stations = $this->stationListByType($type);
 
         foreach ($stations as $station) {
-            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//
+//            //连前累计
+//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
-            //连前累计
-            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
-//            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-//                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-//                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+            //2019-02更改
+            if($startTime > date('2019-01-01 00:00:00'))
+            {
+                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+                $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+                $beforeTime = date("2019-01-01 00:00:00");
+
+                $param = $this->getStatusReportV4($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV4($station['id'], $beforeTime, $endTime);
+            }
+            else
+            {
+                $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+            }
 
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1']) / 60, 2);
@@ -293,13 +310,30 @@ class StatusReportController extends Controller
         $totalFluxBeforeAll = 0;
 
         foreach ($stations as $station) {
-            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//
+//            //连前累计
+//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
-            //连前累计
-            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
-//            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-//                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-//                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+
+            //2019-02更改
+            if($startTime > date('2019-01-01 00:00:00'))
+            {
+                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+                $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+                $beforeTime = date("2019-01-01 00:00:00");
+
+                $param = $this->getStatusReportV4($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV4($station['id'], $beforeTime, $endTime);
+            }
+            else
+            {
+                $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+            }
 
             //单位小时
             $station['totalTimeDay'] = round(($param['totalTimeDay']) / 60, 2);
@@ -1501,7 +1535,7 @@ class StatusReportController extends Controller
         //当日泵站总抽升量(万吨)
         $totalFluxDay = $totalFluxDay1 + $totalFluxDay2 + $totalFluxDay3 + $totalFluxDay4 + $totalFluxDay5;
 
-        $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime,
+        $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => substr($startTime,0,10), 'endTime' => $endTime,
             'stationStatusList1' => $stationStatusList1, 'stationStatusList2' => $stationStatusList2,
             'stationStatusList3' => $stationStatusList3, 'stationStatusList4' => $stationStatusList4, 'stationStatusList5' => $stationStatusList5,
             'totalTimeDay1' => $totalTimeDay1, 'totalTimeDay2' => $totalTimeDay2, 'totalTimeDay3' => $totalTimeDay3, 'totalTimeDay4' => $totalTimeDay4, 'totalTimeDay5' => $totalTimeDay5,
@@ -2246,7 +2280,22 @@ class StatusReportController extends Controller
             $endTime = date("Y-m-d");
         }
 
-        $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
+//        $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
+
+        //2019-02更改
+        if($startTime > date('2019-01-01 00:00:00'))
+        {
+            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+            $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+            $statusReportDay = $this->getStatusReportV4($stationID, $startTime, $endTime);
+
+        }
+        else
+        {
+            $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
+
+        }
 
         $param = array('stationStatusList1' => $statusReportDay['stationStatusList1'], 'stationStatusList2' => $statusReportDay['stationStatusList2'],
             'stationStatusList3' => $statusReportDay['stationStatusList3'], 'stationStatusList4' => $statusReportDay['stationStatusList4'],
@@ -2284,11 +2333,30 @@ class StatusReportController extends Controller
         $stations = $this->stationListByType($type);
 
         foreach ($stations as $station) {
-            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
 
-            //连前累计
-            $beforeTime = date("2017-10-01");
-            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+
+            //2019-02更改
+            if($startTime > date('2019-01-01 00:00:00'))
+            {
+                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+                $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+                $beforeTime = date("2019-01-01 00:00:00");
+
+                $param = $this->getStatusReportV4($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV4($station['id'], $beforeTime, $endTime);
+            }
+            else
+            {
+                $beforeTime = date("2017-10-01");
+
+                $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+            }
 
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1']) / 60, 2);
@@ -2348,11 +2416,32 @@ class StatusReportController extends Controller
         $stations = $this->stationListByType($type);
 
         foreach ($stations as $station) {
-            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//
+//            //连前累计
+//            $beforeTime = date("2017-10-01");
+//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
-            //连前累计
-            $beforeTime = date("2017-10-01");
-            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+            //2019-02更改
+            if($startTime > date('2019-01-01 00:00:00'))
+            {
+                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+                $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+                $beforeTime = date("2019-01-01 00:00:00");
+
+                $param = $this->getStatusReportV4($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV4($station['id'], $beforeTime, $endTime);
+            }
+            else
+            {
+                $beforeTime = date("2017-10-01");
+
+                $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+            }
 
             //单位小时
             $station['totalTimeDay'] = round(($param['totalTimeDay']) / 60, 2);
@@ -2393,7 +2482,20 @@ class StatusReportController extends Controller
         $stations = $this->stationListByType($type);
 
         foreach ($stations as $station) {
-            $statusReportDay = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//            $statusReportDay = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+
+            //2019-02更改
+            if($startTime > date('2019-01-01 00:00:00'))
+            {
+                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+                $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+                $statusReportDay = $this->getStatusReportV4($station['id'], $startTime, $endTime);
+            }
+            else
+            {
+                $statusReportDay = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+            }
 
             $station['stationStatusList1'] = $statusReportDay['stationStatusList1'];
             $station['stationStatusList2'] = $statusReportDay['stationStatusList2'];
@@ -2428,15 +2530,34 @@ class StatusReportController extends Controller
         $title = '泵站运行日志-' . $startTime;
 
         //连前累计
-        $beforeTime = date("2017-10-01");
+//        $beforeTime = date("2017-10-01");
+//
+//        $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
+//
+//        //连前累计
+//        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
 
-        $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
+        //2019-02更改
+        if($startTime > date('2019-01-01 00:00:00'))
+        {
+            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+            $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
-        //连前累计
-        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
-//        $excelDataBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-//            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-//            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+            $beforeTime = date("2019-01-01 00:00:00");
+
+            $excelData = $this->getStatusReportV4($stationID, $startTime, $endTime);
+
+            $excelDataBefore = $this->getStatusReportV4($stationID, $beforeTime, $endTime);
+        }
+        else
+        {
+            $beforeTime = date("2017-10-01");
+
+            $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
+
+            $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
+        }
+
 
         Excel::create($title, function ($excel) use ($excelData, $excelDataBefore, $title, $startTime) {
 
@@ -3015,12 +3136,32 @@ class StatusReportController extends Controller
         //连前累计
 //        $beforeTime = date("2017-10-01");
 
-        $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
+//        $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
+//
+//        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
 
-        $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
-//        $excelDataBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-//            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-//            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+
+        //2019-02更改
+        if($startTime > date('2019-01-01 00:00:00'))
+        {
+            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+            $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+            $beforeTime = date("2019-01-01 00:00:00");
+
+            $excelData = $this->getStatusReportV4($stationID, $startTime, $endTime);
+
+            $excelDataBefore = $this->getStatusReportV4($stationID, $beforeTime, $endTime);
+        }
+        else
+        {
+            $beforeTime = date("2017-10-01");
+
+            $excelData = $this->getStatusReportV3($stationID, $startTime, $endTime);
+
+            $excelDataBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
+        }
+
 
         Excel::create($title, function ($excel) use ($excelData, $excelDataBefore, $title, $startTime) {
 
@@ -3596,14 +3737,33 @@ class StatusReportController extends Controller
         $stations = $this->stationListByType($type);
 
         foreach ($stations as $station) {
-            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//
+//            //连前累计
+////            $beforeTime = date("2017-10-01");
+//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
-            //连前累计
-//            $beforeTime = date("2017-10-01");
-            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
-//            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-//                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-//                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+
+            //2019-02更改
+            if($startTime > date('2019-01-01 00:00:00'))
+            {
+                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+                $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+                $beforeTime = date("2019-01-01 00:00:00");
+
+                $param = $this->getStatusReportV4($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV4($station['id'], $beforeTime, $endTime);
+            }
+            else
+            {
+                $beforeTime = date("2017-10-01");
+
+                $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+            }
 
             //单位小时
             $station['totalTimeDay1'] = round(($param['totalTimeDay1']) / 60, 2);
@@ -3838,14 +3998,32 @@ class StatusReportController extends Controller
         $totalFluxBeforeAll = 0;
 
         foreach ($stations as $station) {
-            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//            $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+//
+//            //连前累计
+////            $beforeTime = date("2017-10-01");
+//            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
 
-            //连前累计
-//            $beforeTime = date("2017-10-01");
-            $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
-//            $paramBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-//                'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-//                'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+            //2019-02更改
+            if($startTime > date('2019-01-01 00:00:00'))
+            {
+                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+                $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+                $beforeTime = date("2019-01-01 00:00:00");
+
+                $param = $this->getStatusReportV4($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV4($station['id'], $beforeTime, $endTime);
+            }
+            else
+            {
+                $beforeTime = date("2017-10-01");
+
+                $param = $this->getStatusReportV3($station['id'], $startTime, $endTime);
+
+                $paramBefore = $this->getStatusReportV3($station['id'], $beforeTime, $endTime);
+            }
 
             //单位小时
             $station['totalTimeDay'] = round(($param['totalTimeDay']) / 60, 2);
