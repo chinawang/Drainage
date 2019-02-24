@@ -1404,7 +1404,7 @@ class StatusReportController extends Controller
         for($i = 0; $i < count($recordList1); $i ++)
         {
             $stationStatusList1[$i]['index'] = $i+1;
-            $stationStatusList1[$i]['timeStart'] = $recordList1[$i]['start_at'];
+            $stationStatusList1[$i]['timeStart'] = $recordList1[$i]->start_at;
             $stationStatusList1[$i]['timeEnd'] = $recordList1[$i]['stop_at'];
             $stationStatusList1[$i]['waterStart'] = $recordList1[$i]['start_value'];
             $stationStatusList1[$i]['waterEnd'] = $recordList1[$i]['stop_value'];
