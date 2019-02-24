@@ -44,13 +44,13 @@ class StationRecord extends Job
 //        });
 
 //        $today = Carbon::today()->toDateTimeString();// 2019-01-02 00:00:00
-//        $yesterday = Carbon::yesterday()->toDateTimeString();// 2019-01-01 00:00:00
+        $yesterday = Carbon::yesterday()->toDateTimeString();// 2019-01-01 00:00:00
 
-//        $startTime = $yesterday;
-//        $endTime = date('Y-m-d 23:59:59', strtotime($yesterday);
+        $startTime = $yesterday;
+        $endTime = date('Y-m-d 23:59:59', strtotime($yesterday));
 
-        $startTime = date("2017-10-10 00:00:00");
-        $endTime = date("2017-10-10 23:59:59");
+//        $startTime = date("2017-10-10 00:00:00");
+//        $endTime = date("2017-10-10 23:59:59");
 
         for($i=1;$i<=38;$i++)
         {
