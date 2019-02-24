@@ -101,8 +101,8 @@ class StationRecord extends Job
             foreach ($pumpRecordList1 as $pumRecord)
             {
                 $attributes[] = [
-                    'station_num' => $stationNum,'pump_num' => 1,'run_at' => substr($pumRecord['timeStart'],0,10),
-                    'start_at'=>substr($pumRecord['timeStart'],10),'stop_at'=>substr($pumRecord['timeEnd'],10),
+                    'station_num' => $stationNum,'pump_num' => 1,'run_at' => $pumRecord['timeStart'],
+                    'start_at'=>$pumRecord['timeStart'],'stop_at'=> $pumRecord['timeEnd'],
                     'start_value'=>$pumRecord['waterStart'],'stop_value'=>$pumRecord['waterEnd'],
                     'run_time'=>$pumRecord['timeGap'],'run_current'=>$pumRecord['current']
                 ];
@@ -112,8 +112,8 @@ class StationRecord extends Job
             foreach ($pumpRecordList2 as $pumRecord)
             {
                 $attributes[] = [
-                    'station_num' => $stationNum,'pump_num' => 2,'run_at' => substr($pumRecord['timeStart'],0,10),
-                    'start_at'=>substr($pumRecord['timeStart'],10),'stop_at'=>substr($pumRecord['timeEnd'],10),
+                    'station_num' => $stationNum,'pump_num' => 2,'run_at' => $pumRecord['timeStart'],
+                    'start_at'=>$pumRecord['timeStart'],'stop_at'=> $pumRecord['timeEnd'],
                     'start_value'=>$pumRecord['waterStart'],'stop_value'=>$pumRecord['waterEnd'],
                     'run_time'=>$pumRecord['timeGap'],'run_current'=>$pumRecord['current']
                 ];
@@ -123,8 +123,8 @@ class StationRecord extends Job
             foreach ($pumpRecordList3 as $pumRecord)
             {
                 $attributes[] = [
-                    'station_num' => $stationNum,'pump_num' => 3,'run_at' => substr($pumRecord['timeStart'],0,10),
-                    'start_at'=>substr($pumRecord['timeStart'],10),'stop_at'=>substr($pumRecord['timeEnd'],10),
+                    'station_num' => $stationNum,'pump_num' => 3,'run_at' => $pumRecord['timeStart'],
+                    'start_at'=>$pumRecord['timeStart'],'stop_at'=> $pumRecord['timeEnd'],
                     'start_value'=>$pumRecord['waterStart'],'stop_value'=>$pumRecord['waterEnd'],
                     'run_time'=>$pumRecord['timeGap'],'run_current'=>$pumRecord['current']
                 ];
@@ -134,8 +134,8 @@ class StationRecord extends Job
             foreach ($pumpRecordList4 as $pumRecord)
             {
                 $attributes[] = [
-                    'station_num' => $stationNum,'pump_num' => 4,'run_at' => substr($pumRecord['timeStart'],0,10),
-                    'start_at'=>substr($pumRecord['timeStart'],10),'stop_at'=>substr($pumRecord['timeEnd'],10),
+                    'station_num' => $stationNum,'pump_num' => 4,'run_at' => $pumRecord['timeStart'],
+                    'start_at'=>$pumRecord['timeStart'],'stop_at'=> $pumRecord['timeEnd'],
                     'start_value'=>$pumRecord['waterStart'],'stop_value'=>$pumRecord['waterEnd'],
                     'run_time'=>$pumRecord['timeGap'],'run_current'=>$pumRecord['current']
                 ];
@@ -145,8 +145,8 @@ class StationRecord extends Job
             foreach ($pumpRecordList5 as $pumRecord)
             {
                 $attributes[] = [
-                    'station_num' => $stationNum,'pump_num' => 5,'run_at' => substr($pumRecord['timeStart'],0,10),
-                    'start_at'=>substr($pumRecord['timeStart'],10),'stop_at'=>substr($pumRecord['timeEnd'],10),
+                    'station_num' => $stationNum,'pump_num' => 5,'run_at' => $pumRecord['timeStart'],
+                    'start_at'=>$pumRecord['timeStart'],'stop_at'=> $pumRecord['timeEnd'],
                     'start_value'=>$pumRecord['waterStart'],'stop_value'=>$pumRecord['waterEnd'],
                     'run_time'=>$pumRecord['timeGap'],'run_current'=>$pumRecord['current']
                 ];
