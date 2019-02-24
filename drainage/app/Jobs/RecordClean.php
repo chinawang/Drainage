@@ -25,6 +25,18 @@ class RecordClean extends Job
      */
     public function run()
     {
-        $yesterday = Carbon::yesterday();
+
+        $firstDay = Carbon::now()->subMonth()->firstOfMonth();//上个月第1天
+        $lastDay = Carbon::now()->subMonth()->lastOfMonth();//上个月最后1天
+        $cleanStartTime = date('Y-m-d 00:00:00', strtotime($firstDay));
+        $cleanEndTime = date('Y-m-d 23:59:59', strtotime($lastDay));
+
+//        $cleanStartTime = date("2017-10-10 00:00:00");
+//        $cleanStartTime = date("2017-10-10 23:59:59");
+        for($i=1;$i<=38;$i++)
+        {
+            $tableName = 'stationRTY_'.$i;
+            DB::table($tableName)->whereBetween('Time', array($cleanStartTime, $cleanEndTime))->delete();
+        }
     }
 }
