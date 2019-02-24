@@ -461,8 +461,7 @@
                 todayHighlight: true,
                 minuteStep: 30,
                 maxView: "year",
-                showMeridian: true,
-                endDate:new Date()
+                showMeridian: true
 
             };
             // 选择查询时间

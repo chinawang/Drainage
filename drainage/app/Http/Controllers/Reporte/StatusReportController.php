@@ -76,19 +76,25 @@ class StatusReportController extends Controller
 //            $endTime = date("Y-m-d");
 //        }
 
-        $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
 
-        // 1028临时注释掉
-        $statusReportBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
-//        $statusReportBefore = ['totalTimeDay1' => 0, 'totalTimeDay2' => 0, 'totalTimeDay3' => 0, 'totalTimeDay4' => 0, 'totalTimeDay5' => 0,
-//            'totalFluxDay1' => 0, 'totalFluxDay2' => 0, 'totalFluxDay3' => 0, 'totalFluxDay4' => 0, 'totalFluxDay5' => 0,
-//            'totalTimeDay' => 0, 'totalFluxDay' => 0,];
+        if($startTime > date('2019-01-01 00:00:00'))
+        {
+            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+            $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
+            $beforeTime = date("2019-01-01 00:00:00");
 
-        //$param =
+            $statusReportDay = $this->getStatusReportV4($stationID, $startTime, $endTime);
 
-//        $days = $this->getTheMonthDay($startTime);
-//        $startTime = $days[0];
+            $statusReportBefore = $this->getStatusReportV4($stationID, $beforeTime, $endTime);
+        }
+        else
+        {
+            $statusReportDay = $this->getStatusReportV3($stationID, $startTime, $endTime);
+
+            $statusReportBefore = $this->getStatusReportV3($stationID, $beforeTime, $endTime);
+        }
+
 
         $param = ['stations' => $statusReportDay['stations'], 'stationSelect' => $statusReportDay['stationSelect'], 'startTime' => $startTime, 'endTime' => $endTime,'totalType' => $totalType,
             'stationStatusList1' => $statusReportDay['stationStatusList1'], 'stationStatusList2' => $statusReportDay['stationStatusList2'], 'stationStatusList3' => $statusReportDay['stationStatusList3'], 'stationStatusList4' => $statusReportDay['stationStatusList4'], 'stationStatusList5' => $statusReportDay['stationStatusList5'],
@@ -1371,9 +1377,139 @@ class StatusReportController extends Controller
      * @param $endTime
      * @return array
      */
-    public function getStatusReportV4($stationNum, $startTime, $endTime)
+    public function getStatusReportV4($stationID, $startTime, $endTime)
     {
+        $stationTemp = $this->stationInfo($stationID);
+        $stations = $this->stationList();
+        $pump = $this->pumpInfo($stationID);    // 泵组抽水量信息
+        $stationNum = $stationTemp['station_number'];    // 泵站编号
 
+        $stationStatusList1 = [];//1号泵组
+        $stationStatusList2 = [];//2号泵组
+        $stationStatusList3 = [];//3号泵组
+        $stationStatusList4 = [];//4号泵组
+        $stationStatusList5 = [];//5号泵组
+
+        $recordList1 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>1,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->get();
+        $recordList2 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>2,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->get();
+        $recordList3 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>3,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->get();
+        $recordList4 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>4,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->get();
+        $recordList5 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>5,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->get();
+
+        for($i = 0; $i < count($recordList1); $i ++)
+        {
+            $stationStatusList1[$i]['index'] = $i+1;
+            $stationStatusList1[$i]['timeStart'] = $recordList1[$i]['start_at'];
+            $stationStatusList1[$i]['timeEnd'] = $recordList1[$i]['stop_at'];
+            $stationStatusList1[$i]['waterStart'] = $recordList1[$i]['start_value'];
+            $stationStatusList1[$i]['waterEnd'] = $recordList1[$i]['stop_value'];
+            $stationStatusList1[$i]['timeGap'] = $recordList1[$i]['run_time'];
+            $stationStatusList1[$i]['current'] = $recordList1[$i]['run_current'];
+        }
+        for($i = 0; $i < count($recordList2); $i ++)
+        {
+            $stationStatusList2[$i]['index'] = $i+1;
+            $stationStatusList2[$i]['timeStart'] = $recordList2[$i]['start_at'];
+            $stationStatusList2[$i]['timeEnd'] = $recordList2[$i]['stop_at'];
+            $stationStatusList2[$i]['waterStart'] = $recordList2[$i]['start_value'];
+            $stationStatusList2[$i]['waterEnd'] = $recordList2[$i]['stop_value'];
+            $stationStatusList2[$i]['timeGap'] = $recordList2[$i]['run_time'];
+            $stationStatusList2[$i]['current'] = $recordList2[$i]['run_current'];
+        }
+        for($i = 0; $i < count($recordList3); $i ++)
+        {
+            $stationStatusList3[$i]['index'] = $i+1;
+            $stationStatusList3[$i]['timeStart'] = $recordList3[$i]['start_at'];
+            $stationStatusList3[$i]['timeEnd'] = $recordList3[$i]['stop_at'];
+            $stationStatusList3[$i]['waterStart'] = $recordList3[$i]['start_value'];
+            $stationStatusList3[$i]['waterEnd'] = $recordList3[$i]['stop_value'];
+            $stationStatusList3[$i]['timeGap'] = $recordList3[$i]['run_time'];
+            $stationStatusList3[$i]['current'] = $recordList3[$i]['run_current'];
+        }
+        for($i = 0; $i < count($recordList4); $i ++)
+        {
+            $stationStatusList4[$i]['index'] = $i+1;
+            $stationStatusList4[$i]['timeStart'] = $recordList4[$i]['start_at'];
+            $stationStatusList4[$i]['timeEnd'] = $recordList4[$i]['stop_at'];
+            $stationStatusList4[$i]['waterStart'] = $recordList4[$i]['start_value'];
+            $stationStatusList4[$i]['waterEnd'] = $recordList4[$i]['stop_value'];
+            $stationStatusList4[$i]['timeGap'] = $recordList4[$i]['run_time'];
+            $stationStatusList4[$i]['current'] = $recordList4[$i]['run_current'];
+        }
+        for($i = 0; $i < count($recordList5); $i ++)
+        {
+            $stationStatusList5[$i]['index'] = $i+1;
+            $stationStatusList5[$i]['timeStart'] = $recordList5[$i]['start_at'];
+            $stationStatusList5[$i]['timeEnd'] = $recordList5[$i]['stop_at'];
+            $stationStatusList5[$i]['waterStart'] = $recordList5[$i]['start_value'];
+            $stationStatusList5[$i]['waterEnd'] = $recordList5[$i]['stop_value'];
+            $stationStatusList5[$i]['timeGap'] = $recordList5[$i]['run_time'];
+            $stationStatusList5[$i]['current'] = $recordList5[$i]['run_current'];
+        }
+
+
+        //当日每个泵运行时间合计(分钟)
+        $totalTimeDay1 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>1,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+        $totalTimeDay2 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>2,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+        $totalTimeDay3 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>3,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+        $totalTimeDay4 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>4,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+        $totalTimeDay5 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>5,'delete_process'=>0])
+            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+
+
+        //当日每个泵抽升量合计(万吨)
+        $totalFluxDay1 = 0.00;
+        $totalFluxDay2 = 0.00;
+        $totalFluxDay3 = 0.00;
+        $totalFluxDay4 = 0.00;
+        $totalFluxDay5 = 0.00;
+
+        //抽升量合计
+        if($totalTimeDay1 != 0)
+        {
+            $totalFluxDay1 = round(($pump['flux1'] * round($totalTimeDay1/60,2)) / 10000,4);
+        }
+        if($totalTimeDay2 != 0)
+        {
+            $totalFluxDay2 = round(($pump['flux2'] * round($totalTimeDay2/60,2)) / 10000,4);
+        }
+        if($totalTimeDay3 != 0)
+        {
+            $totalFluxDay3 = round(($pump['flux3'] * round($totalTimeDay3/60,2)) / 10000,4);
+        }
+        if($totalTimeDay4 != 0)
+        {
+            $totalFluxDay4 = round(($pump['flux4'] * round($totalTimeDay4/60,2)) / 10000,4);
+        }
+        if($totalTimeDay5 != 0)
+        {
+            $totalFluxDay5 = round(($pump['flux5'] * round($totalTimeDay5/60,2)) / 10000,4);
+        }
+
+        //当日泵站运行合计(分钟)
+        $totalTimeDay = $totalTimeDay1 + $totalTimeDay2 + $totalTimeDay3 + $totalTimeDay4 + $totalTimeDay5;
+
+        //当日泵站总抽升量(万吨)
+        $totalFluxDay = $totalFluxDay1 + $totalFluxDay2 + $totalFluxDay3 + $totalFluxDay4 + $totalFluxDay5;
+
+        $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime,
+            'stationStatusList1' => $stationStatusList1, 'stationStatusList2' => $stationStatusList2,
+            'stationStatusList3' => $stationStatusList3, 'stationStatusList4' => $stationStatusList4, 'stationStatusList5' => $stationStatusList5,
+            'totalTimeDay1' => $totalTimeDay1, 'totalTimeDay2' => $totalTimeDay2, 'totalTimeDay3' => $totalTimeDay3, 'totalTimeDay4' => $totalTimeDay4, 'totalTimeDay5' => $totalTimeDay5,
+            'totalFluxDay1' => $totalFluxDay1, 'totalFluxDay2' => $totalFluxDay2, 'totalFluxDay3' => $totalFluxDay3, 'totalFluxDay4' => $totalFluxDay4, 'totalFluxDay5' => $totalFluxDay5,
+            'totalTimeDay' => $totalTimeDay, 'totalFluxDay' => $totalFluxDay,
+        ];
+
+        return $param;
     }
 
     /**

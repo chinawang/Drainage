@@ -25,7 +25,7 @@ class CreateStationRecordsTable extends Migration
             $table->integer('run_time')->nullable()->comment('本次运行时间');
             $table->integer('run_current')->nullable()->comment('运行电流');
             $table->tinyInteger('delete_process')->default(0)->comment('是否删除');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 
