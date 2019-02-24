@@ -167,7 +167,7 @@ class StatusReportController extends Controller
             //2019-02更改
             if($startTime > date('2019-01-01 00:00:00'))
             {
-                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
                 $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
                 $beforeTime = date("2019-01-01 00:00:00");
@@ -319,7 +319,7 @@ class StatusReportController extends Controller
             //2019-02更改
             if($startTime > date('2019-01-01 00:00:00'))
             {
-                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
                 $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
                 $beforeTime = date("2019-01-01 00:00:00");
@@ -1535,7 +1535,7 @@ class StatusReportController extends Controller
         //当日泵站总抽升量(万吨)
         $totalFluxDay = $totalFluxDay1 + $totalFluxDay2 + $totalFluxDay3 + $totalFluxDay4 + $totalFluxDay5;
 
-        $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => substr($startTime,0,10), 'endTime' => $endTime,
+        $param = ['stations' => $stations, 'stationSelect' => $stationTemp, 'startTime' => $startTime, 'endTime' => $endTime,
             'stationStatusList1' => $stationStatusList1, 'stationStatusList2' => $stationStatusList2,
             'stationStatusList3' => $stationStatusList3, 'stationStatusList4' => $stationStatusList4, 'stationStatusList5' => $stationStatusList5,
             'totalTimeDay1' => $totalTimeDay1, 'totalTimeDay2' => $totalTimeDay2, 'totalTimeDay3' => $totalTimeDay3, 'totalTimeDay4' => $totalTimeDay4, 'totalTimeDay5' => $totalTimeDay5,
@@ -2285,7 +2285,7 @@ class StatusReportController extends Controller
         //2019-02更改
         if($startTime > date('2019-01-01 00:00:00'))
         {
-            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
             $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
             $statusReportDay = $this->getStatusReportV4($stationID, $startTime, $endTime);
@@ -2340,7 +2340,7 @@ class StatusReportController extends Controller
             //2019-02更改
             if($startTime > date('2019-01-01 00:00:00'))
             {
-                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
                 $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
                 $beforeTime = date("2019-01-01 00:00:00");
@@ -2425,7 +2425,7 @@ class StatusReportController extends Controller
             //2019-02更改
             if($startTime > date('2019-01-01 00:00:00'))
             {
-                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
                 $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
                 $beforeTime = date("2019-01-01 00:00:00");
@@ -2487,7 +2487,7 @@ class StatusReportController extends Controller
             //2019-02更改
             if($startTime > date('2019-01-01 00:00:00'))
             {
-                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
                 $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
                 $statusReportDay = $this->getStatusReportV4($station['id'], $startTime, $endTime);
@@ -2540,7 +2540,7 @@ class StatusReportController extends Controller
         //2019-02更改
         if($startTime > date('2019-01-01 00:00:00'))
         {
-            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
             $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
             $beforeTime = date("2019-01-01 00:00:00");
@@ -3144,7 +3144,7 @@ class StatusReportController extends Controller
         //2019-02更改
         if($startTime > date('2019-01-01 00:00:00'))
         {
-            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//            $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
             $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
             $beforeTime = date("2019-01-01 00:00:00");
@@ -3747,7 +3747,7 @@ class StatusReportController extends Controller
             //2019-02更改
             if($startTime > date('2019-01-01 00:00:00'))
             {
-                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
                 $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
                 $beforeTime = date("2019-01-01 00:00:00");
@@ -4007,7 +4007,7 @@ class StatusReportController extends Controller
             //2019-02更改
             if($startTime > date('2019-01-01 00:00:00'))
             {
-                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
+//                $startTime = date('Y-m-d 00:00:00', strtotime($startTime));
                 $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
 
                 $beforeTime = date("2019-01-01 00:00:00");
