@@ -450,10 +450,13 @@
                 minView: 'month',
                 maxView: "year",
                 showMeridian: true,
-                setStartDate: '-1M'
+                setStartDate: '-1M',
+                endDate : new Date()
             };
             // 选择查询日期
-            $('.pick-event-date').datetimepicker(datePickerConfig);
+            $('.pick-event-date').datetimepicker(datePickerConfig).on("click",function(ev){
+                $(".pick-event-date").datetimepicker("setEndDate", $("#endDate").val());
+            });
 
             var timePickerConfig = {
                 language: "zh-CN",
