@@ -1455,15 +1455,15 @@ class StatusReportController extends Controller
 
         //当日每个泵运行时间合计(分钟)
         $totalTimeDay1 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>1,'delete_process'=>0])
-            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+            ->whereBetween('run_at', array($startTime, $endTime))->sum('run_time');
         $totalTimeDay2 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>2,'delete_process'=>0])
-            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+            ->whereBetween('run_at', array($startTime, $endTime))->sum('run_time');
         $totalTimeDay3 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>3,'delete_process'=>0])
-            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+            ->whereBetween('run_at', array($startTime, $endTime))->sum('run_time');
         $totalTimeDay4 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>4,'delete_process'=>0])
-            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+            ->whereBetween('run_at', array($startTime, $endTime))->sum('run_time');
         $totalTimeDay5 = DB::table('station_records')->where(['station_num'=>$stationNum,'pump_num'=>5,'delete_process'=>0])
-            ->whereBetween('run_at', array($startTime, $endTime))->select(sum('run_time'));
+            ->whereBetween('run_at', array($startTime, $endTime))->sum('run_time');
 
 
         //当日每个泵抽升量合计(万吨)
