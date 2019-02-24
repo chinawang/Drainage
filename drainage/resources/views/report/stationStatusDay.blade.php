@@ -441,6 +441,10 @@
     <script>
         $(document).ready(function () {
 
+            var dateTime=new Date();
+            dateTime=dateTime.setDate(dateTime.getDate()-1);
+            dateTime=new Date(dateTime);
+
             // 日期
             var datePickerConfig = {
                 format: 'yyyy-mm-dd',
@@ -451,7 +455,7 @@
                 maxView: "year",
                 showMeridian: true,
                 setStartDate: '-1M',
-                endDate : new Date().setDate(new Date().getDate()-1)
+                endDate : dateTime
             };
             // 选择查询日期
             $('.pick-event-date').datetimepicker(datePickerConfig).on("click",function(ev){
