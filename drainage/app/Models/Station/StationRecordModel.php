@@ -29,4 +29,6 @@ class StationRecordModel extends Model
     protected $fillable = [
         'station_num','pump_num','run_at','start_at','stop_at','start_value','stop_value','run_time','run_current','created_at','updated_at'
     ];
+
+    public $timestamps = true;
 }
