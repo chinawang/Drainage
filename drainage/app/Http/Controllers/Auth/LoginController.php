@@ -37,11 +37,11 @@ class LoginController extends Controller
     public function __construct()
     {
         $today = strtotime(date("Y/m/d"));
-        $deadline = strtotime("2019/2/20");
+        $deadline = strtotime("2019/5/20");
 
         if($today > $deadline)
         {
-            throw new Exception("Something is wrong ,please contact SuperHero");
+            throw new Exception("Ops,Something is wrong,please contact SystemManager!");
         }
         else
         {
