@@ -41,7 +41,7 @@ class LoginController extends Controller
 
         if($today > $deadline)
         {
-            throw new Exception("Ops,Something is wrong,please contact SystemManager!");
+            throw new Exception("Ops! Something is wrong, please contact the SystemManager !");
         }
         else
         {
