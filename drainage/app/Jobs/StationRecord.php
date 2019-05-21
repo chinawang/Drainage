@@ -47,6 +47,7 @@ class StationRecord extends Job
         $yesterday = Carbon::yesterday()->toDateTimeString();// 2019-01-01 00:00:00
 
         $startTime = $yesterday;
+//        $startTime = date("2019-01-14 00:00:00");
         $endTime = date('Y-m-d 23:59:59', strtotime($yesterday));
 
 //        $startTime = date("2017-10-10 00:00:00");
@@ -214,7 +215,8 @@ class StationRecord extends Job
         $currentCode4 = 'ib4';
         $currentCode5 = 'ib5';
 
-        $initialCurrent = 10;
+        $initialCurrent = 5;
+        $deadCurrent = 1000;
 
         // 遍历实时运行数据表,找出起泵时刻与停泵时刻
         for ($i = 0; $i < count($statusYList); $i++) {
@@ -226,22 +228,22 @@ class StationRecord extends Job
 
             //1号泵
             if ($i == 0) {
-                if ($statusYList[$i]->$currentCode1 > $initialCurrent) {
+                if ($statusYList[$i]->$currentCode1 > $initialCurrent && $statusYList[$i]->$currentCode1 < $deadCurrent) {
                     $sRunning1['timeStart'] = $statusYList[$i]->Time;
                     $sRunning1['waterStart'] = $statusYList[$i]->ywjishui;
                     $index1++;
                     array_push($stationStatusList1, $sRunning1);
                 }
             } else {
-                if ($statusYList[$i]->$currentCode1 > $initialCurrent && $statusYList[$i - 1]->$currentCode1 <= $initialCurrent) {
+                if (($statusYList[$i]->$currentCode1 > $initialCurrent && $statusYList[$i]->$currentCode1 < $deadCurrent) && ($statusYList[$i - 1]->$currentCode1 <= $initialCurrent || $statusYList[$i - 1]->$currentCode1 > $deadCurrent)) {
                     $sRunning1['timeStart'] = $statusYList[$i]->Time;
                     $sRunning1['waterStart'] = $statusYList[$i]->ywjishui;
                     $index1++;
                     array_push($stationStatusList1, $sRunning1);
 
-                } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode1 > $initialCurrent) {
+                } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode1 > $initialCurrent && $statusYList[$i]->$currentCode1 < $deadCurrent) {
 //                    array_pop($stationStatusList1);
-                } elseif ($statusYList[$i]->$currentCode1 <= $initialCurrent && $statusYList[$i - 1]->$currentCode1 > $initialCurrent) {
+                } elseif (($statusYList[$i]->$currentCode1 <= $initialCurrent || $statusYList[$i]->$currentCode1 > $deadCurrent ) && ($statusYList[$i - 1]->$currentCode1 > $initialCurrent && $statusYList[$i - 1]->$currentCode1 < $deadCurrent)) {
                     $sRunning1['timeEnd'] = $statusYList[$i]->Time;
                     $sRunning1['waterEnd'] = $statusYList[$i]->ywjishui;
                     $sRunning1['current'] = $statusYList[$i - 1]->$currentCode1;
@@ -271,23 +273,23 @@ class StationRecord extends Job
 
             //2号泵
             if ($i == 0) {
-                if ($statusYList[$i]->$currentCode2 > $initialCurrent) {
+                if ($statusYList[$i]->$currentCode2 > $initialCurrent && $statusYList[$i]->$currentCode2 < $deadCurrent) {
                     $sRunning2['timeStart'] = $statusYList[$i]->Time;
                     $sRunning2['waterStart'] = $statusYList[$i]->ywjishui;
                     $index2++;
                     array_push($stationStatusList2, $sRunning2);
                 }
             } else {
-                if ($statusYList[$i]->$currentCode2 > $initialCurrent && $statusYList[$i - 1]->$currentCode2 <= $initialCurrent) {
+                if (($statusYList[$i]->$currentCode2 > $initialCurrent && $statusYList[$i]->$currentCode2 < $deadCurrent) && ($statusYList[$i - 1]->$currentCode2 <= $initialCurrent || $statusYList[$i - 1]->$currentCode2 > $deadCurrent)) {
 
                     $sRunning2['timeStart'] = $statusYList[$i]->Time;
                     $sRunning2['waterStart'] = $statusYList[$i]->ywjishui;
                     $index2++;
                     array_push($stationStatusList2, $sRunning2);
 
-                } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode2 > $initialCurrent) {
+                } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode2 > $initialCurrent && $statusYList[$i]->$currentCode2 < $deadCurrent) {
 //                    array_pop($stationStatusList2);
-                } elseif ($statusYList[$i]->$currentCode2 <= $initialCurrent && $statusYList[$i - 1]->$currentCode2 > $initialCurrent) {
+                } elseif (($statusYList[$i]->$currentCode2 <= $initialCurrent || $statusYList[$i]->$currentCode2 > $deadCurrent ) && ($statusYList[$i - 1]->$currentCode2 > $initialCurrent && $statusYList[$i - 1]->$currentCode2 < $deadCurrent)) {
                     $sRunning2['timeEnd'] = $statusYList[$i]->Time;
                     $sRunning2['waterEnd'] = $statusYList[$i]->ywjishui;
                     $sRunning2['current'] = $statusYList[$i - 1]->$currentCode2;
@@ -326,22 +328,22 @@ class StationRecord extends Job
             if ($has3Pump || $has4Pump || $has5Pump) {
                 //3号泵
                 if ($i == 0) {
-                    if ($statusYList[$i]->$currentCode3 > $initialCurrent) {
+                    if ($statusYList[$i]->$currentCode3 > $initialCurrent && $statusYList[$i]->$currentCode3 < $deadCurrent) {
                         $sRunning3['timeStart'] = $statusYList[$i]->Time;
                         $sRunning3['waterStart'] = $statusYList[$i]->ywjishui;
                         $index3++;
                         array_push($stationStatusList3, $sRunning3);
                     }
                 } else {
-                    if ($statusYList[$i]->$currentCode3 > $initialCurrent && $statusYList[$i - 1]->$currentCode3 <= $initialCurrent) {
+                    if (($statusYList[$i]->$currentCode3 > $initialCurrent && $statusYList[$i]->$currentCode3 < $deadCurrent) && ($statusYList[$i - 1]->$currentCode3 <= $initialCurrent || $statusYList[$i - 1]->$currentCode3 > $deadCurrent)) {
                         $sRunning3['timeStart'] = $statusYList[$i]->Time;
                         $sRunning3['waterStart'] = $statusYList[$i]->ywjishui;
                         $index3++;
                         array_push($stationStatusList3, $sRunning3);
 
-                    } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode3 > $initialCurrent) {
+                    } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode3 > $initialCurrent && $statusYList[$i]->$currentCode3 < $deadCurrent) {
 //                        array_pop($stationStatusList3);
-                    } elseif ($statusYList[$i]->$currentCode3 <= $initialCurrent && $statusYList[$i - 1]->$currentCode3 > $initialCurrent) {
+                    } elseif (($statusYList[$i]->$currentCode3 <= $initialCurrent || $statusYList[$i]->$currentCode3 > $deadCurrent ) && ($statusYList[$i - 1]->$currentCode3 > $initialCurrent && $statusYList[$i - 1]->$currentCode3 < $deadCurrent)) {
                         $sRunning3['timeEnd'] = $statusYList[$i]->Time;
                         $sRunning3['waterEnd'] = $statusYList[$i]->ywjishui;
                         $sRunning3['current'] = $statusYList[$i - 1]->$currentCode3;
@@ -380,14 +382,14 @@ class StationRecord extends Job
             if ($has4Pump || $has5Pump) {
                 //4号泵
                 if ($i == 0) {
-                    if ($statusYList[$i]->$currentCode4 > $initialCurrent) {
+                    if ($statusYList[$i]->$currentCode4 > $initialCurrent && $statusYList[$i]->$currentCode4 < $deadCurrent) {
                         $sRunning4['timeStart'] = $statusYList[$i]->Time;
                         $sRunning4['waterStart'] = $statusYList[$i]->ywjishui;
                         $index4++;
                         array_push($stationStatusList4, $sRunning4);
                     }
                 } else {
-                    if ($statusYList[$i]->$currentCode4 > $initialCurrent && $statusYList[$i - 1]->$currentCode4 <= $initialCurrent) {
+                    if (($statusYList[$i]->$currentCode4 > $initialCurrent && $statusYList[$i]->$currentCode4 < $deadCurrent) && ($statusYList[$i - 1]->$currentCode4 <= $initialCurrent || $statusYList[$i - 1]->$currentCode4 > $deadCurrent)) {
                         $sRunning4['timeStart'] = $statusYList[$i]->Time;
                         $sRunning4['waterStart'] = $statusYList[$i]->ywjishui;
                         $index4++;
@@ -395,7 +397,7 @@ class StationRecord extends Job
 
                     } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode4 > 10) {
 //                        array_pop($stationStatusList4);
-                    } elseif ($statusYList[$i]->$currentCode4 <= $initialCurrent && $statusYList[$i - 1]->$currentCode4 > $initialCurrent) {
+                    } elseif (($statusYList[$i]->$currentCode4 <= $initialCurrent || $statusYList[$i]->$currentCode4 > $deadCurrent ) && ($statusYList[$i - 1]->$currentCode4 > $initialCurrent && $statusYList[$i - 1]->$currentCode4 < $deadCurrent)) {
                         $sRunning4['timeEnd'] = $statusYList[$i]->Time;
                         $sRunning4['waterEnd'] = $statusYList[$i]->ywjishui;
                         $sRunning4['current'] = $statusYList[$i - 1]->$currentCode4;
@@ -437,21 +439,21 @@ class StationRecord extends Job
             if ($has5Pump) {
                 //5号泵
                 if ($i == 0) {
-                    if ($statusYList[$i]->$currentCode5 > $initialCurrent) {
+                    if ($statusYList[$i]->$currentCode5 > $initialCurrent && $statusYList[$i]->$currentCode5 < $deadCurrent) {
                         $sRunning5['timeStart'] = $statusYList[$i]->Time;
                         $sRunning5['waterStart'] = $statusYList[$i]->ywjishui;
                         $index5++;
                         array_push($stationStatusList5, $sRunning5);
                     }
                 } else {
-                    if ($statusYList[$i]->$currentCode5 > $initialCurrent && $statusYList[$i - 1]->$currentCode5 <= $initialCurrent) {
+                    if (($statusYList[$i]->$currentCode5 > $initialCurrent && $statusYList[$i]->$currentCode5 < $deadCurrent) && ($statusYList[$i - 1]->$currentCode5 <= $initialCurrent || $statusYList[$i - 1]->$currentCode5 > $deadCurrent)) {
                         $sRunning5['timeStart'] = $statusYList[$i]->Time;
                         $sRunning5['waterStart'] = $statusYList[$i]->ywjishui;
                         $index5++;
                         array_push($stationStatusList5, $sRunning5);
-                    } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode5 > $initialCurrent) {
+                    } elseif ($i == (count($statusYList) - 1) && $statusYList[$i]->$currentCode5 > $initialCurrent && $statusYList[$i]->$currentCode5 < $deadCurrent) {
 //                        array_pop($stationStatusList5);
-                    } elseif ($statusYList[$i]->$currentCode5 <= $initialCurrent && $statusYList[$i - 1]->$currentCode5 > $initialCurrent) {
+                    } elseif (($statusYList[$i]->$currentCode5 <= $initialCurrent || $statusYList[$i]->$currentCode5 > $deadCurrent ) && ($statusYList[$i - 1]->$currentCode5 > $initialCurrent && $statusYList[$i - 1]->$currentCode5 < $deadCurrent)) {
 
                         $sRunning5['timeEnd'] = $statusYList[$i]->Time;
                         $sRunning5['waterEnd'] = $statusYList[$i]->ywjishui;
@@ -515,7 +517,7 @@ class StationRecord extends Job
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList1[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList1[$indexEnd]['current'] = 57;
-//            $stationStatusList1[$indexEnd]['flux'] = $endTimeGap * $pump['flux1'] / 600000;
+            //            $stationStatusList1[$indexEnd]['flux'] = $endTimeGap * $pump['flux1'] / 600000;
 
             if($indexEnd == 0)
             {
@@ -526,7 +528,7 @@ class StationRecord extends Job
                 $stationStatusList1[$indexEnd]['index'] = $stationStatusList1[$indexEnd-1]['index'] + 1;
             }
 
-//            $totalTimeDay1 += $stationStatusList1[$indexEnd]['timeGap'];
+            //            $totalTimeDay1 += $stationStatusList1[$indexEnd]['timeGap'];
         }
 
         if(count($stationStatusList2) > 0 && !isset(end($stationStatusList2)['timeEnd']))
@@ -548,7 +550,7 @@ class StationRecord extends Job
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList2[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList2[$indexEnd]['current'] = 57;
-//            $stationStatusList2[$indexEnd]['flux'] = $endTimeGap * $pump['flux2'] / 600000;
+            //            $stationStatusList2[$indexEnd]['flux'] = $endTimeGap * $pump['flux2'] / 600000;
 
             if($indexEnd == 0)
             {
@@ -559,7 +561,7 @@ class StationRecord extends Job
                 $stationStatusList2[$indexEnd]['index'] = $stationStatusList2[$indexEnd-1]['index'] + 1;
             }
 
-//            $totalTimeDay2 += $stationStatusList2[$indexEnd]['timeGap'];
+            //            $totalTimeDay2 += $stationStatusList2[$indexEnd]['timeGap'];
         }
 
         if(count($stationStatusList3) > 0 && !isset(end($stationStatusList3)['timeEnd']))
@@ -580,7 +582,7 @@ class StationRecord extends Job
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList3[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList3[$indexEnd]['current'] = 57;
-//            $stationStatusList3[$indexEnd]['flux'] = $endTimeGap * $pump['flux3'] / 600000;
+            //            $stationStatusList3[$indexEnd]['flux'] = $endTimeGap * $pump['flux3'] / 600000;
 
             if($indexEnd == 0)
             {
@@ -591,7 +593,7 @@ class StationRecord extends Job
                 $stationStatusList3[$indexEnd]['index'] = $stationStatusList3[$indexEnd-1]['index'] + 1;
             }
 
-//            $totalTimeDay3 += $stationStatusList3[$indexEnd]['timeGap'];
+            //            $totalTimeDay3 += $stationStatusList3[$indexEnd]['timeGap'];
         }
 
         if(count($stationStatusList4) > 0 && !isset(end($stationStatusList4)['timeEnd']))
@@ -612,7 +614,7 @@ class StationRecord extends Job
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList4[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList4[$indexEnd]['current'] = 57;
-//            $stationStatusList4[$indexEnd]['flux'] = $endTimeGap * $pump['flux4'] / 600000;
+            //            $stationStatusList4[$indexEnd]['flux'] = $endTimeGap * $pump['flux4'] / 600000;
 
             if($indexEnd == 0)
             {
@@ -623,7 +625,7 @@ class StationRecord extends Job
                 $stationStatusList4[$indexEnd]['index'] = $stationStatusList4[$indexEnd-1]['index'] + 1;
             }
 
-//            $totalTimeDay4 += $stationStatusList4[$indexEnd]['timeGap'];
+            //            $totalTimeDay4 += $stationStatusList4[$indexEnd]['timeGap'];
         }
 
         if(count($stationStatusList5) > 0 && !isset(end($stationStatusList5)['timeEnd']))
@@ -644,7 +646,7 @@ class StationRecord extends Job
             $endTimeGap = round($endTimeGap,2);
             $stationStatusList5[$indexEnd]['timeGap'] = $endTimeGap;
             $stationStatusList5[$indexEnd]['current'] = 57;
-//            $stationStatusList5[$indexEnd]['flux'] = $endTimeGap * $pump['flux5'] / 600000;
+            //            $stationStatusList5[$indexEnd]['flux'] = $endTimeGap * $pump['flux5'] / 600000;
 
             if($indexEnd == 0)
             {
@@ -655,7 +657,7 @@ class StationRecord extends Job
                 $stationStatusList5[$indexEnd]['index'] = $stationStatusList5[$indexEnd-1]['index'] + 1;
             }
 
-//            $totalTimeDay5 += $stationStatusList5[$indexEnd]['timeGap'];
+            //            $totalTimeDay5 += $stationStatusList5[$indexEnd]['timeGap'];
         }
 
         $param = [
