@@ -67,7 +67,7 @@ class StationController extends Controller
      */
     public function stationInfo()
     {
-        $stationID = Route::input('stationID',1);
+        $stationID = Input::get('station_id',1);
 
         if (!$stationID) {
             return response()->json([
@@ -107,7 +107,8 @@ class StationController extends Controller
      */
     public function getRealTimeWorking()
     {
-        $stationID = Route::input('stationID',1);
+//        $stationID = Route::input('stationID',1);
+        $stationID = Input::get('station_id',1);
 
         if (!$stationID) {
             return response()->json([
@@ -272,7 +273,8 @@ class StationController extends Controller
      */
     public function getRealTimeAlarm()
     {
-        $stationID = Route::input('stationID',1);
+//        $stationID = Route::input('stationID',1);
+        $stationID = Input::get('station_id',1);
 
         if (!$stationID) {
             return response()->json([
@@ -428,9 +430,10 @@ class StationController extends Controller
      */
     public function getReportWorking()
     {
-        $stationID = Route::input('stationID',1);
-        $startTime = Input::get('startDate',date("Y-m-d"));
-        $endTime = Input::get('endDate',date("Y-m-d"));
+//        $stationID = Route::input('stationID',1);
+        $stationID = Input::get('station_id',1);
+        $startTime = Input::get('start_date',date("Y-m-d"));
+        $endTime = Input::get('end_date',date("Y-m-d"));
 
         $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
 
@@ -634,9 +637,9 @@ class StationController extends Controller
         set_time_limit(0);      //执行时间无限
         ini_set('memory_limit', '-1');    //内存无限
 
-        $stationID = Route::input('stationID',1);
-        $startTime = Input::get('startDate',date("Y-m-d"));
-        $endTime = Input::get('endDate',date("Y-m-d"));
+        $stationID = Input::get('station_id',1);
+        $startTime = Input::get('start_date',date("Y-m-d"));
+        $endTime = Input::get('end_date',date("Y-m-d"));
 
         $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
 
@@ -726,9 +729,9 @@ class StationController extends Controller
         set_time_limit(0);      //执行时间无限
         ini_set('memory_limit', '-1');    //内存无限
 
-        $stationID = Route::input('stationID',1);
-        $startTime = Input::get('startDate',date("Y-m-d"));
-        $endTime = Input::get('endDate',date("Y-m-d"));
+        $stationID = Input::get('station_id',1);
+        $startTime = Input::get('start_date',date("Y-m-d"));
+        $endTime = Input::get('end_date',date("Y-m-d"));
 
         $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
 
