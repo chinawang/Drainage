@@ -17,7 +17,7 @@ class CheckAPI
     {
 //        return $next($request);
 
-        $isApiUseful = true;
+        $isApiUseful = false;
 
         if($isApiUseful){
 //            return $next($request);
