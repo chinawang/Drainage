@@ -243,7 +243,7 @@ class StationController extends Controller
 
             'data'  =>$station
 
-        ],400);
+        ],200);
     }
 
 
