@@ -706,6 +706,7 @@ class StationController extends Controller
 
         if($station['type'] == '雨水')
         {
+            $reportData['culvertWater'] = [];
             // 遍历实时运行数据表,找出起泵时刻与停泵时刻
             for ($i = 0; $i < count($statusYList); $i++)
             {
@@ -717,6 +718,7 @@ class StationController extends Controller
 
         if($station['type'] == '污水')
         {
+            $reportData['tankWater'] = [];
             // 遍历实时运行数据表,找出起泵时刻与停泵时刻
             for ($i = 0; $i < count($statusYList); $i++)
             {
@@ -807,6 +809,7 @@ class StationController extends Controller
         $reportData['type'] = $station['type'];
         $reportData['startDate'] = date('Y-m-d', strtotime($startTime));
         $reportData['endDate'] = date('Y-m-d', strtotime($endTime));
+        $reportData['alarmList'] = [];
 
         for($i = 0 ; $i < count($statusYList)-1;$i++)
         {
