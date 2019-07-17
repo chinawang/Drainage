@@ -360,6 +360,11 @@ class StationController extends Controller
             $runCount = 0;
             $stopCount = 0;
 
+//            if(sizeof($stationRT) > 0)
+//            {
+//
+//            }
+
             //1号泵
             if($stationRT[0]->yx_b1 == '1')
             {
