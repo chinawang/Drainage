@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// API Test
+Route::get('/v1/test/{station_num}', 'Api\TestController@stationRTHistory');
+
+Route::prefix('v1')->group(function () {
+    Route::get('/stations', 'Api\StationController@getAllStations');
+
+    Route::get('/stations/{{stationID}}', 'Api\StationController@stationInfo');
+});
