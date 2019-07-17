@@ -253,16 +253,8 @@ class StationController extends Controller
         $realTimeData['uab'] = $uab;
         $realTimeData['ubc'] = $ubc;
         $realTimeData['uca'] = $uca;
-
-        if($station['type'] == '雨水')
-        {
-            $realTimeData['culvertWater'] = $culvertWater;
-        }
-        if($station['type'] == '污水')
-        {
-            $realTimeData['tankWater'] = $tankWater;
-        }
-
+        $realTimeData['culvertWater'] = $culvertWater;
+        $realTimeData['tankWater'] = $tankWater;
 
         return response()->json([
 
@@ -702,30 +694,15 @@ class StationController extends Controller
         $reportData['type'] = $station['type'];
         $reportData['startDate'] = date('Y-m-d', strtotime($startTime));
         $reportData['endDate'] = date('Y-m-d', strtotime($endTime));
+        $reportData['waterLevel'] = [];
 
-
-        if($station['type'] == '雨水')
+        // 航海、城东、陇海有涵洞水位
+        for ($i = 0; $i < count($statusYList); $i++)
         {
-            $reportData['culvertWater'] = [];
-            // 遍历实时运行数据表,找出起泵时刻与停泵时刻
-            for ($i = 0; $i < count($statusYList); $i++)
-            {
-                $water['time'] = $statusYList[$i]->Time;
-                $water['waterLevel'] = $statusYList[$i]->ywhandong;
-                array_push($reportData['culvertWater'], $water);
-            }
-        }
-
-        if($station['type'] == '污水')
-        {
-            $reportData['tankWater'] = [];
-            // 遍历实时运行数据表,找出起泵时刻与停泵时刻
-            for ($i = 0; $i < count($statusYList); $i++)
-            {
-                $water['time'] = $statusYList[$i]->Time;
-                $water['waterLevel'] = $statusYList[$i]->ywjishui;
-                array_push($reportData['tankWater'], $water);
-            }
+            $water['time'] = $statusYList[$i]->Time;
+            $water['culvertWater'] = $statusYList[$i]->ywhandong;
+            $water['tankWater'] = $statusYList[$i]->ywjishui;
+            array_push($reportData['waterLevel'], $water);
         }
 
         return response()->json([
