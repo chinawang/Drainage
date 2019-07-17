@@ -24,15 +24,15 @@ Route::prefix('v1')->group(function () {
     // 泵站列表
     Route::get('/stations', 'Api\StationController@getAllStations');
     //泵站信息
-    Route::get('/stations/{stationID}', 'Api\StationController@stationInfo');
+    Route::get('/stations/detail', 'Api\StationController@stationInfo');
     //泵站实时运行信息
-    Route::get('/realtime/{stationID}/working', 'Api\StationController@getRealTimeWorking');
+    Route::get('/realtime/working', 'Api\StationController@getRealTimeWorking');
     //泵站实时报警信息
-    Route::get('/realtime/{stationID}/alarm', 'Api\StationController@getRealTimeAlarm');
+    Route::get('/realtime/alarm', 'Api\StationController@getRealTimeAlarm');
     //泵站运行统计
-    Route::get('/reports/{stationID}/working', 'Api\StationController@getReportWorking');
+    Route::get('/reports/working', 'Api\StationController@getReportWorking');
     //泵站水位统计
-    Route::get('/reports/{stationID}/water', 'Api\StationController@getReportWaterLevel');
+    Route::get('/reports/water', 'Api\StationController@getReportWaterLevel');
     //泵站报警统计
-    Route::get('/reports/{stationID}/alarm', 'Api\StationController@getReportAlarm');
+    Route::get('/reports/alarm', 'Api\StationController@getReportAlarm');
 });
