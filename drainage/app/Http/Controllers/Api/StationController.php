@@ -472,7 +472,7 @@ class StationController extends Controller
 
         if($startTime > date('2019-01-14 00:00:00'))
         {
-            $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+            $endTime = date('Y-m-d 23:59:59', strtotime($endTime));
 
             $beforeTime = date("2019-01-14 00:00:00");
 
@@ -500,8 +500,8 @@ class StationController extends Controller
         $reportData['id'] = $station['id'];
         $reportData['name'] = $station['name'];
         $reportData['type'] = $station['type'];
-        $reportData['startDate'] = $startTime;
-        $reportData['endDate'] = $endTime;
+        $reportData['startDate'] = date('Y-m-d', strtotime($startTime));
+        $reportData['endDate'] = date('Y-m-d', strtotime($endTime));
 
         $has2Pump = false;
         $has3Pump = false;
