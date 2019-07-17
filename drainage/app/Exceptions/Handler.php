@@ -45,38 +45,50 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-//        if (view()->exists('error.404')) {
-//            $message  = $exception->getMessage();
-//            if(empty($message))
-//            {
-//                $message = '未知';
-//            }
-//            elseif($message == 'Unauthenticated.')
-//            {
-//                return redirect()->guest(route('login'));
-//            }
-//            return response()->view('error.404',['message'=>$message]);
-//        }
-//
-//        return parent::render($request, $exception);
 
         if($request->is('api/*')){
             $response = [];
             $error = $this->convertExceptionToResponse($exception);
-            $response['status'] = $error->getStatusCode();
-            $response['message'] = 'something error';
+            $response['code'] = 1000 ;
+            $response['message'] = 'invalid request';
             $response['data'] = [];
             return response()->json($response, $error->getStatusCode());
-        }else{
-            if ($this->isHttpException($exception))
-            {
-                return $this->renderHttpException($exception);
-            }
-            else
-            {
-                return parent::render($request, $exception);
-            }
         }
+        else{
+            if (view()->exists('error.404')) {
+                $message  = $exception->getMessage();
+                if(empty($message))
+                {
+                    $message = '未知';
+                }
+                elseif($message == 'Unauthenticated.')
+                {
+                    return redirect()->guest(route('login'));
+                }
+                return response()->view('error.404',['message'=>$message]);
+            }
+
+            return parent::render($request, $exception);
+        }
+
+
+//        if($request->is('api/*')){
+//            $response = [];
+//            $error = $this->convertExceptionToResponse($exception);
+//            $response['code'] = 1000 ;
+//            $response['message'] = 'invalid request';
+//            $response['data'] = [];
+//            return response()->json($response, $error->getStatusCode());
+//        }else{
+//            if ($this->isHttpException($exception))
+//            {
+//                return $this->renderHttpException($exception);
+//            }
+//            else
+//            {
+//                return parent::render($request, $exception);
+//            }
+//        }
 
 
     }
