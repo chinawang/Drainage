@@ -532,47 +532,47 @@ class StationController extends Controller
         //1号泵
         $reportData['pump1StatusList'] = $statusReportDay['stationStatusList1'];//运行记录
         $reportData['pump1SumTime'] = round($statusReportDay['totalTimeDay1'], 2);//运行时间
-        $reportData['pump1SumFlux'] = round($statusReportDay['totalFluxDay1'], 2);//流量
+        $reportData['pump1SumFlux'] = round($statusReportDay['totalFluxDay1'], 4);//流量
         $reportData['pump1SumTimeBefore'] = round(($statusReportBefore['totalTimeDay1']) / 60, 2);//连前累计运行时间
-        $reportData['pump1SumFluxBefore'] = round($statusReportBefore['totalFluxDay1'], 2);//连前累计流量
+        $reportData['pump1SumFluxBefore'] = round($statusReportBefore['totalFluxDay1'], 4);//连前累计流量
         //2号泵
         $reportData['pump2StatusList'] = $statusReportDay['stationStatusList2'];//运行记录
         $reportData['pump2SumTime'] = round($statusReportDay['totalTimeDay2'], 2);//运行时间
-        $reportData['pump2SumFlux'] = round($statusReportDay['totalFluxDay2'], 2);//流量
+        $reportData['pump2SumFlux'] = round($statusReportDay['totalFluxDay2'], 4);//流量
         $reportData['pump2SumTimeBefore'] = round(($statusReportBefore['totalTimeDay2']) / 60, 2);//连前累计运行时间
-        $reportData['pump2SumFluxBefore'] = round($statusReportBefore['totalFluxDay2'], 2);//连前累计流量
+        $reportData['pump2SumFluxBefore'] = round($statusReportBefore['totalFluxDay2'], 4);//连前累计流量
 
         if ($has3Pump || $has4Pump || $has5Pump) {
             //3号泵
             $reportData['pump3StatusList'] = $statusReportDay['stationStatusList3'];//运行记录
             $reportData['pump3SumTime'] = round($statusReportDay['totalTimeDay3'], 2);//运行时间
-            $reportData['pump3SumFlux'] = round($statusReportDay['totalFluxDay3'], 2);//流量
+            $reportData['pump3SumFlux'] = round($statusReportDay['totalFluxDay3'], 4);//流量
             $reportData['pump3SumTimeBefore'] = round(($statusReportBefore['totalTimeDay3']) / 60, 2);//连前累计运行时间
-            $reportData['pump3SumFluxBefore'] = round($statusReportBefore['totalFluxDay3'], 2);//连前累计流量
+            $reportData['pump3SumFluxBefore'] = round($statusReportBefore['totalFluxDay3'], 4);//连前累计流量
         }
 
         if ($has4Pump || $has5Pump) {
             //4号泵
             $reportData['pump4StatusList'] = $statusReportDay['stationStatusList4'];//运行记录
             $reportData['pump4SumTime'] = round($statusReportDay['totalTimeDay4'], 2);//运行时间
-            $reportData['pump4SumFlux'] = round($statusReportDay['totalFluxDay4'], 2);//流量
+            $reportData['pump4SumFlux'] = round($statusReportDay['totalFluxDay4'], 4);//流量
             $reportData['pump4SumTimeBefore'] = round(($statusReportBefore['totalTimeDay4']) / 60, 2);//连前累计运行时间
-            $reportData['pump4SumFluxBefore'] = round($statusReportBefore['totalFluxDay4'], 2);//连前累计流量
+            $reportData['pump4SumFluxBefore'] = round($statusReportBefore['totalFluxDay4'], 4);//连前累计流量
         }
 
         //5号泵
         if ($has5Pump) {
             $reportData['pump5StatusList'] = $statusReportDay['stationStatusList5'];//运行记录
             $reportData['pump5SumTime'] = round($statusReportDay['totalTimeDay5'], 2);//运行时间
-            $reportData['pump5SumFlux'] = round($statusReportDay['totalFluxDay5'], 2);//流量
+            $reportData['pump5SumFlux'] = round($statusReportDay['totalFluxDay5'], 4);//流量
             $reportData['pump5SumTimeBefore'] = round(($statusReportBefore['totalTimeDay5']) / 60, 2);//连前累计运行时间
-            $reportData['pump5SumFluxBefore'] = round($statusReportBefore['totalFluxDay5'], 2);//连前累计流量
+            $reportData['pump5SumFluxBefore'] = round($statusReportBefore['totalFluxDay5'], 4);//连前累计流量
         }
 
         $reportData['totalTime'] = round($statusReportDay['totalTimeDay'], 2);//总计运行时间
-        $reportData['totalFlux'] = round($statusReportDay['totalFluxDay'], 2);//总计流量
+        $reportData['totalFlux'] = round($statusReportDay['totalFluxDay'], 4);//总计流量
         $reportData['totalTimeBefore'] = round(($statusReportBefore['totalTimeDay']) / 60, 2);//总计运行时间
-        $reportData['totalFluxBefore'] = round($statusReportBefore['totalFluxDay'], 2);//总计流量
+        $reportData['totalFluxBefore'] = round($statusReportBefore['totalFluxDay'], 4);//总计流量
 
 //        $param = [
 //            'stationStatusList1' => $statusReportDay['stationStatusList1'],
