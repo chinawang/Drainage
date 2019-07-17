@@ -320,6 +320,38 @@ class StationController extends Controller
             }
             $realTimeData['emergencyAlarm'] = $stationRT[0]->flow_v;//手动急停报警
 
+        }else{
+            //1号泵
+            $realTimeData['pump1Alarm'] = 0;
+            $realTimeData['pump1RQAlarm'] = 0;
+            //2号泵
+            $realTimeData['pump2Alarm'] = 0;
+            $realTimeData['pump2RQAlarm'] = 0;
+
+            if ($has3Pump || $has4Pump || $has5Pump) {
+                //3号泵
+                $realTimeData['pump3Alarm'] = 0;
+                $realTimeData['pump3RQAlarm'] = 0;
+            }
+
+            if ($has4Pump || $has5Pump) {
+                //4号泵
+                $realTimeData['pump4Alarm'] = 0;
+                $realTimeData['pump4RQAlarm'] = 0;
+            }
+
+            //5号泵
+            if ($has5Pump) {
+                $realTimeData['pump5Alarm'] = 0;
+                $realTimeData['pump5RQAlarm'] = 0;
+            }
+
+            $realTimeData['augerAlarm'] = 0;
+            $realTimeData['cleaner1Alarm'] = 0;
+            $realTimeData['cleaner2Alarm'] = 0;
+
+            $realTimeData['powerAlarm'] = 0;//市电停电报警
+            $realTimeData['emergencyAlarm'] = 0;//手动急停报警
         }
 
 
