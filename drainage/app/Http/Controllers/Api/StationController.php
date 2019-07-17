@@ -6,6 +6,7 @@ use App\Http\Logic\Station\StationLogic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Reporte\StatusReportController;
 
 class StationController extends Controller
 {
@@ -15,13 +16,17 @@ class StationController extends Controller
      */
     protected $stationLogic;
 
+    protected $reportController;
+
     /**
-     * MapController constructor.
+     * StationController constructor.
      * @param StationLogic $stationLogic
+     * @param StatusReportController $reportController
      */
-    public function __construct(StationLogic $stationLogic)
+    public function __construct(StationLogic $stationLogic,StatusReportController $reportController)
     {
         $this->stationLogic = $stationLogic;
+        $this->reportController = $reportController;
     }
 
     /**
@@ -36,7 +41,7 @@ class StationController extends Controller
 
                 'code' => 1001,
 
-                'message' => 'invalid resources'
+                'message' => 'invalid station resources'
 
             ], 404);
         }
@@ -58,8 +63,20 @@ class StationController extends Controller
      * @param $stationID
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function stationInfo($stationID)
+    public function stationInfo()
     {
+        $stationID = Route::input('stationID',1);
+
+        if (!$stationID) {
+            return response()->json([
+
+                'code' => 1002,
+
+                'message' => 'missing parameter'
+
+            ], 400);
+        }
+
         $station = $this->stationLogic->findStation($stationID);
 
         if (!$station) {
@@ -67,7 +84,7 @@ class StationController extends Controller
 
                 'code' => 1001,
 
-                'message' => 'invalid resources'
+                'message' => 'invalid station resources'
 
             ], 404);
         }
@@ -86,8 +103,20 @@ class StationController extends Controller
     /**
      * 实时运行信息
      */
-    public function getRealTimeWorking($stationID)
+    public function getRealTimeWorking()
     {
+        $stationID = Route::input('stationID',1);
+
+        if (!$stationID) {
+            return response()->json([
+
+                'code' => 1002,
+
+                'message' => 'missing parameter'
+
+            ], 400);
+        }
+
         $station = $this->stationLogic->findStation($stationID);
 
         if (!$station) {
@@ -95,7 +124,7 @@ class StationController extends Controller
 
                 'code' => 1001,
 
-                'message' => 'invalid resources'
+                'message' => 'invalid station resources'
 
             ], 404);
         }
@@ -107,6 +136,16 @@ class StationController extends Controller
         $realTimeData['type'] = $station['type'];
 
         $stationRT = $this->getStationRTs($stationNum);
+
+        if (!$stationRT) {
+            return response()->json([
+
+                'code' => 1001,
+
+                'message' => 'invalid working resources'
+
+            ], 404);
+        }
 
         $has2Pump = false;
         $has3Pump = false;
@@ -237,8 +276,20 @@ class StationController extends Controller
     /**
      * 实时报警信息
      */
-    public function getRealTimeAlarm($stationID)
+    public function getRealTimeAlarm()
     {
+        $stationID = Route::input('stationID',1);
+
+        if (!$stationID) {
+            return response()->json([
+
+                'code' => 1002,
+
+                'message' => 'missing parameter'
+
+            ], 400);
+        }
+
         $station = $this->stationLogic->findStation($stationID);
 
         if (!$station) {
@@ -246,7 +297,7 @@ class StationController extends Controller
 
                 'code' => 1001,
 
-                'message' => 'invalid resources'
+                'message' => 'invalid station resources'
 
             ], 404);
         }
@@ -258,6 +309,16 @@ class StationController extends Controller
         $realTimeData['type'] = $station['type'];
 
         $stationRT = $this->getStationRTs($stationNum);
+
+        if (!$stationRT) {
+            return response()->json([
+
+                'code' => 1001,
+
+                'message' => 'invalid alarm resources'
+
+            ], 404);
+        }
 
         $has2Pump = false;
         $has3Pump = false;
@@ -364,6 +425,191 @@ class StationController extends Controller
             'data' => $realTimeData
 
         ], 200);
+    }
+
+    public function getReportWorking()
+    {
+        $stationID = Route::input('stationID',1);
+        $startTime = Input::get('startDate',date("Y-m-d"));
+        $endTime = Input::get('endDate',date("Y-m-d"));
+
+        if (!$stationID || !$startTime || !$endTime) {
+            return response()->json([
+
+                'code' => 1002,
+
+                'message' => 'missing parameter'
+
+            ], 400);
+        }
+
+        $station = $this->stationLogic->findStation($stationID);
+        $stationNum = $station['station_number'];
+
+        if (!$station) {
+            return response()->json([
+
+                'code' => 1001,
+
+                'message' => 'invalid station resources'
+
+            ], 404);
+        }
+
+        $totalType = '本年';
+
+        if($totalType == '本年')
+        {
+            $thisYear = date("Y",strtotime($startTime));
+            $beforeTime = date($thisYear."-01-01");
+
+        }else{
+            //连前累计
+            $beforeTime = date("2017-10-01");
+        }
+
+        if($startTime > date('2019-01-14 00:00:00'))
+        {
+            $endTime = date('Y-m-d 23:59:59', strtotime($startTime));
+
+            $beforeTime = date("2019-01-14 00:00:00");
+
+            $statusReportDay = $this->reportController->getStatusReportV4($stationID, $startTime, $endTime);
+
+            $statusReportBefore = $this->reportController->getStatusReportV4($stationID, $beforeTime, $endTime);
+        }
+        else
+        {
+            $statusReportDay = $this->reportController->getStatusReportV3($stationID, $startTime, $endTime);
+
+            $statusReportBefore = $this->reportController->getStatusReportV3($stationID, $beforeTime, $endTime);
+        }
+
+        if (!$statusReportDay || !$statusReportBefore) {
+            return response()->json([
+
+                'code' => 1001,
+
+                'message' => 'invalid report resources'
+
+            ], 404);
+        }
+
+        $reportData['id'] = $station['id'];
+        $reportData['name'] = $station['name'];
+        $reportData['type'] = $station['type'];
+        $reportData['startDate'] = $startTime;
+        $reportData['endDate'] = $endTime;
+
+        $has2Pump = false;
+        $has3Pump = false;
+        $has4Pump = false;
+        $has5Pump = false;
+
+        $pump2List = ['18', '31', '34'];
+        $pump3List = ['1', '2', '3', '4', '5', '6', '8', '9', '11', '12', '13', '16', '17', '20', '23', '24', '25', '26', '27', '28', '30', '32', '35', '37', '38'];
+        $pump4List = ['7', '10', '14', '15', '19', '21', '22', '29', '36'];
+        $pump5List = ['33'];
+
+        if (in_array($stationNum, $pump2List)) {
+            $has2Pump = true;
+        } elseif (in_array($stationNum, $pump3List)) {
+            $has3Pump = true;
+        } elseif (in_array($stationNum, $pump4List)) {
+            $has4Pump = true;
+        } elseif (in_array($stationNum, $pump5List)) {
+            $has5Pump = true;
+        }
+
+        //1号泵
+        $reportData['pump1StatusList'] = $statusReportDay['stationStatusList1'];//运行记录
+        $reportData['pump1SumTime'] = $statusReportDay['totalTimeDay1'];//运行时间
+        $reportData['pump1SumFlux'] = $statusReportDay['totalFluxDay1'];//流量
+        $reportData['pump1SumTimeBefore'] = round(($statusReportBefore['totalTimeDay1']) / 60, 2);//连前累计运行时间
+        $reportData['pump1SumFluxBefore'] = $statusReportBefore['totalFluxDay1'];//连前累计流量
+        //2号泵
+        $reportData['pump2StatusList'] = $statusReportDay['stationStatusList2'];//运行记录
+        $reportData['pump2SumTime'] = $statusReportDay['totalTimeDay2'];//运行时间
+        $reportData['pump2SumFlux'] = $statusReportDay['totalFluxDay2'];//流量
+        $reportData['pump2SumTimeBefore'] = round(($statusReportBefore['totalTimeDay2']) / 60, 2);//连前累计运行时间
+        $reportData['pump2SumFluxBefore'] = $statusReportBefore['totalFluxDay2'];//连前累计流量
+
+        if ($has3Pump || $has4Pump || $has5Pump) {
+            //3号泵
+            $reportData['pump3StatusList'] = $statusReportDay['stationStatusList3'];//运行记录
+            $reportData['pump3SumTime'] = $statusReportDay['totalTimeDay3'];//运行时间
+            $reportData['pump3SumFlux'] = $statusReportDay['totalFluxDay3'];//流量
+            $reportData['pump3SumTimeBefore'] = round(($statusReportBefore['totalTimeDay3']) / 60, 2);//连前累计运行时间
+            $reportData['pump3SumFluxBefore'] = $statusReportBefore['totalFluxDay3'];//连前累计流量
+        }
+
+        if ($has4Pump || $has5Pump) {
+            //4号泵
+            $reportData['pump4StatusList'] = $statusReportDay['stationStatusList4'];//运行记录
+            $reportData['pump4SumTime'] = $statusReportDay['totalTimeDay4'];//运行时间
+            $reportData['pump4SumFlux'] = $statusReportDay['totalFluxDay4'];//流量
+            $reportData['pump4SumTimeBefore'] = round(($statusReportBefore['totalTimeDay4']) / 60, 2);//连前累计运行时间
+            $reportData['pump4SumFluxBefore'] = $statusReportBefore['totalFluxDay4'];//连前累计流量
+        }
+
+        //5号泵
+        if ($has5Pump) {
+            $reportData['pump5StatusList'] = $statusReportDay['stationStatusList5'];//运行记录
+            $reportData['pump5SumTime'] = $statusReportDay['totalTimeDay5'];//运行时间
+            $reportData['pump5SumFlux'] = $statusReportDay['totalFluxDay5'];//流量
+            $reportData['pump5SumTimeBefore'] = round(($statusReportBefore['totalTimeDay5']) / 60, 2);//连前累计运行时间
+            $reportData['pump5SumFluxBefore'] = $statusReportBefore['totalFluxDay5'];//连前累计流量
+        }
+
+        $reportData['totalTime'] = $statusReportDay['totalTimeDay'];//总计运行时间
+        $reportData['totalFlux'] = $statusReportDay['totalFluxDay'];//总计流量
+        $reportData['totalTimeBefore'] = round(($statusReportBefore['totalTimeDay']) / 60, 2);//总计运行时间
+        $reportData['totalFluxBefore'] = $statusReportBefore['totalFluxDay'];//总计流量
+
+//        $param = [
+//            'stationStatusList1' => $statusReportDay['stationStatusList1'],
+//            'stationStatusList2' => $statusReportDay['stationStatusList2'],
+//            'stationStatusList3' => $statusReportDay['stationStatusList3'],
+//            'stationStatusList4' => $statusReportDay['stationStatusList4'],
+//            'stationStatusList5' => $statusReportDay['stationStatusList5'],
+//            'totalTimeDay1' => $statusReportDay['totalTimeDay1'],
+//            'totalTimeDay2' => $statusReportDay['totalTimeDay2'],
+//            'totalTimeDay3' => $statusReportDay['totalTimeDay3'],
+//            'totalTimeDay4' => $statusReportDay['totalTimeDay4'],
+//            'totalTimeDay5' => $statusReportDay['totalTimeDay5'],
+//            'totalFluxDay1' => $statusReportDay['totalFluxDay1'],
+//            'totalFluxDay2' => $statusReportDay['totalFluxDay2'],
+//            'totalFluxDay3' => $statusReportDay['totalFluxDay3'],
+//            'totalFluxDay4' => $statusReportDay['totalFluxDay4'],
+//            'totalFluxDay5' => $statusReportDay['totalFluxDay5'],
+//            'totalTimeDay' => $statusReportDay['totalTimeDay'],
+//            'totalFluxDay' => $statusReportDay['totalFluxDay'],
+//            'totalTimeBefore1' => round(($statusReportBefore['totalTimeDay1']) / 60, 2),
+//            'totalTimeBefore2' => round(($statusReportBefore['totalTimeDay2']) / 60, 2),
+//            'totalTimeBefore3' => round(($statusReportBefore['totalTimeDay3']) / 60, 2),
+//            'totalTimeBefore4' => round(($statusReportBefore['totalTimeDay4']) / 60, 2),
+//            'totalTimeBefore5' => round(($statusReportBefore['totalTimeDay5']) / 60, 2),
+//            'totalFluxBefore1' => $statusReportBefore['totalFluxDay1'],
+//            'totalFluxBefore2' => $statusReportBefore['totalFluxDay2'],
+//            'totalFluxBefore3' => $statusReportBefore['totalFluxDay3'],
+//            'totalFluxBefore4' => $statusReportBefore['totalFluxDay4'],
+//            'totalFluxBefore5' => $statusReportBefore['totalFluxDay5'],
+//            'totalTimeBefore' => round(($statusReportBefore['totalTimeDay']) / 60, 2),
+//            'totalFluxBefore' => $statusReportBefore['totalFluxDay'],
+//        ];
+
+
+
+        return response()->json([
+
+            'code' => 0,
+
+            'message' => 'success',
+
+            'data' => $reportData
+
+        ], 200);
+
     }
 
 

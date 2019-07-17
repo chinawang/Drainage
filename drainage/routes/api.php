@@ -29,4 +29,6 @@ Route::prefix('v1')->group(function () {
     Route::get('/realtime/working/{stationID}', 'Api\StationController@getRealTimeWorking');
     //泵站实时报警信息
     Route::get('/realtime/alarm/{stationID}', 'Api\StationController@getRealTimeAlarm');
+    //泵站运行统计
+    Route::get('/report/working/{stationID}', 'Api\StationController@getReportWorking');
 });
