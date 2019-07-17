@@ -944,7 +944,7 @@ class StationController extends Controller
 
         return response()->json([
 
-            'code' => 0 ^ 1,
+            'code' => 0,
 
             'message' => 'success',
 
