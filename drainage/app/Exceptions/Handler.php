@@ -60,14 +60,25 @@ class Handler extends ExceptionHandler
 //
 //        return parent::render($request, $exception);
 
-        if ($this->isHttpException($exception))
-        {
-            return $this->renderHttpException($exception);
+        if($request->is('api/*')){
+            $response = [];
+            $error = $this->convertExceptionToResponse($exception);
+            $response['status'] = $error->getStatusCode();
+            $response['message'] = 'something error';
+            $response['data'] = [];
+            return response()->json($response, $error->getStatusCode());
+        }else{
+            if ($this->isHttpException($exception))
+            {
+                return $this->renderHttpException($exception);
+            }
+            else
+            {
+                return parent::render($request, $exception);
+            }
         }
-        else
-        {
-            return parent::render($request, $exception);
-        }
+
+
     }
 
     /**
