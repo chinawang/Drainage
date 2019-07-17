@@ -21,7 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/v1/test/{station_num}', 'Api\TestController@stationRTHistory');
 
 Route::prefix('v1')->group(function () {
+    // 泵站列表
     Route::get('/stations', 'Api\StationController@getAllStations');
-
+    //泵站信息
     Route::get('/stations/{stationID}', 'Api\StationController@stationInfo');
+    //泵站实时运行信息
+    Route::get('/realtime/working/{stationID}', 'Api\StationController@getRealTimeWorking');
+    //泵站实时报警信息
+    Route::get('/realtime/alarm/{stationID}', 'Api\StationController@getRealTimeAlarm');
 });

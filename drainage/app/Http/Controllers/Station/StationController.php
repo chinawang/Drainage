@@ -360,6 +360,8 @@ class StationController extends Controller
             $runCount = 0;
             $stopCount = 0;
 
+            $station['status'] = 'grey';
+
 //            if(sizeof($stationRT) > 0)
 //            {
 //
