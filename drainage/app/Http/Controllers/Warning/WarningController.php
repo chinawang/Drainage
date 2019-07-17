@@ -49,36 +49,40 @@ class WarningController extends Controller
             $stationNum = $station['station_number'];
             $stationRT = $this->findStationRT($stationNum);
 
-            $station['alarmPump1'] = $stationRT[0]->bj_b1;
-            $station['alarmPump2'] = $stationRT[0]->bj_b2;
-            $station['alarmPump3'] = $stationRT[0]->bj_b3;
-            $station['alarmPump4'] = $stationRT[0]->bj_b4;
-
-            $station['alarmPump1RQ'] = $stationRT[0]->rqbj_b1;
-            $station['alarmPump2RQ'] = $stationRT[0]->rqbj_b2;
-            $station['alarmPump3RQ'] = $stationRT[0]->rqbj_b3;
-            $station['alarmPump4RQ'] = $stationRT[0]->rqbj_b4;
-
-            if($stationNum == 33){
-                $station['alarmPump5'] = $stationRT[0]->bj_b5;
-                $station['alarmPump5RQ'] = $stationRT[0]->rqbj_b5;
-            }
-
-            $station['alarmAuger'] = $stationRT[0]->bj_jl;
-            $station['alarmCleaner1'] = $stationRT[0]->bj_gs1;
-            $station['alarmCleaner2'] = $stationRT[0]->bj_gs2;
-
-            //部分泵站通讯中断,没有数据,不做市电的报警
-            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
-            if(in_array($stationNum, $stationNoWorking))
+            if(count($stationRT)>0)
             {
-                $station['alarmCity'] = 1;//市电停电报警
-            }else{
-                $station['alarmCity'] = $stationRT[0]->water_v;//市电停电报警
-            }
-            $station['alarmManual'] = $stationRT[0]->flow_v;//手动急停报警
+                $station['alarmPump1'] = $stationRT[0]->bj_b1;
+                $station['alarmPump2'] = $stationRT[0]->bj_b2;
+                $station['alarmPump3'] = $stationRT[0]->bj_b3;
+                $station['alarmPump4'] = $stationRT[0]->bj_b4;
 
-            $station['Time'] = $stationRT[0]->Time;
+                $station['alarmPump1RQ'] = $stationRT[0]->rqbj_b1;
+                $station['alarmPump2RQ'] = $stationRT[0]->rqbj_b2;
+                $station['alarmPump3RQ'] = $stationRT[0]->rqbj_b3;
+                $station['alarmPump4RQ'] = $stationRT[0]->rqbj_b4;
+
+                if($stationNum == 33){
+                    $station['alarmPump5'] = $stationRT[0]->bj_b5;
+                    $station['alarmPump5RQ'] = $stationRT[0]->rqbj_b5;
+                }
+
+                $station['alarmAuger'] = $stationRT[0]->bj_jl;
+                $station['alarmCleaner1'] = $stationRT[0]->bj_gs1;
+                $station['alarmCleaner2'] = $stationRT[0]->bj_gs2;
+
+                //部分泵站通讯中断,没有数据,不做市电的报警
+                $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+                if(in_array($stationNum, $stationNoWorking))
+                {
+                    $station['alarmCity'] = 1;//市电停电报警
+                }else{
+                    $station['alarmCity'] = $stationRT[0]->water_v;//市电停电报警
+                }
+                $station['alarmManual'] = $stationRT[0]->flow_v;//手动急停报警
+
+                $station['Time'] = $stationRT[0]->Time;
+            }
+
         }
         $param = ['stations' => $stationPaginate];
 

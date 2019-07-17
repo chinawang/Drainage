@@ -59,6 +59,9 @@ class StationController extends Controller
             $runCount = 0;
             $stopCount = 0;
 
+            $station['culvertWater'] = 0;
+            $station['tankWater'] = 0;
+
             if(count($stationRT)>0)
             {
                 //1号泵

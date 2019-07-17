@@ -364,30 +364,10 @@ class StationController extends Controller
 //            {
 //
 //            }
-
-            //1号泵
-            if($stationRT[0]->yx_b1 == '1')
+            if(count($stationRT)>0)
             {
-                $runCount ++;
-            }
-            else
-            {
-                $stopCount ++;
-            }
-
-            //2号泵
-            if($stationRT[0]->yx_b2 == '1')
-            {
-                $runCount ++;
-            }
-            else
-            {
-                $stopCount ++;
-            }
-
-            if ($has3Pump || $has4Pump || $has5Pump){
-                //3号泵
-                if($stationRT[0]->yx_b3 == '1')
+                //1号泵
+                if($stationRT[0]->yx_b1 == '1')
                 {
                     $runCount ++;
                 }
@@ -395,12 +375,9 @@ class StationController extends Controller
                 {
                     $stopCount ++;
                 }
-            }
 
-
-            if ($has4Pump || $has5Pump){
-                //4号泵
-                if($stationRT[0]->yx_b4 == '1')
+                //2号泵
+                if($stationRT[0]->yx_b2 == '1')
                 {
                     $runCount ++;
                 }
@@ -408,45 +385,71 @@ class StationController extends Controller
                 {
                     $stopCount ++;
                 }
-            }
+
+                if ($has3Pump || $has4Pump || $has5Pump){
+                    //3号泵
+                    if($stationRT[0]->yx_b3 == '1')
+                    {
+                        $runCount ++;
+                    }
+                    else
+                    {
+                        $stopCount ++;
+                    }
+                }
 
 
-            //5号泵
-            if($has5Pump)
-            {
-                if($stationRT[0]->yx_b5 == '1')
+                if ($has4Pump || $has5Pump){
+                    //4号泵
+                    if($stationRT[0]->yx_b4 == '1')
+                    {
+                        $runCount ++;
+                    }
+                    else
+                    {
+                        $stopCount ++;
+                    }
+                }
+
+
+                //5号泵
+                if($has5Pump)
                 {
-                    $runCount ++;
+                    if($stationRT[0]->yx_b5 == '1')
+                    {
+                        $runCount ++;
+                    }
+                    else
+                    {
+                        $stopCount ++;
+                    }
+                }
+
+                if($runCount == 0)
+                {
+                    $station['status'] = 'grey';
+                }
+                elseif ($stopCount == 0)
+                {
+                    $station['status'] = 'red';
+                }
+                elseif ($stopCount == 1)
+                {
+                    $station['status'] = 'yellow';
                 }
                 else
                 {
-                    $stopCount ++;
+                    $station['status'] = 'green';
                 }
-            }
-
-            if($runCount == 0)
-            {
-                $station['status'] = 'grey';
-            }
-            elseif ($stopCount == 0)
-            {
-                $station['status'] = 'red';
-            }
-            elseif ($stopCount == 1)
-            {
-                $station['status'] = 'yellow';
-            }
-            else
-            {
-                $station['status'] = 'green';
-            }
 
 
+
+                $station['culvertWater'] = $stationRT[0]->ywhandong;
+                $station['tankWater'] = $stationRT[0]->ywjishui;
+                $station['Time'] = $stationRT[0]->Time;
+            }
             $station['runPump'] = $runCount;
             $station['stopPump'] = $stopCount;
-            $station['culvertWater'] = $stationRT[0]->ywhandong;
-            $station['tankWater'] = $stationRT[0]->ywjishui;
-            $station['Time'] = $stationRT[0]->Time;
         }
         $param = ['stations' => $stationPaginate];
 
