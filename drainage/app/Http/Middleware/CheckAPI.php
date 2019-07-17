@@ -20,7 +20,7 @@ class CheckAPI
         $isApiUseful = true;
 
         if($isApiUseful){
-            return $next($request);
+//            return $next($request);
         }else{
             $response = [];
             $response['code'] = 1000 ;
