@@ -20,7 +20,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // API Test
 Route::get('/v1/test/{station_num}', 'Api\TestController@stationRTHistory');
 
-//Route::prefix('v1')->group(function () {
+Route::prefix('v1')->group(function () {
+    // 泵站列表
+    Route::get('/stations', 'Api\StationController@getAllStations')->middleware(\App\Http\Middleware\CheckAPI::class);
+    //泵站信息
+    Route::get('/stations/detail', 'Api\StationController@stationInfo');
+    //泵站实时运行信息
+    Route::get('/realtime/working', 'Api\StationController@getRealTimeWorking');
+    //泵站实时报警信息
+    Route::get('/realtime/alarm', 'Api\StationController@getRealTimeAlarm');
+    //泵站运行统计
+    Route::get('/reports/working', 'Api\StationController@getReportWorking');
+    //泵站水位统计
+    Route::get('/reports/water', 'Api\StationController@getReportWaterLevel');
+    //泵站报警统计
+    Route::get('/reports/alarm', 'Api\StationController@getReportAlarm');
+});
+
+//Route::group(['prefix'=>'v1','middleware'=>CheckAPI::class],function () {
 //    // 泵站列表
 //    Route::get('/stations', 'Api\StationController@getAllStations');
 //    //泵站信息
@@ -36,20 +53,3 @@ Route::get('/v1/test/{station_num}', 'Api\TestController@stationRTHistory');
 //    //泵站报警统计
 //    Route::get('/reports/alarm', 'Api\StationController@getReportAlarm');
 //});
-
-Route::group(['prefix'=>'v1','middleware'=>CheckAPI::class],function () {
-    // 泵站列表
-    Route::get('/stations', 'Api\StationController@getAllStations');
-    //泵站信息
-    Route::get('/stations/detail', 'Api\StationController@stationInfo');
-    //泵站实时运行信息
-    Route::get('/realtime/working', 'Api\StationController@getRealTimeWorking');
-    //泵站实时报警信息
-    Route::get('/realtime/alarm', 'Api\StationController@getRealTimeAlarm');
-    //泵站运行统计
-    Route::get('/reports/working', 'Api\StationController@getReportWorking');
-    //泵站水位统计
-    Route::get('/reports/water', 'Api\StationController@getReportWaterLevel');
-    //泵站报警统计
-    Route::get('/reports/alarm', 'Api\StationController@getReportAlarm');
-});
