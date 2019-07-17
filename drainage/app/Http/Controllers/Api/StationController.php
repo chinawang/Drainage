@@ -25,7 +25,7 @@ class StationController extends Controller
      * @param StationLogic $stationLogic
      * @param StatusReportController $reportController
      */
-    public function __construct(StationLogic $stationLogic,StatusReportController $reportController)
+    public function __construct(StationLogic $stationLogic, StatusReportController $reportController)
     {
         $this->stationLogic = $stationLogic;
         $this->reportController = $reportController;
@@ -67,7 +67,7 @@ class StationController extends Controller
      */
     public function stationInfo()
     {
-        $stationID = Input::get('station_id',1);
+        $stationID = Input::get('station_id', 1);
 
         if (!$stationID) {
             return response()->json([
@@ -108,7 +108,7 @@ class StationController extends Controller
     public function getRealTimeWorking()
     {
 //        $stationID = Route::input('stationID',1);
-        $stationID = Input::get('station_id',1);
+        $stationID = Input::get('station_id', 1);
 
         if (!$stationID) {
             return response()->json([
@@ -274,7 +274,7 @@ class StationController extends Controller
     public function getRealTimeAlarm()
     {
 //        $stationID = Route::input('stationID',1);
-        $stationID = Input::get('station_id',1);
+        $stationID = Input::get('station_id', 1);
 
         if (!$stationID) {
             return response()->json([
@@ -336,8 +336,7 @@ class StationController extends Controller
             $has5Pump = true;
         }
 
-        if(count($stationRT)>0)
-        {
+        if (count($stationRT) > 0) {
             //1号泵
             $realTimeData['pump1Alarm'] = $stationRT[0]->bj_b1;
             $realTimeData['pump1RQAlarm'] = $stationRT[0]->rqbj_b1;
@@ -368,16 +367,15 @@ class StationController extends Controller
             $realTimeData['cleaner2Alarm'] = $stationRT[0]->bj_gs2;
 
             //部分泵站通讯中断,没有数据,不做市电的报警
-            $stationNoWorking = ['11','12','20','34'];
-            if(in_array($stationNum, $stationNoWorking))
-            {
+            $stationNoWorking = ['11', '12', '20', '34'];
+            if (in_array($stationNum, $stationNoWorking)) {
                 $realTimeData['powerAlarm'] = 0;//市电停电报警
-            }else{
+            } else {
                 $realTimeData['powerAlarm'] = $stationRT[0]->water_v ^ 1;//市电停电报警
             }
             $realTimeData['emergencyAlarm'] = $stationRT[0]->flow_v;//手动急停报警
 
-        }else{
+        } else {
             //1号泵
             $realTimeData['pump1Alarm'] = 0;
             $realTimeData['pump1RQAlarm'] = 0;
@@ -431,14 +429,13 @@ class StationController extends Controller
     public function getReportWorking()
     {
 //        $stationID = Route::input('stationID',1);
-        $stationID = Input::get('station_id',1);
-        $startTime = Input::get('start_date',date("Y-m-d"));
-        $endTime = Input::get('end_date',date("Y-m-d"));
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('start_date', date("Y-m-d"));
+        $endTime = Input::get('end_date', date("Y-m-d"));
 
-        $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
+        $date = floor((strtotime($startTime) - strtotime($endTime)) / 86400);
 
-        if($date > 30 || strtotime($startTime) > strtotime($endTime))
-        {
+        if ($date > 30 || strtotime($startTime) > strtotime($endTime)) {
             return response()->json([
 
                 'code' => 1003,
@@ -473,18 +470,16 @@ class StationController extends Controller
 
         $totalType = '本年';
 
-        if($totalType == '本年')
-        {
-            $thisYear = date("Y",strtotime($startTime));
-            $beforeTime = date($thisYear."-01-01");
+        if ($totalType == '本年') {
+            $thisYear = date("Y", strtotime($startTime));
+            $beforeTime = date($thisYear . "-01-01");
 
-        }else{
+        } else {
             //连前累计
             $beforeTime = date("2017-10-01");
         }
 
-        if($startTime > date('2019-01-14 00:00:00'))
-        {
+        if ($startTime > date('2019-01-14 00:00:00')) {
             $endTime = date('Y-m-d 23:59:59', strtotime($endTime));
 
             $beforeTime = date("2019-01-14 00:00:00");
@@ -492,9 +487,7 @@ class StationController extends Controller
             $statusReportDay = $this->reportController->getStatusReportV4($stationID, $startTime, $endTime);
 
             $statusReportBefore = $this->reportController->getStatusReportV4($stationID, $beforeTime, $endTime);
-        }
-        else
-        {
+        } else {
             $statusReportDay = $this->reportController->getStatusReportV3($stationID, $startTime, $endTime);
 
             $statusReportBefore = $this->reportController->getStatusReportV3($stationID, $beforeTime, $endTime);
@@ -538,48 +531,48 @@ class StationController extends Controller
 
         //1号泵
         $reportData['pump1StatusList'] = $statusReportDay['stationStatusList1'];//运行记录
-        $reportData['pump1SumTime'] = $statusReportDay['totalTimeDay1'];//运行时间
-        $reportData['pump1SumFlux'] = $statusReportDay['totalFluxDay1'];//流量
+        $reportData['pump1SumTime'] = round($statusReportDay['totalTimeDay1'], 2);//运行时间
+        $reportData['pump1SumFlux'] = round($statusReportDay['totalFluxDay1'], 2);//流量
         $reportData['pump1SumTimeBefore'] = round(($statusReportBefore['totalTimeDay1']) / 60, 2);//连前累计运行时间
-        $reportData['pump1SumFluxBefore'] = $statusReportBefore['totalFluxDay1'];//连前累计流量
+        $reportData['pump1SumFluxBefore'] = round($statusReportBefore['totalFluxDay1'], 2);//连前累计流量
         //2号泵
         $reportData['pump2StatusList'] = $statusReportDay['stationStatusList2'];//运行记录
-        $reportData['pump2SumTime'] = $statusReportDay['totalTimeDay2'];//运行时间
-        $reportData['pump2SumFlux'] = $statusReportDay['totalFluxDay2'];//流量
+        $reportData['pump2SumTime'] = round($statusReportDay['totalTimeDay2'], 2);//运行时间
+        $reportData['pump2SumFlux'] = round($statusReportDay['totalFluxDay2'], 2);//流量
         $reportData['pump2SumTimeBefore'] = round(($statusReportBefore['totalTimeDay2']) / 60, 2);//连前累计运行时间
-        $reportData['pump2SumFluxBefore'] = $statusReportBefore['totalFluxDay2'];//连前累计流量
+        $reportData['pump2SumFluxBefore'] = round($statusReportBefore['totalFluxDay2'], 2);//连前累计流量
 
         if ($has3Pump || $has4Pump || $has5Pump) {
             //3号泵
             $reportData['pump3StatusList'] = $statusReportDay['stationStatusList3'];//运行记录
-            $reportData['pump3SumTime'] = $statusReportDay['totalTimeDay3'];//运行时间
-            $reportData['pump3SumFlux'] = $statusReportDay['totalFluxDay3'];//流量
+            $reportData['pump3SumTime'] = round($statusReportDay['totalTimeDay3'], 2);//运行时间
+            $reportData['pump3SumFlux'] = round($statusReportDay['totalFluxDay3'], 2);//流量
             $reportData['pump3SumTimeBefore'] = round(($statusReportBefore['totalTimeDay3']) / 60, 2);//连前累计运行时间
-            $reportData['pump3SumFluxBefore'] = $statusReportBefore['totalFluxDay3'];//连前累计流量
+            $reportData['pump3SumFluxBefore'] = round($statusReportBefore['totalFluxDay3'], 2);//连前累计流量
         }
 
         if ($has4Pump || $has5Pump) {
             //4号泵
             $reportData['pump4StatusList'] = $statusReportDay['stationStatusList4'];//运行记录
-            $reportData['pump4SumTime'] = $statusReportDay['totalTimeDay4'];//运行时间
-            $reportData['pump4SumFlux'] = $statusReportDay['totalFluxDay4'];//流量
+            $reportData['pump4SumTime'] = round($statusReportDay['totalTimeDay4'], 2);//运行时间
+            $reportData['pump4SumFlux'] = round($statusReportDay['totalFluxDay4'], 2);//流量
             $reportData['pump4SumTimeBefore'] = round(($statusReportBefore['totalTimeDay4']) / 60, 2);//连前累计运行时间
-            $reportData['pump4SumFluxBefore'] = $statusReportBefore['totalFluxDay4'];//连前累计流量
+            $reportData['pump4SumFluxBefore'] = round($statusReportBefore['totalFluxDay4'], 2);//连前累计流量
         }
 
         //5号泵
         if ($has5Pump) {
             $reportData['pump5StatusList'] = $statusReportDay['stationStatusList5'];//运行记录
-            $reportData['pump5SumTime'] = $statusReportDay['totalTimeDay5'];//运行时间
-            $reportData['pump5SumFlux'] = $statusReportDay['totalFluxDay5'];//流量
+            $reportData['pump5SumTime'] = round($statusReportDay['totalTimeDay5'], 2);//运行时间
+            $reportData['pump5SumFlux'] = round($statusReportDay['totalFluxDay5'], 2);//流量
             $reportData['pump5SumTimeBefore'] = round(($statusReportBefore['totalTimeDay5']) / 60, 2);//连前累计运行时间
-            $reportData['pump5SumFluxBefore'] = $statusReportBefore['totalFluxDay5'];//连前累计流量
+            $reportData['pump5SumFluxBefore'] = round($statusReportBefore['totalFluxDay5'], 2);//连前累计流量
         }
 
-        $reportData['totalTime'] = $statusReportDay['totalTimeDay'];//总计运行时间
-        $reportData['totalFlux'] = $statusReportDay['totalFluxDay'];//总计流量
+        $reportData['totalTime'] = round($statusReportDay['totalTimeDay'], 2);//总计运行时间
+        $reportData['totalFlux'] = round($statusReportDay['totalFluxDay'], 2);//总计流量
         $reportData['totalTimeBefore'] = round(($statusReportBefore['totalTimeDay']) / 60, 2);//总计运行时间
-        $reportData['totalFluxBefore'] = $statusReportBefore['totalFluxDay'];//总计流量
+        $reportData['totalFluxBefore'] = round($statusReportBefore['totalFluxDay'], 2);//总计流量
 
 //        $param = [
 //            'stationStatusList1' => $statusReportDay['stationStatusList1'],
@@ -614,7 +607,6 @@ class StationController extends Controller
 //        ];
 
 
-
         return response()->json([
 
             'code' => 0,
@@ -637,14 +629,13 @@ class StationController extends Controller
         set_time_limit(0);      //执行时间无限
         ini_set('memory_limit', '-1');    //内存无限
 
-        $stationID = Input::get('station_id',1);
-        $startTime = Input::get('start_date',date("Y-m-d"));
-        $endTime = Input::get('end_date',date("Y-m-d"));
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('start_date', date("Y-m-d"));
+        $endTime = Input::get('end_date', date("Y-m-d"));
 
-        $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
+        $date = floor((strtotime($startTime) - strtotime($endTime)) / 86400);
 
-        if($date > 30 || strtotime($startTime) > strtotime($endTime))
-        {
+        if ($date > 30 || strtotime($startTime) > strtotime($endTime)) {
             return response()->json([
 
                 'code' => 1003,
@@ -700,8 +691,7 @@ class StationController extends Controller
         $reportData['waterLevel'] = [];
 
         // 航海、城东、陇海有涵洞水位
-        for ($i = 0; $i < count($statusYList); $i++)
-        {
+        for ($i = 0; $i < count($statusYList); $i++) {
             $water['time'] = $statusYList[$i]->Time;
             $water['culvertWater'] = $statusYList[$i]->ywhandong;
             $water['tankWater'] = $statusYList[$i]->ywjishui;
@@ -729,14 +719,13 @@ class StationController extends Controller
         set_time_limit(0);      //执行时间无限
         ini_set('memory_limit', '-1');    //内存无限
 
-        $stationID = Input::get('station_id',1);
-        $startTime = Input::get('start_date',date("Y-m-d"));
-        $endTime = Input::get('end_date',date("Y-m-d"));
+        $stationID = Input::get('station_id', 1);
+        $startTime = Input::get('start_date', date("Y-m-d"));
+        $endTime = Input::get('end_date', date("Y-m-d"));
 
-        $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
+        $date = floor((strtotime($startTime) - strtotime($endTime)) / 86400);
 
-        if($date > 30 || strtotime($startTime) > strtotime($endTime))
-        {
+        if ($date > 30 || strtotime($startTime) > strtotime($endTime)) {
             return response()->json([
 
                 'code' => 1003,
@@ -791,154 +780,135 @@ class StationController extends Controller
         $reportData['endDate'] = date('Y-m-d', strtotime($endTime));
         $reportData['alarmList'] = [];
 
-        for($i = 0 ; $i < count($statusRTList)-1;$i++)
-        {
-            if($statusRTList[$i]->bj_b1 == 0 && $statusRTList[$i+1]->bj_b1 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+        for ($i = 0; $i < count($statusRTList) - 1; $i++) {
+            if ($statusRTList[$i]->bj_b1 == 0 && $statusRTList[$i + 1]->bj_b1 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "1号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($statusRTList[$i]->bj_b2 == 0 && $statusRTList[$i+1]->bj_b2 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->bj_b2 == 0 && $statusRTList[$i + 1]->bj_b2 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "2号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($statusRTList[$i]->bj_b3 == 0 && $statusRTList[$i+1]->bj_b3 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->bj_b3 == 0 && $statusRTList[$i + 1]->bj_b3 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "3号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($statusRTList[$i]->bj_b4 == 0 && $statusRTList[$i+1]->bj_b4 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->bj_b4 == 0 && $statusRTList[$i + 1]->bj_b4 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "4号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
 
-            if($statusRTList[$i]->rqbj_b1 == 0 && $statusRTList[$i+1]->rqbj_b1 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->rqbj_b1 == 0 && $statusRTList[$i + 1]->rqbj_b1 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "1号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($statusRTList[$i]->rqbj_b2 == 0 && $statusRTList[$i+1]->rqbj_b2 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->rqbj_b2 == 0 && $statusRTList[$i + 1]->rqbj_b2 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "2号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($statusRTList[$i]->rqbj_b3 == 0 && $statusRTList[$i+1]->rqbj_b3 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->rqbj_b3 == 0 && $statusRTList[$i + 1]->rqbj_b3 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "3号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($statusRTList[$i]->rqbj_b4 == 0 && $statusRTList[$i+1]->rqbj_b4 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->rqbj_b4 == 0 && $statusRTList[$i + 1]->rqbj_b4 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "4号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($stationNum == 33)
-            {
-                if($statusRTList[$i]->bj_b5 == 0 && $statusRTList[$i+1]->bj_b5 == 1 )
-                {
-                    $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($stationNum == 33) {
+                if ($statusRTList[$i]->bj_b5 == 0 && $statusRTList[$i + 1]->bj_b5 == 1) {
+                    $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                     $sWarning['alarmEquipment'] = "5号泵电机";
                     $sWarning['alarmStatus'] = 1;
 
-                    array_push($reportData['alarmList'],$sWarning);
+                    array_push($reportData['alarmList'], $sWarning);
                 }
 
-                if($statusRTList[$i]->rqbj_b5 == 0 && $statusRTList[$i+1]->rqbj_b5 == 1 )
-                {
-                    $sWarning['Time'] = $statusRTList[$i+1]->Time;
+                if ($statusRTList[$i]->rqbj_b5 == 0 && $statusRTList[$i + 1]->rqbj_b5 == 1) {
+                    $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                     $sWarning['alarmEquipment'] = "5号泵软启动器";
                     $sWarning['alarmStatus'] = 1;
 
-                    array_push($reportData['alarmList'],$sWarning);
+                    array_push($reportData['alarmList'], $sWarning);
                 }
             }
 
-            if($statusRTList[$i]->bj_jl == 0 && $statusRTList[$i+1]->bj_jl == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->bj_jl == 0 && $statusRTList[$i + 1]->bj_jl == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "绞笼";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($statusRTList[$i]->bj_gs1 == 0 && $statusRTList[$i+1]->bj_gs1 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->bj_gs1 == 0 && $statusRTList[$i + 1]->bj_gs1 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "1号格栅";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
-            if($statusRTList[$i]->bj_gs2 == 0 && $statusRTList[$i+1]->bj_gs2 == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->bj_gs2 == 0 && $statusRTList[$i + 1]->bj_gs2 == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "2号格栅";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
 
             //部分泵站通讯中断,没有数据,不做市电的报警
-            $stationNoWorking = ['11','12','20','34'];
-            if(in_array($stationNum, $stationNoWorking))
-            {
+            $stationNoWorking = ['11', '12', '20', '34'];
+            if (in_array($stationNum, $stationNoWorking)) {
 
-            }else{
-                if($statusRTList[$i]->water_v == 1 && $statusRTList[$i+1]->water_v == 0 )
-                {
-                    $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            } else {
+                if ($statusRTList[$i]->water_v == 1 && $statusRTList[$i + 1]->water_v == 0) {
+                    $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                     $sWarning['alarmEquipment'] = "市电停电";
                     $sWarning['alarmStatus'] = 1;
 
-                    array_push($reportData['alarmList'],$sWarning);
+                    array_push($reportData['alarmList'], $sWarning);
                 }
             }
 
 
-
-            if($statusRTList[$i]->flow_v == 0 && $statusRTList[$i+1]->flow_v == 1 )
-            {
-                $sWarning['Time'] = $statusRTList[$i+1]->Time;
+            if ($statusRTList[$i]->flow_v == 0 && $statusRTList[$i + 1]->flow_v == 1) {
+                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "手动急停";
                 $sWarning['alarmStatus'] = 1;
 
-                array_push($reportData['alarmList'],$sWarning);
+                array_push($reportData['alarmList'], $sWarning);
             }
         }
 
