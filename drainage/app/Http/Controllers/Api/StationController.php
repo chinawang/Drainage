@@ -956,11 +956,11 @@ class StationController extends Controller
 
     public function getStationRTs($stationNum)
     {
-//        $nowTime = date("Y-m-d H:i:s", strtotime("-2 Minute"));
-        $nowTime = date("2017-01-01 00:00:00", strtotime("-2 Minute"));
+        $nowTime = date("Y-m-d H:i:s", strtotime("-2 Minute"));
 
         $stationTable = "stationRT_" . $stationNum;
-        $stationRTs = DB::select('select * from ' . $stationTable . ' WHERE Time > ? order by Time desc limit 1', [$nowTime]);
+//        $stationRTs = DB::select('select * from ' . $stationTable . ' WHERE Time > ? order by Time desc limit 1', [$nowTime]);
+        $stationRTs = DB::select('select * from ' . $stationTable . ' order by Time desc limit 1');
 //        $stationRTs = DB::select('SELECT * FROM  '.$stationTable.' WHERE Time = (select max(Time) AS maxTime from  '.$stationTable.' WHERE Time > ?)',[$nowTime]);
         return $stationRTs;
     }
