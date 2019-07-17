@@ -772,9 +772,9 @@ class StationController extends Controller
         $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
         $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
 
-        $statusYList = $this->reportController->getStatusYList($stationNum, $searchStartTime, $searchEndTime);
+        $statusRTList = $this->reportController->getStationRTAll($stationNum, $searchStartTime, $searchEndTime);
 
-        if (!$statusYList) {
+        if (!$statusRTList) {
             return response()->json([
 
                 'code' => 1001,
@@ -791,38 +791,38 @@ class StationController extends Controller
         $reportData['endDate'] = date('Y-m-d', strtotime($endTime));
         $reportData['alarmList'] = [];
 
-        for($i = 0 ; $i < count($statusYList)-1;$i++)
+        for($i = 0 ; $i < count($statusRTList)-1;$i++)
         {
-            if($statusYList[$i]->bj_b1 == 0 && $statusYList[$i+1]->bj_b1 == 1 )
+            if($statusRTList[$i]->bj_b1 == 0 && $statusRTList[$i+1]->bj_b1 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "1号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($reportData['alarmList'],$sWarning);
             }
 
-            if($statusYList[$i]->bj_b2 == 0 && $statusYList[$i+1]->bj_b2 == 1 )
+            if($statusRTList[$i]->bj_b2 == 0 && $statusRTList[$i+1]->bj_b2 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "2号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($reportData['alarmList'],$sWarning);
             }
 
-            if($statusYList[$i]->bj_b3 == 0 && $statusYList[$i+1]->bj_b3 == 1 )
+            if($statusRTList[$i]->bj_b3 == 0 && $statusRTList[$i+1]->bj_b3 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "3号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($reportData['alarmList'],$sWarning);
             }
 
-            if($statusYList[$i]->bj_b4 == 0 && $statusYList[$i+1]->bj_b4 == 1 )
+            if($statusRTList[$i]->bj_b4 == 0 && $statusRTList[$i+1]->bj_b4 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "4号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
@@ -830,36 +830,36 @@ class StationController extends Controller
             }
 
 
-            if($statusYList[$i]->rqbj_b1 == 0 && $statusYList[$i+1]->rqbj_b1 == 1 )
+            if($statusRTList[$i]->rqbj_b1 == 0 && $statusRTList[$i+1]->rqbj_b1 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "1号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($reportData['alarmList'],$sWarning);
             }
 
-            if($statusYList[$i]->rqbj_b2 == 0 && $statusYList[$i+1]->rqbj_b2 == 1 )
+            if($statusRTList[$i]->rqbj_b2 == 0 && $statusRTList[$i+1]->rqbj_b2 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "2号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($reportData['alarmList'],$sWarning);
             }
 
-            if($statusYList[$i]->rqbj_b3 == 0 && $statusYList[$i+1]->rqbj_b3 == 1 )
+            if($statusRTList[$i]->rqbj_b3 == 0 && $statusRTList[$i+1]->rqbj_b3 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "3号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($reportData['alarmList'],$sWarning);
             }
 
-            if($statusYList[$i]->rqbj_b4 == 0 && $statusYList[$i+1]->rqbj_b4 == 1 )
+            if($statusRTList[$i]->rqbj_b4 == 0 && $statusRTList[$i+1]->rqbj_b4 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "4号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
@@ -868,18 +868,18 @@ class StationController extends Controller
 
             if($stationNum == 33)
             {
-                if($statusYList[$i]->bj_b5 == 0 && $statusYList[$i+1]->bj_b5 == 1 )
+                if($statusRTList[$i]->bj_b5 == 0 && $statusRTList[$i+1]->bj_b5 == 1 )
                 {
-                    $sWarning['Time'] = $statusYList[$i+1]->Time;
+                    $sWarning['Time'] = $statusRTList[$i+1]->Time;
                     $sWarning['alarmEquipment'] = "5号泵电机";
                     $sWarning['alarmStatus'] = 1;
 
                     array_push($reportData['alarmList'],$sWarning);
                 }
 
-                if($statusYList[$i]->rqbj_b5 == 0 && $statusYList[$i+1]->rqbj_b5 == 1 )
+                if($statusRTList[$i]->rqbj_b5 == 0 && $statusRTList[$i+1]->rqbj_b5 == 1 )
                 {
-                    $sWarning['Time'] = $statusYList[$i+1]->Time;
+                    $sWarning['Time'] = $statusRTList[$i+1]->Time;
                     $sWarning['alarmEquipment'] = "5号泵软启动器";
                     $sWarning['alarmStatus'] = 1;
 
@@ -887,27 +887,27 @@ class StationController extends Controller
                 }
             }
 
-            if($statusYList[$i]->bj_jl == 0 && $statusYList[$i+1]->bj_jl == 1 )
+            if($statusRTList[$i]->bj_jl == 0 && $statusRTList[$i+1]->bj_jl == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "绞笼";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($reportData['alarmList'],$sWarning);
             }
 
-            if($statusYList[$i]->bj_gs1 == 0 && $statusYList[$i+1]->bj_gs1 == 1 )
+            if($statusRTList[$i]->bj_gs1 == 0 && $statusRTList[$i+1]->bj_gs1 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "1号格栅";
                 $sWarning['alarmStatus'] = 1;
 
                 array_push($reportData['alarmList'],$sWarning);
             }
 
-            if($statusYList[$i]->bj_gs2 == 0 && $statusYList[$i+1]->bj_gs2 == 1 )
+            if($statusRTList[$i]->bj_gs2 == 0 && $statusRTList[$i+1]->bj_gs2 == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "2号格栅";
                 $sWarning['alarmStatus'] = 1;
 
@@ -920,9 +920,9 @@ class StationController extends Controller
             {
 
             }else{
-                if($statusYList[$i]->water_v == 1 && $statusYList[$i+1]->water_v == 0 )
+                if($statusRTList[$i]->water_v == 1 && $statusRTList[$i+1]->water_v == 0 )
                 {
-                    $sWarning['Time'] = $statusYList[$i+1]->Time;
+                    $sWarning['Time'] = $statusRTList[$i+1]->Time;
                     $sWarning['alarmEquipment'] = "市电停电";
                     $sWarning['alarmStatus'] = 1;
 
@@ -932,9 +932,9 @@ class StationController extends Controller
 
 
 
-            if($statusYList[$i]->flow_v == 0 && $statusYList[$i+1]->flow_v == 1 )
+            if($statusRTList[$i]->flow_v == 0 && $statusRTList[$i+1]->flow_v == 1 )
             {
-                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['Time'] = $statusRTList[$i+1]->Time;
                 $sWarning['alarmEquipment'] = "手动急停";
                 $sWarning['alarmStatus'] = 1;
 
