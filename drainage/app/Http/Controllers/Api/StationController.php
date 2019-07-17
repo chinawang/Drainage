@@ -782,7 +782,7 @@ class StationController extends Controller
 
         for ($i = 0; $i < count($statusRTList) - 1; $i++) {
             if ($statusRTList[$i]->bj_b1 == 0 && $statusRTList[$i + 1]->bj_b1 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "1号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
@@ -790,7 +790,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->bj_b2 == 0 && $statusRTList[$i + 1]->bj_b2 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "2号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
@@ -798,7 +798,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->bj_b3 == 0 && $statusRTList[$i + 1]->bj_b3 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "3号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
@@ -806,7 +806,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->bj_b4 == 0 && $statusRTList[$i + 1]->bj_b4 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "4号泵电机";
                 $sWarning['alarmStatus'] = 1;
 
@@ -815,7 +815,7 @@ class StationController extends Controller
 
 
             if ($statusRTList[$i]->rqbj_b1 == 0 && $statusRTList[$i + 1]->rqbj_b1 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "1号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
@@ -823,7 +823,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->rqbj_b2 == 0 && $statusRTList[$i + 1]->rqbj_b2 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "2号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
@@ -831,7 +831,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->rqbj_b3 == 0 && $statusRTList[$i + 1]->rqbj_b3 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "3号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
@@ -839,7 +839,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->rqbj_b4 == 0 && $statusRTList[$i + 1]->rqbj_b4 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "4号泵软启动器";
                 $sWarning['alarmStatus'] = 1;
 
@@ -848,7 +848,7 @@ class StationController extends Controller
 
             if ($stationNum == 33) {
                 if ($statusRTList[$i]->bj_b5 == 0 && $statusRTList[$i + 1]->bj_b5 == 1) {
-                    $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                    $sWarning['time'] = $statusRTList[$i + 1]->Time;
                     $sWarning['alarmEquipment'] = "5号泵电机";
                     $sWarning['alarmStatus'] = 1;
 
@@ -856,7 +856,7 @@ class StationController extends Controller
                 }
 
                 if ($statusRTList[$i]->rqbj_b5 == 0 && $statusRTList[$i + 1]->rqbj_b5 == 1) {
-                    $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                    $sWarning['time'] = $statusRTList[$i + 1]->Time;
                     $sWarning['alarmEquipment'] = "5号泵软启动器";
                     $sWarning['alarmStatus'] = 1;
 
@@ -865,7 +865,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->bj_jl == 0 && $statusRTList[$i + 1]->bj_jl == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "绞笼";
                 $sWarning['alarmStatus'] = 1;
 
@@ -873,7 +873,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->bj_gs1 == 0 && $statusRTList[$i + 1]->bj_gs1 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "1号格栅";
                 $sWarning['alarmStatus'] = 1;
 
@@ -881,7 +881,7 @@ class StationController extends Controller
             }
 
             if ($statusRTList[$i]->bj_gs2 == 0 && $statusRTList[$i + 1]->bj_gs2 == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "2号格栅";
                 $sWarning['alarmStatus'] = 1;
 
@@ -894,7 +894,7 @@ class StationController extends Controller
 
             } else {
                 if ($statusRTList[$i]->water_v == 1 && $statusRTList[$i + 1]->water_v == 0) {
-                    $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                    $sWarning['time'] = $statusRTList[$i + 1]->Time;
                     $sWarning['alarmEquipment'] = "市电停电";
                     $sWarning['alarmStatus'] = 1;
 
@@ -904,7 +904,7 @@ class StationController extends Controller
 
 
             if ($statusRTList[$i]->flow_v == 0 && $statusRTList[$i + 1]->flow_v == 1) {
-                $sWarning['Time'] = $statusRTList[$i + 1]->Time;
+                $sWarning['time'] = $statusRTList[$i + 1]->Time;
                 $sWarning['alarmEquipment'] = "手动急停";
                 $sWarning['alarmStatus'] = 1;
 
@@ -929,8 +929,8 @@ class StationController extends Controller
         $nowTime = date("Y-m-d H:i:s", strtotime("-2 Minute"));
 
         $stationTable = "stationRT_" . $stationNum;
-//        $stationRTs = DB::select('select * from ' . $stationTable . ' WHERE Time > ? order by Time desc limit 1', [$nowTime]);
-        $stationRTs = DB::select('select * from ' . $stationTable . ' order by Time desc limit 1');
+        $stationRTs = DB::select('select * from ' . $stationTable . ' WHERE Time > ? order by Time desc limit 1', [$nowTime]);
+//        $stationRTs = DB::select('select * from ' . $stationTable . ' order by Time desc limit 1');
 //        $stationRTs = DB::select('SELECT * FROM  '.$stationTable.' WHERE Time = (select max(Time) AS maxTime from  '.$stationTable.' WHERE Time > ?)',[$nowTime]);
         return $stationRTs;
     }
