@@ -134,7 +134,15 @@ class StationController extends Controller
             $station['stopPump'] = $stopCount;
         }
 
-        return response()->json(array('stations'=> $stationList), 200);
+        return response()->json([
+
+            'code'=>0,
+
+            'message'=> 'success',
+
+            'data'  =>$stationList
+
+        ],200);
     }
 
     /**
@@ -172,6 +180,9 @@ class StationController extends Controller
 
         $runCount = 0;
         $stopCount = 0;
+
+        $station['culvertWater'] = 0;
+        $station['tankWater'] = 0;
 
         if(count($stationRT)>0) {
             //1号泵
@@ -232,7 +243,7 @@ class StationController extends Controller
 
             'data'  =>$station
 
-        ]);
+        ],200);
     }
 
 
