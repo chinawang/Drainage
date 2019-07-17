@@ -155,6 +155,16 @@ class StationController extends Controller
     {
         $station = $this->stationLogic->findStation($stationID);
 
+        if(!$station){
+            return response()->json([
+
+                'code'=>1001,
+
+                'message'=> 'invalid resources'
+
+            ],404);
+        }
+
         $stationNum = $station['station_number'];
         $stationRT = $this->getStationRTs($stationNum);
 
