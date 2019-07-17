@@ -26,9 +26,13 @@ Route::prefix('v1')->group(function () {
     //泵站信息
     Route::get('/stations/{stationID}', 'Api\StationController@stationInfo');
     //泵站实时运行信息
-    Route::get('/realtime/working/{stationID}', 'Api\StationController@getRealTimeWorking');
+    Route::get('/realtime/{stationID}/working', 'Api\StationController@getRealTimeWorking');
     //泵站实时报警信息
-    Route::get('/realtime/alarm/{stationID}', 'Api\StationController@getRealTimeAlarm');
+    Route::get('/realtime/{stationID}/alarm', 'Api\StationController@getRealTimeAlarm');
     //泵站运行统计
-    Route::get('/report/working/{stationID}', 'Api\StationController@getReportWorking');
+    Route::get('/reports/{stationID}/working', 'Api\StationController@getReportWorking');
+    //泵站水位统计
+    Route::get('/reports/{stationID}/water', 'Api\StationController@getReportWaterLevel');
+    //泵站报警统计
+    Route::get('/reports/{stationID}/alarm', 'Api\StationController@getReportAlarm');
 });

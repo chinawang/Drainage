@@ -74,7 +74,7 @@ class StationController extends Controller
 
                 'code' => 1002,
 
-                'message' => 'missing parameter'
+                'message' => 'missing parameters'
 
             ], 400);
         }
@@ -114,7 +114,7 @@ class StationController extends Controller
 
                 'code' => 1002,
 
-                'message' => 'missing parameter'
+                'message' => 'missing parameters'
 
             ], 400);
         }
@@ -287,7 +287,7 @@ class StationController extends Controller
 
                 'code' => 1002,
 
-                'message' => 'missing parameter'
+                'message' => 'missing parameters'
 
             ], 400);
         }
@@ -374,7 +374,7 @@ class StationController extends Controller
             $realTimeData['cleaner2Alarm'] = $stationRT[0]->bj_gs2;
 
             //部分泵站通讯中断,没有数据,不做市电的报警
-            $stationNoWorking = ['11','12','20','21','31','33','34','36'];
+            $stationNoWorking = ['11','12','20','34'];
             if(in_array($stationNum, $stationNoWorking))
             {
                 $realTimeData['powerAlarm'] = 0;//市电停电报警
@@ -429,18 +429,36 @@ class StationController extends Controller
         ], 200);
     }
 
+    /**
+     * 运行统计
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getReportWorking()
     {
         $stationID = Route::input('stationID',1);
         $startTime = Input::get('startDate',date("Y-m-d"));
         $endTime = Input::get('endDate',date("Y-m-d"));
 
+        $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
+
+        if($date > 30 || strtotime($startTime) > strtotime($endTime))
+        {
+            return response()->json([
+
+                'code' => 1003,
+
+                'message' => 'wrong parameters'
+
+            ], 400);
+        }
+
         if (!$stationID || !$startTime || !$endTime) {
             return response()->json([
 
                 'code' => 1002,
 
-                'message' => 'missing parameter'
+                'message' => 'missing parameters'
 
             ], 400);
         }
@@ -612,6 +630,344 @@ class StationController extends Controller
 
         ], 200);
 
+    }
+
+    /**
+     * 水位统计
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getReportWaterLevel()
+    {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
+        $stationID = Route::input('stationID',1);
+        $startTime = Input::get('startDate',date("Y-m-d"));
+        $endTime = Input::get('endDate',date("Y-m-d"));
+
+        $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
+
+        if($date > 30 || strtotime($startTime) > strtotime($endTime))
+        {
+            return response()->json([
+
+                'code' => 1003,
+
+                'message' => 'wrong parameters'
+
+            ], 400);
+        }
+
+        if (!$stationID || !$startTime || !$endTime) {
+            return response()->json([
+
+                'code' => 1002,
+
+                'message' => 'missing parameters'
+
+            ], 400);
+        }
+
+        $station = $this->stationLogic->findStation($stationID);
+        $stationNum = $station['station_number'];
+
+        if (!$station) {
+            return response()->json([
+
+                'code' => 1001,
+
+                'message' => 'invalid station resources'
+
+            ], 404);
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $statusYList = $this->reportController->getStatusYList($stationNum, $searchStartTime, $searchEndTime);
+
+        if (!$statusYList) {
+            return response()->json([
+
+                'code' => 1001,
+
+                'message' => 'invalid water resources'
+
+            ], 404);
+        }
+
+        $reportData['id'] = $station['id'];
+        $reportData['name'] = $station['name'];
+        $reportData['type'] = $station['type'];
+        $reportData['startDate'] = date('Y-m-d', strtotime($startTime));
+        $reportData['endDate'] = date('Y-m-d', strtotime($endTime));
+
+
+        if($station['type'] == '雨水')
+        {
+            // 遍历实时运行数据表,找出起泵时刻与停泵时刻
+            for ($i = 0; $i < count($statusYList); $i++)
+            {
+                $water['time'] = $statusYList[$i]->Time;
+                $water['waterLevel'] = $statusYList[$i]->ywhandong;
+                array_push($reportData['culvertWater'], $water);
+            }
+        }
+
+        if($station['type'] == '污水')
+        {
+            // 遍历实时运行数据表,找出起泵时刻与停泵时刻
+            for ($i = 0; $i < count($statusYList); $i++)
+            {
+                $water['time'] = $statusYList[$i]->Time;
+                $water['waterLevel'] = $statusYList[$i]->ywjishui;
+                array_push($reportData['tankWater'], $water);
+            }
+        }
+
+        return response()->json([
+
+            'code' => 0,
+
+            'message' => 'success',
+
+            'data' => $reportData
+
+        ], 200);
+    }
+
+    /**
+     * 报警统计
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getReportAlarm()
+    {
+        set_time_limit(0);      //执行时间无限
+        ini_set('memory_limit', '-1');    //内存无限
+
+        $stationID = Route::input('stationID',1);
+        $startTime = Input::get('startDate',date("Y-m-d"));
+        $endTime = Input::get('endDate',date("Y-m-d"));
+
+        $date=floor((strtotime($startTime)-strtotime($endTime))/86400);
+
+        if($date > 30 || strtotime($startTime) > strtotime($endTime))
+        {
+            return response()->json([
+
+                'code' => 1003,
+
+                'message' => 'wrong parameters'
+
+            ], 400);
+        }
+
+        if (!$stationID || !$startTime || !$endTime) {
+            return response()->json([
+
+                'code' => 1002,
+
+                'message' => 'missing parameters'
+
+            ], 400);
+        }
+
+        $station = $this->stationLogic->findStation($stationID);
+        $stationNum = $station['station_number'];
+
+        if (!$station) {
+            return response()->json([
+
+                'code' => 1001,
+
+                'message' => 'invalid station resources'
+
+            ], 404);
+        }
+
+        $searchStartTime = !empty($startTime) ? date('Y-m-d 00:00:00', strtotime($startTime)) : '';
+        $searchEndTime = !empty($endTime) ? date('Y-m-d 00:00:00', strtotime('+1 day', strtotime($endTime))) : '';
+
+        $statusYList = $this->reportController->getStatusYList($stationNum, $searchStartTime, $searchEndTime);
+
+        if (!$statusYList) {
+            return response()->json([
+
+                'code' => 1001,
+
+                'message' => 'invalid water resources'
+
+            ], 404);
+        }
+
+        $reportData['id'] = $station['id'];
+        $reportData['name'] = $station['name'];
+        $reportData['type'] = $station['type'];
+        $reportData['startDate'] = date('Y-m-d', strtotime($startTime));
+        $reportData['endDate'] = date('Y-m-d', strtotime($endTime));
+
+        for($i = 0 ; $i < count($statusYList)-1;$i++)
+        {
+            if($statusYList[$i]->bj_b1 == 0 && $statusYList[$i+1]->bj_b1 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "1号泵电机";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($statusYList[$i]->bj_b2 == 0 && $statusYList[$i+1]->bj_b2 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "2号泵电机";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($statusYList[$i]->bj_b3 == 0 && $statusYList[$i+1]->bj_b3 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "3号泵电机";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($statusYList[$i]->bj_b4 == 0 && $statusYList[$i+1]->bj_b4 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "4号泵电机";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+
+            if($statusYList[$i]->rqbj_b1 == 0 && $statusYList[$i+1]->rqbj_b1 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "1号泵软启动器";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($statusYList[$i]->rqbj_b2 == 0 && $statusYList[$i+1]->rqbj_b2 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "2号泵软启动器";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($statusYList[$i]->rqbj_b3 == 0 && $statusYList[$i+1]->rqbj_b3 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "3号泵软启动器";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($statusYList[$i]->rqbj_b4 == 0 && $statusYList[$i+1]->rqbj_b4 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "4号泵软启动器";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($stationNum == 33)
+            {
+                if($statusYList[$i]->bj_b5 == 0 && $statusYList[$i+1]->bj_b5 == 1 )
+                {
+                    $sWarning['Time'] = $statusYList[$i+1]->Time;
+                    $sWarning['alarmEquipment'] = "5号泵电机";
+                    $sWarning['alarmStatus'] = 1;
+
+                    array_push($reportData['alarmList'],$sWarning);
+                }
+
+                if($statusYList[$i]->rqbj_b5 == 0 && $statusYList[$i+1]->rqbj_b5 == 1 )
+                {
+                    $sWarning['Time'] = $statusYList[$i+1]->Time;
+                    $sWarning['alarmEquipment'] = "5号泵软启动器";
+                    $sWarning['alarmStatus'] = 1;
+
+                    array_push($reportData['alarmList'],$sWarning);
+                }
+            }
+
+            if($statusYList[$i]->bj_jl == 0 && $statusYList[$i+1]->bj_jl == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "绞笼";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($statusYList[$i]->bj_gs1 == 0 && $statusYList[$i+1]->bj_gs1 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "1号格栅";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            if($statusYList[$i]->bj_gs2 == 0 && $statusYList[$i+1]->bj_gs2 == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "2号格栅";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+
+            //部分泵站通讯中断,没有数据,不做市电的报警
+            $stationNoWorking = ['11','12','20','34'];
+            if(in_array($stationNum, $stationNoWorking))
+            {
+
+            }else{
+                if($statusYList[$i]->water_v == 1 && $statusYList[$i+1]->water_v == 0 )
+                {
+                    $sWarning['Time'] = $statusYList[$i+1]->Time;
+                    $sWarning['alarmEquipment'] = "市电停电";
+                    $sWarning['alarmStatus'] = 1;
+
+                    array_push($reportData['alarmList'],$sWarning);
+                }
+            }
+
+
+
+            if($statusYList[$i]->flow_v == 0 && $statusYList[$i+1]->flow_v == 1 )
+            {
+                $sWarning['Time'] = $statusYList[$i+1]->Time;
+                $sWarning['alarmEquipment'] = "手动急停";
+                $sWarning['alarmStatus'] = 1;
+
+                array_push($reportData['alarmList'],$sWarning);
+            }
+        }
+
+        return response()->json([
+
+            'code' => 0,
+
+            'message' => 'success',
+
+            'data' => $reportData
+
+        ], 200);
     }
 
 
