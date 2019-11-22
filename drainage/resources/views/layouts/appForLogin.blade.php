@@ -52,7 +52,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}" style="color:#3498db;">
-                    <img src="/img/header/logo-name.png" alt="logo" title="郑州欣昌科技有限公司">
+                    {{--<img src="/img/header/logo-name.png" alt="logo" title="郑州欣昌科技有限公司">--}}
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
