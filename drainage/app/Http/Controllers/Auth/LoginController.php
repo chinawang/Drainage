@@ -37,7 +37,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $today = strtotime(date("Y/m/d"));
-        $deadline = strtotime("2020/03/10");
+        $deadline = strtotime("2050/10/10");
 
         if($today > $deadline)
         {
